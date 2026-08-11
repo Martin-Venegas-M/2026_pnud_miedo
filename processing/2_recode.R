@@ -131,17 +131,17 @@ enusc <- enusc |>
 
 # Ver!
 
-sjmisc::frq(enusc$emper_ep_pct)
-sjmisc::frq(enusc$emper_barrio_pct)
-sjmisc::frq(enusc$emper_casa_pct)
-sjmisc::frq(enusc$perper_delito)
-sjmisc::frq(enusc$comper_pct)
-sjmisc::frq(enusc$comper_gasto)
-sjmisc::frq(enusc$comgen_per_pct)
-sjmisc::frq(enusc$comgen_com_pct)
+sjmisc::frq(enusc$emper_ep_pct) #* Hay varianza, 171 NA's
+sjmisc::frq(enusc$emper_barrio_pct) #* 3 categorías (0, 50, 100), 1015 NA's
+sjmisc::frq(enusc$emper_casa_pct) #* 3 categorías (0, 50, 100), 106 NA's
+sjmisc::frq(enusc$perper_delito) #* 5 categorías (1:5), bien, no NA's
+sjmisc::frq(enusc$comper_pct) #* Hay varianza, 37 NA's
+sjmisc::frq(enusc$comper_gasto) #* 4 categorías (0, 1, 88, 99), 1 NA
+sjmisc::frq(enusc$comgen_per_pct) #* Hay varianza, 0 NA's
+sjmisc::frq(enusc$comgen_com_pct) #* Hay varianza, 0 NA's
 
+# 3.3 Crear variabls "rec_tercil" e imputar 88 y 99 en variables comgen -------
 
-# ! AJUSTES!
 vec_comgen_per <- c(
     "comgen_medidas_ns",
     "comgen_medidas_nr"
@@ -182,16 +182,16 @@ enusc <- enusc |>
     )
 
 # Ver!
-sjmisc::frq(enusc$emper_ep_pct_rec_tercil)
-sjmisc::frq(enusc$emper_barrio_pct_rec_tercil)
-sjmisc::frq(enusc$emper_casa_pct_rec_tercil)
-sjmisc::frq(enusc$perper_delito)
-sjmisc::frq(enusc$comper_pct_rec_tercil)
-sjmisc::frq(enusc$comper_gasto)
-sjmisc::frq(enusc$comgen_per_pct_rec_tercil)
-sjmisc::frq(enusc$comgen_com_pct_rec_tercil)
+sjmisc::frq(enusc$emper_ep_pct_rec_tercil) #* Se mantienen 171 NA's
+sjmisc::frq(enusc$emper_barrio_pct_rec_tercil) #* Se mantienen 1015 NA's
+sjmisc::frq(enusc$emper_casa_pct_rec_tercil) #* Se mantienen 106 NA's
+sjmisc::frq(enusc$perper_delito) #* Se mantiene la no existencia de NA's
+sjmisc::frq(enusc$comper_pct_rec_tercil) #* Se mantienen 37 NA's
+sjmisc::frq(enusc$comper_gasto) #* Se mantiene 1 NA
+sjmisc::frq(enusc$comgen_per_pct_rec_tercil) #* Se mantienen 0 NA's, ahora hay 88 y 99
+sjmisc::frq(enusc$comgen_com_pct_rec_tercil) #* Se mantienen 0 NA's, ahora hay 88 y 99
 
-# 3.3 Recuperar 85, 88 y 99 ------------------------------------------------------
+# 3.4 Recuperar 85, 88 y 99 en variables de opción única ----------------------
 
 # Excluir variables de la imputación
 excluir <- c("perper_delito", "comper_gasto")
@@ -223,16 +223,16 @@ enusc <- reduce2(
 )
 
 # Ver!
-sjmisc::frq(enusc$emper_ep_pct_rec_tercil)
-sjmisc::frq(enusc$emper_barrio_pct_rec_tercil)
-sjmisc::frq(enusc$emper_casa_pct_rec_tercil)
-sjmisc::frq(enusc$perper_delito)
-sjmisc::frq(enusc$comper_pct_rec_tercil)
+sjmisc::frq(enusc$emper_ep_pct_rec_tercil) #* 85 y 99 recuperads
+sjmisc::frq(enusc$emper_barrio_pct_rec_tercil) #* 85, 88 y 99 recuperados
+sjmisc::frq(enusc$emper_casa_pct_rec_tercil) #* 85, 88 y 99 recuperados
+sjmisc::frq(enusc$perper_delito) #* Sigue igual, sin NA
+sjmisc::frq(enusc$comper_pct_rec_tercil) #* 85 y 99 recuperados
 sjmisc::frq(enusc$comper_gasto) #! Quedó un NA
-sjmisc::frq(enusc$comgen_per_pct_rec_tercil)
-sjmisc::frq(enusc$comgen_com_pct_rec_tercil)
+sjmisc::frq(enusc$comgen_per_pct_rec_tercil) #* Se mantienen los 88 y 99
+sjmisc::frq(enusc$comgen_com_pct_rec_tercil) #* Se mantienen los 88 y 99
 
-# 3.4 Etiquetar ----------------------------------------------------------------
+# 3.5 Etiquetar ----------------------------------------------------------------
 
 # Aplicar etiquetas variables
 enusc <- reduce2(

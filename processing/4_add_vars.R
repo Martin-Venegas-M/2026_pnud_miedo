@@ -24,71 +24,12 @@ purrr::walk(
 )
 
 # 2. Cargar datos y funciones --------------------------------------------------
-source("tipologias/config.R", encoding = "UTF-8")
-source(file.path(cfg$PATH_HELPERS, "validate.R"), encoding = "UTF-8")
-
-enusc <- readRDS(cfg$FILE_ENUSC_RECODE)
-
-#* ! IMPORTANTE: este script depende del .RData que produce analysis/mca_hcpc.R,
-#* por lo que el MCA debe correr ANTES. Ver el orden real en
-#* tipologias/run_all.R. Correr en el orden que sugeria el antiguo
-#* run_processing.R (1 -> 2 -> 3) con datos de otra ola pega los clusters de la
-#* ola anterior.
-if (!file.exists(cfg$FILE_MCA_HCPC)) {
-    stop(glue::glue(
-        "Falta {cfg$FILE_MCA_HCPC}. Correr analysis/mca_hcpc.R antes que este script."
-    ))
-}
-load(cfg$FILE_MCA_HCPC)
-
-#* Que el archivo exista no basta: si quedó en disco el .RData de la ola
-#* anterior, file.exists() pasa igual y el left_join() de más abajo pegaría
-#* clusters de otra ola sobre estos datos.
-validar_huella_modelo(enusc, if (exists("huella_input")) huella_input else NULL)
+source("config.R", encoding = "UTF-8")
+enusc <- readRDS(cfg$FILE_ENUSC_ADDCLUST)
 
 # 3. Ejecutar código -----------------------------------------------------------
 
-# 3.1 Añadir variables de cluster ----------------------------------------------
-
-# Añadir variables de cluster
-add_clust <- function(data, nclust) {
-    df_clust <- results_all[[glue("class{nclust}")]]$data %>%
-        select(all_of(c("rph_id", glue("clusters_{nclust}"))))
-
-    #* Nombres sustantivos solo para la solución reportada (cfg$CLUSTER_A_SACAR)
-    #* en 2024. Las soluciones exploratorias y la ola 2025 -- que todavía no
-    #* tiene nombre -- se quedan con la etiqueta genérica. Ver cfg$ETIQ_CLUSTER_2024
-    #* en config.R.
-    etiquetas_clust <- if (
-        cfg$ANIO == 2024 && glue("clusters_{nclust}") == cfg$CLUSTER_A_SACAR
-    ) {
-        unname(cfg$ETIQ_CLUSTER_2024[paste0("Cluster ", 1:nclust)])
-    } else {
-        paste0("Cluster ", 1:nclust)
-    }
-
-    data <- data %>%
-        left_join(df_clust) %>%
-        mutate(across(
-            glue("clusters_{nclust}"),
-            ~ factor(
-                .,
-                levels = c(1:nclust),
-                labels = etiquetas_clust
-            )
-        ))
-
-    return(data)
-}
-
-# Iterar!
-enusc <- reduce(
-    rev(cfg$N_CLASES),
-    \(data, nclust) add_clust(data, nclust),
-    .init = enusc
-)
-
-# 3.2 Crear indices de desordenes e incivilidades ------------------------------
+# 3.1 Crear indices de desordenes e incivilidades ------------------------------
 
 # Crear indice desordenes
 enusc <- enusc %>%
@@ -116,7 +57,7 @@ enusc <- enusc %>%
     ) %>%
     select(-starts_with("temp_"))
 
-# 3.3 Crear variables de información -------------------------------------------
+# 3.2 Crear variables de información -------------------------------------------
 vec_info <- c(
     "p_fuente_info_barrio_1",
     "p_fuente_info_com_1",
@@ -160,7 +101,7 @@ enusc <- reduce(
     .init = enusc
 )
 
-# 3.4 Recodificar variables sociodemográficas ----------------------------------
+# 3.3 Recodificar variables sociodemográficas ----------------------------------
 enusc <- enusc %>%
     mutate(
         rph_nivel_rec = case_when(
