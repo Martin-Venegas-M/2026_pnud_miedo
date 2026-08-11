@@ -2,9 +2,15 @@
 #'
 #' Reemplaza `3_add_clust.R:46-75`. Pasa `85`/`88`/`99` a `NA` en toda columna
 #' que matchee `emper|perper|pergen|comper|comgen`, se queda solo con
-#' `rph_id` y `vars`, saca a `NA` las categorías 4 y 5 de `perper_delito`
-#' (no sabe/no responde y "otro delito", ver D3) y convierte todo a factor
-#' con las etiquetas ya aplicadas por `etiquetar()`.
+#' `rph_id` y `vars`, saca a `NA` las categorías 4 y 6 de `perper_delito`
+#' (no sabe/no responde, en sus dos formas) y convierte todo a factor con las
+#' etiquetas ya aplicadas por `etiquetar()`.
+#'
+#' **D3 aplicada** (PLAN.md): antes se excluían las categorías `c(4, 5)`, con
+#' la 5 mezclando "otro delito" (sustantivo) y no-respuesta.
+#' `construir_perper_delito()` separó esa mezcla en 5 (otro delito) y 6 (no
+#' sabe/no responde); acá se ajustó el filtro a `c(4, 6)` para conservar la 5
+#' en el modelo.
 #'
 #' @param datos Datos recodificados y etiquetados (`datos_recodificados`).
 #' @param vars Variables que entran al MCA (`cfg$VARS_REC_TERCIL`).
@@ -29,7 +35,7 @@ preparar_datos_mca <- function(datos, vars) {
     datos |>
         dplyr::select(rph_id, dplyr::all_of(vars)) |>
         dplyr::mutate(
-            dplyr::across(perper_delito, ~ replace(., which(. %in% c(4, 5)), NA)),
+            dplyr::across(perper_delito, ~ replace(., which(. %in% c(4, 6)), NA)),
             dplyr::across(dplyr::all_of(vars), ~ sjlabelled::to_label(.))
         )
 }

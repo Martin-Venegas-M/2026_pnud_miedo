@@ -4,9 +4,19 @@
 #' cambiarlo invalida todo lo que se construye a partir de él (D1 y D4 viven
 #' acá).
 #'
+#' **D1 aplicada** (PLAN.md): `comgen_medidas_na` y `comgen_vecinos_medidas_na`
+#' salen de `source.cols`. Antes, marcar "ninguna medida" contaba como un
+#' ítem "éxito" más en `create_var_pct()` (`success.cats = 1`), así que
+#' "ninguna" nunca daba 0% — daba `1/10` o `1/9`. Sacada esa columna, alguien
+#' que solo marcó "ninguna" tiene 0 ítems en 1 de los que quedan en
+#' `source.cols`, así que el 0% sale del cálculo mismo, sin `case_when`
+#' adicional.
+#'
 #' @return Una lista nombrada, un elemento por índice. `perper_delito` es una
-#'   lista anidada: cada elemento son los ítems fuente de una de las cinco
-#'   ramas de su `case_when` (ver `construir_perper_delito()`).
+#'   lista anidada, documentación de las seis ramas de su `case_when` (ver
+#'   `construir_perper_delito()`) — no la usa `construir_perper_delito()`
+#'   directamente (esa hardcodea sus propios grupos), es solo para que quede
+#'   trazado en el mismo lugar que el resto de las especificaciones.
 construir_spec_indices <- function() {
     list(
         emper_ep_pct = paste0("emper_p_inseg_lugares_", 1:11),
@@ -17,7 +27,8 @@ construir_spec_indices <- function() {
             paste0("perper_p_delito_pronostico_", c(1:4, 6, 9:11)),
             paste0("perper_p_delito_pronostico_", c(5, 7:8)),
             "perper_p_expos_delito",
-            paste0("perper_p_delito_pronostico_", c(77, 88, 99))
+            paste0("perper_p_delito_pronostico_", 77),
+            paste0("perper_p_delito_pronostico_", c(88, 99))
         ),
         comper_pct = paste0("comper_p_mod_actividades_", 1:13),
         comper_gasto = c("comper_costos_medidas"),
@@ -30,8 +41,7 @@ construir_spec_indices <- function() {
             "comgen_medidas_proteccion",
             "comgen_medidas_seguro",
             "comgen_medidas_foco",
-            "comgen_medidas_otro",
-            "comgen_medidas_na"
+            "comgen_medidas_otro"
         ),
         comgen_com_pct = c(
             "comgen_vecinos_medidas_whatsapp",
@@ -41,8 +51,7 @@ construir_spec_indices <- function() {
             "comgen_vecinos_medidas_coord_mun",
             "comgen_vecinos_medidas_televig",
             "comgen_vecinos_medidas_privad",
-            "comgen_vecinos_medidas_otro",
-            "comgen_vecinos_medidas_na"
+            "comgen_vecinos_medidas_otro"
         )
     )
 }
@@ -123,9 +132,9 @@ create_var_pct <- function(
 #' Reemplaza las seis llamadas a `create_var_pct()` de `2_recode.R:82-130`
 #' (sin contar los `case_when` de `perper_delito` y `comper_gasto`, que son
 #' funciones propias). Vive acá D1: qué columnas entran en `source.cols` de
-#' cada batería — hoy `spec` incluye las columnas `_na` de `comgen` como una
-#' medida más, que es exactamente el hallazgo de PLAN.md D1. No se corrige en
-#' esta fase (ver F1.0).
+#' cada batería — **aplicada** (PLAN.md D1): `spec_indices` ya no incluye las
+#' columnas `_na` de `comgen` como una medida más, así que "ninguna medida"
+#' da 0% en vez de 10%/11,1%.
 #'
 #' @param datos Datos con las columnas fuente.
 #' @param spec `spec_indices`: ítems fuente por batería.
@@ -172,12 +181,31 @@ construir_indices_pct <- function(datos, spec) {
 
 #' Categoría de expectativa de victimización (`perper_delito`)
 #'
-#' Reemplaza el `case_when` de `2_recode.R:97-106`. Vive acá D3: la categoría 5
-#' mezcla "otro delito" (`77`, sustantivo) con no-respuesta (`88`/`99`). No se
-#' corrige en esta fase (ver F1.0).
+#' Reemplaza el `case_when` de `2_recode.R:97-106`. Vive acá D3, **aplicada**
+#' (PLAN.md D3): la vieja categoría 5 mezclaba "otro delito" (`77`,
+#' sustantivo) con no-respuesta (`88`/`99`). Queda separada en dos: la
+#' categoría 5 es ahora solo "otro delito" (se conserva en el modelo) y la 6
+#' es "no sabe/no responde" (se sigue excluyendo en
+#' `preparar_datos_mca()`, que pasó de `c(4, 5)` a `c(4, 6)`).
+#'
+#' @section Sobre la predicción falsable del plan:
+#' PLAN.md predecía que aplicar D3 sola subiría el N del MCA en 2.182 casos
+#' (el `n_solo` de `perper_delito` del Anexo A.2), para un total de 51.613.
+#' Verificado sobre los datos reales, la vieja categoría 5 tenía solo **150**
+#' casos en total (no 2.182): **78** marcaron *únicamente* "77 = otro delito"
+#' (sin ningún delito específico) — esos son los que rescata D3, de los
+#' cuales 72 entran efectivamente al modelo (6 quedan fuera por otra
+#' variable) — y **72** marcaron *únicamente* no sabe/no responde, que
+#' siguen excluidos. La diferencia con la predicción del plan es que
+#' `P_DELITO_PRONOSTICO` es una pregunta de "marque todas": de las 375
+#' personas que marcaron "77", 297 marcaron además un delito específico y ya
+#' caían en la categoría 2 o 3 (evaluadas antes que la 5 en el `case_when`),
+#' tanto antes como después de este cambio. El grueso del `n_solo = 2.182`
+#' es la categoría 4 (`expos_delito` en 88/99, la pregunta-gate anterior),
+#' que D3 no toca. La predicción del plan estaba mal, no la implementación.
 #'
 #' @param datos Datos con las columnas fuente de `perper_delito`.
-#' @return `datos` con la columna `perper_delito` agregada.
+#' @return `datos` con la columna `perper_delito` agregada (6 categorías).
 construir_perper_delito <- function(datos) {
     datos |>
         dplyr::mutate(
@@ -195,10 +223,15 @@ construir_perper_delito <- function(datos) {
                     3,
                 dplyr::if_all("perper_p_expos_delito", ~ . %in% c(88, 99)) ~ 4,
                 dplyr::if_any(
-                    paste0("perper_p_delito_pronostico_", c(77, 88, 99)),
+                    "perper_p_delito_pronostico_77",
                     ~ . == 1
                 ) ~
                     5,
+                dplyr::if_any(
+                    paste0("perper_p_delito_pronostico_", c(88, 99)),
+                    ~ . == 1
+                ) ~
+                    6,
                 TRUE ~ NA
             )
         )

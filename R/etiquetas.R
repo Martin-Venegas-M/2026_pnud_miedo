@@ -53,7 +53,8 @@ construir_spec_etiquetas_indices <- function() {
                 "Cree que será victima de delito no violento" = 2,
                 "Cree que será victima de delito violento" = 3,
                 "No sabe/No responde si cree que será victima de delito" = 4,
-                "No sabe/No responde de qué delito será victima / Cree que será victima de otro tipo de delito" = 5
+                "Cree que será victima de otro tipo de delito" = 5,
+                "No sabe/No responde de qué delito será victima" = 6
             ),
             "comper_pct_rec_tercil" = c(
                 "Altas prácticas de evitación" = 3,
