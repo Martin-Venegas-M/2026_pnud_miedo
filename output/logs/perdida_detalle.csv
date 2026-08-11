@@ -1,0 +1,9 @@
+etiqueta,variable,n_na,n_solo
+filtrar_casos_completos_mca,emper_ep_pct_rec_tercil,173,83
+filtrar_casos_completos_mca,emper_barrio_pct_rec_tercil,1032,770
+filtrar_casos_completos_mca,emper_casa_pct_rec_tercil,112,45
+filtrar_casos_completos_mca,perper_delito,2539,2182
+filtrar_casos_completos_mca,comper_pct_rec_tercil,39,2
+filtrar_casos_completos_mca,comper_gasto,1412,1050
+filtrar_casos_completos_mca,comgen_per_pct_rec_tercil,105,50
+filtrar_casos_completos_mca,comgen_com_pct_rec_tercil,1844,1440

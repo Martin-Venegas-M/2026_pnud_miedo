@@ -1,0 +1,642 @@
+etiqueta,variable_antes,variable_despues,valor,n_antes,pct_antes,n_despues,pct_despues
+indices_pct,emper_ep_pct,emper_ep_pct,0,NA,NA,12387,22.2
+indices_pct,emper_ep_pct,emper_ep_pct,10,NA,NA,866,1.55
+indices_pct,emper_ep_pct,emper_ep_pct,100,NA,NA,3903,7
+indices_pct,emper_ep_pct,emper_ep_pct,11.1111111111111,NA,NA,968,1.73
+indices_pct,emper_ep_pct,emper_ep_pct,12.5,NA,NA,1120,2.01
+indices_pct,emper_ep_pct,emper_ep_pct,14.2857142857143,NA,NA,1135,2.03
+indices_pct,emper_ep_pct,emper_ep_pct,16.6666666666667,NA,NA,1106,1.98
+indices_pct,emper_ep_pct,emper_ep_pct,18.1818181818182,NA,NA,545,0.98
+indices_pct,emper_ep_pct,emper_ep_pct,20,NA,NA,1666,2.99
+indices_pct,emper_ep_pct,emper_ep_pct,22.2222222222222,NA,NA,872,1.56
+indices_pct,emper_ep_pct,emper_ep_pct,25,NA,NA,1599,2.87
+indices_pct,emper_ep_pct,emper_ep_pct,27.2727272727273,NA,NA,545,0.98
+indices_pct,emper_ep_pct,emper_ep_pct,28.5714285714286,NA,NA,1026,1.84
+indices_pct,emper_ep_pct,emper_ep_pct,30,NA,NA,761,1.36
+indices_pct,emper_ep_pct,emper_ep_pct,33.3333333333333,NA,NA,2150,3.85
+indices_pct,emper_ep_pct,emper_ep_pct,36.3636363636364,NA,NA,608,1.09
+indices_pct,emper_ep_pct,emper_ep_pct,37.5,NA,NA,912,1.63
+indices_pct,emper_ep_pct,emper_ep_pct,40,NA,NA,1498,2.68
+indices_pct,emper_ep_pct,emper_ep_pct,42.8571428571429,NA,NA,943,1.69
+indices_pct,emper_ep_pct,emper_ep_pct,44.4444444444444,NA,NA,806,1.44
+indices_pct,emper_ep_pct,emper_ep_pct,45.4545454545455,NA,NA,606,1.09
+indices_pct,emper_ep_pct,emper_ep_pct,50,NA,NA,3339,5.98
+indices_pct,emper_ep_pct,emper_ep_pct,54.5454545454545,NA,NA,653,1.17
+indices_pct,emper_ep_pct,emper_ep_pct,55.5555555555556,NA,NA,797,1.43
+indices_pct,emper_ep_pct,emper_ep_pct,57.1428571428571,NA,NA,884,1.58
+indices_pct,emper_ep_pct,emper_ep_pct,60,NA,NA,1370,2.46
+indices_pct,emper_ep_pct,emper_ep_pct,62.5,NA,NA,824,1.48
+indices_pct,emper_ep_pct,emper_ep_pct,63.6363636363636,NA,NA,608,1.09
+indices_pct,emper_ep_pct,emper_ep_pct,66.6666666666667,NA,NA,1822,3.27
+indices_pct,emper_ep_pct,emper_ep_pct,70,NA,NA,665,1.19
+indices_pct,emper_ep_pct,emper_ep_pct,71.4285714285714,NA,NA,760,1.36
+indices_pct,emper_ep_pct,emper_ep_pct,72.7272727272727,NA,NA,569,1.02
+indices_pct,emper_ep_pct,emper_ep_pct,75,NA,NA,1235,2.21
+indices_pct,emper_ep_pct,emper_ep_pct,77.7777777777778,NA,NA,604,1.08
+indices_pct,emper_ep_pct,emper_ep_pct,80,NA,NA,1134,2.03
+indices_pct,emper_ep_pct,emper_ep_pct,81.8181818181818,NA,NA,479,0.86
+indices_pct,emper_ep_pct,emper_ep_pct,83.3333333333333,NA,NA,679,1.22
+indices_pct,emper_ep_pct,emper_ep_pct,85.7142857142857,NA,NA,610,1.09
+indices_pct,emper_ep_pct,emper_ep_pct,87.5,NA,NA,553,0.99
+indices_pct,emper_ep_pct,emper_ep_pct,88.8888888888889,NA,NA,513,0.92
+indices_pct,emper_ep_pct,emper_ep_pct,9.09090909090909,NA,NA,596,1.07
+indices_pct,emper_ep_pct,emper_ep_pct,90,NA,NA,451,0.81
+indices_pct,emper_ep_pct,emper_ep_pct,90.9090909090909,NA,NA,458,0.82
+indices_pct,emper_ep_pct,emper_ep_pct,NA,NA,NA,171,0.31
+indices_pct,emper_barrio_pct,emper_barrio_pct,0,NA,NA,20314,36.41
+indices_pct,emper_barrio_pct,emper_barrio_pct,100,NA,NA,11553,20.71
+indices_pct,emper_barrio_pct,emper_barrio_pct,50,NA,NA,22914,41.07
+indices_pct,emper_barrio_pct,emper_barrio_pct,NA,NA,NA,1015,1.82
+indices_pct,emper_casa_pct,emper_casa_pct,0,NA,NA,42215,75.66
+indices_pct,emper_casa_pct,emper_casa_pct,100,NA,NA,4919,8.82
+indices_pct,emper_casa_pct,emper_casa_pct,50,NA,NA,8556,15.33
+indices_pct,emper_casa_pct,emper_casa_pct,NA,NA,NA,106,0.19
+indices_pct,comper_pct,comper_pct,0,NA,NA,9724,17.43
+indices_pct,comper_pct,comper_pct,10,NA,NA,1087,1.95
+indices_pct,comper_pct,comper_pct,100,NA,NA,1155,2.07
+indices_pct,comper_pct,comper_pct,11.1111111111111,NA,NA,706,1.27
+indices_pct,comper_pct,comper_pct,12.5,NA,NA,478,0.86
+indices_pct,comper_pct,comper_pct,14.2857142857143,NA,NA,299,0.54
+indices_pct,comper_pct,comper_pct,15.3846153846154,NA,NA,969,1.74
+indices_pct,comper_pct,comper_pct,16.6666666666667,NA,NA,1347,2.41
+indices_pct,comper_pct,comper_pct,18.1818181818182,NA,NA,1091,1.96
+indices_pct,comper_pct,comper_pct,20,NA,NA,987,1.77
+indices_pct,comper_pct,comper_pct,22.2222222222222,NA,NA,622,1.11
+indices_pct,comper_pct,comper_pct,23.0769230769231,NA,NA,904,1.62
+indices_pct,comper_pct,comper_pct,25,NA,NA,1577,2.83
+indices_pct,comper_pct,comper_pct,27.2727272727273,NA,NA,1022,1.83
+indices_pct,comper_pct,comper_pct,28.5714285714286,NA,NA,208,0.37
+indices_pct,comper_pct,comper_pct,30,NA,NA,849,1.52
+indices_pct,comper_pct,comper_pct,30.7692307692308,NA,NA,892,1.6
+indices_pct,comper_pct,comper_pct,33.3333333333333,NA,NA,1708,3.06
+indices_pct,comper_pct,comper_pct,36.3636363636364,NA,NA,947,1.7
+indices_pct,comper_pct,comper_pct,37.5,NA,NA,294,0.53
+indices_pct,comper_pct,comper_pct,38.4615384615385,NA,NA,908,1.63
+indices_pct,comper_pct,comper_pct,40,NA,NA,900,1.61
+indices_pct,comper_pct,comper_pct,41.6666666666667,NA,NA,1153,2.07
+indices_pct,comper_pct,comper_pct,42.8571428571429,NA,NA,160,0.29
+indices_pct,comper_pct,comper_pct,44.4444444444444,NA,NA,459,0.82
+indices_pct,comper_pct,comper_pct,45.4545454545455,NA,NA,915,1.64
+indices_pct,comper_pct,comper_pct,46.1538461538462,NA,NA,887,1.59
+indices_pct,comper_pct,comper_pct,50,NA,NA,2316,4.15
+indices_pct,comper_pct,comper_pct,53.8461538461538,NA,NA,910,1.63
+indices_pct,comper_pct,comper_pct,54.5454545454545,NA,NA,946,1.7
+indices_pct,comper_pct,comper_pct,55.5555555555556,NA,NA,466,0.84
+indices_pct,comper_pct,comper_pct,57.1428571428571,NA,NA,143,0.26
+indices_pct,comper_pct,comper_pct,58.3333333333333,NA,NA,1143,2.05
+indices_pct,comper_pct,comper_pct,60,NA,NA,782,1.4
+indices_pct,comper_pct,comper_pct,61.5384615384615,NA,NA,991,1.78
+indices_pct,comper_pct,comper_pct,62.5,NA,NA,223,0.4
+indices_pct,comper_pct,comper_pct,63.6363636363636,NA,NA,934,1.67
+indices_pct,comper_pct,comper_pct,66.6666666666667,NA,NA,1543,2.77
+indices_pct,comper_pct,comper_pct,69.2307692307692,NA,NA,867,1.55
+indices_pct,comper_pct,comper_pct,7.69230769230769,NA,NA,1035,1.85
+indices_pct,comper_pct,comper_pct,70,NA,NA,707,1.27
+indices_pct,comper_pct,comper_pct,71.4285714285714,NA,NA,114,0.2
+indices_pct,comper_pct,comper_pct,72.7272727272727,NA,NA,774,1.39
+indices_pct,comper_pct,comper_pct,75,NA,NA,1105,1.98
+indices_pct,comper_pct,comper_pct,76.9230769230769,NA,NA,823,1.48
+indices_pct,comper_pct,comper_pct,77.7777777777778,NA,NA,355,0.64
+indices_pct,comper_pct,comper_pct,8.33333333333333,NA,NA,1374,2.46
+indices_pct,comper_pct,comper_pct,80,NA,NA,594,1.06
+indices_pct,comper_pct,comper_pct,81.8181818181818,NA,NA,596,1.07
+indices_pct,comper_pct,comper_pct,83.3333333333333,NA,NA,692,1.24
+indices_pct,comper_pct,comper_pct,84.6153846153846,NA,NA,704,1.26
+indices_pct,comper_pct,comper_pct,85.7142857142857,NA,NA,77,0.14
+indices_pct,comper_pct,comper_pct,87.5,NA,NA,125,0.22
+indices_pct,comper_pct,comper_pct,88.8888888888889,NA,NA,214,0.38
+indices_pct,comper_pct,comper_pct,9.09090909090909,NA,NA,1213,2.17
+indices_pct,comper_pct,comper_pct,90,NA,NA,377,0.68
+indices_pct,comper_pct,comper_pct,90.9090909090909,NA,NA,375,0.67
+indices_pct,comper_pct,comper_pct,91.6666666666667,NA,NA,428,0.77
+indices_pct,comper_pct,comper_pct,92.3076923076923,NA,NA,565,1.01
+indices_pct,comper_pct,comper_pct,NA,NA,NA,37,0.07
+indices_pct,comgen_per_pct,comgen_per_pct,0,NA,NA,106,0.19
+indices_pct,comgen_per_pct,comgen_per_pct,10,NA,NA,20936,37.52
+indices_pct,comgen_per_pct,comgen_per_pct,20,NA,NA,14867,26.65
+indices_pct,comgen_per_pct,comgen_per_pct,30,NA,NA,10106,18.11
+indices_pct,comgen_per_pct,comgen_per_pct,40,NA,NA,5531,9.91
+indices_pct,comgen_per_pct,comgen_per_pct,50,NA,NA,2608,4.67
+indices_pct,comgen_per_pct,comgen_per_pct,60,NA,NA,1090,1.95
+indices_pct,comgen_per_pct,comgen_per_pct,70,NA,NA,437,0.78
+indices_pct,comgen_per_pct,comgen_per_pct,80,NA,NA,107,0.19
+indices_pct,comgen_per_pct,comgen_per_pct,90,NA,NA,8,0.01
+indices_pct,comgen_com_pct,comgen_com_pct,0,NA,NA,1845,3.31
+indices_pct,comgen_com_pct,comgen_com_pct,11.1111111111111,NA,NA,32939,59.03
+indices_pct,comgen_com_pct,comgen_com_pct,22.2222222222222,NA,NA,10726,19.22
+indices_pct,comgen_com_pct,comgen_com_pct,33.3333333333333,NA,NA,5820,10.43
+indices_pct,comgen_com_pct,comgen_com_pct,44.4444444444444,NA,NA,2609,4.68
+indices_pct,comgen_com_pct,comgen_com_pct,55.5555555555556,NA,NA,1309,2.35
+indices_pct,comgen_com_pct,comgen_com_pct,66.6666666666667,NA,NA,454,0.81
+indices_pct,comgen_com_pct,comgen_com_pct,77.7777777777778,NA,NA,83,0.15
+indices_pct,comgen_com_pct,comgen_com_pct,88.8888888888889,NA,NA,11,0.02
+perper_delito,perper_delito,perper_delito,1,NA,NA,27092,48.56
+perper_delito,perper_delito,perper_delito,2,NA,NA,11460,20.54
+perper_delito,perper_delito,perper_delito,3,NA,NA,14705,26.35
+perper_delito,perper_delito,perper_delito,4,NA,NA,2389,4.28
+perper_delito,perper_delito,perper_delito,5,NA,NA,150,0.27
+comper_gasto,comper_gasto,comper_gasto,0,NA,NA,29312,52.53
+comper_gasto,comper_gasto,comper_gasto,1,NA,NA,25072,44.94
+comper_gasto,comper_gasto,comper_gasto,88,NA,NA,1298,2.33
+comper_gasto,comper_gasto,comper_gasto,99,NA,NA,113,0.2
+comper_gasto,comper_gasto,comper_gasto,NA,NA,NA,1,0
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,0,106,0.19,1,0
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,10,20936,37.52,20936,37.52
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,20,14867,26.65,14867,26.65
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,30,10106,18.11,10106,18.11
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,40,5531,9.91,5531,9.91
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,50,2608,4.67,2608,4.67
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,60,1090,1.95,1090,1.95
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,70,437,0.78,437,0.78
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,80,107,0.19,107,0.19
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,90,8,0.01,8,0.01
+no_respuesta_comgen,comgen_per_pct,comgen_per_pct,NA,NA,NA,105,0.19
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,0,1845,3.31,1,0
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,11.1111111111111,32939,59.03,32939,59.03
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,22.2222222222222,10726,19.22,10726,19.22
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,33.3333333333333,5820,10.43,5820,10.43
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,44.4444444444444,2609,4.68,2609,4.68
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,55.5555555555556,1309,2.35,1309,2.35
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,66.6666666666667,454,0.81,454,0.81
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,77.7777777777778,83,0.15,83,0.15
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,88.8888888888889,11,0.02,11,0.02
+no_respuesta_comgen,comgen_com_pct,comgen_com_pct,NA,NA,NA,1844,3.3
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,0,12387,22.2,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,10,866,1.55,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,100,3903,7,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,11.1111111111111,968,1.73,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,12.5,1120,2.01,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,14.2857142857143,1135,2.03,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,16.6666666666667,1106,1.98,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,18.1818181818182,545,0.98,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,20,1666,2.99,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,22.2222222222222,872,1.56,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,25,1599,2.87,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,27.2727272727273,545,0.98,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,28.5714285714286,1026,1.84,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,30,761,1.36,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,33.3333333333333,2150,3.85,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,36.3636363636364,608,1.09,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,37.5,912,1.63,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,40,1498,2.68,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,42.8571428571429,943,1.69,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,44.4444444444444,806,1.44,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,45.4545454545455,606,1.09,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,50,3339,5.98,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,54.5454545454545,653,1.17,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,55.5555555555556,797,1.43,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,57.1428571428571,884,1.58,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,60,1370,2.46,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,62.5,824,1.48,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,63.6363636363636,608,1.09,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,66.6666666666667,1822,3.27,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,70,665,1.19,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,71.4285714285714,760,1.36,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,72.7272727272727,569,1.02,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,75,1235,2.21,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,77.7777777777778,604,1.08,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,80,1134,2.03,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,81.8181818181818,479,0.86,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,83.3333333333333,679,1.22,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,85.7142857142857,610,1.09,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,87.5,553,0.99,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,88.8888888888889,513,0.92,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,9.09090909090909,596,1.07,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,90,451,0.81,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,90.9090909090909,458,0.82,NA,NA
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,NA,171,0.31,171,0.31
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,1,NA,NA,18542,33.23
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,2,NA,NA,18542,33.23
+categorizado,emper_ep_pct,emper_ep_pct_rec_tercil,3,NA,NA,18541,33.23
+categorizado,emper_barrio_pct,emper_barrio_pct_rec_tercil,0,20314,36.41,NA,NA
+categorizado,emper_barrio_pct,emper_barrio_pct_rec_tercil,100,11553,20.71,NA,NA
+categorizado,emper_barrio_pct,emper_barrio_pct_rec_tercil,50,22914,41.07,NA,NA
+categorizado,emper_barrio_pct,emper_barrio_pct_rec_tercil,NA,1015,1.82,1015,1.82
+categorizado,emper_barrio_pct,emper_barrio_pct_rec_tercil,1,NA,NA,18261,32.73
+categorizado,emper_barrio_pct,emper_barrio_pct_rec_tercil,2,NA,NA,18260,32.73
+categorizado,emper_barrio_pct,emper_barrio_pct_rec_tercil,3,NA,NA,18260,32.73
+categorizado,emper_casa_pct,emper_casa_pct_rec_tercil,0,42215,75.66,NA,NA
+categorizado,emper_casa_pct,emper_casa_pct_rec_tercil,100,4919,8.82,NA,NA
+categorizado,emper_casa_pct,emper_casa_pct_rec_tercil,50,8556,15.33,NA,NA
+categorizado,emper_casa_pct,emper_casa_pct_rec_tercil,NA,106,0.19,106,0.19
+categorizado,emper_casa_pct,emper_casa_pct_rec_tercil,1,NA,NA,18564,33.27
+categorizado,emper_casa_pct,emper_casa_pct_rec_tercil,2,NA,NA,18563,33.27
+categorizado,emper_casa_pct,emper_casa_pct_rec_tercil,3,NA,NA,18563,33.27
+categorizado,comper_pct,comper_pct_rec_tercil,0,9724,17.43,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,10,1087,1.95,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,100,1155,2.07,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,11.1111111111111,706,1.27,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,12.5,478,0.86,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,14.2857142857143,299,0.54,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,15.3846153846154,969,1.74,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,16.6666666666667,1347,2.41,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,18.1818181818182,1091,1.96,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,20,987,1.77,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,22.2222222222222,622,1.11,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,23.0769230769231,904,1.62,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,25,1577,2.83,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,27.2727272727273,1022,1.83,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,28.5714285714286,208,0.37,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,30,849,1.52,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,30.7692307692308,892,1.6,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,33.3333333333333,1708,3.06,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,36.3636363636364,947,1.7,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,37.5,294,0.53,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,38.4615384615385,908,1.63,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,40,900,1.61,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,41.6666666666667,1153,2.07,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,42.8571428571429,160,0.29,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,44.4444444444444,459,0.82,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,45.4545454545455,915,1.64,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,46.1538461538462,887,1.59,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,50,2316,4.15,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,53.8461538461538,910,1.63,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,54.5454545454545,946,1.7,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,55.5555555555556,466,0.84,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,57.1428571428571,143,0.26,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,58.3333333333333,1143,2.05,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,60,782,1.4,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,61.5384615384615,991,1.78,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,62.5,223,0.4,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,63.6363636363636,934,1.67,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,66.6666666666667,1543,2.77,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,69.2307692307692,867,1.55,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,7.69230769230769,1035,1.85,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,70,707,1.27,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,71.4285714285714,114,0.2,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,72.7272727272727,774,1.39,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,75,1105,1.98,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,76.9230769230769,823,1.48,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,77.7777777777778,355,0.64,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,8.33333333333333,1374,2.46,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,80,594,1.06,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,81.8181818181818,596,1.07,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,83.3333333333333,692,1.24,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,84.6153846153846,704,1.26,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,85.7142857142857,77,0.14,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,87.5,125,0.22,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,88.8888888888889,214,0.38,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,9.09090909090909,1213,2.17,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,90,377,0.68,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,90.9090909090909,375,0.67,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,91.6666666666667,428,0.77,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,92.3076923076923,565,1.01,NA,NA
+categorizado,comper_pct,comper_pct_rec_tercil,NA,37,0.07,37,0.07
+categorizado,comper_pct,comper_pct_rec_tercil,1,NA,NA,18587,33.31
+categorizado,comper_pct,comper_pct_rec_tercil,2,NA,NA,18586,33.31
+categorizado,comper_pct,comper_pct_rec_tercil,3,NA,NA,18586,33.31
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,0,1,0,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,10,20936,37.52,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,20,14867,26.65,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,30,10106,18.11,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,40,5531,9.91,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,50,2608,4.67,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,60,1090,1.95,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,70,437,0.78,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,80,107,0.19,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,90,8,0.01,NA,NA
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,NA,105,0.19,105,0.19
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,1,NA,NA,18564,33.27
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,2,NA,NA,18564,33.27
+categorizado,comgen_per_pct,comgen_per_pct_rec_tercil,3,NA,NA,18563,33.27
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,0,1,0,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,11.1111111111111,32939,59.03,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,22.2222222222222,10726,19.22,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,33.3333333333333,5820,10.43,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,44.4444444444444,2609,4.68,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,55.5555555555556,1309,2.35,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,66.6666666666667,454,0.81,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,77.7777777777778,83,0.15,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,88.8888888888889,11,0.02,NA,NA
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,NA,1844,3.3,1844,3.3
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,1,NA,NA,17984,32.23
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,2,NA,NA,17984,32.23
+categorizado,comgen_com_pct,comgen_com_pct_rec_tercil,3,NA,NA,17984,32.23
+codigos_recuperados,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,1,18542,33.23,18540,33.23
+codigos_recuperados,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,2,18542,33.23,18542,33.23
+codigos_recuperados,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,3,18541,33.23,18541,33.23
+codigos_recuperados,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,NA,171,0.31,NA,NA
+codigos_recuperados,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,85,NA,NA,171,0.31
+codigos_recuperados,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,99,NA,NA,2,0
+codigos_recuperados,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,1,18261,32.73,18248,32.7
+codigos_recuperados,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,2,18260,32.73,18256,32.72
+codigos_recuperados,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,3,18260,32.73,18260,32.73
+codigos_recuperados,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,NA,1015,1.82,NA,NA
+codigos_recuperados,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,85,NA,NA,1015,1.82
+codigos_recuperados,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,88,NA,NA,14,0.03
+codigos_recuperados,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,99,NA,NA,3,0.01
+codigos_recuperados,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,1,18564,33.27,18561,33.27
+codigos_recuperados,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,2,18563,33.27,18561,33.27
+codigos_recuperados,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,3,18563,33.27,18562,33.27
+codigos_recuperados,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,NA,106,0.19,NA,NA
+codigos_recuperados,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,85,NA,NA,106,0.19
+codigos_recuperados,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,88,NA,NA,4,0.01
+codigos_recuperados,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,99,NA,NA,2,0
+codigos_recuperados,comper_pct_rec_tercil,comper_pct_rec_tercil,1,18587,33.31,18585,33.31
+codigos_recuperados,comper_pct_rec_tercil,comper_pct_rec_tercil,2,18586,33.31,18586,33.31
+codigos_recuperados,comper_pct_rec_tercil,comper_pct_rec_tercil,3,18586,33.31,18586,33.31
+codigos_recuperados,comper_pct_rec_tercil,comper_pct_rec_tercil,NA,37,0.07,NA,NA
+codigos_recuperados,comper_pct_rec_tercil,comper_pct_rec_tercil,85,NA,NA,37,0.07
+codigos_recuperados,comper_pct_rec_tercil,comper_pct_rec_tercil,99,NA,NA,2,0
+codigos_recuperados,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,1,18564,33.27,18564,33.27
+codigos_recuperados,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,2,18564,33.27,18564,33.27
+codigos_recuperados,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,3,18563,33.27,18563,33.27
+codigos_recuperados,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,NA,105,0.19,NA,NA
+codigos_recuperados,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,88,NA,NA,36,0.06
+codigos_recuperados,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,99,NA,NA,69,0.12
+codigos_recuperados,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,1,17984,32.23,17984,32.23
+codigos_recuperados,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,2,17984,32.23,17984,32.23
+codigos_recuperados,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,3,17984,32.23,17984,32.23
+codigos_recuperados,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,NA,1844,3.3,NA,NA
+codigos_recuperados,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,88,NA,NA,1793,3.21
+codigos_recuperados,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,99,NA,NA,51,0.09
+etiquetado_indices,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,1,18540,33.23,18540,33.23
+etiquetado_indices,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,2,18542,33.23,18542,33.23
+etiquetado_indices,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,3,18541,33.23,18541,33.23
+etiquetado_indices,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,85,171,0.31,171,0.31
+etiquetado_indices,emper_ep_pct_rec_tercil,emper_ep_pct_rec_tercil,99,2,0,2,0
+etiquetado_indices,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,1,18248,32.7,18248,32.7
+etiquetado_indices,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,2,18256,32.72,18256,32.72
+etiquetado_indices,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,3,18260,32.73,18260,32.73
+etiquetado_indices,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,85,1015,1.82,1015,1.82
+etiquetado_indices,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,88,14,0.03,14,0.03
+etiquetado_indices,emper_barrio_pct_rec_tercil,emper_barrio_pct_rec_tercil,99,3,0.01,3,0.01
+etiquetado_indices,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,1,18561,33.27,18561,33.27
+etiquetado_indices,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,2,18561,33.27,18561,33.27
+etiquetado_indices,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,3,18562,33.27,18562,33.27
+etiquetado_indices,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,85,106,0.19,106,0.19
+etiquetado_indices,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,88,4,0.01,4,0.01
+etiquetado_indices,emper_casa_pct_rec_tercil,emper_casa_pct_rec_tercil,99,2,0,2,0
+etiquetado_indices,perper_delito,perper_delito,1,27092,48.56,27092,48.56
+etiquetado_indices,perper_delito,perper_delito,2,11460,20.54,11460,20.54
+etiquetado_indices,perper_delito,perper_delito,3,14705,26.35,14705,26.35
+etiquetado_indices,perper_delito,perper_delito,4,2389,4.28,2389,4.28
+etiquetado_indices,perper_delito,perper_delito,5,150,0.27,150,0.27
+etiquetado_indices,comper_pct_rec_tercil,comper_pct_rec_tercil,1,18585,33.31,18585,33.31
+etiquetado_indices,comper_pct_rec_tercil,comper_pct_rec_tercil,2,18586,33.31,18586,33.31
+etiquetado_indices,comper_pct_rec_tercil,comper_pct_rec_tercil,3,18586,33.31,18586,33.31
+etiquetado_indices,comper_pct_rec_tercil,comper_pct_rec_tercil,85,37,0.07,37,0.07
+etiquetado_indices,comper_pct_rec_tercil,comper_pct_rec_tercil,99,2,0,2,0
+etiquetado_indices,comper_gasto,comper_gasto,0,29312,52.53,29312,52.53
+etiquetado_indices,comper_gasto,comper_gasto,1,25072,44.94,25072,44.94
+etiquetado_indices,comper_gasto,comper_gasto,88,1298,2.33,1298,2.33
+etiquetado_indices,comper_gasto,comper_gasto,99,113,0.2,113,0.2
+etiquetado_indices,comper_gasto,comper_gasto,NA,1,0,1,0
+etiquetado_indices,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,1,18564,33.27,18564,33.27
+etiquetado_indices,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,2,18564,33.27,18564,33.27
+etiquetado_indices,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,3,18563,33.27,18563,33.27
+etiquetado_indices,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,88,36,0.06,36,0.06
+etiquetado_indices,comgen_per_pct_rec_tercil,comgen_per_pct_rec_tercil,99,69,0.12,69,0.12
+etiquetado_indices,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,1,17984,32.23,17984,32.23
+etiquetado_indices,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,2,17984,32.23,17984,32.23
+etiquetado_indices,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,3,17984,32.23,17984,32.23
+etiquetado_indices,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,88,1793,3.21,1793,3.21
+etiquetado_indices,comgen_com_pct_rec_tercil,comgen_com_pct_rec_tercil,99,51,0.09,51,0.09
+pegar_clusters,clusters_6,clusters_6,C1,NA,NA,7076,12.68
+pegar_clusters,clusters_6,clusters_6,C2,NA,NA,9714,17.41
+pegar_clusters,clusters_6,clusters_6,C3,NA,NA,8244,14.78
+pegar_clusters,clusters_6,clusters_6,C4,NA,NA,11385,20.4
+pegar_clusters,clusters_6,clusters_6,C5,NA,NA,5846,10.48
+pegar_clusters,clusters_6,clusters_6,C6,NA,NA,7166,12.84
+pegar_clusters,clusters_6,clusters_6,NA,NA,NA,6365,11.41
+pegar_clusters,clusters_5,clusters_5,C1,NA,NA,7076,12.68
+pegar_clusters,clusters_5,clusters_5,C2,NA,NA,9714,17.41
+pegar_clusters,clusters_5,clusters_5,C3,NA,NA,8244,14.78
+pegar_clusters,clusters_5,clusters_5,C4,NA,NA,11385,20.4
+pegar_clusters,clusters_5,clusters_5,C5,NA,NA,13012,23.32
+pegar_clusters,clusters_5,clusters_5,NA,NA,NA,6365,11.41
+pegar_clusters,clusters_4,clusters_4,C1,NA,NA,16790,30.09
+pegar_clusters,clusters_4,clusters_4,C2,NA,NA,8244,14.78
+pegar_clusters,clusters_4,clusters_4,C3,NA,NA,11385,20.4
+pegar_clusters,clusters_4,clusters_4,C4,NA,NA,13012,23.32
+pegar_clusters,clusters_4,clusters_4,NA,NA,NA,6365,11.41
+indices_secundarios,desordenes_ind,desordenes_ind,0,NA,NA,17,0.03
+indices_secundarios,desordenes_ind,desordenes_ind,1,NA,NA,8,0.01
+indices_secundarios,desordenes_ind,desordenes_ind,10,NA,NA,3910,7.01
+indices_secundarios,desordenes_ind,desordenes_ind,11,NA,NA,3134,5.62
+indices_secundarios,desordenes_ind,desordenes_ind,12,NA,NA,3930,7.04
+indices_secundarios,desordenes_ind,desordenes_ind,13,NA,NA,3188,5.71
+indices_secundarios,desordenes_ind,desordenes_ind,14,NA,NA,3336,5.98
+indices_secundarios,desordenes_ind,desordenes_ind,15,NA,NA,2908,5.21
+indices_secundarios,desordenes_ind,desordenes_ind,16,NA,NA,3121,5.59
+indices_secundarios,desordenes_ind,desordenes_ind,17,NA,NA,2682,4.81
+indices_secundarios,desordenes_ind,desordenes_ind,18,NA,NA,2642,4.74
+indices_secundarios,desordenes_ind,desordenes_ind,19,NA,NA,2304,4.13
+indices_secundarios,desordenes_ind,desordenes_ind,2,NA,NA,17,0.03
+indices_secundarios,desordenes_ind,desordenes_ind,20,NA,NA,2214,3.97
+indices_secundarios,desordenes_ind,desordenes_ind,21,NA,NA,1868,3.35
+indices_secundarios,desordenes_ind,desordenes_ind,22,NA,NA,1782,3.19
+indices_secundarios,desordenes_ind,desordenes_ind,23,NA,NA,1538,2.76
+indices_secundarios,desordenes_ind,desordenes_ind,24,NA,NA,1568,2.81
+indices_secundarios,desordenes_ind,desordenes_ind,25,NA,NA,1207,2.16
+indices_secundarios,desordenes_ind,desordenes_ind,26,NA,NA,1150,2.06
+indices_secundarios,desordenes_ind,desordenes_ind,27,NA,NA,954,1.71
+indices_secundarios,desordenes_ind,desordenes_ind,28,NA,NA,866,1.55
+indices_secundarios,desordenes_ind,desordenes_ind,29,NA,NA,679,1.22
+indices_secundarios,desordenes_ind,desordenes_ind,3,NA,NA,21,0.04
+indices_secundarios,desordenes_ind,desordenes_ind,30,NA,NA,624,1.12
+indices_secundarios,desordenes_ind,desordenes_ind,31,NA,NA,487,0.87
+indices_secundarios,desordenes_ind,desordenes_ind,32,NA,NA,499,0.89
+indices_secundarios,desordenes_ind,desordenes_ind,33,NA,NA,335,0.6
+indices_secundarios,desordenes_ind,desordenes_ind,34,NA,NA,288,0.52
+indices_secundarios,desordenes_ind,desordenes_ind,35,NA,NA,256,0.46
+indices_secundarios,desordenes_ind,desordenes_ind,36,NA,NA,262,0.47
+indices_secundarios,desordenes_ind,desordenes_ind,37,NA,NA,121,0.22
+indices_secundarios,desordenes_ind,desordenes_ind,38,NA,NA,103,0.18
+indices_secundarios,desordenes_ind,desordenes_ind,39,NA,NA,66,0.12
+indices_secundarios,desordenes_ind,desordenes_ind,4,NA,NA,17,0.03
+indices_secundarios,desordenes_ind,desordenes_ind,40,NA,NA,87,0.16
+indices_secundarios,desordenes_ind,desordenes_ind,5,NA,NA,37,0.07
+indices_secundarios,desordenes_ind,desordenes_ind,6,NA,NA,75,0.13
+indices_secundarios,desordenes_ind,desordenes_ind,7,NA,NA,255,0.46
+indices_secundarios,desordenes_ind,desordenes_ind,8,NA,NA,4772,8.55
+indices_secundarios,desordenes_ind,desordenes_ind,9,NA,NA,2468,4.42
+indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,1,NA,NA,18599,33.33
+indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,2,NA,NA,18599,33.33
+indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,3,NA,NA,18598,33.33
+indices_secundarios,incivilidades_ind,incivilidades_ind,0,NA,NA,20,0.04
+indices_secundarios,incivilidades_ind,incivilidades_ind,1,NA,NA,12,0.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,10,NA,NA,3547,6.36
+indices_secundarios,incivilidades_ind,incivilidades_ind,11,NA,NA,4048,7.26
+indices_secundarios,incivilidades_ind,incivilidades_ind,12,NA,NA,2598,4.66
+indices_secundarios,incivilidades_ind,incivilidades_ind,13,NA,NA,2955,5.3
+indices_secundarios,incivilidades_ind,incivilidades_ind,14,NA,NA,2246,4.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,15,NA,NA,2286,4.1
+indices_secundarios,incivilidades_ind,incivilidades_ind,16,NA,NA,1800,3.23
+indices_secundarios,incivilidades_ind,incivilidades_ind,17,NA,NA,1733,3.11
+indices_secundarios,incivilidades_ind,incivilidades_ind,18,NA,NA,1347,2.41
+indices_secundarios,incivilidades_ind,incivilidades_ind,19,NA,NA,1325,2.37
+indices_secundarios,incivilidades_ind,incivilidades_ind,2,NA,NA,15,0.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,20,NA,NA,1073,1.92
+indices_secundarios,incivilidades_ind,incivilidades_ind,21,NA,NA,992,1.78
+indices_secundarios,incivilidades_ind,incivilidades_ind,22,NA,NA,715,1.28
+indices_secundarios,incivilidades_ind,incivilidades_ind,23,NA,NA,671,1.2
+indices_secundarios,incivilidades_ind,incivilidades_ind,24,NA,NA,523,0.94
+indices_secundarios,incivilidades_ind,incivilidades_ind,25,NA,NA,450,0.81
+indices_secundarios,incivilidades_ind,incivilidades_ind,26,NA,NA,307,0.55
+indices_secundarios,incivilidades_ind,incivilidades_ind,27,NA,NA,348,0.62
+indices_secundarios,incivilidades_ind,incivilidades_ind,28,NA,NA,260,0.47
+indices_secundarios,incivilidades_ind,incivilidades_ind,29,NA,NA,223,0.4
+indices_secundarios,incivilidades_ind,incivilidades_ind,3,NA,NA,22,0.04
+indices_secundarios,incivilidades_ind,incivilidades_ind,30,NA,NA,175,0.31
+indices_secundarios,incivilidades_ind,incivilidades_ind,31,NA,NA,222,0.4
+indices_secundarios,incivilidades_ind,incivilidades_ind,32,NA,NA,109,0.2
+indices_secundarios,incivilidades_ind,incivilidades_ind,33,NA,NA,140,0.25
+indices_secundarios,incivilidades_ind,incivilidades_ind,34,NA,NA,79,0.14
+indices_secundarios,incivilidades_ind,incivilidades_ind,35,NA,NA,221,0.4
+indices_secundarios,incivilidades_ind,incivilidades_ind,4,NA,NA,31,0.06
+indices_secundarios,incivilidades_ind,incivilidades_ind,5,NA,NA,70,0.13
+indices_secundarios,incivilidades_ind,incivilidades_ind,6,NA,NA,299,0.54
+indices_secundarios,incivilidades_ind,incivilidades_ind,7,NA,NA,14043,25.17
+indices_secundarios,incivilidades_ind,incivilidades_ind,8,NA,NA,4538,8.13
+indices_secundarios,incivilidades_ind,incivilidades_ind,9,NA,NA,6353,11.39
+indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,1,NA,NA,18599,33.33
+indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,2,NA,NA,18599,33.33
+indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,3,NA,NA,18598,33.33
+vars_info,info_exp_personal,info_exp_personal,0,NA,NA,44028,78.91
+vars_info,info_exp_personal,info_exp_personal,1,NA,NA,11700,20.97
+vars_info,info_exp_personal,info_exp_personal,88,NA,NA,57,0.1
+vars_info,info_exp_personal,info_exp_personal,99,NA,NA,11,0.02
+vars_info,info_otras_personas,info_otras_personas,0,NA,NA,22834,40.92
+vars_info,info_otras_personas,info_otras_personas,1,NA,NA,32894,58.95
+vars_info,info_otras_personas,info_otras_personas,88,NA,NA,57,0.1
+vars_info,info_otras_personas,info_otras_personas,99,NA,NA,11,0.02
+vars_info,info_rrss,info_rrss,0,NA,NA,23409,41.95
+vars_info,info_rrss,info_rrss,1,NA,NA,32319,57.92
+vars_info,info_rrss,info_rrss,88,NA,NA,57,0.1
+vars_info,info_rrss,info_rrss,99,NA,NA,11,0.02
+vars_info,info_prensa,info_prensa,0,NA,NA,20790,37.26
+vars_info,info_prensa,info_prensa,1,NA,NA,34938,62.62
+vars_info,info_prensa,info_prensa,88,NA,NA,57,0.1
+vars_info,info_prensa,info_prensa,99,NA,NA,11,0.02
+vars_info,info_tv,info_tv,0,NA,NA,27425,49.15
+vars_info,info_tv,info_tv,1,NA,NA,28303,50.73
+vars_info,info_tv,info_tv,88,NA,NA,57,0.1
+vars_info,info_tv,info_tv,99,NA,NA,11,0.02
+sociodemograficas,rph_nivel_rec,rph_nivel_rec,1,NA,NA,9445,16.93
+sociodemograficas,rph_nivel_rec,rph_nivel_rec,2,NA,NA,23753,42.57
+sociodemograficas,rph_nivel_rec,rph_nivel_rec,3,NA,NA,22324,40.01
+sociodemograficas,rph_nivel_rec,rph_nivel_rec,96,NA,NA,192,0.34
+sociodemograficas,rph_nivel_rec,rph_nivel_rec,99,NA,NA,82,0.15
+sociodemograficas,rph_edad_rec,rph_edad_rec,1,NA,NA,11063,19.83
+sociodemograficas,rph_edad_rec,rph_edad_rec,2,NA,NA,27485,49.26
+sociodemograficas,rph_edad_rec,rph_edad_rec,3,NA,NA,17248,30.91
+sociodemograficas,enc_region_rec,enc_region_rec,1,NA,NA,7376,13.22
+sociodemograficas,enc_region_rec,enc_region_rec,2,NA,NA,25432,45.58
+sociodemograficas,enc_region_rec,enc_region_rec,3,NA,NA,7303,13.09
+sociodemograficas,enc_region_rec,enc_region_rec,4,NA,NA,15685,28.11
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,0,NA,NA,17,0.03
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,1,NA,NA,8,0.01
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,10,NA,NA,3910,7.01
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,11,NA,NA,3134,5.62
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,12,NA,NA,3930,7.04
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,13,NA,NA,3188,5.71
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,14,NA,NA,3336,5.98
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,15,NA,NA,2908,5.21
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,16,NA,NA,3121,5.59
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,17,NA,NA,2682,4.81
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,18,NA,NA,2642,4.74
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,19,NA,NA,2304,4.13
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,2,NA,NA,17,0.03
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,20,NA,NA,2214,3.97
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,21,NA,NA,1868,3.35
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,22,NA,NA,1782,3.19
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,23,NA,NA,1538,2.76
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,24,NA,NA,1568,2.81
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,25,NA,NA,1207,2.16
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,26,NA,NA,1150,2.06
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,27,NA,NA,954,1.71
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,28,NA,NA,866,1.55
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,29,NA,NA,679,1.22
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,3,NA,NA,21,0.04
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,30,NA,NA,624,1.12
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,31,NA,NA,487,0.87
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,32,NA,NA,499,0.89
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,33,NA,NA,335,0.6
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,34,NA,NA,288,0.52
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,35,NA,NA,256,0.46
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,36,NA,NA,262,0.47
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,37,NA,NA,121,0.22
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,38,NA,NA,103,0.18
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,39,NA,NA,66,0.12
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,4,NA,NA,17,0.03
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,40,NA,NA,87,0.16
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,5,NA,NA,37,0.07
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,6,NA,NA,75,0.13
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,7,NA,NA,255,0.46
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,8,NA,NA,4772,8.55
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,9,NA,NA,2468,4.42
+etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,1,NA,NA,18599,33.33
+etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,2,NA,NA,18599,33.33
+etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,3,NA,NA,18598,33.33
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,0,NA,NA,20,0.04
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,1,NA,NA,12,0.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,10,NA,NA,3547,6.36
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,11,NA,NA,4048,7.26
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,12,NA,NA,2598,4.66
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,13,NA,NA,2955,5.3
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,14,NA,NA,2246,4.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,15,NA,NA,2286,4.1
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,16,NA,NA,1800,3.23
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,17,NA,NA,1733,3.11
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,18,NA,NA,1347,2.41
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,19,NA,NA,1325,2.37
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,2,NA,NA,15,0.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,20,NA,NA,1073,1.92
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,21,NA,NA,992,1.78
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,22,NA,NA,715,1.28
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,23,NA,NA,671,1.2
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,24,NA,NA,523,0.94
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,25,NA,NA,450,0.81
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,26,NA,NA,307,0.55
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,27,NA,NA,348,0.62
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,28,NA,NA,260,0.47
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,29,NA,NA,223,0.4
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,3,NA,NA,22,0.04
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,30,NA,NA,175,0.31
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,31,NA,NA,222,0.4
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,32,NA,NA,109,0.2
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,33,NA,NA,140,0.25
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,34,NA,NA,79,0.14
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,35,NA,NA,221,0.4
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,4,NA,NA,31,0.06
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,5,NA,NA,70,0.13
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,6,NA,NA,299,0.54
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,7,NA,NA,14043,25.17
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,8,NA,NA,4538,8.13
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,9,NA,NA,6353,11.39
+etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,1,NA,NA,18599,33.33
+etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,2,NA,NA,18599,33.33
+etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,3,NA,NA,18598,33.33
+etiquetado_secundarias,Se informa por experiencia personal,info_exp_personal,0,NA,NA,44028,78.91
+etiquetado_secundarias,Se informa por experiencia personal,info_exp_personal,1,NA,NA,11700,20.97
+etiquetado_secundarias,Se informa por experiencia personal,info_exp_personal,88,NA,NA,57,0.1
+etiquetado_secundarias,Se informa por experiencia personal,info_exp_personal,99,NA,NA,11,0.02
+etiquetado_secundarias,Se informa por otras personas,info_otras_personas,0,NA,NA,22834,40.92
+etiquetado_secundarias,Se informa por otras personas,info_otras_personas,1,NA,NA,32894,58.95
+etiquetado_secundarias,Se informa por otras personas,info_otras_personas,88,NA,NA,57,0.1
+etiquetado_secundarias,Se informa por otras personas,info_otras_personas,99,NA,NA,11,0.02
+etiquetado_secundarias,Se informa por RRSS,info_rrss,0,NA,NA,23409,41.95
+etiquetado_secundarias,Se informa por RRSS,info_rrss,1,NA,NA,32319,57.92
+etiquetado_secundarias,Se informa por RRSS,info_rrss,88,NA,NA,57,0.1
+etiquetado_secundarias,Se informa por RRSS,info_rrss,99,NA,NA,11,0.02
+etiquetado_secundarias,Se informa por prensa,info_prensa,0,NA,NA,20790,37.26
+etiquetado_secundarias,Se informa por prensa,info_prensa,1,NA,NA,34938,62.62
+etiquetado_secundarias,Se informa por prensa,info_prensa,88,NA,NA,57,0.1
+etiquetado_secundarias,Se informa por prensa,info_prensa,99,NA,NA,11,0.02
+etiquetado_secundarias,Se informa por TV,info_tv,0,NA,NA,27425,49.15
+etiquetado_secundarias,Se informa por TV,info_tv,1,NA,NA,28303,50.73
+etiquetado_secundarias,Se informa por TV,info_tv,88,NA,NA,57,0.1
+etiquetado_secundarias,Se informa por TV,info_tv,99,NA,NA,11,0.02
+etiquetado_secundarias,Nivel educacional (rec),rph_nivel_rec,1,NA,NA,9445,16.93
+etiquetado_secundarias,Nivel educacional (rec),rph_nivel_rec,2,NA,NA,23753,42.57
+etiquetado_secundarias,Nivel educacional (rec),rph_nivel_rec,3,NA,NA,22324,40.01
+etiquetado_secundarias,Nivel educacional (rec),rph_nivel_rec,96,NA,NA,192,0.34
+etiquetado_secundarias,Nivel educacional (rec),rph_nivel_rec,99,NA,NA,82,0.15
+etiquetado_secundarias,Edad (rec),rph_edad_rec,1,NA,NA,11063,19.83
+etiquetado_secundarias,Edad (rec),rph_edad_rec,2,NA,NA,27485,49.26
+etiquetado_secundarias,Edad (rec),rph_edad_rec,3,NA,NA,17248,30.91
+etiquetado_secundarias,Región (rec),enc_region_rec,1,NA,NA,7376,13.22
+etiquetado_secundarias,Región (rec),enc_region_rec,2,NA,NA,25432,45.58
+etiquetado_secundarias,Región (rec),enc_region_rec,3,NA,NA,7303,13.09
+etiquetado_secundarias,Región (rec),enc_region_rec,4,NA,NA,15685,28.11
