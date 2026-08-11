@@ -47,3 +47,6 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# targets store: _targets/.gitignore (autogenerado por el paquete) ya
+# ignora objects/ y solo deja pasar meta/meta (log de ejecución, ver PLAN.md §F0.3)
