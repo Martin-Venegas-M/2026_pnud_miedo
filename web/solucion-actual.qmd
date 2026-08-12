@@ -76,8 +76,8 @@ definitivas.
 :::
 
 El modelo se construye sobre **`r n_fmt(perdida_res$n_despues)` casos**. Se
-calcularon **tres soluciones** —de `r min(n_clases)`, `r max(n_clases)` y
-`r setdiff(n_clases, c(min(n_clases), max(n_clases)))` grupos— y todas se
+calcularon **tres soluciones** (de `r min(n_clases)`, `r max(n_clases)` y
+`r setdiff(n_clases, c(min(n_clases), max(n_clases)))` grupos) y todas se
 presentan acá, porque elegir entre ellas también es una decisión pendiente. La
 que se venía reportando es la de **`r sol_reportada` grupos**.
 
@@ -164,6 +164,100 @@ ggplot(d, aes(dim1, dim2, color = dimension)) +
 El color identifica la **dimensión teórica**, no un orden. La leyenda está
 siempre presente porque la identidad no puede depender solo del color.
 :::
+
+# Cómo leer el perfil de un grupo
+
+Para describir un grupo hay que mirar qué respuestas son más frecuentes dentro de
+él que en el resto de la muestra. El indicador que se usa para eso cambió
+respecto de los informes anteriores, así que conviene ver los dos lado a lado
+sobre el mismo caso.
+
+```{r}
+#| label: ejemplo-lectura
+ej <- v_test |> filter(solucion == sol_reportada, cluster == 1)
+
+#* Se eligen por criterio y no por posición: uno con v-test legible para
+#* explicar la lectura clásica, y el más distintivo del grupo, donde el v-test
+#* deja de servir.
+ej_finito <- ej |> filter(is.finite(v.test)) |> slice_max(lift_pp, n = 1)
+ej_top <- ej |> slice_max(lift_pp, n = 1)
+
+stopifnot(
+    "No hay un caso con v-test finito para el ejemplo" = nrow(ej_finito) == 1
+)
+```
+
+## Antes: el `v-test`
+
+Tomemos una de las respuestas que caracterizan al grupo C1: **"`r ej_finito$categoria`"**.
+
+El `v-test` de esa categoría en ese grupo es **`r n_fmt(ej_finito$v.test, 1)`**.
+La lectura era: el valor mide a cuántas desviaciones estándar está la frecuencia
+observada de la que se esperaría si el grupo fuera una muestra al azar del total.
+Por encima de 2 se considera significativo, y el signo indica si la categoría
+está sobre o subrepresentada.
+
+Sirve para dos cosas: decidir si vale la pena mirar la categoría, y ordenar las
+categorías de un grupo por cuánto lo distinguen.
+
+## Ahora: la diferencia en puntos porcentuales
+
+La misma categoría, en el mismo grupo:
+
+```{r}
+#| label: ejemplo-lectura-tabla
+tibble::tibble(
+    Indicador = c(
+        "% dentro del grupo",
+        "% en el total de la muestra",
+        "Diferencia"
+    ),
+    Valor = c(
+        pct_fmt(ej_finito$`Mod/Cla`),
+        pct_fmt(ej_finito$Global),
+        paste0(n_fmt(ej_finito$lift_pp, 1), " puntos porcentuales")
+    )
+) |>
+    tabla(alinear = c("l", "r"))
+```
+
+La lectura es directa: **`r pct_fmt(ej_finito[["Mod/Cla"]])` de las personas del
+grupo C1 respondió "`r ej_finito$categoria`", contra
+`r pct_fmt(ej_finito$Global)` en el conjunto de la muestra**. Son
+`r n_fmt(ej_finito$lift_pp, 1)` puntos porcentuales de diferencia.
+
+Dice lo mismo que el `v-test` sobre la dirección, pero además dice **cuánto**, en
+unidades que se pueden citar en un informe.
+
+## Por qué se cambió
+
+Miremos ahora la respuesta que más distingue a C1, que es
+**"`r ej_top$categoria`"**:
+
+```{r}
+#| label: ejemplo-lectura-inf
+tibble::tibble(
+    Indicador = c("v-test", "Diferencia"),
+    Valor = c(
+        as.character(ej_top$v.test),
+        paste0(n_fmt(ej_top$lift_pp, 1), " puntos porcentuales")
+    )
+) |>
+    tabla(alinear = c("l", "r"))
+```
+
+El `v-test` da **`r as.character(ej_top$v.test)`**, que es lo que devuelve el
+cálculo cuando la asociación es tan fuerte que el p-valor queda por debajo de la
+precisión de la máquina. Con el tamaño de muestra de este análisis eso le pasa a
+más de la mitad de las filas, y todas quedan empatadas en el mismo valor.
+
+El problema no es que el número se vea raro: es que **el orden se pierde
+justamente entre las categorías más distintivas**, que son las que sirven para
+nombrar el grupo. La diferencia en puntos porcentuales no tiene ese límite y por
+eso es la que ordena las tablas de abajo.
+
+El `v-test` se conserva como columna en la tabla descargable, para quien quiera
+contrastarlo con los informes anteriores.
 
 # Las soluciones
 
@@ -323,23 +417,10 @@ for (k in n_clases) {
 
 :::
 
-::: {.callout-note}
-## Por qué "diferencia" y no el estadístico habitual
-
-El indicador que se usa normalmente para esto es el `v-test`. Con el tamaño de
-muestra de este análisis se vuelve inservible para ordenar: en más de la mitad de
-las filas el valor se sale de escala y todas quedan empatadas, justo entre las
-asociaciones más fuertes, que son las que interesan.
-
-La diferencia en puntos porcentuales dice lo mismo, nunca empata artificialmente
-y se lee en unidades interpretables. El `v-test` sigue disponible en la tabla
-descargable.
-:::
-
 ::: {.callout-warning}
 ## Recordatorio
 
 Las variables *percepción de desórdenes* e *incivilidades* dependen además de una
-segunda decisión abierta, sobre cómo tratar la no-respuesta. Su escala puede
+segunda decisión abierta, sobre cómo tratar la no respuesta. Su escala puede
 cambiar independientemente de lo que pase con la categorización.
 :::

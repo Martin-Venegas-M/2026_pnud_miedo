@@ -745,7 +745,7 @@ registro <- tibble::tribble(
 
     "Quienes no responden la pregunta filtro de victimización",
     "Cerrada",
-    "Se mantienen fuera del modelo. Es no-respuesta genuina, sin respuesta sustantiva escondida.",
+    "Se mantienen fuera del modelo. Es no respuesta genuina, sin respuesta sustantiva escondida.",
 
     "Nombres de los grupos",
     "Abierta",

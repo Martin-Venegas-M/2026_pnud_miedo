@@ -135,6 +135,12 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#mapa-de-categorías" id="toc-mapa-de-categorías" class="nav-link" data-scroll-target="#mapa-de-categorías">Mapa de categorías</a></li>
   </ul></li>
+  <li><a href="#cómo-leer-el-perfil-de-un-grupo" id="toc-cómo-leer-el-perfil-de-un-grupo" class="nav-link" data-scroll-target="#cómo-leer-el-perfil-de-un-grupo">Cómo leer el perfil de un grupo</a>
+  <ul class="collapse">
+  <li><a href="#antes-el-v-test" id="toc-antes-el-v-test" class="nav-link" data-scroll-target="#antes-el-v-test">Antes: el <code>v-test</code></a></li>
+  <li><a href="#ahora-la-diferencia-en-puntos-porcentuales" id="toc-ahora-la-diferencia-en-puntos-porcentuales" class="nav-link" data-scroll-target="#ahora-la-diferencia-en-puntos-porcentuales">Ahora: la diferencia en puntos porcentuales</a></li>
+  <li><a href="#por-qué-se-cambió" id="toc-por-qué-se-cambió" class="nav-link" data-scroll-target="#por-qué-se-cambió">Por qué se cambió</a></li>
+  </ul></li>
   <li><a href="#las-soluciones" id="toc-las-soluciones" class="nav-link" data-scroll-target="#las-soluciones">Las soluciones</a></li>
   </ul>
 </nav>
@@ -176,7 +182,7 @@ ul.task-list li input[type="checkbox"] {
 <p>Sirven para caracterizar y discutir los grupos. No para citar cifras como definitivas.</p>
 </div>
 </div>
-<p>El modelo se construye sobre <strong>49.503 casos</strong>. Se calcularon <strong>tres soluciones</strong> —de 4, 6 y 5 grupos— y todas se presentan acá, porque elegir entre ellas también es una decisión pendiente. La que se venía reportando es la de <strong>5 grupos</strong>.</p>
+<p>El modelo se construye sobre <strong>49.503 casos</strong>. Se calcularon <strong>tres soluciones</strong> (de 4, 6 y 5 grupos) y todas se presentan acá, porque elegir entre ellas también es una decisión pendiente. La que se venía reportando es la de <strong>5 grupos</strong>.</p>
 <p>Los grupos <strong>todavía no tienen nombre</strong>: aparecen como <code>C1</code>, <code>C2</code> y así. Ponerles nombre es tarea del equipo, y las secciones de cada solución son el insumo.</p>
 <section id="estructura-del-modelo" class="level1">
 <h1>Estructura del modelo</h1>
@@ -266,6 +272,77 @@ Tip
 <p>El color identifica la <strong>dimensión teórica</strong>, no un orden. La leyenda está siempre presente porque la identidad no puede depender solo del color.</p>
 </div>
 </div>
+</section>
+</section>
+<section id="cómo-leer-el-perfil-de-un-grupo" class="level1">
+<h1>Cómo leer el perfil de un grupo</h1>
+<p>Para describir un grupo hay que mirar qué respuestas son más frecuentes dentro de él que en el resto de la muestra. El indicador que se usa para eso cambió respecto de los informes anteriores, así que conviene ver los dos lado a lado sobre el mismo caso.</p>
+<section id="antes-el-v-test" class="level2">
+<h2 class="anchored" data-anchor-id="antes-el-v-test">Antes: el <code>v-test</code></h2>
+<p>Tomemos una de las respuestas que caracterizan al grupo C1: <strong>“Baja inseguridad en la casa”</strong>.</p>
+<p>El <code>v-test</code> de esa categoría en ese grupo es <strong>35,0</strong>. La lectura era: el valor mide a cuántas desviaciones estándar está la frecuencia observada de la que se esperaría si el grupo fuera una muestra al azar del total. Por encima de 2 se considera significativo, y el signo indica si la categoría está sobre o subrepresentada.</p>
+<p>Sirve para dos cosas: decidir si vale la pena mirar la categoría, y ordenar las categorías de un grupo por cuánto lo distinguen.</p>
+</section>
+<section id="ahora-la-diferencia-en-puntos-porcentuales" class="level2">
+<h2 class="anchored" data-anchor-id="ahora-la-diferencia-en-puntos-porcentuales">Ahora: la diferencia en puntos porcentuales</h2>
+<p>La misma categoría, en el mismo grupo:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Indicador</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">% dentro del grupo</td>
+<td style="text-align: right;">46,1%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">% en el total de la muestra</td>
+<td style="text-align: right;">33,3%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Diferencia</td>
+<td style="text-align: right;">12,8 puntos porcentuales</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>La lectura es directa: <strong>46,1% de las personas del grupo C1 respondió “Baja inseguridad en la casa”, contra 33,3% en el conjunto de la muestra</strong>. Son 12,8 puntos porcentuales de diferencia.</p>
+<p>Dice lo mismo que el <code>v-test</code> sobre la dirección, pero además dice <strong>cuánto</strong>, en unidades que se pueden citar en un informe.</p>
+</section>
+<section id="por-qué-se-cambió" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-se-cambió">Por qué se cambió</h2>
+<p>Miremos ahora la respuesta que más distingue a C1, que es <strong>“Bajas prácticas de evitación”</strong>:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Indicador</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">v-test</td>
+<td style="text-align: right;">Inf</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Diferencia</td>
+<td style="text-align: right;">46,6 puntos porcentuales</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>El <code>v-test</code> da <strong>Inf</strong>, que es lo que devuelve el cálculo cuando la asociación es tan fuerte que el p-valor queda por debajo de la precisión de la máquina. Con el tamaño de muestra de este análisis eso le pasa a más de la mitad de las filas, y todas quedan empatadas en el mismo valor.</p>
+<p>El problema no es que el número se vea raro: es que <strong>el orden se pierde justamente entre las categorías más distintivas</strong>, que son las que sirven para nombrar el grupo. La diferencia en puntos porcentuales no tiene ese límite y por eso es la que ordena las tablas de abajo.</p>
+<p>El <code>v-test</code> se conserva como columna en la tabla descargable, para quien quiera contrastarlo con los informes anteriores.</p>
 </section>
 </section>
 <section id="las-soluciones" class="level1">
@@ -12546,20 +12623,6 @@ Cree que será victima de otro tipo de delito
 </div>
 </div>
 </div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Por qué “diferencia” y no el estadístico habitual
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>El indicador que se usa normalmente para esto es el <code>v-test</code>. Con el tamaño de muestra de este análisis se vuelve inservible para ordenar: en más de la mitad de las filas el valor se sale de escala y todas quedan empatadas, justo entre las asociaciones más fuertes, que son las que interesan.</p>
-<p>La diferencia en puntos porcentuales dice lo mismo, nunca empata artificialmente y se lee en unidades interpretables. El <code>v-test</code> sigue disponible en la tabla descargable.</p>
-</div>
-</div>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -12570,7 +12633,7 @@ Cree que será victima de otro tipo de delito
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Las variables <em>percepción de desórdenes</em> e <em>incivilidades</em> dependen además de una segunda decisión abierta, sobre cómo tratar la no-respuesta. Su escala puede cambiar independientemente de lo que pase con la categorización.</p>
+<p>Las variables <em>percepción de desórdenes</em> e <em>incivilidades</em> dependen además de una segunda decisión abierta, sobre cómo tratar la no respuesta. Su escala puede cambiar independientemente de lo que pase con la categorización.</p>
 </div>
 </div>
 

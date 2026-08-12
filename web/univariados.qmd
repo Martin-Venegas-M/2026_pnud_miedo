@@ -19,12 +19,12 @@ de la encuesta, así que los totales estiman población y no número de encuesta
 ::: {.callout-tip}
 ## Las tres familias de variables
 
-**Originales** — las de la ENUSC tal como vienen, sin transformar.
+**Originales.** Las de la ENUSC tal como vienen, sin transformar.
 
-**Fuente** — las que construimos a partir de las originales: los índices de
+**Fuente.** Las que construimos a partir de las originales: los índices de
 porcentaje y sus versiones en categorías.
 
-**Secundarias** — sexo, edad, nivel socioeconómico y demás, que no entran al
+**Secundarias.** Sexo, edad, nivel socioeconómico y demás, que no entran al
 modelo pero sirven para caracterizar los grupos.
 :::
 
@@ -79,8 +79,8 @@ que entra al modelo.
 ::: {.callout-warning}
 ## Provisional
 
-Las versiones **categorizadas** dependen de una decisión abierta —cómo se cortan
-los índices— y van a cambiar cuando se resuelva. Los porcentajes continuos no:
+Las versiones **categorizadas** dependen de una decisión abierta (cómo se cortan
+los índices) y van a cambiar cuando se resuelva. Los porcentajes continuos no:
 esos ya están fijos.
 :::
 
@@ -182,7 +182,7 @@ for (v in names(etiquetas_sec)) {
 ## Dos de estas variables son provisionales
 
 *Percepción de desórdenes* y *percepción de incivilidades* dependen de una
-decisión abierta sobre cómo tratar la no-respuesta, y su escala puede cambiar.
+decisión abierta sobre cómo tratar la no respuesta, y su escala puede cambiar.
 :::
 
 # Correspondencia de nombres
