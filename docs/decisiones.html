@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Glosario – Miedo al delito · Tipologías</title>
+<title>Decisiones pendientes – Miedo al delito · Tipologías</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,8 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Buscar"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
 
 </head>
@@ -110,11 +112,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Solución actual</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./decisiones.html"> 
+    <a class="nav-link active" href="./decisiones.html" aria-current="page"> 
 <span class="menu-text">Decisiones pendientes</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./glosario.html" aria-current="page"> 
+    <a class="nav-link" href="./glosario.html"> 
 <span class="menu-text">Glosario</span></a>
   </li>  
 </ul>
@@ -133,12 +135,25 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#el-ejercicio" id="toc-el-ejercicio" class="nav-link active" data-scroll-target="#el-ejercicio">El ejercicio</a></li>
-  <li><a href="#las-variables" id="toc-las-variables" class="nav-link" data-scroll-target="#las-variables">Las variables</a></li>
-  <li><a href="#cómo-viene-el-dato" id="toc-cómo-viene-el-dato" class="nav-link" data-scroll-target="#cómo-viene-el-dato">Cómo viene el dato</a></li>
-  <li><a href="#muestra-y-ponderación" id="toc-muestra-y-ponderación" class="nav-link" data-scroll-target="#muestra-y-ponderación">Muestra y ponderación</a></li>
-  <li><a href="#el-modelo" id="toc-el-modelo" class="nav-link" data-scroll-target="#el-modelo">El modelo</a></li>
-  <li><a href="#cómo-se-construye-el-análisis" id="toc-cómo-se-construye-el-análisis" class="nav-link" data-scroll-target="#cómo-se-construye-el-análisis">Cómo se construye el análisis</a></li>
+  <li><a href="#cómo-se-cortan-los-índices" id="toc-cómo-se-cortan-los-índices" class="nav-link active" data-scroll-target="#cómo-se-cortan-los-índices">1. Cómo se cortan los índices</a>
+  <ul class="collapse">
+  <li><a href="#el-problema-en-dos-líneas" id="toc-el-problema-en-dos-líneas" class="nav-link" data-scroll-target="#el-problema-en-dos-líneas">El problema, en dos líneas</a></li>
+  <li><a href="#la-propuesta" id="toc-la-propuesta" class="nav-link" data-scroll-target="#la-propuesta">La propuesta</a>
+  <ul class="collapse">
+  <li><a href="#caso-1.-los-dos-índices-de-dos-ítems" id="toc-caso-1.-los-dos-índices-de-dos-ítems" class="nav-link" data-scroll-target="#caso-1.-los-dos-índices-de-dos-ítems">Caso 1. Los dos índices de dos ítems</a></li>
+  <li><a href="#caso-2.-los-dos-índices-de-medidas-de-seguridad" id="toc-caso-2.-los-dos-índices-de-medidas-de-seguridad" class="nav-link" data-scroll-target="#caso-2.-los-dos-índices-de-medidas-de-seguridad">Caso 2. Los dos índices de medidas de seguridad</a></li>
+  <li><a href="#caso-3.-espacio-público-y-modificación-de-prácticas" id="toc-caso-3.-espacio-público-y-modificación-de-prácticas" class="nav-link" data-scroll-target="#caso-3.-espacio-público-y-modificación-de-prácticas">Caso 3. Espacio público y modificación de prácticas</a></li>
+  </ul></li>
+  <li><a href="#por-qué-el-cero-va-solo" id="toc-por-qué-el-cero-va-solo" class="nav-link" data-scroll-target="#por-qué-el-cero-va-solo">Por qué el cero va solo</a></li>
+  <li><a href="#dos-argumentos-que-sostienen-la-propuesta" id="toc-dos-argumentos-que-sostienen-la-propuesta" class="nav-link" data-scroll-target="#dos-argumentos-que-sostienen-la-propuesta">Dos argumentos que sostienen la propuesta</a></li>
+  <li><a href="#qué-falta-aprobar" id="toc-qué-falta-aprobar" class="nav-link" data-scroll-target="#qué-falta-aprobar">Qué falta aprobar</a></li>
+  </ul></li>
+  <li><a href="#no-respuesta-en-los-índices-secundarios" id="toc-no-respuesta-en-los-índices-secundarios" class="nav-link" data-scroll-target="#no-respuesta-en-los-índices-secundarios">2. No respuesta en los índices secundarios</a>
+  <ul class="collapse">
+  <li><a href="#el-estado" id="toc-el-estado" class="nav-link" data-scroll-target="#el-estado">El estado</a></li>
+  <li><a href="#las-dos-formas-de-aplicarlo" id="toc-las-dos-formas-de-aplicarlo" class="nav-link" data-scroll-target="#las-dos-formas-de-aplicarlo">Las dos formas de aplicarlo</a></li>
+  </ul></li>
+  <li><a href="#nombres-de-los-grupos" id="toc-nombres-de-los-grupos" class="nav-link" data-scroll-target="#nombres-de-los-grupos">3. Nombres de los grupos</a></li>
   </ul>
 </nav>
     </div>
@@ -147,8 +162,8 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Glosario</h1>
-<p class="subtitle lead">Los términos que se usan en esta página, en orden temático</p>
+<h1 class="title">Decisiones pendientes</h1>
+<p class="subtitle lead">Lo que falta resolver para cerrar el análisis</p>
 </div>
 
 
@@ -165,130 +180,295 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Esta página reúne el vocabulario necesario para leer las demás. Incluye términos estadísticos, términos de la encuesta y nombres que usamos internamente en el proyecto y que no son de uso general.</p>
-<section id="el-ejercicio" class="level1">
-<h1>El ejercicio</h1>
-<p><strong>Tipología.</strong> Una clasificación de las personas en un número reducido de grupos, construida a partir de cómo respondieron, y no de categorías definidas de antemano. La idea es que cada grupo reúna perfiles parecidos de miedo al delito y se distinga de los demás.</p>
-<p><strong>Dimensión.</strong> Cada uno de los aspectos del miedo al delito que el análisis distingue. Son cuatro, y se nombran con un prefijo que aparece en todos los nombres de variable:</p>
+<p>Quedan tres decisiones metodológicas sin resolver. Esta página las reúne, las desarrolla y propone una salida para cada una.</p>
+<p>Las tres tienen distinto grado de madurez:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
+<col style="width: 50%">
+<col style="width: 50%">
 </colgroup>
 <thead>
 <tr class="header">
-<th>Prefijo</th>
-<th>Dimensión</th>
-<th>Qué recoge</th>
+<th>Decisión</th>
+<th>Estado</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>emper</code></td>
-<td>Emocional personal</td>
-<td>Cuán seguro/a se siente la persona en distintos lugares y situaciones</td>
+<td><strong>Cómo se cortan los índices en categorías</strong></td>
+<td>Hay propuesta completa. Es la que más pesa: cambia la solución de grupos</td>
 </tr>
 <tr class="even">
-<td><code>perper</code></td>
-<td>Perceptual personal</td>
-<td>Si cree que será víctima de un delito, y de cuál</td>
+<td><strong>No respuesta en los índices de desórdenes e incivilidades</strong></td>
+<td>El criterio ya está fijado, falta elegir cómo aplicarlo</td>
 </tr>
 <tr class="odd">
-<td><code>comper</code></td>
-<td>Comportamental personal</td>
-<td>Si dejó de hacer cosas por temor, y cuánto gasta en seguridad</td>
-</tr>
-<tr class="even">
-<td><code>comgen</code></td>
-<td>Comportamental general</td>
-<td>Qué medidas de seguridad tienen su vivienda y su barrio</td>
+<td><strong>Nombres de los grupos</strong></td>
+<td>Requiere mirar los perfiles. El insumo está en Solución actual</td>
 </tr>
 </tbody>
 </table>
-<p>Cuidado con el doble uso: <strong>dimensión</strong> también nombra a los ejes que produce el MCA (ver más abajo). Son cosas distintas. Cuando el texto dice “dimensión 1” se refiere al eje estadístico; cuando dice “dimensión emocional” se refiere a estas cuatro.</p>
-<p><strong>ENUSC.</strong> Encuesta Nacional Urbana de Seguridad Ciudadana. La fuente de datos de todo el ejercicio. Es una encuesta anual, de cobertura nacional urbana, que aplica el Instituto Nacional de Estadísticas.</p>
-<p><strong>Informante Kish.</strong> La persona del hogar a la que se le aplican las preguntas de percepción. La encuesta la selecciona al azar entre los mayores de 15 años del hogar, con un procedimiento que se llama así por su autor. El análisis se queda solo con esas personas, una por hogar, porque son las únicas que respondieron esas preguntas.</p>
-<p><strong>Ola.</strong> Cada aplicación anual de la encuesta. Esta página usa la ola 2025.</p>
+<p>El <a href="pipeline.html#registro-de-decisiones">registro completo de decisiones</a>, incluyendo las cinco que ya están cerradas, está al final de la pestaña Pipeline.</p>
+<section id="cómo-se-cortan-los-índices" class="level1">
+<h1>1. Cómo se cortan los índices</h1>
+<section id="el-problema-en-dos-líneas" class="level2">
+<h2 class="anchored" data-anchor-id="el-problema-en-dos-líneas">El problema, en dos líneas</h2>
+<p>Los índices continuos se convierten hoy en categorías con terciles, que fuerzan tres grupos del mismo tamaño. Cuando un valor reúne más gente de la que cabe en un tercil, el corte lo parte: personas con respuestas idénticas terminan en categorías distintas. El caso más claro es el índice de inseguridad en la casa, donde quienes respondieron sentirse seguros quedan repartidos en las tres categorías.</p>
+<p>El diagnóstico completo, con el microdato y las cifras, está en el <a href="pipeline.html#categorización">paso 4 del pipeline</a>.</p>
 </section>
-<section id="las-variables" class="level1">
-<h1>Las variables</h1>
-<p>El proyecto distingue cuatro familias. La distinción importa porque cada una cumple un papel distinto y no todas entran al modelo.</p>
-<p><strong>Variables originales.</strong> Las de la ENUSC tal como vienen, sin transformar. Se las nombra igual que en la base original (<code>MEDIDAS_PERRO</code>, <code>P_INSEG_LUGARES_1</code>). La pestaña <a href="univariados.html">Univariados</a> incluye la tabla de correspondencia entre esos nombres y los que usa el análisis.</p>
-<p><strong>Variables fuente.</strong> Las que construimos a partir de las originales, y que alimentan el modelo. Son los índices de porcentaje y sus versiones categorizadas, más las que se categorizan de otra forma (<code>perper_delito</code>, <code>comper_gasto</code>).</p>
-<p><strong>Variables de clusters.</strong> El resultado del modelo: a qué grupo quedó asignada cada persona. Hay una por cada solución calculada (<code>clusters_4</code>, <code>clusters_5</code>, <code>clusters_6</code>).</p>
-<p><strong>Variables secundarias.</strong> Sexo, edad, nivel educacional, nivel socioeconómico, macrozona, victimización, fuentes de información e índices de entorno. <strong>No participan del modelo</strong>: se usan para describir los grupos una vez formados. Si participaran, los grupos se formarían en parte por sexo o por edad, y lo que se quiere ver es cómo se distribuyen esas características entre grupos formados por otra cosa.</p>
-<p><strong>Índice de porcentaje.</strong> La forma en que se resume cada dimensión: qué proporción de las situaciones <strong>que le aplican a esa persona</strong> recibieron la respuesta que interesa. Se escribe con el sufijo <code>_pct</code>. El detalle de qué entra y qué no entra en el denominador está en el <a href="pipeline.html#construcción-de-los-índices">paso 3 del pipeline</a>.</p>
-<p><strong>Categorización.</strong> El paso que convierte un índice continuo en categorías, porque el MCA trabaja con variables categóricas y no con porcentajes. Hoy se hace por terciles, y es una de las decisiones que siguen abiertas.</p>
-<p><strong>Tercil.</strong> Cada uno de los tres grupos que resultan de ordenar a toda la muestra por el valor de una variable y cortarla en tres partes <strong>del mismo tamaño</strong>. Que sean del mismo tamaño es lo que genera el problema descrito en el <a href="pipeline.html#categorización">paso 4</a>: si un mismo valor reúne más gente de la que cabe en un tercil, el corte lo parte.</p>
-</section>
-<section id="cómo-viene-el-dato" class="level1">
-<h1>Cómo viene el dato</h1>
-<p><strong>Microdato.</strong> La base a nivel de persona: una fila por caso encuestado y una columna por pregunta. Es el nivel al que trabaja el análisis, en oposición a las tablas agregadas que se publican como resultado.</p>
-<p><strong>Batería de ítems.</strong> Un conjunto de preguntas que comparten enunciado y escala, y que se responden una tras otra. Por ejemplo, “¿qué tan seguro/a se siente en cada uno de estos lugares?” seguido de dieciséis lugares. Cada ítem es una columna distinta.</p>
-<p><strong>Pregunta de opción múltiple.</strong> Aquella donde la persona puede marcar varias alternativas. En la base no aparece como una columna con varias respuestas sino como <strong>una columna por alternativa</strong>, con valor 1 si la marcó y 0 si no. A esas columnas se les llama <em>dummy</em>.</p>
-<p><strong>Códigos especiales.</strong> Valores reservados que no son una respuesta sustantiva. La ENUSC usa estos:</p>
-<table class="caption-top table">
+<section id="la-propuesta" class="level2">
+<h2 class="anchored" data-anchor-id="la-propuesta">La propuesta</h2>
+<p><strong>Cortar por lo que la variable significa, no por la forma de su distribución.</strong> Con una regla que atraviesa las seis: <strong>el cero es una categoría propia</strong>.</p>
+<p>No hay un único método porque los seis índices no están construidos igual. Hay tres situaciones, y cada una admite un corte natural distinto.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Sobre los números de esta sección
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>No salen del pipeline: son la <strong>proyección</strong> de lo que la propuesta produciría, calculada sobre los índices tal como están hoy. Sirven para dimensionar la decisión, no son resultados del análisis.</p>
+</div>
+</div>
+<section id="caso-1.-los-dos-índices-de-dos-ítems" class="level3">
+<h3 class="anchored" data-anchor-id="caso-1.-los-dos-índices-de-dos-ítems">Caso 1. Los dos índices de dos ítems</h3>
+<p><code>emper_barrio_pct</code> y <code>emper_casa_pct</code> se construyen preguntando por la misma situación de día y de noche, así que solo pueden valer 0, 50 o 100. <strong>Ya vienen con tres categorías</strong>, exactamente las que el modelo necesita.</p>
+<p>La propuesta es usar el valor como categoría, sin cortar nada.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <thead>
 <tr class="header">
-<th>Código</th>
-<th>Significa</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Categoría</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">% de la muestra</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>77</code></td>
-<td>Otra respuesta, distinta de las alternativas listadas</td>
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: left;">En ninguna de las dos</td>
+<td style="text-align: right;">37,1</td>
 </tr>
 <tr class="even">
-<td><code>85</code></td>
-<td>No aplica (la situación no corresponde a esa persona)</td>
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: left;">En una de las dos</td>
+<td style="text-align: right;">41,8</td>
 </tr>
 <tr class="odd">
-<td><code>88</code></td>
-<td>No sabe</td>
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: left;">En las dos</td>
+<td style="text-align: right;">21,1</td>
 </tr>
 <tr class="even">
-<td><code>96</code></td>
-<td>Sin dato</td>
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: left;">En ninguna de las dos</td>
+<td style="text-align: right;">75,8</td>
 </tr>
 <tr class="odd">
-<td><code>99</code></td>
-<td>No responde</td>
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: left;">En una de las dos</td>
+<td style="text-align: right;">15,4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: left;">En las dos</td>
+<td style="text-align: right;">8,8</td>
 </tr>
 </tbody>
 </table>
-<p>La distinción entre <code>85</code> y el resto es central para este análisis: “no aplica” describe algo del mundo de la persona (no hay Metro en su ciudad), mientras que “no sabe” y “no responde” describen la entrevista. Se tratan distinto, y el criterio está en el <a href="pipeline.html#construcción-de-los-índices">paso 3</a>.</p>
-<p><strong>Etiqueta de valor.</strong> El texto asociado a cada código dentro de la base. Es lo que permite saber que en cierta columna el <code>1</code> significa “Muy inseguro” y no otra cosa. En las preguntas de opción múltiple es también <strong>la única forma de distinguir</strong> una columna que registra una respuesta sustantiva de otra que registra ausencia de respuesta, porque su forma es idéntica. Ese fue el origen del problema que obligó a rehacer los análisis.</p>
-<p><strong>No respuesta.</strong> Se usa acá para los códigos <code>88</code> y <code>99</code> juntos: la persona fue preguntada y no entregó una respuesta utilizable. Se distingue de “no aplica”, que es una situación distinta.</p>
+</div>
+</div>
 </section>
-<section id="muestra-y-ponderación" class="level1">
-<h1>Muestra y ponderación</h1>
-<p><strong>Factor de expansión.</strong> El número de personas de la población que representa cada persona encuestada. Todas las tablas de esta página están ponderadas por ese factor, así que los totales estiman población y no cantidad de encuestas. Por eso una tabla puede sumar millones de casos cuando la encuesta tiene decenas de miles.</p>
-<p><strong>Diseño muestral complejo.</strong> La ENUSC no se levanta por muestreo aleatorio simple: agrupa a las personas en conglomerados geográficos y estratos, y eso tiene que declararse al estimar, porque afecta la precisión. Las estimaciones de esta página se calculan con ese diseño declarado.</p>
-<p><strong>Casos completos.</strong> El criterio que exige que una persona tenga valor en todas las variables del modelo para poder entrar. Quien tenga alguna vacía queda fuera. Es un criterio necesario para el MCA y también la principal fuente de pérdida de muestra, así que quiénes quedan fuera está documentado en el <a href="pipeline.html#preparación-del-modelo">paso 5</a>.</p>
+<section id="caso-2.-los-dos-índices-de-medidas-de-seguridad" class="level3">
+<h3 class="anchored" data-anchor-id="caso-2.-los-dos-índices-de-medidas-de-seguridad">Caso 2. Los dos índices de medidas de seguridad</h3>
+<p><code>comgen_per_pct</code> y <code>comgen_com_pct</code> tienen una particularidad que conviene aprovechar: <strong>ninguno de sus ítems admite el código “no aplica”</strong>. El denominador es constante, así que el porcentaje equivale exactamente a un <strong>conteo de medidas</strong>, que es bastante más interpretable.</p>
+<p>La propuesta es cortar por número de medidas, con el mismo corte para las dos.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Categoría</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">% de la muestra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Medidas de la vivienda</td>
+<td style="text-align: left;">Ninguna medida</td>
+<td style="text-align: right;">10,8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medidas de la vivienda</td>
+<td style="text-align: left;">Una o dos</td>
+<td style="text-align: right;">53,5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Medidas de la vivienda</td>
+<td style="text-align: left;">Tres o más</td>
+<td style="text-align: right;">35,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medidas del barrio</td>
+<td style="text-align: left;">Ninguna medida</td>
+<td style="text-align: right;">32,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Medidas del barrio</td>
+<td style="text-align: left;">Una o dos</td>
+<td style="text-align: right;">49,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medidas del barrio</td>
+<td style="text-align: left;">Tres o más</td>
+<td style="text-align: right;">19,1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="el-modelo" class="level1">
-<h1>El modelo</h1>
-<p><strong>MCA (análisis de correspondencias múltiples).</strong> La técnica que resume varias variables categóricas en unos pocos ejes continuos, de modo que las personas con respuestas parecidas queden cerca en ese espacio. Es el equivalente, para variables categóricas, de lo que un análisis factorial hace con variables continuas. No agrupa: solo ordena el espacio.</p>
-<p><strong>Dimensión (del MCA).</strong> Cada uno de esos ejes. Se numeran por cuánta variación captan, así que la dimensión 1 es la que más ordena a las personas.</p>
-<p><strong>Inercia.</strong> La medida de cuánta variación total capta cada dimensión, expresada en porcentaje. Con una advertencia importante: <strong>no sirve para comparar alternativas de recodificación</strong>, porque depende mecánicamente de cuántas categorías tenga cada variable. Más categorías producen más inercia, independientemente de si el modelo es mejor.</p>
-<p><strong>HCPC (clustering jerárquico sobre componentes principales).</strong> La técnica que, sobre el espacio que produjo el MCA, agrupa a las personas. Construye un árbol que va uniendo casos parecidos y después lo corta a la altura que produce el número de grupos pedido. Acá se corre sin consolidación posterior, lo que hace el resultado determinista: no depende de una semilla aleatoria y se reproduce exactamente entre corridas.</p>
-<p><strong>Cluster o grupo.</strong> Cada uno de los conjuntos de personas que produce el clustering. En esta página aparecen como <code>C1</code>, <code>C2</code> y así, porque ponerles nombre sustantivo es una decisión que sigue pendiente.</p>
-<p><strong>Solución.</strong> El resultado completo de cortar el árbol en un número dado de grupos. Se calcularon tres: de cuatro, cinco y seis grupos.</p>
-<p><strong>Perfil.</strong> La caracterización de un grupo: qué respuestas son más frecuentes dentro de él que en el conjunto de la muestra. Es lo que permite describirlo y, eventualmente, nombrarlo.</p>
-<p><strong>v-test.</strong> El estadístico que se usa habitualmente para ordenar qué categorías distinguen a cada grupo. En este análisis no sirve para ordenar: con el tamaño de muestra que tenemos, más de la mitad de los valores se sale de escala y quedan todos empatados, justo entre las asociaciones más fuertes. Se conserva como columna de referencia.</p>
-<p><strong>Diferencia en puntos porcentuales.</strong> Lo que se usa en su reemplazo: cuántos puntos más (o menos) frecuente es una respuesta dentro de un grupo que en el total. Una diferencia de +30 significa que esa respuesta es 30 puntos más común en ese grupo que en la población. Nunca empata artificialmente y se lee en unidades interpretables.</p>
-<p><strong>Mapa de categorías (biplot).</strong> El gráfico donde cada punto es una categoría de respuesta, ubicada según su posición en las dos primeras dimensiones. Las categorías cercanas tienden a darse juntas en las mismas personas.</p>
-<p><strong>Centroide.</strong> El punto que marca el centro de un grupo en ese espacio.</p>
-<p><strong>Contorno.</strong> La línea que encierra el 50% central de los casos de un grupo. Se construye desde la dispersión real del grupo, así que su forma indica cuánto se extiende y en qué dirección. Que dos contornos se solapen no significa que los grupos estén mal definidos: la clasificación usa todas las dimensiones del modelo, y el gráfico muestra dos.</p>
+<section id="caso-3.-espacio-público-y-modificación-de-prácticas" class="level3">
+<h3 class="anchored" data-anchor-id="caso-3.-espacio-público-y-modificación-de-prácticas">Caso 3. Espacio público y modificación de prácticas</h3>
+<p><code>emper_ep_pct</code> y <code>comper_pct</code> están en la situación opuesta: <strong>todos</strong> sus ítems admiten “no aplica”, así que el denominador cambia de persona a persona. Un conteo no sería comparable entre dos personas a las que les aplica distinto número de situaciones, de modo que hay que quedarse con el porcentaje.</p>
+<p>La propuesta es cortar en cero y en la mitad.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Categoría</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">% de la muestra</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en el espacio público</td>
+<td style="text-align: left;">En ninguna situación</td>
+<td style="text-align: right;">22,3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inseguridad en el espacio público</td>
+<td style="text-align: left;">En hasta la mitad</td>
+<td style="text-align: right;">42,5</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en el espacio público</td>
+<td style="text-align: left;">En más de la mitad</td>
+<td style="text-align: right;">35,2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modificación de prácticas</td>
+<td style="text-align: left;">En ninguna situación</td>
+<td style="text-align: right;">17,4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Modificación de prácticas</td>
+<td style="text-align: left;">En hasta la mitad</td>
+<td style="text-align: right;">49,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modificación de prácticas</td>
+<td style="text-align: left;">En más de la mitad</td>
+<td style="text-align: right;">33,6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Se probó también cortar en tercios del rango (0-33 / 34-66 / 67-100) y queda peor: la categoría baja mezcla a quien no siente inseguridad en ningún lugar con quien la siente en un tercio de ellos, que es justamente la distinción que interesa conservar.</p>
 </section>
-<section id="cómo-se-construye-el-análisis" class="level1">
-<h1>Cómo se construye el análisis</h1>
-<p><strong>Pipeline.</strong> La secuencia de pasos que va desde la base original hasta los grupos. Cada paso toma el resultado del anterior y produce el siguiente. Está descrito en la pestaña <a href="pipeline.html">Pipeline</a>.</p>
-<p><strong>Log de transiciones.</strong> El registro automático de qué le pasó a cada variable en cada paso: cuántas personas pasaron de un valor a otro. Es lo que permite detectar que una recodificación hizo algo distinto de lo previsto, cosa que una tabla de frecuencias no muestra, porque compara totales y no el recorrido de cada caso.</p>
-<p><strong>Decisión metodológica.</strong> Cada punto del pipeline donde el dato podía tratarse de más de una forma y hubo que elegir. Esta página las marca en recuadros: <strong>tomada</strong> cuando ya está resuelta, <strong>pendiente</strong> cuando sigue en discusión. El <a href="pipeline.html#registro-de-decisiones">registro completo</a> está al final de la pestaña Pipeline.</p>
-<p><strong>Provisional.</strong> Se marca así todo resultado que depende de una decisión aún no resuelta. No significa que esté mal calculado: significa que puede cambiar cuando la decisión se tome, así que no conviene citarlo como cifra final.</p>
+</section>
+<section id="por-qué-el-cero-va-solo" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-el-cero-va-solo">Por qué el cero va solo</h2>
+<p>No es una preferencia de forma. La primera decisión que se tomó en este rediseño fue rescatar a quienes respondieron <strong>“ninguna medida”</strong>, que estaban siendo tratados como dato faltante y quedaban fuera del modelo.</p>
+<p>Si ahora esas personas se mezclan en una categoría “baja” junto a quienes tienen una o dos medidas, el arreglo queda a medias: las recuperamos para el modelo pero perdemos su distinción dentro de él.</p>
+<p>Del lado del miedo vale lo mismo. Quien no se siente inseguro en <strong>ningún</strong> lugar es cualitativamente distinto de quien se siente inseguro en pocos, no es “un poco menos”.</p>
+</section>
+<section id="dos-argumentos-que-sostienen-la-propuesta" class="level2">
+<h2 class="anchored" data-anchor-id="dos-argumentos-que-sostienen-la-propuesta">Dos argumentos que sostienen la propuesta</h2>
+<p><strong>Los terciles no permiten comparar entre olas.</strong> Por construcción siempre producen tres grupos de un tercio cada uno. Si en la próxima ola la población entera se vuelve más temerosa, el tercil alto seguirá teniendo un tercio de la muestra y la comparación no mostrará nada. Con cortes fijos, la proporción en cada categoría puede moverse, que es lo que se quiere medir.</p>
+<p>Para una consultoría que va a comparar olas, esto pesa más que el problema de los empates.</p>
+<p><strong>La propuesta se puede evaluar contra la solución actual.</strong> Mantiene <strong>tres categorías por variable</strong>, igual que hoy. Eso importa porque el % de inercia del MCA no es comparable entre variantes con distinto número de categorías, pero sí lo es cuando el número no cambia. Se puede correr la variante y comparar ajuste, cosa que no siempre se puede.</p>
+</section>
+<section id="qué-falta-aprobar" class="level2">
+<h2 class="anchored" data-anchor-id="qué-falta-aprobar">Qué falta aprobar</h2>
+<p>La propuesta completa: usar el valor en los dos índices de dos ítems, cortar por conteo de medidas en los dos de <code>comgen</code>, y cortar en cero y mitad en los dos restantes.</p>
+<p>Hay dos puntos donde hay margen y conviene decidir explícitamente:</p>
+<p><strong>El número de categorías.</strong> La propuesta mantiene tres. El informe anterior reportaba una solución dicotómica, así que hay un argumento de continuidad para volver a dos. El reparo es que dicotomizar en cero deja repartos muy desparejos (89 contra 11 en medidas de la vivienda) y dicotomizar en la mediana vuelve a perder la distinción del cero.</p>
+<p><strong>El corte de las medidas del barrio.</strong> Con “ninguna / una o dos / tres o más” queda 32 / 49 / 19. Con “ninguna / una / dos o más” queda 32 / 29 / 39, más parejo. Se propuso el primero por consistencia con la variable de vivienda, pero tener tres medidas comunitarias es bastante más organizado que tener tres en la casa, así que el segundo también se defiende.</p>
+</section>
+</section>
+<section id="no-respuesta-en-los-índices-secundarios" class="level1">
+<h1>2. No respuesta en los índices secundarios</h1>
+<section id="el-estado" class="level2">
+<h2 class="anchored" data-anchor-id="el-estado">El estado</h2>
+<p>Esta decisión está más cerrada de lo que parece: <strong>el criterio del proyecto ya está fijado</strong> por cómo se tratan los índices del modelo. Lo que falta es elegir entre dos formas de aplicarlo.</p>
+<p>Los índices de percepción de desórdenes e incivilidades suman respuestas en escala de 1 a 5. Hoy los ítems no respondidos se descartan del sumatorio, de modo que quien no responde ninguno suma 0, un valor que ninguna combinación de respuestas válidas puede producir.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">N de ítems</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Mínimo posible</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Mínimo observado</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Casos afectados</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Percepción de desórdenes</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">6.563</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Percepción de incivilidades</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1.839</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>El detalle está en el <a href="pipeline.html#variables-secundarias">paso 7 del pipeline</a>.</p>
+</section>
+<section id="las-dos-formas-de-aplicarlo" class="level2">
+<h2 class="anchored" data-anchor-id="las-dos-formas-de-aplicarlo">Las dos formas de aplicarlo</h2>
+<p><strong>Construirlos como porcentaje</strong>, igual que los índices del modelo. La convención se hereda sola, quedan estructuralmente idénticos al resto y dejan de ser un caso especial que alguien tiene que recordar. Es la opción que se propone.</p>
+<p><strong>Mantener la suma y asignar el mínimo de la escala</strong> a los ítems sin responder, de modo que el índice no pueda bajar de su piso. Conserva la métrica actual, que puede importar si se quiere comparar con lo ya reportado.</p>
+<p>Cualquiera de las dos cambia la escala de estas dos variables, así que afecta a los cruces donde aparecen. Ninguna afecta al modelo, porque estas variables no entran.</p>
+</section>
+</section>
+<section id="nombres-de-los-grupos" class="level1">
+<h1>3. Nombres de los grupos</h1>
+<p>Los grupos aparecen como <code>C1</code>, <code>C2</code> y así. Ponerles nombre sustantivo es una decisión del equipo y no puede derivarse del dato: requiere leer los perfiles y decidir qué los caracteriza.</p>
+<p>El insumo está en <a href="solucion-actual.html">Solución actual</a>: para cada solución hay una tabla de qué distingue a cada grupo, ordenada por cuánto se aparta cada respuesta del promedio de la muestra, y el perfil completo con todas las variables.</p>
+<p>Conviene tener presente que <strong>esta decisión depende de la primera</strong>. Si se adopta la propuesta sobre los cortes, la solución de grupos cambia y los nombres habría que revisarlos. Nombrarlos ahora significa hacerlo dos veces.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>El orden sugerido
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Resolver primero los cortes de los índices, correr la solución que resulte, y recién entonces nombrar los grupos sobre esa. Las otras dos decisiones se pueden tomar en cualquier momento, porque no afectan al modelo.</p>
+</div>
+</div>
 
 
 </section>

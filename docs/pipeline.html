@@ -144,6 +144,10 @@ window.Quarto = {
 <span class="menu-text">Solución actual</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./decisiones.html"> 
+<span class="menu-text">Decisiones pendientes</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./glosario.html"> 
 <span class="menu-text">Glosario</span></a>
   </li>  
@@ -893,8 +897,8 @@ window.Quarto = {
 <p>Visto desde la categoría: de las 18.563 personas etiquetadas “Alta inseguridad en la casa”, el <strong>27%</strong> respondió 0% de inseguridad.</p>
 <p>Acá no hay ambigüedad de borde que discutir: la respuesta y la etiqueta dicen lo contrario. Y pasa porque tres cuartos de la muestra responden 0% en esta variable, de modo que ese único valor ocupa más de dos terciles y desborda hasta el tercero.</p>
 <p>Conviene retener esto para la decisión: <strong>el problema no es que la variable tenga poca variación, sino que la distribución sea despareja</strong>. Los índices con más valores posibles (el de espacio público tiene 43) están menos afectados, no más.</p>
-<p><strong>Qué falta decidir:</strong> reemplazar los terciles por un corte más sustantivo. Por ejemplo: “ninguna medida / una o dos / tres o más”. Otra opción es categorizar la variable original “_pct”, ya que justamente tiene 3 categorías.</p>
-<p>Para los dos índices de dos ítems, la segunda opción resuelve el problema sin necesidad de definir nada: 0, 50 y 100 <strong>son</strong> las tres categorías.</p>
+<p><strong>Qué falta decidir:</strong> reemplazar los terciles por un corte más sustantivo.</p>
+<p>Hay una <strong>propuesta desarrollada</strong> para las seis variables, con los números que produciría cada una, en <a href="decisiones.html#cómo-se-cortan-los-índices">Decisiones pendientes</a>.</p>
 <p>Mientras no se resuelva, <strong>la solución de grupos completa es provisional</strong>.</p>
 </section>
 </div>
@@ -1157,8 +1161,8 @@ window.Quarto = {
 </div>
 <p>El problema no son solo los casos extremos. Cualquiera que haya dejado ítems sin responder queda con un índice más bajo del que le correspondería, en proporción a cuántos dejó.</p>
 <p><strong>Por qué queda abierta y no se resolvió junto con las otras.</strong> El resto del análisis usa una convención distinta: en los índices del modelo la no respuesta <strong>se queda en el denominador</strong> (ver el paso 3), de modo que el índice nunca sale de su rango. Acá sale. Son dos criterios diferentes conviviendo en el mismo análisis, y corresponde unificarlos.</p>
-<p><strong>Qué falta decidir:</strong> cuál de los dos criterios se adopta acá. Una opción es construir estos índices como porcentaje, igual que los del modelo, con lo que la convención se hereda sola. Otra es mantener la suma pero asignar el valor mínimo de la escala a los ítems sin responder, de modo que el índice se mantenga dentro de su rango.</p>
-<p>Cambia la escala de las dos variables, así que afecta a los cruces donde aparecen.</p>
+<p><strong>Qué falta decidir:</strong> cuál de los dos criterios se adopta acá. Las dos opciones están desarrolladas en <a href="decisiones.html#no-respuesta-en-los-índices-secundarios">Decisiones pendientes</a>.</p>
+<p>Cambia la escala de las dos variables, así que afecta a los cruces donde aparecen. No afecta al modelo, porque estas variables no entran.</p>
 </div>
 </div>
 <p>Los dos índices se cortan después en terciles, con el mismo procedimiento del paso 4, así que les aplica también lo señalado ahí.</p>
@@ -1166,7 +1170,7 @@ window.Quarto = {
 </section>
 <section id="registro-de-decisiones" class="level1">
 <h1>Registro de decisiones</h1>
-<p>Todas las decisiones metodológicas del análisis, en un solo lugar.</p>
+<p>Todas las decisiones metodológicas del análisis, en un solo lugar. Las tres que siguen abiertas están desarrolladas, con propuesta, en <a href="decisiones.html">Decisiones pendientes</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">

@@ -495,11 +495,10 @@ poca variación, sino que la distribución sea despareja**. Los índices con má
 valores posibles (el de espacio público tiene 43) están menos afectados, no más.
 
 **Qué falta decidir:** reemplazar los terciles por un corte más sustantivo.
-Por ejemplo: "ninguna medida / una o dos / tres o más". Otra opción es categorizar
-la variable original "_pct", ya que justamente tiene 3 categorías.
 
-Para los dos índices de dos ítems, la segunda opción resuelve el problema sin
-necesidad de definir nada: 0, 50 y 100 **son** las tres categorías.
+Hay una **propuesta desarrollada** para las seis variables, con los números que
+produciría cada una, en
+[Decisiones pendientes](decisiones.html#cómo-se-cortan-los-índices).
 
 Mientras no se resuelva, **la solución de grupos completa es provisional**.
 :::
@@ -698,14 +697,12 @@ análisis usa una convención distinta: en los índices del modelo la no respues
 de su rango. Acá sale. Son dos criterios diferentes conviviendo en el mismo
 análisis, y corresponde unificarlos.
 
-**Qué falta decidir:** cuál de los dos criterios se adopta acá. Una opción es
-construir estos índices como porcentaje, igual que los del modelo, con lo que la
-convención se hereda sola. Otra es mantener la suma pero asignar el valor mínimo
-de la escala a los ítems sin responder, de modo que el índice se mantenga dentro
-de su rango.
+**Qué falta decidir:** cuál de los dos criterios se adopta acá. Las dos opciones
+están desarrolladas en
+[Decisiones pendientes](decisiones.html#no-respuesta-en-los-índices-secundarios).
 
 Cambia la escala de las dos variables, así que afecta a los cruces donde
-aparecen.
+aparecen. No afecta al modelo, porque estas variables no entran.
 :::
 
 Los dos índices se cortan después en terciles, con el mismo procedimiento del
@@ -713,7 +710,9 @@ paso 4, así que les aplica también lo señalado ahí.
 
 # Registro de decisiones
 
-Todas las decisiones metodológicas del análisis, en un solo lugar.
+Todas las decisiones metodológicas del análisis, en un solo lugar. Las tres que
+siguen abiertas están desarrolladas, con propuesta, en
+[Decisiones pendientes](decisiones.html).
 
 ```{r}
 #| label: registro

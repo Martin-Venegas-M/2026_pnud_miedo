@@ -821,11 +821,26 @@ esta variable, de modo que ese único valor ocupa más de dos terciles.
 Corolario para la decisión: los índices con **más** valores posibles
 (`emper_ep_pct` tiene 43) están **menos** afectados, no más.
 
-**Recomendación:** cortes sustantivos fijos definidos a priori (ej. 0 medidas /
-1–2 / 3+). Interpretables, reproducibles, y compatibles con el 0% que introduce
-D1. Para los dos índices de dos ítems basta con **usar el valor del índice como
-categoría**: 0, 50 y 100 son las tres categorías, sin necesidad de definir
-cortes. `[ABIERTO]` — ver P4.
+**Propuesta formal (12-ago-2026), publicada en la página.** Cortar por lo que la
+variable significa, con el cero siempre como categoría propia. Tres casos según
+cómo esté construido cada índice:
+
+| Caso | Variables | Corte | Por qué |
+|---|---|---|---|
+| Dos ítems | `emper_barrio_pct`, `emper_casa_pct` | El valor: 0 / 50 / 100 | Ya vienen con tres categorías |
+| Denominador constante | `comgen_per_pct`, `comgen_com_pct` | Conteo: 0 / 1–2 / 3+ | Ningún ítem admite `85`, así que el % equivale a un conteo |
+| Denominador variable | `emper_ep_pct`, `comper_pct` | %: 0 / 1–50 / >50 | Todos los ítems admiten `85`, un conteo no sería comparable |
+
+Dos argumentos que no estaban en este plan y sostienen la propuesta:
+
+1. **Los terciles no permiten comparar olas.** Siempre dan 33/33/33, así que un
+   cambio poblacional real no se vería. Para una consultoría que compara olas,
+   pesa más que el problema de los empates.
+2. **La propuesta se puede evaluar contra la solución actual**, porque mantiene
+   tres categorías por variable. La advertencia sobre la inercia (§F4) no aplica
+   cuando el número de categorías no cambia.
+
+`[ABIERTO]` — falta aprobación. Ver P4.
 
 ---
 
@@ -1368,6 +1383,17 @@ propia.
 dimensión (`emper`, `perper`, `comper`, `comgen`), el resto por familia según
 §4.0. Acompañar las originales con `mapeo_nombres`, para poder ir de
 `P_INSEG_LUGARES_1` a `emper_p_inseg_lugares_1` sin leer código.
+
+**Decisiones pendientes.** Desarrolla las tres abiertas con propuesta: D2 (con
+las seis variables y los números que produciría cada corte), D5 (las dos formas
+de aplicar el criterio ya fijado) y los nombres de los grupos. El registro
+completo se queda en Pipeline para que no haya dos listas que puedan
+desincronizarse.
+
+Los números de la propuesta de D2 **no salen del pipeline**: son la proyección de
+lo que produciría, calculada en el `.qmd` sobre `datos_categorizado`. Es la única
+excepción deliberada a la regla de datos de F5.4, y va marcada como tal en la
+propia página: no son resultados, son una simulación de la propuesta.
 
 **4. Solución actual.** Ajuste global y mapa de categorías (comunes a las tres
 soluciones: el MCA es el mismo, lo que cambia es dónde se corta el árbol), y
