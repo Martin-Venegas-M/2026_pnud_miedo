@@ -503,9 +503,21 @@ es el punto:
 
 - `n_na`: casos con `NA` en esa variable. **Suma más que el total eliminado**,
   porque un caso puede tener `NA` en varias.
-- `n_solo`: casos que **solo** esa variable elimina. Es la que dice cuánto se
-  recupera si se arregla esa y ninguna otra, así que es la que sirve para
-  priorizar.
+- `n_solo`: casos que **solo** esa variable elimina.
+
+**`n_solo` es una cota superior, no una estimación de recuperación.** Dice cuánto
+se recuperaría si el arreglo eliminara *todos* los `NA` de esa variable. Cuando el
+arreglo ataca solo una sub-parte —que es lo habitual— la recuperación real es
+mucho menor.
+
+> Caso concreto, ya ocurrido: `perper_delito` tenía `n_na = 2.539` y
+> `n_solo = 2.182`, y el plan predijo que D3 recuperaría 2.182 casos. Recuperó
+> **78**, porque 2.389 de esos `NA` son de la categoría 4 (no-respuesta en la
+> pregunta filtro) y D3 solo toca la categoría 5. Ver D3.
+
+Antes de convertir un `n_solo` en predicción, **descomponer el `NA` por su
+origen**: qué categoría, qué columna fuente, qué código. Solo la parte que el
+arreglo efectivamente ataca cuenta.
 
 Lógica de referencia (ya probada contra los datos actuales: devuelve 49.431,
 idéntico a `drop_na()`):
@@ -603,9 +615,20 @@ Todos los siguientes, sin excepción:
 6. Los CSV de log existen y son legibles.
 7. `tar_visnetwork()` (o equivalente) muestra el DAG completo sin targets
    huérfanos.
+8. **Inventario de traducción completo.** Toda función que §F1.4 manda conservar
+   está en `R/`, y toda la que manda eliminar no está. Verificar con una lista
+   explícita, no a ojo.
+9. `renv::status()` reporta el proyecto sincronizado.
 
 **Si algún número difiere, el refactor está mal.** No ajustar la referencia: hay
 un error de traducción que encontrar.
+
+> **Por qué existe el punto 8.** En la primera ejecución de este plan, §F1.4
+> listaba seis helpers a conservar y se portó uno. Los criterios 1–7 pasaron
+> igual, porque todos verifican que **el pipeline** reproduce los números, y
+> ninguno verifica el **inventario de lo que el plan mandó conservar**. El
+> criterio 7 no puede atrapar un helper que todavía no tiene consumidor. La
+> omisión recién apareció en la Fase 5, cuando `analysis/` los necesitó.
 
 ---
 
@@ -744,15 +767,13 @@ D1. `[ABIERTO]` — ver P4.
 
 ### D3 — `perper_delito` categoría 5 mezcla respuesta con no-respuesta
 
-**Recomendada. Afecta al MCA. Mejor relación costo/beneficio. Vive en
-`construir_perper_delito()`.**
+**APLICADA (Fase 3, commit `e2144c4`) y verificada. Corrección de validez, no de
+recuperación muestral. Vive en `construir_perper_delito()`.**
 
 La categoría 5 se define en `2_recode.R:103` y su etiqueta (`labels.R:50`) es
 *"No sabe/No responde de qué delito será victima **/ Cree que será victima de
 otro tipo de delito**"*. Mezcla no-respuesta con respuesta sustantiva en un solo
 código, y `3_add_clust.R:73` manda las categorías 4 y 5 a `NA`.
-
-Mayor origen de pérdida: 2.539 casos, de los cuales **2.182 son causa única**.
 
 Lo importante: **las columnas fuente ya vienen separadas**. La categoría 5 se
 arma con `perper_p_delito_pronostico_{77, 88, 99}`, donde `77` = "Otros delitos"
@@ -762,9 +783,29 @@ arma con `perper_p_delito_pronostico_{77, 88, 99}`, donde `77` = "Otros delitos"
 **Acción:** partir la categoría 5 en dos — `77` como categoría sustantiva propia
 que se conserva en el modelo, `88`/`99` como no-respuesta.
 
-**Predicción falsable:** si D3 se aplica sola, la corrida siguiente debe mostrar
-**49.431 + 2.182 = 51.613** casos. Si muestra otra cosa, D3 no hizo lo que
-creíamos y hay que averiguar por qué antes de seguir.
+#### Magnitud real (verificada, corrige una estimación errónea del plan)
+
+Los 2.539 `NA` de `perper_delito` se reparten así:
+
+| Origen | Casos |
+|---|---|
+| Categoría 4 — `P_EXPOS_DELITO` en `88`/`99` | **2.389** |
+| Categoría 5 — total | **150** |
+| — de esos, con `__77` marcado (sustantivo, lo que D3 rescata) | **78** |
+
+**D3 recupera 78 casos, no 2.182.** El N pasó de 49.431 a **49.503** (+72: los 78
+menos 6 que otra variable también descartaba), y `n_na` de `perper_delito` bajó de
+2.539 a 2.461. Eso es exactamente lo correcto.
+
+> **Corrección.** Una versión anterior de este plan predecía **51.613** casos
+> tras aplicar D3, asumiendo que los 2.182 de `n_solo` provenían todos de la
+> categoría 5 vía `77`. Es falso: la abrumadora mayoría (2.389) es categoría 4,
+> no-respuesta pura en la pregunta filtro, que D3 no toca ni debe tocar. La
+> predicción estaba mal, no la implementación. **No usar 51.613 como criterio de
+> verificación.**
+
+El valor de D3 es conceptual —deja de tratar una respuesta sustantiva como
+ausencia de dato— y no debe evaluarse por cuántos casos recupera.
 
 ---
 
@@ -897,12 +938,43 @@ El razonamiento de la decisión va escrito en el inventario de la Fase 2 (§F2),
 con esta entrada como precedente: es el criterio del proyecto para la
 no-respuesta parcial.
 
+---
+
+### D7 — La categoría 4 de `perper_delito` se descarta sin que nadie lo decidiera
+
+**`[ABIERTO]` — requiere decisión. Afecta al MCA. Vive en `preparar_datos_mca()`.**
+
+Apareció al verificar D3. Con D3 ya aplicada, **la categoría 4 es de lejos la
+mayor fuente individual de pérdida del modelo: 2.389 casos**, más que el resto de
+las variables juntas.
+
+Son las personas que respondieron `88` o `99` a `P_EXPOS_DELITO`, la pregunta
+filtro ("¿cree usted que será víctima de algún delito en los próximos doce
+meses?"). `preparar_datos_mca()` las manda a `NA` junto con la categoría 5, y esa
+línea se heredó del código viejo (`3_add_clust.R:73`) sin discusión.
+
+Descartarlas es **defendible**: es no-respuesta genuina en la pregunta que abre la
+dimensión, y a diferencia del caso de §1 no hay ninguna respuesta sustantiva
+escondida ahí — es tipo B, el `88`/`99` es un valor de la columna y significa
+exactamente lo que dice.
+
+Pero nunca fue una decisión, fue una herencia. Y es la única fuente de pérdida de
+esta magnitud que no pasó por el criterio de §1.
+
+**Acción mínima:** entre al inventario de la Fase 2 como decisión escrita, con su
+justificación, aunque la resolución sea "se mantiene". Si se decide conservarlas,
+hay que definir qué categoría se les asigna en el MCA, y eso sí es sustantivo.
+
 ### Criterio de aceptación de la Fase 3
 
-Las seis decisiones tienen resolución escrita — D6 ya está cerrada, se mantiene —
-(adoptada o descartada, con
-motivo). `reportar_composicion()` corrido para cada decisión adoptada. El log
-muestra el delta de cada una.
+Las siete decisiones (D1–D7) tienen resolución escrita: adoptada o descartada, con
+motivo. D1 y D3 ya están aplicadas y verificadas; D6 cerrada sin cambio.
+`reportar_composicion()` corrido para cada decisión adoptada, y el log mostrando
+el delta de cada una.
+
+**Al verificar una decisión, descomponer primero el `NA` por su origen** antes de
+predecir cuántos casos recupera. Ver la corrección en D3 y la nota sobre `n_solo`
+en §F1.5.
 
 ---
 
@@ -958,14 +1030,94 @@ veces. Además, con el almacén de targets, los `readRDS(cfg$FILE_...)` pasan a 
 | `descriptivos.R:34`, `descriptivos_iniciales.R:33` | `source("tipologias/config.R")` — ruta del repo viejo |
 | `descriptivos.R:43` | Typo `stata = ` en `as_survey_design()`. Se lo traga en silencio y el diseño queda **sin estratificar** |
 | `descriptivos.R` | Usa `cfg$VARS_REC` y `cfg$VARS_REC2`; solo existe `VARS_REC_TERCIL` |
-| `descriptivos.R:36` | `cfg$PATH_HELPERS_AN` apunta a `analysis/helpers/`, que no existe |
-| `descriptivos.R` | Llama `tab_var_clust()`, que no está en `functions.R` |
+| `descriptivos.R:36` | `cfg$PATH_HELPERS_AN` apunta a `analysis/helpers/` — **no existe en este repo**; sí en el viejo |
+| `descriptivos.R` | Llama `tab_var_clust()`, ausente en este repo. **Existe en el viejo**: `tipologias/analysis/helpers/functions.R` |
 | `descriptivos.R:48` | Lee `cfg$FILE_METADATA`, que ningún script escribe |
-| `descriptivos_iniciales.R` | Carga en `enusc_original` pero opera sobre `enusc`; llama `esperado("patrones")`, de un `validate.R` no traído |
+| `descriptivos_iniciales.R` | Carga en `enusc_original` pero opera sobre `enusc`; llama `esperado("patrones")`, ausente acá. **Existe en el viejo**: `tipologias/processing/helpers/validate.R` |
+
+> **Aviso de redacción.** Las frases "no existe" de esta tabla se refieren
+> **siempre a este repo**. Antes de concluir que algo hay que escribir de cero,
+> buscar en `/Users/mar/Work/Github/2025_pnud_miedo` **completo** — incluyendo
+> `tipologias/analysis/helpers/`, que no es donde apuntan las rutas de este plan.
+
+#### Decisiones resueltas (11 de agosto de 2026)
+
+Resueltas con el usuario tras el reporte de estado de `analysis/`. Ejecutar como
+están; ninguna queda abierta.
+
+| # | Decisión |
+|---|---|
+| **Q1** | **Portar los 5 helpers tal cual**, sin arreglarlos. `tab_frq1()` tiene advertencias conocidas en su docstring (el `separate()` que trunca "Robo en su vivienda" → "Robo "); se corrigen **después**, como paso separado y con el log mostrando el delta. Arreglar mientras se porta hace el port inverificable |
+| **Q2** | **Portar `tab_var_clust()` desde el repo viejo**, no escribirla. Al portarla aplicar §F1.6: tiene `path = cfg$PATH_TABLES` como argumento por defecto que lee un global (hacerlo explícito), y escribe Excel como efecto secundario con `save = TRUE`, lo que choca con la regla #7 |
+| **Q3** | **Extraer solo `patrones`** como target `spec_patrones`. **No** portar `validate.R` (708 líneas): `esperado()` es el accesor de `ESPERADO`, que es maquinaria de gold y corresponde a F5.1. Valores reales abajo |
+| **Q4** | **Sacar `pergen_pais`, `pergen_comuna` y `pergen_barrio` de `VARS_SEC`** en `R/config.R`. La dimensión pergen se descartó a propósito y no se necesita. No cambia ningún número (`reportar_composicion()` ya las saltaba). **Agregar además una aserción** de que todo nombre de `VARS_SEC` exista en los datos finales — cierra la clase entera de bug, aplicando el patrón declarado-vs-observado de §4.5 a `cfg` |
+| **Q5** | **Descartar la hoja de metadata** de `descriptivos.R`. No resucitar `gen_metadata_recode.R`. Su propósito —documentar qué variables fuente construyen cada índice— ya lo cumplen `spec_indices` y `spec_variables`, mejor estructurados; si la hoja se quiere de vuelta, se deriva de ahí |
+
+Valores de `spec_patrones` para 2025, tomados del repo viejo (no inferidos):
+
+```r
+list(
+    emper  = list(sep = "\\? "),
+    perper = list(sep = "(\\?|en su|en el)\\s*"),
+    pergen = list(sep = "(\\?|en su|en el)\\s*"),
+    comper = list(extraer = '"([^"]+)"'),
+    comgen = list(sep = "(\\?|\\.)\\s*")
+)
+```
+
+#### Deuda de Fase 1 que hay que cerrar acá
+
+**§F1.4 listaba seis helpers a preservar y solo se portó uno** (`create_var_pct()`,
+porque el pipeline principal lo usa). Faltan `tab_frq1()`, `tab_frq2()`,
+`format_tab_excel()`, `pre_proc_excel()` y `plot_mca()`.
+
+No es trabajo de Fase 5: es Fase 1 incompleta, que no se notó porque ningún target
+los consumía. **Se cierran con el criterio de la Fase 1, no con el de la Fase 5**:
+fidelidad al original, sin mejoras.
 
 ### Fuera de alcance
 
 Sitio Quarto y estructura de carpetas por ola más allá de la existente.
+
+---
+
+## Estado de ejecución (11 de agosto de 2026)
+
+Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**.
+
+| Fase | Estado |
+|---|---|
+| 0 — Preparación | Hecha (`b4eb745`) |
+| 1 — Refactor a targets | Hecha (`bcec3a5`), **con deuda**: 5 helpers sin portar (ver F5.2) |
+| 2 — Inventario | Hecha (`639877a`) |
+| 3 — Decisiones | **Parcial** (`e2144c4`): D1 y D3 aplicadas y verificadas. D6 cerrada sin cambio. **D2, D4, D5 y D7 pendientes** |
+| 4 — Variantes | No iniciada |
+| 5 — Gold, testbed, `analysis/` | No iniciada |
+
+### Antes de continuar
+
+1. **Sincronizar `renv`.** Hoy `renv::status()` reporta el proyecto fuera de
+   sincronía. Un DAG con lockfile desincronizado no da las garantías por las que
+   se adoptó `targets`. Resolver antes de cualquier otra cosa.
+
+2. **No empezar la reparación de `analysis/` todavía.** Por el propio
+   razonamiento de F5.2: sus vectores de variables dependen de D1–D4, y **D2 y D4
+   siguen abiertas**. Hacerlo ahora es hacerlo dos veces.
+
+   Lo que **sí** se puede hacer ya, porque no depende de ninguna decisión
+   sustantiva: la **deuda de Fase 1** — portar los 5 helpers, `tab_var_clust()` y
+   `spec_patrones` (decisiones Q1–Q3, ya resueltas). Se cierran con el criterio
+   de la Fase 1: fidelidad al original, sin mejoras.
+
+3. **Cerrar las decisiones abiertas.** Son cuatro y todas son sustantivas:
+   **D2** (P4), **D4** (P2), **D5** (P5) y **D7**. D2 es la más consecuente: es el
+   bug de mayor impacto del proyecto y además bloquea `analysis/`.
+
+4. **Verificación retroactiva de la Fase 1.** El criterio 8 (inventario de
+   traducción) se agregó *después* de ejecutada la Fase 1, y el criterio 2–4
+   solo se puede evaluar contra `54006c5` en el estado `bcec3a5`, antes de que D1
+   y D3 cambiaran los números a propósito. Si se quiere cerrar formalmente la
+   Fase 1, hacerlo sobre ese commit.
 
 ---
 
