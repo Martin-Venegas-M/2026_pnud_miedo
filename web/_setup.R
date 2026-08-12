@@ -50,7 +50,10 @@ pct_fmt <- function(x, dec = 1) paste0(n_fmt(x, dec), "%")
 #'
 #' `kableExtra` + estilos consistentes. Sin interactividad: las tablas
 #' interactivas de la página anterior no fueron bien recibidas.
-tabla <- function(df, alto = NULL, alinear = NULL, ...) {
+#'
+#' `alto` fija una altura con scroll vertical; `ancho = TRUE` da scroll
+#' horizontal sin fijar alto, para tablas con muchas columnas.
+tabla <- function(df, alto = NULL, alinear = NULL, ancho = FALSE, ...) {
     #* `align = NULL` explícito no es lo mismo que omitirlo: kableExtra termina
     #* escribiendo `style="NAposition: sticky"` en los <th>, que es CSS inválido
     #* y deja el encabezado fijo sin funcionar. Se pasa solo si tiene valor.
@@ -70,6 +73,9 @@ tabla <- function(df, alto = NULL, alinear = NULL, ...) {
 
     if (!is.null(alto)) {
         k <- k |> scroll_box(height = alto, extra_css = "overflow-x: auto;")
+    } else if (isTRUE(ancho)) {
+        #* Para tablas con muchas columnas: scroll horizontal sin fijar alto.
+        k <- k |> scroll_box(width = "100%", extra_css = "overflow-x: auto;")
     }
     k
 }

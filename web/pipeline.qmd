@@ -118,10 +118,54 @@ La columna `MEDIDAS_NA` representa a gente que respondió con 0 todas las demás
 En tanto, `MEDIDAS_NS` y `MEDIDAS_NR` son personas que respondieron no sabe o no responde
 para la batería completa.
 
-Esas tres últimas columnas son estructuralmente idénticas: mismo formato, mismo tipo, 
+Esas tres últimas columnas son estructuralmente idénticas: mismo formato, mismo tipo,
 nombres parecidos. Pero la primera es una **respuesta sustantiva** -"no tengo ninguna medida"-
 y las otras dos son **ausencia de respuesta**. La única forma de dar cuenta que `MEDIDAS_NA`
 es una columna sustantiva es revisando sus etiquetas en la base de datos.
+
+### Así se ve en el microdato
+
+Cuatro casos reales de la base, con todas las columnas de la batería:
+
+```{r}
+#| label: microdato-medidas
+datos_micro <- leer("datos_seleccionados")
+mapeo <- leer("mapeo_nombres")
+
+cols <- grep("^comgen_medidas_", names(datos_micro), value = TRUE)
+marcas <- c("comgen_medidas_na", "comgen_medidas_ns", "comgen_medidas_nr")
+sustantivas <- setdiff(cols, marcas)
+
+M <- as.data.frame(lapply(datos_micro[cols], haven::zap_labels))
+n_sustantivas <- rowSums(M[sustantivas] == 1, na.rm = TRUE)
+
+#* Se eligen por perfil y no por número de fila: si la base cambia, el ejemplo
+#* sigue mostrando lo que tiene que mostrar en vez de romperse en silencio.
+casos <- c(
+    which(n_sustantivas >= 2 & M$comgen_medidas_na == 0)[1],
+    which(M$comgen_medidas_na == 1)[1],
+    which(M$comgen_medidas_ns == 1)[1],
+    which(M$comgen_medidas_nr == 1)[1]
+)
+stopifnot("No se encontró alguno de los cuatro perfiles" = !anyNA(casos))
+
+#* Los nombres que se muestran son los originales de la ENUSC, no los que usa
+#* el análisis: el punto es cómo se ve el dato tal como llega.
+nombre_original <- setNames(mapeo$original, mapeo$nuestro)
+
+tabla_micro <- cbind(
+    rph_id = haven::zap_labels(datos_micro$rph_id)[casos],
+    M[casos, cols]
+)
+names(tabla_micro) <- c("rph_id", unname(nombre_original[cols]))
+
+tabla_micro |> tabla(ancho = TRUE, row.names = FALSE)
+```
+
+Los cuatro son indistinguibles por su forma: doce columnas con ceros y unos. Lo
+único que separa al segundo caso (que **respondió** que no tiene medidas) del
+tercero y el cuarto (que **no respondieron**) es cuál de las tres últimas
+columnas quedó en 1.
 :::
 
 ::: {.callout-note}
