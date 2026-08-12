@@ -40,7 +40,8 @@ vignettes/*.pdf
 .Renviron
 
 # pkgdown site
-docs/
+# (docs/ NO se ignora: es el sitio renderizado que sirve GitHub Pages.
+#  La entrada venía del template de proyecto R, para pkgdown, que no usamos.)
 
 # translation temp files
 po/*~

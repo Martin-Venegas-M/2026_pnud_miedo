@@ -1,0 +1,246 @@
+---
+title: "Solución actual"
+subtitle: "Los grupos: cómo se ven, qué los distingue y cómo se perfilan"
+---
+
+```{r}
+#| label: setup
+source("_setup.R")
+
+cfg <- leer("cfg")
+clust_var <- cfg$CLUSTER_A_SACAR
+n_grupos <- as.integer(sub("clusters_", "", clust_var))
+
+t_clusters <- leer("tabla4_clusters")
+t_ajuste <- leer("tabla_ajuste")
+t_vtest <- leer("tabla6_v_test")
+t_cruces <- leer("tabla_cruces_ancho_clusters")
+perdida_res <- leer_log("perdida_resumen")
+```
+
+::: {.callout-warning}
+## Todo lo de esta página es provisional
+
+La solución de grupos depende de **cómo se cortan los índices en categorías**,
+que es una decisión todavía abierta (ver
+[Pipeline](pipeline.qmd#categorización)). Cuando se resuelva, **esta solución
+cambia completa**: distinto número de personas por grupo, distinto perfil,
+posiblemente distinta cantidad de grupos razonable.
+
+Sirve para caracterizar y discutir los grupos. No para citar cifras como
+definitivas.
+:::
+
+La solución que se reporta es la de **`r n_grupos` grupos**, construida sobre
+**`r n_fmt(perdida_res$n_despues)` casos**.
+
+Los grupos **todavía no tienen nombre**: aparecen como `C1` a `C`r n_grupos``.
+Ponerles nombre es tarea del equipo, y las dos secciones finales de esta página
+—qué distingue a cada grupo y el perfil completo— son el insumo para hacerlo.
+
+# Tamaño de los grupos
+
+```{r}
+#| label: tamanos
+t_clusters |>
+    filter(variable == clust_var) |>
+    transmute(Grupo = label, Casos = frq, `%` = valid.prc) |>
+    tabla()
+```
+
+# El espacio de las respuestas
+
+El análisis de correspondencias múltiples resume las ocho variables en un espacio
+de pocas dimensiones. Cada punto del gráfico es una **categoría de respuesta**;
+las que aparecen cerca tienden a darse en las mismas personas.
+
+El color indica qué tan bien representada está esa categoría en el plano: las
+oscuras se leen con confianza, las claras están mal representadas en estas dos
+dimensiones y no conviene interpretarlas.
+
+```{r}
+#| label: biplot
+#| fig-width: 11
+#| fig-height: 8
+#| fig-cap: "Categorías de respuesta en las dos primeras dimensiones del MCA."
+leer("grafico_mca")
+```
+
+```{r}
+#| label: mapa-clusters
+#| fig-width: 11
+#| fig-height: 8
+#| fig-cap: "Las personas, coloreadas por grupo, en el mismo espacio."
+leer("grafico_mapa_clusters")
+```
+
+# Ajuste del modelo
+
+Cuánta de la variación total capta cada dimensión.
+
+```{r}
+#| label: ajuste
+t_ajuste |>
+    transmute(
+        Dimensión = dimension,
+        Autovalor = autovalor,
+        `% de varianza` = pct_varianza,
+        `% acumulado` = pct_acumulado
+    ) |>
+    tabla()
+```
+
+::: {.callout-important}
+## Este porcentaje no sirve para comparar variantes
+
+En un análisis de correspondencias, el % de inercia depende **mecánicamente del
+número de categorías por variable**: más categorías producen más inercia total,
+independientemente de si el modelo es mejor o peor.
+
+Como la decisión abierta sobre categorización cambia justamente el número de
+categorías, **no se puede usar este porcentaje para decidir entre alternativas**.
+Una variante con más categorías va a mostrar un porcentaje distinto sin que eso
+signifique nada sobre su calidad.
+
+Para una comparación válida haría falta la corrección de Benzécri, que no está
+implementada. Mientras tanto, esta tabla describe la solución actual y nada más.
+:::
+
+# Qué distingue a cada grupo
+
+Para cada grupo, las categorías de respuesta que más lo separan del resto de la
+muestra.
+
+La columna clave es **diferencia**: cuántos puntos porcentuales más (o menos)
+frecuente es esa respuesta dentro del grupo que en el total. Una diferencia de
++30 significa que esa respuesta es 30 puntos más común en ese grupo que en la
+población.
+
+```{r}
+#| label: vtest
+#| results: asis
+
+etiquetas_vars <- c(
+    emper_ep_pct_rec_tercil = "Inseguridad en espacio público",
+    emper_barrio_pct_rec_tercil = "Inseguridad en el barrio",
+    emper_casa_pct_rec_tercil = "Inseguridad en la casa",
+    perper_delito = "Expectativa de ser víctima",
+    comper_pct_rec_tercil = "Modificación de prácticas",
+    comper_gasto = "Gasto en seguridad",
+    comgen_per_pct_rec_tercil = "Medidas de la vivienda",
+    comgen_com_pct_rec_tercil = "Medidas del barrio"
+)
+
+cat("::: {.panel-tabset}\n")
+
+for (g in sort(unique(t_vtest$cluster))) {
+    cat("\n## Grupo C", g, "\n\n", sep = "")
+
+    tab <- t_vtest |>
+        filter(cluster == g) |>
+        transmute(
+            Variable = dplyr::coalesce(etiquetas_vars[variable], variable),
+            Respuesta = categoria,
+            `Diferencia (pp)` = lift_pp,
+            `% en el grupo` = `Mod/Cla`,
+            `% en el total` = Global
+        )
+
+    cat(as.character(tabla(tab, alto = "440px")), "\n\n")
+}
+
+cat(":::\n")
+```
+
+::: {.callout-note}
+## Por qué "diferencia" y no el estadístico habitual
+
+El indicador que se usa normalmente para esto es el `v-test`. Con el tamaño de
+muestra de este análisis se vuelve inservible para ordenar: en más de la mitad de
+las filas el valor se sale de escala y todas quedan empatadas, justo entre las
+asociaciones más fuertes, que son las que interesan.
+
+La diferencia en puntos porcentuales dice lo mismo, nunca empata artificialmente
+y se lee en unidades interpretables. El `v-test` sigue disponible en la tabla
+descargable.
+:::
+
+# Perfil de los grupos
+
+La tabla completa: cada variable, cada categoría, y qué porcentaje de cada grupo
+está en ella. **Cada columna suma 100% dentro de cada bloque de variable.**
+
+Se lee por filas: comparando una fila entre columnas se ve qué grupos concentran
+esa respuesta.
+
+::: {.panel-tabset}
+
+```{r}
+#| label: cruces
+#| results: asis
+
+etiquetas_cruces <- c(
+    etiquetas_vars,
+    c(
+        rph_sexo = "Sexo",
+        rph_nivel_rec = "Nivel educacional",
+        rph_edad_rec = "Tramo de edad",
+        rph_nse = "Nivel socioeconómico",
+        enc_region_rec = "Macrozona",
+        vp_dc = "Victimización (delitos contra las personas)",
+        vp_dv = "Victimización (delitos violentos)",
+        desordenes_ind_rec = "Percepción de desórdenes",
+        incivilidades_ind_rec = "Percepción de incivilidades",
+        info_exp_personal = "Se informa por experiencia personal",
+        info_otras_personas = "Se informa por otras personas",
+        info_rrss = "Se informa por redes sociales",
+        info_prensa = "Se informa por prensa",
+        info_tv = "Se informa por televisión"
+    )
+)
+
+nombres_grupo <- c(
+    fuente = "Variables del modelo",
+    secundaria = "Variables secundarias"
+)
+
+cols_cluster <- grep("^C[0-9]+$", names(t_cruces), value = TRUE)
+
+for (gr in names(nombres_grupo)) {
+    cat("\n## ", nombres_grupo[[gr]], "\n\n")
+
+    tab <- t_cruces |>
+        filter(grupo_variable == gr) |>
+        transmute(
+            Variable = dplyr::coalesce(etiquetas_cruces[variable], variable),
+            Categoría = categoria,
+            across(all_of(cols_cluster))
+        )
+
+    # Solo se nombra la variable en su primera fila, para que los bloques se
+    # lean como en la tabla de referencia del equipo.
+    tab <- tab |>
+        group_by(Variable) |>
+        mutate(Variable = ifelse(row_number() == 1, Variable, "")) |>
+        ungroup()
+
+    cat(
+        as.character(tabla(
+            tab,
+            alto = "600px",
+            alinear = c("l", "l", rep("r", length(cols_cluster)))
+        )),
+        "\n\n"
+    )
+}
+```
+
+:::
+
+::: {.callout-warning}
+## Recordatorio
+
+Las variables *percepción de desórdenes* e *incivilidades* dependen además de una
+segunda decisión abierta, sobre cómo tratar la no-respuesta. Su escala puede
+cambiar independientemente de lo que pase con la categorización.
+:::

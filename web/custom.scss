@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+
+// Único cambio de diseño respecto de la página anterior: el azul pasa a negro,
+// para distinguir las dos de un vistazo. Todo lo demás lo pone cosmo.
+$primary: #1c1c1c;
+$link-color: #1c1c1c;
+$navbar-bg: #1c1c1c;
+$navbar-fg: #ffffff;
+
+/*-- scss:rules --*/
+
+// Los callouts de decisión son el elemento más importante de la página:
+// conviene que se distingan del texto sin gritar.
+div.callout {
+    border-left-width: 4px;
+}
+
+// Las tablas de kableExtra quedan angostas por defecto dentro del grid ancho.
+table {
+    font-size: 0.92rem;
+}
+
+// Que una tabla ancha no empuje el cuerpo de la página.
+.table-responsive,
+div.tabla-scroll {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+// El estado de cada decisión, para el registro.
+.estado-cerrada {
+    color: #1a7f37;
+    font-weight: 600;
+}
+.estado-abierta {
+    color: #b35900;
+    font-weight: 600;
+}

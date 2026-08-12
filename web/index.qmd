@@ -1,0 +1,130 @@
+---
+title: "Tipologías de miedo al delito"
+subtitle: "ENUSC 2025 · Consultoría PNUD"
+---
+
+```{r}
+#| label: setup
+source("_setup.R")
+```
+
+## Qué es esta página
+
+Esta página documenta la construcción de una tipología de miedo al delito a
+partir de la ENUSC 2025.
+
+Se diferencia de la anterior en algo importante. Aquella comunicaba **resultados**:
+cuántos grupos hay, cómo se ven, en qué se distinguen. Esta comunica **los
+resultados y las decisiones que los producen** — qué se decidió en cada punto
+donde el dato podía tratarse de más de una forma, por qué, y qué efecto tuvo esa
+decisión sobre el análisis.
+
+El motivo del cambio está en la sección siguiente.
+
+## De dónde venimos
+
+La consultoría comenzó en **2024** con una primera construcción de tipologías.
+En **2025** se rehízo, incorporando la ola nueva de la encuesta y ajustando la
+metodología.
+
+En **agosto de 2026**, revisando esa segunda versión, apareció un problema que
+obligó a rehacer los análisis desde el principio.
+
+::: {.callout-important}
+## El hallazgo
+
+En las preguntas de opción múltiple del tipo *"¿cuál o cuáles de estas medidas de
+seguridad ha adoptado?"*, la alternativa **"ninguna"** estaba siendo tratada como
+**dato faltante** en vez de como respuesta.
+
+Pero "no tengo ninguna medida de seguridad" no es una ausencia de dato: es una
+respuesta sustantiva, y muy informativa — significa 0% de adopción.
+
+Como el paso de modelado exigía casos completos, esas personas quedaban **fuera
+del modelo**. Y no salían al azar: la exclusión afectaba más a hogares de nivel
+socioeconómico bajo y con menos miedo declarado. Es decir, se perdía justamente
+una parte del perfil que más importa describir.
+:::
+
+El efecto era grande. Con el tratamiento anterior, el modelo se construía sobre
+poco más de la mitad de la muestra. Corrigiendo el criterio, entra cerca del 90%.
+
+## Por qué se rehízo todo, y no solo ese punto
+
+Se podría haber corregido esa línea y seguir. Se optó por reconstruir, por una
+razón: **el problema no fue el error, fue que nadie lo vio durante dos años.**
+
+El análisis se validaba mirando distribuciones de frecuencia, una variable a la
+vez. Ese tipo de revisión muestra si una variable *quedó rara*, pero no muestra
+qué le pasó a cada persona **entre** un paso y el siguiente. Y ahí es donde vivía
+el problema.
+
+La reconstrucción tuvo entonces dos objetivos, no uno:
+
+1. **Recodificar con el criterio correcto desde el principio**, en vez de parchar
+   sobre una base ya calibrada.
+2. **Dejar registro automático de qué le hace cada paso a los datos**, de modo que
+   un problema de este tipo sea visible sin que nadie tenga que sospecharlo
+   primero.
+
+## Cómo leer esta página
+
+| Pestaña | Qué encontrará |
+|---|---|
+| **Pipeline** | El recorrido de los datos, paso a paso, con las decisiones metodológicas explicitadas donde se toman. Es la pestaña central |
+| **Univariados** | Distribuciones de todas las variables: las originales de la encuesta, las que construimos, y las secundarias |
+| **Solución actual** | Los grupos: cómo se ven, qué los distingue y cómo se perfilan |
+
+A lo largo de la página va a encontrar dos tipos de recuadro:
+
+::: {.callout-note}
+## Decisión tomada
+
+Una elección metodológica ya resuelta, con su justificación y su efecto sobre el
+análisis.
+:::
+
+::: {.callout-warning}
+## Decisión pendiente
+
+Un punto donde todavía no hay resolución. Los resultados que dependen de ella son
+**provisionales** y están marcados como tales donde aparecen.
+:::
+
+El [registro completo de decisiones](pipeline.qmd#registro-de-decisiones) está al
+final de la pestaña Pipeline.
+
+## Estado actual
+
+```{r}
+#| label: estado
+perdida <- leer_log("perdida_resumen")
+forma <- leer_log("forma")
+n_muestra <- forma$filas_despues[forma$etiqueta == "filtrar_muestra"]
+clusters <- leer("tabla4_clusters")
+n_sol <- leer("cfg")$CLUSTER_A_SACAR
+```
+
+El análisis se construye sobre la ENUSC 2025, quedándose con una persona por
+hogar (la seleccionada por el método de Kish): **`r n_fmt(n_muestra)` casos**.
+
+De esos, entran al modelo **`r n_fmt(perdida$n_despues)`**
+(`r pct_fmt(100 - perdida$pct_eliminados)` de la muestra). La pestaña Pipeline
+detalla quiénes quedan fuera y por qué.
+
+La solución que se reporta es la de **`r sub("clusters_", "", n_sol)` grupos**.
+Los grupos aún **no tienen nombre**: aparecen como `C1` a
+`r sub("clusters_", "C", n_sol)`. Ponerles nombre es una de las decisiones
+pendientes, y esta página es el insumo para tomarla.
+
+::: {.callout-warning}
+## Hay decisiones abiertas que afectan estos resultados
+
+Tres decisiones metodológicas siguen sin resolver, y una de ellas —cómo se
+convierten los índices continuos en categorías— **cambia la solución de grupos
+completa** cuando se resuelva.
+
+Todo lo que aparece en la pestaña *Solución actual* debe leerse como provisional.
+Sirve para caracterizar y discutir los grupos, no para citar cifras como
+definitivas.
+:::

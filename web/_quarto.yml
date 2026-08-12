@@ -1,0 +1,34 @@
+project:
+  type: website
+  output-dir: ../docs
+
+website:
+  title: "Miedo al delito · Tipologías"
+  description: "Tipologías de miedo al delito · ENUSC 2025 · Consultoría PNUD"
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Introducción
+      - href: pipeline.qmd
+        text: Pipeline
+      - href: univariados.qmd
+        text: Univariados
+      - href: solucion-actual.qmd
+        text: Solución actual
+  page-footer:
+    center: "Consultoría PNUD · Miedo al delito en Chile · ENUSC 2025"
+
+format:
+  html:
+    theme: [cosmo, custom.scss]
+    lang: es
+    toc: true
+    toc-title: "En esta página"
+    grid:
+      body-width: 1250px
+
+execute:
+  echo: false
+  warning: false
+  message: false

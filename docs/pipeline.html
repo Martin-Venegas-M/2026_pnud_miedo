@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.27">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>El pipeline – Miedo al delito · Tipologías</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-294506ca1d7cb857067173e8022ca1b0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Miedo al delito · Tipologías</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Introducción</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./pipeline.html" aria-current="page"> 
+<span class="menu-text">Pipeline</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./univariados.html"> 
+<span class="menu-text">Univariados</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./solucion-actual.html"> 
+<span class="menu-text">Solución actual</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#selección-de-la-muestra" id="toc-selección-de-la-muestra" class="nav-link active" data-scroll-target="#selección-de-la-muestra">1. Selección de la muestra</a></li>
+  <li><a href="#los-códigos-especiales-dónde-está-la-trampa" id="toc-los-códigos-especiales-dónde-está-la-trampa" class="nav-link" data-scroll-target="#los-códigos-especiales-dónde-está-la-trampa">2. Los códigos especiales: dónde está la trampa</a></li>
+  <li><a href="#construcción-de-los-índices" id="toc-construcción-de-los-índices" class="nav-link" data-scroll-target="#construcción-de-los-índices">3. Construcción de los índices</a>
+  <ul class="collapse">
+  <li><a href="#un-ejemplo-concreto" id="toc-un-ejemplo-concreto" class="nav-link" data-scroll-target="#un-ejemplo-concreto">Un ejemplo concreto</a></li>
+  </ul></li>
+  <li><a href="#categorización" id="toc-categorización" class="nav-link" data-scroll-target="#categorización">4. Categorización</a></li>
+  <li><a href="#preparación-del-modelo" id="toc-preparación-del-modelo" class="nav-link" data-scroll-target="#preparación-del-modelo">5. Preparación del modelo</a>
+  <ul class="collapse">
+  <li><a href="#quiénes-quedan-fuera-y-por-qué" id="toc-quiénes-quedan-fuera-y-por-qué" class="nav-link" data-scroll-target="#quiénes-quedan-fuera-y-por-qué">Quiénes quedan fuera, y por qué</a></li>
+  <li><a href="#la-exclusión-no-es-neutra" id="toc-la-exclusión-no-es-neutra" class="nav-link" data-scroll-target="#la-exclusión-no-es-neutra">La exclusión no es neutra</a></li>
+  </ul></li>
+  <li><a href="#el-modelo" id="toc-el-modelo" class="nav-link" data-scroll-target="#el-modelo">6. El modelo</a></li>
+  <li><a href="#registro-de-decisiones" id="toc-registro-de-decisiones" class="nav-link" data-scroll-target="#registro-de-decisiones">Registro de decisiones</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">El pipeline</h1>
+<p class="subtitle lead">Qué le pasa a los datos, paso a paso, y qué se decidió en cada punto</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Esta pestaña recorre el camino que hacen los datos, desde la base original de la ENUSC hasta los grupos finales.</p>
+<p>No están todos los pasos: están <strong>los que procesan los datos de una forma que afecta el resultado</strong>. En cada uno se explicita qué se decidió y qué efecto tuvo.</p>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    A[Base ENUSC 2025] --&gt; B[Selección de la muestra]
+    B --&gt; C[Construcción de índices]
+    C --&gt; D[Categorización]
+    D --&gt; E[Preparación del modelo]
+    E --&gt; F[MCA]
+    F --&gt; G[Clustering jerárquico]
+    G --&gt; H[Grupos]
+
+    style C fill:#1c1c1c,color:#fff
+    style D fill:#1c1c1c,color:#fff
+    style E fill:#1c1c1c,color:#fff
+</pre>
+</div>
+<p></p><figcaption> El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica.</figcaption> </figure><p></p>
+</div>
+</div>
+</div>
+<section id="selección-de-la-muestra" class="level1">
+<h1>1. Selección de la muestra</h1>
+<p>La base original de la ENUSC 2025 tiene <strong>160.378 registros</strong>. Se conserva <strong>una persona por hogar</strong> —la que la encuesta seleccionó por el método de Kish— porque las preguntas de percepción de inseguridad se le hacen solo a ella. Quedan <strong>55.796 casos</strong>.</p>
+<p>De esa base se seleccionan las variables de cuatro dimensiones:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimensión</th>
+<th>Qué mide</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>emper</code> — Emocional personal</td>
+<td>Cuán seguro/a se siente la persona en distintos lugares y situaciones</td>
+</tr>
+<tr class="even">
+<td><code>perper</code> — Perceptual personal</td>
+<td>Si cree que será víctima de un delito, y de cuál</td>
+</tr>
+<tr class="odd">
+<td><code>comper</code> — Comportamental personal</td>
+<td>Si dejó de hacer cosas por temor, y cuánto gasta en seguridad</td>
+</tr>
+<tr class="even">
+<td><code>comgen</code> — Comportamental general</td>
+<td>Qué medidas de seguridad tienen su vivienda y su barrio</td>
+</tr>
+</tbody>
+</table>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Decisión tomada · Se descarta la dimensión “perceptual general”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Existía una quinta dimensión (<code>pergen</code>), construida sobre la pregunta de si la delincuencia <em>aumentó</em> en el país, la comuna y el barrio.</p>
+<p>Se descartó porque mide una <strong>percepción sobre la delincuencia como fenómeno social</strong>, no el miedo de la persona respecto de sí misma. Mezclarla con las otras cuatro haría que los grupos se formaran, en parte, por opinión sobre el país y no por experiencia de miedo.</p>
+</div>
+</div>
+</section>
+<section id="los-códigos-especiales-dónde-está-la-trampa" class="level1">
+<h1>2. Los códigos especiales: dónde está la trampa</h1>
+<p>Antes de construir nada hay que entender cómo la ENUSC registra las respuestas que no son una alternativa sustantiva: “no aplica”, “no sabe”, “no responde”.</p>
+<p>Esto parece un detalle técnico y es <strong>el origen del problema que obligó a rehacer los análisis</strong>. La razón es que la encuesta usa <strong>dos formatos distintos</strong> para lo mismo, y confundirlos es fácil.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Como valor de la columna</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Como columna propia</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>En las baterías de ítems y en las preguntas de respuesta única, los códigos especiales son <strong>un valor más de la variable</strong>, junto a las alternativas sustantivas.</p>
+<p>Por ejemplo, en <em>“¿qué tan seguro/a se siente trasladándose en Metro?”</em>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Valor</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>Muy inseguro/a</td>
+</tr>
+<tr class="even">
+<td>2</td>
+<td>Inseguro/a</td>
+</tr>
+<tr class="odd">
+<td>3</td>
+<td>Seguro/a</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td>Muy seguro/a</td>
+</tr>
+<tr class="odd">
+<td><strong>85</strong></td>
+<td><strong>No aplica</strong> (p.&nbsp;ej., no hay Metro en su ciudad)</td>
+</tr>
+<tr class="even">
+<td><strong>88</strong></td>
+<td><strong>No sabe</strong></td>
+</tr>
+<tr class="odd">
+<td><strong>99</strong></td>
+<td><strong>No responde</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Acá la distinción es visible: el 85 y el 88 están en la misma columna que el 1 y el 2, y se ve que son de otra naturaleza.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>En las preguntas de “marque todas las que correspondan”, cada alternativa es su propia columna con 0 o 1. Y los códigos especiales <strong>también son columnas</strong>.</p>
+<p>Por ejemplo, en <em>“indique los elementos de seguridad que dispone su vivienda”</em>:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Columna</th>
+<th>Significado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>MEDIDAS_PERRO</code></td>
+<td>Tiene perro de protección</td>
+</tr>
+<tr class="even">
+<td><code>MEDIDAS_REJAS</code></td>
+<td>Tiene rejas</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+</tr>
+<tr class="even">
+<td><strong><code>MEDIDAS_NA</code></strong></td>
+<td><strong>No tiene ninguna medida</strong></td>
+</tr>
+<tr class="odd">
+<td><strong><code>MEDIDAS_NS</code></strong></td>
+<td><strong>No sabe</strong></td>
+</tr>
+<tr class="even">
+<td><strong><code>MEDIDAS_NR</code></strong></td>
+<td><strong>No responde</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Y acá está el problema.</strong> Esas tres últimas columnas son <em>estructuralmente idénticas</em>: mismo formato, mismo tipo, nombres parecidos. Pero la primera es una <strong>respuesta sustantiva</strong> —“no tengo ninguna medida”, que es información valiosa— y las otras dos son <strong>ausencia de respuesta</strong>.</p>
+<p>Nada en el dato distingue una cosa de la otra. Cualquier código que trate “las columnas especiales” de forma uniforme va a conflacionar una respuesta con dos no-respuestas.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Decisión tomada · “Ninguna medida” es una respuesta, no un dato faltante
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Quien marca “no tengo ninguna medida de seguridad” <strong>entra al análisis con 0% de adopción</strong>, que es lo que efectivamente respondió.</p>
+<p>En la dimensión de medidas de la vivienda quedan <strong>6.007 personas con 0% de adopción</strong>: casi todas son quienes marcaron explícitamente “ninguna medida”. Antes quedaban fuera del modelo. Ahora entran, en la categoría más baja de adopción — que es donde corresponde que estén.</p>
+<p>Este es el hallazgo que motivó rehacer los análisis.</p>
+</div>
+</div>
+</section>
+<section id="construcción-de-los-índices" class="level1">
+<h1>3. Construcción de los índices</h1>
+<p>Cada dimensión se resume en un <strong>índice de porcentaje</strong>: qué proporción de las situaciones que le aplican a esa persona recibieron la respuesta que nos interesa.</p>
+<section id="un-ejemplo-concreto" class="level2">
+<h2 class="anchored" data-anchor-id="un-ejemplo-concreto">Un ejemplo concreto</h2>
+<p>Tomemos la pregunta de inseguridad en el espacio público. Son 11 lugares, y a cada uno la persona responde en una escala de 4 puntos. Nos interesa la proporción de lugares donde se siente <strong>insegura</strong> (respuestas 1 o 2).</p>
+<p>Este es un caso real de la base:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Lugar</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Respuesta</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">¿Cuenta?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Trasladándose en su vehículo</td>
+<td style="text-align: left;">No aplica</td>
+<td style="text-align: left;">Sale del cálculo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Esperando transporte público</td>
+<td style="text-align: left;">Se siente inseguro/a</td>
+<td style="text-align: left;">Entra al cálculo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Trasladándose en buses o micros de transporte público</td>
+<td style="text-align: left;">Se siente inseguro/a</td>
+<td style="text-align: left;">Entra al cálculo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trasladándose en taxis o colectivos</td>
+<td style="text-align: left;">Se siente inseguro/a</td>
+<td style="text-align: left;">Entra al cálculo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Trasladándose en vehículos de aplicación, tales como Uber, Cabify, Didi o similar</td>
+<td style="text-align: left;">No aplica</td>
+<td style="text-align: left;">Sale del cálculo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Trasladándose en Metro, Biotrén, Merval o Metrotren</td>
+<td style="text-align: left;">Se siente inseguro/a</td>
+<td style="text-align: left;">Entra al cálculo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">En un restaurante, bar, pub, café, discoteque u otro lugar de recreación</td>
+<td style="text-align: left;">No aplica</td>
+<td style="text-align: left;">Sale del cálculo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">En un terminal de buses o ferrocarriles</td>
+<td style="text-align: left;">Se siente inseguro/a</td>
+<td style="text-align: left;">Entra al cálculo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">En un terminal aéreo o aeropuerto</td>
+<td style="text-align: left;">No aplica</td>
+<td style="text-align: left;">Sale del cálculo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">En centros comerciales o malls</td>
+<td style="text-align: left;">Se siente inseguro/a</td>
+<td style="text-align: left;">Entra al cálculo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">En una bencinera o servicentro</td>
+<td style="text-align: left;">No sabe</td>
+<td style="text-align: left;">Entra al cálculo</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>La cuenta queda así:</p>
+<ul>
+<li>De los 11 lugares, <strong>4 no le aplican</strong> (no usa ese transporte, no hay ese servicio donde vive). Salen del cálculo: no tiene sentido preguntarse si se siente inseguro en un lugar al que no va.</li>
+<li>Quedan <strong>7 lugares</strong> en el denominador. Entre ellos hay <strong>1</strong> donde respondió “no sabe” — ese sí se queda, y volvemos sobre eso más abajo.</li>
+<li>En <strong>6</strong> de esos 7 se siente inseguro/a.</li>
+</ul>
+<p><span class="math display">\[\text{índice} = \frac{6}{7} = 85,7\%\]</span></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Decisión tomada · “No aplica” sale del denominador; “no sabe” se queda
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Las dos son respuestas no sustantivas, y reciben trato distinto a propósito.</p>
+<p><strong>“No aplica” sale del cálculo.</strong> Si alguien no tiene Metro en su ciudad, ese ítem no informa nada sobre su miedo. Dejarlo dentro castigaría a quien vive en una ciudad sin Metro.</p>
+<p><strong>“No sabe” se queda en el denominador</strong>, y cuenta como “no se siente inseguro”. Es una convención deliberada: quien no puede decir que se siente inseguro en un lugar al que sí va, no se cuenta como que lo está.</p>
+<p>En el ejemplo la diferencia es visible: con “no sabe” adentro el índice es 85,7%; si saliera del denominador sería 100,0%.</p>
+<p>La convención es <strong>conservadora</strong>: ante la duda, no atribuye miedo. Y mantiene el índice dentro de su rango: un porcentaje sigue estando entre 0 y 100 pase lo que pase con la no-respuesta.</p>
+</div>
+</div>
+<p>Con el mismo procedimiento se construyen los seis índices del análisis: tres de sensación de inseguridad (espacio público, barrio, casa), uno de modificación de prácticas, y dos de medidas de seguridad (de la vivienda y del barrio).</p>
+</section>
+</section>
+<section id="categorización" class="level1">
+<h1>4. Categorización</h1>
+<p>El MCA —la técnica que agrupa a las personas— trabaja con <strong>variables categóricas</strong>, no con porcentajes continuos. Así que cada índice hay que convertirlo en categorías.</p>
+<p>Hoy se hace con <strong>terciles</strong>: se ordena a toda la muestra por su índice y se corta en tres grupos del mismo tamaño (baja, media, alta).</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Decisión pendiente · Cómo se cortan los índices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El método actual tiene un problema, y es el más consecuente de los que quedan abiertos.</p>
+<p>Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen <strong>pocos valores distintos y muchísimos empates</strong>: al construirse como “X de N situaciones”, con N chico, los valores posibles son pocos y miles de personas comparten exactamente el mismo.</p>
+<p>Cuando eso pasa, el corte <strong>parte los empates de forma arbitraria</strong>: personas con respuestas idénticas terminan en categorías distintas.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Valor del índice</th>
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Cae en la categoría</th>
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Personas</th>
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0,0%</td>
+<td>Categoría 1</td>
+<td>6.007</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>11,1%</td>
+<td>Categoría 1</td>
+<td>12.557</td>
+<td>← empate partido</td>
+</tr>
+<tr class="odd">
+<td>11,1%</td>
+<td>Categoría 2</td>
+<td>2.373</td>
+<td>← empate partido</td>
+</tr>
+<tr class="even">
+<td>22,2%</td>
+<td>Categoría 2</td>
+<td>14.867</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td>33,3%</td>
+<td>Categoría 2</td>
+<td>1.324</td>
+<td>← empate partido</td>
+</tr>
+<tr class="even">
+<td>33,3%</td>
+<td>Categoría 3</td>
+<td>8.782</td>
+<td>← empate partido</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Mire las dos filas marcadas: <strong>11,1%</strong> es una sola respuesta —tener exactamente una medida de seguridad de nueve posibles— y aparece en <strong>dos categorías distintas</strong>. 12.557 personas quedaron en la primera y 2.373 en la segunda, respondiendo exactamente lo mismo.</p>
+<p>Cuál le toca a cada una depende del <strong>orden en que aparece en la base</strong>, no de lo que respondió. Y no es el único valor al que le pasa: en esta variable el corte parte más de un empate.</p>
+<p>Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría las categorías, y con ellas los grupos.</p>
+<p><strong>Qué falta decidir:</strong> reemplazar los terciles por cortes definidos por criterio sustantivo —por ejemplo, “ninguna medida / una o dos / tres o más”— que no dependan de la distribución ni del orden de las filas.</p>
+<p>Mientras no se resuelva, <strong>la solución de grupos completa es provisional</strong>.</p>
+</div>
+</div>
+</section>
+<section id="preparación-del-modelo" class="level1">
+<h1>5. Preparación del modelo</h1>
+<p>El MCA necesita <strong>casos completos</strong>: una persona que no tenga valor en alguna de las ocho variables del modelo no puede entrar.</p>
+<p>De los <strong>55.796</strong> casos de la muestra, entran al modelo <strong>49.503</strong> y quedan fuera <strong>6.293</strong> (11,3%).</p>
+<section id="quiénes-quedan-fuera-y-por-qué" class="level2">
+<h2 class="anchored" data-anchor-id="quiénes-quedan-fuera-y-por-qué">Quiénes quedan fuera, y por qué</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Variable</th>
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Casos sin dato</th>
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">De los cuales, solo por esta variable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Expectativa de ser víctima</td>
+<td>2.461</td>
+<td>2.110</td>
+</tr>
+<tr class="even">
+<td>Medidas del barrio</td>
+<td>1.844</td>
+<td>1.441</td>
+</tr>
+<tr class="odd">
+<td>Gasto en seguridad</td>
+<td>1.412</td>
+<td>1.053</td>
+</tr>
+<tr class="even">
+<td>Inseguridad en el barrio</td>
+<td>1.032</td>
+<td>770</td>
+</tr>
+<tr class="odd">
+<td>Inseguridad en espacio público</td>
+<td>173</td>
+<td>83</td>
+</tr>
+<tr class="even">
+<td>Inseguridad en la casa</td>
+<td>112</td>
+<td>45</td>
+</tr>
+<tr class="odd">
+<td>Medidas de la vivienda</td>
+<td>105</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>Modificación de prácticas</td>
+<td>39</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>La segunda columna es la que importa para priorizar. La primera suma más que el total de eliminados, porque una misma persona puede tener vacías varias variables; la segunda cuenta a quienes <strong>solo</strong> esa variable deja fuera, o sea cuántos se recuperarían si se arreglara esa y ninguna otra.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Decisión tomada · Se separó “otro delito” de “no sabe qué delito”
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La variable de expectativa de victimización tenía una categoría que mezclaba dos cosas muy distintas: quien <strong>cree que será víctima de otro tipo de delito</strong> —una respuesta— y quien <strong>no sabe o no responde</strong> de qué delito.</p>
+<p>Se separaron. Ahora “otro tipo de delito” es una categoría propia y se conserva en el modelo.</p>
+<p>Es una corrección de validez más que de tamaño: recupera 78 casos. Pero elimina una confusión del mismo tipo que la que originó el rediseño — una respuesta sustantiva tratada como ausencia de dato.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Decisión pendiente · Quienes no responden la pregunta filtro
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La mayor fuente individual de exclusión es la pregunta que abre la dimensión perceptual: <em>“¿cree usted que será víctima de algún delito en los próximos doce meses?”</em>. Quienes responden “no sabe” o “no responde” quedan fuera.</p>
+<p>Descartarlos es defendible: es no-respuesta genuina en la pregunta que da acceso a toda la dimensión, y a diferencia del caso de “ninguna medida”, acá no hay ninguna respuesta sustantiva escondida.</p>
+<p>Pero nunca fue una decisión: se heredó del código anterior. Es la única exclusión de esta magnitud que no pasó por revisión explícita, y corresponde resolverla.</p>
+</div>
+</div>
+</section>
+<section id="la-exclusión-no-es-neutra" class="level2">
+<h2 class="anchored" data-anchor-id="la-exclusión-no-es-neutra">La exclusión no es neutra</h2>
+<p>Esto es lo que el análisis anterior no mostraba, y es lo que hay que mirar con más cuidado.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Nivel socioeconómico</th>
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Queda fuera</th>
+<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Entra al modelo</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Bajo</td>
+<td>52,36</td>
+<td>45,65</td>
+</tr>
+<tr class="even">
+<td>Medio</td>
+<td>35,50</td>
+<td>38,42</td>
+</tr>
+<tr class="odd">
+<td>Alto</td>
+<td>12,14</td>
+<td>15,93</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Los excluidos <strong>no son una muestra al azar</strong> de la población: hay más hogares de nivel socioeconómico bajo entre quienes quedan fuera que entre quienes entran.</p>
+<p>El sesgo es bastante menor que el del análisis anterior —donde se perdía casi la mitad de la muestra— pero <strong>va en la misma dirección</strong>. Es una limitación conocida del modelo y debe reportarse como tal.</p>
+</section>
+</section>
+<section id="el-modelo" class="level1">
+<h1>6. El modelo</h1>
+<p>Los últimos dos pasos son técnicos y no involucran decisiones sobre el dato.</p>
+<p><strong>Análisis de correspondencias múltiples (MCA).</strong> Toma las ocho variables categóricas y las resume en unas pocas dimensiones continuas, de modo que personas con respuestas parecidas queden cerca en ese espacio. Es el equivalente categórico de un análisis factorial.</p>
+<p><strong>Clustering jerárquico (HCPC).</strong> Sobre ese espacio, agrupa a las personas formando un árbol y luego lo corta en un número fijo de grupos. Se corre sin consolidación por k-means, lo que hace el resultado <strong>determinista</strong>: no depende de una semilla aleatoria y se reproduce exactamente entre corridas.</p>
+<p>Se calcularon las soluciones de 4, 5 y 6 grupos. La que se reporta es la de <strong>5</strong>.</p>
+</section>
+<section id="registro-de-decisiones" class="level1">
+<h1>Registro de decisiones</h1>
+<p>Todas las decisiones metodológicas del análisis, en un solo lugar.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Decisión</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Estado</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Resolución</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">"Ninguna medida" es respuesta, no dato faltante</td>
+<td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
+<td style="text-align: left;">Entra al análisis como 0% de adopción. Es el hallazgo que motivó rehacer los análisis.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Cómo se cortan los índices en categorías</td>
+<td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
+<td style="text-align: left;">Hoy son terciles, que parten empates de forma arbitraria. Falta definir cortes por criterio sustantivo.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">"Otro delito" separado de "no sabe qué delito"</td>
+<td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
+<td style="text-align: left;">Se separaron. "Otro delito" es categoría propia y se conserva en el modelo.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Qué lugares componen la dimensión de espacio público</td>
+<td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
+<td style="text-align: left;">La batería tiene 16 lugares y el índice usa 11. Falta decidir y documentar el criterio de exclusión.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">No-respuesta en los índices de desórdenes e incivilidades</td>
+<td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
+<td style="text-align: left;">Hoy produce valores fuera de la escala del índice. Falta alinearla con el criterio del resto.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">"No sabe" cuenta como no adhesión en los índices</td>
+<td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
+<td style="text-align: left;">Se queda en el denominador. Convención conservadora: ante la duda, no se atribuye miedo.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Quienes no responden la pregunta filtro de victimización</td>
+<td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
+<td style="text-align: left;">Se mantienen fuera del modelo. Es no-respuesta genuina, sin respuesta sustantiva escondida.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nombres de los grupos</td>
+<td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
+<td style="text-align: left;">Los grupos aparecen como C1 a C5. Ponerles nombre es tarea del equipo, y esta página es el insumo.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>Consultoría PNUD · Miedo al delito en Chile · ENUSC 2025</p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

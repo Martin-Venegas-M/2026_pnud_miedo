@@ -1,0 +1,199 @@
+---
+title: "Univariados"
+subtitle: "Distribuciones de todas las variables del análisis"
+---
+
+```{r}
+#| label: setup
+source("_setup.R")
+
+t_originales <- leer("tabla1_variables_originales")
+t_fuente <- leer("tabla2_variables_fuente")
+t_secundarias <- leer("tabla3_variables_secundarias")
+mapeo <- leer("mapeo_nombres")
+```
+
+Todas las tablas de esta página están **ponderadas** por el factor de expansión
+de la encuesta, así que los totales estiman población y no número de encuestas.
+
+::: {.callout-tip}
+## Las tres familias de variables
+
+**Originales** — las de la ENUSC tal como vienen, sin transformar.
+
+**Fuente** — las que construimos a partir de las originales: los índices de
+porcentaje y sus versiones en categorías.
+
+**Secundarias** — sexo, edad, nivel socioeconómico y demás, que no entran al
+modelo pero sirven para caracterizar los grupos.
+:::
+
+# Variables originales
+
+Las preguntas de la encuesta, agrupadas por dimensión. Son el insumo de todo lo
+demás.
+
+::: {.panel-tabset}
+
+```{r}
+#| label: originales
+#| results: asis
+
+nombres_dim <- c(
+    emper = "Emocional personal",
+    perper = "Perceptual personal",
+    comper = "Comportamental personal",
+    comgen = "Comportamental general"
+)
+
+for (d in names(nombres_dim)) {
+    cat("\n## ", nombres_dim[[d]], "\n\n")
+
+    sub <- t_originales |> filter(dimension == d)
+
+    for (p in unique(sub$pregunta)) {
+        cat("\n**", p, "**\n\n", sep = "")
+
+        tab <- sub |>
+            filter(pregunta == p) |>
+            transmute(
+                Ítem = categoria,
+                Respuesta = label,
+                Casos = frq,
+                `%` = valid.prc
+            )
+
+        cat(as.character(tabla(tab, alto = if (nrow(tab) > 24) "420px")), "\n\n")
+    }
+}
+```
+
+:::
+
+# Variables fuente
+
+Los índices que construimos. De cada uno hay dos versiones: el **porcentaje
+continuo**, que es el cálculo directo, y la **versión categorizada**, que es la
+que entra al modelo.
+
+::: {.callout-warning}
+## Provisional
+
+Las versiones **categorizadas** dependen de una decisión abierta —cómo se cortan
+los índices— y van a cambiar cuando se resuelva. Los porcentajes continuos no:
+esos ya están fijos.
+:::
+
+::: {.panel-tabset}
+
+```{r}
+#| label: fuente
+#| results: asis
+
+etiquetas_fuente <- c(
+    emper_ep_pct = "Inseguridad en el espacio público",
+    emper_barrio_pct = "Inseguridad en el barrio",
+    emper_casa_pct = "Inseguridad en la casa",
+    comper_pct = "Modificación de prácticas",
+    comgen_per_pct = "Medidas de seguridad de la vivienda",
+    comgen_com_pct = "Medidas de seguridad del barrio",
+    emper_ep_pct_rec_tercil = "Inseguridad en el espacio público (categorizada)",
+    emper_barrio_pct_rec_tercil = "Inseguridad en el barrio (categorizada)",
+    emper_casa_pct_rec_tercil = "Inseguridad en la casa (categorizada)",
+    comper_pct_rec_tercil = "Modificación de prácticas (categorizada)",
+    comgen_per_pct_rec_tercil = "Medidas de la vivienda (categorizada)",
+    comgen_com_pct_rec_tercil = "Medidas del barrio (categorizada)",
+    perper_delito = "Expectativa de ser víctima de delito",
+    comper_gasto = "Gasto en medidas de seguridad"
+)
+
+grupos <- list(
+    "Índices continuos" = grep("_pct$", names(etiquetas_fuente), value = TRUE),
+    "Índices categorizados" = grep("_tercil$", names(etiquetas_fuente), value = TRUE),
+    "Otras variables fuente" = c("perper_delito", "comper_gasto")
+)
+
+for (g in names(grupos)) {
+    cat("\n## ", g, "\n\n")
+
+    for (v in grupos[[g]]) {
+        sub <- t_fuente |> filter(variable == v)
+        if (nrow(sub) == 0) next
+
+        cat("\n**", etiquetas_fuente[[v]], "**\n\n", sep = "")
+
+        tab <- sub |>
+            transmute(
+                Categoría = dplyr::coalesce(label, as.character(val)),
+                Casos = frq,
+                `%` = valid.prc
+            )
+
+        cat(as.character(tabla(tab, alto = if (nrow(tab) > 20) "380px")), "\n\n")
+    }
+}
+```
+
+:::
+
+# Variables secundarias
+
+No entran al modelo. Se usan para describir los grupos una vez formados.
+
+```{r}
+#| label: secundarias
+#| results: asis
+
+etiquetas_sec <- c(
+    rph_sexo = "Sexo",
+    rph_nivel_rec = "Nivel educacional",
+    rph_edad_rec = "Tramo de edad",
+    rph_nse = "Nivel socioeconómico",
+    enc_region_rec = "Macrozona",
+    vp_dc = "Victimización personal (delitos contra las personas)",
+    vp_dv = "Victimización personal (delitos violentos)",
+    desordenes_ind_rec = "Percepción de desórdenes",
+    incivilidades_ind_rec = "Percepción de incivilidades",
+    info_exp_personal = "Se informa por experiencia personal",
+    info_otras_personas = "Se informa por otras personas",
+    info_rrss = "Se informa por redes sociales",
+    info_prensa = "Se informa por prensa",
+    info_tv = "Se informa por televisión"
+)
+
+for (v in names(etiquetas_sec)) {
+    sub <- t_secundarias |> filter(variable == v)
+    if (nrow(sub) == 0) next
+
+    cat("\n**", etiquetas_sec[[v]], "**\n\n", sep = "")
+
+    tab <- sub |>
+        transmute(
+            Categoría = dplyr::coalesce(label, as.character(val)),
+            Casos = frq,
+            `%` = valid.prc
+        )
+
+    cat(as.character(tabla(tab)), "\n\n")
+}
+```
+
+::: {.callout-warning}
+## Dos de estas variables son provisionales
+
+*Percepción de desórdenes* y *percepción de incivilidades* dependen de una
+decisión abierta sobre cómo tratar la no-respuesta, y su escala puede cambiar.
+:::
+
+# Correspondencia de nombres
+
+Las variables de la ENUSC se renombran al entrar al análisis, con un prefijo que
+indica a qué dimensión pertenecen. Esta tabla permite ir de un nombre al otro.
+
+```{r}
+#| label: mapeo
+mapeo |>
+    filter(original != nuestro) |>
+    transmute(`Nombre en la ENUSC` = original, `Nombre en el análisis` = nuestro) |>
+    tabla(alto = "500px")
+```

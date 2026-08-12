@@ -15,7 +15,8 @@ tar_option_set(
         "openxlsx",
         "scales",
         "FactoMineR",
-        "factoextra"
+        "factoextra",
+        "kableExtra"
     ),
     memory = "transient",
     garbage_collection = TRUE

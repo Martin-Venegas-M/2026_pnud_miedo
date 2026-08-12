@@ -1,0 +1,500 @@
+---
+title: "El pipeline"
+subtitle: "Qué le pasa a los datos, paso a paso, y qué se decidió en cada punto"
+---
+
+```{r}
+#| label: setup
+source("_setup.R")
+
+forma <- leer_log("forma")
+transiciones <- leer_log("transiciones")
+perdida_res <- leer_log("perdida_resumen")
+perdida_det <- leer_log("perdida_detalle")
+composicion <- leer_log("composicion_mca")
+cfg <- leer("cfg")
+```
+
+Esta pestaña recorre el camino que hacen los datos, desde la base original de la
+ENUSC hasta los grupos finales.
+
+No están todos los pasos: están **los que procesan los datos de una forma que
+afecta el resultado**. En cada uno se explicita qué se decidió y qué efecto tuvo.
+
+```{mermaid}
+%%| fig-cap: "El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica."
+flowchart TD
+    A[Base ENUSC 2025] --> B[Selección de la muestra]
+    B --> C[Construcción de índices]
+    C --> D[Categorización]
+    D --> E[Preparación del modelo]
+    E --> F[MCA]
+    F --> G[Clustering jerárquico]
+    G --> H[Grupos]
+
+    style C fill:#1c1c1c,color:#fff
+    style D fill:#1c1c1c,color:#fff
+    style E fill:#1c1c1c,color:#fff
+```
+
+# 1. Selección de la muestra
+
+```{r}
+#| label: seleccion
+sel <- forma |> filter(etiqueta %in% c("filtrar_muestra", "seleccionar_variables"))
+n_original <- sel$filas_antes[sel$etiqueta == "filtrar_muestra"]
+n_kish <- sel$filas_despues[sel$etiqueta == "filtrar_muestra"]
+```
+
+La base original de la ENUSC 2025 tiene **`r n_fmt(n_original)` registros**. Se
+conserva **una persona por hogar** —la que la encuesta seleccionó por el método
+de Kish— porque las preguntas de percepción de inseguridad se le hacen solo a
+ella. Quedan **`r n_fmt(n_kish)` casos**.
+
+De esa base se seleccionan las variables de cuatro dimensiones:
+
+| Dimensión | Qué mide |
+|---|---|
+| `emper` — Emocional personal | Cuán seguro/a se siente la persona en distintos lugares y situaciones |
+| `perper` — Perceptual personal | Si cree que será víctima de un delito, y de cuál |
+| `comper` — Comportamental personal | Si dejó de hacer cosas por temor, y cuánto gasta en seguridad |
+| `comgen` — Comportamental general | Qué medidas de seguridad tienen su vivienda y su barrio |
+
+::: {.callout-note}
+## Decisión tomada · Se descarta la dimensión "perceptual general"
+
+Existía una quinta dimensión (`pergen`), construida sobre la pregunta de si la
+delincuencia *aumentó* en el país, la comuna y el barrio.
+
+Se descartó porque mide una **percepción sobre la delincuencia como fenómeno
+social**, no el miedo de la persona respecto de sí misma. Mezclarla con las otras
+cuatro haría que los grupos se formaran, en parte, por opinión sobre el país y no
+por experiencia de miedo.
+:::
+
+# 2. Los códigos especiales: dónde está la trampa
+
+Antes de construir nada hay que entender cómo la ENUSC registra las respuestas
+que no son una alternativa sustantiva: "no aplica", "no sabe", "no responde".
+
+Esto parece un detalle técnico y es **el origen del problema que obligó a rehacer
+los análisis**. La razón es que la encuesta usa **dos formatos distintos** para lo
+mismo, y confundirlos es fácil.
+
+::: {.panel-tabset}
+## Como valor de la columna
+
+En las baterías de ítems y en las preguntas de respuesta única, los códigos
+especiales son **un valor más de la variable**, junto a las alternativas
+sustantivas.
+
+Por ejemplo, en *"¿qué tan seguro/a se siente trasladándose en Metro?"*:
+
+| Valor | Significado |
+|---|---|
+| 1 | Muy inseguro/a |
+| 2 | Inseguro/a |
+| 3 | Seguro/a |
+| 4 | Muy seguro/a |
+| **85** | **No aplica** (p. ej., no hay Metro en su ciudad) |
+| **88** | **No sabe** |
+| **99** | **No responde** |
+
+Acá la distinción es visible: el 85 y el 88 están en la misma columna que el 1 y
+el 2, y se ve que son de otra naturaleza.
+
+## Como columna propia
+
+En las preguntas de "marque todas las que correspondan", cada alternativa es su
+propia columna con 0 o 1. Y los códigos especiales **también son columnas**.
+
+Por ejemplo, en *"indique los elementos de seguridad que dispone su vivienda"*:
+
+| Columna | Significado |
+|---|---|
+| `MEDIDAS_PERRO` | Tiene perro de protección |
+| `MEDIDAS_REJAS` | Tiene rejas |
+| … | … |
+| **`MEDIDAS_NA`** | **No tiene ninguna medida** |
+| **`MEDIDAS_NS`** | **No sabe** |
+| **`MEDIDAS_NR`** | **No responde** |
+
+**Y acá está el problema.** Esas tres últimas columnas son *estructuralmente
+idénticas*: mismo formato, mismo tipo, nombres parecidos. Pero la primera es una
+**respuesta sustantiva** —"no tengo ninguna medida", que es información valiosa—
+y las otras dos son **ausencia de respuesta**.
+
+Nada en el dato distingue una cosa de la otra. Cualquier código que trate "las
+columnas especiales" de forma uniforme va a conflacionar una respuesta con dos
+no-respuestas.
+:::
+
+::: {.callout-note}
+## Decisión tomada · "Ninguna medida" es una respuesta, no un dato faltante
+
+Quien marca "no tengo ninguna medida de seguridad" **entra al análisis con 0% de
+adopción**, que es lo que efectivamente respondió.
+
+```{r}
+#| label: d1
+t_d1 <- transiciones |>
+    filter(
+        etiqueta == "no_respuesta_comgen",
+        variable_antes == "comgen_per_pct",
+        destino == 0
+    )
+
+# Si el log cambia de forma, esto tiene que fallar en vez de mostrar un NA.
+stopifnot("El log de transiciones ya no tiene una fila única para el 0%" = nrow(t_d1) == 1)
+n_cero <- t_d1$n
+```
+
+En la dimensión de medidas de la vivienda quedan **`r n_fmt(n_cero)` personas con
+0% de adopción**: casi todas son quienes marcaron explícitamente "ninguna medida".
+Antes quedaban fuera del modelo. Ahora entran, en la categoría más baja de
+adopción — que es donde corresponde que estén.
+
+Este es el hallazgo que motivó rehacer los análisis.
+:::
+
+# 3. Construcción de los índices
+
+Cada dimensión se resume en un **índice de porcentaje**: qué proporción de las
+situaciones que le aplican a esa persona recibieron la respuesta que nos
+interesa.
+
+## Un ejemplo concreto
+
+Tomemos la pregunta de inseguridad en el espacio público. Son 11 lugares, y a
+cada uno la persona responde en una escala de 4 puntos. Nos interesa la
+proporción de lugares donde se siente **insegura** (respuestas 1 o 2).
+
+Este es un caso real de la base:
+
+```{r}
+#| label: ejemplo
+zl <- haven::zap_labels
+datos_sel <- leer("datos_seleccionados")
+indices <- leer("datos_indices_pct")
+
+items <- paste0("emper_p_inseg_lugares_", 1:11)
+i <- 240 # caso escogido por tener mezcla de 85, 88 y respuestas sustantivas
+
+etiquetas <- vapply(
+    datos_sel[items],
+    \(col) sub("^.*[?]\\s*", "", attr(col, "label")),
+    character(1)
+)
+valores <- vapply(datos_sel[items], \(col) zl(col)[i], numeric(1))
+
+sentido <- dplyr::case_when(
+    valores %in% c(1, 2) ~ "Se siente inseguro/a",
+    valores %in% c(3, 4) ~ "Se siente seguro/a",
+    valores == 85 ~ "No aplica",
+    valores == 88 ~ "No sabe",
+    valores == 99 ~ "No responde"
+)
+cuenta <- dplyr::case_when(
+    valores == 85 ~ "Sale del cálculo",
+    TRUE ~ "Entra al cálculo"
+)
+
+tibble::tibble(
+    Lugar = unname(etiquetas),
+    Respuesta = sentido,
+    `¿Cuenta?` = cuenta
+) |>
+    tabla(alinear = c("l", "l", "l"))
+```
+
+```{r}
+#| label: ejemplo-aritmetica
+n_no_aplica <- sum(valores == 85)
+n_no_sabe <- sum(valores %in% c(88, 99))
+n_inseguro <- sum(valores %in% c(1, 2))
+denominador <- length(items) - n_no_aplica
+pct_calculado <- 100 * n_inseguro / denominador
+pct_pipeline <- indices$emper_ep_pct[i]
+
+# El ejemplo tiene que reproducir lo que hizo el pipeline, no aproximarlo.
+stopifnot(abs(pct_calculado - pct_pipeline) < 0.01)
+```
+
+La cuenta queda así:
+
+- De los 11 lugares, **`r n_no_aplica` no le aplican** (no usa ese transporte, no
+  hay ese servicio donde vive). Salen del cálculo: no tiene sentido preguntarse
+  si se siente inseguro en un lugar al que no va.
+- Quedan **`r denominador` lugares** en el denominador. Entre ellos hay
+  **`r n_no_sabe`** donde respondió "no sabe" — ese sí se queda, y volvemos sobre
+  eso más abajo.
+- En **`r n_inseguro`** de esos `r denominador` se siente inseguro/a.
+
+$$\text{índice} = \frac{`r n_inseguro`}{`r denominador`} = `r n_fmt(pct_pipeline, 1)`\%$$
+
+::: {.callout-note}
+## Decisión tomada · "No aplica" sale del denominador; "no sabe" se queda
+
+Las dos son respuestas no sustantivas, y reciben trato distinto a propósito.
+
+**"No aplica" sale del cálculo.** Si alguien no tiene Metro en su ciudad, ese
+ítem no informa nada sobre su miedo. Dejarlo dentro castigaría a quien vive en
+una ciudad sin Metro.
+
+**"No sabe" se queda en el denominador**, y cuenta como "no se siente inseguro".
+Es una convención deliberada: quien no puede decir que se siente inseguro en un
+lugar al que sí va, no se cuenta como que lo está.
+
+En el ejemplo la diferencia es visible: con "no sabe" adentro el índice es
+`r n_fmt(pct_pipeline, 1)`%; si saliera del denominador sería
+`r n_fmt(100 * n_inseguro / (denominador - n_no_sabe), 1)`%.
+
+La convención es **conservadora**: ante la duda, no atribuye miedo. Y mantiene el
+índice dentro de su rango: un porcentaje sigue estando entre 0 y 100 pase lo que
+pase con la no-respuesta.
+:::
+
+Con el mismo procedimiento se construyen los seis índices del análisis: tres de
+sensación de inseguridad (espacio público, barrio, casa), uno de modificación de
+prácticas, y dos de medidas de seguridad (de la vivienda y del barrio).
+
+# 4. Categorización
+
+El MCA —la técnica que agrupa a las personas— trabaja con **variables
+categóricas**, no con porcentajes continuos. Así que cada índice hay que
+convertirlo en categorías.
+
+Hoy se hace con **terciles**: se ordena a toda la muestra por su índice y se corta
+en tres grupos del mismo tamaño (baja, media, alta).
+
+::: {.callout-warning}
+## Decisión pendiente · Cómo se cortan los índices
+
+El método actual tiene un problema, y es el más consecuente de los que quedan
+abiertos.
+
+Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen
+**pocos valores distintos y muchísimos empates**: al construirse como
+"X de N situaciones", con N chico, los valores posibles son pocos y miles de
+personas comparten exactamente el mismo.
+
+Cuando eso pasa, el corte **parte los empates de forma arbitraria**: personas con
+respuestas idénticas terminan en categorías distintas.
+
+```{r}
+#| label: d2
+t_d2 <- transiciones |>
+    filter(etiqueta == "categorizado", variable_antes == "comgen_per_pct") |>
+    filter(!is.na(origen)) |>
+    arrange(origen, destino) |>
+    mutate(partido = n() > 1, .by = origen) |>
+    head(6)
+
+t_d2 |>
+    transmute(
+        `Valor del índice` = paste0(n_fmt(origen, 1), "%"),
+        `Cae en la categoría` = paste0("Categoría ", destino),
+        Personas = n,
+        ` ` = ifelse(partido, "← empate partido", "")
+    ) |>
+    tabla()
+```
+
+```{r}
+#| label: d2-cifras
+partidos <- t_d2 |> filter(partido) |> slice_head(n = 2)
+n_grupo_a <- partidos$n[1]
+n_grupo_b <- partidos$n[2]
+valor_partido <- n_fmt(partidos$origen[1], 1)
+```
+
+Mire las dos filas marcadas: **`r valor_partido`%** es una sola respuesta —tener
+exactamente una medida de seguridad de nueve posibles— y aparece en **dos
+categorías distintas**. `r n_fmt(n_grupo_a)` personas quedaron en la primera y
+`r n_fmt(n_grupo_b)` en la segunda, respondiendo exactamente lo mismo.
+
+Cuál le toca a cada una depende del **orden en que aparece en la base**, no de lo
+que respondió. Y no es el único valor al que le pasa: en esta variable el corte
+parte más de un empate.
+
+Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría
+las categorías, y con ellas los grupos.
+
+**Qué falta decidir:** reemplazar los terciles por cortes definidos por criterio
+sustantivo —por ejemplo, "ninguna medida / una o dos / tres o más"— que no dependan
+de la distribución ni del orden de las filas.
+
+Mientras no se resuelva, **la solución de grupos completa es provisional**.
+:::
+
+# 5. Preparación del modelo
+
+El MCA necesita **casos completos**: una persona que no tenga valor en alguna de
+las ocho variables del modelo no puede entrar.
+
+```{r}
+#| label: perdida
+n_entran <- perdida_res$n_antes
+n_quedan <- perdida_res$n_despues
+n_salen <- perdida_res$n_eliminados
+```
+
+De los **`r n_fmt(n_entran)`** casos de la muestra, entran al modelo
+**`r n_fmt(n_quedan)`** y quedan fuera **`r n_fmt(n_salen)`**
+(`r pct_fmt(perdida_res$pct_eliminados)`).
+
+## Quiénes quedan fuera, y por qué
+
+```{r}
+#| label: perdida-detalle
+etiquetas_vars <- c(
+    perper_delito = "Expectativa de ser víctima",
+    comgen_com_pct_rec_tercil = "Medidas del barrio",
+    comper_gasto = "Gasto en seguridad",
+    emper_barrio_pct_rec_tercil = "Inseguridad en el barrio",
+    emper_ep_pct_rec_tercil = "Inseguridad en espacio público",
+    emper_casa_pct_rec_tercil = "Inseguridad en la casa",
+    comgen_per_pct_rec_tercil = "Medidas de la vivienda",
+    comper_pct_rec_tercil = "Modificación de prácticas"
+)
+
+perdida_det |>
+    transmute(
+        Variable = dplyr::coalesce(etiquetas_vars[variable], variable),
+        `Casos sin dato` = n_na,
+        `De los cuales, solo por esta variable` = n_solo
+    ) |>
+    arrange(desc(`Casos sin dato`)) |>
+    tabla()
+```
+
+La segunda columna es la que importa para priorizar. La primera suma más que el
+total de eliminados, porque una misma persona puede tener vacías varias
+variables; la segunda cuenta a quienes **solo** esa variable deja fuera, o sea
+cuántos se recuperarían si se arreglara esa y ninguna otra.
+
+::: {.callout-note}
+## Decisión tomada · Se separó "otro delito" de "no sabe qué delito"
+
+La variable de expectativa de victimización tenía una categoría que mezclaba dos
+cosas muy distintas: quien **cree que será víctima de otro tipo de delito** —una
+respuesta— y quien **no sabe o no responde** de qué delito.
+
+Se separaron. Ahora "otro tipo de delito" es una categoría propia y se conserva
+en el modelo.
+
+Es una corrección de validez más que de tamaño: recupera 78 casos. Pero elimina
+una confusión del mismo tipo que la que originó el rediseño — una respuesta
+sustantiva tratada como ausencia de dato.
+:::
+
+::: {.callout-warning}
+## Decisión pendiente · Quienes no responden la pregunta filtro
+
+La mayor fuente individual de exclusión es la pregunta que abre la dimensión
+perceptual: *"¿cree usted que será víctima de algún delito en los próximos doce
+meses?"*. Quienes responden "no sabe" o "no responde" quedan fuera.
+
+Descartarlos es defendible: es no-respuesta genuina en la pregunta que da acceso
+a toda la dimensión, y a diferencia del caso de "ninguna medida", acá no hay
+ninguna respuesta sustantiva escondida.
+
+Pero nunca fue una decisión: se heredó del código anterior. Es la única exclusión
+de esta magnitud que no pasó por revisión explícita, y corresponde resolverla.
+:::
+
+## La exclusión no es neutra
+
+Esto es lo que el análisis anterior no mostraba, y es lo que hay que mirar con más
+cuidado.
+
+```{r}
+#| label: composicion
+etiquetas_nse <- c("1" = "Bajo", "2" = "Medio", "3" = "Alto")
+
+composicion |>
+    filter(variable == "rph_nse") |>
+    transmute(
+        `Nivel socioeconómico` = etiquetas_nse[as.character(valor)],
+        grupo = ifelse(grupo == "eliminado", "Queda fuera", "Entra al modelo"),
+        pct
+    ) |>
+    pivot_wider(names_from = grupo, values_from = pct) |>
+    tabla()
+```
+
+Los excluidos **no son una muestra al azar** de la población: hay más hogares de
+nivel socioeconómico bajo entre quienes quedan fuera que entre quienes entran.
+
+El sesgo es bastante menor que el del análisis anterior —donde se perdía casi la
+mitad de la muestra— pero **va en la misma dirección**. Es una limitación conocida
+del modelo y debe reportarse como tal.
+
+# 6. El modelo
+
+Los últimos dos pasos son técnicos y no involucran decisiones sobre el dato.
+
+**Análisis de correspondencias múltiples (MCA).** Toma las ocho variables
+categóricas y las resume en unas pocas dimensiones continuas, de modo que
+personas con respuestas parecidas queden cerca en ese espacio. Es el equivalente
+categórico de un análisis factorial.
+
+**Clustering jerárquico (HCPC).** Sobre ese espacio, agrupa a las personas
+formando un árbol y luego lo corta en un número fijo de grupos. Se corre sin
+consolidación por k-means, lo que hace el resultado **determinista**: no depende
+de una semilla aleatoria y se reproduce exactamente entre corridas.
+
+Se calcularon las soluciones de 4, 5 y 6 grupos. La que se reporta es la de
+**`r sub("clusters_", "", cfg$CLUSTER_A_SACAR)`**.
+
+# Registro de decisiones
+
+Todas las decisiones metodológicas del análisis, en un solo lugar.
+
+```{r}
+#| label: registro
+registro <- tibble::tribble(
+    ~Decisión, ~Estado, ~Resolución,
+    "\"Ninguna medida\" es respuesta, no dato faltante",
+    "Cerrada",
+    "Entra al análisis como 0% de adopción. Es el hallazgo que motivó rehacer los análisis.",
+
+    "Cómo se cortan los índices en categorías",
+    "Abierta",
+    "Hoy son terciles, que parten empates de forma arbitraria. Falta definir cortes por criterio sustantivo.",
+
+    "\"Otro delito\" separado de \"no sabe qué delito\"",
+    "Cerrada",
+    "Se separaron. \"Otro delito\" es categoría propia y se conserva en el modelo.",
+
+    "Qué lugares componen la dimensión de espacio público",
+    "Abierta",
+    "La batería tiene 16 lugares y el índice usa 11. Falta decidir y documentar el criterio de exclusión.",
+
+    "No-respuesta en los índices de desórdenes e incivilidades",
+    "Abierta",
+    "Hoy produce valores fuera de la escala del índice. Falta alinearla con el criterio del resto.",
+
+    "\"No sabe\" cuenta como no adhesión en los índices",
+    "Cerrada",
+    "Se queda en el denominador. Convención conservadora: ante la duda, no se atribuye miedo.",
+
+    "Quienes no responden la pregunta filtro de victimización",
+    "Cerrada",
+    "Se mantienen fuera del modelo. Es no-respuesta genuina, sin respuesta sustantiva escondida.",
+
+    "Nombres de los grupos",
+    "Abierta",
+    "Los grupos aparecen como C1 a C5. Ponerles nombre es tarea del equipo, y esta página es el insumo."
+)
+
+registro |>
+    mutate(
+        Estado = ifelse(
+            Estado == "Cerrada",
+            "<span class='estado-cerrada'>Cerrada</span>",
+            "<span class='estado-abierta'>Abierta</span>"
+        )
+    ) |>
+    tabla(escape = FALSE, alinear = c("l", "l", "l"))
+```
