@@ -16,6 +16,8 @@ website:
         text: Univariados
       - href: solucion-actual.qmd
         text: Solución actual
+      - href: glosario.qmd
+        text: Glosario
   page-footer:
     center: "Consultoría PNUD · Miedo al delito en Chile · ENUSC 2025"
 
