@@ -1256,9 +1256,128 @@ devuelve `HCPC`, no un error que tapar.
 
 ---
 
+### F5.4 Página de resultados
+
+**RESUELTA (11 de agosto de 2026).** Cambia el alcance: el sitio Quarto estaba
+declarado fuera de alcance en versiones anteriores de este plan. Entra ahora
+porque el propósito cambió.
+
+#### Propósito
+
+La página anterior comunicaba **resultados**. Esta comunica **resultados y las
+decisiones que los producen** — es el motivo por el que se hizo todo el refactor.
+Dos objetivos, en este orden:
+
+1. Explicitar las decisiones metodológicas tomadas.
+2. Declarar las que siguen faltando.
+
+**Audiencia:** el equipo de la consultoría. Gente con formación metodológica pero
+no técnica en R. Lo que importa es que quede claro **qué se hace y cómo afecta al
+análisis**, no cómo está implementado.
+
+#### Diseño
+
+Igual a la anterior (`theme: cosmo`, sin SCSS propio), con **un solo cambio**:
+el azul pasa a negro, para distinguirlas de un vistazo. Es un `custom.scss` que
+sobreescribe `$primary` sobre cosmo; no se toca nada más.
+
+Tablas con **`kableExtra` + tabsets**. **No** usar tablas interactivas: las de la
+página anterior no fueron bien recibidas.
+
+#### Pestañas
+
+**1. Introducción.** De dónde venimos: la consultoría parte en 2024, se rehace en
+2025, y un hallazgo obliga a rehacer los análisis (§1). Más una sección corta de
+cómo leer la página, porque el cambio de propósito respecto de la anterior no es
+evidente.
+
+**2. Pipeline.** El corazón. Recorre las etapas del DAG deteniéndose en las que
+procesan los datos de forma que afecte el análisis. En cada una, un cuadro
+(callout) con la decisión metodológica correspondiente.
+
+| Etapa | Qué se explica | Decisión |
+|---|---|---|
+| Selección | Kish, qué dimensiones entran | Por qué se descartó `pergen` |
+| Códigos especiales | La tipología A/B/C de §4.1: dónde vive el `85`/`88`/`99` | El hallazgo de §1, con "ninguna" como ejemplo |
+| Construcción de índices | Ejemplo trabajado, con la aritmética a la vista | D1, D6 |
+| Categorización | Cómo se pasa de % a categorías | **D2, abierta** |
+| Preparación del modelo | Quiénes salen y por qué | D3, D5, D7 y el sesgo del excluido |
+| MCA + HCPC | Qué hace cada uno, en términos no técnicos | — |
+
+**Ser pedagógico es requisito, no adorno.** Para los índices, usar un ejemplo
+trabajado con `emper_ep_pct`: una persona, once lugares, mostrando que los `85`
+("no aplica" — p. ej. no hay Metro en su ciudad) **salen del denominador**
+mientras que los `88`/`99` **se quedan** (D6). La aritmética explícita vuelve
+concreta en dos líneas una convención que en prosa cuesta un párrafo.
+
+Para "qué casos salen" no hay que calcular nada: `perdida_detalle.csv` ya tiene
+`n_na`/`n_solo` por variable y `composicion_mca.csv` el perfil de los excluidos.
+
+Cierra con un **registro de decisiones**: tabla D1–D7 con estado, qué cambió y
+qué falta. Los cuadros inline apuntan ahí. Si crece, es candidato a pestaña
+propia.
+
+**3. Univariados.** Tablas 1, 2 y 3 en tabsets: las originales agrupadas por
+dimensión (`emper`, `perper`, `comper`, `comgen`), el resto por familia según
+§4.0. Acompañar las originales con `mapeo_nombres`, para poder ir de
+`P_INSEG_LUGARES_1` a `emper_p_inseg_lugares_1` sin leer código.
+
+**4. Solución actual.** Biplot, mapa de clusters, ajuste global, `v-test` y los
+cruces.
+
+Los cruces van en **formato ancho**: una fila por categoría, una columna por
+cluster, con el % de esa categoría dentro de cada cluster (`tabla_cruces_ancho`).
+Es el formato con el que el equipo lee los perfiles.
+
+Dos advertencias que van en esta pestaña, no solo en el plan:
+
+- Todo es **provisional hasta D2**.
+- El **% de inercia no es comparable** entre variantes con distinto número de
+  categorías — que es justamente lo que D2 cambia.
+
+#### Regla de datos: el `.qmd` no calcula
+
+**Todo número que aparezca en la página nace en un target.** El `.qmd` solo lee
+(`tar_read()`), pivotea y formatea. Dos razones: ningún número del entregable
+nace en un chunk sin trazabilidad, y la página se regenera sola cuando D2
+aterrice.
+
+Insumos ya disponibles en el DAG:
+
+| Target | Para |
+|---|---|
+| `tabla1_variables_originales`, `tabla2_variables_fuente`, `tabla3_variables_secundarias` | Univariados |
+| `mapeo_nombres` | Univariados (originales) |
+| `tabla4_clusters` | Solución actual |
+| `tabla_cruces_ancho_clusters` | Cruces, formato ancho |
+| `tabla6_v_test` | `v-test`, ordenado por `lift_pp` |
+| `tabla_ajuste` | Ajuste global (inercia) |
+| `grafico_mca` | Biplot |
+| `grafico_mapa_clusters` | Mapa factorial |
+| `output/logs/perdida_detalle.csv`, `composicion_mca.csv`, `transiciones.csv` | Pipeline: pérdida, sesgo, flujos |
+
+#### Estado de los clusters
+
+Salen como `C1`–`C5`, sin nombres sustantivos. **Nombrarlos es una decisión del
+equipo que sigue pendiente**, heredada del repo viejo, y esta página es
+precisamente el insumo para tomarla: la tabla de cruces en formato ancho más el
+`v-test` son las dos piezas que permiten caracterizar cada grupo.
+
+#### Pendiente de mecánica
+
+- `kableExtra` no está instalado. Agregar a `renv` y a `tar_option_set()`.
+- El `.qmd` necesita apuntar al almacén de targets: Quarto renderiza desde el
+  directorio del `.qmd`, así que hay que fijar el `store` explícitamente.
+- Las rutas de `output/tables/2025` siguen hardcodeadas (defecto C, diferido).
+  La página no debería agregar rutas literales nuevas.
+
+---
+
 ### Fuera de alcance
 
-Sitio Quarto y estructura de carpetas por ola más allá de la existente.
+Estructura de carpetas por ola más allá de la existente.
+
+*(El sitio Quarto estaba acá y salió: ver F5.4.)*
 
 ---
 
@@ -1273,7 +1392,7 @@ Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**. F5.3 constr
 | 2 — Inventario | Hecha (`639877a`) |
 | 3 — Decisiones | **Parcial**: D1 y D3 aplicadas y verificadas (`e2144c4`). D6 y D7 cerradas sin cambio de código (D7 en `0184c33`, con composición verificada). **D2, D4 y D5 pendientes** |
 | 4 — Variantes | No iniciada |
-| 5 — Gold, testbed, `analysis/` | **F5.3 construida** (targets nuevos, 6 tablas + diseño muestral + mapeo de nombres, todas marcadas provisionales salvo la 1). F5.1 y F5.2 no iniciadas |
+| 5 — Gold, testbed, `analysis/` | **F5.3 construida** (6 tablas + diseño muestral + mapeo de nombres). **F5.4 especificada, insumos del DAG listos, página sin construir.** F5.1 y F5.2 no iniciadas |
 
 ### F5.3 — hallazgo al construirla
 
@@ -1287,8 +1406,11 @@ del parámetro.
 
 ### Próximo paso
 
-Ninguno fijado. Quedan pendientes: cerrar D2/D4/D5 (bloquea F5.2), y F5.1
-(gold/testbed).
+**Construir la página (F5.4).** Está especificada y todos sus insumos ya son
+targets. No depende de ninguna decisión abierta: sale con `C1`–`C5` y con las
+tablas marcadas como provisionales.
+
+Después: cerrar D2/D4/D5 (bloquea F5.2), y F5.1 (gold/testbed).
 
 ### Antes de continuar
 

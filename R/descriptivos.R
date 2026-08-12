@@ -340,9 +340,23 @@ escribir_tabla_descriptiva <- function(
     tabla,
     ruta_base,
     sheet = "datos",
-    motivo_provisional = NULL
+    motivo_provisional = NULL,
+    var_col = "variable"
 ) {
     tabla <- limpiar_tabla_descriptiva(tabla)
+
+    #* format_tab_excel() dibuja un borde separador por cada grupo de var_col.
+    #* No todas las tablas se agrupan por "variable": la de ajuste global se
+    #* agrupa por dimensión. Falla temprano y con nombre en vez de dejar el
+    #* stopifnot() de format_tab_excel() sin contexto.
+    if (!var_col %in% names(tabla)) {
+        stop(
+            "escribir_tabla_descriptiva(): la columna de agrupación '",
+            var_col,
+            "' no existe en la tabla. Columnas: ",
+            paste(names(tabla), collapse = ", ")
+        )
+    }
 
     dir.create(dirname(ruta_base), recursive = TRUE, showWarnings = FALSE)
 
@@ -360,7 +374,7 @@ escribir_tabla_descriptiva <- function(
         )
     }
 
-    wb <- format_tab_excel(tabla, wb = wb, sheet = sheet)
+    wb <- format_tab_excel(tabla, wb = wb, sheet = sheet, var_col = var_col)
     openxlsx::saveWorkbook(wb, paste0(ruta_base, ".xlsx"), overwrite = TRUE)
 
     tabla_csv <- tabla
@@ -374,4 +388,109 @@ escribir_tabla_descriptiva <- function(
     readr::write_csv(tabla_csv, paste0(ruta_base, ".csv"))
 
     invisible(paste0(ruta_base, ".xlsx"))
+}
+
+# ---------------------------------------------------------------------------
+# Insumos de la página (PLAN.md F5.4)
+#
+# Regla de F5.4: el `.qmd` no calcula. Todo número que aparezca en la página
+# nace acá, como target, para que sea trazable y para que la página se
+# regenere sola cuando cambie una decisión.
+# ---------------------------------------------------------------------------
+
+#' Tabla de ajuste global del MCA
+#'
+#' Inercia por dimensión, que `FactoMineR::MCA()` ya deja en `$eig` y que hasta
+#' ahora no se exponía.
+#'
+#' @section Advertencia de comparabilidad:
+#' El % de inercia **no es comparable entre variantes de recodificación con
+#' distinto número de categorías por variable**: más categorías producen más
+#' inercia total, mecánicamente. Importa acá porque D2 cambia exactamente eso.
+#' Para comparar variantes hace falta la corrección de Benzécri
+#' (`GDAtools::modif.rate()`), que hoy no está implementada. Mientras tanto,
+#' esta tabla describe la solución actual; no sirve para decir que una variante
+#' es mejor que otra.
+#'
+#' @param mca Objeto `MCA` (target `mca`).
+#' @param n_dim Cuántas dimensiones devolver.
+#' @return Un tibble: `dimension | autovalor | pct_varianza | pct_acumulado`.
+tabla_ajuste_global <- function(mca, n_dim = 10) {
+    eig <- mca$eig
+    n <- min(n_dim, nrow(eig))
+
+    tibble::tibble(
+        dimension = seq_len(n),
+        autovalor = eig[seq_len(n), 1],
+        pct_varianza = eig[seq_len(n), 2],
+        pct_acumulado = eig[seq_len(n), 3]
+    )
+}
+
+#' Mapa factorial de los clusters
+#'
+#' Reemplaza a `plot_cluster()`, que se eliminó en la Fase 1 por estar rota:
+#' recibía `obj` pero por dentro pasaba `clust`, que no existía en su entorno.
+#' `factoextra::fviz_cluster()` acepta el objeto `HCPC` directamente.
+#'
+#' @param hcpc Lista de objetos `HCPC` (target `hcpc`).
+#' @param clust_var `cfg$CLUSTER_A_SACAR`, de donde se deriva qué solución usar.
+#' @return Un objeto `ggplot`.
+grafico_clusters <- function(hcpc, clust_var) {
+    nclust <- stringr::str_extract(clust_var, "\\d+$")
+    h <- hcpc[[paste0("class", nclust)]]
+
+    factoextra::fviz_cluster(
+        h,
+        geom = "point",
+        ggtheme = ggplot2::theme_minimal(),
+        main = paste0("Mapa factorial de los ", nclust, " grupos")
+    )
+}
+
+#' Cruces variable x cluster en formato ancho (la "Tabla C")
+#'
+#' Reorganiza `tabla5_cruces_cluster` al formato con el que el equipo lee los
+#' perfiles: una fila por categoría, una columna por cluster, y el porcentaje
+#' de esa categoría **dentro** de cada cluster. Las columnas de cada bloque de
+#' variable suman 100.
+#'
+#' No recalcula nada: es un pivote de la tabla ya estimada con el diseño
+#' muestral. Vive como target y no como chunk del `.qmd` porque es una tabla
+#' del entregable, no una decoración.
+#'
+#' @section Celdas sin casos:
+#' `srvyr` no devuelve fila para una combinación categoría x cluster que no
+#' tiene ningún caso, así que el pivote deja `NA` ahí. En esta tabla eso
+#' significa inequívocamente **0%**: son porcentajes que suman 100 dentro de
+#' cada cluster, y una celda ausente es una categoría que nadie de ese cluster
+#' eligió. Se rellenan con `0` para no mostrar un blanco que se lea como "dato
+#' faltante" — que es justamente la confusión que originó este repo, acá al
+#' revés.
+#'
+#' La inconsistencia se ve cruda en los datos: para la misma categoría,
+#' `srvyr` devuelve `0` en un cluster y ninguna fila en otro. Son lo mismo.
+#'
+#' Ojo: este relleno es válido **solo** para esta tabla, por ser un cruce de
+#' proporciones dentro de cluster. No generalizarlo a otras.
+#'
+#' @param cruces `tabla5_cruces_cluster`.
+#' @param clust_var `cfg$CLUSTER_A_SACAR`, que nombra la columna de cluster.
+#' @return Un tibble ancho: `grupo_variable | variable | categoria | <un
+#'   cluster por columna>`.
+tabla_cruces_ancho <- function(cruces, clust_var) {
+    cruces |>
+        dplyr::select(
+            grupo_variable,
+            variable,
+            categoria = label,
+            dplyr::all_of(clust_var),
+            prop
+        ) |>
+        tidyr::pivot_wider(
+            names_from = dplyr::all_of(clust_var),
+            values_from = prop,
+            values_fill = 0
+        ) |>
+        dplyr::arrange(dplyr::desc(grupo_variable), variable)
 }

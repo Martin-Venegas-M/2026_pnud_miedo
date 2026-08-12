@@ -512,5 +512,42 @@ list(
             motivo_provisional = "D2 abierta (PLAN.md): la solución de cluster completa (y por lo tanto qué variables la distinguen) puede cambiar."
         ),
         format = "file"
-    )
+    ),
+
+    # -----------------------------------------------------------------------
+    # Insumos de la página (PLAN.md F5.4)
+    #
+    # El .qmd no calcula: todo número que aparezca en la página nace acá.
+    # -----------------------------------------------------------------------
+
+    tar_target(tabla_ajuste, tabla_ajuste_global(mca)),
+    tar_target(
+        tabla_ajuste_xlsx,
+        escribir_tabla_descriptiva(
+            tabla_ajuste,
+            "output/tables/2025/tabla_ajuste_global",
+            sheet = "ajuste_global",
+            var_col = "dimension",
+            motivo_provisional = "D2 abierta (PLAN.md): el % de inercia depende del número de categorías por variable, que es justamente lo que D2 cambia. Ver la advertencia de comparabilidad en tabla_ajuste_global()."
+        ),
+        format = "file"
+    ),
+
+    tar_target(
+        tabla_cruces_ancho_clusters,
+        tabla_cruces_ancho(tabla5_cruces_cluster, cfg$CLUSTER_A_SACAR)
+    ),
+    tar_target(
+        tabla_cruces_ancho_xlsx,
+        escribir_tabla_descriptiva(
+            tabla_cruces_ancho_clusters,
+            "output/tables/2025/tabla_cruces_ancho",
+            sheet = "cruces_ancho",
+            motivo_provisional = "D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes."
+        ),
+        format = "file"
+    ),
+
+    tar_target(grafico_mca, plot_mca(mca)),
+    tar_target(grafico_mapa_clusters, grafico_clusters(hcpc, cfg$CLUSTER_A_SACAR))
 )
