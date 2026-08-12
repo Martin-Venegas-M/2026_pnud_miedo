@@ -797,9 +797,35 @@ Afecta también a `desordenes_ind_rec` e `incivilidades_ind_rec`
 (`4_add_vars.R:43` y `:56`): 18.599 / 18.599 / 18.598 exactos, la firma del corte
 forzado.
 
+**El diagnóstico corregido (12-ago-2026):** no es "pocos valores distintos y
+muchos empates", es **asimetría de la distribución**. Un valor que reúne más
+gente de la que cabe en un tercil se parte, tenga la variable dos valores
+posibles o cuarenta.
+
+El caso extremo son los dos índices de **dos ítems** (`emper_barrio_pct`,
+`emper_casa_pct`), que solo pueden valer 0, 50 o 100 — ya vienen con las tres
+categorías que el modelo necesita:
+
+| `emper_casa_pct` | Baja | Media | Alta |
+|---|---|---|---|
+| **0** | 18.564 | 18.563 | **5.088** |
+| 50 | — | — | 8.556 |
+| 100 | — | — | 4.919 |
+
+Las 42.215 personas que respondieron sentirse seguras en su casa de día y de
+noche quedan repartidas en las tres categorías, y 5.088 de ellas terminan
+etiquetadas "Alta inseguridad en la casa". De esa categoría, el **27% respondió
+0% de inseguridad**. Ocurre porque tres cuartos de la muestra responden 0% en
+esta variable, de modo que ese único valor ocupa más de dos terciles.
+
+Corolario para la decisión: los índices con **más** valores posibles
+(`emper_ep_pct` tiene 43) están **menos** afectados, no más.
+
 **Recomendación:** cortes sustantivos fijos definidos a priori (ej. 0 medidas /
 1–2 / 3+). Interpretables, reproducibles, y compatibles con el 0% que introduce
-D1. `[ABIERTO]` — ver P4.
+D1. Para los dos índices de dos ítems basta con **usar el valor del índice como
+categoría**: 0, 50 y 100 son las tres categorías, sin necesidad de definir
+cortes. `[ABIERTO]` — ver P4.
 
 ---
 

@@ -351,13 +351,15 @@ en tres grupos del mismo tamaño (baja, media, alta).
 
 El método actual tiene un problema que debemos discutir.
 
-Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen
-**pocos valores distintos y muchos empates**: al construirse como
-"X de N situaciones", con N chico, los valores posibles son pocos y miles de
-personas comparten exactamente el mismo.
+Los terciles fuerzan tres grupos de igual tamaño. Pero los índices se construyen
+como "X de N situaciones", así que muchas personas comparten exactamente el mismo
+valor, y esos valores no se reparten de forma pareja: hay uno o dos donde se
+concentra buena parte de la muestra.
 
-Cuando eso pasa, el corte **parte los empates de forma arbitraria**: personas con
-respuestas idénticas terminan en categorías distintas.
+Cuando un valor reúne más gente de la que cabe en un tercil, el corte **lo parte
+de forma arbitraria**: personas con respuestas idénticas terminan en categorías
+distintas. No es un problema de precisión en el borde, es el corte pasando por
+el medio de un grupo de respuestas iguales.
 
 **Así se ve en el microdato.** Un caso por cada combinación de valor y categoría
 que existe en el índice de medidas de la vivienda:
@@ -437,9 +439,67 @@ posibles- hay `r n_fmt(n_grupo_a)` personas en una categoría y
 Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría
 las categorías, y con ellas los grupos.
 
-**Qué falta decidir:** reemplazar los terciles por un corte más sustantivo. 
+### El caso más extremo
+
+Dos de los seis índices se construyen con solo **dos ítems** (la persona responde
+por el día y por la noche), así que solo pueden valer 0, 50 o 100. Vienen con
+tres categorías naturales, exactamente las tres que necesita el modelo.
+
+El corte por terciles no las respeta.
+
+```{r}
+#| label: d2-casa
+casa <- transiciones |>
+    filter(etiqueta == "categorizado", variable_antes == "emper_casa_pct") |>
+    filter(!is.na(destino)) |>
+    arrange(origen, destino)
+
+casa |>
+    transmute(
+        `Valor del índice` = paste0(n_fmt(origen, 0), "%"),
+        `Cae en la categoría` = c(
+            "1 - Baja inseguridad en la casa",
+            "2 - Media inseguridad en la casa",
+            "3 - Alta inseguridad en la casa"
+        )[destino],
+        Personas = n
+    ) |>
+    tabla()
+```
+
+```{r}
+#| label: d2-casa-cifras
+cero <- casa |> filter(origen == 0)
+n_cero_total <- sum(cero$n)
+n_cero_en_alta <- cero$n[cero$destino == 3]
+n_alta_total <- sum(casa$n[casa$destino == 3])
+```
+
+Las **`r n_fmt(n_cero_total)` personas** que respondieron sentirse seguras en su
+casa, de día y de noche, quedan repartidas en las tres categorías. Entre ellas,
+**`r n_fmt(n_cero_en_alta)` aparecen clasificadas como "Alta inseguridad en la
+casa"**.
+
+Visto desde la categoría: de las `r n_fmt(n_alta_total)` personas etiquetadas
+"Alta inseguridad en la casa", el
+**`r n_fmt(100 * n_cero_en_alta / n_alta_total, 0)`%** respondió 0% de
+inseguridad.
+
+Acá no hay ambigüedad de borde que discutir: la respuesta y la etiqueta dicen lo
+contrario. Y pasa porque tres cuartos de la muestra responden 0% en esta
+variable, de modo que ese único valor ocupa más de dos terciles y desborda hasta
+el tercero.
+
+Conviene retener esto para la decisión: **el problema no es que la variable tenga
+poca variación, sino que la distribución sea despareja**. Los índices con más
+valores posibles (el de espacio público tiene 43) están menos afectados, no más.
+
+**Qué falta decidir:** reemplazar los terciles por un corte más sustantivo.
 Por ejemplo: "ninguna medida / una o dos / tres o más". Otra opción es categorizar
 la variable original "_pct", ya que justamente tiene 3 categorías.
+
+Para los dos índices de dos ítems, la segunda opción resuelve el problema sin
+necesidad de definir nada: 0, 50 y 100 **son** las tres categorías.
 
 Mientras no se resuelva, **la solución de grupos completa es provisional**.
 :::

@@ -689,8 +689,8 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>El método actual tiene un problema que debemos discutir.</p>
-<p>Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen <strong>pocos valores distintos y muchos empates</strong>: al construirse como “X de N situaciones”, con N chico, los valores posibles son pocos y miles de personas comparten exactamente el mismo.</p>
-<p>Cuando eso pasa, el corte <strong>parte los empates de forma arbitraria</strong>: personas con respuestas idénticas terminan en categorías distintas.</p>
+<p>Los terciles fuerzan tres grupos de igual tamaño. Pero los índices se construyen como “X de N situaciones”, así que muchas personas comparten exactamente el mismo valor, y esos valores no se reparten de forma pareja: hay uno o dos donde se concentra buena parte de la muestra.</p>
+<p>Cuando un valor reúne más gente de la que cabe en un tercil, el corte <strong>lo parte de forma arbitraria</strong>: personas con respuestas idénticas terminan en categorías distintas. No es un problema de precisión en el borde, es el corte pasando por el medio de un grupo de respuestas iguales.</p>
 <p><strong>Así se ve en el microdato.</strong> Un caso por cada combinación de valor y categoría que existe en el índice de medidas de la vivienda:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -837,8 +837,58 @@ window.Quarto = {
 </div>
 <p>En <strong>11,1%</strong> -tener exactamente una medida de seguridad de nueve posibles- hay 12.557 personas en una categoría y 2.373 en la otra, habiendo respondido lo mismo.</p>
 <p>Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría las categorías, y con ellas los grupos.</p>
+<section id="el-caso-más-extremo" class="level3">
+<h3 class="anchored" data-anchor-id="el-caso-más-extremo">El caso más extremo</h3>
+<p>Dos de los seis índices se construyen con solo <strong>dos ítems</strong> (la persona responde por el día y por la noche), así que solo pueden valer 0, 50 o 100. Vienen con tres categorías naturales, exactamente las tres que necesita el modelo.</p>
+<p>El corte por terciles no las respeta.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Valor del índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Cae en la categoría</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Personas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">0%</td>
+<td style="text-align: left;">1 - Baja inseguridad en la casa</td>
+<td style="text-align: right;">18.564</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">0%</td>
+<td style="text-align: left;">2 - Media inseguridad en la casa</td>
+<td style="text-align: right;">18.563</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">0%</td>
+<td style="text-align: left;">3 - Alta inseguridad en la casa</td>
+<td style="text-align: right;">5.088</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">50%</td>
+<td style="text-align: left;">3 - Alta inseguridad en la casa</td>
+<td style="text-align: right;">8.556</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">100%</td>
+<td style="text-align: left;">3 - Alta inseguridad en la casa</td>
+<td style="text-align: right;">4.919</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Las <strong>42.215 personas</strong> que respondieron sentirse seguras en su casa, de día y de noche, quedan repartidas en las tres categorías. Entre ellas, <strong>5.088 aparecen clasificadas como “Alta inseguridad en la casa”</strong>.</p>
+<p>Visto desde la categoría: de las 18.563 personas etiquetadas “Alta inseguridad en la casa”, el <strong>27%</strong> respondió 0% de inseguridad.</p>
+<p>Acá no hay ambigüedad de borde que discutir: la respuesta y la etiqueta dicen lo contrario. Y pasa porque tres cuartos de la muestra responden 0% en esta variable, de modo que ese único valor ocupa más de dos terciles y desborda hasta el tercero.</p>
+<p>Conviene retener esto para la decisión: <strong>el problema no es que la variable tenga poca variación, sino que la distribución sea despareja</strong>. Los índices con más valores posibles (el de espacio público tiene 43) están menos afectados, no más.</p>
 <p><strong>Qué falta decidir:</strong> reemplazar los terciles por un corte más sustantivo. Por ejemplo: “ninguna medida / una o dos / tres o más”. Otra opción es categorizar la variable original “_pct”, ya que justamente tiene 3 categorías.</p>
+<p>Para los dos índices de dos ítems, la segunda opción resuelve el problema sin necesidad de definir nada: 0, 50 y 100 <strong>son</strong> las tres categorías.</p>
 <p>Mientras no se resuelva, <strong>la solución de grupos completa es provisional</strong>.</p>
+</section>
 </div>
 </div>
 </section>
