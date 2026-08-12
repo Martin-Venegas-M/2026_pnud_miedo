@@ -942,7 +942,8 @@ no-respuesta parcial.
 
 ### D7 — La categoría 4 de `perper_delito` se descarta sin que nadie lo decidiera
 
-**`[ABIERTO]` — requiere decisión. Afecta al MCA. Vive en `preparar_datos_mca()`.**
+**RESUELTA (11 de agosto de 2026): se mantiene fuera del modelo (opción 1), sin
+cambio de código.** Vive en `preparar_datos_mca()`.
 
 Apareció al verificar D3. Con D3 ya aplicada, **la categoría 4 es de lejos la
 mayor fuente individual de pérdida del modelo: 2.389 casos**, más que el resto de
@@ -965,10 +966,35 @@ esta magnitud que no pasó por el criterio de §1.
 justificación, aunque la resolución sea "se mantiene". Si se decide conservarlas,
 hay que definir qué categoría se les asigna en el MCA, y eso sí es sustantivo.
 
+#### Composición del grupo excluido (verificada, corrida específicamente para D7)
+
+`reportar_composicion()` sobre los 2.389 casos de categoría 4 contra el resto de
+la muestra (`output/tables/2025/composicion_d7_categoria4.csv`). El sesgo es real
+y va en la misma dirección que el hallazgo de §1:
+
+| Variable | Categoría 4 | Resto | Diferencia |
+|---|---|---|---|
+| `rph_nse` = bajo | 57,6% | 45,9% | +11,7 pp |
+| `rph_nse` = alto | 8,0% | 15,8% | −7,8 pp |
+| `rph_edad_rec` = 60+ | 49,7% | 30,1% | +19,6 pp |
+| `rph_nivel_rec` = básica o menos | 27,4% | 16,5% | +10,9 pp |
+| `rph_nivel_rec` = terciaria | 25,4% | 40,7% | −15,3 pp |
+| `vp_dc` (victimización hogar) = 1 | 16,2% | 24,1% | −7,9 pp |
+
+Gente mayor, de NSE y educación más bajos, y con menos victimización previa del
+hogar, está sobrerrepresentada entre quienes no responden la pregunta filtro. No
+es aleatorio.
+
+**Decisión (11 de agosto de 2026, con el usuario): opción 1, se mantienen fuera
+del modelo. Sin cambio de código** — `preparar_datos_mca()` ya hace exactamente
+esto. La composición sesgada queda documentada como una limitación conocida del
+modelo, no como algo a corregir en esta fase.
+
 ### Criterio de aceptación de la Fase 3
 
 Las siete decisiones (D1–D7) tienen resolución escrita: adoptada o descartada, con
-motivo. D1 y D3 ya están aplicadas y verificadas; D6 cerrada sin cambio.
+motivo. D1 y D3 ya están aplicadas y verificadas; D6 y D7 cerradas sin cambio de
+código (D7 con composición verificada). Quedan D2, D4 y D5.
 `reportar_composicion()` corrido para cada decisión adoptada, y el log mostrando
 el delta de cada una.
 
@@ -1090,7 +1116,7 @@ Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**.
 | 0 — Preparación | Hecha (`b4eb745`) |
 | 1 — Refactor a targets | Hecha (`bcec3a5`), **con deuda**: 5 helpers sin portar (ver F5.2) |
 | 2 — Inventario | Hecha (`639877a`) |
-| 3 — Decisiones | **Parcial** (`e2144c4`): D1 y D3 aplicadas y verificadas. D6 cerrada sin cambio. **D2, D4, D5 y D7 pendientes** |
+| 3 — Decisiones | **Parcial**: D1 y D3 aplicadas y verificadas (`e2144c4`). D6 y D7 cerradas sin cambio de código (D7 resuelta 11-ago-2026, composición verificada). **D2, D4 y D5 pendientes** |
 | 4 — Variantes | No iniciada |
 | 5 — Gold, testbed, `analysis/` | No iniciada |
 
@@ -1109,9 +1135,11 @@ Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**.
    `spec_patrones` (decisiones Q1–Q3, ya resueltas). Se cierran con el criterio
    de la Fase 1: fidelidad al original, sin mejoras.
 
-3. **Cerrar las decisiones abiertas.** Son cuatro y todas son sustantivas:
-   **D2** (P4), **D4** (P2), **D5** (P5) y **D7**. D2 es la más consecuente: es el
-   bug de mayor impacto del proyecto y además bloquea `analysis/`.
+3. **Cerrar las decisiones abiertas.** Quedan tres: **D2** (P4), **D4** (P2) y
+   **D5** (P5). **D7 resuelta** (11-ago-2026): se mantiene fuera del modelo, sin
+   cambio de código; composición verificada en su propia sección. D2 sigue siendo
+   la más consecuente: es el bug de mayor impacto del proyecto y además bloquea
+   `analysis/`.
 
 4. **Verificación retroactiva de la Fase 1.** El criterio 8 (inventario de
    traducción) se agregó *después* de ejecutada la Fase 1, y el criterio 2–4
