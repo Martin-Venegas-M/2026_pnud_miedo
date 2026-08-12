@@ -376,5 +376,141 @@ list(
             "output/logs/composicion_mca.csv"
         },
         format = "file"
+    ),
+
+    # -- F5.3: tablas descriptivas --------------------------------------------
+    tar_target(
+        diseno_muestral,
+        construir_diseno_muestral(
+            datos_finales,
+            cfg$SVY_IDS,
+            cfg$SVY_STRATA,
+            cfg$SVY_WEIGHTS
+        )
+    ),
+
+    tar_target(
+        mapeo_nombres,
+        construir_mapeo_nombres(datos_muestra, datos_seleccionados)
+    ),
+    tar_target(
+        mapeo_nombres_csv,
+        {
+            dir.create("output/tables/2025", recursive = TRUE, showWarnings = FALSE)
+            readr::write_csv(mapeo_nombres, "output/tables/2025/mapeo_nombres.csv")
+            "output/tables/2025/mapeo_nombres.csv"
+        },
+        format = "file"
+    ),
+
+    tar_target(
+        vars_pct_continuas,
+        c(
+            "emper_ep_pct",
+            "emper_barrio_pct",
+            "emper_casa_pct",
+            "comper_pct",
+            "comgen_per_pct",
+            "comgen_com_pct"
+        )
+    ),
+
+    tar_target(
+        tabla1_variables_originales,
+        tabla_variables_originales(datos_seleccionados, spec_patrones)
+    ),
+    tar_target(
+        tabla1_variables_originales_xlsx,
+        escribir_tabla_descriptiva(
+            tabla1_variables_originales,
+            "output/tables/2025/tabla1_variables_originales",
+            sheet = "variables_originales",
+            motivo_provisional = NULL
+        ),
+        format = "file"
+    ),
+
+    tar_target(
+        tabla2_variables_fuente,
+        tabla_variables_fuente(
+            datos_finales,
+            vars_pct_continuas,
+            cfg$VARS_REC_TERCIL
+        )
+    ),
+    tar_target(
+        tabla2_variables_fuente_xlsx,
+        escribir_tabla_descriptiva(
+            tabla2_variables_fuente,
+            "output/tables/2025/tabla2_variables_fuente",
+            sheet = "variables_fuente",
+            motivo_provisional = "D2 abierta (PLAN.md): la categorización en terciles (ntile) de los índices _pct puede cambiar. Los índices _pct continuos no dependen de D2."
+        ),
+        format = "file"
+    ),
+
+    tar_target(
+        tabla3_variables_secundarias,
+        tabla_variables_secundarias(datos_finales, cfg$VARS_SEC)
+    ),
+    tar_target(
+        tabla3_variables_secundarias_xlsx,
+        escribir_tabla_descriptiva(
+            tabla3_variables_secundarias,
+            "output/tables/2025/tabla3_variables_secundarias",
+            sheet = "variables_secundarias",
+            motivo_provisional = "D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5."
+        ),
+        format = "file"
+    ),
+
+    tar_target(
+        tabla4_clusters,
+        tabla_clusters(datos_finales, cfg$N_CLASES)
+    ),
+    tar_target(
+        tabla4_clusters_xlsx,
+        escribir_tabla_descriptiva(
+            tabla4_clusters,
+            "output/tables/2025/tabla4_clusters",
+            sheet = "clusters",
+            motivo_provisional = "D2 abierta (PLAN.md): la solución de cluster depende de la categorización que entra al MCA."
+        ),
+        format = "file"
+    ),
+
+    tar_target(
+        tabla5_cruces_cluster,
+        tabla_cruces_cluster(
+            diseno_muestral,
+            cfg$CLUSTER_A_SACAR,
+            cfg$VARS_REC_TERCIL,
+            cfg$VARS_SEC
+        )
+    ),
+    tar_target(
+        tabla5_cruces_cluster_xlsx,
+        escribir_tabla_descriptiva(
+            tabla5_cruces_cluster,
+            "output/tables/2025/tabla5_cruces_cluster",
+            sheet = "cruces_cluster",
+            motivo_provisional = "D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes."
+        ),
+        format = "file"
+    ),
+
+    tar_target(
+        tabla6_v_test,
+        tabla_v_test(hcpc, cfg$CLUSTER_A_SACAR)
+    ),
+    tar_target(
+        tabla6_v_test_xlsx,
+        escribir_tabla_descriptiva(
+            tabla6_v_test,
+            "output/tables/2025/tabla6_v_test",
+            sheet = "v_test",
+            motivo_provisional = "D2 abierta (PLAN.md): la solución de cluster completa (y por lo tanto qué variables la distinguen) puede cambiar."
+        ),
+        format = "file"
     )
 )

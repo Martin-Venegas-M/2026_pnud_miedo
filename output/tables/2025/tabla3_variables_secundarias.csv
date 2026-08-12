@@ -1,0 +1,64 @@
+aviso_provisional,variable,val,label,frq,raw.prc,valid.prc,cum.prc
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_sexo,1,Hombre,6455760,48.55,48.55,48.55
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_sexo,2,Mujer,6840298,51.449999999999996,51.449999999999996,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_sexo,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nivel_rec,1,Educación básica o menos,1603714,12.06,12.06,12.06
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nivel_rec,2,Educación secundaria,5579658,41.959999999999994,41.959999999999994,54.03
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nivel_rec,3,Educación terciaria,6059687,45.58,45.58,99.6
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nivel_rec,96,Sin dato,32299,0.24,0.24,99.83999999999999
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nivel_rec,99,Nivel ignorado,20699,0.16,0.16,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nivel_rec,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_edad_rec,1,0 a 29 años,3315823,24.94,24.94,24.94
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_edad_rec,2,30 a 59 años,6892304,51.839999999999996,51.839999999999996,76.78
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_edad_rec,3,60 años o más,3087931,23.22,23.22,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_edad_rec,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nse,1,Bajo,5461080,41.07,41.07,41.07
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nse,2,Medio,5319436,40.01,40.01,81.08
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nse,3,Alto,2515542,18.92,18.92,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,rph_nse,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,enc_region_rec,1,Zona norte,1735968,13.059999999999999,13.059999999999999,13.059999999999999
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,enc_region_rec,2,Zona centro,4120618,30.990000000000002,30.990000000000002,44.05
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,enc_region_rec,3,Zona sur,859443,6.460000000000001,6.460000000000001,50.51
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,enc_region_rec,4,Zona metropolitana,6580029,49.49,49.49,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,enc_region_rec,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dc,0,No,9747402,73.31,73.31,73.31
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dc,1,Sí,3548656,26.69,26.69,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dc,96,Sin dato,0,0,0,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dc,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dv,0,No,12599850,94.76,94.76,94.76
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dv,1,Sí,696208,5.24,5.24,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dv,96,Sin dato,0,0,0,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,vp_dv,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,desordenes_ind_rec,1,Baja percepción de desordenes,3345381,25.16,25.16,25.16
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,desordenes_ind_rec,2,Media percepción de desordenes,4368708,32.86,32.86,58.02
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,desordenes_ind_rec,3,Alta percepción de desordenes,5581969,41.980000000000004,41.980000000000004,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,desordenes_ind_rec,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,incivilidades_ind_rec,1,Baja percepción de incivilidades,3293698,24.77,24.77,24.77
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,incivilidades_ind_rec,2,Media percepción de incivilidades,4517171,33.97,33.97,58.75
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,incivilidades_ind_rec,3,Alta percepción de incivilidades,5485189,41.25,41.25,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,incivilidades_ind_rec,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_exp_personal,0,No se informa por experiencia personal,10230366,76.94,76.94,76.94
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_exp_personal,1,Se informa por experiencia personal,3050525,22.939999999999998,22.939999999999998,99.89
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_exp_personal,88,No sabe,13789,0.1,0.1,99.99
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_exp_personal,99,No responde,1378,0.01,0.01,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_exp_personal,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_otras_personas,0,No se informa por otras personas,5636625,42.39,42.39,42.39
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_otras_personas,1,Se informa por otras personas,7644266,57.489999999999995,57.489999999999995,99.89
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_otras_personas,88,No sabe,13789,0.1,0.1,99.99
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_otras_personas,99,No responde,1378,0.01,0.01,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_otras_personas,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_rrss,0,No se informa por RRSS,5649284,42.49,42.49,42.49
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_rrss,1,Se informa por RRSS,7631608,57.4,57.4,99.89
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_rrss,88,No sabe,13789,0.1,0.1,99.99
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_rrss,99,No responde,1378,0.01,0.01,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_rrss,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_prensa,0,No se informa por prensa,5167184,38.86,38.86,38.86
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_prensa,1,Se informa por prensa,8113707,61.019999999999996,61.019999999999996,99.89
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_prensa,88,No sabe,13789,0.1,0.1,99.99
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_prensa,99,No responde,1378,0.01,0.01,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_prensa,NA,NA,0,0,NA,NA
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_tv,0,No se informa por noticias,6704142,50.42,50.42,50.42
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_tv,1,Se informa por noticias,6576750,49.46,49.46,99.89
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_tv,88,No sabe,13789,0.1,0.1,99.99
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_tv,99,No responde,1378,0.01,0.01,100
+D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5.,info_tv,NA,NA,0,0,NA,NA

@@ -11,7 +11,11 @@ construir_config <- function() {
         N_CLASES = 6:4,
 
         SVY_IDS = "conglomerado",
-        SVY_STRATA = "varstrat",
+        # "var_strat", no "varstrat": clean_names() en seleccionar_variables()
+        # convierte "VarStrat" a snake_case. El valor original nunca se había
+        # ejercido porque el objeto de diseño muestral no existía en el DAG
+        # hasta F5.3 (PLAN.md) — se corrige acá, al construirlo.
+        SVY_STRATA = "var_strat",
         SVY_WEIGHTS = "fact_pers_reg",
 
         VARS_REC_TERCIL = c(

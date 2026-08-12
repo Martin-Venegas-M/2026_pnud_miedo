@@ -147,7 +147,43 @@ Ver Fase 5.
 
 ---
 
-## 4. Tipología de las variables fuente
+## 4. Variables: nomenclatura y tipología
+
+### 4.0 Nomenclatura (fijada por el usuario, 11 de agosto de 2026)
+
+**Vocabulario único del proyecto.** Usarlo en código, tablas, logs y entregables.
+Cuatro familias:
+
+| Familia | Qué es | Ejemplos |
+|---|---|---|
+| **Variables originales** | Las de la ENUSC tal como vienen. Se nombran **igual que en `enusc_original`**, y en algún lugar se registra cómo las renombramos nosotros | `P_INSEG_LUGARES_1` → `emper_p_inseg_lugares_1` · `MEDIDAS_PERRO` → `comgen_medidas_perro` |
+| **Variables fuente** | Las **recodificaciones** de las originales: los índices `_pct`, sus versiones categorizadas, y las que se categorizan de otra forma | `emper_ep_pct`, `emper_ep_pct_rec_tercil`, `perper_delito`, `comper_gasto` |
+| **Variables de clusters** | Las que produce el modelo | `clusters_4`, `clusters_5`, `clusters_6` |
+| **Variables secundarias** | Sociodemográficas, victimización, índices de desórdenes e incivilidades, fuentes de información | `cfg$VARS_SEC` |
+
+> **Cambio de significado — leer con atención.** Hasta el 11 de agosto de 2026
+> este plan usaba "variables fuente" para las **crudas**. A partir de la
+> nomenclatura de arriba, esas son las **originales**, y "fuente" pasa a
+> significar lo contrario: las recodificadas. Todo el documento quedó
+> actualizado. Si aparece "fuente" con el sentido viejo en código o comentarios,
+> es residuo: corregirlo.
+>
+> El parámetro `source.cols` de `create_var_pct()` **no** es residuo: ahí
+> "source" es relativo ("las columnas de las que se construye esta"), no una
+> familia de variables.
+
+**Pendiente de nombre.** `cfg$VARS_REC_TERCIL` quedó mal llamado por partida
+doble: contiene `perper_delito` y `comper_gasto`, que no son terciles, y "REC"
+es vocabulario viejo. Es el subconjunto de variables fuente que entra al MCA.
+Renombrarlo (`VARS_FUENTE_MODELO` o similar) es tarea de código, no de este
+documento; hacerlo en un commit propio, sin mezclar con otro cambio.
+
+**Mapeo original → nuestro nombre.** Lo produce `seleccionar_variables()` con sus
+`rename_with()` por dimensión, así que es derivable del código y no hay que
+mantenerlo a mano. Debe exponerse como target y acompañar a las tablas de
+variables originales (§F5.3).
+
+### 4.1 Tipología de las variables originales
 
 **Base conceptual del refactor.** Verificada sobre la base original el 11 de
 agosto de 2026. El eje que la define es **dónde viven los códigos especiales**:
@@ -160,7 +196,7 @@ es exactamente el error de §1.
 | **B** — respuesta única | Una columna | **Como valor** | `P_EXPOS_DELITO` · `COSTOS_MEDIDAS` · `P_FUENTE_INFO_*` (3) |
 | **C** — marque todas | Una columna `0`/`1` por opción | **Como columna propia** | `MEDIDAS` (8 + 3) · `VECINOS_MEDIDAS` (7 + 3) · `P_DELITO_PRONOSTICO` (11 + 3) |
 
-### 4.1 Escalas y códigos por tipo (verificado)
+### 4.1.1 Escalas y códigos por tipo (verificado)
 
 | Batería | Tipo | Valores sustantivos | Códigos especiales presentes |
 |---|---|---|---|
@@ -182,7 +218,7 @@ son los del tipo C. Esto es lo que determina `success.cats`: `c(1, 2)` para
 `85`; `desordenes` e `incivilidades` no. Un tratamiento uniforme del tipo A debe
 declarar los códigos por batería, no asumirlos.
 
-### 4.2 `perper_delito` es tipo B **y** tipo C a la vez
+### 4.1.2 `perper_delito` es tipo B **y** tipo C a la vez
 
 `P_EXPOS_DELITO` es tipo B (valores `1,2,88,99`), pero `P_DELITO_PRONOSTICO_*`
 son 14 columnas dummy donde `__77`, `__88` y `__99` son **columnas**.
@@ -192,7 +228,7 @@ Esto **explica D3 mecánicamente**: la categoría 5 hace `if_any()` sobre
 código no puede distinguir "otro delito" de "no sabe" porque en los datos tienen
 exactamente la misma forma.
 
-### 4.3 Por qué el error de §1 era fácil de cometer
+### 4.1.3 Por qué el error de §1 era fácil de cometer
 
 En el tipo C, `_NA` ("ninguna"), `_NS` ("no sabe") y `_NR` ("no responde") son
 **columnas hermanas, estructuralmente indistinguibles**. Nada en el dato dice que
@@ -205,7 +241,7 @@ una respuesta con dos no-respuestas. Por eso la distinción tiene que estar
 Detalle práctico: la misma estructura usa **dos convenciones de nombre distintas**
 — `MEDIDAS_NA`/`_NS`/`_NR` frente a `P_DELITO_PRONOSTICO__77`/`__88`/`__99`.
 
-### 4.4 El `96` es un agujero latente en todas partes
+### 4.1.4 El `96` es un agujero latente en todas partes
 
 `96` ("Sin dato") está declarado en las etiquetas de casi todas las variables
 pero aparece en los datos muy rara vez (1 caso en `COSTOS_MEDIDAS`, 1 en
@@ -214,7 +250,7 @@ pero aparece en los datos muy rara vez (1 caso en `COSTOS_MEDIDAS`, 1 en
 **Regla:** todo `case_when` sobre códigos especiales debe contemplar `96`, o
 tener un `TRUE ~` explícito que no lo mande a `NA` por descuido.
 
-### 4.5 Cómo se usa esta tipología en el refactor
+### 4.1.5 Cómo se usa esta tipología en el refactor
 
 Se materializa como un target `spec_variables` que declara, por batería: tipo,
 ítems, códigos especiales presentes, cómo se expresan (valor o columna), valores
@@ -250,9 +286,11 @@ Crear `refactor/targets` desde `main`. Todo el trabajo de este plan va ahí.
   `tidyverse`, `haven`, `tidylog`, `rlang`, `sjlabelled`, `sjmisc`, `sjPlot`,
   `janitor`, `glue`, `srvyr`, `openxlsx`, `scales`, `FactoMineR`, `factoextra`.
 
-### F0.3 `[ABIERTO]` Qué se versiona ahora
+### F0.3 Qué se versiona ahora
 
-**Confirmar con el usuario antes de ejecutar la Fase 1.**
+**RESUELTA y ejecutada (Fase 0, `b4eb745`): se usa el almacén de targets.**
+Se conserva acá el razonamiento porque fija qué es el registro versionado del
+proyecto.
 
 La decisión previa fue versionar los `.RDS` del pipeline. Al mudarse al almacén
 de targets, esos archivos dejan de existir como tales: los objetos viven en
@@ -372,7 +410,7 @@ producir un nombre raro.
 | `construir_comper_gasto(datos)` | El `case_when` de gasto | `2_recode.R:112-120` | El `96` sin cubrir |
 | `marcar_no_respuesta_comgen(datos)` | Pasa a `NA` `comgen_*_pct` cuando la persona marcó NS/NR | `2_recode.R:154-167` | Tratamiento de NS/NR en opción múltiple |
 
-`spec` es la lista `rec_vars` de `2_recode.R:42-78` — el mapeo de columnas fuente
+`spec` es la lista `rec_vars` de `2_recode.R:42-78` — el mapeo de columnas originales
 por índice. Pasa a ser un target propio (`spec_indices`) porque **es donde vive
 D1 y D4**: cambiarla debe invalidar todo lo de abajo.
 
@@ -402,7 +440,7 @@ usar `replace(..., which(...), ...)` por consistencia con la regla #1.
 | Función | Qué hace | Reemplaza | Decisión |
 |---|---|---|---|
 | `categorizar_indices(datos, metodo)` | Convierte las `_pct` en categorías | `2_recode.R:169` | **D2** — `ntile` vs. cortes sustantivos |
-| `recuperar_codigos_especiales(datos, spec)` | Reimputa `85`/`88`/`99` en las variables recodificadas cuando todos los ítems fuente traían ese código | `2_recode.R:172-181`, `197-223` | Tratamiento de códigos especiales |
+| `recuperar_codigos_especiales(datos, spec)` | Reimputa `85`/`88`/`99` en las variables recodificadas cuando todos los ítems originales traían ese código | `2_recode.R:172-181`, `197-223` | Tratamiento de códigos especiales |
 | `etiquetar(datos, etiquetas)` | Aplica etiquetas de variable y de valor | `2_recode.R:238-256`, `4_add_vars.R:206-224` | — |
 
 `categorizar_indices()` recibe el método como **parámetro**, no lo hardcodea. Es
@@ -516,7 +554,7 @@ mucho menor.
 > pregunta filtro) y D3 solo toca la categoría 5. Ver D3.
 
 Antes de convertir un `n_solo` en predicción, **descomponer el `NA` por su
-origen**: qué categoría, qué columna fuente, qué código. Solo la parte que el
+origen**: qué categoría, qué columna original, qué código. Solo la parte que el
 arreglo efectivamente ataca cuenta.
 
 Lógica de referencia (ya probada contra los datos actuales: devuelve 49.431,
@@ -636,7 +674,7 @@ un error de traducción que encontrar.
 
 **Estado: ABIERTA.** Cierra formalmente el hallazgo de §1.
 
-Producir un CSV con una fila por combinación de variable fuente y código
+Producir un CSV con una fila por combinación de variable original y código
 especial: `variable | código | N | significado | decisión | justificación`.
 
 Cubrir `85`, `88`, `96`, `99` y `77` en todas las baterías. Los N están en el
@@ -775,7 +813,7 @@ La categoría 5 se define en `2_recode.R:103` y su etiqueta (`labels.R:50`) es
 otro tipo de delito**"*. Mezcla no-respuesta con respuesta sustantiva en un solo
 código, y `3_add_clust.R:73` manda las categorías 4 y 5 a `NA`.
 
-Lo importante: **las columnas fuente ya vienen separadas**. La categoría 5 se
+Lo importante: **las columnas originales ya vienen separadas**. La categoría 5 se
 arma con `perper_p_delito_pronostico_{77, 88, 99}`, donde `77` = "Otros delitos"
 (sustantivo) y `88`/`99` = no sabe / no responde. La mezcla la introduce nuestro
 `case_when`, no la ENUSC.
@@ -842,7 +880,8 @@ banco) no tienen razón conceptual evidente.
 
 ### D5 — `88`/`99` se comportan como "nunca ocurre"
 
-**Recomendada. NO afecta al MCA. Vive en `construir_indices_secundarios()`.**
+**`[ABIERTO]` — pendiente de P5 (cómo aplicar el criterio, no cuál). NO afecta al
+MCA. Vive en `construir_indices_secundarios()`.**
 
 `4_add_vars.R:42` y `:55` mandan `88`/`99` a `NA` y suman con
 `rowSums(..., na.rm = TRUE)`. El ítem desaparece del sumatorio en vez de
@@ -1076,8 +1115,8 @@ están; ninguna queda abierta.
 | **Q1** | **Portar los 5 helpers tal cual**, sin arreglarlos. `tab_frq1()` tiene advertencias conocidas en su docstring (el `separate()` que trunca "Robo en su vivienda" → "Robo "); se corrigen **después**, como paso separado y con el log mostrando el delta. Arreglar mientras se porta hace el port inverificable |
 | **Q2** | **Portar `tab_var_clust()` desde el repo viejo**, no escribirla. Al portarla aplicar §F1.6: tiene `path = cfg$PATH_TABLES` como argumento por defecto que lee un global (hacerlo explícito), y escribe Excel como efecto secundario con `save = TRUE`, lo que choca con la regla #7 |
 | **Q3** | **Extraer solo `patrones`** como target `spec_patrones`. **No** portar `validate.R` (708 líneas): `esperado()` es el accesor de `ESPERADO`, que es maquinaria de gold y corresponde a F5.1. Valores reales abajo |
-| **Q4** | **Sacar `pergen_pais`, `pergen_comuna` y `pergen_barrio` de `VARS_SEC`** en `R/config.R`. La dimensión pergen se descartó a propósito y no se necesita. No cambia ningún número (`reportar_composicion()` ya las saltaba). **Agregar además una aserción** de que todo nombre de `VARS_SEC` exista en los datos finales — cierra la clase entera de bug, aplicando el patrón declarado-vs-observado de §4.5 a `cfg` |
-| **Q5** | **Descartar la hoja de metadata** de `descriptivos.R`. No resucitar `gen_metadata_recode.R`. Su propósito —documentar qué variables fuente construyen cada índice— ya lo cumplen `spec_indices` y `spec_variables`, mejor estructurados; si la hoja se quiere de vuelta, se deriva de ahí |
+| **Q4** | **Sacar `pergen_pais`, `pergen_comuna` y `pergen_barrio` de `VARS_SEC`** en `R/config.R`. La dimensión pergen se descartó a propósito y no se necesita. No cambia ningún número (`reportar_composicion()` ya las saltaba). **Agregar además una aserción** de que todo nombre de `VARS_SEC` exista en los datos finales — cierra la clase entera de bug, aplicando el patrón declarado-vs-observado de §4.1.5 a `cfg` |
+| **Q5** | **Descartar la hoja de metadata** de `descriptivos.R`. No resucitar `gen_metadata_recode.R`. Su propósito —documentar qué variables originales construyen cada índice— ya lo cumplen `spec_indices` y `spec_variables`, mejor estructurados; si la hoja se quiere de vuelta, se deriva de ahí |
 
 Valores de `spec_patrones` para 2025, tomados del repo viejo (no inferidos):
 
@@ -1101,51 +1140,180 @@ No es trabajo de Fase 5: es Fase 1 incompleta, que no se notó porque ningún ta
 los consumía. **Se cierran con el criterio de la Fase 1, no con el de la Fase 5**:
 fidelidad al original, sin mejoras.
 
+### F5.3 Tablas descriptivas en el pipeline
+
+**CONSTRUIDA (12 de agosto de 2026).** Targets nuevos en `R/descriptivos.R` +
+`_targets.R`, no script en `analysis/`. Las 6 tablas + `diseno_muestral` +
+`mapeo_nombres`, con salida Excel + CSV en `output/tables/2025/`. Todas
+estampadas "provisional" salvo la tabla 1 (variables originales, no depende de
+ninguna decisión abierta) — cada una con el motivo específico (D2 y/o D5)
+en vez de un sello genérico.
+
+#### Por qué no espera a D2/D4
+
+`F5.2` manda esperar a D2/D4 para reparar `descriptivos.R`, porque ese script
+referencia `cfg$VARS_REC2`, que depende de cómo quede la categorización. Eso
+aplica a **reparar el script viejo**, no a construir targets nuevos sobre lo que
+ya existe.
+
+Y hay un argumento activo a favor de construirlas ya: **si son targets, adoptar
+D2 las regenera solas**, y se podrá ver su efecto sobre cada tabla descriptiva y
+no solo sobre los tamaños de cluster. Eso es exactamente el rendimiento por el
+que se adoptó `targets`.
+
+**Los outputs quedan provisionales hasta cerrar D2.** Estamparlo en el propio
+archivo generado, no solo acá.
+
+#### Qué tablas
+
+| # | Tabla | Contenido |
+|---|---|---|
+| 1 | **Variables originales** | Univariados de todas las columnas crudas, por dimensión (`emper`, `perper`, `comper`, `comgen`). Usa `spec_patrones` para separar enunciado de ítem |
+| 2 | **Variables fuente** | Univariados de los índices `_pct` continuos **y** de sus versiones categorizadas, más `perper_delito` y `comper_gasto` |
+| 3 | **Variables secundarias** | Univariados de `cfg$VARS_SEC` |
+| 4 | **Variables de clusters** | Distribución de `clusters_4`, `clusters_5`, `clusters_6` |
+| 5 | **Cruces × cluster** | Variables fuente × cluster y variables secundarias × cluster, con `cfg$CLUSTER_A_SACAR`. Dirección **`invert = FALSE`**: distribución de la variable *dentro de cada cluster*, que es el perfil pedido. La dirección invertida contesta otra pregunta y no se pide |
+| 6 | **`v-test`** | Perfil estadístico de cada cluster |
+
+**Plantilla para la tabla 1:** el reporte del repo viejo,
+`web/reportes_originales/tab_desc_initial_2025.html`. Está organizado por
+dimensión, con el enunciado de la pregunta como encabezado y columnas
+`categoria · val · label · frq · prc · cum.prc`. Replicar esa estructura. Ojo:
+tenía una sección "Perceptual - General" (`pergen`) que **ya no corresponde** —
+esa dimensión se descartó.
+
+**La tabla 1 debe acompañarse del mapeo original → nuestro nombre** (§4.0), para
+que se pueda ir de `P_INSEG_LUGARES_1` a `emper_p_inseg_lugares_1` sin leer
+código.
+
+#### `v-test` (tabla 6)
+
+`HCPC` ya lo calcula: está en `clust$desc.var` dentro del target `hcpc`, y hoy no
+se expone. Ordena las variables por cuánto distinguen a cada grupo, en vez de
+dejar comparar veinte tablas a ojo, así que es probablemente lo más útil para
+**caracterizar y nombrar** los clusters. Sacarlo es barato: es un target que lee
+algo ya computado.
+
+#### Regla: log ≠ tablas descriptivas
+
+`output/logs/marginales.csv` ya tiene la distribución de 42 variables en 13
+etapas. Tiene la misma forma que estas tablas y **no es lo mismo**:
+
+| | Log (`marginales.csv`) | Tablas descriptivas |
+|---|---|---|
+| Ponderación | **Sin ponderar** | **Ponderadas** (`fact_pers_reg`) |
+| Propósito | Diagnóstico: detectar que algo cambió | Reporte: estimar la población |
+| Audiencia | Quien desarrolla | PNUD |
+
+**Nunca se citan números del log en un entregable.** Sin esta regla escrita, en
+unos meses va a haber dos tablas de frecuencia de la misma variable con números
+distintos y nadie va a saber cuál reportar.
+
+#### Trampa: el objeto de diseño muestral
+
+Las tablas ponderadas necesitan un diseño muestral y **hoy no existe ninguno en
+el DAG**: `cfg$SVY_IDS`, `SVY_STRATA` y `SVY_WEIGHTS` están definidos y no los
+usa nadie. Hay que crear ese target.
+
+Es exactamente donde vivía el typo `stata = ` del repo viejo, que
+`as_survey_design()` se tragaba en silencio dejando el diseño **sin
+estratificar** (`descriptivos.R:43`). El target debe llevar una aserción de que
+los tres nombres existen en los datos, al estilo de `validar_vars_sec()`.
+
+#### Formato de salida
+
+- Targets `format = "file"`, para que el DAG los rastree. Si se escriben como
+  efecto secundario quedan fuera del grafo y se viola la regla #7.
+- Excel para el entregable, vía `format_tab_excel()` / `pre_proc_excel()`, en
+  `output/tables/2025/`.
+- **CSV al lado de cada Excel**, por coherencia con `F0.3`: el registro
+  versionado es texto, y un Excel no es diffeable.
+
+---
+
 ### Fuera de alcance
 
 Sitio Quarto y estructura de carpetas por ola más allá de la existente.
 
 ---
 
-## Estado de ejecución (11 de agosto de 2026)
+## Estado de ejecución (12 de agosto de 2026)
 
-Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**.
+Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**. F5.3 construida.
 
 | Fase | Estado |
 |---|---|
-| 0 — Preparación | Hecha (`b4eb745`) |
-| 1 — Refactor a targets | Hecha (`bcec3a5`), **con deuda**: 5 helpers sin portar (ver F5.2) |
+| 0 — Preparación | Hecha (`b4eb745`); `renv` sincronizado (`4b64cb6`) |
+| 1 — Refactor a targets | Hecha (`bcec3a5`); **deuda cerrada** en `406a27b` (5 helpers, `tab_var_clust()`, `spec_patrones`, `VARS_SEC`) |
 | 2 — Inventario | Hecha (`639877a`) |
-| 3 — Decisiones | **Parcial**: D1 y D3 aplicadas y verificadas (`e2144c4`). D6 y D7 cerradas sin cambio de código (D7 resuelta 11-ago-2026, composición verificada). **D2, D4 y D5 pendientes** |
+| 3 — Decisiones | **Parcial**: D1 y D3 aplicadas y verificadas (`e2144c4`). D6 y D7 cerradas sin cambio de código (D7 en `0184c33`, con composición verificada). **D2, D4 y D5 pendientes** |
 | 4 — Variantes | No iniciada |
-| 5 — Gold, testbed, `analysis/` | No iniciada |
+| 5 — Gold, testbed, `analysis/` | **F5.3 construida** (targets nuevos, 6 tablas + diseño muestral + mapeo de nombres, todas marcadas provisionales salvo la 1). F5.1 y F5.2 no iniciadas |
+
+### F5.3 — hallazgo al construirla
+
+**`cfg$SVY_STRATA` estaba mal, además del typo `stata`/`strata` ya conocido.**
+Valía `"varstrat"`; la columna real (post `clean_names()` sobre `VarStrat`) es
+`"var_strat"`, con guión bajo. Nunca se había ejercido porque el objeto de
+diseño muestral no existía en el DAG hasta ahora. Corregido en `R/config.R` al
+construir `construir_diseno_muestral()`. La aserción de columnas que pedía
+F5.3 lo habría atrapado igual, pero el valor ya estaba mal, no solo el nombre
+del parámetro.
+
+### Próximo paso
+
+Ninguno fijado. Quedan pendientes: cerrar D2/D4/D5 (bloquea F5.2), y F5.1
+(gold/testbed).
 
 ### Antes de continuar
 
-1. **Sincronizar `renv`.** Hoy `renv::status()` reporta el proyecto fuera de
-   sincronía. Un DAG con lockfile desincronizado no da las garantías por las que
-   se adoptó `targets`. Resolver antes de cualquier otra cosa.
+1. **No empezar F5.2** (reparar `analysis/`) todavía: depende de D2 y D4, que
+   siguen abiertas. F5.3 sí puede avanzar — ver su propia sección.
 
-2. **No empezar la reparación de `analysis/` todavía.** Por el propio
-   razonamiento de F5.2: sus vectores de variables dependen de D1–D4, y **D2 y D4
-   siguen abiertas**. Hacerlo ahora es hacerlo dos veces.
+2. **Cerrar las decisiones abiertas.** Quedan tres: **D2** (P4), **D4** (P2) y
+   **D5** (P5). D2 es la más consecuente: mayor impacto del proyecto y además
+   bloquea F5.2.
 
-   Lo que **sí** se puede hacer ya, porque no depende de ninguna decisión
-   sustantiva: la **deuda de Fase 1** — portar los 5 helpers, `tab_var_clust()` y
-   `spec_patrones` (decisiones Q1–Q3, ya resueltas). Se cierran con el criterio
-   de la Fase 1: fidelidad al original, sin mejoras.
-
-3. **Cerrar las decisiones abiertas.** Quedan tres: **D2** (P4), **D4** (P2) y
-   **D5** (P5). **D7 resuelta** (11-ago-2026): se mantiene fuera del modelo, sin
-   cambio de código; composición verificada en su propia sección. D2 sigue siendo
-   la más consecuente: es el bug de mayor impacto del proyecto y además bloquea
-   `analysis/`.
-
-4. **Verificación retroactiva de la Fase 1.** El criterio 8 (inventario de
-   traducción) se agregó *después* de ejecutada la Fase 1, y el criterio 2–4
-   solo se puede evaluar contra `54006c5` en el estado `bcec3a5`, antes de que D1
-   y D3 cambiaran los números a propósito. Si se quiere cerrar formalmente la
+3. **Verificación retroactiva de la Fase 1.** El criterio 8 (inventario de
+   traducción) se agregó *después* de ejecutada la Fase 1, y los criterios 2–4
+   solo se pueden evaluar contra `54006c5` en el estado `bcec3a5`, antes de que
+   D1 y D3 cambiaran los números a propósito. Si se quiere cerrar formalmente la
    Fase 1, hacerlo sobre ese commit.
+
+4. **`renv` con `snapshot.type: "all"`.** El lockfile pasó a tener 286 paquetes,
+   incluidos los que no usa el proyecto. La causa real del desajuste era que el
+   escáner de dependencias de `renv` no ve los paquetes declarados en
+   `tar_option_set(packages = )`. El arreglo más liviano es un `_dependencies.R`
+   que los liste, volviendo a `implicit`. Funciona como está; anotado para
+   cuando moleste.
+
+5. **Residuo:** `spec_patrones` (`R/tablas.R`) todavía declara `pergen`, que ya
+   no existe en ningún punto del pipeline. Inofensivo, inconsistente con Q4.
+
+### Gran pendiente — representatividad del conjunto excluido
+
+**Para cuando el pipeline esté funcional. No bloquea nada ahora.**
+
+Este repo existe porque el modelo anterior excluía un subconjunto sesgado de la
+muestra. D1 y D3 corrigieron parte, pero **el conjunto excluido sigue sesgado en
+la misma dirección**, ahora principalmente por D7:
+
+| `rph_nse` | Excluidos (6.293) | Incluidos (49.503) |
+|---|---|---|
+| Bajo | 52,4% | 45,7% |
+| Alto | 12,1% | 15,9% |
+
+Dos tareas cuando corresponda:
+
+1. **Ampliar `reportar_composicion()` a `cfg$VARS_SEC` completo.** Hoy
+   `output/logs/composicion_mca.csv` cubre solo cuatro variables (`rph_sexo`,
+   `rph_nse`, `vp_dc`, `vp_dv`). Faltan edad y educación, que en la porción de D7
+   mostraron las diferencias más grandes (+19,6 pp en 60 y más, +10,9 pp en
+   educación básica o menos).
+2. **Llevar la limitación al entregable.** El sesgo residual es menor que el
+   original pero va en la misma dirección, y es exactamente el hallazgo que
+   originó el reinicio. Tiene que aparecer como limitación conocida del modelo en
+   lo que reciba PNUD, no solo como nota en este plan.
 
 ---
 
