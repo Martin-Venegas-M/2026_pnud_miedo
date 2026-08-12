@@ -551,6 +551,28 @@ list(
     ),
     tar_target(v_test_todas, tabla_v_test_todas(hcpc, cfg$N_CLASES)),
     tar_target(no_respuesta_indices, medir_no_respuesta_indices(datos_finales)),
+    tar_target(
+        metadata_variables,
+        construir_metadata(
+            datos_seleccionados,
+            datos_finales,
+            mapeo_nombres,
+            spec_indices,
+            cfg$VARS_REC_TERCIL,
+            cfg$VARS_SEC,
+            cfg$N_CLASES
+        )
+    ),
+    tar_target(
+        metadata_xlsx,
+        escribir_tabla_descriptiva(
+            metadata_variables,
+            "output/tables/2025/metadata_variables",
+            sheet = "diccionario",
+            var_col = "familia"
+        ),
+        format = "file"
+    ),
     tar_target(datos_biplot_mca, datos_biplot(mca)),
     tar_target(mapa_clusters, datos_mapa_clusters(mca, hcpc, cfg$N_CLASES)),
     tar_target(

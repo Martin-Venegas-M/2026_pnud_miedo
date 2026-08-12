@@ -10,6 +10,8 @@ website:
     left:
       - href: index.qmd
         text: Introducción
+      - href: metadata.qmd
+        text: Metadata
       - href: pipeline.qmd
         text: Pipeline
       - href: univariados.qmd

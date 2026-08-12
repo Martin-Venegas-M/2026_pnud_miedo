@@ -77,6 +77,7 @@ datos_biplot_mca|stem|b987c1eaae18ade3|fd2835184e3481a9|3e28a772e9c67a8d|-118653
 v_test_todas|stem|9394f0d3b49ebfc0|fda4756a3bf2f438|b7faa101ea682f31|-1430680963||t20677.3509637089s|s7798b|7798|rds|local|vector|||0.065||
 mapa_clusters|stem|4267e4036861d96f|d784dbe771970327|f8f78c45d1531163|1646816683||t20677.3509748288s|s9364b|9364|rds|local|vector|||0.092||
 cruces_ancho_todas|stem|6d47cc154951652c|cb9946cd6c77440a|ee195fa4f650a6f6|-1421043070||t20677.3528964907s|s3271b|3271|rds|local|vector|||165.608||
+no_respuesta_indices|stem|246e4ebd91734822|a1a3ad99f7d77430|78c8d280894b552f|593377817||t20677.6716175838s|s303b|303|rds|local|vector|||0.032||
 tabla_marginal|function|dc586e9155eb4bc1
 reportar_perdida|function|5cf68237ce2f06ba
 filtrar_muestra|function|7d4bc70f6c95bf3f
@@ -94,11 +95,13 @@ format_tab_excel|function|8076251e03da1728
 tabla_v_test|function|28884642def10130
 recuperar_codigos_especiales|function|aca38cd8d75ad54c
 leer_enusc|function|443b5af361eab4d2
+categorias_de|function|6e70c74dea7b19d7
 construir_spec_etiquetas_indices|function|627936b429169827
 construir_config|function|15fa741405b856d2
 validar_vars_sec|function|e93112a403c4d833
 marcar_no_respuesta_comgen|function|100bef7593428519
 tabla_cruces_ancho|function|4a9e8e2a4a060207
+spec_secundarias|function|8f2649f2a6112cc1
 medir_no_respuesta_indices|function|fe492ebc701a0d9f
 archivo_enusc_original|function|6c66388b3a00e0d3
 escribir_log_csv|function|c36052d68e4e6592
@@ -112,9 +115,9 @@ datos_biplot|function|41122dca625cb384
 construir_spec_patrones|function|1ae8b6209c8c6edd
 construir_vars_info|function|002f4b69d7da535c
 pre_proc_excel|function|3874119ee14223ca
-construir_mapeo_nombres|function|981a2056e86f643f
-construir_soluciones|function|ea8ebde2c3af6948
 filtrar_casos_completos|function|431f60d6ef33023a
+construir_soluciones|function|ea8ebde2c3af6948
+construir_mapeo_nombres|function|981a2056e86f643f
 seleccionar_variables|function|492a7a24761ce6f3
 construir_diseno_muestral|function|b9bca0fa63835aba
 construir_spec_indices|function|0e2f3b860348a686
@@ -130,7 +133,9 @@ ajustar_hcpc_todos|function|8350ca9ec30c393e
 construir_indices_pct|function|733aa2b6bae4c20d
 escribir_tabla_descriptiva|function|a79a9e3a2ff4bad8
 tabla_v_test_todas|function|670e30bb3810fb59
+construir_metadata|function|49a8303ec162ca66
 tab_var_clust|function|9ed541e1231074f5
 tabla_cruces_cluster|function|f1a10540c2675735
 tabla_cruces_ancho_todas|function|da1fd446735b2de6
-no_respuesta_indices|stem|246e4ebd91734822|a1a3ad99f7d77430|78c8d280894b552f|593377817||t20677.6716175838s|s303b|303|rds|local|vector|||0.032||
+metadata_variables|stem|35482d4835a08121|dab58512e3464a68|2282d301426682db|1036112717||t20677.7047528134s|s8439b|8439|rds|local|vector|||0.081||
+metadata_xlsx|stem|b71a2818e6288150|5b2d76be881cd125|7e7a3a5b43bb4c94|253468547|output/tables/2025/metadata_variables.xlsx|t20677.7047565576s|s18185b|18185|file|local|vector|||0.227||

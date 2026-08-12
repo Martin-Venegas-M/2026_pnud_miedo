@@ -1328,6 +1328,11 @@ página anterior no fueron bien recibidas.
 
 #### Pestañas
 
+**Metadata.** El diccionario de variables: qué existe, qué se usa y de qué se
+construye cada cosa. Se genera desde el target `metadata_variables`, que invierte
+`spec_indices` en vez de mantener una lista a mano. Reemplaza al
+`metadata_recode.xlsx` del repo viejo que F5.2/Q5 decidió no portar.
+
 **1. Introducción.** De dónde venimos: la consultoría parte en 2024, se rehace en
 2025, y un hallazgo obliga a rehacer los análisis (§1). Más una sección corta de
 cómo leer la página, porque el cambio de propósito respecto de la anterior no es
@@ -1404,6 +1409,8 @@ Insumos ya disponibles en el DAG:
 |---|---|
 | `tabla1_variables_originales`, `tabla2_variables_fuente`, `tabla3_variables_secundarias` | Univariados |
 | `mapeo_nombres` | Univariados (originales) |
+| `metadata_variables` | Pestaña Metadata: diccionario completo |
+| `no_respuesta_indices` | Pipeline, paso 7 |
 | `tabla4_clusters` | Solución actual |
 | `tabla_cruces_ancho_clusters` | Cruces de la solución reportada, formato ancho |
 | `cruces_ancho_todas` | Cruces de las tres soluciones |

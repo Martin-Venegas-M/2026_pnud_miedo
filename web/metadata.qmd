@@ -1,0 +1,249 @@
+---
+title: "Metadata"
+subtitle: "Qué variables existen, cuáles se usan y cómo se construye cada una"
+---
+
+```{r}
+#| label: setup
+source("_setup.R")
+
+meta <- leer("metadata_variables")
+```
+
+Esta página es el diccionario de variables del análisis. Responde tres preguntas
+que antes había que contestar leyendo código: **qué variables existen**, **cuáles
+se usan** y **de qué se construye cada una**.
+
+Se genera automáticamente desde la definición del pipeline y desde las etiquetas
+de la base, así que no puede quedar desactualizada respecto de lo que el código
+hace realmente.
+
+# Cómo se encadenan
+
+Las variables del análisis se construyen en cascada. Cada familia se arma a
+partir de la anterior:
+
+```{mermaid}
+flowchart LR
+    A[Variables originales<br/>de la ENUSC] --> B[Índices<br/>_pct]
+    B --> C[Categorizadas<br/>_rec_tercil]
+    C --> D[Clusters]
+    A --> E[Secundarias]
+    E -.describe.-> D
+
+    style A fill:#f4f4f2
+    style B fill:#f4f4f2
+    style C fill:#1c1c1c,color:#fff
+    style D fill:#1c1c1c,color:#fff
+    style E fill:#f4f4f2
+```
+
+En negro, las que entran al modelo. Las secundarias no lo alimentan: se usan para
+describir los grupos una vez formados.
+
+```{r}
+#| label: resumen
+etiquetas_familia <- c(
+    "Original" = "Originales de la ENUSC",
+    "Fuente: índice" = "Índices (_pct)",
+    "Fuente: categorizada" = "Categorizadas (entran al modelo)",
+    "Cluster" = "Clusters",
+    "Secundaria" = "Secundarias"
+)
+
+meta |>
+    summarise(n = n(), .by = familia) |>
+    mutate(
+        Familia = etiquetas_familia[familia],
+        orden = match(familia, names(etiquetas_familia))
+    ) |>
+    arrange(orden) |>
+    transmute(Familia, `N de variables` = n) |>
+    tabla()
+```
+
+# 1. Variables originales
+
+Las que vienen de la ENUSC, sin transformar. La columna **uso** dice qué se hace
+con cada una: si alimenta algún índice, si se usa directamente como variable
+secundaria, o si no se usa.
+
+```{r}
+#| label: originales-resumen
+originales <- meta |> filter(familia == "Original")
+n_usadas <- sum(originales$uso != "No se usa")
+n_sin_usar <- sum(originales$uso == "No se usa")
+```
+
+De las **`r n_fmt(nrow(originales))` variables** que se traen de la encuesta,
+**`r n_fmt(n_usadas)` se usan** en el análisis y `r n_fmt(n_sin_usar)` no.
+
+::: {.callout-note}
+## Por qué hay variables que no se usan
+
+Se traen de la base más columnas de las que el análisis necesita, por dos
+motivos.
+
+Algunas son ítems de una batería que quedaron fuera de su índice por decisión
+metodológica, como los cinco lugares que no se consideran espacio público
+(ver el [paso 3 del pipeline](pipeline.html#construcción-de-los-índices)).
+
+Otras son variables sociodemográficas y de victimización que la ENUSC trae y que
+no forman parte de este análisis, pero que quedan disponibles por si se quiere
+ampliar la caracterización de los grupos.
+:::
+
+::: {.panel-tabset}
+
+```{r}
+#| label: originales
+#| results: asis
+
+dimensiones <- c(
+    emper = "Emocional personal",
+    perper = "Perceptual personal",
+    comper = "Comportamental personal",
+    comgen = "Comportamental general"
+)
+
+for (d in names(dimensiones)) {
+    cat("\n## ", dimensiones[[d]], "\n\n")
+
+    tab <- originales |>
+        filter(grepl(paste0("^", d, "_"), variable)) |>
+        transmute(
+            `Nombre ENUSC` = original,
+            `Nombre análisis` = variable,
+            Etiqueta = etiqueta,
+            Categorías = categorias,
+            Uso = uso
+        )
+
+    cat(as.character(tabla(tab, alto = "520px", ancho = TRUE)), "\n\n")
+}
+
+cat("\n## Sociodemográficas y otras\n\n")
+otras <- originales |>
+    filter(!grepl("^(emper|perper|comper|comgen)_", variable)) |>
+    transmute(
+        `Nombre ENUSC` = original,
+        `Nombre análisis` = variable,
+        Etiqueta = etiqueta,
+        Categorías = categorias,
+        Uso = uso
+    )
+cat(as.character(tabla(otras, alto = "520px", ancho = TRUE)), "\n\n")
+```
+
+:::
+
+# 2. Índices
+
+El primer nivel de construcción. Cada índice resume una batería de variables
+originales en un porcentaje. Son continuos, así que todavía no pueden entrar al
+modelo.
+
+```{r}
+#| label: indices
+meta |>
+    filter(familia == "Fuente: índice") |>
+    transmute(
+        Variable = variable,
+        Etiqueta = etiqueta,
+        Rango = categorias,
+        `Se construye desde` = construida_desde
+    ) |>
+    tabla(ancho = TRUE)
+```
+
+# 3. Variables categorizadas
+
+El segundo nivel: los índices convertidos en categorías, más dos variables que se
+categorizan directamente sin pasar por un porcentaje (`perper_delito` y
+`comper_gasto`).
+
+**Estas ocho son las que entran al modelo.** No hay otras.
+
+```{r}
+#| label: categorizadas
+meta |>
+    filter(familia == "Fuente: categorizada") |>
+    transmute(
+        Variable = variable,
+        Etiqueta = etiqueta,
+        Categorías = categorias,
+        `Se construye desde` = construida_desde
+    ) |>
+    tabla(ancho = TRUE)
+```
+
+::: {.callout-warning}
+## Provisional
+
+La forma de estas categorías depende de una decisión abierta sobre cómo se cortan
+los índices (ver el [paso 4](pipeline.html#categorización)). Los nombres de las
+variables y su origen no cambian; sus categorías sí pueden cambiar.
+:::
+
+# 4. Clusters
+
+El resultado del modelo. Una variable por cada solución calculada.
+
+```{r}
+#| label: clusters
+meta |>
+    filter(familia == "Cluster") |>
+    transmute(
+        Variable = variable,
+        Etiqueta = etiqueta,
+        Categorías = categorias,
+        `Se construye desde` = construida_desde
+    ) |>
+    tabla(ancho = TRUE)
+```
+
+# 5. Variables secundarias
+
+No entran al modelo. Se usan para describir los grupos una vez formados. Algunas
+vienen directas de la ENUSC y otras se construyen.
+
+```{r}
+#| label: secundarias
+meta |>
+    filter(familia == "Secundaria") |>
+    transmute(
+        Variable = variable,
+        `Nombre ENUSC` = dplyr::coalesce(original, "-"),
+        Etiqueta = etiqueta,
+        Categorías = categorias,
+        `Se construye desde` = construida_desde
+    ) |>
+    tabla(ancho = TRUE)
+```
+
+::: {.callout-warning}
+## Provisional
+
+Los índices de percepción de desórdenes e incivilidades dependen de una decisión
+abierta sobre cómo tratar la no respuesta (ver el
+[paso 7](pipeline.html#variables-secundarias)). Su escala puede cambiar.
+:::
+
+# Tabla completa
+
+Todas las variables en una sola tabla, para buscar una en particular.
+
+```{r}
+#| label: completa
+meta |>
+    transmute(
+        Familia = etiquetas_familia[familia],
+        Variable = variable,
+        `Nombre ENUSC` = dplyr::coalesce(original, "-"),
+        Etiqueta = etiqueta,
+        Categorías = categorias,
+        `Se construye desde` = dplyr::coalesce(construida_desde, "-"),
+        Uso = uso
+    ) |>
+    tabla(alto = "620px", ancho = TRUE)
+```
