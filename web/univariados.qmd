@@ -7,9 +7,25 @@ subtitle: "Distribuciones de todas las variables del análisis"
 #| label: setup
 source("_setup.R")
 
-t_originales <- leer("tabla1_variables_originales")
-t_fuente <- leer("tabla2_variables_fuente")
-t_secundarias <- leer("tabla3_variables_secundarias")
+#* Misma limpieza que reciben las tablas del entregable en
+#* limpiar_tabla_descriptiva(): frq() agrega una fila `val = NA` por variable
+#* aunque no haya ningún caso ahí. Se descarta solo si frq == 0, para que una
+#* fila NA con casos detrás siga siendo visible.
+sin_filas_vacias <- function(x) dplyr::filter(x, !(is.na(val) & frq == 0))
+
+#* Las variables sin etiquetas de valor (los índices continuos, los clusters)
+#* llegan con "<none>" en `label` y el valor en `val`.
+categoria_de <- function(label, val) {
+    #* En los índices continuos `val` es el porcentaje crudo, que sin redondear
+    #* sale como 9.09090909090909.
+    num <- suppressWarnings(as.numeric(as.character(val)))
+    texto <- dplyr::if_else(is.na(num), as.character(val), n_fmt(num, 1))
+    dplyr::if_else(is.na(label) | label == "<none>", texto, label)
+}
+
+t_originales <- leer("tabla1_variables_originales") |> sin_filas_vacias()
+t_fuente <- leer("tabla2_variables_fuente") |> sin_filas_vacias()
+t_secundarias <- leer("tabla3_variables_secundarias") |> sin_filas_vacias()
 mapeo <- leer("mapeo_nombres")
 ```
 
@@ -58,7 +74,7 @@ for (d in names(nombres_dim)) {
             filter(pregunta == p) |>
             transmute(
                 Ítem = categoria,
-                Respuesta = label,
+                Respuesta = categoria_de(label, val),
                 Casos = frq,
                 `%` = valid.prc
             )
@@ -124,7 +140,7 @@ for (g in names(grupos)) {
 
         tab <- sub |>
             transmute(
-                Categoría = dplyr::coalesce(label, as.character(val)),
+                Categoría = categoria_de(label, val),
                 Casos = frq,
                 `%` = valid.prc
             )
@@ -169,7 +185,7 @@ for (v in names(etiquetas_sec)) {
 
     tab <- sub |>
         transmute(
-            Categoría = dplyr::coalesce(label, as.character(val)),
+            Categoría = categoria_de(label, val),
             Casos = frq,
             `%` = valid.prc
         )

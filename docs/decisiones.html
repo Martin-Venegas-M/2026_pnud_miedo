@@ -153,7 +153,11 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#el-estado" id="toc-el-estado" class="nav-link" data-scroll-target="#el-estado">El estado</a></li>
   <li><a href="#las-dos-formas-de-aplicarlo" id="toc-las-dos-formas-de-aplicarlo" class="nav-link" data-scroll-target="#las-dos-formas-de-aplicarlo">Las dos formas de aplicarlo</a></li>
   </ul></li>
-  <li><a href="#nombres-de-los-grupos" id="toc-nombres-de-los-grupos" class="nav-link" data-scroll-target="#nombres-de-los-grupos">3. Nombres de los grupos</a></li>
+  <li><a href="#la-solución-que-se-reporta" id="toc-la-solución-que-se-reporta" class="nav-link" data-scroll-target="#la-solución-que-se-reporta">3. La solución que se reporta</a>
+  <ul class="collapse">
+  <li><a href="#cuántos-grupos" id="toc-cuántos-grupos" class="nav-link" data-scroll-target="#cuántos-grupos">Cuántos grupos</a></li>
+  <li><a href="#cómo-se-llaman" id="toc-cómo-se-llaman" class="nav-link" data-scroll-target="#cómo-se-llaman">Cómo se llaman</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -180,8 +184,8 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Quedan tres decisiones metodológicas sin resolver. Esta página las reúne, las desarrolla y propone una salida para cada una.</p>
-<p>Las tres tienen distinto grado de madurez:</p>
+<p>Quedan cuatro decisiones metodológicas sin resolver. Esta página las reúne, las desarrolla y propone una salida para cada una.</p>
+<p>Tienen distinto grado de madurez:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 50%">
@@ -203,12 +207,16 @@ ul.task-list li input[type="checkbox"] {
 <td>El criterio ya está fijado, falta elegir cómo aplicarlo</td>
 </tr>
 <tr class="odd">
+<td><strong>Cuántos grupos se reportan</strong></td>
+<td>Depende de la primera. Las tres soluciones están en Solución actual</td>
+</tr>
+<tr class="even">
 <td><strong>Nombres de los grupos</strong></td>
-<td>Requiere mirar los perfiles. El insumo está en Solución actual</td>
+<td>Depende de la primera. Requiere mirar los perfiles</td>
 </tr>
 </tbody>
 </table>
-<p>El <a href="pipeline.html#registro-de-decisiones">registro completo de decisiones</a>, incluyendo las cinco que ya están cerradas, está al final de la pestaña Pipeline.</p>
+<p>El <a href="pipeline.html#registro-de-decisiones">registro completo de decisiones</a>, incluyendo las seis que ya están cerradas, está al final de la pestaña Pipeline.</p>
 <section id="cómo-se-cortan-los-índices" class="level1">
 <h1>1. Cómo se cortan los índices</h1>
 <section id="el-problema-en-dos-líneas" class="level2">
@@ -452,11 +460,19 @@ ul.task-list li input[type="checkbox"] {
 <p>Cualquiera de las dos cambia la escala de estas dos variables, así que afecta a los cruces donde aparecen. Ninguna afecta al modelo, porque estas variables no entran.</p>
 </section>
 </section>
-<section id="nombres-de-los-grupos" class="level1">
-<h1>3. Nombres de los grupos</h1>
+<section id="la-solución-que-se-reporta" class="level1">
+<h1>3. La solución que se reporta</h1>
+<p>Son dos decisiones distintas que conviene tomar juntas, porque dependen del mismo insumo y de la misma decisión previa: <strong>cuántos grupos</strong> se reportan y <strong>cómo se llaman</strong>.</p>
+<section id="cuántos-grupos" class="level2">
+<h2 class="anchored" data-anchor-id="cuántos-grupos">Cuántos grupos</h2>
+<p>Se calcularon las soluciones de cuatro, cinco y seis grupos, y las tres están en <a href="solucion-actual.html">Solución actual</a>. La de cinco es la que se venía reportando, pero eso indica procedencia y no que sea la mejor.</p>
+<p>No hay un criterio estadístico que decida sola esta pregunta. El % de inercia no sirve para elegir entre ellas, porque las tres se construyen sobre el mismo MCA: lo único que cambia es dónde se corta el árbol. La elección es sustantiva y depende de cuántos perfiles distinguibles se quiera reportar.</p>
+</section>
+<section id="cómo-se-llaman" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-se-llaman">Cómo se llaman</h2>
 <p>Los grupos aparecen como <code>C1</code>, <code>C2</code> y así. Ponerles nombre sustantivo es una decisión del equipo y no puede derivarse del dato: requiere leer los perfiles y decidir qué los caracteriza.</p>
 <p>El insumo está en <a href="solucion-actual.html">Solución actual</a>: para cada solución hay una tabla de qué distingue a cada grupo, ordenada por cuánto se aparta cada respuesta del promedio de la muestra, y el perfil completo con todas las variables.</p>
-<p>Conviene tener presente que <strong>esta decisión depende de la primera</strong>. Si se adopta la propuesta sobre los cortes, la solución de grupos cambia y los nombres habría que revisarlos. Nombrarlos ahora significa hacerlo dos veces.</p>
+<p>Conviene tener presente que <strong>las dos dependen de la primera</strong>. Si se adopta la propuesta sobre los cortes, la solución de grupos cambia: podría cambiar cuál es el número razonable de grupos, y los perfiles sobre los que se elige el nombre. Decidir ahora significa hacerlo dos veces.</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -467,11 +483,12 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Resolver primero los cortes de los índices, correr la solución que resulte, y recién entonces nombrar los grupos sobre esa. Las otras dos decisiones se pueden tomar en cualquier momento, porque no afectan al modelo.</p>
+<p>Resolver primero los cortes de los índices, correr la solución que resulte, y recién entonces elegir cuántos grupos y nombrarlos sobre esa. La decisión sobre los índices secundarios se puede tomar en cualquier momento, porque esas variables no entran al modelo.</p>
 </div>
 </div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

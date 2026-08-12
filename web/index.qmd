@@ -117,7 +117,7 @@ pendientes, y esta página es el insumo para tomarla.
 ::: {.callout-warning}
 ## Hay decisiones abiertas que afectan estos resultados
 
-Un adelanto: tres decisiones metodológicas siguen en discusión, y una de ellas (cómo se
+Un adelanto: cuatro decisiones metodológicas siguen en discusión, y una de ellas (cómo se
 convierten los índices continuos en categorías) podría **cambiar la solución de grupos
 completa**.
 

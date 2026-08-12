@@ -981,19 +981,19 @@ window.Quarto = {
 <p>Es una corrección de validez más que de tamaño: recupera 78 casos. Pero elimina una confusión del mismo tipo que la que originó el rediseño: una respuesta sustantiva tratada como ausencia de dato.</p>
 </div>
 </div>
-<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Advertencia</span>Decisión pendiente · Quienes no responden la pregunta filtro
+<span class="screen-reader-only">Nota</span>Decisión tomada · Quienes no responden la pregunta filtro se mantienen fuera
 </div>
 </div>
 <div class="callout-body-container callout-body">
 <p>La mayor fuente individual de exclusión es la pregunta que abre la dimensión perceptual: <em>“¿cree usted que será víctima de algún delito en los próximos doce meses?”</em>. Quienes responden “no sabe” o “no responde” quedan fuera.</p>
 <p>Descartarlos es defendible ya que es no respuesta genuina en la pregunta que da acceso a toda la dimensión, y a diferencia del caso de “ninguna medida”, acá no hay ninguna respuesta sustantiva escondida.</p>
-<p>Sin embargo, se deja abierta y que nunca se discutió en detalle.</p>
+<p>Era una exclusión heredada del análisis anterior que nunca se había discutido en detalle. Se revisó y se confirmó, sin cambio en el código.</p>
 </div>
 </div>
 </section>
@@ -1170,7 +1170,7 @@ window.Quarto = {
 </section>
 <section id="registro-de-decisiones" class="level1">
 <h1>Registro de decisiones</h1>
-<p>Todas las decisiones metodológicas del análisis, en un solo lugar. Las tres que siguen abiertas están desarrolladas, con propuesta, en <a href="decisiones.html">Decisiones pendientes</a>.</p>
+<p>Todas las decisiones metodológicas del análisis, en un solo lugar. Las que siguen abiertas están desarrolladas, con propuesta, en <a href="decisiones.html">Decisiones pendientes</a>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
@@ -1183,39 +1183,49 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
+<td style="text-align: left;">Se descarta la dimensión perceptual general</td>
+<td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
+<td style="text-align: left;">Salió del análisis tras las discusiones sobre las soluciones de MCA y HCPC en la consultoría con datos 2024.</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">"Ninguna medida" es respuesta, no dato faltante</td>
 <td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
 <td style="text-align: left;">Entra al análisis como 0% de adopción. Es el hallazgo que motivó rehacer los análisis.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Cómo se cortan los índices en categorías</td>
 <td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
-<td style="text-align: left;">Hoy son terciles, que parten empates de forma arbitraria. Falta definir cortes por criterio sustantivo.</td>
+<td style="text-align: left;">Hoy son terciles, que parten empates de forma arbitraria. Hay propuesta de cortes por criterio sustantivo, pendiente de aprobación.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">"Otro delito" separado de "no sabe qué delito"</td>
 <td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
 <td style="text-align: left;">Se separaron. "Otro delito" es categoría propia y se conserva en el modelo.</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Qué situaciones componen la dimensión de espacio público</td>
 <td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
 <td style="text-align: left;">Se definió con el equipo: entran todas las situaciones clasificables como espacio público, de circulación y uso general. Quedan fuera las referidas al propio barrio, que es otra dimensión, y los espacios de uso propio o acceso restringido.</td>
 </tr>
-<tr class="odd">
-<td style="text-align: left;">No-respuesta en los índices de desórdenes e incivilidades</td>
-<td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
-<td style="text-align: left;">Hoy produce valores fuera de la escala del índice. Falta alinearla con el criterio del resto.</td>
-</tr>
 <tr class="even">
+<td style="text-align: left;">No respuesta en los índices de desórdenes e incivilidades</td>
+<td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
+<td style="text-align: left;">Hoy produce valores fuera de la escala del índice. El criterio ya está fijado por el resto del análisis; falta elegir cómo aplicarlo.</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">"No sabe" cuenta como no adhesión en los índices</td>
 <td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
 <td style="text-align: left;">Se queda en el denominador. Convención conservadora: ante la duda, no se atribuye miedo.</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Quienes no responden la pregunta filtro de victimización</td>
 <td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
 <td style="text-align: left;">Se mantienen fuera del modelo. Es no respuesta genuina, sin respuesta sustantiva escondida.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cuántos grupos se reportan</td>
+<td style="text-align: left;"><span class="estado-abierta">Abierta</span></td>
+<td style="text-align: left;">Se calcularon las soluciones de 4, 5 y 6. La de 5 es la que se venía reportando. Depende de cómo se resuelvan los cortes.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Nombres de los grupos</td>

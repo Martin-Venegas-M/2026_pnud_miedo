@@ -92,12 +92,14 @@ agrupamiento, no el espacio sobre el que se construye.
 
 ```{r}
 #| label: ajuste
+#* El target guarda los valores sin redondear; en la ruta del Excel los redondea
+#* limpiar_tabla_descriptiva(), pero la página lee el target directo.
 t_ajuste |>
     transmute(
         Dimensión = dimension,
-        Autovalor = autovalor,
-        `% de varianza` = pct_varianza,
-        `% acumulado` = pct_acumulado
+        Autovalor = round(autovalor, 3),
+        `% de varianza` = round(pct_varianza, 1),
+        `% acumulado` = round(pct_acumulado, 1)
     ) |>
     tabla()
 ```
@@ -374,9 +376,9 @@ for (k in n_clases) {
             Grupo = paste0("C", cluster),
             Variable = dplyr::coalesce(etiquetas_vars[variable], variable),
             Respuesta = categoria,
-            `Diferencia (pp)` = lift_pp,
-            `% en el grupo` = `Mod/Cla`,
-            `% en el total` = Global
+            `Diferencia (pp)` = round(lift_pp, 1),
+            `% en el grupo` = round(`Mod/Cla`, 1),
+            `% en el total` = round(Global, 1)
         )
     cat(as.character(tabla(vt, alto = "460px")), "\n\n")
 
@@ -396,7 +398,7 @@ for (k in n_clases) {
             grupo_variable,
             Variable = dplyr::coalesce(etiquetas_vars[variable], variable),
             Categoría = categoria,
-            across(all_of(cols_k))
+            across(all_of(cols_k), \(x) round(x, 1))
         ) |>
         arrange(desc(grupo_variable)) |>
         group_by(Variable) |>

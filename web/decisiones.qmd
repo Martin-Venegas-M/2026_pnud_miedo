@@ -13,19 +13,20 @@ nr <- leer("no_respuesta_indices")
 zl <- haven::zap_labels
 ```
 
-Quedan tres decisiones metodológicas sin resolver. Esta página las reúne, las
+Quedan cuatro decisiones metodológicas sin resolver. Esta página las reúne, las
 desarrolla y propone una salida para cada una.
 
-Las tres tienen distinto grado de madurez:
+Tienen distinto grado de madurez:
 
 | Decisión | Estado |
 |---|---|
 | **Cómo se cortan los índices en categorías** | Hay propuesta completa. Es la que más pesa: cambia la solución de grupos |
 | **No respuesta en los índices de desórdenes e incivilidades** | El criterio ya está fijado, falta elegir cómo aplicarlo |
-| **Nombres de los grupos** | Requiere mirar los perfiles. El insumo está en Solución actual |
+| **Cuántos grupos se reportan** | Depende de la primera. Las tres soluciones están en Solución actual |
+| **Nombres de los grupos** | Depende de la primera. Requiere mirar los perfiles |
 
 El [registro completo de decisiones](pipeline.html#registro-de-decisiones),
-incluyendo las cinco que ya están cerradas, está al final de la pestaña Pipeline.
+incluyendo las seis que ya están cerradas, está al final de la pestaña Pipeline.
 
 # 1. Cómo se cortan los índices
 
@@ -277,7 +278,24 @@ Cualquiera de las dos cambia la escala de estas dos variables, así que afecta a
 los cruces donde aparecen. Ninguna afecta al modelo, porque estas variables no
 entran.
 
-# 3. Nombres de los grupos
+# 3. La solución que se reporta
+
+Son dos decisiones distintas que conviene tomar juntas, porque dependen del mismo
+insumo y de la misma decisión previa: **cuántos grupos** se reportan y **cómo se
+llaman**.
+
+## Cuántos grupos
+
+Se calcularon las soluciones de cuatro, cinco y seis grupos, y las tres están en
+[Solución actual](solucion-actual.html). La de cinco es la que se venía
+reportando, pero eso indica procedencia y no que sea la mejor.
+
+No hay un criterio estadístico que decida sola esta pregunta. El % de inercia no
+sirve para elegir entre ellas, porque las tres se construyen sobre el mismo MCA:
+lo único que cambia es dónde se corta el árbol. La elección es sustantiva y
+depende de cuántos perfiles distinguibles se quiera reportar.
+
+## Cómo se llaman
 
 Los grupos aparecen como `C1`, `C2` y así. Ponerles nombre sustantivo es una
 decisión del equipo y no puede derivarse del dato: requiere leer los perfiles y
@@ -288,14 +306,16 @@ una tabla de qué distingue a cada grupo, ordenada por cuánto se aparta cada
 respuesta del promedio de la muestra, y el perfil completo con todas las
 variables.
 
-Conviene tener presente que **esta decisión depende de la primera**. Si se adopta
-la propuesta sobre los cortes, la solución de grupos cambia y los nombres habría
-que revisarlos. Nombrarlos ahora significa hacerlo dos veces.
+Conviene tener presente que **las dos dependen de la primera**. Si se adopta la
+propuesta sobre los cortes, la solución de grupos cambia: podría cambiar cuál es
+el número razonable de grupos, y los perfiles sobre los que se elige el nombre.
+Decidir ahora significa hacerlo dos veces.
 
 ::: {.callout-warning}
 ## El orden sugerido
 
 Resolver primero los cortes de los índices, correr la solución que resulte, y
-recién entonces nombrar los grupos sobre esa. Las otras dos decisiones se pueden
-tomar en cualquier momento, porque no afectan al modelo.
+recién entonces elegir cuántos grupos y nombrarlos sobre esa. La decisión sobre
+los índices secundarios se puede tomar en cualquier momento, porque esas
+variables no entran al modelo.
 :::

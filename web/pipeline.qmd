@@ -564,18 +564,19 @@ una confusión del mismo tipo que la que originó el rediseño: una respuesta
 sustantiva tratada como ausencia de dato.
 :::
 
-::: {.callout-warning}
-## Decisión pendiente · Quienes no responden la pregunta filtro
+::: {.callout-note}
+## Decisión tomada · Quienes no responden la pregunta filtro se mantienen fuera
 
 La mayor fuente individual de exclusión es la pregunta que abre la dimensión
 perceptual: *"¿cree usted que será víctima de algún delito en los próximos doce
 meses?"*. Quienes responden "no sabe" o "no responde" quedan fuera.
 
-Descartarlos es defendible ya que es no respuesta genuina en la pregunta que da acceso
-a toda la dimensión, y a diferencia del caso de "ninguna medida", acá no hay
-ninguna respuesta sustantiva escondida.
+Descartarlos es defendible ya que es no respuesta genuina en la pregunta que da
+acceso a toda la dimensión, y a diferencia del caso de "ninguna medida", acá no
+hay ninguna respuesta sustantiva escondida.
 
-Sin embargo, se deja abierta y que nunca se discutió en detalle.
+Era una exclusión heredada del análisis anterior que nunca se había discutido en
+detalle. Se revisó y se confirmó, sin cambio en el código.
 :::
 
 ## La exclusión no es neutra
@@ -710,7 +711,7 @@ paso 4, así que les aplica también lo señalado ahí.
 
 # Registro de decisiones
 
-Todas las decisiones metodológicas del análisis, en un solo lugar. Las tres que
+Todas las decisiones metodológicas del análisis, en un solo lugar. Las que
 siguen abiertas están desarrolladas, con propuesta, en
 [Decisiones pendientes](decisiones.html).
 
@@ -718,13 +719,17 @@ siguen abiertas están desarrolladas, con propuesta, en
 #| label: registro
 registro <- tibble::tribble(
     ~Decisión, ~Estado, ~Resolución,
+    "Se descarta la dimensión perceptual general",
+    "Cerrada",
+    "Salió del análisis tras las discusiones sobre las soluciones de MCA y HCPC en la consultoría con datos 2024.",
+
     "\"Ninguna medida\" es respuesta, no dato faltante",
     "Cerrada",
     "Entra al análisis como 0% de adopción. Es el hallazgo que motivó rehacer los análisis.",
 
     "Cómo se cortan los índices en categorías",
     "Abierta",
-    "Hoy son terciles, que parten empates de forma arbitraria. Falta definir cortes por criterio sustantivo.",
+    "Hoy son terciles, que parten empates de forma arbitraria. Hay propuesta de cortes por criterio sustantivo, pendiente de aprobación.",
 
     "\"Otro delito\" separado de \"no sabe qué delito\"",
     "Cerrada",
@@ -734,9 +739,9 @@ registro <- tibble::tribble(
     "Cerrada",
     "Se definió con el equipo: entran todas las situaciones clasificables como espacio público, de circulación y uso general. Quedan fuera las referidas al propio barrio, que es otra dimensión, y los espacios de uso propio o acceso restringido.",
 
-    "No-respuesta en los índices de desórdenes e incivilidades",
+    "No respuesta en los índices de desórdenes e incivilidades",
     "Abierta",
-    "Hoy produce valores fuera de la escala del índice. Falta alinearla con el criterio del resto.",
+    "Hoy produce valores fuera de la escala del índice. El criterio ya está fijado por el resto del análisis; falta elegir cómo aplicarlo.",
 
     "\"No sabe\" cuenta como no adhesión en los índices",
     "Cerrada",
@@ -745,6 +750,10 @@ registro <- tibble::tribble(
     "Quienes no responden la pregunta filtro de victimización",
     "Cerrada",
     "Se mantienen fuera del modelo. Es no respuesta genuina, sin respuesta sustantiva escondida.",
+
+    "Cuántos grupos se reportan",
+    "Abierta",
+    "Se calcularon las soluciones de 4, 5 y 6. La de 5 es la que se venía reportando. Depende de cómo se resuelvan los cortes.",
 
     "Nombres de los grupos",
     "Abierta",
