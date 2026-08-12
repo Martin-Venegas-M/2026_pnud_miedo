@@ -723,8 +723,8 @@ distinta de "mantener" tiene justificación escrita.
 
 ## FASE 3 — Decisiones sustantivas
 
-**Estado: ABIERTA.** D1, D2, D3 y D5 tienen recomendación; D4 requiere decisión
-externa.
+**Estado: ABIERTA.** D1 y D3 aplicadas; D4, D6 y D7 cerradas sin cambio de
+código. Quedan **D2** y **D5**.
 
 ### Regla de ejecución
 
@@ -849,8 +849,25 @@ ausencia de dato— y no debe evaluarse por cuántos casos recupera.
 
 ### D4 — Ítems excluidos por rango posicional
 
-**`[ABIERTO]` — requiere decisión sustantiva. Afecta al MCA. Vive en
+**CERRADA (12 de agosto de 2026) para `P_INSEG_LUGARES`. Vive en
 `spec_indices`.**
+
+**Resolución del usuario:** el criterio se definió en discusión con el equipo —
+el índice de espacio público incluye **todas las situaciones clasificables como
+espacio público**, entendido como espacio de circulación y uso general. Los cinco
+ítems excluidos no lo son: dos están referidos al barrio de la persona (que es
+otra dimensión del análisis) y tres son espacios de uso propio o acceso
+restringido (su trabajo, su estudio, el banco). El código ya implementaba esta
+decisión; lo que faltaba era que estuviera escrita.
+
+Documentada en la página, F5.4, sección "Qué situaciones entran en cada índice",
+con la tabla de los 16 ítems marcando cuáles entran. La tabla se deriva de
+`spec_indices`, así que sigue siendo correcta si el spec cambia.
+
+**Queda abierto el caso de `P_MOD_ACTIVIDADES`:** el ítem 14 ("Hacer otra
+actividad") sigue excluido sin criterio escrito. Es de bajo impacto —es un
+catch-all, no una actividad concreta— pero corresponde resolverlo con el mismo
+estándar.
 
 Los índices se construyen con rangos posicionales que truncan las baterías sin
 que nada falle:
@@ -867,11 +884,10 @@ truncación en vez de delatarla**.
 Es la misma decisión abierta del repo viejo ("el ítem 16, En el banco"), pero son
 cinco ítems, no uno.
 
-**Lectura para discutir, no para aplicar:** los ítems 12 y 13 son *plazas/parques
-del barrio* y *comercios del barrio* — conceptualmente pertenecen a la dimensión
-**barrio**, que ya tiene su variable (`emper_barrio_pct`), así que excluirlos de
-"espacio público" es probablemente deliberado. Los 14–16 (trabajo, estudio,
-banco) no tienen razón conceptual evidente.
+La lectura que este plan había anotado como hipótesis —que los ítems 12 y 13
+pertenecen a la dimensión barrio— resultó ser parte del criterio real, pero no
+todo: el criterio del equipo es positivo (qué **es** espacio público), no una
+lista de exclusiones caso a caso.
 
 **Independientemente de lo que se decida:** el diccionario debe registrar los 16
 ítems y marcar cuáles se excluyen y por qué.
@@ -1405,7 +1421,7 @@ Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**. F5.3 constr
 | 0 — Preparación | Hecha (`b4eb745`); `renv` sincronizado (`4b64cb6`) |
 | 1 — Refactor a targets | Hecha (`bcec3a5`); **deuda cerrada** en `406a27b` (5 helpers, `tab_var_clust()`, `spec_patrones`, `VARS_SEC`) |
 | 2 — Inventario | Hecha (`639877a`) |
-| 3 — Decisiones | **Parcial**: D1 y D3 aplicadas y verificadas (`e2144c4`). D6 y D7 cerradas sin cambio de código (D7 en `0184c33`, con composición verificada). **D2, D4 y D5 pendientes** |
+| 3 — Decisiones | **Parcial**: D1 y D3 aplicadas y verificadas (`e2144c4`). D6 y D7 cerradas sin cambio de código (D7 en `0184c33`). D4 cerrada y documentada (12-ago-2026), sin cambio de código. **D2 y D5 pendientes** |
 | 4 — Variantes | No iniciada |
 | 5 — Gold, testbed, `analysis/` | **F5.3 construida** (6 tablas + diseño muestral + mapeo de nombres). **F5.4 especificada, insumos del DAG listos, página sin construir.** F5.1 y F5.2 no iniciadas |
 
@@ -1432,9 +1448,8 @@ Después: cerrar D2/D4/D5 (bloquea F5.2), y F5.1 (gold/testbed).
 1. **No empezar F5.2** (reparar `analysis/`) todavía: depende de D2 y D4, que
    siguen abiertas. F5.3 sí puede avanzar — ver su propia sección.
 
-2. **Cerrar las decisiones abiertas.** Quedan tres: **D2** (P4), **D4** (P2) y
-   **D5** (P5). D2 es la más consecuente: mayor impacto del proyecto y además
-   bloquea F5.2.
+2. **Cerrar las decisiones abiertas.** Quedan dos: **D2** (P4) y **D5** (P5). D2
+   es la más consecuente: mayor impacto del proyecto y además bloquea F5.2.
 
 3. **Verificación retroactiva de la Fase 1.** El criterio 8 (inventario de
    traducción) se agregó *después* de ejecutada la Fase 1, y los criterios 2–4
@@ -1488,9 +1503,10 @@ olas disponibles, y hoy solo hay 2025. Si el entregable compara olas, D1–D4
 deberían validarse en ambas antes de anclar el gold. También reabre `ANIO` como
 variable de entorno.
 
-**P2 — ¿Quién decide D4?** Decisión puramente conceptual (qué ítems componen la
-dimensión "espacio público"). De la respuesta depende si la Fase 3 se cierra
-rápido o queda esperando al equipo PNUD.
+**P2 — RESUELTA (12-ago-2026).** D4 cerrada para `P_INSEG_LUGARES`: el criterio
+lo definió el equipo y está documentado en la página. Queda el ítem 14 de
+`P_MOD_ACTIVIDADES` ("Hacer otra actividad"), de bajo impacto, sin criterio
+escrito.
 
 **P3 — Confirmar §F0.3**, qué se versiona tras la mudanza al almacén de targets.
 

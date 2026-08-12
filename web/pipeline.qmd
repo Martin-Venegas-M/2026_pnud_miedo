@@ -247,6 +247,50 @@ Con el mismo procedimiento se construyen los seis índices del análisis: tres d
 sensación de inseguridad (espacio público, barrio, casa), uno de modificación de
 prácticas, y dos de medidas de seguridad (de la vivienda y del barrio).
 
+## Qué situaciones entran en cada índice
+
+La batería de lugares tiene más ítems de los que usa el índice de espacio
+público, así que hubo que definir cuáles corresponden a esa dimensión.
+
+```{r}
+#| label: items-ep
+spec <- leer("spec_indices")
+
+items_bateria <- grep("^emper_p_inseg_lugares_", names(datos_sel), value = TRUE)
+items_bateria <- items_bateria[order(as.integer(sub(".*_", "", items_bateria)))]
+
+etiqueta_de <- function(v) {
+    sub("^.*[?][[:space:]]*", "", attr(datos_sel[[v]], "label"))
+}
+
+tibble::tibble(
+    Situación = vapply(items_bateria, etiqueta_de, character(1)),
+    `¿Entra en espacio público?` = ifelse(
+        items_bateria %in% spec$emper_ep_pct,
+        "Sí",
+        "No"
+    )
+) |>
+    tabla(alinear = c("l", "c"))
+```
+
+::: {.callout-note}
+## Decisión tomada · Qué situaciones componen el espacio público
+
+El criterio se definió en discusión con el equipo: el índice incluye **todas las
+situaciones que se pueden clasificar como espacio público**, entendido como
+espacio de circulación y uso general.
+
+Las cinco situaciones que quedan fuera no cumplen ese criterio. Dos de ellas
+están referidas explícitamente al barrio de la persona (plazas o parques de su
+barrio, comercios de su barrio), que es una dimensión aparte del análisis. Las
+otras tres son espacios de uso propio o de acceso restringido: su lugar de
+trabajo, su lugar de estudio y el banco.
+
+Los ítems descartados no se pierden del análisis descriptivo: aparecen en la
+pestaña [Univariados](univariados.html), donde se puede ver su distribución.
+:::
+
 # 4. Categorización
 
 El MCA -la técnica que agrupa a las personas- trabaja con **variables
@@ -454,9 +498,9 @@ registro <- tibble::tribble(
     "Cerrada",
     "Se separaron. \"Otro delito\" es categoría propia y se conserva en el modelo.",
 
-    "Qué lugares componen la dimensión de espacio público",
-    "Abierta",
-    "La batería tiene 16 lugares y el índice usa 11. Falta decidir y documentar el criterio de exclusión.",
+    "Qué situaciones componen la dimensión de espacio público",
+    "Cerrada",
+    "Se definió con el equipo: entran todas las situaciones clasificables como espacio público, de circulación y uso general. Quedan fuera las referidas al propio barrio, que es otra dimensión, y los espacios de uso propio o acceso restringido.",
 
     "No-respuesta en los índices de desórdenes e incivilidades",
     "Abierta",
