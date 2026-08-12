@@ -195,13 +195,17 @@ menos".
 
 ## Dos argumentos que sostienen la propuesta
 
-**Los terciles no permiten comparar entre olas.** Por construcción siempre
-producen tres grupos de un tercio cada uno. Si en la próxima ola la población
-entera se vuelve más temerosa, el tercil alto seguirá teniendo un tercio de la
-muestra y la comparación no mostrará nada. Con cortes fijos, la proporción en
-cada categoría puede moverse, que es lo que se quiere medir.
+**Los terciles no permiten comparar entre años.** Por construcción siempre
+producen tres grupos de un tercio cada uno. Si en la versión siguiente de la
+encuesta la población se vuelve más temerosa, el tercil alto seguirá teniendo un
+tercio de la muestra y la comparación no mostrará nada. Con cortes fijos, la
+proporción en cada categoría puede moverse, que es lo que se quiere medir.
 
-Para una consultoría que va a comparar olas, esto pesa más que el problema de los
+Y como cada versión de la ENUSC se levanta sobre una muestra distinta, comparar
+dos años es comparar dos estimaciones independientes de la población. Un corte
+que se redefine con cada distribución impide justamente eso.
+
+Para una consultoría que va a comparar años, esto pesa más que el problema de los
 empates.
 
 **La propuesta se puede evaluar contra la solución actual.** Mantiene **tres

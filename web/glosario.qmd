@@ -39,13 +39,16 @@ cuatro.
 todo el ejercicio. Es una encuesta anual, de cobertura nacional urbana, que
 aplica el Instituto Nacional de Estadísticas.
 
+Cada versión anual se levanta sobre una **muestra distinta**: no se sigue a las
+mismas personas en el tiempo. Comparar dos años es comparar dos estimaciones
+independientes de la población, no el cambio de las mismas personas. Esta página
+usa la versión 2025.
+
 **Informante Kish.** La persona del hogar a la que se le aplican las preguntas de
 percepción. La encuesta la selecciona al azar entre los mayores de 15 años del
 hogar, con un procedimiento que se llama así por su autor. El análisis se queda
 solo con esas personas, una por hogar, porque son las únicas que respondieron
 esas preguntas.
-
-**Ola.** Cada aplicación anual de la encuesta. Esta página usa la ola 2025.
 
 # Las variables
 
