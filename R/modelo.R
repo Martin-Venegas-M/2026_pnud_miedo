@@ -13,7 +13,7 @@
 #' en el modelo.
 #'
 #' @param datos Datos recodificados y etiquetados (`datos_recodificados`).
-#' @param vars Variables que entran al MCA (`cfg$VARS_REC_TERCIL`).
+#' @param vars Variables que entran al MCA (`cfg$VARS_MODELO`).
 #' @return Un data frame `rph_id` + `vars`, factores, sin filtrar por `NA`
 #'   todavía — eso lo hace [filtrar_casos_completos()].
 preparar_datos_mca <- function(datos, vars) {

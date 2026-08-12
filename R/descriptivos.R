@@ -119,7 +119,7 @@ tabla_variables_originales <- function(datos, spec_patrones) {
 #' Tabla 2 — Univariados de variables fuente
 #'
 #' PLAN.md F5.3. Los índices `_pct` continuos y sus versiones categorizadas
-#' (`cfg$VARS_REC_TERCIL`, que además de las categorizadas incluye
+#' (`cfg$VARS_MODELO`, que además de las categorizadas incluye
 #' `perper_delito` y `comper_gasto`). Corre sobre `datos_finales`.
 #'
 #' Depende de D1 y D3 (ya aplicadas) y de D2 (abierta) para la parte
@@ -127,7 +127,7 @@ tabla_variables_originales <- function(datos, spec_patrones) {
 #'
 #' @param datos `datos_finales`.
 #' @param vars_continuas Los seis índices `_pct` sin categorizar.
-#' @param vars_categorizadas `cfg$VARS_REC_TERCIL`.
+#' @param vars_categorizadas `cfg$VARS_MODELO`.
 #' @return Un tibble largo.
 tabla_variables_fuente <- function(datos, vars_continuas, vars_categorizadas) {
     purrr::map(c(vars_continuas, vars_categorizadas), function(v) {
@@ -176,7 +176,7 @@ tabla_clusters <- function(datos, n_clases) {
 #'
 #' @param svy Diseño muestral (`construir_diseno_muestral()`).
 #' @param clust_var `cfg$CLUSTER_A_SACAR`.
-#' @param vars_fuente `cfg$VARS_REC_TERCIL`.
+#' @param vars_fuente `cfg$VARS_MODELO`.
 #' @param vars_sec `cfg$VARS_SEC`.
 #' @return Un tibble largo, con una columna `grupo_variable` (`"fuente"` o
 #'   `"secundaria"`).

@@ -33,7 +33,7 @@ tabla_marginal <- function(x) {
 #'   nombre de columna en `antes` y `despues`) o un vector con nombres, donde
 #'   el nombre es la columna en `antes` y el valor la columna en `despues`
 #'   (para pasos donde la transformación también renombra, p.ej.
-#'   `emper_ep_pct` -> `emper_ep_pct_rec_tercil`).
+#'   `emper_ep_pct` -> `emper_ep_pct_cat`).
 #' @param etiqueta Nombre del paso, para identificarlo en el CSV consolidado.
 #'
 #' @return Una lista con tres tibbles: `forma`, `marginales`, `transiciones`.
@@ -151,7 +151,7 @@ reportar_transformacion <- function(antes, despues, vars, etiqueta) {
 #'
 #' @param antes Datos con las variables completas, antes de filtrar casos.
 #' @param despues Datos después de filtrar (`filtrar_casos_completos()`).
-#' @param vars Variables a evaluar (típicamente `cfg$VARS_REC_TERCIL`).
+#' @param vars Variables a evaluar (típicamente `cfg$VARS_MODELO`).
 #' @param etiqueta Nombre del paso.
 #' @param max_perdida Umbral de pérdida total (proporción, 0 a 1) a partir del
 #'   cual el reporte falla. `NULL` hasta la Fase 5: fijarlo ahora sería

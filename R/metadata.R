@@ -64,7 +64,7 @@ categorias_de <- function(col, max_cats = 12) {
 #' @param datos_fin `datos_finales` (todo lo construido).
 #' @param mapeo `mapeo_nombres`.
 #' @param spec `spec_indices`.
-#' @param vars_modelo `cfg$VARS_REC_TERCIL`.
+#' @param vars_modelo `cfg$VARS_MODELO`.
 #' @param vars_sec `cfg$VARS_SEC`.
 #' @param n_clases `cfg$N_CLASES`.
 #' @return Un tibble con una fila por variable.
@@ -184,7 +184,7 @@ construir_metadata <- function(
         ),
         categorias = vapply(datos_fin[vars_modelo], categorias_de, character(1)),
         construida_desde = dplyr::case_when(
-            grepl("_rec_tercil$", vars_modelo) ~ sub("_rec_tercil$", "", vars_modelo),
+            grepl("_cat$", vars_modelo) ~ sub("_cat$", "", vars_modelo),
             TRUE ~ vapply(
                 vars_modelo,
                 \(v) paste(unlist(spec[[v]]), collapse = ", "),
