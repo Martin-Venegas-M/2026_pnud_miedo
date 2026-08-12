@@ -1224,10 +1224,35 @@ los tres nombres existen en los datos, al estilo de `validar_vars_sec()`.
 
 - Targets `format = "file"`, para que el DAG los rastree. Si se escriben como
   efecto secundario quedan fuera del grafo y se viola la regla #7.
-- Excel para el entregable, vía `format_tab_excel()` / `pre_proc_excel()`, en
-  `output/tables/2025/`.
+- Excel para el entregable, vía `format_tab_excel()`, en `output/tables/2025/`.
 - **CSV al lado de cada Excel**, por coherencia con `F0.3`: el registro
   versionado es texto, y un Excel no es diffeable.
+- Antes de bifurcar en Excel y CSV, pasar por `limpiar_tabla_descriptiva()`
+  (descarta filas de categoría vacía **solo si `frq == 0`**, y redondea). Así
+  ambas salidas tienen las mismas filas y columnas.
+
+> **No usar `pre_proc_excel()` acá.** Una versión anterior de esta sección lo
+> pedía. Esa función convierte los números a **texto** en formato español, y su
+> docstring dice para qué: comparar Excel contra un gold como strings exactos.
+> Es una necesidad del testbed (F5.1), no del entregable. Aplicarla deja un
+> Excel donde no se puede ordenar ni calcular, y un CSV con comas decimales que
+> el testbed tendría que reparsear — siendo que el CSV **es** el registro
+> versionado. Si el gold llega a necesitar formato texto, se aplica en F5.1
+> sobre el Excel, sin tocar el camino del CSV.
+
+#### Ordenamiento del `v-test`
+
+**No ordenar por `v.test`.** `FactoMineR` lo deriva invirtiendo el p-value, y
+con N≈49.500 el p subdesborda a 0, de modo que `qnorm(0)` da `Inf`. En la
+primera corrida **61 de 118 filas quedaron en `Inf`** y el orden se perdía justo
+entre las asociaciones más fuertes, que son las que sirven para nombrar el
+cluster.
+
+Ordenar por `lift_pp = Mod/Cla - Global`: puntos porcentuales de sobre o
+sub-representación de la categoría dentro del cluster. Siempre finita,
+interpretable, y con el mismo signo que `v.test`. Conservar `v.test` y `p.value`
+como columnas de referencia, con sus `Inf` intactos — son el valor real que
+devuelve `HCPC`, no un error que tapar.
 
 ---
 

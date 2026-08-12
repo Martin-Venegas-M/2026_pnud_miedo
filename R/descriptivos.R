@@ -226,17 +226,32 @@ tabla_cruces_cluster <- function(svy, clust_var, vars_fuente, vars_sec) {
 #' Tabla 6 — `v-test` de la solución de cluster reportada
 #'
 #' PLAN.md F5.3. `FactoMineR::HCPC()` ya calcula esto (`desc.var$category`
-#' dentro del target `hcpc`); acá solo se aplana a un tibble largo. Ordena las
-#' categorías por cuánto distinguen a cada cluster (`v.test`), en vez de tener
-#' que comparar veinte tablas a ojo.
+#' dentro del target `hcpc`); acá solo se aplana a un tibble largo. El propósito
+#' de la tabla es **ordenar** las categorías por cuánto distinguen a cada
+#' cluster, para poder caracterizarlos y nombrarlos.
 #'
 #' Depende de D2: la solución de cluster completa cambia si D2 cambia.
+#'
+#' @section Por qué no se ordena por `v.test`:
+#' `FactoMineR` deriva `v.test` invirtiendo el p-value, y con el N de este
+#' proyecto (~49.500) el p subdesborda a 0, de modo que `qnorm(0)` devuelve
+#' `Inf`. En la primera corrida de F5.3, **61 de 118 filas quedaron en `Inf`** y
+#' el orden se perdía justo entre las asociaciones más fuertes, que son las que
+#' sirven para nombrar el cluster.
+#'
+#' Se ordena entonces por `lift_pp = Mod/Cla - Global`: cuántos puntos
+#' porcentuales más (o menos) prevalente es la categoría dentro del cluster que
+#' en el total. Es finita siempre, interpretable en sus unidades, y conserva el
+#' mismo signo que `v.test` (positiva = sobrerrepresentada). `v.test` y
+#' `p.value` se conservan como columnas de referencia, con sus `Inf` intactos:
+#' son el valor real que devuelve `HCPC`, no un error que haya que tapar.
 #'
 #' @param hcpc Lista de objetos `HCPC` (`hcpc`, target).
 #' @param clust_var `cfg$CLUSTER_A_SACAR` (p.ej. `"clusters_5"`), de donde se
 #'   deriva qué solución usar.
-#' @return Un tibble largo: `cluster | variable | categoria | Cla/Mod | Mod/Cla
-#'   | Global | p.value | v.test`, ordenado por cluster y `v.test` descendente.
+#' @return Un tibble largo: `cluster | variable | categoria | lift_pp | Cla/Mod
+#'   | Mod/Cla | Global | p.value | v.test`, ordenado por cluster y `lift_pp`
+#'   descendente.
 tabla_v_test <- function(hcpc, clust_var) {
     nclust <- stringr::str_extract(clust_var, "\\d+$")
     h <- hcpc[[paste0("class", nclust)]]
@@ -254,7 +269,56 @@ tabla_v_test <- function(hcpc, clust_var) {
             dplyr::relocate(cluster, variable, categoria)
     }) |>
         purrr::list_rbind() |>
-        dplyr::arrange(cluster, dplyr::desc(v.test))
+        dplyr::mutate(lift_pp = .data[["Mod/Cla"]] - .data[["Global"]]) |>
+        dplyr::relocate(lift_pp, .after = categoria) |>
+        dplyr::arrange(cluster, dplyr::desc(lift_pp))
+}
+
+#' Dejar una tabla descriptiva lista para entregar
+#'
+#' Dos cosas, ambas sobre defectos observados en la primera corrida de F5.3:
+#'
+#' 1. **Descarta las filas de categoría vacía.** `sjmisc::frq()` agrega una fila
+#'    `val = NA` por variable aunque no haya ningún caso ahí; en la primera
+#'    corrida eran 104 filas `NA,NA,0,0` repartidas entre las cuatro tablas de
+#'    frecuencias. Se descartan **solo si `frq == 0`**: una fila `NA` con casos
+#'    detrás es no-respuesta real y tiene que sobrevivir, que es justamente la
+#'    lección de §1 del plan.
+#' 2. **Redondea.** Sin esto los CSV salían con ruido de coma flotante
+#'    (`51.449999999999996`) en 177 líneas. Se excluyen `p.value` y `v.test`,
+#'    donde redondear a dos decimales destruiría la información.
+#'
+#' Se aplica **antes** de bifurcar en Excel y CSV, de modo que las dos salidas
+#' tengan exactamente las mismas filas y columnas.
+#'
+#' @section Por qué no se usa `pre_proc_excel()`:
+#' F5.3 lo mencionaba, pero esa función convierte los números a **texto** en
+#' formato español. Su propio docstring dice para qué: comparar los Excel contra
+#' un gold como strings exactos. Eso es una necesidad del testbed, no del
+#' entregable — y acá el registro versionado es el CSV, no el Excel. Convertir a
+#' texto dejaría un entregable donde PNUD no puede ordenar ni calcular, y un CSV
+#' con comas decimales que el testbed tendría que volver a parsear. Si en F5.1
+#' el gold llega a necesitar el formato texto, se aplica ahí, sobre el Excel, y
+#' no en el camino del CSV.
+#'
+#' @param tabla Data frame a limpiar.
+#' @param decimales Decimales a los que redondear las columnas numéricas.
+#' @return El data frame sin filas vacías y con los números redondeados.
+limpiar_tabla_descriptiva <- function(tabla, decimales = 2) {
+    if (all(c("val", "frq") %in% names(tabla))) {
+        tabla <- dplyr::filter(tabla, !(is.na(val) & frq == 0))
+    }
+
+    #* p.value y v.test quedan fuera: el primero es 0 en buena parte de las
+    #* filas y el segundo puede ser Inf (ver tabla_v_test()). Redondearlos no
+    #* aporta y sí puede confundir.
+    dplyr::mutate(
+        tabla,
+        dplyr::across(
+            dplyr::where(is.numeric) & !dplyr::any_of(c("p.value", "v.test")),
+            ~ round(.x, decimales)
+        )
+    )
 }
 
 #' Escribir una tabla descriptiva a Excel + CSV, con sello de estado
@@ -278,6 +342,8 @@ escribir_tabla_descriptiva <- function(
     sheet = "datos",
     motivo_provisional = NULL
 ) {
+    tabla <- limpiar_tabla_descriptiva(tabla)
+
     dir.create(dirname(ruta_base), recursive = TRUE, showWarnings = FALSE)
 
     wb <- openxlsx::createWorkbook()
