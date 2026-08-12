@@ -550,6 +550,7 @@ list(
         )
     ),
     tar_target(v_test_todas, tabla_v_test_todas(hcpc, cfg$N_CLASES)),
+    tar_target(no_respuesta_indices, medir_no_respuesta_indices(datos_finales)),
     tar_target(datos_biplot_mca, datos_biplot(mca)),
     tar_target(mapa_clusters, datos_mapa_clusters(mca, hcpc, cfg$N_CLASES)),
     tar_target(

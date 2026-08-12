@@ -169,6 +169,10 @@ window.Quarto = {
   <li><a href="#la-exclusión-no-es-neutra" id="toc-la-exclusión-no-es-neutra" class="nav-link" data-scroll-target="#la-exclusión-no-es-neutra">La exclusión no es neutra</a></li>
   </ul></li>
   <li><a href="#el-modelo" id="toc-el-modelo" class="nav-link" data-scroll-target="#el-modelo">6. El modelo</a></li>
+  <li><a href="#variables-secundarias" id="toc-variables-secundarias" class="nav-link" data-scroll-target="#variables-secundarias">7. Variables secundarias</a>
+  <ul class="collapse">
+  <li><a href="#los-índices-de-desórdenes-e-incivilidades" id="toc-los-índices-de-desórdenes-e-incivilidades" class="nav-link" data-scroll-target="#los-índices-de-desórdenes-e-incivilidades">Los índices de desórdenes e incivilidades</a></li>
+  </ul></li>
   <li><a href="#registro-de-decisiones" id="toc-registro-de-decisiones" class="nav-link" data-scroll-target="#registro-de-decisiones">Registro de decisiones</a></li>
   </ul>
 </nav>
@@ -211,13 +215,15 @@ window.Quarto = {
     E --&gt; F[MCA]
     F --&gt; G[Clustering jerárquico]
     G --&gt; H[Grupos]
+    I[Variables secundarias] --&gt; H
 
     style C fill:#1c1c1c,color:#fff
     style D fill:#1c1c1c,color:#fff
     style E fill:#1c1c1c,color:#fff
+    style I fill:#1c1c1c,color:#fff
 </pre>
 </div>
-<p></p><figcaption> El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica.</figcaption> </figure><p></p>
+<p></p><figcaption> El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica. Las variables secundarias no alimentan el modelo: se usan para describir los grupos una vez formados.</figcaption> </figure><p></p>
 </div>
 </div>
 </div>
@@ -598,48 +604,48 @@ window.Quarto = {
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Valor del índice</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Cae en la categoría</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Personas</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF"></th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Valor del índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Cae en la categoría</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Personas</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>0,0%</td>
-<td>Categoría 1</td>
-<td>6.007</td>
-<td></td>
+<td style="text-align: left;">0,0%</td>
+<td style="text-align: left;">Categoría 1</td>
+<td style="text-align: right;">6.007</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="even">
-<td>11,1%</td>
-<td>Categoría 1</td>
-<td>12.557</td>
-<td>← empate partido</td>
+<td style="text-align: left;">11,1%</td>
+<td style="text-align: left;">Categoría 1</td>
+<td style="text-align: right;">12.557</td>
+<td style="text-align: left;">← empate partido</td>
 </tr>
 <tr class="odd">
-<td>11,1%</td>
-<td>Categoría 2</td>
-<td>2.373</td>
-<td>← empate partido</td>
+<td style="text-align: left;">11,1%</td>
+<td style="text-align: left;">Categoría 2</td>
+<td style="text-align: right;">2.373</td>
+<td style="text-align: left;">← empate partido</td>
 </tr>
 <tr class="even">
-<td>22,2%</td>
-<td>Categoría 2</td>
-<td>14.867</td>
-<td></td>
+<td style="text-align: left;">22,2%</td>
+<td style="text-align: left;">Categoría 2</td>
+<td style="text-align: right;">14.867</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr class="odd">
-<td>33,3%</td>
-<td>Categoría 2</td>
-<td>1.324</td>
-<td>← empate partido</td>
+<td style="text-align: left;">33,3%</td>
+<td style="text-align: left;">Categoría 2</td>
+<td style="text-align: right;">1.324</td>
+<td style="text-align: left;">← empate partido</td>
 </tr>
 <tr class="even">
-<td>33,3%</td>
-<td>Categoría 3</td>
-<td>8.782</td>
-<td>← empate partido</td>
+<td style="text-align: left;">33,3%</td>
+<td style="text-align: left;">Categoría 3</td>
+<td style="text-align: right;">8.782</td>
+<td style="text-align: left;">← empate partido</td>
 </tr>
 </tbody>
 </table>
@@ -664,51 +670,51 @@ window.Quarto = {
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Variable</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Casos sin dato</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">De los cuales, solo por esta variable</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Variable</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Casos sin dato</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">De los cuales, solo por esta variable</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Expectativa de ser víctima</td>
-<td>2.461</td>
-<td>2.110</td>
+<td style="text-align: left;">Expectativa de ser víctima</td>
+<td style="text-align: right;">2.461</td>
+<td style="text-align: right;">2.110</td>
 </tr>
 <tr class="even">
-<td>Medidas del barrio</td>
-<td>1.844</td>
-<td>1.441</td>
+<td style="text-align: left;">Medidas del barrio</td>
+<td style="text-align: right;">1.844</td>
+<td style="text-align: right;">1.441</td>
 </tr>
 <tr class="odd">
-<td>Gasto en seguridad</td>
-<td>1.412</td>
-<td>1.053</td>
+<td style="text-align: left;">Gasto en seguridad</td>
+<td style="text-align: right;">1.412</td>
+<td style="text-align: right;">1.053</td>
 </tr>
 <tr class="even">
-<td>Inseguridad en el barrio</td>
-<td>1.032</td>
-<td>770</td>
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: right;">1.032</td>
+<td style="text-align: right;">770</td>
 </tr>
 <tr class="odd">
-<td>Inseguridad en espacio público</td>
-<td>173</td>
-<td>83</td>
+<td style="text-align: left;">Inseguridad en espacio público</td>
+<td style="text-align: right;">173</td>
+<td style="text-align: right;">83</td>
 </tr>
 <tr class="even">
-<td>Inseguridad en la casa</td>
-<td>112</td>
-<td>45</td>
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: right;">112</td>
+<td style="text-align: right;">45</td>
 </tr>
 <tr class="odd">
-<td>Medidas de la vivienda</td>
-<td>105</td>
-<td>50</td>
+<td style="text-align: left;">Medidas de la vivienda</td>
+<td style="text-align: right;">105</td>
+<td style="text-align: right;">50</td>
 </tr>
 <tr class="even">
-<td>Modificación de prácticas</td>
-<td>39</td>
-<td>2</td>
+<td style="text-align: left;">Modificación de prácticas</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">2</td>
 </tr>
 </tbody>
 </table>
@@ -754,26 +760,26 @@ window.Quarto = {
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
 <thead>
 <tr class="header">
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Nivel socioeconómico</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Queda fuera</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Entra al modelo</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Nivel socioeconómico</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Queda fuera</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Entra al modelo</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td>Bajo</td>
-<td>52,36</td>
-<td>45,65</td>
+<td style="text-align: left;">Bajo</td>
+<td style="text-align: right;">52,36</td>
+<td style="text-align: right;">45,65</td>
 </tr>
 <tr class="even">
-<td>Medio</td>
-<td>35,50</td>
-<td>38,42</td>
+<td style="text-align: left;">Medio</td>
+<td style="text-align: right;">35,50</td>
+<td style="text-align: right;">38,42</td>
 </tr>
 <tr class="odd">
-<td>Alto</td>
-<td>12,14</td>
-<td>15,93</td>
+<td style="text-align: left;">Alto</td>
+<td style="text-align: right;">12,14</td>
+<td style="text-align: right;">15,93</td>
 </tr>
 </tbody>
 </table>
@@ -789,6 +795,133 @@ window.Quarto = {
 <p><strong>Análisis de correspondencias múltiples (MCA).</strong> Toma las ocho variables categóricas y las resume en unas pocas dimensiones continuas, de modo que personas con respuestas parecidas queden cerca en ese espacio. Es el equivalente categórico de un análisis factorial.</p>
 <p><strong>Clustering jerárquico (HCPC).</strong> Sobre ese espacio, agrupa a las personas formando un árbol y luego lo corta en un número fijo de grupos. Se corre sin consolidación por k-means, lo que hace el resultado <strong>determinista</strong>: no depende de una semilla aleatoria y se reproduce exactamente entre corridas.</p>
 <p>Se calcularon las soluciones de 4, 5 y 6 grupos. La que se reporta es la de <strong>5</strong>.</p>
+</section>
+<section id="variables-secundarias" class="level1">
+<h1>7. Variables secundarias</h1>
+<p>Los grupos ya están formados. Para describirlos hace falta un segundo conjunto de variables, que <strong>no participa del modelo</strong>: si participara, los grupos se formarían en parte por sexo o por edad, y lo que queremos es justamente ver cómo se distribuyen esas características entre grupos que se formaron por otra cosa.</p>
+<p>Son de cuatro tipos:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tipo</th>
+<th>Variables</th>
+<th>Cómo se construyen</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sociodemográficas</td>
+<td>Sexo, tramo de edad, nivel educacional, nivel socioeconómico, macrozona</td>
+<td>Recodificación de categorías de la ENUSC en tramos más agregados</td>
+</tr>
+<tr class="even">
+<td>Victimización</td>
+<td>Delitos contra las personas, delitos violentos</td>
+<td>Vienen directas de la encuesta</td>
+</tr>
+<tr class="odd">
+<td>Fuentes de información</td>
+<td>Experiencia personal, otras personas, redes sociales, prensa, televisión</td>
+<td>Marcan si la persona menciona esa fuente al informarse sobre delincuencia en su barrio, comuna o país</td>
+</tr>
+<tr class="even">
+<td>Índices de entorno</td>
+<td>Percepción de desórdenes, percepción de incivilidades</td>
+<td>Suma de una batería de ítems, ver abajo</td>
+</tr>
+</tbody>
+</table>
+<section id="los-índices-de-desórdenes-e-incivilidades" class="level2">
+<h2 class="anchored" data-anchor-id="los-índices-de-desórdenes-e-incivilidades">Los índices de desórdenes e incivilidades</h2>
+<p>Estos dos son los únicos que involucran un cálculo, y usan un procedimiento distinto al de los índices del modelo.</p>
+<p>Cada uno parte de una batería donde la persona indica <strong>con qué frecuencia</strong> ocurre cada situación en su barrio, en una escala de 1 a 5. El índice es la <strong>suma</strong> de esas respuestas: a más alto, más percepción de desorden.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">N de ítems</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Mínimo posible</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Mínimo observado</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Máximo observado</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Percepción de desórdenes</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Percepción de incivilidades</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">35</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Miremos la tercera y la cuarta columna. Con ítems que van de 1 a 5, el valor más bajo que puede producir cualquier combinación de respuestas válidas es el número de ítems. Y sin embargo el mínimo observado es <strong>0</strong> en los dos índices.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Decisión pendiente · Cómo tratar la no respuesta en estos índices
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El 0 aparece porque los ítems respondidos “no sabe” o “no responde” se descartan del sumatorio. Quien no responde ninguno suma 0, un valor que no corresponde a ninguna respuesta posible, y queda ubicado por debajo de quien respondió “nunca” a todo.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Índice</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Casos con alguna no respuesta</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">%</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Casos sin ninguna respuesta</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Índice que reciben</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Percepción de desórdenes</td>
+<td style="text-align: right;">6.563</td>
+<td style="text-align: right;">11,8</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Percepción de incivilidades</td>
+<td style="text-align: right;">1.839</td>
+<td style="text-align: right;">3,3</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>El problema no son solo los casos extremos. Cualquiera que haya dejado ítems sin responder queda con un índice más bajo del que le correspondería, en proporción a cuántos dejó.</p>
+<p><strong>Por qué queda abierta y no se resolvió junto con las otras.</strong> El resto del análisis usa una convención distinta: en los índices del modelo la no respuesta <strong>se queda en el denominador</strong> (ver el paso 3), de modo que el índice nunca sale de su rango. Acá sale. Son dos criterios diferentes conviviendo en el mismo análisis, y corresponde unificarlos.</p>
+<p><strong>Qué falta decidir:</strong> cuál de los dos criterios se adopta acá. Una opción es construir estos índices como porcentaje, igual que los del modelo, con lo que la convención se hereda sola. Otra es mantener la suma pero asignar el valor mínimo de la escala a los ítems sin responder, de modo que el índice se mantenga dentro de su rango.</p>
+<p>Cambia la escala de las dos variables, así que afecta a los cruces donde aparecen.</p>
+</div>
+</div>
+<p>Los dos índices se cortan después en terciles, con el mismo procedimiento del paso 4, así que les aplica también lo señalado ahí.</p>
+</section>
 </section>
 <section id="registro-de-decisiones" class="level1">
 <h1>Registro de decisiones</h1>

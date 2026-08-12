@@ -140,3 +140,58 @@ recodificar_sociodemograficas <- function(datos) {
             )
         )
 }
+
+#' Magnitud de la no-respuesta en los índices secundarios
+#'
+#' Mide el efecto de la convención vigente en `construir_indices_secundarios()`:
+#' los ítems en `88`/`99` se pasan a `NA` y `rowSums(na.rm = TRUE)` los descarta
+#' del sumatorio, de modo que la no-respuesta se comporta como si el desorden
+#' nunca hubiera ocurrido.
+#'
+#' El indicador que importa es `min_teorico` contra `min_observado`: con ítems en
+#' escala de 1 a 5, el mínimo que puede producir cualquier combinación de
+#' respuestas válidas es el número de ítems. Un índice por debajo de eso no
+#' corresponde a ninguna respuesta posible — es el rastro de la no-respuesta.
+#'
+#' Existe porque la página necesita mostrar la magnitud del problema y ningún
+#' número de la página puede nacer en un chunk (PLAN.md F5.4). Ver D5.
+#'
+#' @param datos `datos_finales`.
+#' @return Un tibble con una fila por índice.
+medir_no_respuesta_indices <- function(datos) {
+    especificacion <- list(
+        list(
+            indice = "desordenes_ind",
+            etiqueta = "Percepción de desórdenes",
+            prefijo = "p_desordenes_"
+        ),
+        list(
+            indice = "incivilidades_ind",
+            etiqueta = "Percepción de incivilidades",
+            prefijo = "p_incivilidades_"
+        )
+    )
+
+    purrr::map(especificacion, function(e) {
+        items <- grep(paste0("^", e$prefijo), names(datos), value = TRUE)
+        M <- vapply(datos[items], haven::zap_labels, numeric(nrow(datos)))
+        no_respuesta <- matrix(M %in% c(88, 99), nrow = nrow(M))
+        n_nr <- rowSums(no_respuesta)
+        valores <- datos[[e$indice]]
+
+        tibble::tibble(
+            indice = e$etiqueta,
+            n_items = length(items),
+            #* Con ítems de 1 a 5, ninguna combinación válida baja del número
+            #* de ítems: ese es el piso real de la escala.
+            min_teorico = length(items),
+            casos_alguna_nr = sum(n_nr > 0),
+            pct_alguna_nr = round(100 * mean(n_nr > 0), 1),
+            casos_toda_nr = sum(n_nr == length(items)),
+            valor_si_toda_nr = unique(valores[n_nr == length(items)])[1],
+            min_observado = min(valores, na.rm = TRUE),
+            max_observado = max(valores, na.rm = TRUE)
+        )
+    }) |>
+        purrr::list_rbind()
+}

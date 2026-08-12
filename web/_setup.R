@@ -51,12 +51,17 @@ pct_fmt <- function(x, dec = 1) paste0(n_fmt(x, dec), "%")
 #' `kableExtra` + estilos consistentes. Sin interactividad: las tablas
 #' interactivas de la página anterior no fueron bien recibidas.
 tabla <- function(df, alto = NULL, alinear = NULL, ...) {
-    k <- df |>
-        kbl(
-            format.args = list(big.mark = ".", decimal.mark = ","),
-            align = alinear,
-            ...
-        ) |>
+    #* `align = NULL` explícito no es lo mismo que omitirlo: kableExtra termina
+    #* escribiendo `style="NAposition: sticky"` en los <th>, que es CSS inválido
+    #* y deja el encabezado fijo sin funcionar. Se pasa solo si tiene valor.
+    args <- list(
+        df,
+        format.args = list(big.mark = ".", decimal.mark = ","),
+        ...
+    )
+    if (!is.null(alinear)) args$align <- alinear
+
+    k <- do.call(kbl, args) |>
         kable_styling(
             bootstrap_options = c("striped", "hover", "condensed"),
             full_width = TRUE,

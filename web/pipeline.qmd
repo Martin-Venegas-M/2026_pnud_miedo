@@ -23,7 +23,7 @@ afecta el resultado**, pese a que el pipeline es más grande.
 En cada uno se explicita qué se decidió y qué efecto tuvo.
 
 ```{mermaid}
-%%| fig-cap: "El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica."
+%%| fig-cap: "El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica. Las variables secundarias no alimentan el modelo: se usan para describir los grupos una vez formados."
 flowchart TD
     A[Base ENUSC 2025] --> B[Selección de la muestra]
     B --> C[Construcción de índices]
@@ -32,10 +32,12 @@ flowchart TD
     E --> F[MCA]
     F --> G[Clustering jerárquico]
     G --> H[Grupos]
+    I[Variables secundarias] --> H
 
     style C fill:#1c1c1c,color:#fff
     style D fill:#1c1c1c,color:#fff
     style E fill:#1c1c1c,color:#fff
+    style I fill:#1c1c1c,color:#fff
 ```
 
 # 1. Selección de la muestra
@@ -477,6 +479,94 @@ de una semilla aleatoria y se reproduce exactamente entre corridas.
 
 Se calcularon las soluciones de 4, 5 y 6 grupos. La que se reporta es la de
 **`r sub("clusters_", "", cfg$CLUSTER_A_SACAR)`**.
+
+# 7. Variables secundarias
+
+Los grupos ya están formados. Para describirlos hace falta un segundo conjunto de
+variables, que **no participa del modelo**: si participara, los grupos se
+formarían en parte por sexo o por edad, y lo que queremos es justamente ver cómo
+se distribuyen esas características entre grupos que se formaron por otra cosa.
+
+Son de cuatro tipos:
+
+| Tipo | Variables | Cómo se construyen |
+|---|---|---|
+| Sociodemográficas | Sexo, tramo de edad, nivel educacional, nivel socioeconómico, macrozona | Recodificación de categorías de la ENUSC en tramos más agregados |
+| Victimización | Delitos contra las personas, delitos violentos | Vienen directas de la encuesta |
+| Fuentes de información | Experiencia personal, otras personas, redes sociales, prensa, televisión | Marcan si la persona menciona esa fuente al informarse sobre delincuencia en su barrio, comuna o país |
+| Índices de entorno | Percepción de desórdenes, percepción de incivilidades | Suma de una batería de ítems, ver abajo |
+
+## Los índices de desórdenes e incivilidades
+
+Estos dos son los únicos que involucran un cálculo, y usan un procedimiento
+distinto al de los índices del modelo.
+
+Cada uno parte de una batería donde la persona indica **con qué frecuencia**
+ocurre cada situación en su barrio, en una escala de 1 a 5. El índice es la
+**suma** de esas respuestas: a más alto, más percepción de desorden.
+
+```{r}
+#| label: nr-indices
+nr <- leer("no_respuesta_indices")
+
+nr |>
+    transmute(
+        Índice = indice,
+        `N de ítems` = n_items,
+        `Mínimo posible` = min_teorico,
+        `Mínimo observado` = min_observado,
+        `Máximo observado` = max_observado
+    ) |>
+    tabla()
+```
+
+Miremos la tercera y la cuarta columna. Con ítems que van de 1 a 5, el valor más
+bajo que puede producir cualquier combinación de respuestas válidas es el número
+de ítems. Y sin embargo el mínimo observado es **0** en los dos índices.
+
+::: {.callout-warning}
+## Decisión pendiente · Cómo tratar la no respuesta en estos índices
+
+El 0 aparece porque los ítems respondidos "no sabe" o "no responde" se descartan
+del sumatorio. Quien no responde ninguno suma 0, un valor que no corresponde a
+ninguna respuesta posible, y queda ubicado por debajo de quien respondió
+"nunca" a todo.
+
+```{r}
+#| label: nr-detalle
+nr |>
+    transmute(
+        Índice = indice,
+        `Casos con alguna no respuesta` = casos_alguna_nr,
+        `%` = pct_alguna_nr,
+        `Casos sin ninguna respuesta` = casos_toda_nr,
+        `Índice que reciben` = valor_si_toda_nr
+    ) |>
+    tabla()
+```
+
+El problema no son solo los casos extremos. Cualquiera que haya dejado ítems sin
+responder queda con un índice más bajo del que le correspondería, en proporción a
+cuántos dejó.
+
+**Por qué queda abierta y no se resolvió junto con las otras.** El resto del
+análisis usa una convención distinta: en los índices del modelo la no respuesta
+**se queda en el denominador** (ver el paso 3), de modo que el índice nunca sale
+de su rango. Acá sale. Son dos criterios diferentes conviviendo en el mismo
+análisis, y corresponde unificarlos.
+
+**Qué falta decidir:** cuál de los dos criterios se adopta acá. Una opción es
+construir estos índices como porcentaje, igual que los del modelo, con lo que la
+convención se hereda sola. Otra es mantener la suma pero asignar el valor mínimo
+de la escala a los ítems sin responder, de modo que el índice se mantenga dentro
+de su rango.
+
+Cambia la escala de las dos variables, así que afecta a los cruces donde
+aparecen.
+:::
+
+Los dos índices se cortan después en terciles, con el mismo procedimiento del
+paso 4, así que les aplica también lo señalado ahí.
 
 # Registro de decisiones
 
