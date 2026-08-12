@@ -1322,12 +1322,26 @@ dimensión (`emper`, `perper`, `comper`, `comgen`), el resto por familia según
 §4.0. Acompañar las originales con `mapeo_nombres`, para poder ir de
 `P_INSEG_LUGARES_1` a `emper_p_inseg_lugares_1` sin leer código.
 
-**4. Solución actual.** Biplot, mapa de clusters, ajuste global, `v-test` y los
-cruces.
+**4. Solución actual.** Ajuste global y mapa de categorías (comunes a las tres
+soluciones: el MCA es el mismo, lo que cambia es dónde se corta el árbol), y
+luego **una subpestaña por solución** (4, 5 y 6 grupos) con mapa de clusters,
+tamaños, `v-test` y perfil.
 
 Los cruces van en **formato ancho**: una fila por categoría, una columna por
 cluster, con el % de esa categoría dentro de cada cluster (`tabla_cruces_ancho`).
 Es el formato con el que el equipo lee los perfiles.
+
+**Los gráficos no son los de `factoextra`.** Los de la librería sirven para
+explorar, no para comunicar: no distinguen dimensión teórica, superponen
+etiquetas y dibujan 49.503 puntos individuales donde solo se necesita leer dónde
+está el núcleo de cada grupo. Se replica el sistema de la página anterior:
+biplot de categorías coloreado por dimensión con `ggrepel`, y mapa de clusters
+con centroide y contorno al 50%.
+
+**El corte entre cálculo y dibujo:** las funciones de `R/graficos.R` preparan
+datos (coordenadas, centroides, la matriz de covarianza de cada elipse) y son
+targets; el `.qmd` dibuja. Así el cálculo queda trazable y el estilo se puede
+ajustar sin invalidar el DAG.
 
 Dos advertencias que van en esta pestaña, no solo en el plan:
 
@@ -1349,11 +1363,12 @@ Insumos ya disponibles en el DAG:
 | `tabla1_variables_originales`, `tabla2_variables_fuente`, `tabla3_variables_secundarias` | Univariados |
 | `mapeo_nombres` | Univariados (originales) |
 | `tabla4_clusters` | Solución actual |
-| `tabla_cruces_ancho_clusters` | Cruces, formato ancho |
-| `tabla6_v_test` | `v-test`, ordenado por `lift_pp` |
+| `tabla_cruces_ancho_clusters` | Cruces de la solución reportada, formato ancho |
+| `cruces_ancho_todas` | Cruces de las tres soluciones |
+| `tabla6_v_test`, `v_test_todas` | `v-test`, ordenado por `lift_pp` |
 | `tabla_ajuste` | Ajuste global (inercia) |
-| `grafico_mca` | Biplot |
-| `grafico_mapa_clusters` | Mapa factorial |
+| `datos_biplot_mca` | Coordenadas de categorías para el biplot |
+| `mapa_clusters` | Centroides y elipses de las tres soluciones |
 | `output/logs/perdida_detalle.csv`, `composicion_mca.csv`, `transiciones.csv` | Pipeline: pérdida, sesgo, flujos |
 
 #### Estado de los clusters

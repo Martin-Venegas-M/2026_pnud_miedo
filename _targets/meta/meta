@@ -70,6 +70,8 @@ tabla2_variables_fuente_xlsx|stem|561b26dce397f5e9|2b888e776d02c020|84053e03691e
 tabla3_variables_secundarias_xlsx|stem|7c2df5c0f58d4207|b26d88929a397333|3519c1abef36320b|-1549058281|output/tables/2025/tabla3_variables_secundarias.xlsx|t20677.3244815532s|s10293b|10293|file|local|vector|||0.034||
 tabla4_clusters_xlsx|stem|fcf4094c795168a0|260f4a5702611cce|a9568a4ce6dff318|58561226|output/tables/2025/tabla4_clusters.xlsx|t20677.3244841049s|s8698b|8698|file|local|vector|||0.037||
 tabla5_cruces_cluster_xlsx|stem|be7cdf615f7cdef3|d2c8043561978642|d2fd06032cbf2f3a|808869770|output/tables/2025/tabla5_cruces_cluster.xlsx|t20677.3244893847s|s19862b|19862|file|local|vector|||0.053||
+tabla_cruces_ancho_clusters|stem|a0848a4f26ecb644|7c1c68e02c2e9de7|fc1748729b2a14c5|-1734032325||t20677.3251859965s|s2438b|2438|rds|local|vector|||0.019||
+tabla_cruces_ancho_xlsx|stem|22180ec21910bdc7|66e73c9d767c1cc8|3098bc962b5c0492|-428640561|output/tables/2025/tabla_cruces_ancho.xlsx|t20677.3251912867s|s11889b|11889|file|local|vector|||0.384||
 tabla_marginal|function|dc586e9155eb4bc1
 reportar_perdida|function|5cf68237ce2f06ba
 filtrar_muestra|function|7d4bc70f6c95bf3f
@@ -84,9 +86,9 @@ tabla_ajuste_global|function|792df80f4aa00c70
 limpiar_tabla_descriptiva|function|7667f6db6551fbb8
 ajustar_mca|function|600613e6d857f458
 format_tab_excel|function|8076251e03da1728
+tabla_v_test|function|28884642def10130
 recuperar_codigos_especiales|function|aca38cd8d75ad54c
 leer_enusc|function|443b5af361eab4d2
-tabla_v_test|function|28884642def10130
 construir_spec_etiquetas_indices|function|627936b429169827
 construir_config|function|15fa741405b856d2
 validar_vars_sec|function|e93112a403c4d833
@@ -99,7 +101,9 @@ recodificar_sociodemograficas|function|a71f6debe132f118
 construir_spec_etiquetas_secundarias|function|bf56f4c6e748b632
 plot_mca|function|a648818279a48d8b
 tab_frq2|function|447cae0b1d4ac73e
+datos_mapa_clusters|function|19429fd4eca19571
 categorizar_indices|function|66a7453050afba01
+datos_biplot|function|41122dca625cb384
 construir_spec_patrones|function|1ae8b6209c8c6edd
 construir_vars_info|function|002f4b69d7da535c
 pre_proc_excel|function|3874119ee14223ca
@@ -108,8 +112,8 @@ construir_soluciones|function|ea8ebde2c3af6948
 filtrar_casos_completos|function|431f60d6ef33023a
 seleccionar_variables|function|492a7a24761ce6f3
 construir_diseno_muestral|function|b9bca0fa63835aba
-pegar_clusters|function|ad21647caf0f3530
 construir_spec_indices|function|0e2f3b860348a686
+pegar_clusters|function|ad21647caf0f3530
 reportar_composicion|function|397cc3d4317479fd
 etiquetar|function|43225477dc03ff4c
 reportar_transformacion|function|5a893c5b8ce9b5fe
@@ -120,7 +124,11 @@ tabla_variables_fuente|function|b1bcb9b8d03edb8f
 ajustar_hcpc_todos|function|8350ca9ec30c393e
 construir_indices_pct|function|733aa2b6bae4c20d
 escribir_tabla_descriptiva|function|a79a9e3a2ff4bad8
+tabla_v_test_todas|function|670e30bb3810fb59
 tab_var_clust|function|9ed541e1231074f5
 tabla_cruces_cluster|function|f1a10540c2675735
-tabla_cruces_ancho_clusters|stem|a0848a4f26ecb644|7c1c68e02c2e9de7|fc1748729b2a14c5|-1734032325||t20677.3251859965s|s2438b|2438|rds|local|vector|||0.019||
-tabla_cruces_ancho_xlsx|stem|22180ec21910bdc7|66e73c9d767c1cc8|3098bc962b5c0492|-428640561|output/tables/2025/tabla_cruces_ancho.xlsx|t20677.3251912867s|s11889b|11889|file|local|vector|||0.384||
+tabla_cruces_ancho_todas|function|da1fd446735b2de6
+datos_biplot_mca|stem|b987c1eaae18ade3|fd2835184e3481a9|3e28a772e9c67a8d|-1186536219||t20677.3509519357s|s1251b|1251|rds|local|vector|||0.029||
+v_test_todas|stem|9394f0d3b49ebfc0|fda4756a3bf2f438|b7faa101ea682f31|-1430680963||t20677.3509637089s|s7798b|7798|rds|local|vector|||0.065||
+mapa_clusters|stem|4267e4036861d96f|d784dbe771970327|f8f78c45d1531163|1646816683||t20677.3509748288s|s9364b|9364|rds|local|vector|||0.092||
+cruces_ancho_todas|stem|6d47cc154951652c|cb9946cd6c77440a|ee195fa4f650a6f6|-1421043070||t20677.3528964907s|s3271b|3271|rds|local|vector|||165.608||

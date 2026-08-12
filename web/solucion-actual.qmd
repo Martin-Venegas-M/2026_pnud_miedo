@@ -6,16 +6,60 @@ subtitle: "Los grupos: cómo se ven, qué los distingue y cómo se perfilan"
 ```{r}
 #| label: setup
 source("_setup.R")
+library(ggplot2)
 
 cfg <- leer("cfg")
-clust_var <- cfg$CLUSTER_A_SACAR
-n_grupos <- as.integer(sub("clusters_", "", clust_var))
+n_clases <- sort(cfg$N_CLASES)
+sol_reportada <- as.integer(sub("clusters_", "", cfg$CLUSTER_A_SACAR))
 
 t_clusters <- leer("tabla4_clusters")
 t_ajuste <- leer("tabla_ajuste")
-t_vtest <- leer("tabla6_v_test")
-t_cruces <- leer("tabla_cruces_ancho_clusters")
+d_biplot <- leer("datos_biplot_mca")
+mapa <- leer("mapa_clusters")
+v_test <- leer("v_test_todas")
+cruces <- leer("cruces_ancho_todas")
 perdida_res <- leer_log("perdida_resumen")
+```
+
+```{r}
+#| label: diseno
+#* Sistema de diseño de la página anterior. Los colores identifican dimensión y
+#* cluster, no rango: el mapeo es por nombre, así que filtrar no repinta lo que
+#* queda.
+PAL_DIM <- c(
+    emper = "#2a78d6",
+    perper = "#eb6834",
+    comper = "#1baf7a",
+    comgen = "#eda100"
+)
+ETIQ_DIM <- c(
+    emper = "Emocional · personal",
+    perper = "Perceptual · personal",
+    comper = "Comportamiento · personal",
+    comgen = "Comportamiento · general"
+)
+PAL_CLUST <- c(
+    C1 = "#2a78d6",
+    C2 = "#eb6834",
+    C3 = "#1baf7a",
+    C4 = "#eda100",
+    C5 = "#e87ba4",
+    C6 = "#8a63d2"
+)
+GRIS_EJE <- "#d8d8d4"
+
+eje_x <- paste0("Dimensión 1 (", n_fmt(t_ajuste$pct_varianza[1], 1), "%)")
+eje_y <- paste0("Dimensión 2 (", n_fmt(t_ajuste$pct_varianza[2], 1), "%)")
+
+tema_mapa <- theme_minimal(base_size = 11) +
+    theme(
+        panel.grid.minor = element_blank(),
+        panel.grid.major = element_line(color = "#eeeeec", linewidth = 0.3),
+        legend.position = "top",
+        legend.text = element_text(color = "#52514e"),
+        axis.title = element_text(color = "#52514e"),
+        plot.margin = margin(10, 24, 10, 14)
+    )
 ```
 
 ::: {.callout-warning}
@@ -23,60 +67,28 @@ perdida_res <- leer_log("perdida_resumen")
 
 La solución de grupos depende de **cómo se cortan los índices en categorías**,
 que es una decisión todavía abierta (ver
-[Pipeline](pipeline.qmd#categorización)). Cuando se resuelva, **esta solución
-cambia completa**: distinto número de personas por grupo, distinto perfil,
+[Pipeline](pipeline.html#categorización)). Cuando se resuelva, **estas soluciones
+cambian completas**: distinto número de personas por grupo, distinto perfil,
 posiblemente distinta cantidad de grupos razonable.
 
-Sirve para caracterizar y discutir los grupos. No para citar cifras como
+Sirven para caracterizar y discutir los grupos. No para citar cifras como
 definitivas.
 :::
 
-La solución que se reporta es la de **`r n_grupos` grupos**, construida sobre
-**`r n_fmt(perdida_res$n_despues)` casos**.
+El modelo se construye sobre **`r n_fmt(perdida_res$n_despues)` casos**. Se
+calcularon **tres soluciones** —de `r min(n_clases)`, `r max(n_clases)` y
+`r setdiff(n_clases, c(min(n_clases), max(n_clases)))` grupos— y todas se
+presentan acá, porque elegir entre ellas también es una decisión pendiente. La
+que se venía reportando es la de **`r sol_reportada` grupos**.
 
-Los grupos **todavía no tienen nombre**: aparecen como `C1` a `C`r n_grupos``.
-Ponerles nombre es tarea del equipo, y las dos secciones finales de esta página
-—qué distingue a cada grupo y el perfil completo— son el insumo para hacerlo.
+Los grupos **todavía no tienen nombre**: aparecen como `C1`, `C2` y así. Ponerles
+nombre es tarea del equipo, y las secciones de cada solución son el insumo.
 
-# Tamaño de los grupos
+# Estructura del modelo
 
-```{r}
-#| label: tamanos
-t_clusters |>
-    filter(variable == clust_var) |>
-    transmute(Grupo = label, Casos = frq, `%` = valid.prc) |>
-    tabla()
-```
-
-# El espacio de las respuestas
-
-El análisis de correspondencias múltiples resume las ocho variables en un espacio
-de pocas dimensiones. Cada punto del gráfico es una **categoría de respuesta**;
-las que aparecen cerca tienden a darse en las mismas personas.
-
-El color indica qué tan bien representada está esa categoría en el plano: las
-oscuras se leen con confianza, las claras están mal representadas en estas dos
-dimensiones y no conviene interpretarlas.
-
-```{r}
-#| label: biplot
-#| fig-width: 11
-#| fig-height: 8
-#| fig-cap: "Categorías de respuesta en las dos primeras dimensiones del MCA."
-leer("grafico_mca")
-```
-
-```{r}
-#| label: mapa-clusters
-#| fig-width: 11
-#| fig-height: 8
-#| fig-cap: "Las personas, coloreadas por grupo, en el mismo espacio."
-leer("grafico_mapa_clusters")
-```
-
-# Ajuste del modelo
-
-Cuánta de la variación total capta cada dimensión.
+El análisis de correspondencias múltiples es **el mismo para las tres
+soluciones**: lo que cambia entre ellas es dónde se corta el árbol de
+agrupamiento, no el espacio sobre el que se construye.
 
 ```{r}
 #| label: ajuste
@@ -99,26 +111,69 @@ independientemente de si el modelo es mejor o peor.
 
 Como la decisión abierta sobre categorización cambia justamente el número de
 categorías, **no se puede usar este porcentaje para decidir entre alternativas**.
-Una variante con más categorías va a mostrar un porcentaje distinto sin que eso
-signifique nada sobre su calidad.
-
 Para una comparación válida haría falta la corrección de Benzécri, que no está
-implementada. Mientras tanto, esta tabla describe la solución actual y nada más.
+implementada.
 :::
 
-# Qué distingue a cada grupo
+## Mapa de categorías
 
-Para cada grupo, las categorías de respuesta que más lo separan del resto de la
-muestra.
-
-La columna clave es **diferencia**: cuántos puntos porcentuales más (o menos)
-frecuente es esa respuesta dentro del grupo que en el total. Una diferencia de
-+30 significa que esa respuesta es 30 puntos más común en ese grupo que en la
-población.
+Cada punto es una categoría de respuesta, ubicada según su posición en las dos
+primeras dimensiones. Las categorías cercanas tienden a darse juntas en las
+mismas personas; las opuestas se excluyen.
 
 ```{r}
-#| label: vtest
+#| label: biplot
+#| fig-width: 10
+#| fig-height: 7.5
+d <- d_biplot |>
+    mutate(dimension = factor(dimension, levels = names(PAL_DIM)))
+
+ggplot(d, aes(dim1, dim2, color = dimension)) +
+    geom_hline(yintercept = 0, color = GRIS_EJE, linewidth = 0.4) +
+    geom_vline(xintercept = 0, color = GRIS_EJE, linewidth = 0.4) +
+    # Anillo de superficie: dos puntos que se solapan siguen leyéndose.
+    geom_point(size = 4.2, color = "#fcfcfb") +
+    geom_point(size = 3) +
+    ggrepel::geom_text_repel(
+        aes(label = stringr::str_wrap(categoria, 24)),
+        size = 2.8,
+        lineheight = 0.95,
+        color = "#52514e",
+        show.legend = FALSE,
+        seed = 1,
+        min.segment.length = 0,
+        segment.color = "#b8b8b4",
+        segment.size = 0.3,
+        box.padding = 0.55,
+        point.padding = 0.3,
+        max.overlaps = Inf,
+        force = 3
+    ) +
+    scale_color_manual(
+        values = PAL_DIM,
+        labels = ETIQ_DIM,
+        name = NULL,
+        drop = FALSE
+    ) +
+    labs(x = eje_x, y = eje_y) +
+    coord_cartesian(clip = "off") +
+    tema_mapa
+```
+
+::: {.callout-tip}
+El color identifica la **dimensión teórica**, no un orden. La leyenda está
+siempre presente porque la identidad no puede depender solo del color.
+:::
+
+# Las soluciones
+
+::: {.panel-tabset}
+
+```{r}
+#| label: soluciones
 #| results: asis
+#| fig-width: 10
+#| fig-height: 7
 
 etiquetas_vars <- c(
     emper_ep_pct_rec_tercil = "Inseguridad en espacio público",
@@ -128,29 +183,145 @@ etiquetas_vars <- c(
     comper_pct_rec_tercil = "Modificación de prácticas",
     comper_gasto = "Gasto en seguridad",
     comgen_per_pct_rec_tercil = "Medidas de la vivienda",
-    comgen_com_pct_rec_tercil = "Medidas del barrio"
+    comgen_com_pct_rec_tercil = "Medidas del barrio",
+    rph_sexo = "Sexo",
+    rph_nivel_rec = "Nivel educacional",
+    rph_edad_rec = "Tramo de edad",
+    rph_nse = "Nivel socioeconómico",
+    enc_region_rec = "Macrozona",
+    vp_dc = "Victimización (delitos contra las personas)",
+    vp_dv = "Victimización (delitos violentos)",
+    desordenes_ind_rec = "Percepción de desórdenes",
+    incivilidades_ind_rec = "Percepción de incivilidades",
+    info_exp_personal = "Se informa por experiencia personal",
+    info_otras_personas = "Se informa por otras personas",
+    info_rrss = "Se informa por redes sociales",
+    info_prensa = "Se informa por prensa",
+    info_tv = "Se informa por televisión"
 )
 
-cat("::: {.panel-tabset}\n")
+for (k in n_clases) {
+    marca <- if (k == sol_reportada) " ★" else ""
+    cat("\n## ", k, " grupos", marca, "\n\n", sep = "")
 
-for (g in sort(unique(t_vtest$cluster))) {
-    cat("\n## Grupo C", g, "\n\n", sep = "")
+    if (k == sol_reportada) {
+        cat(
+            "Es la solución que se venía reportando. La marca no significa que",
+            "sea la mejor: significa que es la que está en los informes previos.\n\n"
+        )
+    }
 
-    tab <- t_vtest |>
-        filter(cluster == g) |>
+    # --- Mapa de clusters -------------------------------------------------
+    cen <- mapa$centroides |>
+        filter(solucion == k) |>
+        mutate(etiqueta = paste0(cluster, "\n", n_fmt(casos), " casos"))
+    eli <- mapa$elipses |> filter(solucion == k)
+
+    p <- ggplot(mapping = aes(dim1, dim2)) +
+        geom_hline(yintercept = 0, color = GRIS_EJE, linewidth = 0.4) +
+        geom_vline(xintercept = 0, color = GRIS_EJE, linewidth = 0.4) +
+        geom_polygon(
+            data = eli,
+            aes(group = cluster, fill = cluster, color = cluster),
+            alpha = 0.10,
+            linewidth = 0.8
+        ) +
+        geom_point(data = cen, size = 5.5, color = "#fcfcfb") +
+        geom_point(data = cen, aes(color = cluster), size = 4) +
+        ggrepel::geom_text_repel(
+            data = cen,
+            aes(label = etiqueta),
+            size = 3,
+            lineheight = 0.95,
+            color = "#3b3a38",
+            fontface = "bold",
+            seed = 1,
+            min.segment.length = 0,
+            segment.color = "#b8b8b4",
+            segment.size = 0.3,
+            box.padding = 0.7,
+            point.padding = 0.5,
+            show.legend = FALSE
+        ) +
+        scale_color_manual(values = PAL_CLUST, name = NULL) +
+        scale_fill_manual(values = PAL_CLUST, name = NULL) +
+        labs(x = eje_x, y = eje_y) +
+        tema_mapa
+
+    print(p)
+    cat("\n\n")
+
+    cat(
+        "Cada contorno encierra el **50% central** de los casos de su grupo, y el",
+        "punto marca el centro. Que dos contornos se solapen no significa que los",
+        "grupos estén mal definidos: la clasificación usa todas las dimensiones",
+        "del modelo y acá solo se ven dos.\n\n"
+    )
+
+    # --- Tamaños ----------------------------------------------------------
+    cat("### Tamaño de los grupos\n\n")
+    #* Las variables de cluster son factores sin etiquetas de valor, así que
+    #* frq() deja "<none>" en `label` y el nombre del grupo en `val`.
+    tam <- t_clusters |>
+        filter(variable == paste0("clusters_", k), !is.na(val)) |>
+        transmute(Grupo = as.character(val), Casos = frq, `%` = valid.prc)
+    cat(as.character(tabla(tam)), "\n\n")
+
+    # --- v-test -----------------------------------------------------------
+    cat("### Qué distingue a cada grupo\n\n")
+    cat(
+        "**Diferencia** es cuántos puntos porcentuales más (o menos) frecuente es",
+        "esa respuesta dentro del grupo que en el total.\n\n"
+    )
+
+    vt <- v_test |>
+        filter(solucion == k) |>
         transmute(
+            Grupo = paste0("C", cluster),
             Variable = dplyr::coalesce(etiquetas_vars[variable], variable),
             Respuesta = categoria,
             `Diferencia (pp)` = lift_pp,
             `% en el grupo` = `Mod/Cla`,
             `% en el total` = Global
         )
+    cat(as.character(tabla(vt, alto = "460px")), "\n\n")
 
-    cat(as.character(tabla(tab, alto = "440px")), "\n\n")
+    # --- Perfil -----------------------------------------------------------
+    cat("### Perfil de los grupos\n\n")
+    cat(
+        "Cada columna suma 100% dentro de cada bloque de variable. Se lee por",
+        "filas: comparando una fila entre columnas se ve qué grupos concentran",
+        "esa respuesta.\n\n"
+    )
+
+    cols_k <- paste0("C", seq_len(k))
+
+    perfil <- cruces |>
+        filter(solucion == k) |>
+        transmute(
+            grupo_variable,
+            Variable = dplyr::coalesce(etiquetas_vars[variable], variable),
+            Categoría = categoria,
+            across(all_of(cols_k))
+        ) |>
+        arrange(desc(grupo_variable)) |>
+        group_by(Variable) |>
+        mutate(Variable = ifelse(row_number() == 1, Variable, "")) |>
+        ungroup() |>
+        select(-grupo_variable)
+
+    cat(
+        as.character(tabla(
+            perfil,
+            alto = "600px",
+            alinear = c("l", "l", rep("r", k))
+        )),
+        "\n\n"
+    )
 }
-
-cat(":::\n")
 ```
+
+:::
 
 ::: {.callout-note}
 ## Por qué "diferencia" y no el estadístico habitual
@@ -163,78 +334,6 @@ asociaciones más fuertes, que son las que interesan.
 La diferencia en puntos porcentuales dice lo mismo, nunca empata artificialmente
 y se lee en unidades interpretables. El `v-test` sigue disponible en la tabla
 descargable.
-:::
-
-# Perfil de los grupos
-
-La tabla completa: cada variable, cada categoría, y qué porcentaje de cada grupo
-está en ella. **Cada columna suma 100% dentro de cada bloque de variable.**
-
-Se lee por filas: comparando una fila entre columnas se ve qué grupos concentran
-esa respuesta.
-
-::: {.panel-tabset}
-
-```{r}
-#| label: cruces
-#| results: asis
-
-etiquetas_cruces <- c(
-    etiquetas_vars,
-    c(
-        rph_sexo = "Sexo",
-        rph_nivel_rec = "Nivel educacional",
-        rph_edad_rec = "Tramo de edad",
-        rph_nse = "Nivel socioeconómico",
-        enc_region_rec = "Macrozona",
-        vp_dc = "Victimización (delitos contra las personas)",
-        vp_dv = "Victimización (delitos violentos)",
-        desordenes_ind_rec = "Percepción de desórdenes",
-        incivilidades_ind_rec = "Percepción de incivilidades",
-        info_exp_personal = "Se informa por experiencia personal",
-        info_otras_personas = "Se informa por otras personas",
-        info_rrss = "Se informa por redes sociales",
-        info_prensa = "Se informa por prensa",
-        info_tv = "Se informa por televisión"
-    )
-)
-
-nombres_grupo <- c(
-    fuente = "Variables del modelo",
-    secundaria = "Variables secundarias"
-)
-
-cols_cluster <- grep("^C[0-9]+$", names(t_cruces), value = TRUE)
-
-for (gr in names(nombres_grupo)) {
-    cat("\n## ", nombres_grupo[[gr]], "\n\n")
-
-    tab <- t_cruces |>
-        filter(grupo_variable == gr) |>
-        transmute(
-            Variable = dplyr::coalesce(etiquetas_cruces[variable], variable),
-            Categoría = categoria,
-            across(all_of(cols_cluster))
-        )
-
-    # Solo se nombra la variable en su primera fila, para que los bloques se
-    # lean como en la tabla de referencia del equipo.
-    tab <- tab |>
-        group_by(Variable) |>
-        mutate(Variable = ifelse(row_number() == 1, Variable, "")) |>
-        ungroup()
-
-    cat(
-        as.character(tabla(
-            tab,
-            alto = "600px",
-            alinear = c("l", "l", rep("r", length(cols_cluster)))
-        )),
-        "\n\n"
-    )
-}
-```
-
 :::
 
 ::: {.callout-warning}

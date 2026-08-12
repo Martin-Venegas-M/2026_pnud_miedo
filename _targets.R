@@ -538,6 +538,20 @@ list(
         tabla_cruces_ancho_clusters,
         tabla_cruces_ancho(tabla5_cruces_cluster, cfg$CLUSTER_A_SACAR)
     ),
+
+    # Las tres soluciones (4, 5 y 6 grupos) para las subpestañas de la página.
+    tar_target(
+        cruces_ancho_todas,
+        tabla_cruces_ancho_todas(
+            diseno_muestral,
+            cfg$N_CLASES,
+            cfg$VARS_REC_TERCIL,
+            cfg$VARS_SEC
+        )
+    ),
+    tar_target(v_test_todas, tabla_v_test_todas(hcpc, cfg$N_CLASES)),
+    tar_target(datos_biplot_mca, datos_biplot(mca)),
+    tar_target(mapa_clusters, datos_mapa_clusters(mca, hcpc, cfg$N_CLASES)),
     tar_target(
         tabla_cruces_ancho_xlsx,
         escribir_tabla_descriptiva(
@@ -547,8 +561,5 @@ list(
             motivo_provisional = "D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes."
         ),
         format = "file"
-    ),
-
-    tar_target(grafico_mca, plot_mca(mca)),
-    tar_target(grafico_mapa_clusters, grafico_clusters(hcpc, cfg$CLUSTER_A_SACAR))
+    )
 )

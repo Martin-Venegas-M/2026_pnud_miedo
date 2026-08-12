@@ -427,27 +427,6 @@ tabla_ajuste_global <- function(mca, n_dim = 10) {
     )
 }
 
-#' Mapa factorial de los clusters
-#'
-#' Reemplaza a `plot_cluster()`, que se eliminó en la Fase 1 por estar rota:
-#' recibía `obj` pero por dentro pasaba `clust`, que no existía en su entorno.
-#' `factoextra::fviz_cluster()` acepta el objeto `HCPC` directamente.
-#'
-#' @param hcpc Lista de objetos `HCPC` (target `hcpc`).
-#' @param clust_var `cfg$CLUSTER_A_SACAR`, de donde se deriva qué solución usar.
-#' @return Un objeto `ggplot`.
-grafico_clusters <- function(hcpc, clust_var) {
-    nclust <- stringr::str_extract(clust_var, "\\d+$")
-    h <- hcpc[[paste0("class", nclust)]]
-
-    factoextra::fviz_cluster(
-        h,
-        geom = "point",
-        ggtheme = ggplot2::theme_minimal(),
-        main = paste0("Mapa factorial de los ", nclust, " grupos")
-    )
-}
-
 #' Cruces variable x cluster en formato ancho (la "Tabla C")
 #'
 #' Reorganiza `tabla5_cruces_cluster` al formato con el que el equipo lee los
@@ -493,4 +472,48 @@ tabla_cruces_ancho <- function(cruces, clust_var) {
             values_fill = 0
         ) |>
         dplyr::arrange(dplyr::desc(grupo_variable), variable)
+}
+
+#' `v-test` de todas las soluciones de cluster
+#'
+#' Igual que [tabla_v_test()] pero recorriendo las soluciones de `n_clases`, de
+#' modo que la página pueda mostrarlas como subpestañas y no solo la reportada.
+#'
+#' @param hcpc Lista de objetos `HCPC` (target `hcpc`).
+#' @param n_clases `cfg$N_CLASES`.
+#' @return El mismo tibble de [tabla_v_test()] con una columna `solucion`.
+tabla_v_test_todas <- function(hcpc, n_clases) {
+    purrr::map(n_clases, function(k) {
+        tabla_v_test(hcpc, paste0("clusters_", k)) |>
+            dplyr::mutate(solucion = k, .before = 1)
+    }) |>
+        purrr::list_rbind()
+}
+
+#' Cruces por cluster, en formato ancho, para todas las soluciones
+#'
+#' El paso caro del pipeline en esta zona: cada solución estima sus cruces con
+#' el diseño muestral por separado. Se aísla en su propio target para que
+#' cambiar el formato de una tabla no obligue a recalcular las tres.
+#'
+#' @param svy Diseño muestral.
+#' @param n_clases `cfg$N_CLASES`.
+#' @param vars_fuente,vars_sec Vectores de variables.
+#' @return Un tibble ancho con columna `solucion` y una columna por cluster.
+#'   Las columnas de cluster que no existen en una solución quedan en `NA` —
+#'   la de 4 grupos no tiene `C5` ni `C6`.
+tabla_cruces_ancho_todas <- function(svy, n_clases, vars_fuente, vars_sec) {
+    purrr::map(n_clases, function(k) {
+        clust_var <- paste0("clusters_", k)
+
+        tabla_cruces_cluster(
+            svy = svy,
+            clust_var = clust_var,
+            vars_fuente = vars_fuente,
+            vars_sec = vars_sec
+        ) |>
+            tabla_cruces_ancho(clust_var) |>
+            dplyr::mutate(solucion = k, .before = 1)
+    }) |>
+        purrr::list_rbind()
 }

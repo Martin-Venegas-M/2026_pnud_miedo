@@ -123,11 +123,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#tamaño-de-los-grupos" id="toc-tamaño-de-los-grupos" class="nav-link active" data-scroll-target="#tamaño-de-los-grupos">Tamaño de los grupos</a></li>
-  <li><a href="#el-espacio-de-las-respuestas" id="toc-el-espacio-de-las-respuestas" class="nav-link" data-scroll-target="#el-espacio-de-las-respuestas">El espacio de las respuestas</a></li>
-  <li><a href="#ajuste-del-modelo" id="toc-ajuste-del-modelo" class="nav-link" data-scroll-target="#ajuste-del-modelo">Ajuste del modelo</a></li>
-  <li><a href="#qué-distingue-a-cada-grupo" id="toc-qué-distingue-a-cada-grupo" class="nav-link" data-scroll-target="#qué-distingue-a-cada-grupo">Qué distingue a cada grupo</a></li>
-  <li><a href="#perfil-de-los-grupos" id="toc-perfil-de-los-grupos" class="nav-link" data-scroll-target="#perfil-de-los-grupos">Perfil de los grupos</a></li>
+  <li><a href="#estructura-del-modelo" id="toc-estructura-del-modelo" class="nav-link active" data-scroll-target="#estructura-del-modelo">Estructura del modelo</a>
+  <ul class="collapse">
+  <li><a href="#mapa-de-categorías" id="toc-mapa-de-categorías" class="nav-link" data-scroll-target="#mapa-de-categorías">Mapa de categorías</a></li>
+  </ul></li>
+  <li><a href="#las-soluciones" id="toc-las-soluciones" class="nav-link" data-scroll-target="#las-soluciones">Las soluciones</a></li>
   </ul>
 </nav>
     </div>
@@ -164,88 +164,15 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La solución de grupos depende de <strong>cómo se cortan los índices en categorías</strong>, que es una decisión todavía abierta (ver <a href="./pipeline.html#categorización">Pipeline</a>). Cuando se resuelva, <strong>esta solución cambia completa</strong>: distinto número de personas por grupo, distinto perfil, posiblemente distinta cantidad de grupos razonable.</p>
-<p>Sirve para caracterizar y discutir los grupos. No para citar cifras como definitivas.</p>
+<p>La solución de grupos depende de <strong>cómo se cortan los índices en categorías</strong>, que es una decisión todavía abierta (ver <a href="pipeline.html#categorización">Pipeline</a>). Cuando se resuelva, <strong>estas soluciones cambian completas</strong>: distinto número de personas por grupo, distinto perfil, posiblemente distinta cantidad de grupos razonable.</p>
+<p>Sirven para caracterizar y discutir los grupos. No para citar cifras como definitivas.</p>
 </div>
 </div>
-<p>La solución que se reporta es la de <strong>5 grupos</strong>, construida sobre <strong>49.503 casos</strong>.</p>
-<p>Los grupos <strong>todavía no tienen nombre</strong>: aparecen como <code>C1</code> a <code>C5</code>. Ponerles nombre es tarea del equipo, y las dos secciones finales de esta página —qué distingue a cada grupo y el perfil completo— son el insumo para hacerlo.</p>
-<section id="tamaño-de-los-grupos" class="level1">
-<h1>Tamaño de los grupos</h1>
-<div class="cell">
-<div class="cell-output-display">
-<table class="table table-striped table-hover table-condensed caption-top table-sm small">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Grupo</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">Casos</th>
-<th data-quarto-table-cell-role="th" style="NAposition: sticky; top: 0; background-color: #FFFFFF">%</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>&lt;none&gt;</td>
-<td>2.331.401</td>
-<td>19,46</td>
-</tr>
-<tr class="even">
-<td>&lt;none&gt;</td>
-<td>1.825.777</td>
-<td>15,24</td>
-</tr>
-<tr class="odd">
-<td>&lt;none&gt;</td>
-<td>2.477.427</td>
-<td>20,68</td>
-</tr>
-<tr class="even">
-<td>&lt;none&gt;</td>
-<td>2.545.515</td>
-<td>21,25</td>
-</tr>
-<tr class="odd">
-<td>&lt;none&gt;</td>
-<td>2.798.264</td>
-<td>23,36</td>
-</tr>
-<tr class="even">
-<td>NA</td>
-<td>0</td>
-<td>NA</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<section id="el-espacio-de-las-respuestas" class="level1">
-<h1>El espacio de las respuestas</h1>
-<p>El análisis de correspondencias múltiples resume las ocho variables en un espacio de pocas dimensiones. Cada punto del gráfico es una <strong>categoría de respuesta</strong>; las que aparecen cerca tienden a darse en las mismas personas.</p>
-<p>El color indica qué tan bien representada está esa categoría en el plano: las oscuras se leen con confianza, las claras están mal representadas en estas dos dimensiones y no conviene interpretarlas.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="solucion-actual_files/figure-html/biplot-1.png" class="img-fluid figure-img" width="1056"></p>
-<figcaption>Categorías de respuesta en las dos primeras dimensiones del MCA.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="solucion-actual_files/figure-html/mapa-clusters-1.png" class="img-fluid figure-img" width="1056"></p>
-<figcaption>Las personas, coloreadas por grupo, en el mismo espacio.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="ajuste-del-modelo" class="level1">
-<h1>Ajuste del modelo</h1>
-<p>Cuánta de la variación total capta cada dimensión.</p>
+<p>El modelo se construye sobre <strong>49.503 casos</strong>. Se calcularon <strong>tres soluciones</strong> —de 4, 6 y 5 grupos— y todas se presentan acá, porque elegir entre ellas también es una decisión pendiente. La que se venía reportando es la de <strong>5 grupos</strong>.</p>
+<p>Los grupos <strong>todavía no tienen nombre</strong>: aparecen como <code>C1</code>, <code>C2</code> y así. Ponerles nombre es tarea del equipo, y las secciones de cada solución son el insumo.</p>
+<section id="estructura-del-modelo" class="level1">
+<h1>Estructura del modelo</h1>
+<p>El análisis de correspondencias múltiples es <strong>el mismo para las tres soluciones</strong>: lo que cambia entre ellas es dónde se corta el árbol de agrupamiento, no el espacio sobre el que se construye.</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
@@ -303,23 +230,118 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <div class="callout-body-container callout-body">
 <p>En un análisis de correspondencias, el % de inercia depende <strong>mecánicamente del número de categorías por variable</strong>: más categorías producen más inercia total, independientemente de si el modelo es mejor o peor.</p>
-<p>Como la decisión abierta sobre categorización cambia justamente el número de categorías, <strong>no se puede usar este porcentaje para decidir entre alternativas</strong>. Una variante con más categorías va a mostrar un porcentaje distinto sin que eso signifique nada sobre su calidad.</p>
-<p>Para una comparación válida haría falta la corrección de Benzécri, que no está implementada. Mientras tanto, esta tabla describe la solución actual y nada más.</p>
+<p>Como la decisión abierta sobre categorización cambia justamente el número de categorías, <strong>no se puede usar este porcentaje para decidir entre alternativas</strong>. Para una comparación válida haría falta la corrección de Benzécri, que no está implementada.</p>
+</div>
+</div>
+<section id="mapa-de-categorías" class="level2">
+<h2 class="anchored" data-anchor-id="mapa-de-categorías">Mapa de categorías</h2>
+<p>Cada punto es una categoría de respuesta, ubicada según su posición en las dos primeras dimensiones. Las categorías cercanas tienden a darse juntas en las mismas personas; las opuestas se excluyen.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="solucion-actual_files/figure-html/biplot-1.png" class="img-fluid figure-img" width="960"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El color identifica la <strong>dimensión teórica</strong>, no un orden. La leyenda está siempre presente porque la identidad no puede depender solo del color.</p>
 </div>
 </div>
 </section>
-<section id="qué-distingue-a-cada-grupo" class="level1">
-<h1>Qué distingue a cada grupo</h1>
-<p>Para cada grupo, las categorías de respuesta que más lo separan del resto de la muestra.</p>
-<p>La columna clave es <strong>diferencia</strong>: cuántos puntos porcentuales más (o menos) frecuente es esa respuesta dentro del grupo que en el total. Una diferencia de +30 significa que esa respuesta es 30 puntos más común en ese grupo que en la población.</p>
+</section>
+<section id="las-soluciones" class="level1">
+<h1>Las soluciones</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Grupo C1</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Grupo C2</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Grupo C3</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-4" role="tab" aria-controls="tabset-1-4" aria-selected="false" href="">Grupo C4</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-5-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-5" role="tab" aria-controls="tabset-1-5" aria-selected="false" href="">Grupo C5</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">4 grupos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">5 grupos ★</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">6 grupos</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:440px; ">
+<p><img src="solucion-actual_files/figure-html/soluciones-1.png" class="img-fluid" width="960"></p>
+<p>Cada contorno encierra el <strong>50% central</strong> de los casos de su grupo, y el punto marca el centro. Que dos contornos se solapen no significa que los grupos estén mal definidos: la clasificación usa todas las dimensiones del modelo y acá solo se ven dos.</p>
+<section id="tamaño-de-los-grupos" class="level3">
+<h3 class="anchored" data-anchor-id="tamaño-de-los-grupos">Tamaño de los grupos</h3>
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
 <tr>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+Grupo
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+Casos
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+%
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+C1
+</td>
+<td>
+2.331.401
+</td>
+<td>
+19,46
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+1.825.777
+</td>
+<td>
+15,24
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+2.477.427
+</td>
+<td>
+20,68
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+5.343.779
+</td>
+<td>
+44,61
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="qué-distingue-a-cada-grupo" class="level3">
+<h3 class="anchored" data-anchor-id="qué-distingue-a-cada-grupo">Qué distingue a cada grupo</h3>
+<p><strong>Diferencia</strong> es cuántos puntos porcentuales más (o menos) frecuente es esa respuesta dentro del grupo que en el total.</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:460px; ">
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Grupo
+</th>
 <th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
 Variable
 </th>
@@ -339,6 +361,9 @@ Diferencia (pp)
 </thead>
 <tbody>
 <tr>
+<td>
+C1
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -349,13 +374,16 @@ Bajas prácticas de evitación
 46,5518974
 </td>
 <td>
-79,240825
+79,2408253
 </td>
 <td>
 32,6889279
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -366,13 +394,16 @@ Baja inseguridad en espacio publico
 44,9878279
 </td>
 <td>
-77,476768
+77,4767680
 </td>
 <td>
 32,4889401
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -383,13 +414,16 @@ Baja inseguridad en el barrio
 37,8371784
 </td>
 <td>
-70,633171
+70,6331706
 </td>
 <td>
 32,7959922
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -400,13 +434,16 @@ No cree que será victima de delito
 33,9402872
 </td>
 <td>
-84,060482
+84,0604820
 </td>
 <td>
 50,1201947
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Gasto en seguridad
 </td>
@@ -417,13 +454,16 @@ No gasta en medidas de seguridad
 20,1376990
 </td>
 <td>
-73,098126
+73,0981257
 </td>
 <td>
 52,9604266
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -434,13 +474,16 @@ Media disposición de medidas vivienda
 14,7350038
 </td>
 <td>
-48,078437
+48,0784375
 </td>
 <td>
 33,3434337
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -451,13 +494,16 @@ Baja adopción de medidas comunitarias
 14,1139450
 </td>
 <td>
-47,259411
+47,2594109
 </td>
 <td>
 33,1454659
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -468,13 +514,16 @@ Baja inseguridad en la casa
 12,8039562
 </td>
 <td>
-46,133249
+46,1332493
 </td>
 <td>
 33,3292932
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -485,13 +534,16 @@ Baja disposición de medidas vivienda
 11,1898559
 </td>
 <td>
-44,195936
+44,1959364
 </td>
 <td>
 33,0060804
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -502,13 +554,16 @@ Media inseguridad en la casa
 3,9901704
 </td>
 <td>
-37,218460
+37,2184596
 </td>
 <td>
 33,2282892
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -519,13 +574,16 @@ Media adopción de medidas comunitarias
 0,7756305
 </td>
 <td>
-34,060482
+34,0604820
 </td>
 <td>
 33,2848514
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -536,13 +594,16 @@ Cree que será victima de otro tipo de delito
 -0,1454457
 </td>
 <td>
-0,000000
+0,0000000
 </td>
 <td>
 0,1454457
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -553,13 +614,16 @@ Media inseguridad en el barrio
 -10,4260593
 </td>
 <td>
-22,979997
+22,9799968
 </td>
 <td>
 33,4060562
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -570,13 +634,16 @@ Alta adopción de medidas comunitarias
 -14,8895755
 </td>
 <td>
-18,680107
+18,6801071
 </td>
 <td>
 33,5696826
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -587,13 +654,16 @@ Cree que será victima de delito no violento
 -16,2258380
 </td>
 <td>
-5,607182
+5,6071822
 </td>
 <td>
 21,8330202
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -604,13 +674,16 @@ Alta inseguridad en la casa
 -16,7941266
 </td>
 <td>
-16,648291
+16,6482911
 </td>
 <td>
 33,4424176
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -621,13 +694,16 @@ Cree que será victima de delito violento
 -17,5690035
 </td>
 <td>
-10,332336
+10,3323358
 </td>
 <td>
 27,9013393
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -638,13 +714,16 @@ Media inseguridad en espacio publico
 -19,1172442
 </td>
 <td>
-14,632226
+14,6322255
 </td>
 <td>
 33,7494697
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -655,13 +734,16 @@ Medias prácticas de evitación
 -19,1540681
 </td>
 <td>
-14,262089
+14,2620885
 </td>
 <td>
 33,4161566
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Gasto en seguridad
 </td>
@@ -672,13 +754,16 @@ Gasta en medidas de seguridad
 -20,1376990
 </td>
 <td>
-26,901874
+26,9018743
 </td>
 <td>
 47,0395734
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -689,13 +774,16 @@ Alta inseguridad en espacio publico
 -25,8705837
 </td>
 <td>
-7,891006
+7,8910065
 </td>
 <td>
 33,7615902
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -706,13 +794,16 @@ Alta disposición de medidas vivienda
 -25,9248597
 </td>
 <td>
-7,725626
+7,7256261
 </td>
 <td>
 33,6504858
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -723,13 +814,16 @@ Altas prácticas de evitación
 -27,3978293
 </td>
 <td>
-6,497086
+6,4970862
 </td>
 <td>
 33,8949155
 </td>
 </tr>
 <tr>
+<td>
+C1
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -740,40 +834,16 @@ Alta inseguridad en el barrio
 -27,4111191
 </td>
 <td>
-6,386833
+6,3868326
 </td>
 <td>
 33,7979516
 </td>
 </tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:440px; ">
-<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
-<thead>
 <tr>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Variable
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Respuesta
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Diferencia (pp)
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el grupo
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el total
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
+<td>
+C2
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -784,13 +854,16 @@ Alta disposición de medidas vivienda
 43,1615354
 </td>
 <td>
-76,812021
+76,8120212
 </td>
 <td>
 33,6504858
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Gasto en seguridad
 </td>
@@ -801,13 +874,16 @@ Gasta en medidas de seguridad
 26,9144632
 </td>
 <td>
-73,954037
+73,9540365
 </td>
 <td>
 47,0395734
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -818,13 +894,16 @@ Baja inseguridad en el barrio
 25,9989401
 </td>
 <td>
-58,794932
+58,7949322
 </td>
 <td>
 32,7959922
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -835,13 +914,16 @@ No cree que será victima de delito
 20,2245313
 </td>
 <td>
-70,344726
+70,3447260
 </td>
 <td>
 50,1201947
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -852,13 +934,16 @@ Baja inseguridad en espacio publico
 19,5293275
 </td>
 <td>
-52,018268
+52,0182675
 </td>
 <td>
 32,4889401
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -869,13 +954,16 @@ Alta adopción de medidas comunitarias
 18,8316138
 </td>
 <td>
-52,401296
+52,4012964
 </td>
 <td>
 33,5696826
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -886,13 +974,16 @@ Media inseguridad en la casa
 17,1989353
 </td>
 <td>
-50,427225
+50,4272245
 </td>
 <td>
 33,2282892
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -903,13 +994,16 @@ Bajas prácticas de evitación
 17,0017026
 </td>
 <td>
-49,690630
+49,6906305
 </td>
 <td>
 32,6889279
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -920,13 +1014,16 @@ Medias prácticas de evitación
 3,4430066
 </td>
 <td>
-36,859163
+36,8591632
 </td>
 <td>
 33,4161566
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -937,13 +1034,16 @@ Baja inseguridad en la casa
 2,4986385
 </td>
 <td>
-35,827932
+35,8279316
 </td>
 <td>
 33,3292932
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -954,13 +1054,16 @@ Media inseguridad en espacio publico
 2,2405126
 </td>
 <td>
-35,989982
+35,9899823
 </td>
 <td>
 33,7494697
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -971,13 +1074,16 @@ Cree que será victima de otro tipo de delito
 -0,1454457
 </td>
 <td>
-0,000000
+0,0000000
 </td>
 <td>
 0,1454457
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -988,13 +1094,16 @@ Media adopción de medidas comunitarias
 -1,4934548
 </td>
 <td>
-31,791397
+31,7913966
 </td>
 <td>
 33,2848514
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -1005,13 +1114,16 @@ Cree que será victima de delito no violento
 -7,8230025
 </td>
 <td>
-14,010018
+14,0100177
 </td>
 <td>
 21,8330202
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -1022,13 +1134,16 @@ Media inseguridad en el barrio
 -9,0689908
 </td>
 <td>
-24,337065
+24,3370654
 </td>
 <td>
 33,4060562
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -1039,13 +1154,16 @@ Cree que será victima de delito violento
 -12,2560830
 </td>
 <td>
-15,645256
+15,6452563
 </td>
 <td>
 27,9013393
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -1056,13 +1174,16 @@ Baja disposición de medidas vivienda
 -15,8729042
 </td>
 <td>
-17,133176
+17,1331762
 </td>
 <td>
 33,0060804
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -1073,13 +1194,16 @@ Alta inseguridad en el barrio
 -16,9299493
 </td>
 <td>
-16,868002
+16,8680024
 </td>
 <td>
 33,7979516
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -1090,13 +1214,16 @@ Baja adopción de medidas comunitarias
 -17,3381589
 </td>
 <td>
-15,807307
+15,8073070
 </td>
 <td>
 33,1454659
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -1107,13 +1234,16 @@ Alta inseguridad en la casa
 -19,6975738
 </td>
 <td>
-13,744844
+13,7448438
 </td>
 <td>
 33,4424176
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -1124,13 +1254,16 @@ Altas prácticas de evitación
 -20,4447092
 </td>
 <td>
-13,450206
+13,4502062
 </td>
 <td>
 33,8949155
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -1141,13 +1274,16 @@ Alta inseguridad en espacio publico
 -21,7698401
 </td>
 <td>
-11,991750
+11,9917501
 </td>
 <td>
 33,7615902
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Gasto en seguridad
 </td>
@@ -1158,13 +1294,16 @@ No gasta en medidas de seguridad
 -26,9144632
 </td>
 <td>
-26,045963
+26,0459635
 </td>
 <td>
 52,9604266
 </td>
 </tr>
 <tr>
+<td>
+C2
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -1175,40 +1314,16 @@ Media disposición de medidas vivienda
 -27,2886311
 </td>
 <td>
-6,054803
+6,0548026
 </td>
 <td>
 33,3434337
 </td>
 </tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:440px; ">
-<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
-<thead>
 <tr>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Variable
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Respuesta
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Diferencia (pp)
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el grupo
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el total
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
+<td>
+C3
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -1219,13 +1334,16 @@ Medias prácticas de evitación
 33,5677238
 </td>
 <td>
-66,98388
+66,9838804
 </td>
 <td>
 33,4161566
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -1236,13 +1354,16 @@ Media inseguridad en espacio publico
 32,3604545
 </td>
 <td>
-66,10992
+66,1099243
 </td>
 <td>
 33,7494697
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -1253,13 +1374,16 @@ Media inseguridad en el barrio
 26,0520910
 </td>
 <td>
-59,45815
+59,4581472
 </td>
 <td>
 33,4060562
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -1270,13 +1394,16 @@ Baja disposición de medidas vivienda
 25,5101363
 </td>
 <td>
-58,51622
+58,5162167
 </td>
 <td>
 33,0060804
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Gasto en seguridad
 </td>
@@ -1287,13 +1414,16 @@ No gasta en medidas de seguridad
 19,5585091
 </td>
 <td>
-72,51894
+72,5189357
 </td>
 <td>
 52,9604266
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -1304,13 +1434,16 @@ Baja inseguridad en la casa
 10,2034316
 </td>
 <td>
-43,53272
+43,5327248
 </td>
 <td>
 33,3292932
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -1321,13 +1454,16 @@ Baja adopción de medidas comunitarias
 8,8238485
 </td>
 <td>
-41,96931
+41,9693144
 </td>
 <td>
 33,1454659
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -1338,13 +1474,16 @@ Media inseguridad en la casa
 8,5856553
 </td>
 <td>
-41,81394
+41,8139445
 </td>
 <td>
 33,2282892
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -1355,13 +1494,16 @@ Cree que será victima de delito violento
 6,9403775
 </td>
 <td>
-34,84172
+34,8417168
 </td>
 <td>
 27,9013393
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -1372,13 +1514,16 @@ Cree que será victima de otro tipo de delito
 -0,1454457
 </td>
 <td>
-0,00000
+0,0000000
 </td>
 <td>
 0,1454457
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -1389,13 +1534,16 @@ No cree que será victima de delito
 -2,1788469
 </td>
 <td>
-47,94135
+47,9413478
 </td>
 <td>
 50,1201947
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -1406,13 +1554,16 @@ Cree que será victima de delito no violento
 -4,6160849
 </td>
 <td>
-17,21694
+17,2169353
 </td>
 <td>
 21,8330202
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Medidas del barrio
 </td>
@@ -1423,13 +1574,16 @@ Alta adopción de medidas comunitarias
 -8,1084280
 </td>
 <td>
-25,46125
+25,4612546
 </td>
 <td>
 33,5696826
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -1440,13 +1594,16 @@ Media disposición de medidas vivienda
 -11,3585823
 </td>
 <td>
-21,98485
+21,9848514
 </td>
 <td>
 33,3434337
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -1457,13 +1614,16 @@ Baja inseguridad en el barrio
 -11,7045181
 </td>
 <td>
-21,09147
+21,0914741
 </td>
 <td>
 32,7959922
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Medidas de la vivienda
 </td>
@@ -1474,13 +1634,16 @@ Alta disposición de medidas vivienda
 -14,1515540
 </td>
 <td>
-19,49893
+19,4989318
 </td>
 <td>
 33,6504858
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en el barrio
 </td>
@@ -1491,13 +1654,16 @@ Alta inseguridad en el barrio
 -14,3475729
 </td>
 <td>
-19,45038
+19,4503787
 </td>
 <td>
 33,7979516
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -1508,13 +1674,16 @@ Alta inseguridad en espacio publico
 -14,7093471
 </td>
 <td>
-19,05224
+19,0522432
 </td>
 <td>
 33,7615902
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -1525,13 +1694,16 @@ Altas prácticas de evitación
 -14,7261448
 </td>
 <td>
-19,16877
+19,1687706
 </td>
 <td>
 33,8949155
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en espacio público
 </td>
@@ -1542,13 +1714,16 @@ Baja inseguridad en espacio publico
 -17,6511075
 </td>
 <td>
-14,83783
+14,8378326
 </td>
 <td>
 32,4889401
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Inseguridad en la casa
 </td>
@@ -1559,13 +1734,16 @@ Alta inseguridad en la casa
 -18,7890869
 </td>
 <td>
-14,65333
+14,6533307
 </td>
 <td>
 33,4424176
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Modificación de prácticas
 </td>
@@ -1576,13 +1754,16 @@ Bajas prácticas de evitación
 -18,8415789
 </td>
 <td>
-13,84735
+13,8473490
 </td>
 <td>
 32,6889279
 </td>
 </tr>
 <tr>
+<td>
+C3
+</td>
 <td>
 Gasto en seguridad
 </td>
@@ -1593,108 +1774,16 @@ Gasta en medidas de seguridad
 -19,5585091
 </td>
 <td>
-27,48106
+27,4810643
 </td>
 <td>
 47,0395734
 </td>
 </tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="tabset-1-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-4-tab">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:440px; ">
-<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Variable
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Respuesta
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Diferencia (pp)
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el grupo
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el total
-</th>
-</tr>
-</thead>
-<tbody>
 <tr>
 <td>
-Medidas de la vivienda
+C4
 </td>
-<td>
-Media disposición de medidas vivienda
-</td>
-<td>
-40,5829781
-</td>
-<td>
-73,926412
-</td>
-<td>
-33,3434337
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en la casa
-</td>
-<td>
-Alta inseguridad en la casa
-</td>
-<td>
-34,7342760
-</td>
-<td>
-68,176694
-</td>
-<td>
-33,4424176
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en el barrio
-</td>
-<td>
-Alta inseguridad en el barrio
-</td>
-<td>
-32,9541238
-</td>
-<td>
-66,752075
-</td>
-<td>
-33,7979516
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en espacio público
-</td>
-<td>
-Alta inseguridad en espacio publico
-</td>
-<td>
-20,8248605
-</td>
-<td>
-54,586451
-</td>
-<td>
-33,7615902
-</td>
-</tr>
-<tr>
 <td>
 Modificación de prácticas
 </td>
@@ -1702,10 +1791,10 @@ Modificación de prácticas
 Altas prácticas de evitación
 </td>
 <td>
-18,8057097
+32,3711224
 </td>
 <td>
-52,700625
+66,2660378
 </td>
 <td>
 33,8949155
@@ -1713,372 +1802,8 @@ Altas prácticas de evitación
 </tr>
 <tr>
 <td>
-Expectativa de ser víctima
+C4
 </td>
-<td>
-Cree que será victima de delito violento
-</td>
-<td>
-17,9734173
-</td>
-<td>
-45,874757
-</td>
-<td>
-27,9013393
-</td>
-</tr>
-<tr>
-<td>
-Modificación de prácticas
-</td>
-<td>
-Medias prácticas de evitación
-</td>
-<td>
-6,3706631
-</td>
-<td>
-39,786820
-</td>
-<td>
-33,4161566
-</td>
-</tr>
-<tr>
-<td>
-Expectativa de ser víctima
-</td>
-<td>
-Cree que será victima de delito no violento
-</td>
-<td>
-4,8760092
-</td>
-<td>
-26,709029
-</td>
-<td>
-21,8330202
-</td>
-</tr>
-<tr>
-<td>
-Gasto en seguridad
-</td>
-<td>
-Gasta en medidas de seguridad
-</td>
-<td>
-4,6873919
-</td>
-<td>
-51,726965
-</td>
-<td>
-47,0395734
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en espacio público
-</td>
-<td>
-Media inseguridad en espacio publico
-</td>
-<td>
-4,6434789
-</td>
-<td>
-38,392949
-</td>
-<td>
-33,7494697
-</td>
-</tr>
-<tr>
-<td>
-Medidas del barrio
-</td>
-<td>
-Media adopción de medidas comunitarias
-</td>
-<td>
-1,3774423
-</td>
-<td>
-34,662294
-</td>
-<td>
-33,2848514
-</td>
-</tr>
-<tr>
-<td>
-Medidas del barrio
-</td>
-<td>
-Alta adopción de medidas comunitarias
-</td>
-<td>
-1,0721130
-</td>
-<td>
-34,641796
-</td>
-<td>
-33,5696826
-</td>
-</tr>
-<tr>
-<td>
-Expectativa de ser víctima
-</td>
-<td>
-Cree que será victima de otro tipo de delito
-</td>
-<td>
--0,1454457
-</td>
-<td>
-0,000000
-</td>
-<td>
-0,1454457
-</td>
-</tr>
-<tr>
-<td>
-Medidas del barrio
-</td>
-<td>
-Baja adopción de medidas comunitarias
-</td>
-<td>
--2,4495553
-</td>
-<td>
-30,695911
-</td>
-<td>
-33,1454659
-</td>
-</tr>
-<tr>
-<td>
-Gasto en seguridad
-</td>
-<td>
-No gasta en medidas de seguridad
-</td>
-<td>
--4,6873919
-</td>
-<td>
-48,273035
-</td>
-<td>
-52,9604266
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en el barrio
-</td>
-<td>
-Media inseguridad en el barrio
-</td>
-<td>
--5,0059332
-</td>
-<td>
-28,400123
-</td>
-<td>
-33,4060562
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en la casa
-</td>
-<td>
-Media inseguridad en la casa
-</td>
-<td>
--15,2924483
-</td>
-<td>
-17,935841
-</td>
-<td>
-33,2282892
-</td>
-</tr>
-<tr>
-<td>
-Medidas de la vivienda
-</td>
-<td>
-Alta disposición de medidas vivienda
-</td>
-<td>
--15,4276714
-</td>
-<td>
-18,222814
-</td>
-<td>
-33,6504858
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en la casa
-</td>
-<td>
-Baja inseguridad en la casa
-</td>
-<td>
--19,4418278
-</td>
-<td>
-13,887465
-</td>
-<td>
-33,3292932
-</td>
-</tr>
-<tr>
-<td>
-Expectativa de ser víctima
-</td>
-<td>
-No cree que será victima de delito
-</td>
-<td>
--22,7039807
-</td>
-<td>
-27,416214
-</td>
-<td>
-50,1201947
-</td>
-</tr>
-<tr>
-<td>
-Medidas de la vivienda
-</td>
-<td>
-Baja disposición de medidas vivienda
-</td>
-<td>
--25,1553066
-</td>
-<td>
-7,850774
-</td>
-<td>
-33,0060804
-</td>
-</tr>
-<tr>
-<td>
-Modificación de prácticas
-</td>
-<td>
-Bajas prácticas de evitación
-</td>
-<td>
--25,1763729
-</td>
-<td>
-7,512555
-</td>
-<td>
-32,6889279
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en espacio público
-</td>
-<td>
-Baja inseguridad en espacio publico
-</td>
-<td>
--25,4683395
-</td>
-<td>
-7,020601
-</td>
-<td>
-32,4889401
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en el barrio
-</td>
-<td>
-Baja inseguridad en el barrio
-</td>
-<td>
--27,9481906
-</td>
-<td>
-4,847802
-</td>
-<td>
-32,7959922
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="tabset-1-5" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-5-tab">
-<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:440px; ">
-<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
-<thead>
-<tr>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Variable
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Respuesta
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-Diferencia (pp)
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el grupo
-</th>
-<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-% en el total
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-Modificación de prácticas
-</td>
-<td>
-Altas prácticas de evitación
-</td>
-<td>
-45,6573833
-</td>
-<td>
-79,5522987
-</td>
-<td>
-33,8949155
-</td>
-</tr>
-<tr>
 <td>
 Inseguridad en espacio público
 </td>
@@ -2086,10 +1811,10 @@ Inseguridad en espacio público
 Alta inseguridad en espacio publico
 </td>
 <td>
-42,6186547
+31,8350425
 </td>
 <td>
-76,3802449
+65,5966327
 </td>
 <td>
 33,7615902
@@ -2097,22 +1822,8 @@ Alta inseguridad en espacio publico
 </tr>
 <tr>
 <td>
-Medidas de la vivienda
+C4
 </td>
-<td>
-Alta disposición de medidas vivienda
-</td>
-<td>
-33,3742080
-</td>
-<td>
-67,0246938
-</td>
-<td>
-33,6504858
-</td>
-</tr>
-<tr>
 <td>
 Inseguridad en el barrio
 </td>
@@ -2120,10 +1831,10 @@ Inseguridad en el barrio
 Alta inseguridad en el barrio
 </td>
 <td>
-29,0307976
+30,9720671
 </td>
 <td>
-62,8287492
+64,7700188
 </td>
 <td>
 33,7979516
@@ -2131,39 +1842,8 @@ Alta inseguridad en el barrio
 </tr>
 <tr>
 <td>
-Expectativa de ser víctima
+C4
 </td>
-<td>
-Cree que será victima de delito no violento
-</td>
-<td>
-26,0087786
-</td>
-<td>
-47,8417988
-</td>
-<td>
-21,8330202
-</td>
-</tr>
-<tr>
-<td>
-Gasto en seguridad
-</td>
-<td>
-Gasta en medidas de seguridad
-</td>
-<td>
-22,9564114
-</td>
-<td>
-69,9959847
-</td>
-<td>
-47,0395734
-</td>
-</tr>
-<tr>
 <td>
 Inseguridad en la casa
 </td>
@@ -2171,10 +1851,10 @@ Inseguridad en la casa
 Alta inseguridad en la casa
 </td>
 <td>
-20,2315434
+27,4075240
 </td>
 <td>
-53,6739611
+60,8499417
 </td>
 <td>
 33,4424176
@@ -2182,22 +1862,48 @@ Alta inseguridad en la casa
 </tr>
 <tr>
 <td>
-Medidas del barrio
+C4
 </td>
 <td>
-Alta adopción de medidas comunitarias
+Expectativa de ser víctima
 </td>
 <td>
-13,4791027
+Cree que será victima de delito no violento
 </td>
 <td>
-47,0487854
+15,5522427
 </td>
 <td>
-33,5696826
+37,3852629
+</td>
+<td>
+21,8330202
 </td>
 </tr>
 <tr>
+<td>
+C4
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+13,9168646
+</td>
+<td>
+60,9564380
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
 <td>
 Expectativa de ser víctima
 </td>
@@ -2205,10 +1911,10 @@ Expectativa de ser víctima
 Cree que será victima de delito violento
 </td>
 <td>
-5,9673618
+11,9079816
 </td>
 <td>
-33,8687011
+39,8093210
 </td>
 <td>
 27,9013393
@@ -2216,209 +1922,48 @@ Cree que será victima de delito violento
 </tr>
 <tr>
 <td>
-Expectativa de ser víctima
+C4
 </td>
-<td>
-Cree que será victima de otro tipo de delito
-</td>
-<td>
-0,5773007
-</td>
-<td>
-0,7227464
-</td>
-<td>
-0,1454457
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en el barrio
-</td>
-<td>
-Media inseguridad en el barrio
-</td>
-<td>
--2,5588368
-</td>
-<td>
-30,8472194
-</td>
-<td>
-33,4060562
-</td>
-</tr>
-<tr>
 <td>
 Medidas de la vivienda
 </td>
 <td>
-Baja disposición de medidas vivienda
+Alta disposición de medidas vivienda
 </td>
 <td>
--5,1803426
+9,2269420
 </td>
 <td>
-27,8257378
+42,8774279
 </td>
 <td>
-33,0060804
+33,6504858
 </td>
 </tr>
 <tr>
 <td>
-Inseguridad en la casa
+C4
 </td>
-<td>
-Baja inseguridad en la casa
-</td>
-<td>
--9,5288515
-</td>
-<td>
-23,8004417
-</td>
-<td>
-33,3292932
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en la casa
-</td>
-<td>
-Media inseguridad en la casa
-</td>
-<td>
--10,7026919
-</td>
-<td>
-22,5255973
-</td>
-<td>
-33,2282892
-</td>
-</tr>
-<tr>
 <td>
 Medidas del barrio
 </td>
 <td>
-Baja adopción de medidas comunitarias
+Alta adopción de medidas comunitarias
 </td>
 <td>
--12,8985276
+7,3400998
 </td>
 <td>
-20,2469384
+40,9097824
 </td>
 <td>
-33,1454659
+33,5696826
 </td>
 </tr>
 <tr>
 <td>
-Inseguridad en espacio público
+C4
 </td>
-<td>
-Media inseguridad en espacio publico
-</td>
-<td>
--15,1588253
-</td>
-<td>
-18,5906444
-</td>
-<td>
-33,7494697
-</td>
-</tr>
-<tr>
-<td>
-Modificación de prácticas
-</td>
-<td>
-Medias prácticas de evitación
-</td>
-<td>
--18,8708846
-</td>
-<td>
-14,5452720
-</td>
-<td>
-33,4161566
-</td>
-</tr>
-<tr>
-<td>
-Gasto en seguridad
-</td>
-<td>
-No gasta en medidas de seguridad
-</td>
-<td>
--22,9564114
-</td>
-<td>
-30,0040153
-</td>
-<td>
-52,9604266
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en el barrio
-</td>
-<td>
-Baja inseguridad en el barrio
-</td>
-<td>
--26,4719608
-</td>
-<td>
-6,3240313
-</td>
-<td>
-32,7959922
-</td>
-</tr>
-<tr>
-<td>
-Modificación de prácticas
-</td>
-<td>
-Bajas prácticas de evitación
-</td>
-<td>
--26,7864987
-</td>
-<td>
-5,9024292
-</td>
-<td>
-32,6889279
-</td>
-</tr>
-<tr>
-<td>
-Inseguridad en espacio público
-</td>
-<td>
-Baja inseguridad en espacio publico
-</td>
-<td>
--27,4598294
-</td>
-<td>
-5,0291106
-</td>
-<td>
-32,4889401
-</td>
-</tr>
-<tr>
 <td>
 Medidas de la vivienda
 </td>
@@ -2426,10 +1971,10 @@ Medidas de la vivienda
 Media disposición de medidas vivienda
 </td>
 <td>
--28,1938654
+5,8370521
 </td>
 <td>
-5,1495684
+39,1804858
 </td>
 <td>
 33,3434337
@@ -2437,16 +1982,259 @@ Media disposición de medidas vivienda
 </tr>
 <tr>
 <td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+0,2196843
+</td>
+<td>
+0,3651301
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-3,7696649
+</td>
+<td>
+29,6363913
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+-5,3606062
+</td>
+<td>
+28,3888635
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+-6,3813171
+</td>
+<td>
+27,0348395
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+-7,7283555
+</td>
+<td>
+25,4171104
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+-12,9737124
+</td>
+<td>
+20,2545768
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+-13,9168646
+</td>
+<td>
+39,0435620
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+-14,4338117
+</td>
+<td>
+18,8954815
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-15,0639941
+</td>
+<td>
+17,9420863
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+-25,9898053
+</td>
+<td>
+6,6991227
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+-26,4744363
+</td>
+<td>
+6,0145038
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+-27,2024022
+</td>
+<td>
+5,5935899
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
 Expectativa de ser víctima
 </td>
 <td>
 No cree que será victima de delito
 </td>
 <td>
--32,5534411
+-27,6799087
 </td>
 <td>
-17,5667537
+22,4402860
 </td>
 <td>
 50,1201947
@@ -2454,33 +2242,11 @@ No cree que será victima de delito
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Nota</span>Por qué “diferencia” y no el estadístico habitual
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>El indicador que se usa normalmente para esto es el <code>v-test</code>. Con el tamaño de muestra de este análisis se vuelve inservible para ordenar: en más de la mitad de las filas el valor se sale de escala y todas quedan empatadas, justo entre las asociaciones más fuertes, que son las que interesan.</p>
-<p>La diferencia en puntos porcentuales dice lo mismo, nunca empata artificialmente y se lee en unidades interpretables. El <code>v-test</code> sigue disponible en la tabla descargable.</p>
-</div>
 </div>
 </section>
-<section id="perfil-de-los-grupos" class="level1">
-<h1>Perfil de los grupos</h1>
-<p>La tabla completa: cada variable, cada categoría, y qué porcentaje de cada grupo está en ella. <strong>Cada columna suma 100% dentro de cada bloque de variable.</strong></p>
-<p>Se lee por filas: comparando una fila entre columnas se ve qué grupos concentran esa respuesta.</p>
-<div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Variables del modelo</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Variables secundarias</a></li></ul>
-<div class="tab-content">
-<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<section id="perfil-de-los-grupos" class="level3">
+<h3 class="anchored" data-anchor-id="perfil-de-los-grupos">Perfil de los grupos</h3>
+<p>Cada columna suma 100% dentro de cada bloque de variable. Se lee por filas: comparando una fila entre columnas se ve qué grupos concentran esa respuesta.</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:600px; ">
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -2503,12 +2269,916 @@ C3
 <th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
 C4
 </th>
-<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
-C5
-</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align:left;">
+Percepción de desórdenes
+</td>
+<td style="text-align:left;">
+Baja percepción de desordenes
+</td>
+<td style="text-align:right;">
+40,71
+</td>
+<td style="text-align:right;">
+31,23
+</td>
+<td style="text-align:right;">
+23,19
+</td>
+<td style="text-align:right;">
+14,99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media percepción de desordenes
+</td>
+<td style="text-align:right;">
+35,45
+</td>
+<td style="text-align:right;">
+35,96
+</td>
+<td style="text-align:right;">
+34,29
+</td>
+<td style="text-align:right;">
+29,84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta percepción de desordenes
+</td>
+<td style="text-align:right;">
+23,84
+</td>
+<td style="text-align:right;">
+32,81
+</td>
+<td style="text-align:right;">
+42,52
+</td>
+<td style="text-align:right;">
+55,18
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Macrozona
+</td>
+<td style="text-align:left;">
+Zona norte
+</td>
+<td style="text-align:right;">
+14,56
+</td>
+<td style="text-align:right;">
+9,57
+</td>
+<td style="text-align:right;">
+16,61
+</td>
+<td style="text-align:right;">
+11,84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Zona centro
+</td>
+<td style="text-align:right;">
+37,21
+</td>
+<td style="text-align:right;">
+29,35
+</td>
+<td style="text-align:right;">
+29,92
+</td>
+<td style="text-align:right;">
+28,43
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Zona sur
+</td>
+<td style="text-align:right;">
+13,06
+</td>
+<td style="text-align:right;">
+5,16
+</td>
+<td style="text-align:right;">
+6,92
+</td>
+<td style="text-align:right;">
+3,77
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Zona metropolitana
+</td>
+<td style="text-align:right;">
+35,17
+</td>
+<td style="text-align:right;">
+55,92
+</td>
+<td style="text-align:right;">
+46,54
+</td>
+<td style="text-align:right;">
+55,96
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Percepción de incivilidades
+</td>
+<td style="text-align:left;">
+Baja percepción de incivilidades
+</td>
+<td style="text-align:right;">
+44,76
+</td>
+<td style="text-align:right;">
+31,46
+</td>
+<td style="text-align:right;">
+23,92
+</td>
+<td style="text-align:right;">
+11,48
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media percepción de incivilidades
+</td>
+<td style="text-align:right;">
+35,38
+</td>
+<td style="text-align:right;">
+38,57
+</td>
+<td style="text-align:right;">
+36,24
+</td>
+<td style="text-align:right;">
+30,56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta percepción de incivilidades
+</td>
+<td style="text-align:right;">
+19,86
+</td>
+<td style="text-align:right;">
+29,98
+</td>
+<td style="text-align:right;">
+39,84
+</td>
+<td style="text-align:right;">
+57,95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por experiencia personal
+</td>
+<td style="text-align:left;">
+No se informa por experiencia personal
+</td>
+<td style="text-align:right;">
+75,93
+</td>
+<td style="text-align:right;">
+78,86
+</td>
+<td style="text-align:right;">
+76,99
+</td>
+<td style="text-align:right;">
+76,30
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por experiencia personal
+</td>
+<td style="text-align:right;">
+23,84
+</td>
+<td style="text-align:right;">
+21,03
+</td>
+<td style="text-align:right;">
+22,94
+</td>
+<td style="text-align:right;">
+23,68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,21
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por otras personas
+</td>
+<td style="text-align:left;">
+No se informa por otras personas
+</td>
+<td style="text-align:right;">
+42,97
+</td>
+<td style="text-align:right;">
+45,31
+</td>
+<td style="text-align:right;">
+41,85
+</td>
+<td style="text-align:right;">
+41,47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por otras personas
+</td>
+<td style="text-align:right;">
+56,80
+</td>
+<td style="text-align:right;">
+54,58
+</td>
+<td style="text-align:right;">
+58,08
+</td>
+<td style="text-align:right;">
+58,52
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,21
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por prensa
+</td>
+<td style="text-align:left;">
+No se informa por prensa
+</td>
+<td style="text-align:right;">
+41,91
+</td>
+<td style="text-align:right;">
+40,74
+</td>
+<td style="text-align:right;">
+39,74
+</td>
+<td style="text-align:right;">
+37,31
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por prensa
+</td>
+<td style="text-align:right;">
+57,86
+</td>
+<td style="text-align:right;">
+59,15
+</td>
+<td style="text-align:right;">
+60,19
+</td>
+<td style="text-align:right;">
+62,67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,21
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por redes sociales
+</td>
+<td style="text-align:left;">
+No se informa por RRSS
+</td>
+<td style="text-align:right;">
+42,19
+</td>
+<td style="text-align:right;">
+41,20
+</td>
+<td style="text-align:right;">
+39,19
+</td>
+<td style="text-align:right;">
+42,79
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por RRSS
+</td>
+<td style="text-align:right;">
+57,58
+</td>
+<td style="text-align:right;">
+58,69
+</td>
+<td style="text-align:right;">
+60,75
+</td>
+<td style="text-align:right;">
+57,20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,21
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por televisión
+</td>
+<td style="text-align:left;">
+No se informa por noticias
+</td>
+<td style="text-align:right;">
+53,73
+</td>
+<td style="text-align:right;">
+55,15
+</td>
+<td style="text-align:right;">
+51,03
+</td>
+<td style="text-align:right;">
+48,09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por noticias
+</td>
+<td style="text-align:right;">
+46,05
+</td>
+<td style="text-align:right;">
+44,74
+</td>
+<td style="text-align:right;">
+48,90
+</td>
+<td style="text-align:right;">
+51,89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,21
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tramo de edad
+</td>
+<td style="text-align:left;">
+0 a 29 años
+</td>
+<td style="text-align:right;">
+28,83
+</td>
+<td style="text-align:right;">
+29,39
+</td>
+<td style="text-align:right;">
+30,01
+</td>
+<td style="text-align:right;">
+19,29
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+30 a 59 años
+</td>
+<td style="text-align:right;">
+46,44
+</td>
+<td style="text-align:right;">
+51,92
+</td>
+<td style="text-align:right;">
+49,31
+</td>
+<td style="text-align:right;">
+58,49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+60 años o más
+</td>
+<td style="text-align:right;">
+24,73
+</td>
+<td style="text-align:right;">
+18,69
+</td>
+<td style="text-align:right;">
+20,68
+</td>
+<td style="text-align:right;">
+22,22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nivel educacional
+</td>
+<td style="text-align:left;">
+Educación básica o menos
+</td>
+<td style="text-align:right;">
+15,52
+</td>
+<td style="text-align:right;">
+7,76
+</td>
+<td style="text-align:right;">
+11,76
+</td>
+<td style="text-align:right;">
+10,56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Educación secundaria
+</td>
+<td style="text-align:right;">
+44,26
+</td>
+<td style="text-align:right;">
+35,30
+</td>
+<td style="text-align:right;">
+44,81
+</td>
+<td style="text-align:right;">
+40,99
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Educación terciaria
+</td>
+<td style="text-align:right;">
+39,75
+</td>
+<td style="text-align:right;">
+56,66
+</td>
+<td style="text-align:right;">
+42,96
+</td>
+<td style="text-align:right;">
+48,09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sin dato
+</td>
+<td style="text-align:right;">
+0,28
+</td>
+<td style="text-align:right;">
+0,22
+</td>
+<td style="text-align:right;">
+0,27
+</td>
+<td style="text-align:right;">
+0,22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Nivel ignorado
+</td>
+<td style="text-align:right;">
+0,19
+</td>
+<td style="text-align:right;">
+0,05
+</td>
+<td style="text-align:right;">
+0,19
+</td>
+<td style="text-align:right;">
+0,14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nivel socioeconómico
+</td>
+<td style="text-align:left;">
+Bajo
+</td>
+<td style="text-align:right;">
+47,06
+</td>
+<td style="text-align:right;">
+28,93
+</td>
+<td style="text-align:right;">
+45,10
+</td>
+<td style="text-align:right;">
+39,66
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Medio
+</td>
+<td style="text-align:right;">
+36,92
+</td>
+<td style="text-align:right;">
+39,90
+</td>
+<td style="text-align:right;">
+38,67
+</td>
+<td style="text-align:right;">
+42,27
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alto
+</td>
+<td style="text-align:right;">
+16,02
+</td>
+<td style="text-align:right;">
+31,17
+</td>
+<td style="text-align:right;">
+16,23
+</td>
+<td style="text-align:right;">
+18,08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sexo
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:right;">
+60,97
+</td>
+<td style="text-align:right;">
+57,48
+</td>
+<td style="text-align:right;">
+49,09
+</td>
+<td style="text-align:right;">
+41,05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:right;">
+39,03
+</td>
+<td style="text-align:right;">
+42,52
+</td>
+<td style="text-align:right;">
+50,91
+</td>
+<td style="text-align:right;">
+58,95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Victimización (delitos contra las personas)
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+84,32
+</td>
+<td style="text-align:right;">
+76,00
+</td>
+<td style="text-align:right;">
+72,37
+</td>
+<td style="text-align:right;">
+66,68
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:right;">
+15,68
+</td>
+<td style="text-align:right;">
+24,00
+</td>
+<td style="text-align:right;">
+27,63
+</td>
+<td style="text-align:right;">
+33,32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Victimización (delitos violentos)
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+97,12
+</td>
+<td style="text-align:right;">
+96,52
+</td>
+<td style="text-align:right;">
+94,45
+</td>
+<td style="text-align:right;">
+93,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:right;">
+2,88
+</td>
+<td style="text-align:right;">
+3,48
+</td>
+<td style="text-align:right;">
+5,55
+</td>
+<td style="text-align:right;">
+7,00
+</td>
+</tr>
 <tr>
 <td style="text-align:left;">
 Medidas del barrio
@@ -2526,10 +3196,7 @@ Baja adopción de medidas comunitarias
 36,32
 </td>
 <td style="text-align:right;">
-26,60
-</td>
-<td style="text-align:right;">
-16,56
+21,34
 </td>
 </tr>
 <tr>
@@ -2548,10 +3215,7 @@ Media adopción de medidas comunitarias
 33,89
 </td>
 <td style="text-align:right;">
-33,77
-</td>
-<td style="text-align:right;">
-31,33
+32,49
 </td>
 </tr>
 <tr>
@@ -2570,10 +3234,7 @@ Alta adopción de medidas comunitarias
 29,79
 </td>
 <td style="text-align:right;">
-39,64
-</td>
-<td style="text-align:right;">
-52,11
+46,17
 </td>
 </tr>
 <tr>
@@ -2593,10 +3254,7 @@ Baja disposición de medidas vivienda
 52,11
 </td>
 <td style="text-align:right;">
-7,64
-</td>
-<td style="text-align:right;">
-24,83
+16,64
 </td>
 </tr>
 <tr>
@@ -2615,10 +3273,7 @@ Media disposición de medidas vivienda
 24,42
 </td>
 <td style="text-align:right;">
-73,05
-</td>
-<td style="text-align:right;">
-5,64
+37,75
 </td>
 </tr>
 <tr>
@@ -2637,10 +3292,7 @@ Alta disposición de medidas vivienda
 23,47
 </td>
 <td style="text-align:right;">
-19,31
-</td>
-<td style="text-align:right;">
-69,53
+45,61
 </td>
 </tr>
 <tr>
@@ -2660,10 +3312,7 @@ No gasta en medidas de seguridad
 69,30
 </td>
 <td style="text-align:right;">
-46,34
-</td>
-<td style="text-align:right;">
-26,92
+36,17
 </td>
 </tr>
 <tr>
@@ -2682,10 +3331,7 @@ Gasta en medidas de seguridad
 30,70
 </td>
 <td style="text-align:right;">
-53,66
-</td>
-<td style="text-align:right;">
-73,08
+63,83
 </td>
 </tr>
 <tr>
@@ -2705,10 +3351,7 @@ Bajas prácticas de evitación
 13,22
 </td>
 <td style="text-align:right;">
-6,97
-</td>
-<td style="text-align:right;">
-5,73
+6,32
 </td>
 </tr>
 <tr>
@@ -2727,10 +3370,7 @@ Medias prácticas de evitación
 66,83
 </td>
 <td style="text-align:right;">
-38,10
-</td>
-<td style="text-align:right;">
-14,14
+25,55
 </td>
 </tr>
 <tr>
@@ -2749,10 +3389,7 @@ Altas prácticas de evitación
 19,95
 </td>
 <td style="text-align:right;">
-54,94
-</td>
-<td style="text-align:right;">
-80,12
+68,13
 </td>
 </tr>
 <tr>
@@ -2772,10 +3409,7 @@ Baja inseguridad en el barrio
 17,67
 </td>
 <td style="text-align:right;">
-4,14
-</td>
-<td style="text-align:right;">
-5,82
+5,02
 </td>
 </tr>
 <tr>
@@ -2794,10 +3428,7 @@ Media inseguridad en el barrio
 62,39
 </td>
 <td style="text-align:right;">
-26,12
-</td>
-<td style="text-align:right;">
-28,05
+27,13
 </td>
 </tr>
 <tr>
@@ -2816,10 +3447,7 @@ Alta inseguridad en el barrio
 19,94
 </td>
 <td style="text-align:right;">
-69,75
-</td>
-<td style="text-align:right;">
-66,13
+67,85
 </td>
 </tr>
 <tr>
@@ -2839,10 +3467,7 @@ Baja inseguridad en la casa
 48,29
 </td>
 <td style="text-align:right;">
-16,46
-</td>
-<td style="text-align:right;">
-27,33
+22,15
 </td>
 </tr>
 <tr>
@@ -2861,10 +3486,7 @@ Media inseguridad en la casa
 39,66
 </td>
 <td style="text-align:right;">
-20,44
-</td>
-<td style="text-align:right;">
-24,71
+22,68
 </td>
 </tr>
 <tr>
@@ -2883,10 +3505,7 @@ Alta inseguridad en la casa
 12,05
 </td>
 <td style="text-align:right;">
-63,10
-</td>
-<td style="text-align:right;">
-47,95
+55,17
 </td>
 </tr>
 <tr>
@@ -2906,10 +3525,7 @@ Baja inseguridad en espacio publico
 13,27
 </td>
 <td style="text-align:right;">
-5,84
-</td>
-<td style="text-align:right;">
-4,62
+5,21
 </td>
 </tr>
 <tr>
@@ -2928,10 +3544,7 @@ Media inseguridad en espacio publico
 68,50
 </td>
 <td style="text-align:right;">
-39,47
-</td>
-<td style="text-align:right;">
-19,84
+29,19
 </td>
 </tr>
 <tr>
@@ -2950,10 +3563,7 @@ Alta inseguridad en espacio publico
 18,23
 </td>
 <td style="text-align:right;">
-54,69
-</td>
-<td style="text-align:right;">
-75,53
+65,60
 </td>
 </tr>
 <tr>
@@ -2973,10 +3583,7 @@ No cree que será victima de delito
 45,19
 </td>
 <td style="text-align:right;">
-25,06
-</td>
-<td style="text-align:right;">
-16,40
+20,53
 </td>
 </tr>
 <tr>
@@ -2995,10 +3602,7 @@ Cree que será victima de delito no violento
 17,55
 </td>
 <td style="text-align:right;">
-26,47
-</td>
-<td style="text-align:right;">
-48,67
+38,10
 </td>
 </tr>
 <tr>
@@ -3017,10 +3621,7 @@ Cree que será victima de delito violento
 37,26
 </td>
 <td style="text-align:right;">
-48,47
-</td>
-<td style="text-align:right;">
-34,34
+41,07
 </td>
 </tr>
 <tr>
@@ -3039,17 +3640,2488 @@ Cree que será victima de otro tipo de delito
 0,00
 </td>
 <td style="text-align:right;">
-0,00
-</td>
-<td style="text-align:right;">
-0,58
+0,30
 </td>
 </tr>
 </tbody>
 </table>
 </div>
+</section>
 </div>
-<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>Es la solución que se venía reportando. La marca no significa que sea la mejor: significa que es la que está en los informes previos.</p>
+<p><img src="solucion-actual_files/figure-html/soluciones-2.png" class="img-fluid" width="960"></p>
+<p>Cada contorno encierra el <strong>50% central</strong> de los casos de su grupo, y el punto marca el centro. Que dos contornos se solapen no significa que los grupos estén mal definidos: la clasificación usa todas las dimensiones del modelo y acá solo se ven dos.</p>
+<section id="tamaño-de-los-grupos-1" class="level3">
+<h3 class="anchored" data-anchor-id="tamaño-de-los-grupos-1">Tamaño de los grupos</h3>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+Grupo
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+Casos
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+%
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+C1
+</td>
+<td>
+2.331.401
+</td>
+<td>
+19,46
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+1.825.777
+</td>
+<td>
+15,24
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+2.477.427
+</td>
+<td>
+20,68
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+2.545.515
+</td>
+<td>
+21,25
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+2.798.264
+</td>
+<td>
+23,36
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="qué-distingue-a-cada-grupo-1" class="level3">
+<h3 class="anchored" data-anchor-id="qué-distingue-a-cada-grupo-1">Qué distingue a cada grupo</h3>
+<p><strong>Diferencia</strong> es cuántos puntos porcentuales más (o menos) frecuente es esa respuesta dentro del grupo que en el total.</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:460px; ">
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Grupo
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Variable
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Respuesta
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Diferencia (pp)
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+% en el grupo
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+% en el total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+C1
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+46,5518974
+</td>
+<td>
+79,2408253
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+44,9878279
+</td>
+<td>
+77,4767680
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+37,8371784
+</td>
+<td>
+70,6331706
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+33,9402872
+</td>
+<td>
+84,0604820
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+20,1376990
+</td>
+<td>
+73,0981257
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+14,7350038
+</td>
+<td>
+48,0784375
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+14,1139450
+</td>
+<td>
+47,2594109
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+12,8039562
+</td>
+<td>
+46,1332493
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+11,1898559
+</td>
+<td>
+44,1959364
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+3,9901704
+</td>
+<td>
+37,2184596
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Media adopción de medidas comunitarias
+</td>
+<td>
+0,7756305
+</td>
+<td>
+34,0604820
+</td>
+<td>
+33,2848514
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-10,4260593
+</td>
+<td>
+22,9799968
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+-14,8895755
+</td>
+<td>
+18,6801071
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+-16,2258380
+</td>
+<td>
+5,6071822
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+-16,7941266
+</td>
+<td>
+16,6482911
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+-17,5690035
+</td>
+<td>
+10,3323358
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+-19,1172442
+</td>
+<td>
+14,6322255
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+-19,1540681
+</td>
+<td>
+14,2620885
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+-20,1376990
+</td>
+<td>
+26,9018743
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+-25,8705837
+</td>
+<td>
+7,8910065
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+-25,9248597
+</td>
+<td>
+7,7256261
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+-27,3978293
+</td>
+<td>
+6,4970862
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+-27,4111191
+</td>
+<td>
+6,3868326
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+43,1615354
+</td>
+<td>
+76,8120212
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+26,9144632
+</td>
+<td>
+73,9540365
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+25,9989401
+</td>
+<td>
+58,7949322
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+20,2245313
+</td>
+<td>
+70,3447260
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+19,5293275
+</td>
+<td>
+52,0182675
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+18,8316138
+</td>
+<td>
+52,4012964
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+17,1989353
+</td>
+<td>
+50,4272245
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+17,0017026
+</td>
+<td>
+49,6906305
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+3,4430066
+</td>
+<td>
+36,8591632
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+2,4986385
+</td>
+<td>
+35,8279316
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+2,2405126
+</td>
+<td>
+35,9899823
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Media adopción de medidas comunitarias
+</td>
+<td>
+-1,4934548
+</td>
+<td>
+31,7913966
+</td>
+<td>
+33,2848514
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+-7,8230025
+</td>
+<td>
+14,0100177
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-9,0689908
+</td>
+<td>
+24,3370654
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+-12,2560830
+</td>
+<td>
+15,6452563
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-15,8729042
+</td>
+<td>
+17,1331762
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+-16,9299493
+</td>
+<td>
+16,8680024
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+-17,3381589
+</td>
+<td>
+15,8073070
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+-19,6975738
+</td>
+<td>
+13,7448438
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+-20,4447092
+</td>
+<td>
+13,4502062
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+-21,7698401
+</td>
+<td>
+11,9917501
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+-26,9144632
+</td>
+<td>
+26,0459635
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+-27,2886311
+</td>
+<td>
+6,0548026
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+33,5677238
+</td>
+<td>
+66,9838804
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+32,3604545
+</td>
+<td>
+66,1099243
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+26,0520910
+</td>
+<td>
+59,4581472
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+25,5101363
+</td>
+<td>
+58,5162167
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+19,5585091
+</td>
+<td>
+72,5189357
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+10,2034316
+</td>
+<td>
+43,5327248
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+8,8238485
+</td>
+<td>
+41,9693144
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+8,5856553
+</td>
+<td>
+41,8139445
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+6,9403775
+</td>
+<td>
+34,8417168
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+-2,1788469
+</td>
+<td>
+47,9413478
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+-4,6160849
+</td>
+<td>
+17,2169353
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+-8,1084280
+</td>
+<td>
+25,4612546
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+-11,3585823
+</td>
+<td>
+21,9848514
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+-11,7045181
+</td>
+<td>
+21,0914741
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+-14,1515540
+</td>
+<td>
+19,4989318
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+-14,3475729
+</td>
+<td>
+19,4503787
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+-14,7093471
+</td>
+<td>
+19,0522432
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+-14,7261448
+</td>
+<td>
+19,1687706
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+-17,6511075
+</td>
+<td>
+14,8378326
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+-18,7890869
+</td>
+<td>
+14,6533307
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+-18,8415789
+</td>
+<td>
+13,8473490
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+-19,5585091
+</td>
+<td>
+27,4810643
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+40,5829781
+</td>
+<td>
+73,9264118
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+34,7342760
+</td>
+<td>
+68,1766937
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+32,9541238
+</td>
+<td>
+66,7520754
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+20,8248605
+</td>
+<td>
+54,5864508
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+18,8057097
+</td>
+<td>
+52,7006252
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+17,9734173
+</td>
+<td>
+45,8747566
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+6,3706631
+</td>
+<td>
+39,7868197
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+4,8760092
+</td>
+<td>
+26,7090294
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+4,6873919
+</td>
+<td>
+51,7269653
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+4,6434789
+</td>
+<td>
+38,3929487
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Media adopción de medidas comunitarias
+</td>
+<td>
+1,3774423
+</td>
+<td>
+34,6622937
+</td>
+<td>
+33,2848514
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+1,0721130
+</td>
+<td>
+34,6417956
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+-2,4495553
+</td>
+<td>
+30,6959106
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+-4,6873919
+</td>
+<td>
+48,2730347
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-5,0059332
+</td>
+<td>
+28,4001230
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+-15,2924483
+</td>
+<td>
+17,9358409
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+-15,4276714
+</td>
+<td>
+18,2228144
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+-19,4418278
+</td>
+<td>
+13,8874654
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+-22,7039807
+</td>
+<td>
+27,4162140
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-25,1553066
+</td>
+<td>
+7,8507738
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+-25,1763729
+</td>
+<td>
+7,5125551
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+-25,4683395
+</td>
+<td>
+7,0206006
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+-27,9481906
+</td>
+<td>
+4,8478016
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+45,6573833
+</td>
+<td>
+79,5522987
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+42,6186547
+</td>
+<td>
+76,3802449
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+33,3742080
+</td>
+<td>
+67,0246938
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+29,0307976
+</td>
+<td>
+62,8287492
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+26,0087786
+</td>
+<td>
+47,8417988
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+22,9564114
+</td>
+<td>
+69,9959847
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+20,2315434
+</td>
+<td>
+53,6739611
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+13,4791027
+</td>
+<td>
+47,0487854
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+5,9673618
+</td>
+<td>
+33,8687011
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+0,5773007
+</td>
+<td>
+0,7227464
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-2,5588368
+</td>
+<td>
+30,8472194
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-5,1803426
+</td>
+<td>
+27,8257378
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+-9,5288515
+</td>
+<td>
+23,8004417
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+-10,7026919
+</td>
+<td>
+22,5255973
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+-12,8985276
+</td>
+<td>
+20,2469384
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+-15,1588253
+</td>
+<td>
+18,5906444
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+-18,8708846
+</td>
+<td>
+14,5452720
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+-22,9564114
+</td>
+<td>
+30,0040153
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+-26,4719608
+</td>
+<td>
+6,3240313
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+-26,7864987
+</td>
+<td>
+5,9024292
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+-27,4598294
+</td>
+<td>
+5,0291106
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+-28,1938654
+</td>
+<td>
+5,1495684
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+-32,5534411
+</td>
+<td>
+17,5667537
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="perfil-de-los-grupos-1" class="level3">
+<h3 class="anchored" data-anchor-id="perfil-de-los-grupos-1">Perfil de los grupos</h3>
+<p>Cada columna suma 100% dentro de cada bloque de variable. Se lee por filas: comparando una fila entre columnas se ve qué grupos concentran esa respuesta.</p>
 <div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:600px; ">
 <table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 <thead>
@@ -4126,10 +7198,5358 @@ Sí
 7,42
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+Medidas del barrio
+</td>
+<td style="text-align:left;">
+Baja adopción de medidas comunitarias
+</td>
+<td style="text-align:right;">
+39,85
+</td>
+<td style="text-align:right;">
+11,93
+</td>
+<td style="text-align:right;">
+36,32
+</td>
+<td style="text-align:right;">
+26,60
+</td>
+<td style="text-align:right;">
+16,56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media adopción de medidas comunitarias
+</td>
+<td style="text-align:right;">
+35,36
+</td>
+<td style="text-align:right;">
+29,84
+</td>
+<td style="text-align:right;">
+33,89
+</td>
+<td style="text-align:right;">
+33,77
+</td>
+<td style="text-align:right;">
+31,33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta adopción de medidas comunitarias
+</td>
+<td style="text-align:right;">
+24,79
+</td>
+<td style="text-align:right;">
+58,22
+</td>
+<td style="text-align:right;">
+29,79
+</td>
+<td style="text-align:right;">
+39,64
+</td>
+<td style="text-align:right;">
+52,11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Medidas de la vivienda
+</td>
+<td style="text-align:left;">
+Baja disposición de medidas vivienda
+</td>
+<td style="text-align:right;">
+38,31
+</td>
+<td style="text-align:right;">
+15,28
+</td>
+<td style="text-align:right;">
+52,11
+</td>
+<td style="text-align:right;">
+7,64
+</td>
+<td style="text-align:right;">
+24,83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media disposición de medidas vivienda
+</td>
+<td style="text-align:right;">
+52,29
+</td>
+<td style="text-align:right;">
+5,59
+</td>
+<td style="text-align:right;">
+24,42
+</td>
+<td style="text-align:right;">
+73,05
+</td>
+<td style="text-align:right;">
+5,64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta disposición de medidas vivienda
+</td>
+<td style="text-align:right;">
+9,39
+</td>
+<td style="text-align:right;">
+79,13
+</td>
+<td style="text-align:right;">
+23,47
+</td>
+<td style="text-align:right;">
+19,31
+</td>
+<td style="text-align:right;">
+69,53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gasto en seguridad
+</td>
+<td style="text-align:left;">
+No gasta en medidas de seguridad
+</td>
+<td style="text-align:right;">
+70,36
+</td>
+<td style="text-align:right;">
+24,55
+</td>
+<td style="text-align:right;">
+69,30
+</td>
+<td style="text-align:right;">
+46,34
+</td>
+<td style="text-align:right;">
+26,92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Gasta en medidas de seguridad
+</td>
+<td style="text-align:right;">
+29,64
+</td>
+<td style="text-align:right;">
+75,45
+</td>
+<td style="text-align:right;">
+30,70
+</td>
+<td style="text-align:right;">
+53,66
+</td>
+<td style="text-align:right;">
+73,08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Modificación de prácticas
+</td>
+<td style="text-align:left;">
+Bajas prácticas de evitación
+</td>
+<td style="text-align:right;">
+77,64
+</td>
+<td style="text-align:right;">
+48,70
+</td>
+<td style="text-align:right;">
+13,22
+</td>
+<td style="text-align:right;">
+6,97
+</td>
+<td style="text-align:right;">
+5,73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Medias prácticas de evitación
+</td>
+<td style="text-align:right;">
+15,29
+</td>
+<td style="text-align:right;">
+38,51
+</td>
+<td style="text-align:right;">
+66,83
+</td>
+<td style="text-align:right;">
+38,10
+</td>
+<td style="text-align:right;">
+14,14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Altas prácticas de evitación
+</td>
+<td style="text-align:right;">
+7,07
+</td>
+<td style="text-align:right;">
+12,79
+</td>
+<td style="text-align:right;">
+19,95
+</td>
+<td style="text-align:right;">
+54,94
+</td>
+<td style="text-align:right;">
+80,12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inseguridad en el barrio
+</td>
+<td style="text-align:left;">
+Baja inseguridad en el barrio
+</td>
+<td style="text-align:right;">
+69,65
+</td>
+<td style="text-align:right;">
+56,14
+</td>
+<td style="text-align:right;">
+17,67
+</td>
+<td style="text-align:right;">
+4,14
+</td>
+<td style="text-align:right;">
+5,82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media inseguridad en el barrio
+</td>
+<td style="text-align:right;">
+23,04
+</td>
+<td style="text-align:right;">
+24,91
+</td>
+<td style="text-align:right;">
+62,39
+</td>
+<td style="text-align:right;">
+26,12
+</td>
+<td style="text-align:right;">
+28,05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta inseguridad en el barrio
+</td>
+<td style="text-align:right;">
+7,32
+</td>
+<td style="text-align:right;">
+18,95
+</td>
+<td style="text-align:right;">
+19,94
+</td>
+<td style="text-align:right;">
+69,75
+</td>
+<td style="text-align:right;">
+66,13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inseguridad en la casa
+</td>
+<td style="text-align:left;">
+Baja inseguridad en la casa
+</td>
+<td style="text-align:right;">
+47,84
+</td>
+<td style="text-align:right;">
+35,18
+</td>
+<td style="text-align:right;">
+48,29
+</td>
+<td style="text-align:right;">
+16,46
+</td>
+<td style="text-align:right;">
+27,33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media inseguridad en la casa
+</td>
+<td style="text-align:right;">
+38,12
+</td>
+<td style="text-align:right;">
+52,62
+</td>
+<td style="text-align:right;">
+39,66
+</td>
+<td style="text-align:right;">
+20,44
+</td>
+<td style="text-align:right;">
+24,71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta inseguridad en la casa
+</td>
+<td style="text-align:right;">
+14,03
+</td>
+<td style="text-align:right;">
+12,20
+</td>
+<td style="text-align:right;">
+12,05
+</td>
+<td style="text-align:right;">
+63,10
+</td>
+<td style="text-align:right;">
+47,95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inseguridad en espacio público
+</td>
+<td style="text-align:left;">
+Baja inseguridad en espacio publico
+</td>
+<td style="text-align:right;">
+75,52
+</td>
+<td style="text-align:right;">
+50,41
+</td>
+<td style="text-align:right;">
+13,27
+</td>
+<td style="text-align:right;">
+5,84
+</td>
+<td style="text-align:right;">
+4,62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media inseguridad en espacio publico
+</td>
+<td style="text-align:right;">
+16,10
+</td>
+<td style="text-align:right;">
+38,43
+</td>
+<td style="text-align:right;">
+68,50
+</td>
+<td style="text-align:right;">
+39,47
+</td>
+<td style="text-align:right;">
+19,84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta inseguridad en espacio publico
+</td>
+<td style="text-align:right;">
+8,38
+</td>
+<td style="text-align:right;">
+11,16
+</td>
+<td style="text-align:right;">
+18,23
+</td>
+<td style="text-align:right;">
+54,69
+</td>
+<td style="text-align:right;">
+75,53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Expectativa de ser víctima
+</td>
+<td style="text-align:left;">
+No cree que será victima de delito
+</td>
+<td style="text-align:right;">
+82,19
+</td>
+<td style="text-align:right;">
+67,62
+</td>
+<td style="text-align:right;">
+45,19
+</td>
+<td style="text-align:right;">
+25,06
+</td>
+<td style="text-align:right;">
+16,40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Cree que será victima de delito no violento
+</td>
+<td style="text-align:right;">
+5,56
+</td>
+<td style="text-align:right;">
+14,16
+</td>
+<td style="text-align:right;">
+17,55
+</td>
+<td style="text-align:right;">
+26,47
+</td>
+<td style="text-align:right;">
+48,67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Cree que será victima de delito violento
+</td>
+<td style="text-align:right;">
+12,24
+</td>
+<td style="text-align:right;">
+18,21
+</td>
+<td style="text-align:right;">
+37,26
+</td>
+<td style="text-align:right;">
+48,47
+</td>
+<td style="text-align:right;">
+34,34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Cree que será victima de otro tipo de delito
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,58
+</td>
+</tr>
 </tbody>
 </table>
 </div>
+</section>
 </div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p><img src="solucion-actual_files/figure-html/soluciones-3.png" class="img-fluid" width="960"></p>
+<p>Cada contorno encierra el <strong>50% central</strong> de los casos de su grupo, y el punto marca el centro. Que dos contornos se solapen no significa que los grupos estén mal definidos: la clasificación usa todas las dimensiones del modelo y acá solo se ven dos.</p>
+<section id="tamaño-de-los-grupos-2" class="level3">
+<h3 class="anchored" data-anchor-id="tamaño-de-los-grupos-2">Tamaño de los grupos</h3>
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+Grupo
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+Casos
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;">
+%
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+C1
+</td>
+<td>
+1.101.373
+</td>
+<td>
+9,19
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+1.230.028
+</td>
+<td>
+10,27
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+1.825.777
+</td>
+<td>
+15,24
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+2.477.427
+</td>
+<td>
+20,68
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+2.545.515
+</td>
+<td>
+21,25
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+2.798.264
+</td>
+<td>
+23,36
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="qué-distingue-a-cada-grupo-2" class="level3">
+<h3 class="anchored" data-anchor-id="qué-distingue-a-cada-grupo-2">Qué distingue a cada grupo</h3>
+<p><strong>Diferencia</strong> es cuántos puntos porcentuales más (o menos) frecuente es esa respuesta dentro del grupo que en el total.</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:460px; ">
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Grupo
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Variable
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Respuesta
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Diferencia (pp)
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+% en el grupo
+</th>
+<th style="NAposition: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+% en el total
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+51,9916326
+</td>
+<td>
+84,9977131
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+51,1348257
+</td>
+<td>
+83,8237536
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+47,8586739
+</td>
+<td>
+80,3476140
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+43,7705576
+</td>
+<td>
+76,5665498
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+34,5834063
+</td>
+<td>
+87,5438329
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+33,0327249
+</td>
+<td>
+83,1529197
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+22,3660450
+</td>
+<td>
+55,5115109
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+15,1384611
+</td>
+<td>
+48,4677542
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+5,8935282
+</td>
+<td>
+39,1218174
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Media adopción de medidas comunitarias
+</td>
+<td>
+-3,5394634
+</td>
+<td>
+29,7453880
+</td>
+<td>
+33,2848514
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+-15,0332032
+</td>
+<td>
+6,7998170
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-15,9338806
+</td>
+<td>
+17,4721756
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+-17,8540760
+</td>
+<td>
+10,0472633
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+-18,8265816
+</td>
+<td>
+14,7431011
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+-19,7764197
+</td>
+<td>
+13,8740662
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+-21,0319892
+</td>
+<td>
+12,4104284
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+-23,6990807
+</td>
+<td>
+10,0625095
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+-24,1595932
+</td>
+<td>
+9,5898765
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+-25,5491037
+</td>
+<td>
+7,8670529
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+-25,5857220
+</td>
+<td>
+8,3091935
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+-27,8366771
+</td>
+<td>
+5,9612746
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+-32,2152130
+</td>
+<td>
+1,1282208
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C1
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+-34,5834063
+</td>
+<td>
+12,4561671
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+64,8973221
+</td>
+<td>
+98,2407558
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+41,9205729
+</td>
+<td>
+74,4095129
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+41,6554278
+</td>
+<td>
+74,3443558
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+34,9099405
+</td>
+<td>
+85,0301352
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+31,4978668
+</td>
+<td>
+64,2938589
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+10,3097360
+</td>
+<td>
+43,6390292
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Media adopción de medidas comunitarias
+</td>
+<td>
+5,3859419
+</td>
+<td>
+38,6707933
+</td>
+<td>
+33,2848514
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+5,2972772
+</td>
+<td>
+38,4427431
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+4,7036880
+</td>
+<td>
+57,6641147
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+1,9565943
+</td>
+<td>
+35,1848835
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-4,5414203
+</td>
+<td>
+28,8646359
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+-4,7036880
+</td>
+<td>
+42,3358853
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+-10,6832191
+</td>
+<td>
+22,8864636
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+-12,2663303
+</td>
+<td>
+21,1760873
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+-12,3215158
+</td>
+<td>
+21,0946408
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+-13,7299226
+</td>
+<td>
+20,0195472
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+-17,2644278
+</td>
+<td>
+10,6369115
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+-17,5000670
+</td>
+<td>
+4,3329532
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+-26,9564465
+</td>
+<td>
+6,8415051
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+-28,1906503
+</td>
+<td>
+5,5709399
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+-29,3339120
+</td>
+<td>
+4,5610034
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-32,4033764
+</td>
+<td>
+0,6027040
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C2
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+-32,4939457
+</td>
+<td>
+1,1565402
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+43,1615354
+</td>
+<td>
+76,8120212
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+26,9144632
+</td>
+<td>
+73,9540365
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+25,9989401
+</td>
+<td>
+58,7949322
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+20,2245313
+</td>
+<td>
+70,3447260
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+19,5293275
+</td>
+<td>
+52,0182675
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+18,8316138
+</td>
+<td>
+52,4012964
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+17,1989353
+</td>
+<td>
+50,4272245
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+17,0017026
+</td>
+<td>
+49,6906305
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+3,4430066
+</td>
+<td>
+36,8591632
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+2,4986385
+</td>
+<td>
+35,8279316
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+2,2405126
+</td>
+<td>
+35,9899823
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Media adopción de medidas comunitarias
+</td>
+<td>
+-1,4934548
+</td>
+<td>
+31,7913966
+</td>
+<td>
+33,2848514
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+-7,8230025
+</td>
+<td>
+14,0100177
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-9,0689908
+</td>
+<td>
+24,3370654
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+-12,2560830
+</td>
+<td>
+15,6452563
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-15,8729042
+</td>
+<td>
+17,1331762
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+-16,9299493
+</td>
+<td>
+16,8680024
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+-17,3381589
+</td>
+<td>
+15,8073070
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+-19,6975738
+</td>
+<td>
+13,7448438
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+-20,4447092
+</td>
+<td>
+13,4502062
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+-21,7698401
+</td>
+<td>
+11,9917501
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+-26,9144632
+</td>
+<td>
+26,0459635
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C3
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+-27,2886311
+</td>
+<td>
+6,0548026
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+33,5677238
+</td>
+<td>
+66,9838804
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+32,3604545
+</td>
+<td>
+66,1099243
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+26,0520910
+</td>
+<td>
+59,4581472
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+25,5101363
+</td>
+<td>
+58,5162167
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+19,5585091
+</td>
+<td>
+72,5189357
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+10,2034316
+</td>
+<td>
+43,5327248
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+8,8238485
+</td>
+<td>
+41,9693144
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+8,5856553
+</td>
+<td>
+41,8139445
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+6,9403775
+</td>
+<td>
+34,8417168
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+-2,1788469
+</td>
+<td>
+47,9413478
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+-4,6160849
+</td>
+<td>
+17,2169353
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+-8,1084280
+</td>
+<td>
+25,4612546
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+-11,3585823
+</td>
+<td>
+21,9848514
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+-11,7045181
+</td>
+<td>
+21,0914741
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+-14,1515540
+</td>
+<td>
+19,4989318
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+-14,3475729
+</td>
+<td>
+19,4503787
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+-14,7093471
+</td>
+<td>
+19,0522432
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+-14,7261448
+</td>
+<td>
+19,1687706
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+-17,6511075
+</td>
+<td>
+14,8378326
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+-18,7890869
+</td>
+<td>
+14,6533307
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+-18,8415789
+</td>
+<td>
+13,8473490
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C4
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+-19,5585091
+</td>
+<td>
+27,4810643
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+40,5829781
+</td>
+<td>
+73,9264118
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+34,7342760
+</td>
+<td>
+68,1766937
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+32,9541238
+</td>
+<td>
+66,7520754
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+20,8248605
+</td>
+<td>
+54,5864508
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+18,8057097
+</td>
+<td>
+52,7006252
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+17,9734173
+</td>
+<td>
+45,8747566
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+6,3706631
+</td>
+<td>
+39,7868197
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+4,8760092
+</td>
+<td>
+26,7090294
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+4,6873919
+</td>
+<td>
+51,7269653
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+4,6434789
+</td>
+<td>
+38,3929487
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Media adopción de medidas comunitarias
+</td>
+<td>
+1,3774423
+</td>
+<td>
+34,6622937
+</td>
+<td>
+33,2848514
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+1,0721130
+</td>
+<td>
+34,6417956
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+-0,1454457
+</td>
+<td>
+0,0000000
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+-2,4495553
+</td>
+<td>
+30,6959106
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+-4,6873919
+</td>
+<td>
+48,2730347
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-5,0059332
+</td>
+<td>
+28,4001230
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+-15,2924483
+</td>
+<td>
+17,9358409
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+-15,4276714
+</td>
+<td>
+18,2228144
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+-19,4418278
+</td>
+<td>
+13,8874654
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+-22,7039807
+</td>
+<td>
+27,4162140
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-25,1553066
+</td>
+<td>
+7,8507738
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+-25,1763729
+</td>
+<td>
+7,5125551
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+-25,4683395
+</td>
+<td>
+7,0206006
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C5
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+-27,9481906
+</td>
+<td>
+4,8478016
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Altas prácticas de evitación
+</td>
+<td>
+45,6573833
+</td>
+<td>
+79,5522987
+</td>
+<td>
+33,8949155
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Alta inseguridad en espacio publico
+</td>
+<td>
+42,6186547
+</td>
+<td>
+76,3802449
+</td>
+<td>
+33,7615902
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Alta disposición de medidas vivienda
+</td>
+<td>
+33,3742080
+</td>
+<td>
+67,0246938
+</td>
+<td>
+33,6504858
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Alta inseguridad en el barrio
+</td>
+<td>
+29,0307976
+</td>
+<td>
+62,8287492
+</td>
+<td>
+33,7979516
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito no violento
+</td>
+<td>
+26,0087786
+</td>
+<td>
+47,8417988
+</td>
+<td>
+21,8330202
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+Gasta en medidas de seguridad
+</td>
+<td>
+22,9564114
+</td>
+<td>
+69,9959847
+</td>
+<td>
+47,0395734
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Alta inseguridad en la casa
+</td>
+<td>
+20,2315434
+</td>
+<td>
+53,6739611
+</td>
+<td>
+33,4424176
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Alta adopción de medidas comunitarias
+</td>
+<td>
+13,4791027
+</td>
+<td>
+47,0487854
+</td>
+<td>
+33,5696826
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de delito violento
+</td>
+<td>
+5,9673618
+</td>
+<td>
+33,8687011
+</td>
+<td>
+27,9013393
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+Cree que será victima de otro tipo de delito
+</td>
+<td>
+0,5773007
+</td>
+<td>
+0,7227464
+</td>
+<td>
+0,1454457
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Media inseguridad en el barrio
+</td>
+<td>
+-2,5588368
+</td>
+<td>
+30,8472194
+</td>
+<td>
+33,4060562
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Baja disposición de medidas vivienda
+</td>
+<td>
+-5,1803426
+</td>
+<td>
+27,8257378
+</td>
+<td>
+33,0060804
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Baja inseguridad en la casa
+</td>
+<td>
+-9,5288515
+</td>
+<td>
+23,8004417
+</td>
+<td>
+33,3292932
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en la casa
+</td>
+<td>
+Media inseguridad en la casa
+</td>
+<td>
+-10,7026919
+</td>
+<td>
+22,5255973
+</td>
+<td>
+33,2282892
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Medidas del barrio
+</td>
+<td>
+Baja adopción de medidas comunitarias
+</td>
+<td>
+-12,8985276
+</td>
+<td>
+20,2469384
+</td>
+<td>
+33,1454659
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Media inseguridad en espacio publico
+</td>
+<td>
+-15,1588253
+</td>
+<td>
+18,5906444
+</td>
+<td>
+33,7494697
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Medias prácticas de evitación
+</td>
+<td>
+-18,8708846
+</td>
+<td>
+14,5452720
+</td>
+<td>
+33,4161566
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Gasto en seguridad
+</td>
+<td>
+No gasta en medidas de seguridad
+</td>
+<td>
+-22,9564114
+</td>
+<td>
+30,0040153
+</td>
+<td>
+52,9604266
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en el barrio
+</td>
+<td>
+Baja inseguridad en el barrio
+</td>
+<td>
+-26,4719608
+</td>
+<td>
+6,3240313
+</td>
+<td>
+32,7959922
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Modificación de prácticas
+</td>
+<td>
+Bajas prácticas de evitación
+</td>
+<td>
+-26,7864987
+</td>
+<td>
+5,9024292
+</td>
+<td>
+32,6889279
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Inseguridad en espacio público
+</td>
+<td>
+Baja inseguridad en espacio publico
+</td>
+<td>
+-27,4598294
+</td>
+<td>
+5,0291106
+</td>
+<td>
+32,4889401
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Medidas de la vivienda
+</td>
+<td>
+Media disposición de medidas vivienda
+</td>
+<td>
+-28,1938654
+</td>
+<td>
+5,1495684
+</td>
+<td>
+33,3434337
+</td>
+</tr>
+<tr>
+<td>
+C6
+</td>
+<td>
+Expectativa de ser víctima
+</td>
+<td>
+No cree que será victima de delito
+</td>
+<td>
+-32,5534411
+</td>
+<td>
+17,5667537
+</td>
+<td>
+50,1201947
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="perfil-de-los-grupos-2" class="level3">
+<h3 class="anchored" data-anchor-id="perfil-de-los-grupos-2">Perfil de los grupos</h3>
+<p>Cada columna suma 100% dentro de cada bloque de variable. Se lee por filas: comparando una fila entre columnas se ve qué grupos concentran esa respuesta.</p>
+<div style="border: 1px solid #ddd; padding: 0px; overflow-x: auto;overflow-y: scroll; height:600px; ">
+<table class="table table-striped table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Variable
+</th>
+<th style="text-align:left;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+Categoría
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+C1
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+C2
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+C3
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+C4
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+C5
+</th>
+<th style="text-align:right;position: sticky; top:0; background-color: #FFFFFF;position: sticky; top:0; background-color: #FFFFFF;">
+C6
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+Percepción de desórdenes
+</td>
+<td style="text-align:left;">
+Baja percepción de desordenes
+</td>
+<td style="text-align:right;">
+42,79
+</td>
+<td style="text-align:right;">
+38,85
+</td>
+<td style="text-align:right;">
+31,23
+</td>
+<td style="text-align:right;">
+23,19
+</td>
+<td style="text-align:right;">
+15,10
+</td>
+<td style="text-align:right;">
+14,88
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media percepción de desordenes
+</td>
+<td style="text-align:right;">
+34,03
+</td>
+<td style="text-align:right;">
+36,72
+</td>
+<td style="text-align:right;">
+35,96
+</td>
+<td style="text-align:right;">
+34,29
+</td>
+<td style="text-align:right;">
+31,28
+</td>
+<td style="text-align:right;">
+28,53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta percepción de desordenes
+</td>
+<td style="text-align:right;">
+23,18
+</td>
+<td style="text-align:right;">
+24,42
+</td>
+<td style="text-align:right;">
+32,81
+</td>
+<td style="text-align:right;">
+42,52
+</td>
+<td style="text-align:right;">
+53,62
+</td>
+<td style="text-align:right;">
+56,59
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Macrozona
+</td>
+<td style="text-align:left;">
+Zona norte
+</td>
+<td style="text-align:right;">
+15,13
+</td>
+<td style="text-align:right;">
+14,06
+</td>
+<td style="text-align:right;">
+9,57
+</td>
+<td style="text-align:right;">
+16,61
+</td>
+<td style="text-align:right;">
+12,79
+</td>
+<td style="text-align:right;">
+10,98
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Zona centro
+</td>
+<td style="text-align:right;">
+37,30
+</td>
+<td style="text-align:right;">
+37,13
+</td>
+<td style="text-align:right;">
+29,35
+</td>
+<td style="text-align:right;">
+29,92
+</td>
+<td style="text-align:right;">
+29,39
+</td>
+<td style="text-align:right;">
+27,55
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Zona sur
+</td>
+<td style="text-align:right;">
+15,80
+</td>
+<td style="text-align:right;">
+10,61
+</td>
+<td style="text-align:right;">
+5,16
+</td>
+<td style="text-align:right;">
+6,92
+</td>
+<td style="text-align:right;">
+4,50
+</td>
+<td style="text-align:right;">
+3,11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Zona metropolitana
+</td>
+<td style="text-align:right;">
+31,78
+</td>
+<td style="text-align:right;">
+38,20
+</td>
+<td style="text-align:right;">
+55,92
+</td>
+<td style="text-align:right;">
+46,54
+</td>
+<td style="text-align:right;">
+53,32
+</td>
+<td style="text-align:right;">
+58,37
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Percepción de incivilidades
+</td>
+<td style="text-align:left;">
+Baja percepción de incivilidades
+</td>
+<td style="text-align:right;">
+47,42
+</td>
+<td style="text-align:right;">
+42,39
+</td>
+<td style="text-align:right;">
+31,46
+</td>
+<td style="text-align:right;">
+23,92
+</td>
+<td style="text-align:right;">
+12,59
+</td>
+<td style="text-align:right;">
+10,47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media percepción de incivilidades
+</td>
+<td style="text-align:right;">
+33,24
+</td>
+<td style="text-align:right;">
+37,29
+</td>
+<td style="text-align:right;">
+38,57
+</td>
+<td style="text-align:right;">
+36,24
+</td>
+<td style="text-align:right;">
+31,74
+</td>
+<td style="text-align:right;">
+29,49
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta percepción de incivilidades
+</td>
+<td style="text-align:right;">
+19,35
+</td>
+<td style="text-align:right;">
+20,32
+</td>
+<td style="text-align:right;">
+29,98
+</td>
+<td style="text-align:right;">
+39,84
+</td>
+<td style="text-align:right;">
+55,67
+</td>
+<td style="text-align:right;">
+60,03
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por experiencia personal
+</td>
+<td style="text-align:left;">
+No se informa por experiencia personal
+</td>
+<td style="text-align:right;">
+74,62
+</td>
+<td style="text-align:right;">
+77,11
+</td>
+<td style="text-align:right;">
+78,86
+</td>
+<td style="text-align:right;">
+76,99
+</td>
+<td style="text-align:right;">
+76,66
+</td>
+<td style="text-align:right;">
+75,97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por experiencia personal
+</td>
+<td style="text-align:right;">
+25,12
+</td>
+<td style="text-align:right;">
+22,69
+</td>
+<td style="text-align:right;">
+21,03
+</td>
+<td style="text-align:right;">
+22,94
+</td>
+<td style="text-align:right;">
+23,31
+</td>
+<td style="text-align:right;">
+24,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,26
+</td>
+<td style="text-align:right;">
+0,17
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,03
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por otras personas
+</td>
+<td style="text-align:left;">
+No se informa por otras personas
+</td>
+<td style="text-align:right;">
+44,93
+</td>
+<td style="text-align:right;">
+41,21
+</td>
+<td style="text-align:right;">
+45,31
+</td>
+<td style="text-align:right;">
+41,85
+</td>
+<td style="text-align:right;">
+39,95
+</td>
+<td style="text-align:right;">
+42,84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por otras personas
+</td>
+<td style="text-align:right;">
+54,80
+</td>
+<td style="text-align:right;">
+58,59
+</td>
+<td style="text-align:right;">
+54,58
+</td>
+<td style="text-align:right;">
+58,08
+</td>
+<td style="text-align:right;">
+60,02
+</td>
+<td style="text-align:right;">
+57,15
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,26
+</td>
+<td style="text-align:right;">
+0,17
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,03
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por prensa
+</td>
+<td style="text-align:left;">
+No se informa por prensa
+</td>
+<td style="text-align:right;">
+41,34
+</td>
+<td style="text-align:right;">
+42,42
+</td>
+<td style="text-align:right;">
+40,74
+</td>
+<td style="text-align:right;">
+39,74
+</td>
+<td style="text-align:right;">
+37,88
+</td>
+<td style="text-align:right;">
+36,80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por prensa
+</td>
+<td style="text-align:right;">
+58,40
+</td>
+<td style="text-align:right;">
+57,38
+</td>
+<td style="text-align:right;">
+59,15
+</td>
+<td style="text-align:right;">
+60,19
+</td>
+<td style="text-align:right;">
+62,10
+</td>
+<td style="text-align:right;">
+63,20
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,26
+</td>
+<td style="text-align:right;">
+0,17
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,03
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por redes sociales
+</td>
+<td style="text-align:left;">
+No se informa por RRSS
+</td>
+<td style="text-align:right;">
+43,31
+</td>
+<td style="text-align:right;">
+41,19
+</td>
+<td style="text-align:right;">
+41,20
+</td>
+<td style="text-align:right;">
+39,19
+</td>
+<td style="text-align:right;">
+42,58
+</td>
+<td style="text-align:right;">
+42,97
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por RRSS
+</td>
+<td style="text-align:right;">
+56,43
+</td>
+<td style="text-align:right;">
+58,62
+</td>
+<td style="text-align:right;">
+58,69
+</td>
+<td style="text-align:right;">
+60,75
+</td>
+<td style="text-align:right;">
+57,39
+</td>
+<td style="text-align:right;">
+57,02
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,26
+</td>
+<td style="text-align:right;">
+0,17
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,03
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Se informa por televisión
+</td>
+<td style="text-align:left;">
+No se informa por noticias
+</td>
+<td style="text-align:right;">
+53,71
+</td>
+<td style="text-align:right;">
+53,74
+</td>
+<td style="text-align:right;">
+55,15
+</td>
+<td style="text-align:right;">
+51,03
+</td>
+<td style="text-align:right;">
+48,01
+</td>
+<td style="text-align:right;">
+48,17
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Se informa por noticias
+</td>
+<td style="text-align:right;">
+46,02
+</td>
+<td style="text-align:right;">
+46,07
+</td>
+<td style="text-align:right;">
+44,74
+</td>
+<td style="text-align:right;">
+48,90
+</td>
+<td style="text-align:right;">
+51,97
+</td>
+<td style="text-align:right;">
+51,83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No sabe
+</td>
+<td style="text-align:right;">
+0,26
+</td>
+<td style="text-align:right;">
+0,17
+</td>
+<td style="text-align:right;">
+0,11
+</td>
+<td style="text-align:right;">
+0,06
+</td>
+<td style="text-align:right;">
+0,03
+</td>
+<td style="text-align:right;">
+0,01
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+No responde
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,02
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Tramo de edad
+</td>
+<td style="text-align:left;">
+0 a 29 años
+</td>
+<td style="text-align:right;">
+25,61
+</td>
+<td style="text-align:right;">
+31,71
+</td>
+<td style="text-align:right;">
+29,39
+</td>
+<td style="text-align:right;">
+30,01
+</td>
+<td style="text-align:right;">
+22,39
+</td>
+<td style="text-align:right;">
+16,47
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+30 a 59 años
+</td>
+<td style="text-align:right;">
+48,33
+</td>
+<td style="text-align:right;">
+44,75
+</td>
+<td style="text-align:right;">
+51,92
+</td>
+<td style="text-align:right;">
+49,31
+</td>
+<td style="text-align:right;">
+54,40
+</td>
+<td style="text-align:right;">
+62,22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+60 años o más
+</td>
+<td style="text-align:right;">
+26,06
+</td>
+<td style="text-align:right;">
+23,54
+</td>
+<td style="text-align:right;">
+18,69
+</td>
+<td style="text-align:right;">
+20,68
+</td>
+<td style="text-align:right;">
+23,21
+</td>
+<td style="text-align:right;">
+21,32
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nivel educacional
+</td>
+<td style="text-align:left;">
+Educación básica o menos
+</td>
+<td style="text-align:right;">
+17,90
+</td>
+<td style="text-align:right;">
+13,38
+</td>
+<td style="text-align:right;">
+7,76
+</td>
+<td style="text-align:right;">
+11,76
+</td>
+<td style="text-align:right;">
+12,36
+</td>
+<td style="text-align:right;">
+8,92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Educación secundaria
+</td>
+<td style="text-align:right;">
+43,82
+</td>
+<td style="text-align:right;">
+44,66
+</td>
+<td style="text-align:right;">
+35,30
+</td>
+<td style="text-align:right;">
+44,81
+</td>
+<td style="text-align:right;">
+43,40
+</td>
+<td style="text-align:right;">
+38,80
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Educación terciaria
+</td>
+<td style="text-align:right;">
+37,87
+</td>
+<td style="text-align:right;">
+41,44
+</td>
+<td style="text-align:right;">
+56,66
+</td>
+<td style="text-align:right;">
+42,96
+</td>
+<td style="text-align:right;">
+43,72
+</td>
+<td style="text-align:right;">
+52,07
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sin dato
+</td>
+<td style="text-align:right;">
+0,23
+</td>
+<td style="text-align:right;">
+0,33
+</td>
+<td style="text-align:right;">
+0,22
+</td>
+<td style="text-align:right;">
+0,27
+</td>
+<td style="text-align:right;">
+0,32
+</td>
+<td style="text-align:right;">
+0,12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Nivel ignorado
+</td>
+<td style="text-align:right;">
+0,18
+</td>
+<td style="text-align:right;">
+0,20
+</td>
+<td style="text-align:right;">
+0,05
+</td>
+<td style="text-align:right;">
+0,19
+</td>
+<td style="text-align:right;">
+0,20
+</td>
+<td style="text-align:right;">
+0,09
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Nivel socioeconómico
+</td>
+<td style="text-align:left;">
+Bajo
+</td>
+<td style="text-align:right;">
+49,20
+</td>
+<td style="text-align:right;">
+45,14
+</td>
+<td style="text-align:right;">
+28,93
+</td>
+<td style="text-align:right;">
+45,10
+</td>
+<td style="text-align:right;">
+44,93
+</td>
+<td style="text-align:right;">
+34,86
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Medio
+</td>
+<td style="text-align:right;">
+35,19
+</td>
+<td style="text-align:right;">
+38,47
+</td>
+<td style="text-align:right;">
+39,90
+</td>
+<td style="text-align:right;">
+38,67
+</td>
+<td style="text-align:right;">
+40,79
+</td>
+<td style="text-align:right;">
+43,61
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alto
+</td>
+<td style="text-align:right;">
+15,61
+</td>
+<td style="text-align:right;">
+16,39
+</td>
+<td style="text-align:right;">
+31,17
+</td>
+<td style="text-align:right;">
+16,23
+</td>
+<td style="text-align:right;">
+14,28
+</td>
+<td style="text-align:right;">
+21,53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Sexo
+</td>
+<td style="text-align:left;">
+Hombre
+</td>
+<td style="text-align:right;">
+60,79
+</td>
+<td style="text-align:right;">
+61,13
+</td>
+<td style="text-align:right;">
+57,48
+</td>
+<td style="text-align:right;">
+49,09
+</td>
+<td style="text-align:right;">
+40,98
+</td>
+<td style="text-align:right;">
+41,11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Mujer
+</td>
+<td style="text-align:right;">
+39,21
+</td>
+<td style="text-align:right;">
+38,87
+</td>
+<td style="text-align:right;">
+42,52
+</td>
+<td style="text-align:right;">
+50,91
+</td>
+<td style="text-align:right;">
+59,02
+</td>
+<td style="text-align:right;">
+58,89
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Victimización (delitos contra las personas)
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+84,62
+</td>
+<td style="text-align:right;">
+84,05
+</td>
+<td style="text-align:right;">
+76,00
+</td>
+<td style="text-align:right;">
+72,37
+</td>
+<td style="text-align:right;">
+68,28
+</td>
+<td style="text-align:right;">
+65,22
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:right;">
+15,38
+</td>
+<td style="text-align:right;">
+15,95
+</td>
+<td style="text-align:right;">
+24,00
+</td>
+<td style="text-align:right;">
+27,63
+</td>
+<td style="text-align:right;">
+31,72
+</td>
+<td style="text-align:right;">
+34,78
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Victimización (delitos violentos)
+</td>
+<td style="text-align:left;">
+No
+</td>
+<td style="text-align:right;">
+97,17
+</td>
+<td style="text-align:right;">
+97,08
+</td>
+<td style="text-align:right;">
+96,52
+</td>
+<td style="text-align:right;">
+94,45
+</td>
+<td style="text-align:right;">
+93,47
+</td>
+<td style="text-align:right;">
+92,58
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Sí
+</td>
+<td style="text-align:right;">
+2,83
+</td>
+<td style="text-align:right;">
+2,92
+</td>
+<td style="text-align:right;">
+3,48
+</td>
+<td style="text-align:right;">
+5,55
+</td>
+<td style="text-align:right;">
+6,53
+</td>
+<td style="text-align:right;">
+7,42
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Medidas del barrio
+</td>
+<td style="text-align:left;">
+Baja adopción de medidas comunitarias
+</td>
+<td style="text-align:right;">
+48,76
+</td>
+<td style="text-align:right;">
+31,88
+</td>
+<td style="text-align:right;">
+11,93
+</td>
+<td style="text-align:right;">
+36,32
+</td>
+<td style="text-align:right;">
+26,60
+</td>
+<td style="text-align:right;">
+16,56
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media adopción de medidas comunitarias
+</td>
+<td style="text-align:right;">
+31,00
+</td>
+<td style="text-align:right;">
+39,25
+</td>
+<td style="text-align:right;">
+29,84
+</td>
+<td style="text-align:right;">
+33,89
+</td>
+<td style="text-align:right;">
+33,77
+</td>
+<td style="text-align:right;">
+31,33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta adopción de medidas comunitarias
+</td>
+<td style="text-align:right;">
+20,24
+</td>
+<td style="text-align:right;">
+28,87
+</td>
+<td style="text-align:right;">
+58,22
+</td>
+<td style="text-align:right;">
+29,79
+</td>
+<td style="text-align:right;">
+39,64
+</td>
+<td style="text-align:right;">
+52,11
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Medidas de la vivienda
+</td>
+<td style="text-align:left;">
+Baja disposición de medidas vivienda
+</td>
+<td style="text-align:right;">
+80,56
+</td>
+<td style="text-align:right;">
+0,48
+</td>
+<td style="text-align:right;">
+15,28
+</td>
+<td style="text-align:right;">
+52,11
+</td>
+<td style="text-align:right;">
+7,64
+</td>
+<td style="text-align:right;">
+24,83
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media disposición de medidas vivienda
+</td>
+<td style="text-align:right;">
+1,11
+</td>
+<td style="text-align:right;">
+98,13
+</td>
+<td style="text-align:right;">
+5,59
+</td>
+<td style="text-align:right;">
+24,42
+</td>
+<td style="text-align:right;">
+73,05
+</td>
+<td style="text-align:right;">
+5,64
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta disposición de medidas vivienda
+</td>
+<td style="text-align:right;">
+18,33
+</td>
+<td style="text-align:right;">
+1,39
+</td>
+<td style="text-align:right;">
+79,13
+</td>
+<td style="text-align:right;">
+23,47
+</td>
+<td style="text-align:right;">
+19,31
+</td>
+<td style="text-align:right;">
+69,53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Gasto en seguridad
+</td>
+<td style="text-align:left;">
+No gasta en medidas de seguridad
+</td>
+<td style="text-align:right;">
+87,46
+</td>
+<td style="text-align:right;">
+55,05
+</td>
+<td style="text-align:right;">
+24,55
+</td>
+<td style="text-align:right;">
+69,30
+</td>
+<td style="text-align:right;">
+46,34
+</td>
+<td style="text-align:right;">
+26,92
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Gasta en medidas de seguridad
+</td>
+<td style="text-align:right;">
+12,54
+</td>
+<td style="text-align:right;">
+44,95
+</td>
+<td style="text-align:right;">
+75,45
+</td>
+<td style="text-align:right;">
+30,70
+</td>
+<td style="text-align:right;">
+53,66
+</td>
+<td style="text-align:right;">
+73,08
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Modificación de prácticas
+</td>
+<td style="text-align:left;">
+Bajas prácticas de evitación
+</td>
+<td style="text-align:right;">
+83,41
+</td>
+<td style="text-align:right;">
+72,48
+</td>
+<td style="text-align:right;">
+48,70
+</td>
+<td style="text-align:right;">
+13,22
+</td>
+<td style="text-align:right;">
+6,97
+</td>
+<td style="text-align:right;">
+5,73
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Medias prácticas de evitación
+</td>
+<td style="text-align:right;">
+7,42
+</td>
+<td style="text-align:right;">
+22,33
+</td>
+<td style="text-align:right;">
+38,51
+</td>
+<td style="text-align:right;">
+66,83
+</td>
+<td style="text-align:right;">
+38,10
+</td>
+<td style="text-align:right;">
+14,14
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Altas prácticas de evitación
+</td>
+<td style="text-align:right;">
+9,17
+</td>
+<td style="text-align:right;">
+5,19
+</td>
+<td style="text-align:right;">
+12,79
+</td>
+<td style="text-align:right;">
+19,95
+</td>
+<td style="text-align:right;">
+54,94
+</td>
+<td style="text-align:right;">
+80,12
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inseguridad en el barrio
+</td>
+<td style="text-align:left;">
+Baja inseguridad en el barrio
+</td>
+<td style="text-align:right;">
+76,23
+</td>
+<td style="text-align:right;">
+63,75
+</td>
+<td style="text-align:right;">
+56,14
+</td>
+<td style="text-align:right;">
+17,67
+</td>
+<td style="text-align:right;">
+4,14
+</td>
+<td style="text-align:right;">
+5,82
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media inseguridad en el barrio
+</td>
+<td style="text-align:right;">
+16,87
+</td>
+<td style="text-align:right;">
+28,55
+</td>
+<td style="text-align:right;">
+24,91
+</td>
+<td style="text-align:right;">
+62,39
+</td>
+<td style="text-align:right;">
+26,12
+</td>
+<td style="text-align:right;">
+28,05
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta inseguridad en el barrio
+</td>
+<td style="text-align:right;">
+6,90
+</td>
+<td style="text-align:right;">
+7,69
+</td>
+<td style="text-align:right;">
+18,95
+</td>
+<td style="text-align:right;">
+19,94
+</td>
+<td style="text-align:right;">
+69,75
+</td>
+<td style="text-align:right;">
+66,13
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inseguridad en la casa
+</td>
+<td style="text-align:left;">
+Baja inseguridad en la casa
+</td>
+<td style="text-align:right;">
+49,36
+</td>
+<td style="text-align:right;">
+46,48
+</td>
+<td style="text-align:right;">
+35,18
+</td>
+<td style="text-align:right;">
+48,29
+</td>
+<td style="text-align:right;">
+16,46
+</td>
+<td style="text-align:right;">
+27,33
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media inseguridad en la casa
+</td>
+<td style="text-align:right;">
+40,21
+</td>
+<td style="text-align:right;">
+36,26
+</td>
+<td style="text-align:right;">
+52,62
+</td>
+<td style="text-align:right;">
+39,66
+</td>
+<td style="text-align:right;">
+20,44
+</td>
+<td style="text-align:right;">
+24,71
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta inseguridad en la casa
+</td>
+<td style="text-align:right;">
+10,43
+</td>
+<td style="text-align:right;">
+17,26
+</td>
+<td style="text-align:right;">
+12,20
+</td>
+<td style="text-align:right;">
+12,05
+</td>
+<td style="text-align:right;">
+63,10
+</td>
+<td style="text-align:right;">
+47,95
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Inseguridad en espacio público
+</td>
+<td style="text-align:left;">
+Baja inseguridad en espacio publico
+</td>
+<td style="text-align:right;">
+78,94
+</td>
+<td style="text-align:right;">
+72,46
+</td>
+<td style="text-align:right;">
+50,41
+</td>
+<td style="text-align:right;">
+13,27
+</td>
+<td style="text-align:right;">
+5,84
+</td>
+<td style="text-align:right;">
+4,62
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Media inseguridad en espacio publico
+</td>
+<td style="text-align:right;">
+10,31
+</td>
+<td style="text-align:right;">
+21,29
+</td>
+<td style="text-align:right;">
+38,43
+</td>
+<td style="text-align:right;">
+68,50
+</td>
+<td style="text-align:right;">
+39,47
+</td>
+<td style="text-align:right;">
+19,84
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Alta inseguridad en espacio publico
+</td>
+<td style="text-align:right;">
+10,75
+</td>
+<td style="text-align:right;">
+6,26
+</td>
+<td style="text-align:right;">
+11,16
+</td>
+<td style="text-align:right;">
+18,23
+</td>
+<td style="text-align:right;">
+54,69
+</td>
+<td style="text-align:right;">
+75,53
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+Expectativa de ser víctima
+</td>
+<td style="text-align:left;">
+No cree que será victima de delito
+</td>
+<td style="text-align:right;">
+80,99
+</td>
+<td style="text-align:right;">
+83,27
+</td>
+<td style="text-align:right;">
+67,62
+</td>
+<td style="text-align:right;">
+45,19
+</td>
+<td style="text-align:right;">
+25,06
+</td>
+<td style="text-align:right;">
+16,40
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Cree que será victima de delito no violento
+</td>
+<td style="text-align:right;">
+7,35
+</td>
+<td style="text-align:right;">
+3,96
+</td>
+<td style="text-align:right;">
+14,16
+</td>
+<td style="text-align:right;">
+17,55
+</td>
+<td style="text-align:right;">
+26,47
+</td>
+<td style="text-align:right;">
+48,67
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Cree que será victima de delito violento
+</td>
+<td style="text-align:right;">
+11,66
+</td>
+<td style="text-align:right;">
+12,77
+</td>
+<td style="text-align:right;">
+18,21
+</td>
+<td style="text-align:right;">
+37,26
+</td>
+<td style="text-align:right;">
+48,47
+</td>
+<td style="text-align:right;">
+34,34
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Cree que será victima de otro tipo de delito
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,00
+</td>
+<td style="text-align:right;">
+0,58
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Por qué “diferencia” y no el estadístico habitual
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El indicador que se usa normalmente para esto es el <code>v-test</code>. Con el tamaño de muestra de este análisis se vuelve inservible para ordenar: en más de la mitad de las filas el valor se sale de escala y todas quedan empatadas, justo entre las asociaciones más fuertes, que son las que interesan.</p>
+<p>La diferencia en puntos porcentuales dice lo mismo, nunca empata artificialmente y se lee en unidades interpretables. El <code>v-test</code> sigue disponible en la tabla descargable.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
