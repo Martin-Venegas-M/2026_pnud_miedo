@@ -691,6 +691,98 @@ window.Quarto = {
 <p>El método actual tiene un problema que debemos discutir.</p>
 <p>Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen <strong>pocos valores distintos y muchos empates</strong>: al construirse como “X de N situaciones”, con N chico, los valores posibles son pocos y miles de personas comparten exactamente el mismo.</p>
 <p>Cuando eso pasa, el corte <strong>parte los empates de forma arbitraria</strong>: personas con respuestas idénticas terminan en categorías distintas.</p>
+<p><strong>Así se ve en el microdato.</strong> Un caso por cada combinación de valor y categoría que existe en el índice de medidas de la vivienda:</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">rph_id</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">comgen_per_pct</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">comgen_per_pct_rec_tercil</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">078486_P1</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">006200_P1</td>
+<td style="text-align: right;">11,1</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: left;">← mismo valor, distinta categoría</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">145596_P2</td>
+<td style="text-align: right;">11,1</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">← mismo valor, distinta categoría</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">020762_P3</td>
+<td style="text-align: right;">22,2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">130672_P1</td>
+<td style="text-align: right;">33,3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: left;">← mismo valor, distinta categoría</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">097744_P1</td>
+<td style="text-align: right;">33,3</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;">← mismo valor, distinta categoría</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">053562_P1</td>
+<td style="text-align: right;">44,4</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">025522_P1</td>
+<td style="text-align: right;">55,6</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">084038_P1</td>
+<td style="text-align: right;">66,7</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">113256_P2</td>
+<td style="text-align: right;">77,8</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">132594_P1</td>
+<td style="text-align: right;">88,9</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">142866_P1</td>
+<td style="text-align: right;">100,0</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: left;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Las filas marcadas son el problema: hay personas con <strong>11,1%</strong> en dos categorías distintas, y lo mismo pasa con <strong>33,3%</strong>.</p>
+<p>Cuál le toca a cada persona no depende de lo que respondió, sino del lugar que ocupa en la base.</p>
+<p><strong>A cuánta gente le pasa:</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
@@ -743,8 +835,7 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>Miremos las dos filas marcadas: <strong>11,1%</strong> es una sola respuesta -tener exactamente una medida de seguridad de nueve posibles- y aparece en <strong>dos categorías distintas</strong>. 12.557 personas quedaron en la primera y 2.373 en la segunda, respondiendo exactamente lo mismo.</p>
-<p>Cuál le toca a cada una depende del <strong>orden en que aparece en la base</strong>, no de lo que respondió. Y no es el único valor al que le pasa: en esta variable el corte parte más de un empate.</p>
+<p>En <strong>11,1%</strong> -tener exactamente una medida de seguridad de nueve posibles- hay 12.557 personas en una categoría y 2.373 en la otra, habiendo respondido lo mismo.</p>
 <p>Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría las categorías, y con ellas los grupos.</p>
 <p><strong>Qué falta decidir:</strong> reemplazar los terciles por un corte más sustantivo. Por ejemplo: “ninguna medida / una o dos / tres o más”. Otra opción es categorizar la variable original “_pct”, ya que justamente tiene 3 categorías.</p>
 <p>Mientras no se resuelva, <strong>la solución de grupos completa es provisional</strong>.</p>

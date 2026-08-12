@@ -359,6 +359,50 @@ personas comparten exactamente el mismo.
 Cuando eso pasa, el corte **parte los empates de forma arbitraria**: personas con
 respuestas idénticas terminan en categorías distintas.
 
+**Así se ve en el microdato.** Un caso por cada combinación de valor y categoría
+que existe en el índice de medidas de la vivienda:
+
+```{r}
+#| label: d2-microdato
+datos_cat <- leer("datos_categorizado")
+
+pares <- tibble::tibble(
+    rph_id = as.character(datos_cat$rph_id),
+    pct = round(haven::zap_labels(datos_cat$comgen_per_pct), 1),
+    tercil = haven::zap_labels(datos_cat$comgen_per_pct_rec_tercil)
+) |>
+    filter(!is.na(pct), !is.na(tercil)) |>
+    summarise(caso = first(rph_id), .by = c(pct, tercil)) |>
+    arrange(pct, tercil) |>
+    #* Un valor "se parte" si aparece con más de una categoría de destino.
+    mutate(partido = n() > 1, .by = pct)
+
+pares |>
+    transmute(
+        rph_id = caso,
+        comgen_per_pct = pct,
+        comgen_per_pct_rec_tercil = tercil,
+        ` ` = ifelse(partido, "← mismo valor, distinta categoría", "")
+    ) |>
+    tabla(alinear = c("l", "r", "r", "l"))
+```
+
+```{r}
+#| label: d2-microdato-cifras
+#* Derivado de la tabla, no de posiciones de fila: si cambian los cortes, el
+#* texto sigue nombrando los valores correctos.
+valores_partidos <- unique(pares$pct[pares$partido])
+```
+
+Las filas marcadas son el problema: hay personas con
+**`r n_fmt(valores_partidos[1], 1)`%** en dos categorías distintas, y lo mismo
+pasa con **`r n_fmt(valores_partidos[2], 1)`%**.
+
+Cuál le toca a cada persona no depende de lo que respondió, sino del lugar que
+ocupa en la base.
+
+**A cuánta gente le pasa:**
+
 ```{r}
 #| label: d2
 t_d2 <- transiciones |>
@@ -386,14 +430,9 @@ n_grupo_b <- partidos$n[2]
 valor_partido <- n_fmt(partidos$origen[1], 1)
 ```
 
-Miremos las dos filas marcadas: **`r valor_partido`%** es una sola respuesta -tener
-exactamente una medida de seguridad de nueve posibles- y aparece en **dos
-categorías distintas**. `r n_fmt(n_grupo_a)` personas quedaron en la primera y
-`r n_fmt(n_grupo_b)` en la segunda, respondiendo exactamente lo mismo.
-
-Cuál le toca a cada una depende del **orden en que aparece en la base**, no de lo
-que respondió. Y no es el único valor al que le pasa: en esta variable el corte
-parte más de un empate.
+En **`r valor_partido`%** -tener exactamente una medida de seguridad de nueve
+posibles- hay `r n_fmt(n_grupo_a)` personas en una categoría y
+`r n_fmt(n_grupo_b)` en la otra, habiendo respondido lo mismo.
 
 Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría
 las categorías, y con ellas los grupos.
