@@ -196,7 +196,7 @@ window.Quarto = {
 
 
 <p>Esta pestaña recorre el camino que hacen los datos, desde la base original de la ENUSC hasta los grupos finales.</p>
-<p>No están todos los pasos: están <strong>los que procesan los datos de una forma que afecta el resultado</strong>. En cada uno se explicita qué se decidió y qué efecto tuvo.</p>
+<p>Se priorizó explicar los pasos que <strong>procesan los datos de una forma que afecta el resultado</strong>, pese a que el pipeline es más grande. En cada uno se explicita qué se decidió y qué efecto tuvo.</p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
@@ -222,7 +222,7 @@ window.Quarto = {
 </div>
 <section id="selección-de-la-muestra" class="level1">
 <h1>1. Selección de la muestra</h1>
-<p>La base original de la ENUSC 2025 tiene <strong>160.378 registros</strong>. Se conserva <strong>una persona por hogar</strong> —la que la encuesta seleccionó por el método de Kish— porque las preguntas de percepción de inseguridad se le hacen solo a ella. Quedan <strong>55.796 casos</strong>.</p>
+<p>La base original de la ENUSC 2025 tiene <strong>160.378 registros</strong>. Se conserva <strong>una persona por hogar</strong> (informante Kish) porque las preguntas de percepción de inseguridad se le hacen solo a esa persona. Quedan <strong>55.796 casos</strong>.</p>
 <p>De esa base se seleccionan las variables de cuatro dimensiones:</p>
 <table class="caption-top table">
 <colgroup>
@@ -237,19 +237,19 @@ window.Quarto = {
 </thead>
 <tbody>
 <tr class="odd">
-<td><code>emper</code> — Emocional personal</td>
+<td><code>emper</code> - Emocional personal</td>
 <td>Cuán seguro/a se siente la persona en distintos lugares y situaciones</td>
 </tr>
 <tr class="even">
-<td><code>perper</code> — Perceptual personal</td>
+<td><code>perper</code> - Perceptual personal</td>
 <td>Si cree que será víctima de un delito, y de cuál</td>
 </tr>
 <tr class="odd">
-<td><code>comper</code> — Comportamental personal</td>
+<td><code>comper</code> - Comportamental personal</td>
 <td>Si dejó de hacer cosas por temor, y cuánto gasta en seguridad</td>
 </tr>
 <tr class="even">
-<td><code>comgen</code> — Comportamental general</td>
+<td><code>comgen</code> - Comportamental general</td>
 <td>Qué medidas de seguridad tienen su vivienda y su barrio</td>
 </tr>
 </tbody>
@@ -264,15 +264,13 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Existía una quinta dimensión (<code>pergen</code>), construida sobre la pregunta de si la delincuencia <em>aumentó</em> en el país, la comuna y el barrio.</p>
-<p>Se descartó porque mide una <strong>percepción sobre la delincuencia como fenómeno social</strong>, no el miedo de la persona respecto de sí misma. Mezclarla con las otras cuatro haría que los grupos se formaran, en parte, por opinión sobre el país y no por experiencia de miedo.</p>
+<p>En la consultoría con los datos 2024 existía una quinta dimensión (<code>pergen</code>), la cual fue construida sobre la pregunta de si la delincuencia <em>aumentó</em> en el país, la comuna y el barrio. Posterior a discusiones sobre las soluciones de MCA - HCPC esa dimensión se sacó del análisis.</p>
 </div>
 </div>
 </section>
 <section id="los-códigos-especiales-dónde-está-la-trampa" class="level1">
 <h1>2. Los códigos especiales: dónde está la trampa</h1>
-<p>Antes de construir nada hay que entender cómo la ENUSC registra las respuestas que no son una alternativa sustantiva: “no aplica”, “no sabe”, “no responde”.</p>
-<p>Esto parece un detalle técnico y es <strong>el origen del problema que obligó a rehacer los análisis</strong>. La razón es que la encuesta usa <strong>dos formatos distintos</strong> para lo mismo, y confundirlos es fácil.</p>
+<p>Antes de comenzar, es importante entender cómo la ENUSC registra las respuestas que no son una alternativa sustantiva: “no aplica”, “no sabe”, “no responde”: la encuesta usa <strong>dos formatos distintos</strong> para lo mismo.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Como valor de la columna</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Como columna propia</a></li></ul>
 <div class="tab-content">
@@ -320,7 +318,7 @@ window.Quarto = {
 <p>Acá la distinción es visible: el 85 y el 88 están en la misma columna que el 1 y el 2, y se ve que son de otra naturaleza.</p>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<p>En las preguntas de “marque todas las que correspondan”, cada alternativa es su propia columna con 0 o 1. Y los códigos especiales <strong>también son columnas</strong>.</p>
+<p>En las preguntas de opción múltiple, cada alternativa es su propia columna dummy (valores 0 o 1). Y los códigos especiales <strong>también son columnas</strong>.</p>
 <p>Por ejemplo, en <em>“indique los elementos de seguridad que dispone su vivienda”</em>:</p>
 <table class="caption-top table">
 <thead>
@@ -356,8 +354,8 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
-<p><strong>Y acá está el problema.</strong> Esas tres últimas columnas son <em>estructuralmente idénticas</em>: mismo formato, mismo tipo, nombres parecidos. Pero la primera es una <strong>respuesta sustantiva</strong> —“no tengo ninguna medida”, que es información valiosa— y las otras dos son <strong>ausencia de respuesta</strong>.</p>
-<p>Nada en el dato distingue una cosa de la otra. Cualquier código que trate “las columnas especiales” de forma uniforme va a conflacionar una respuesta con dos no-respuestas.</p>
+<p>La columna <code>MEDIDAS_NA</code> representa a gente que respondió con 0 todas las demás medidas. En tanto, <code>MEDIDAS_NS</code> y <code>MEDIDAS_NR</code> son personas que respondieron no sabe o no responde para la batería completa.</p>
+<p>Esas tres últimas columnas son estructuralmente idénticas: mismo formato, mismo tipo, nombres parecidos. Pero la primera es una <strong>respuesta sustantiva</strong> -“no tengo ninguna medida”- y las otras dos son <strong>ausencia de respuesta</strong>. La única forma de dar cuenta que <code>MEDIDAS_NA</code> es una columna sustantiva es revisando sus etiquetas en la base de datos.</p>
 </div>
 </div>
 </div>
@@ -372,8 +370,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>Quien marca “no tengo ninguna medida de seguridad” <strong>entra al análisis con 0% de adopción</strong>, que es lo que efectivamente respondió.</p>
-<p>En la dimensión de medidas de la vivienda quedan <strong>6.007 personas con 0% de adopción</strong>: casi todas son quienes marcaron explícitamente “ninguna medida”. Antes quedaban fuera del modelo. Ahora entran, en la categoría más baja de adopción — que es donde corresponde que estén.</p>
-<p>Este es el hallazgo que motivó rehacer los análisis.</p>
+<p>En la dimensión de medidas de la vivienda quedan <strong>6.007 personas con 0% de adopción</strong>: casi todas personas del conjunto con “ninguna medida”. Ahora entran al modelo.</p>
 </div>
 </div>
 </section>
@@ -457,7 +454,7 @@ window.Quarto = {
 <p>La cuenta queda así:</p>
 <ul>
 <li>De los 11 lugares, <strong>4 no le aplican</strong> (no usa ese transporte, no hay ese servicio donde vive). Salen del cálculo: no tiene sentido preguntarse si se siente inseguro en un lugar al que no va.</li>
-<li>Quedan <strong>7 lugares</strong> en el denominador. Entre ellos hay <strong>1</strong> donde respondió “no sabe” — ese sí se queda, y volvemos sobre eso más abajo.</li>
+<li>Quedan <strong>7 lugares</strong> en el denominador. Entre ellos hay <strong>1</strong> donde respondió “no sabe”, ese sí se queda, y volvemos sobre eso más abajo.</li>
 <li>En <strong>6</strong> de esos 7 se siente inseguro/a.</li>
 </ul>
 <p><span class="math display">\[\text{índice} = \frac{6}{7} = 85,7\%\]</span></p>
@@ -472,10 +469,10 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>Las dos son respuestas no sustantivas, y reciben trato distinto a propósito.</p>
-<p><strong>“No aplica” sale del cálculo.</strong> Si alguien no tiene Metro en su ciudad, ese ítem no informa nada sobre su miedo. Dejarlo dentro castigaría a quien vive en una ciudad sin Metro.</p>
+<p><strong>“No aplica” sale del cálculo.</strong> Si alguien no tiene Metro en su ciudad, ese ítem no informa nada sobre su miedo.</p>
 <p><strong>“No sabe” se queda en el denominador</strong>, y cuenta como “no se siente inseguro”. Es una convención deliberada: quien no puede decir que se siente inseguro en un lugar al que sí va, no se cuenta como que lo está.</p>
 <p>En el ejemplo la diferencia es visible: con “no sabe” adentro el índice es 85,7%; si saliera del denominador sería 100,0%.</p>
-<p>La convención es <strong>conservadora</strong>: ante la duda, no atribuye miedo. Y mantiene el índice dentro de su rango: un porcentaje sigue estando entre 0 y 100 pase lo que pase con la no-respuesta.</p>
+<p>La convención es <strong>conservadora</strong>: ante la duda, no atribuye miedo. Y mantiene el índice dentro de su rango: un porcentaje sigue estando entre 0 y 100 pase lo que pase con la no respuesta.</p>
 </div>
 </div>
 <p>Con el mismo procedimiento se construyen los seis índices del análisis: tres de sensación de inseguridad (espacio público, barrio, casa), uno de modificación de prácticas, y dos de medidas de seguridad (de la vivienda y del barrio).</p>
@@ -483,7 +480,7 @@ window.Quarto = {
 </section>
 <section id="categorización" class="level1">
 <h1>4. Categorización</h1>
-<p>El MCA —la técnica que agrupa a las personas— trabaja con <strong>variables categóricas</strong>, no con porcentajes continuos. Así que cada índice hay que convertirlo en categorías.</p>
+<p>El MCA -la técnica que agrupa a las personas- trabaja con <strong>variables categóricas</strong>, no con porcentajes continuos. Así que cada índice hay que convertirlo en categorías.</p>
 <p>Hoy se hace con <strong>terciles</strong>: se ordena a toda la muestra por su índice y se corta en tres grupos del mismo tamaño (baja, media, alta).</p>
 <div class="callout callout-style-default callout-warning callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -495,8 +492,8 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>El método actual tiene un problema, y es el más consecuente de los que quedan abiertos.</p>
-<p>Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen <strong>pocos valores distintos y muchísimos empates</strong>: al construirse como “X de N situaciones”, con N chico, los valores posibles son pocos y miles de personas comparten exactamente el mismo.</p>
+<p>El método actual tiene un problema que debemos discutir.</p>
+<p>Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen <strong>pocos valores distintos y muchos empates</strong>: al construirse como “X de N situaciones”, con N chico, los valores posibles son pocos y miles de personas comparten exactamente el mismo.</p>
 <p>Cuando eso pasa, el corte <strong>parte los empates de forma arbitraria</strong>: personas con respuestas idénticas terminan en categorías distintas.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -550,10 +547,10 @@ window.Quarto = {
 </table>
 </div>
 </div>
-<p>Mire las dos filas marcadas: <strong>11,1%</strong> es una sola respuesta —tener exactamente una medida de seguridad de nueve posibles— y aparece en <strong>dos categorías distintas</strong>. 12.557 personas quedaron en la primera y 2.373 en la segunda, respondiendo exactamente lo mismo.</p>
+<p>Miremos las dos filas marcadas: <strong>11,1%</strong> es una sola respuesta -tener exactamente una medida de seguridad de nueve posibles- y aparece en <strong>dos categorías distintas</strong>. 12.557 personas quedaron en la primera y 2.373 en la segunda, respondiendo exactamente lo mismo.</p>
 <p>Cuál le toca a cada una depende del <strong>orden en que aparece en la base</strong>, no de lo que respondió. Y no es el único valor al que le pasa: en esta variable el corte parte más de un empate.</p>
 <p>Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría las categorías, y con ellas los grupos.</p>
-<p><strong>Qué falta decidir:</strong> reemplazar los terciles por cortes definidos por criterio sustantivo —por ejemplo, “ninguna medida / una o dos / tres o más”— que no dependan de la distribución ni del orden de las filas.</p>
+<p><strong>Qué falta decidir:</strong> reemplazar los terciles por un corte más sustantivo. Por ejemplo: “ninguna medida / una o dos / tres o más”. Otra opción es categorizar la variable original “_pct”, ya que justamente tiene 3 categorías.</p>
 <p>Mientras no se resuelva, <strong>la solución de grupos completa es provisional</strong>.</p>
 </div>
 </div>
@@ -630,9 +627,9 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>La variable de expectativa de victimización tenía una categoría que mezclaba dos cosas muy distintas: quien <strong>cree que será víctima de otro tipo de delito</strong> —una respuesta— y quien <strong>no sabe o no responde</strong> de qué delito.</p>
+<p>La variable de expectativa de victimización tenía una categoría que mezclaba dos cosas muy distintas: quien <strong>cree que será víctima de otro tipo de delito</strong> (sustantivo) y quien <strong>no sabe o no responde</strong> de qué delito.</p>
 <p>Se separaron. Ahora “otro tipo de delito” es una categoría propia y se conserva en el modelo.</p>
-<p>Es una corrección de validez más que de tamaño: recupera 78 casos. Pero elimina una confusión del mismo tipo que la que originó el rediseño — una respuesta sustantiva tratada como ausencia de dato.</p>
+<p>Es una corrección de validez más que de tamaño: recupera 78 casos. Pero elimina una confusión del mismo tipo que la que originó el rediseño: una respuesta sustantiva tratada como ausencia de dato.</p>
 </div>
 </div>
 <div class="callout callout-style-default callout-warning callout-titled">
@@ -646,8 +643,8 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>La mayor fuente individual de exclusión es la pregunta que abre la dimensión perceptual: <em>“¿cree usted que será víctima de algún delito en los próximos doce meses?”</em>. Quienes responden “no sabe” o “no responde” quedan fuera.</p>
-<p>Descartarlos es defendible: es no-respuesta genuina en la pregunta que da acceso a toda la dimensión, y a diferencia del caso de “ninguna medida”, acá no hay ninguna respuesta sustantiva escondida.</p>
-<p>Pero nunca fue una decisión: se heredó del código anterior. Es la única exclusión de esta magnitud que no pasó por revisión explícita, y corresponde resolverla.</p>
+<p>Descartarlos es defendible ya que es no respuesta genuina en la pregunta que da acceso a toda la dimensión, y a diferencia del caso de “ninguna medida”, acá no hay ninguna respuesta sustantiva escondida.</p>
+<p>Sin embargo, se deja abierta y que nunca se discutió en detalle.</p>
 </div>
 </div>
 </section>
@@ -685,7 +682,7 @@ window.Quarto = {
 </div>
 </div>
 <p>Los excluidos <strong>no son una muestra al azar</strong> de la población: hay más hogares de nivel socioeconómico bajo entre quienes quedan fuera que entre quienes entran.</p>
-<p>El sesgo es bastante menor que el del análisis anterior —donde se perdía casi la mitad de la muestra— pero <strong>va en la misma dirección</strong>. Es una limitación conocida del modelo y debe reportarse como tal.</p>
+<p>El sesgo es bastante menor que el del análisis anterior -donde se perdía casi la mitad de la muestra- pero <strong>va en la misma dirección</strong>. Es una limitación conocida del modelo y debe reportarse como tal.</p>
 </section>
 </section>
 <section id="el-modelo" class="level1">

@@ -18,8 +18,9 @@ cfg <- leer("cfg")
 Esta pestaña recorre el camino que hacen los datos, desde la base original de la
 ENUSC hasta los grupos finales.
 
-No están todos los pasos: están **los que procesan los datos de una forma que
-afecta el resultado**. En cada uno se explicita qué se decidió y qué efecto tuvo.
+Se priorizó explicar los pasos que **procesan los datos de una forma que
+afecta el resultado**, pese a que el pipeline es más grande. 
+En cada uno se explicita qué se decidió y qué efecto tuvo.
 
 ```{mermaid}
 %%| fig-cap: "El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica."
@@ -47,39 +48,31 @@ n_kish <- sel$filas_despues[sel$etiqueta == "filtrar_muestra"]
 ```
 
 La base original de la ENUSC 2025 tiene **`r n_fmt(n_original)` registros**. Se
-conserva **una persona por hogar** —la que la encuesta seleccionó por el método
-de Kish— porque las preguntas de percepción de inseguridad se le hacen solo a
-ella. Quedan **`r n_fmt(n_kish)` casos**.
+conserva **una persona por hogar** (informante Kish) porque las preguntas de 
+percepción de inseguridad se le hacen solo a esa persona. Quedan **`r n_fmt(n_kish)` casos**.
 
 De esa base se seleccionan las variables de cuatro dimensiones:
 
 | Dimensión | Qué mide |
 |---|---|
-| `emper` — Emocional personal | Cuán seguro/a se siente la persona en distintos lugares y situaciones |
-| `perper` — Perceptual personal | Si cree que será víctima de un delito, y de cuál |
-| `comper` — Comportamental personal | Si dejó de hacer cosas por temor, y cuánto gasta en seguridad |
-| `comgen` — Comportamental general | Qué medidas de seguridad tienen su vivienda y su barrio |
+| `emper` - Emocional personal | Cuán seguro/a se siente la persona en distintos lugares y situaciones |
+| `perper` - Perceptual personal | Si cree que será víctima de un delito, y de cuál |
+| `comper` - Comportamental personal | Si dejó de hacer cosas por temor, y cuánto gasta en seguridad |
+| `comgen` - Comportamental general | Qué medidas de seguridad tienen su vivienda y su barrio |
 
 ::: {.callout-note}
 ## Decisión tomada · Se descarta la dimensión "perceptual general"
 
-Existía una quinta dimensión (`pergen`), construida sobre la pregunta de si la
-delincuencia *aumentó* en el país, la comuna y el barrio.
-
-Se descartó porque mide una **percepción sobre la delincuencia como fenómeno
-social**, no el miedo de la persona respecto de sí misma. Mezclarla con las otras
-cuatro haría que los grupos se formaran, en parte, por opinión sobre el país y no
-por experiencia de miedo.
+En la consultoría con los datos 2024 existía una quinta dimensión (`pergen`),
+la cual fue construida sobre la pregunta de si la delincuencia *aumentó* en el país, la comuna y el barrio.
+Posterior a discusiones sobre las soluciones de MCA - HCPC esa dimensión se sacó del análisis.
 :::
 
 # 2. Los códigos especiales: dónde está la trampa
 
-Antes de construir nada hay que entender cómo la ENUSC registra las respuestas
-que no son una alternativa sustantiva: "no aplica", "no sabe", "no responde".
-
-Esto parece un detalle técnico y es **el origen del problema que obligó a rehacer
-los análisis**. La razón es que la encuesta usa **dos formatos distintos** para lo
-mismo, y confundirlos es fácil.
+Antes de comenzar, es importante entender cómo la ENUSC registra las respuestas
+que no son una alternativa sustantiva: "no aplica", "no sabe", "no responde":
+la encuesta usa **dos formatos distintos** para lo mismo.
 
 ::: {.panel-tabset}
 ## Como valor de la columna
@@ -105,8 +98,8 @@ el 2, y se ve que son de otra naturaleza.
 
 ## Como columna propia
 
-En las preguntas de "marque todas las que correspondan", cada alternativa es su
-propia columna con 0 o 1. Y los códigos especiales **también son columnas**.
+En las preguntas de opción múltiple, cada alternativa es su
+propia columna dummy (valores 0 o 1). Y los códigos especiales **también son columnas**.
 
 Por ejemplo, en *"indique los elementos de seguridad que dispone su vivienda"*:
 
@@ -119,14 +112,14 @@ Por ejemplo, en *"indique los elementos de seguridad que dispone su vivienda"*:
 | **`MEDIDAS_NS`** | **No sabe** |
 | **`MEDIDAS_NR`** | **No responde** |
 
-**Y acá está el problema.** Esas tres últimas columnas son *estructuralmente
-idénticas*: mismo formato, mismo tipo, nombres parecidos. Pero la primera es una
-**respuesta sustantiva** —"no tengo ninguna medida", que es información valiosa—
-y las otras dos son **ausencia de respuesta**.
+La columna `MEDIDAS_NA` representa a gente que respondió con 0 todas las demás medidas.
+En tanto, `MEDIDAS_NS` y `MEDIDAS_NR` son personas que respondieron no sabe o no responde
+para la batería completa.
 
-Nada en el dato distingue una cosa de la otra. Cualquier código que trate "las
-columnas especiales" de forma uniforme va a conflacionar una respuesta con dos
-no-respuestas.
+Esas tres últimas columnas son estructuralmente idénticas: mismo formato, mismo tipo, 
+nombres parecidos. Pero la primera es una **respuesta sustantiva** -"no tengo ninguna medida"-
+y las otras dos son **ausencia de respuesta**. La única forma de dar cuenta que `MEDIDAS_NA`
+es una columna sustantiva es revisando sus etiquetas en la base de datos.
 :::
 
 ::: {.callout-note}
@@ -150,11 +143,8 @@ n_cero <- t_d1$n
 ```
 
 En la dimensión de medidas de la vivienda quedan **`r n_fmt(n_cero)` personas con
-0% de adopción**: casi todas son quienes marcaron explícitamente "ninguna medida".
-Antes quedaban fuera del modelo. Ahora entran, en la categoría más baja de
-adopción — que es donde corresponde que estén.
-
-Este es el hallazgo que motivó rehacer los análisis.
+0% de adopción**: casi todas personas del conjunto con "ninguna medida".
+Ahora entran al modelo.
 :::
 
 # 3. Construcción de los índices
@@ -226,7 +216,7 @@ La cuenta queda así:
   hay ese servicio donde vive). Salen del cálculo: no tiene sentido preguntarse
   si se siente inseguro en un lugar al que no va.
 - Quedan **`r denominador` lugares** en el denominador. Entre ellos hay
-  **`r n_no_sabe`** donde respondió "no sabe" — ese sí se queda, y volvemos sobre
+  **`r n_no_sabe`** donde respondió "no sabe", ese sí se queda, y volvemos sobre
   eso más abajo.
 - En **`r n_inseguro`** de esos `r denominador` se siente inseguro/a.
 
@@ -238,8 +228,7 @@ $$\text{índice} = \frac{`r n_inseguro`}{`r denominador`} = `r n_fmt(pct_pipelin
 Las dos son respuestas no sustantivas, y reciben trato distinto a propósito.
 
 **"No aplica" sale del cálculo.** Si alguien no tiene Metro en su ciudad, ese
-ítem no informa nada sobre su miedo. Dejarlo dentro castigaría a quien vive en
-una ciudad sin Metro.
+ítem no informa nada sobre su miedo.
 
 **"No sabe" se queda en el denominador**, y cuenta como "no se siente inseguro".
 Es una convención deliberada: quien no puede decir que se siente inseguro en un
@@ -251,7 +240,7 @@ En el ejemplo la diferencia es visible: con "no sabe" adentro el índice es
 
 La convención es **conservadora**: ante la duda, no atribuye miedo. Y mantiene el
 índice dentro de su rango: un porcentaje sigue estando entre 0 y 100 pase lo que
-pase con la no-respuesta.
+pase con la no respuesta.
 :::
 
 Con el mismo procedimiento se construyen los seis índices del análisis: tres de
@@ -260,7 +249,7 @@ prácticas, y dos de medidas de seguridad (de la vivienda y del barrio).
 
 # 4. Categorización
 
-El MCA —la técnica que agrupa a las personas— trabaja con **variables
+El MCA -la técnica que agrupa a las personas- trabaja con **variables
 categóricas**, no con porcentajes continuos. Así que cada índice hay que
 convertirlo en categorías.
 
@@ -270,11 +259,10 @@ en tres grupos del mismo tamaño (baja, media, alta).
 ::: {.callout-warning}
 ## Decisión pendiente · Cómo se cortan los índices
 
-El método actual tiene un problema, y es el más consecuente de los que quedan
-abiertos.
+El método actual tiene un problema que debemos discutir.
 
 Los terciles fuerzan tres grupos de igual tamaño. Pero estos índices tienen
-**pocos valores distintos y muchísimos empates**: al construirse como
+**pocos valores distintos y muchos empates**: al construirse como
 "X de N situaciones", con N chico, los valores posibles son pocos y miles de
 personas comparten exactamente el mismo.
 
@@ -308,8 +296,8 @@ n_grupo_b <- partidos$n[2]
 valor_partido <- n_fmt(partidos$origen[1], 1)
 ```
 
-Mire las dos filas marcadas: **`r valor_partido`%** es una sola respuesta —tener
-exactamente una medida de seguridad de nueve posibles— y aparece en **dos
+Miremos las dos filas marcadas: **`r valor_partido`%** es una sola respuesta -tener
+exactamente una medida de seguridad de nueve posibles- y aparece en **dos
 categorías distintas**. `r n_fmt(n_grupo_a)` personas quedaron en la primera y
 `r n_fmt(n_grupo_b)` en la segunda, respondiendo exactamente lo mismo.
 
@@ -320,9 +308,9 @@ parte más de un empate.
 Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría
 las categorías, y con ellas los grupos.
 
-**Qué falta decidir:** reemplazar los terciles por cortes definidos por criterio
-sustantivo —por ejemplo, "ninguna medida / una o dos / tres o más"— que no dependan
-de la distribución ni del orden de las filas.
+**Qué falta decidir:** reemplazar los terciles por un corte más sustantivo. 
+Por ejemplo: "ninguna medida / una o dos / tres o más". Otra opción es categorizar
+la variable original "_pct", ya que justamente tiene 3 categorías.
 
 Mientras no se resuelva, **la solución de grupos completa es provisional**.
 :::
@@ -377,14 +365,14 @@ cuántos se recuperarían si se arreglara esa y ninguna otra.
 ## Decisión tomada · Se separó "otro delito" de "no sabe qué delito"
 
 La variable de expectativa de victimización tenía una categoría que mezclaba dos
-cosas muy distintas: quien **cree que será víctima de otro tipo de delito** —una
-respuesta— y quien **no sabe o no responde** de qué delito.
+cosas muy distintas: quien **cree que será víctima de otro tipo de delito** (sustantivo)
+ y quien **no sabe o no responde** de qué delito.
 
 Se separaron. Ahora "otro tipo de delito" es una categoría propia y se conserva
 en el modelo.
 
 Es una corrección de validez más que de tamaño: recupera 78 casos. Pero elimina
-una confusión del mismo tipo que la que originó el rediseño — una respuesta
+una confusión del mismo tipo que la que originó el rediseño: una respuesta
 sustantiva tratada como ausencia de dato.
 :::
 
@@ -395,12 +383,11 @@ La mayor fuente individual de exclusión es la pregunta que abre la dimensión
 perceptual: *"¿cree usted que será víctima de algún delito en los próximos doce
 meses?"*. Quienes responden "no sabe" o "no responde" quedan fuera.
 
-Descartarlos es defendible: es no-respuesta genuina en la pregunta que da acceso
+Descartarlos es defendible ya que es no respuesta genuina en la pregunta que da acceso
 a toda la dimensión, y a diferencia del caso de "ninguna medida", acá no hay
 ninguna respuesta sustantiva escondida.
 
-Pero nunca fue una decisión: se heredó del código anterior. Es la única exclusión
-de esta magnitud que no pasó por revisión explícita, y corresponde resolverla.
+Sin embargo, se deja abierta y que nunca se discutió en detalle.
 :::
 
 ## La exclusión no es neutra
@@ -426,8 +413,8 @@ composicion |>
 Los excluidos **no son una muestra al azar** de la población: hay más hogares de
 nivel socioeconómico bajo entre quienes quedan fuera que entre quienes entran.
 
-El sesgo es bastante menor que el del análisis anterior —donde se perdía casi la
-mitad de la muestra— pero **va en la misma dirección**. Es una limitación conocida
+El sesgo es bastante menor que el del análisis anterior -donde se perdía casi la
+mitad de la muestra- pero **va en la misma dirección**. Es una limitación conocida
 del modelo y debe reportarse como tal.
 
 # 6. El modelo

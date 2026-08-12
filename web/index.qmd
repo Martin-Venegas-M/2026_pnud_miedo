@@ -11,11 +11,11 @@ source("_setup.R")
 ## Qué es esta página
 
 Esta página documenta la construcción de una tipología de miedo al delito a
-partir de la ENUSC 2025.
+partir de la Encuesta Nacional Urbana de Seguridad Ciudadana (ENUSC) 2025.
 
-Se diferencia de la anterior en algo importante. Aquella comunicaba **resultados**:
-cuántos grupos hay, cómo se ven, en qué se distinguen. Esta comunica **los
-resultados y las decisiones que los producen** — qué se decidió en cada punto
+A diferencia de la página web anterior, esta no solo comunica **resultados**
+(cuántos grupos hay, cómo se ven, en qué se distinguen), sino también **los
+resultados y las decisiones que los producen**: qué se decidió en cada punto
 donde el dato podía tratarse de más de una forma, por qué, y qué efecto tuvo esa
 decisión sobre el análisis.
 
@@ -24,7 +24,7 @@ El motivo del cambio está en la sección siguiente.
 ## De dónde venimos
 
 La consultoría comenzó en **2024** con una primera construcción de tipologías.
-En **2025** se rehízo, incorporando la ola nueva de la encuesta y ajustando la
+En **2025** se rehízo, incorporando la versión más actualizada de la encuesta y ajustando la
 metodología.
 
 En **agosto de 2026**, revisando esa segunda versión, apareció un problema que
@@ -34,14 +34,15 @@ obligó a rehacer los análisis desde el principio.
 ## El hallazgo
 
 En las preguntas de opción múltiple del tipo *"¿cuál o cuáles de estas medidas de
-seguridad ha adoptado?"*, la alternativa **"ninguna"** estaba siendo tratada como
-**dato faltante** en vez de como respuesta.
+seguridad ha adoptado?"*, la alternativa **"ninguna"** tenía el sufijo "_na" en la 
+columna de la base de datos, por lo que el código la trataba como **no aplica**,
+excluyendo esos casos del análisis de MCA y HCPC.
 
-Pero "no tengo ninguna medida de seguridad" no es una ausencia de dato: es una
-respuesta sustantiva, y muy informativa — significa 0% de adopción.
+Sin embargo, "no tengo ninguna medida de seguridad" es una 
+respuesta sustantiva (significa 0% de adopción) y debe ser incluida.
 
-Como el paso de modelado exigía casos completos, esas personas quedaban **fuera
-del modelo**. Y no salían al azar: la exclusión afectaba más a hogares de nivel
+Además, el conjunto de personas que eran excluídas del análisis eran distintas
+de las que si entraban: la exclusión afectaba más a hogares de nivel
 socioeconómico bajo y con menos miedo declarado. Es decir, se perdía justamente
 una parte del perfil que más importa describir.
 :::
@@ -51,15 +52,11 @@ poco más de la mitad de la muestra. Corrigiendo el criterio, entra cerca del 90
 
 ## Por qué se rehízo todo, y no solo ese punto
 
-Se podría haber corregido esa línea y seguir. Se optó por reconstruir, por una
-razón: **el problema no fue el error, fue que nadie lo vio durante dos años.**
+Considerando el hallazgo, se optó por auditar todo el pipeline de procesamiento,
+esto implica ordenar y revisar todo el flujo (y su código) y explicitar las
+decisiones metodológicas en cada momento.
 
-El análisis se validaba mirando distribuciones de frecuencia, una variable a la
-vez. Ese tipo de revisión muestra si una variable *quedó rara*, pero no muestra
-qué le pasó a cada persona **entre** un paso y el siguiente. Y ahí es donde vivía
-el problema.
-
-La reconstrucción tuvo entonces dos objetivos, no uno:
+La reconstrucción tuvo dos objetivos:
 
 1. **Recodificar con el criterio correcto desde el principio**, en vez de parchar
    sobre una base ya calibrada.
@@ -75,7 +72,7 @@ La reconstrucción tuvo entonces dos objetivos, no uno:
 | **Univariados** | Distribuciones de todas las variables: las originales de la encuesta, las que construimos, y las secundarias |
 | **Solución actual** | Los grupos: cómo se ven, qué los distingue y cómo se perfilan |
 
-A lo largo de la página va a encontrar dos tipos de recuadro:
+A lo largo de la página encontrará dos tipos de recuadro:
 
 ::: {.callout-note}
 ## Decisión tomada
@@ -120,11 +117,10 @@ pendientes, y esta página es el insumo para tomarla.
 ::: {.callout-warning}
 ## Hay decisiones abiertas que afectan estos resultados
 
-Tres decisiones metodológicas siguen sin resolver, y una de ellas —cómo se
-convierten los índices continuos en categorías— **cambia la solución de grupos
-completa** cuando se resuelva.
+Un adelanto: tres decisiones metodológicas siguen en discusión, y una de ellas (cómo se
+convierten los índices continuos en categorías) podría **cambiar la solución de grupos
+completa**.
 
-Todo lo que aparece en la pestaña *Solución actual* debe leerse como provisional.
-Sirve para caracterizar y discutir los grupos, no para citar cifras como
-definitivas.
+Todo lo que aparece en la pestaña *Solución actual* debe leerse como análisis preliminar,
+hasta que estas decisiones metodológicas estén zanjadas.
 :::

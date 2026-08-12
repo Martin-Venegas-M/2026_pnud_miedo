@@ -154,13 +154,13 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="qué-es-esta-página" class="level2">
 <h2 class="anchored" data-anchor-id="qué-es-esta-página">Qué es esta página</h2>
-<p>Esta página documenta la construcción de una tipología de miedo al delito a partir de la ENUSC 2025.</p>
-<p>Se diferencia de la anterior en algo importante. Aquella comunicaba <strong>resultados</strong>: cuántos grupos hay, cómo se ven, en qué se distinguen. Esta comunica <strong>los resultados y las decisiones que los producen</strong> — qué se decidió en cada punto donde el dato podía tratarse de más de una forma, por qué, y qué efecto tuvo esa decisión sobre el análisis.</p>
+<p>Esta página documenta la construcción de una tipología de miedo al delito a partir de la Encuesta Nacional Urbana de Seguridad Ciudadana (ENUSC) 2025.</p>
+<p>A diferencia de la página web anterior, esta no solo comunica <strong>resultados</strong> (cuántos grupos hay, cómo se ven, en qué se distinguen), sino también <strong>los resultados y las decisiones que los producen</strong>: qué se decidió en cada punto donde el dato podía tratarse de más de una forma, por qué, y qué efecto tuvo esa decisión sobre el análisis.</p>
 <p>El motivo del cambio está en la sección siguiente.</p>
 </section>
 <section id="de-dónde-venimos" class="level2">
 <h2 class="anchored" data-anchor-id="de-dónde-venimos">De dónde venimos</h2>
-<p>La consultoría comenzó en <strong>2024</strong> con una primera construcción de tipologías. En <strong>2025</strong> se rehízo, incorporando la ola nueva de la encuesta y ajustando la metodología.</p>
+<p>La consultoría comenzó en <strong>2024</strong> con una primera construcción de tipologías. En <strong>2025</strong> se rehízo, incorporando la versión más actualizada de la encuesta y ajustando la metodología.</p>
 <p>En <strong>agosto de 2026</strong>, revisando esa segunda versión, apareció un problema que obligó a rehacer los análisis desde el principio.</p>
 <div class="callout callout-style-default callout-important callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -172,18 +172,17 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>En las preguntas de opción múltiple del tipo <em>“¿cuál o cuáles de estas medidas de seguridad ha adoptado?”</em>, la alternativa <strong>“ninguna”</strong> estaba siendo tratada como <strong>dato faltante</strong> en vez de como respuesta.</p>
-<p>Pero “no tengo ninguna medida de seguridad” no es una ausencia de dato: es una respuesta sustantiva, y muy informativa — significa 0% de adopción.</p>
-<p>Como el paso de modelado exigía casos completos, esas personas quedaban <strong>fuera del modelo</strong>. Y no salían al azar: la exclusión afectaba más a hogares de nivel socioeconómico bajo y con menos miedo declarado. Es decir, se perdía justamente una parte del perfil que más importa describir.</p>
+<p>En las preguntas de opción múltiple del tipo <em>“¿cuál o cuáles de estas medidas de seguridad ha adoptado?”</em>, la alternativa <strong>“ninguna”</strong> tenía el sufijo “_na” en la columna de la base de datos, por lo que el código la trataba como <strong>no aplica</strong>, excluyendo esos casos del análisis de MCA y HCPC.</p>
+<p>Sin embargo, “no tengo ninguna medida de seguridad” es una respuesta sustantiva (significa 0% de adopción) y debe ser incluida.</p>
+<p>Además, el conjunto de personas que eran excluídas del análisis eran distintas de las que si entraban: la exclusión afectaba más a hogares de nivel socioeconómico bajo y con menos miedo declarado. Es decir, se perdía justamente una parte del perfil que más importa describir.</p>
 </div>
 </div>
 <p>El efecto era grande. Con el tratamiento anterior, el modelo se construía sobre poco más de la mitad de la muestra. Corrigiendo el criterio, entra cerca del 90%.</p>
 </section>
 <section id="por-qué-se-rehízo-todo-y-no-solo-ese-punto" class="level2">
 <h2 class="anchored" data-anchor-id="por-qué-se-rehízo-todo-y-no-solo-ese-punto">Por qué se rehízo todo, y no solo ese punto</h2>
-<p>Se podría haber corregido esa línea y seguir. Se optó por reconstruir, por una razón: <strong>el problema no fue el error, fue que nadie lo vio durante dos años.</strong></p>
-<p>El análisis se validaba mirando distribuciones de frecuencia, una variable a la vez. Ese tipo de revisión muestra si una variable <em>quedó rara</em>, pero no muestra qué le pasó a cada persona <strong>entre</strong> un paso y el siguiente. Y ahí es donde vivía el problema.</p>
-<p>La reconstrucción tuvo entonces dos objetivos, no uno:</p>
+<p>Considerando el hallazgo, se optó por auditar todo el pipeline de procesamiento, esto implica ordenar y revisar todo el flujo (y su código) y explicitar las decisiones metodológicas en cada momento.</p>
+<p>La reconstrucción tuvo dos objetivos:</p>
 <ol type="1">
 <li><strong>Recodificar con el criterio correcto desde el principio</strong>, en vez de parchar sobre una base ya calibrada.</li>
 <li><strong>Dejar registro automático de qué le hace cada paso a los datos</strong>, de modo que un problema de este tipo sea visible sin que nadie tenga que sospecharlo primero.</li>
@@ -217,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>A lo largo de la página va a encontrar dos tipos de recuadro:</p>
+<p>A lo largo de la página encontrará dos tipos de recuadro:</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -261,8 +260,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Tres decisiones metodológicas siguen sin resolver, y una de ellas —cómo se convierten los índices continuos en categorías— <strong>cambia la solución de grupos completa</strong> cuando se resuelva.</p>
-<p>Todo lo que aparece en la pestaña <em>Solución actual</em> debe leerse como provisional. Sirve para caracterizar y discutir los grupos, no para citar cifras como definitivas.</p>
+<p>Un adelanto: tres decisiones metodológicas siguen en discusión, y una de ellas (cómo se convierten los índices continuos en categorías) podría <strong>cambiar la solución de grupos completa</strong>.</p>
+<p>Todo lo que aparece en la pestaña <em>Solución actual</em> debe leerse como análisis preliminar, hasta que estas decisiones metodológicas estén zanjadas.</p>
 </div>
 </div>
 
