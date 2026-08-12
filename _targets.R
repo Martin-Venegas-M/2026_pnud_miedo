@@ -291,6 +291,13 @@ list(
             etiqueta = "etiquetado_secundarias"
         )
     ),
+    tar_target(
+        validacion_vars_sec,
+        validar_vars_sec(datos_finales, cfg$VARS_SEC)
+    ),
+
+    # -- Especificaciones para analysis/ (PLAN.md F5.2, Q3) ------------------
+    tar_target(spec_patrones, construir_spec_patrones()),
 
     # -- Consolidación de logs -----------------------------------------------
     tar_target(

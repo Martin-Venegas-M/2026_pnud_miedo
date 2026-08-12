@@ -25,6 +25,11 @@ construir_config <- function() {
             "comgen_com_pct_rec_tercil"
         ),
 
+        # PLAN.md F5.2, Q4: pergen_pais/comuna/barrio salieron de acá — la
+        # dimensión "pergen" (ex P_AUMENTO) se descartó a propósito en
+        # 1_select.R y esas tres columnas no existen en ningún punto del
+        # pipeline. Bug heredado del config.R original; no cambiaba ningún
+        # número porque reportar_composicion() ya las saltaba en silencio.
         VARS_SEC = c(
             "rph_sexo",
             "rph_nivel_rec",
@@ -39,12 +44,31 @@ construir_config <- function() {
             "info_otras_personas",
             "info_rrss",
             "info_prensa",
-            "info_tv",
-            "pergen_pais",
-            "pergen_comuna",
-            "pergen_barrio"
+            "info_tv"
         )
     )
+}
+
+#' Verificar que las variables secundarias declaradas existan en los datos
+#'
+#' PLAN.md F5.2, Q4: cierra la clase de bug de `pergen_*` — aplica el patrón
+#' declarado-vs-observado de §4.5 a `cfg` en vez de a una batería. Si algún
+#' nombre de `VARS_SEC` deja de existir (o alguno nuevo debería agregarse y no
+#' se hizo), falla nombrando la variable en vez de que `reportar_composicion()`
+#' la salte en silencio.
+#'
+#' @param datos Datos finales (`datos_finales`).
+#' @param vars_sec `cfg$VARS_SEC`.
+#' @return `TRUE`, invisible, si todas las variables existen.
+validar_vars_sec <- function(datos, vars_sec) {
+    faltantes <- setdiff(vars_sec, names(datos))
+    if (length(faltantes) > 0) {
+        stop(
+            "validar_vars_sec(): cfg$VARS_SEC declara columnas que no existen en datos_finales: ",
+            paste(faltantes, collapse = ", ")
+        )
+    }
+    invisible(TRUE)
 }
 
 #' Ruta del archivo original de la ola
