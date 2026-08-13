@@ -33,6 +33,35 @@ leer_log <- function(nombre) {
     )
 }
 
+#' Etiquetas legibles de las variables del modelo y de las secundarias
+#'
+#' Compartidas por "Solución actual" y "Primeras lecturas". El orden de las
+#' ocho primeras es el de `cfg$VARS_MODELO`.
+ETIQUETAS_VARS <- c(
+    emper_ep_pct_cat = "Inseguridad en espacio público",
+    emper_barrio_pct_cat = "Inseguridad en el barrio",
+    emper_casa_pct_cat = "Inseguridad en la casa",
+    perper_delito = "Expectativa de ser víctima",
+    comper_pct_cat = "Modificación de prácticas",
+    comper_gasto = "Gasto en seguridad",
+    comgen_per_pct_cat = "Medidas de la vivienda",
+    comgen_com_pct_cat = "Medidas del barrio",
+    rph_sexo = "Sexo",
+    rph_nivel_rec = "Nivel educacional",
+    rph_edad_rec = "Tramo de edad",
+    rph_nse = "Nivel socioeconómico",
+    enc_region_rec = "Macrozona",
+    vp_dc = "Victimización (delitos contra las personas)",
+    vp_dv = "Victimización (delitos violentos)",
+    desordenes_ind_rec = "Percepción de desórdenes",
+    incivilidades_ind_rec = "Percepción de incivilidades",
+    info_exp_personal = "Se informa por experiencia personal",
+    info_otras_personas = "Se informa por otras personas",
+    info_rrss = "Se informa por redes sociales",
+    info_prensa = "Se informa por prensa",
+    info_tv = "Se informa por televisión"
+)
+
 #' Formato de números al estilo español, para mostrar
 n_fmt <- function(x, dec = 0) {
     formatC(

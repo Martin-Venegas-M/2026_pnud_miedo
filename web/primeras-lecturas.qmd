@@ -1,0 +1,360 @@
+---
+title: "Primeras lecturas"
+subtitle: "Un recorrido por los grupos, y qué cambia al pasar de una solución a otra"
+---
+
+```{r}
+#| label: setup
+source("_setup.R")
+
+cfg <- leer("cfg")
+n_clases <- sort(cfg$N_CLASES)
+sol_fina <- max(n_clases)
+
+matriz <- leer("matriz_perfil")
+lift <- leer("lift_ponderado")
+bloques <- leer("bloques")
+perdida_res <- leer_log("perdida_resumen")
+```
+
+Esta pestaña es **una primera pasada sobre los resultados**, para dejar a la
+vista las claves de lectura antes de entrar a las tablas completas. No son
+conclusiones: son el punto de partida para revisarlas.
+
+Todo lo que sigue sale de la matriz de perfiles y de la tabla de perfil que están
+en [Solución actual](solucion-actual.html). Los porcentajes son ponderados, o sea
+estimaciones de la población; los conteos de casos no lo son.
+
+```{r}
+#| label: comun
+#* La lectura se apoya en la diferencia en puntos porcentuales contra el total,
+#* estimada con el diseño muestral. Es la misma medida para las ocho variables
+#* del modelo y para las secundarias, así que las dos familias se pueden poner
+#* en una sola tabla.
+perfil <- lift |>
+    filter(solucion == sol_fina) |>
+    mutate(
+        Familia = ifelse(grupo_variable == "fuente", "Del modelo", "Secundaria"),
+        Variable = dplyr::coalesce(ETIQUETAS_VARS[variable], variable)
+    )
+
+#* Cuántas respuestas se muestran por grupo y por familia. Con menos se pierde
+#* el segundo eje: en los grupos que se separan por adopción de medidas, la
+#* inseguridad aparece recién en la segunda o tercera fila.
+N_MODELO <- 4
+N_SEC <- 3
+
+tabla_grupo <- function(g) {
+    modelo <- perfil |>
+        filter(grupo == g, Familia == "Del modelo") |>
+        slice_max(lift_pp, n = N_MODELO)
+    sec <- perfil |>
+        filter(grupo == g, Familia == "Secundaria") |>
+        slice_max(lift_pp, n = N_SEC)
+
+    bind_rows(modelo, sec) |>
+        mutate(primera = row_number() == 1, .by = Familia) |>
+        transmute(
+            Familia = ifelse(primera, Familia, ""),
+            Variable,
+            Respuesta = categoria,
+            `% del grupo` = pct_grupo,
+            `% del total` = global_pct,
+            `Dif. (pp)` = lift_pp
+        ) |>
+        tabla(alinear = c("l", "l", "l", "r", "r", "r"), digits = 1)
+}
+
+#* Un valor puntual de la tabla, para citarlo en prosa sin escribirlo a mano.
+val <- function(g, cat, col = "lift_pp") {
+    x <- perfil |> filter(grupo == g, categoria == cat)
+    stopifnot("No se encontró la celda citada en la prosa" = nrow(x) == 1)
+    x[[col]]
+}
+
+#* La prosa de abajo hace afirmaciones superlativas ("el más joven", "el que
+#* más gasta"). Son las que se rompen en silencio si el modelo se recalcula:
+#* siguen leyéndose bien y dicen algo falso. Cada una se verifica acá.
+extremo <- function(g, var, cat, cual = c("max", "min")) {
+    cual <- match.arg(cual)
+    x <- perfil |> filter(variable == var, categoria == cat)
+    stopifnot("La celda a verificar no existe" = nrow(x) == sol_fina)
+    elegido <- if (cual == "max") {
+        x$grupo[which.max(x$pct_grupo)]
+    } else {
+        x$grupo[which.min(x$pct_grupo)]
+    }
+    elegido == g
+}
+
+stopifnot(
+    "C1 dejó de ser el grupo con más hombres" = extremo("C1", "rph_sexo", "Hombre", "max"),
+    "C1 dejó de tener la menor victimización" = extremo("C1", "vp_dc", "Sí", "min"),
+    "C1 dejó de tener la menor percepción de desórdenes" = extremo("C1", "desordenes_ind_rec", "Alta percepción de desordenes", "min"),
+    "C1 dejó de tener la menor percepción de incivilidades" = extremo("C1", "incivilidades_ind_rec", "Alta percepción de incivilidades", "min"),
+    "C2 dejó de concentrar la mayor educación básica" = extremo("C2", "rph_nivel_rec", "Educación básica o menos", "max"),
+    "C3 dejó de ser el grupo más joven" = extremo("C3", "rph_edad_rec", "0 a 29 años", "max"),
+    "C4 dejó de tener el mayor NSE alto" = extremo("C4", "rph_nse", "Alto", "max"),
+    "C4 dejó de tener la mayor educación terciaria" = extremo("C4", "rph_nivel_rec", "Educación terciaria", "max"),
+    "C4 dejó de tener la menor educación básica" = extremo("C4", "rph_nivel_rec", "Educación básica o menos", "min"),
+    "C6 dejó de tener la mayor victimización" = extremo("C6", "vp_dc", "Sí", "max"),
+    "C6 dejó de tener la mayor percepción de desórdenes" = extremo("C6", "desordenes_ind_rec", "Alta percepción de desordenes", "max"),
+    "C6 dejó de tener la mayor percepción de incivilidades" = extremo("C6", "incivilidades_ind_rec", "Alta percepción de incivilidades", "max"),
+    "C6 dejó de tener la mayor proporción de mujeres" = extremo("C6", "rph_sexo", "Mujer", "max")
+)
+```
+
+# Los seis grupos
+
+Empezamos por la solución de `r sol_fina` grupos, que es la más fina. Los grupos
+de las otras dos son uniones de estos, así que recorrerlos acá sirve para las
+tres. Cada tabla muestra las `r N_MODELO` respuestas del modelo y las
+`r N_SEC` variables secundarias que más distinguen al grupo.
+
+## C1 · Sin miedo y sin conducta alterada
+
+```{r}
+#| label: g1
+tabla_grupo("C1")
+```
+
+Las diferencias más grandes de toda la matriz están acá, y todas apuntan al lado
+de la ausencia: no siente inseguridad, no espera ser víctima, no modificó sus
+prácticas.
+
+En las tres variables de contexto (victimización declarada, percepción de
+desórdenes y de incivilidades) tiene los valores más bajos de los seis grupos.
+Es además **el grupo con más hombres**, aunque no el único con mayoría
+masculina: C3 y C4 también la tienen, con
+`r perfil |> filter(variable == "rph_sexo", categoria == "Hombre", grupo %in% c("C3", "C4")) |> pull(pct_grupo) |> sort() |> n_fmt(1) |> paste(collapse = "% y ")`%.
+
+## C2 · Sin medidas, con miedo promedio
+
+```{r}
+#| label: g2
+tabla_grupo("C2")
+```
+
+El grupo más chico, y el más atípico. Sus diferencias fuertes son **todas de
+comportamiento**: nadie en este grupo declara medidas de seguridad en la
+vivienda.
+
+```{r}
+#| label: g2-miedo
+#* Las variables emocionales y perceptuales del modelo, que son las que miden
+#* miedo. `lift_ponderado` no trae la dimensión teórica, así que se derivan del
+#* prefijo del nombre, que es la convención de nomenclatura del pipeline.
+max_miedo_c2 <- perfil |>
+    filter(grupo == "C2", grepl("^(emper|perper)", variable)) |>
+    slice_max(lift_pp, n = 1)
+```
+
+Lo que lo hace atípico es lo que no aparece en la tabla. Su mayor diferencia en
+inseguridad o expectativa de victimización es de
+`r n_fmt(max_miedo_c2$lift_pp, 1)` puntos, contra los
+`r n_fmt(val("C1", "Sin inseguridad en el barrio"), 0)` de C1.
+**No es un grupo de miedo bajo: es un grupo sin medidas, con un perfil de miedo
+que está en el promedio.**
+
+## C3 · Miedo intermedio, protección baja
+
+```{r}
+#| label: g3
+tabla_grupo("C3")
+```
+
+Acá aparecen los dos ejes juntos. La diferencia mayor es de adopción de medidas,
+pero la que sigue es de inseguridad en el espacio público, casi del mismo tamaño.
+Es un grupo con miedo intermedio que se protege poco y no gasta en seguridad.
+
+Es el grupo más joven de los seis.
+
+## C4 · Miedo intermedio, protección alta
+
+```{r}
+#| label: g4
+tabla_grupo("C4")
+```
+
+**Es el espejo de C3.** Nivel de inseguridad parecido, conducta opuesta: tres o
+más medidas en la vivienda, gasta en seguridad, medidas también en el barrio.
+
+Es el grupo con mayor nivel socioeconómico alto y mayor educación terciaria de
+los seis, y el que menos concentra educación básica.
+
+## C5 · El miedo entra a la casa
+
+```{r}
+#| label: g5
+tabla_grupo("C5")
+```
+
+El rasgo que lo separa es **dónde** ocurre la inseguridad, no cuánta: es el
+grupo donde la casa deja de ser un lugar seguro, en su forma intermedia (de día
+o de noche). La expectativa de victimización se vuelve concreta y apunta al
+delito no violento.
+
+## C6 · Miedo permanente y extendido
+
+```{r}
+#| label: g6
+tabla_grupo("C6")
+```
+
+La inseguridad pasa a ser **de día y de noche**, y se extiende a más de la mitad
+de los lugares. Acumula los extremos de casi todas las variables secundarias:
+la mayor victimización declarada, la mayor percepción de desórdenes y de
+incivilidades, y la mayor proporción de mujeres.
+
+# La mirada estructural
+
+Hasta acá miramos una solución. Ahora, qué cambia entre las tres.
+
+## Son el mismo árbol cortado a tres alturas
+
+```{r}
+#| label: bloques-tabla
+bloques |>
+    transmute(
+        Bloque = bloque,
+        Casos = casos,
+        `4 grupos` = as.character(clusters_4),
+        `5 grupos` = as.character(clusters_5),
+        `6 grupos` = as.character(clusters_6)
+    ) |>
+    tabla(alinear = c("l", "r", "c", "c", "c"))
+```
+
+Hay **`r nrow(bloques)` bloques terminales**, no `r sum(n_clases)` grupos
+distintos. Pasar de `r n_clases[1]` a `r n_clases[2]` grupos parte el bloque
+intermedio; pasar de `r n_clases[2]` a `r sol_fina` vuelve a partir el
+resultante. El resto no se mueve: ninguna persona cambia de grupo salvo por
+subdivisión, y el target que arma esta tabla falla si eso deja de ser cierto.
+
+Por eso la pregunta de cuántos grupos reportar no es cuál solución "encuentra"
+grupos distintos. Es **hasta dónde conviene subdividir**.
+
+## Dos ejes, no uno
+
+El primero ordena a los grupos por miedo, y las variables de contexto lo
+acompañan sin excepción.
+
+```{r}
+#| label: gradiente
+filas_eje <- tibble::tribble(
+    ~variable, ~categoria, ~Indicador,
+    "desordenes_ind_rec", "Alta percepción de desordenes", "Alta percepción de desórdenes",
+    "incivilidades_ind_rec", "Alta percepción de incivilidades", "Alta percepción de incivilidades",
+    "vp_dc", "Sí", "Victimización (delitos contra las personas)",
+    "rph_nse", "Bajo", "Nivel socioeconómico bajo"
+)
+
+cols <- paste0("C", seq_len(sol_fina))
+
+eje <- perfil |>
+    inner_join(filas_eje, by = c("variable", "categoria")) |>
+    select(Indicador, grupo, pct_grupo) |>
+    tidyr::pivot_wider(names_from = grupo, values_from = pct_grupo) |>
+    arrange(match(Indicador, filas_eje$Indicador))
+
+#* Las tres primeras filas son monótonas en el orden de los grupos y la cuarta
+#* no: ese contraste es el argumento de esta sección. Si una corrida futura lo
+#* rompiera, el texto de abajo quedaría afirmando algo falso.
+valores <- \(i) as.numeric(eje[i, cols])
+es_monotona <- \(x) all(diff(x) > 0)
+
+stopifnot(
+    "Las filas de contexto y victimización dejaron de ser monótonas" = all(
+        vapply(1:3, \(i) es_monotona(valores(i)), logical(1))
+    ),
+    "El NSE dejó de romper el orden del gradiente" = !es_monotona(valores(4))
+)
+
+quiebre <- cols[which(diff(valores(4)) < 0)[1] + 1]
+
+tabla(eje, alinear = c("l", rep("r", sol_fina)), digits = 1)
+```
+
+Las tres primeras filas crecen de punta a punta. **El nivel socioeconómico no**:
+cae en `r quiebre`, que es justamente donde aparece el segundo eje.
+
+```{r}
+#| label: proteccion
+orden_medidas <- matriz |>
+    filter(base == "ponderada", solucion == sol_fina, variable == "comgen_per_pct_cat") |>
+    arrange(orden) |>
+    pull(categoria) |>
+    unique()
+
+perfil |>
+    filter(
+        variable == "comgen_per_pct_cat" |
+            (variable == "comper_gasto" & grepl("^Gasta", categoria))
+    ) |>
+    transmute(grupo, Respuesta = categoria, pct = pct_grupo) |>
+    tidyr::pivot_wider(names_from = grupo, values_from = pct) |>
+    arrange(match(Respuesta, orden_medidas)) |>
+    #* Los valores exactos de C2 (100 y 0) saldrían sin decimal y el resto con
+    #* uno. Se formatean como texto para que la tabla no mezcle formatos.
+    mutate(across(-Respuesta, \(x) n_fmt(x, 1))) |>
+    tabla(alinear = c("l", rep("r", sol_fina)))
+```
+
+Este segundo eje **corre transversal al primero**: C3 y C4 tienen percepción de
+contexto casi igual y se distinguen por si adoptan medidas y gastan en ellas. En
+la solución de `r n_clases[2]` grupos ese corte no existe y los dos van juntos.
+
+Visto así, C2 deja de ser una anomalía. Es **el extremo de este segundo eje**:
+cero medidas, contra una o dos en C3 y tres o más en C4.
+
+## Qué muestra cada solución
+
+```{r}
+#| label: tamano
+mayor_4 <- bloques |>
+    summarise(casos = sum(casos), .by = clusters_4) |>
+    slice_max(casos, n = 1)
+
+pct_mayor_4 <- 100 * mayor_4$casos / sum(bloques$casos)
+
+lift_max_4 <- matriz |>
+    filter(
+        base == "ponderada",
+        solucion == min(n_clases),
+        grupo == as.character(mayor_4$clusters_4)
+    ) |>
+    slice_max(lift_pp, n = 1)
+
+lift_max_todo <- max(matriz$lift_pp[matriz$base == "ponderada"], na.rm = TRUE)
+```
+
+**Con `r min(n_clases)` grupos** el bloque intermedio queda sin partir:
+`r mayor_4$clusters_4` reúne `r n_fmt(mayor_4$casos)` casos, el
+`r n_fmt(pct_mayor_4, 1)`% de los que entran al modelo, y su diferencia más alta
+es de `r n_fmt(lift_max_4$lift_pp, 1)` puntos, cuando otros grupos llegan a
+`r n_fmt(lift_max_todo, 0)`. Es grande y además poco característico, porque
+adentro conviven perfiles que se contradicen.
+
+**Con `r n_clases[2]` grupos** el eje de miedo queda bien resuelto: cuatro de los
+cinco grupos forman una escala. El quinto, el que no tiene medidas, no está en
+ella.
+
+**Con `r sol_fina` grupos** aparece el segundo eje. El bloque intermedio se parte
+por adopción de medidas, la protección queda como una dimensión con niveles
+ordenados, y el grupo suelto de la solución anterior encuentra su lugar en el
+extremo de esa dimensión.
+
+::: {.callout-note}
+## Lo que esta lectura no resuelve
+
+La decisión no es cuántos grupos toleran los datos, porque las tres soluciones
+son el mismo árbol. Es **qué se quiere reportar**: una tipología de miedo, o una
+de miedo y respuesta.
+
+Tampoco explica el grupo sin medidas. Que concentre la mayor proporción de
+educación básica o menos es compatible con una restricción de recursos, pero la
+ENUSC no pregunta por qué no se adoptan medidas, así que la tabla no lo prueba.
+
+Y los nombres que encabezan cada grupo acá son **descripciones de trabajo**, no
+nombres propuestos. Ponerles nombre es tarea del equipo.
+:::

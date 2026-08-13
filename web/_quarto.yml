@@ -18,6 +18,8 @@ website:
         text: Univariados
       - href: solucion-actual.qmd
         text: Solución actual
+      - href: primeras-lecturas.qmd
+        text: Primeras lecturas
       - href: decisiones.qmd
         text: Decisiones pendientes
       - href: glosario.qmd

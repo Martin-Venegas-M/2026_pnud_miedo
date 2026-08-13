@@ -50,7 +50,7 @@ Detalle con cifras en el repo viejo: `CONTEXTO.md §4.9` y
 | Casos que entran al modelo | 49.503 (88,8%) |
 | Soluciones calculadas | 4, 5 y 6 grupos |
 | Solución que se venía reportando | 5 grupos |
-| Targets en el DAG | 78 |
+| Targets en el DAG | 82 |
 
 **Las ocho decisiones metodológicas están cerradas.** Quedan dos, y las dos son
 sobre qué reportar, no sobre cómo calcular:
@@ -78,7 +78,7 @@ que sus vectores de variables no van a volver a cambiar. Ojo con el rename (§5)
 ## 4. Cómo está armado
 
 ```
-_targets.R        el DAG (78 targets)
+_targets.R        el DAG (82 targets)
 R/                las funciones, cargadas con tar_source()
 web/              las 7 páginas .qmd
 docs/             el sitio renderizado, es lo que sirve GitHub Pages
@@ -291,10 +291,10 @@ El detalle está en `PLAN.md` y en el registro de la página.
 
 ## 9. La página
 
-Siete pestañas en `web/`, renderizadas a `docs/`:
+Ocho pestañas en `web/`, renderizadas a `docs/`:
 
 **Introducción · Metadata · Pipeline · Univariados · Solución actual ·
-Decisiones pendientes · Glosario**
+Primeras lecturas · Decisiones pendientes · Glosario**
 
 El propósito la distingue de la anterior: comunica **los resultados y las
 decisiones que los producen**. Por eso la pestaña central es Pipeline y no la
