@@ -341,10 +341,10 @@ grupos es "`r ej_m$categoria`" en `r ej_m$grupo`:
 `r pct_fmt(ej_m$global_pct)` en el total de las personas del modelo. La celda
 muestra la diferencia, **`r n_fmt(ej_m$lift_pp, 0)`** puntos porcentuales.
 
-**El color es esa misma diferencia.** Naranja si la respuesta es más frecuente
-dentro del grupo que en el total, azul si es menos, y más intenso mientras más
-grande la diferencia. La escala se topa en 50 puntos: las celdas que se pasan
-van con el color del tope, pero el número que muestran es el verdadero.
+**El color es esa misma diferencia.** Azul si la respuesta es más frecuente
+dentro del grupo que en el total, naranja si es menos, y más intenso mientras
+más grande la diferencia. La escala se topa en 50 puntos: las celdas que se
+pasan van con el color del tope, pero el número que muestran es el verdadero.
 
 **Hacia abajo se lee un grupo.** Recorrer una columna da el perfil completo de
 ese grupo, que es el insumo para ponerle nombre.
@@ -429,7 +429,12 @@ matriz_perfil_plot <- function(base_datos, k) {
             size = 3, fontface = "bold"
         ) +
         scale_fill_gradient2(
-            low = PAL_DIM[["emper"]], mid = "#f7f7f5", high = PAL_DIM[["perper"]],
+            #* Azul para la diferencia positiva y naranja para la negativa, que
+            #* es la convención de los corrplot y la que el equipo tiene
+            #* internalizada. Es al revés de lo que sugeriría PAL_DIM, donde el
+            #* azul nombra la dimensión emocional, pero acá el color codifica
+            #* magnitud y no identidad, y la leyenda está siempre a la vista.
+            low = PAL_DIM[["perper"]], mid = "#f7f7f5", high = PAL_DIM[["emper"]],
             midpoint = 0,
             limits = c(-LIM_MATRIZ, LIM_MATRIZ),
             oob = scales::squish,
