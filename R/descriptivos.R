@@ -653,3 +653,56 @@ tabla_lift_ponderado <- function(cruces_ancho, marginales) {
 
     res
 }
+
+#' Bloques terminales de las tres soluciones de cluster
+#'
+#' Las tres soluciones salen del mismo árbol y solo cambian dónde se corta, así
+#' que no son quince grupos distintos: son unos pocos bloques que se subdividen.
+#' Este target los identifica y da la correspondencia entre soluciones.
+#'
+#' @section Por qué se verifica el anidamiento en vez de asumirlo:
+#' Que un corte más fino sea un refinamiento del anterior es lo esperable de un
+#' agrupamiento jerárquico, pero `HCPC()` reordena y renumera las clases en cada
+#' llamada, así que la correspondencia no se puede leer de los nombres. Si
+#' alguna vez se cambiara el método de corte y las soluciones dejaran de estar
+#' anidadas, toda la lectura por bloques de la página quedaría mal sin que nada
+#' fallara. La aserción exige que **cada grupo de la solución más fina caiga
+#' entero dentro de uno solo de la más gruesa**.
+#'
+#' @section Cómo se ordenan los bloques:
+#' Por el número de grupo de la solución más fina. `HCPC()` reordena las clases
+#' según el primer eje del MCA, así que ese número ya viene ordenado por la
+#' dimensión que más inercia explica y los bloques quedan en un orden
+#' interpretable en vez de arbitrario.
+#'
+#' @param datos `datos_finales`.
+#' @param n_clases `cfg$N_CLASES`.
+#' @return Un tibble `bloque | casos | clusters_4 | clusters_5 | clusters_6`,
+#'   una fila por bloque terminal.
+bloques_soluciones <- function(datos, n_clases) {
+    k <- sort(n_clases)
+    vars <- paste0("clusters_", k)
+
+    d <- datos |>
+        dplyr::filter(!is.na(.data[[vars[1]]])) |>
+        dplyr::select(dplyr::all_of(vars))
+
+    #* Para cada par de soluciones consecutivas, cada columna de la tabla
+    #* cruzada (grupo de la solución fina) debe tener un solo valor distinto de
+    #* cero: cae entero en un grupo de la gruesa.
+    anidadas <- purrr::map_lgl(seq_len(length(vars) - 1), function(i) {
+        tb <- table(d[[vars[i]]], d[[vars[i + 1]]])
+        all(colSums(tb > 0) == 1)
+    })
+
+    stopifnot(
+        "bloques_soluciones(): las soluciones no están anidadas, la lectura por bloques de la página no aplica" = all(
+            anidadas
+        )
+    )
+
+    d |>
+        dplyr::count(dplyr::across(dplyr::all_of(vars)), name = "casos") |>
+        dplyr::arrange(.data[[vars[length(vars)]]]) |>
+        dplyr::mutate(bloque = LETTERS[dplyr::row_number()], .before = 1)
+}

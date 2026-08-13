@@ -563,6 +563,10 @@ list(
         tabla_lift_ponderado(cruces_ancho_todas, marginales_modelo)
     ),
 
+    # Las tres soluciones son el mismo árbol cortado a tres alturas. Este target
+    # identifica los bloques terminales y verifica que el anidamiento sea exacto.
+    tar_target(bloques, bloques_soluciones(datos_finales, cfg$N_CLASES)),
+
     tar_target(no_respuesta_indices, medir_no_respuesta_indices(datos_finales)),
     tar_target(
         metadata_variables,

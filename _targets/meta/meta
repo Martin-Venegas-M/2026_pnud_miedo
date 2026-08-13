@@ -80,12 +80,16 @@ tabla3_variables_secundarias_xlsx|stem|50618806c9e9490d|42b4b0b3c59c803d|5e27f10
 tabla4_clusters_xlsx|stem|e62db4692540ff07|ba6b0ef91b9f6b9c|f974c36311dc27d4|58561226|output/tables/2025/tabla4_clusters.xlsx|t20678.1890375398s|s7042b|7042|file|local|vector|||0.029||
 tabla5_cruces_cluster_xlsx|stem|78731990b5e5d8a7|c90fae58e94f417d|a2d5a47eb0d96d94|808869770|output/tables/2025/tabla5_cruces_cluster.xlsx|t20678.1890402495s|s18521b|18521|file|local|vector|||0.047||
 tabla_cruces_ancho_xlsx|stem|dfeee3c6bb2bded1|f9886e2840a6e98a|3b0d10b33ed79cbf|-428640561|output/tables/2025/tabla_cruces_ancho.xlsx|t20678.1890427428s|s10306b|10306|file|local|vector|||0.031||
+marginales_modelo|stem|8195184621acce99|2097d1f42f5bf99a|5cee3ff89463b55d|1157412406||t20678.2294193437s|s1379b|1379|rds|local|vector|||12.403||
+lift_ponderado|stem|260e499925a4f7c9|8276dca5018f6987|6690b6405dfcbbb7|-86545819||t20678.22942217s|s7179b|7179|rds|local|vector|||0.013||
+matriz_perfil|stem|f0ac9ded6fe64734|e668d6c9105c3b7b|695ac21c49c48bad|-545500625||t20678.2294250522s|s6261b|6261|rds|local|vector|||0.049||
 pegar_clusters|function|ad21647caf0f3530
 filtrar_casos_completos|function|431f60d6ef33023a
 recuperar_codigos_especiales|function|feadbcc711d9ee35
 construir_spec_etiquetas_indices|function|4eec0db322cf0f49
 datos_matriz_perfil|function|e30b53aaea28fb92
 tab_frq1|function|5975394933b5c5c7
+bloques_soluciones|function|adf8ba69e105b44d
 preparar_datos_mca|function|e625ff5f06dc5543
 categorias_de|function|6e70c74dea7b19d7
 spec_secundarias|function|8f2649f2a6112cc1
@@ -142,6 +146,4 @@ ajustar_hcpc_todos|function|8350ca9ec30c393e
 construir_indices_pct|function|733aa2b6bae4c20d
 tabla_cruces_cluster|function|f1a10540c2675735
 tabla_cruces_ancho_todas|function|149a2fbe3ec6eb5e
-marginales_modelo|stem|8195184621acce99|2097d1f42f5bf99a|5cee3ff89463b55d|1157412406||t20678.2294193437s|s1379b|1379|rds|local|vector|||12.403||
-lift_ponderado|stem|260e499925a4f7c9|8276dca5018f6987|6690b6405dfcbbb7|-86545819||t20678.22942217s|s7179b|7179|rds|local|vector|||0.013||
-matriz_perfil|stem|f0ac9ded6fe64734|e668d6c9105c3b7b|695ac21c49c48bad|-545500625||t20678.2294250522s|s6261b|6261|rds|local|vector|||0.049||
+bloques|stem|94579aa0780aadca|4a95d17e5ee49c4d|f39c09615d8c218b|881732562||t20678.6800352293s|s292b|292|rds|local|vector|||0.254||

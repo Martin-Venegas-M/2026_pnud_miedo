@@ -187,5 +187,33 @@
     "title": "Solución actual",
     "section": "Cómo leer la matriz",
     "text": "Cómo leer la matriz\nUna celda es una resta. La más marcada de la solución de 5 grupos es “Sin medidas en la vivienda” en C2: 100,0% de ese grupo responde eso, contra 8,2% en el total de las personas del modelo. La celda muestra la diferencia, 92 puntos porcentuales.\nEl color es esa misma diferencia. Azul si la respuesta es más frecuente dentro del grupo que en el total, naranja si es menos, y más intenso mientras más grande la diferencia. La escala se topa en 50 puntos: las celdas que se pasan van con el color del tope, pero el número que muestran es el verdadero.\nHacia abajo se lee un grupo. Recorrer una columna da el perfil completo de ese grupo, que es el insumo para ponerle nombre.\nDe lado a lado se lee una respuesta. Recorrer una fila muestra qué grupos concentran esa respuesta y cuáles la evitan.\nEl cero también dice algo. Una celda pálida significa que en esa respuesta el grupo se comporta como el promedio, y eso es parte de su perfil. “Inseguridad en la casa, de día o de noche” separa con fuerza a otros grupos, pero C2 queda a 1,5 puntos del total. Un grupo puede definirse tanto por dónde se despega como por dónde no."
+  },
+  {
+    "objectID": "solucion-actual.html#las-tres-soluciones-son-el-mismo-árbol",
+    "href": "solucion-actual.html#las-tres-soluciones-son-el-mismo-árbol",
+    "title": "Solución actual",
+    "section": "Las tres soluciones son el mismo árbol",
+    "text": "Las tres soluciones son el mismo árbol\n\n\n\n\n\nBloque\nCasos\n4 grupos\n5 grupos\n6 grupos\n\n\n\n\nA\n12.604\nC1\nC1\nC1\n\n\nB\n3.670\nC2\nC2\nC2\n\n\nC\n6.344\nC3\nC3\nC3\n\n\nD\n9.522\nC3\nC3\nC4\n\n\nE\n8.347\nC3\nC4\nC5\n\n\nF\n9.016\nC4\nC5\nC6\n\n\n\n\n\nHay 6 bloques terminales, no 15 grupos distintos. Pasar de 4 a 5 grupos parte el bloque intermedio; pasar de 5 a 6 vuelve a partir el resultante. El resto no se mueve: ninguna persona cambia de grupo salvo por subdivisión, y el target que arma esta tabla falla si eso deja de ser cierto."
+  },
+  {
+    "objectID": "solucion-actual.html#qué-define-a-cada-bloque",
+    "href": "solucion-actual.html#qué-define-a-cada-bloque",
+    "title": "Solución actual",
+    "section": "Qué define a cada bloque",
+    "text": "Qué define a cada bloque\n\n\n\n\n\nBloque\nCasos\nRespuesta que más lo distingue\n% del bloque\n% del total\nDif. (pp)\n\n\n\n\nA\n12.604\nSin inseguridad en el barrio\n87,3\n31,1\n56,3\n\n\n\n\nNo cree que será victima de delito\n88,0\n44,8\n43,2\n\n\nB\n3.670\nSin medidas en la vivienda\n100,0\n8,2\n91,8\n\n\n\n\nNo gasta en medidas de seguridad\n83,0\n47,9\n35,0\n\n\nC\n6.344\nUna o dos medidas en la vivienda\n85,8\n50,1\n35,7\n\n\n\n\nInseguridad en hasta la mitad de los lugares\n79,3\n44,7\n34,6\n\n\nD\n9.522\nTres o más medidas en la vivienda\n79,7\n41,7\n38,0\n\n\n\n\nGasta en medidas de seguridad\n82,3\n52,1\n30,3\n\n\nE\n8.347\nInseguridad en la casa, de día o de noche\n62,0\n13,4\n48,7\n\n\n\n\nCree que será victima de delito no violento\n54,8\n23,9\n31,0\n\n\nF\n9.016\nInseguridad en el barrio, de día y de noche\n80,6\n26,2\n54,4\n\n\n\n\nInseguridad en más de la mitad de los lugares\n83,6\n39,0\n44,5"
+  },
+  {
+    "objectID": "solucion-actual.html#dos-ejes-no-uno",
+    "href": "solucion-actual.html#dos-ejes-no-uno",
+    "title": "Solución actual",
+    "section": "Dos ejes, no uno",
+    "text": "Dos ejes, no uno\nEl primero ordena a los bloques por miedo, y las variables secundarias lo acompañan sin excepción.\n\n\n\n\n\nIndicador\nA\nB\nC\nD\nE\nF\n\n\n\n\nAlta percepción de desórdenes\n21,6\n35,3\n39,0\n41,2\n47,7\n61,0\n\n\nAlta percepción de incivilidades\n16,4\n34,6\n35,4\n38,6\n47,8\n63,6\n\n\nVictimización (delitos contra las personas)\n15,6\n24,4\n25,6\n30,9\n31,7\n33,2\n\n\nNivel socioeconómico bajo\n40,8\n48,3\n48,7\n28,7\n43,2\n44,6\n\n\n\n\n\nLas tres primeras filas crecen de punta a punta. El nivel socioeconómico no: cae en el bloque D, que es justamente donde aparece el segundo eje.\n\n\n\n\n\nRespuesta\nA\nB\nC\nD\nE\nF\n\n\n\n\nSin medidas en la vivienda\n5,7\n100,0\n3,3\n0,8\n1,8\n2,5\n\n\nUna o dos medidas en la vivienda\n60,9\n0,0\n85,8\n19,5\n59,9\n57,9\n\n\nTres o más medidas en la vivienda\n33,5\n0,0\n10,9\n79,7\n38,3\n39,6\n\n\nGasta en medidas de seguridad\n44,9\n17,0\n20,8\n82,3\n49,8\n55,4\n\n\n\n\n\nEste segundo eje corre transversal al primero: los dos bloques que la solución de 6 separa tienen percepción de entorno casi igual y se distinguen por si adoptan medidas y gastan en ellas. En la solución de 5 grupos ese corte no existe y los dos van juntos."
+  },
+  {
+    "objectID": "solucion-actual.html#qué-muestra-cada-solución",
+    "href": "solucion-actual.html#qué-muestra-cada-solución",
+    "title": "Solución actual",
+    "section": "Qué muestra cada solución",
+    "text": "Qué muestra cada solución\nCon 4 grupos, el bloque intermedio queda sin partir: C3 reúne 24.213 casos, el 48,9% de los que entran al modelo, y su diferencia más alta es de 23,8 puntos, cuando otros bloques llegan a 92. Es grande y además poco característico, porque adentro conviven perfiles que se contradicen.\nCon 5 grupos, el eje de miedo queda bien resuelto. Cuatro de los cinco grupos forman una escala; el quinto no está en ella. Sus diferencias de miedo más grandes son de pocos puntos, contra las decenas de puntos del resto: no es un escalón de la escala, es un grupo que la escala no ordena.\nCon 6 grupos, ese grupo suelto deja de ser una excepción. Al partirse el bloque intermedio por adopción de medidas, la protección aparece como un eje con niveles ordenados, y el grupo sin medidas queda en su extremo.\n\n\n\n\n\n\nNotaLo que esta lectura no resuelve\n\n\n\nLa decisión no es cuántos grupos toleran los datos, porque las tres soluciones son el mismo árbol. Es qué se quiere reportar: una tipología de miedo, o una de miedo y respuesta.\nTampoco explica el bloque sin medidas. Que concentre la mayor proporción de educación básica o menos es compatible con una restricción de recursos, pero la ENUSC no pregunta por qué no se adoptan medidas, así que la tabla no lo prueba."
   }
 ]

@@ -17,6 +17,8 @@ t_ajuste <- leer("tabla_ajuste")
 d_biplot <- leer("datos_biplot_mca")
 mapa <- leer("mapa_clusters")
 matriz <- leer("matriz_perfil")
+bloques <- leer("bloques")
+cruces_sec <- leer("cruces_ancho_todas")
 v_test <- leer("v_test_todas")
 cruces <- leer("cruces_ancho_todas")
 perdida_res <- leer_log("perdida_resumen")
@@ -586,6 +588,191 @@ for (k in n_clases) {
 
 cat(":::\n\n")
 ```
+
+# Primeras lecturas
+
+Lo que sigue es **una primera pasada sobre la matriz y la tabla de perfil**, para
+dejar a la vista las claves de lectura antes de entrar al detalle. No son
+conclusiones: son el punto de partida para revisarlas.
+
+Los porcentajes son ponderados; los conteos de casos no.
+
+```{r}
+#| label: lecturas-setup
+sol_max <- max(n_clases)
+
+#* Cada bloque terminal es un grupo de la solución más fina, así que la letra
+#* del bloque y el grupo de esa solución son la misma cosa.
+etiq_bloque <- setNames(bloques$bloque, as.character(bloques[[paste0("clusters_", sol_max)]]))
+
+m6 <- matriz |>
+    filter(base == "ponderada", solucion == sol_max) |>
+    mutate(bloque = etiq_bloque[grupo])
+
+sec6 <- cruces_sec |>
+    filter(solucion == sol_max, grupo_variable == "secundaria")
+```
+
+## Las tres soluciones son el mismo árbol
+
+```{r}
+#| label: lecturas-bloques
+bloques |>
+    transmute(
+        Bloque = bloque,
+        Casos = casos,
+        `4 grupos` = as.character(clusters_4),
+        `5 grupos` = as.character(clusters_5),
+        `6 grupos` = as.character(clusters_6)
+    ) |>
+    tabla(alinear = c("l", "r", "c", "c", "c"))
+```
+
+Hay **`r nrow(bloques)` bloques terminales**, no
+`r sum(n_clases)` grupos distintos. Pasar de `r n_clases[1]` a `r n_clases[2]`
+grupos parte el bloque intermedio; pasar de `r n_clases[2]` a `r sol_max` vuelve
+a partir el resultante. El resto no se mueve: ninguna persona cambia de grupo
+salvo por subdivisión, y el target que arma esta tabla falla si eso deja de ser
+cierto.
+
+## Qué define a cada bloque
+
+```{r}
+#| label: lecturas-define
+#* Dos respuestas por bloque y no una: en los bloques que la solución de 6
+#* separa, la diferencia mayor es de adopción de medidas y la segunda es de
+#* inseguridad. Mostrar solo la primera daría a entender que no tienen miedo.
+m6 |>
+    slice_max(lift_pp, n = 2, by = bloque) |>
+    arrange(bloque, desc(lift_pp)) |>
+    left_join(select(bloques, bloque, casos), by = "bloque") |>
+    #* Bloque y casos solo en la primera fila de cada par, para que el par se
+    #* lea como una unidad.
+    mutate(primera = row_number() == 1, .by = bloque) |>
+    transmute(
+        Bloque = ifelse(primera, bloque, ""),
+        Casos = ifelse(primera, n_fmt(casos), ""),
+        `Respuesta que más lo distingue` = categoria,
+        `% del bloque` = pct_grupo,
+        `% del total` = global_pct,
+        `Dif. (pp)` = lift_pp
+    ) |>
+    tabla(alinear = c("l", "r", "l", "r", "r", "r"), digits = 1)
+```
+
+## Dos ejes, no uno
+
+El primero ordena a los bloques por miedo, y las variables secundarias lo
+acompañan sin excepción.
+
+```{r}
+#| label: lecturas-gradiente
+filas_eje <- tibble::tribble(
+    ~variable, ~categoria, ~Indicador,
+    "desordenes_ind_rec", "Alta percepción de desordenes", "Alta percepción de desórdenes",
+    "incivilidades_ind_rec", "Alta percepción de incivilidades", "Alta percepción de incivilidades",
+    "vp_dc", "Sí", "Victimización (delitos contra las personas)",
+    "rph_nse", "Bajo", "Nivel socioeconómico bajo"
+)
+
+cols6 <- paste0("C", seq_len(sol_max))
+
+eje <- sec6 |>
+    inner_join(filas_eje, by = c("variable", "categoria")) |>
+    select(Indicador, all_of(cols6)) |>
+    rename_with(\(x) unname(etiq_bloque[x]), all_of(cols6)) |>
+    arrange(match(Indicador, filas_eje$Indicador))
+
+#* Las tres primeras filas son monótonas en el orden de los bloques y la cuarta
+#* no: ese contraste es el argumento de esta sección. Si una recorrida futura lo
+#* rompiera, el texto de abajo quedaría afirmando algo falso.
+es_monotona <- \(x) all(diff(x) > 0)
+valores <- \(i) as.numeric(eje[i, -1])
+
+stopifnot(
+    "Las filas de entorno y victimización dejaron de ser monótonas" = all(
+        vapply(1:3, \(i) es_monotona(valores(i)), logical(1))
+    ),
+    "El NSE dejó de romper el orden del gradiente" = !es_monotona(valores(4))
+)
+
+#* Dónde cae el NSE en vez de subir: es el bloque donde aparece el segundo eje.
+quiebre <- names(eje)[-1][which(diff(valores(4)) < 0)[1] + 1]
+
+tabla(eje, alinear = c("l", rep("r", nrow(bloques))), digits = 1)
+```
+
+Las tres primeras filas crecen de punta a punta. **El nivel socioeconómico no**:
+cae en el bloque `r quiebre`, que es justamente donde aparece el segundo eje.
+
+```{r}
+#| label: lecturas-proteccion
+prot <- m6 |>
+    filter(
+        variable == "comgen_per_pct_cat" |
+            (variable == "comper_gasto" & grepl("^Gasta", categoria))
+    ) |>
+    transmute(bloque, Respuesta = categoria, pct = pct_grupo) |>
+    tidyr::pivot_wider(names_from = bloque, values_from = pct) |>
+    arrange(match(
+        Respuesta,
+        m6 |> filter(variable == "comgen_per_pct_cat") |> arrange(orden) |>
+            pull(categoria) |> unique()
+    )) |>
+    #* Los valores exactos de B (100 y 0) saldrían sin decimal y el resto con
+    #* uno. Se formatean como texto para que la tabla no mezcle formatos.
+    mutate(across(-Respuesta, \(x) n_fmt(x, 1)))
+
+tabla(prot, alinear = c("l", rep("r", nrow(bloques))))
+```
+
+Este segundo eje **corre transversal al primero**: los dos bloques que la
+solución de `r sol_max` separa tienen percepción de entorno casi igual y se
+distinguen por si adoptan medidas y gastan en ellas. En la solución de
+`r n_clases[2]` grupos ese corte no existe y los dos van juntos.
+
+## Qué muestra cada solución
+
+```{r}
+#| label: lecturas-tamano
+mayor_4 <- bloques |>
+    summarise(casos = sum(casos), .by = clusters_4) |>
+    slice_max(casos, n = 1)
+
+pct_mayor_4 <- 100 * mayor_4$casos / sum(bloques$casos)
+
+lift_max_4 <- matriz |>
+    filter(base == "ponderada", solucion == min(n_clases), grupo == as.character(mayor_4$clusters_4)) |>
+    slice_max(lift_pp, n = 1)
+```
+
+**Con `r min(n_clases)` grupos**, el bloque intermedio queda sin partir:
+`r mayor_4$clusters_4` reúne `r n_fmt(mayor_4$casos)` casos, el
+`r n_fmt(pct_mayor_4, 1)`% de los que entran al modelo, y su diferencia más alta
+es de `r n_fmt(lift_max_4$lift_pp, 1)` puntos, cuando otros bloques llegan a
+`r n_fmt(max(matriz$lift_pp, na.rm = TRUE), 0)`. Es grande y además poco
+característico, porque adentro conviven perfiles que se contradicen.
+
+**Con `r n_clases[2]` grupos**, el eje de miedo queda bien resuelto. Cuatro de
+los cinco grupos forman una escala; el quinto no está en ella. Sus diferencias
+de miedo más grandes son de pocos puntos, contra las decenas de puntos del resto:
+no es un escalón de la escala, es un grupo que la escala no ordena.
+
+**Con `r sol_max` grupos**, ese grupo suelto deja de ser una excepción. Al
+partirse el bloque intermedio por adopción de medidas, la protección aparece
+como un eje con niveles ordenados, y el grupo sin medidas queda en su extremo.
+
+::: {.callout-note}
+## Lo que esta lectura no resuelve
+
+La decisión no es cuántos grupos toleran los datos, porque las tres soluciones
+son el mismo árbol. Es **qué se quiere reportar**: una tipología de miedo, o una
+de miedo y respuesta.
+
+Tampoco explica el bloque sin medidas. Que concentre la mayor proporción de
+educación básica o menos es compatible con una restricción de recursos, pero la
+ENUSC no pregunta por qué no se adoptan medidas, así que la tabla no lo prueba.
+:::
 
 # Las soluciones
 

@@ -151,6 +151,13 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#las-dos-bases" id="toc-las-dos-bases" class="nav-link" data-scroll-target="#las-dos-bases">Las dos bases</a></li>
   <li><a href="#las-tres-soluciones" id="toc-las-tres-soluciones" class="nav-link" data-scroll-target="#las-tres-soluciones">Las tres soluciones</a></li>
   </ul></li>
+  <li><a href="#primeras-lecturas" id="toc-primeras-lecturas" class="nav-link" data-scroll-target="#primeras-lecturas">Primeras lecturas</a>
+  <ul class="collapse">
+  <li><a href="#las-tres-soluciones-son-el-mismo-árbol" id="toc-las-tres-soluciones-son-el-mismo-árbol" class="nav-link" data-scroll-target="#las-tres-soluciones-son-el-mismo-árbol">Las tres soluciones son el mismo árbol</a></li>
+  <li><a href="#qué-define-a-cada-bloque" id="toc-qué-define-a-cada-bloque" class="nav-link" data-scroll-target="#qué-define-a-cada-bloque">Qué define a cada bloque</a></li>
+  <li><a href="#dos-ejes-no-uno" id="toc-dos-ejes-no-uno" class="nav-link" data-scroll-target="#dos-ejes-no-uno">Dos ejes, no uno</a></li>
+  <li><a href="#qué-muestra-cada-solución" id="toc-qué-muestra-cada-solución" class="nav-link" data-scroll-target="#qué-muestra-cada-solución">Qué muestra cada solución</a></li>
+  </ul></li>
   <li><a href="#las-soluciones" id="toc-las-soluciones" class="nav-link" data-scroll-target="#las-soluciones">Las soluciones</a></li>
   </ul>
 </nav>
@@ -449,6 +456,327 @@ Tip
 </div>
 </div>
 </div>
+</div>
+</div>
+</section>
+</section>
+<section id="primeras-lecturas" class="level1">
+<h1>Primeras lecturas</h1>
+<p>Lo que sigue es <strong>una primera pasada sobre la matriz y la tabla de perfil</strong>, para dejar a la vista las claves de lectura antes de entrar al detalle. No son conclusiones: son el punto de partida para revisarlas.</p>
+<p>Los porcentajes son ponderados; los conteos de casos no.</p>
+<section id="las-tres-soluciones-son-el-mismo-árbol" class="level2">
+<h2 class="anchored" data-anchor-id="las-tres-soluciones-son-el-mismo-árbol">Las tres soluciones son el mismo árbol</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Bloque</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Casos</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">4 grupos</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">5 grupos</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">6 grupos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">12.604</td>
+<td style="text-align: center;">C1</td>
+<td style="text-align: center;">C1</td>
+<td style="text-align: center;">C1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">3.670</td>
+<td style="text-align: center;">C2</td>
+<td style="text-align: center;">C2</td>
+<td style="text-align: center;">C2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">6.344</td>
+<td style="text-align: center;">C3</td>
+<td style="text-align: center;">C3</td>
+<td style="text-align: center;">C3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">9.522</td>
+<td style="text-align: center;">C3</td>
+<td style="text-align: center;">C3</td>
+<td style="text-align: center;">C4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">E</td>
+<td style="text-align: right;">8.347</td>
+<td style="text-align: center;">C3</td>
+<td style="text-align: center;">C4</td>
+<td style="text-align: center;">C5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">9.016</td>
+<td style="text-align: center;">C4</td>
+<td style="text-align: center;">C5</td>
+<td style="text-align: center;">C6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Hay <strong>6 bloques terminales</strong>, no 15 grupos distintos. Pasar de 4 a 5 grupos parte el bloque intermedio; pasar de 5 a 6 vuelve a partir el resultante. El resto no se mueve: ninguna persona cambia de grupo salvo por subdivisión, y el target que arma esta tabla falla si eso deja de ser cierto.</p>
+</section>
+<section id="qué-define-a-cada-bloque" class="level2">
+<h2 class="anchored" data-anchor-id="qué-define-a-cada-bloque">Qué define a cada bloque</h2>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Bloque</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Casos</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Respuesta que más lo distingue</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">% del bloque</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">% del total</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Dif. (pp)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">A</td>
+<td style="text-align: right;">12.604</td>
+<td style="text-align: left;">Sin inseguridad en el barrio</td>
+<td style="text-align: right;">87,3</td>
+<td style="text-align: right;">31,1</td>
+<td style="text-align: right;">56,3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">No cree que será victima de delito</td>
+<td style="text-align: right;">88,0</td>
+<td style="text-align: right;">44,8</td>
+<td style="text-align: right;">43,2</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">B</td>
+<td style="text-align: right;">3.670</td>
+<td style="text-align: left;">Sin medidas en la vivienda</td>
+<td style="text-align: right;">100,0</td>
+<td style="text-align: right;">8,2</td>
+<td style="text-align: right;">91,8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">No gasta en medidas de seguridad</td>
+<td style="text-align: right;">83,0</td>
+<td style="text-align: right;">47,9</td>
+<td style="text-align: right;">35,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">C</td>
+<td style="text-align: right;">6.344</td>
+<td style="text-align: left;">Una o dos medidas en la vivienda</td>
+<td style="text-align: right;">85,8</td>
+<td style="text-align: right;">50,1</td>
+<td style="text-align: right;">35,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">Inseguridad en hasta la mitad de los lugares</td>
+<td style="text-align: right;">79,3</td>
+<td style="text-align: right;">44,7</td>
+<td style="text-align: right;">34,6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">D</td>
+<td style="text-align: right;">9.522</td>
+<td style="text-align: left;">Tres o más medidas en la vivienda</td>
+<td style="text-align: right;">79,7</td>
+<td style="text-align: right;">41,7</td>
+<td style="text-align: right;">38,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">Gasta en medidas de seguridad</td>
+<td style="text-align: right;">82,3</td>
+<td style="text-align: right;">52,1</td>
+<td style="text-align: right;">30,3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">E</td>
+<td style="text-align: right;">8.347</td>
+<td style="text-align: left;">Inseguridad en la casa, de día o de noche</td>
+<td style="text-align: right;">62,0</td>
+<td style="text-align: right;">13,4</td>
+<td style="text-align: right;">48,7</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">Cree que será victima de delito no violento</td>
+<td style="text-align: right;">54,8</td>
+<td style="text-align: right;">23,9</td>
+<td style="text-align: right;">31,0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">F</td>
+<td style="text-align: right;">9.016</td>
+<td style="text-align: left;">Inseguridad en el barrio, de día y de noche</td>
+<td style="text-align: right;">80,6</td>
+<td style="text-align: right;">26,2</td>
+<td style="text-align: right;">54,4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: right;"></td>
+<td style="text-align: left;">Inseguridad en más de la mitad de los lugares</td>
+<td style="text-align: right;">83,6</td>
+<td style="text-align: right;">39,0</td>
+<td style="text-align: right;">44,5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="dos-ejes-no-uno" class="level2">
+<h2 class="anchored" data-anchor-id="dos-ejes-no-uno">Dos ejes, no uno</h2>
+<p>El primero ordena a los bloques por miedo, y las variables secundarias lo acompañan sin excepción.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Indicador</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">A</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">B</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">C</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">D</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">E</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Alta percepción de desórdenes</td>
+<td style="text-align: right;">21,6</td>
+<td style="text-align: right;">35,3</td>
+<td style="text-align: right;">39,0</td>
+<td style="text-align: right;">41,2</td>
+<td style="text-align: right;">47,7</td>
+<td style="text-align: right;">61,0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Alta percepción de incivilidades</td>
+<td style="text-align: right;">16,4</td>
+<td style="text-align: right;">34,6</td>
+<td style="text-align: right;">35,4</td>
+<td style="text-align: right;">38,6</td>
+<td style="text-align: right;">47,8</td>
+<td style="text-align: right;">63,6</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Victimización (delitos contra las personas)</td>
+<td style="text-align: right;">15,6</td>
+<td style="text-align: right;">24,4</td>
+<td style="text-align: right;">25,6</td>
+<td style="text-align: right;">30,9</td>
+<td style="text-align: right;">31,7</td>
+<td style="text-align: right;">33,2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Nivel socioeconómico bajo</td>
+<td style="text-align: right;">40,8</td>
+<td style="text-align: right;">48,3</td>
+<td style="text-align: right;">48,7</td>
+<td style="text-align: right;">28,7</td>
+<td style="text-align: right;">43,2</td>
+<td style="text-align: right;">44,6</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Las tres primeras filas crecen de punta a punta. <strong>El nivel socioeconómico no</strong>: cae en el bloque D, que es justamente donde aparece el segundo eje.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Respuesta</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">A</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">B</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">C</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">D</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">E</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Sin medidas en la vivienda</td>
+<td style="text-align: right;">5,7</td>
+<td style="text-align: right;">100,0</td>
+<td style="text-align: right;">3,3</td>
+<td style="text-align: right;">0,8</td>
+<td style="text-align: right;">1,8</td>
+<td style="text-align: right;">2,5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Una o dos medidas en la vivienda</td>
+<td style="text-align: right;">60,9</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">85,8</td>
+<td style="text-align: right;">19,5</td>
+<td style="text-align: right;">59,9</td>
+<td style="text-align: right;">57,9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Tres o más medidas en la vivienda</td>
+<td style="text-align: right;">33,5</td>
+<td style="text-align: right;">0,0</td>
+<td style="text-align: right;">10,9</td>
+<td style="text-align: right;">79,7</td>
+<td style="text-align: right;">38,3</td>
+<td style="text-align: right;">39,6</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gasta en medidas de seguridad</td>
+<td style="text-align: right;">44,9</td>
+<td style="text-align: right;">17,0</td>
+<td style="text-align: right;">20,8</td>
+<td style="text-align: right;">82,3</td>
+<td style="text-align: right;">49,8</td>
+<td style="text-align: right;">55,4</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Este segundo eje <strong>corre transversal al primero</strong>: los dos bloques que la solución de 6 separa tienen percepción de entorno casi igual y se distinguen por si adoptan medidas y gastan en ellas. En la solución de 5 grupos ese corte no existe y los dos van juntos.</p>
+</section>
+<section id="qué-muestra-cada-solución" class="level2">
+<h2 class="anchored" data-anchor-id="qué-muestra-cada-solución">Qué muestra cada solución</h2>
+<p><strong>Con 4 grupos</strong>, el bloque intermedio queda sin partir: C3 reúne 24.213 casos, el 48,9% de los que entran al modelo, y su diferencia más alta es de 23,8 puntos, cuando otros bloques llegan a 92. Es grande y además poco característico, porque adentro conviven perfiles que se contradicen.</p>
+<p><strong>Con 5 grupos</strong>, el eje de miedo queda bien resuelto. Cuatro de los cinco grupos forman una escala; el quinto no está en ella. Sus diferencias de miedo más grandes son de pocos puntos, contra las decenas de puntos del resto: no es un escalón de la escala, es un grupo que la escala no ordena.</p>
+<p><strong>Con 6 grupos</strong>, ese grupo suelto deja de ser una excepción. Al partirse el bloque intermedio por adopción de medidas, la protección aparece como un eje con niveles ordenados, y el grupo sin medidas queda en su extremo.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Lo que esta lectura no resuelve
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La decisión no es cuántos grupos toleran los datos, porque las tres soluciones son el mismo árbol. Es <strong>qué se quiere reportar</strong>: una tipología de miedo, o una de miedo y respuesta.</p>
+<p>Tampoco explica el bloque sin medidas. Que concentre la mayor proporción de educación básica o menos es compatible con una restricción de recursos, pero la ENUSC no pregunta por qué no se adoptan medidas, así que la tabla no lo prueba.</p>
 </div>
 </div>
 </section>
