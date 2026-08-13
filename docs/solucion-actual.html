@@ -145,6 +145,12 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#ahora-la-diferencia-en-puntos-porcentuales" id="toc-ahora-la-diferencia-en-puntos-porcentuales" class="nav-link" data-scroll-target="#ahora-la-diferencia-en-puntos-porcentuales">Ahora: la diferencia en puntos porcentuales</a></li>
   <li><a href="#por-qué-se-cambió" id="toc-por-qué-se-cambió" class="nav-link" data-scroll-target="#por-qué-se-cambió">Por qué se cambió</a></li>
   </ul></li>
+  <li><a href="#la-matriz-de-perfiles" id="toc-la-matriz-de-perfiles" class="nav-link" data-scroll-target="#la-matriz-de-perfiles">La matriz de perfiles</a>
+  <ul class="collapse">
+  <li><a href="#cómo-leer-la-matriz" id="toc-cómo-leer-la-matriz" class="nav-link" data-scroll-target="#cómo-leer-la-matriz">Cómo leer la matriz</a></li>
+  <li><a href="#las-dos-bases" id="toc-las-dos-bases" class="nav-link" data-scroll-target="#las-dos-bases">Las dos bases</a></li>
+  <li><a href="#las-tres-soluciones" id="toc-las-tres-soluciones" class="nav-link" data-scroll-target="#las-tres-soluciones">Las tres soluciones</a></li>
+  </ul></li>
   <li><a href="#las-soluciones" id="toc-las-soluciones" class="nav-link" data-scroll-target="#las-soluciones">Las soluciones</a></li>
   </ul>
 </nav>
@@ -350,12 +356,109 @@ Tip
 <p>El <code>v-test</code> se conserva como columna en la tabla descargable, para quien quiera contrastarlo con los informes anteriores.</p>
 </section>
 </section>
+<section id="la-matriz-de-perfiles" class="level1">
+<h1>La matriz de perfiles</h1>
+<p>La tabla de más abajo tiene esa misma diferencia para cada categoría y cada grupo, ordenada por grupo. Eso deja a una misma categoría en tantas posiciones como grupos haya, y para comparar un grupo con otro hay que buscarla varias veces. La matriz pone lo mismo en una grilla: <strong>una fila por categoría de respuesta, una columna por grupo, y en la celda la diferencia en puntos porcentuales contra el total</strong>.</p>
+<p>Las filas van en el orden de las categorías del modelo, de menor a mayor dentro de cada variable. Ese orden es lo que hace visible que los grupos con más miedo no se separan por intensidad sino por modalidad: dónde se pasa de “de día o de noche” a “de día y de noche”.</p>
+<section id="cómo-leer-la-matriz" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-leer-la-matriz">Cómo leer la matriz</h2>
+<p><strong>Una celda es una resta.</strong> La más marcada de la solución de 5 grupos es “Sin medidas en la vivienda” en C2: 100,0% de ese grupo responde eso, contra 8,2% en el total de las personas del modelo. La celda muestra la diferencia, <strong>92</strong> puntos porcentuales.</p>
+<p><strong>El color es esa misma diferencia.</strong> Naranja si la respuesta es más frecuente dentro del grupo que en el total, azul si es menos, y más intenso mientras más grande la diferencia. La escala se topa en 50 puntos: las celdas que se pasan van con el color del tope, pero el número que muestran es el verdadero.</p>
+<p><strong>Hacia abajo se lee un grupo.</strong> Recorrer una columna da el perfil completo de ese grupo, que es el insumo para ponerle nombre.</p>
+<p><strong>De lado a lado se lee una respuesta.</strong> Recorrer una fila muestra qué grupos concentran esa respuesta y cuáles la evitan.</p>
+<p><strong>El cero también dice algo.</strong> Una celda pálida significa que en esa respuesta el grupo se comporta como el promedio, y eso es parte de su perfil. “Inseguridad en la casa, de día o de noche” separa con fuerza a otros grupos, pero C2 queda a 1,5 puntos del total. Un grupo puede definirse tanto por dónde se despega como por dónde no.</p>
+</section>
+<section id="las-dos-bases" class="level2">
+<h2 class="anchored" data-anchor-id="las-dos-bases">Las dos bases</h2>
+<p>La misma diferencia está calculada de dos maneras, y las dos están acá porque cuál se reporta es una decisión abierta.</p>
+<p><strong>Muestral</strong> es la que devuelve <code>catdes()</code>, la función de <code>FactoMineR</code> que describe los grupos. Corre <strong>sin ponderar</strong> sobre la matriz del modelo, así que habla de las 49.503 personas que entraron y no de la población. Es también la que alimenta la tabla de más abajo, así que los dos números coinciden. Sus celdas con un punto son las categorías que <code>catdes()</code> no reportó para ese grupo, porque no pasaron su umbral de significancia.</p>
+<p><strong>Ponderada</strong> es la misma resta estimada <strong>con el diseño muestral</strong> de la ENUSC, sobre el mismo universo que forma los grupos. Los porcentajes son estimaciones de la población, que es lo que corresponde citar en un informe. No pasa por <code>FactoMineR</code>: una vez que la pertenencia a grupo es una columna del dato, la diferencia es una resta entre dos porcentajes. No tiene celdas vacías, porque no hay umbral de significancia que deje categorías afuera.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>Las dos bases no dan lo mismo, y la diferencia no es de redondeo
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>La diferencia entre las dos matrices llega a <strong>6,4 puntos porcentuales</strong>. Ponderar mueve las dos partes de la resta, y sobre todo el porcentaje del total: la ponderación de la ENUSC corrige por probabilidad de selección y por no respuesta, y esas correcciones no son parejas entre grupos.</p>
+<p>Mientras la decisión esté abierta, las dos están a la vista. <strong>La versión ponderada es la que corresponde para hablar de la población</strong>; la muestral queda por continuidad con los informes anteriores, que se construyeron sobre <code>catdes()</code>.</p>
+<p>Para nombrar los grupos, sin embargo, la elección no bloquea: <strong>la categoría que encabeza cada grupo es la misma en las dos bases</strong>, en los 15 grupos de las tres soluciones. Cambia cuánto se cita, no qué respuesta caracteriza a cada grupo.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Nota</span>Un supuesto mixto que conviene tener escrito
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los grupos se <strong>construyen</strong> sin ponderar, porque el MCA y el agrupamiento corren sobre los casos crudos, y se <strong>describen</strong> ponderando. Es lo habitual y la partición no cambia, pero es un supuesto mixto.</p>
+</div>
+</div>
+</section>
+<section id="las-tres-soluciones" class="level2">
+<h2 class="anchored" data-anchor-id="las-tres-soluciones">Las tres soluciones</h2>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true" href="">4 grupos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false" href="">5 grupos ★</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false" href="">6 grupos</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Muestral</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Ponderada</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p><img src="solucion-actual_files/figure-html/matriz-soluciones-1.png" class="img-fluid" width="960"></p>
+<p>Las 4 celdas con un punto son categorías que <code>catdes()</code> no reportó para ese grupo.</p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p><img src="solucion-actual_files/figure-html/matriz-soluciones-2.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Muestral</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Ponderada</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p><img src="solucion-actual_files/figure-html/matriz-soluciones-3.png" class="img-fluid" width="960"></p>
+<p>Las 5 celdas con un punto son categorías que <code>catdes()</code> no reportó para ese grupo.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p><img src="solucion-actual_files/figure-html/matriz-soluciones-4.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true" href="">Muestral</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false" href="">Ponderada</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p><img src="solucion-actual_files/figure-html/matriz-soluciones-5.png" class="img-fluid" width="960"></p>
+<p>Las 5 celdas con un punto son categorías que <code>catdes()</code> no reportó para ese grupo.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p><img src="solucion-actual_files/figure-html/matriz-soluciones-6.png" class="img-fluid" width="960"></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section id="las-soluciones" class="level1">
 <h1>Las soluciones</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">4 grupos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">5 grupos ★</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">6 grupos</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-5-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-1" role="tab" aria-controls="tabset-5-1" aria-selected="true" href="">4 grupos</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-2" role="tab" aria-controls="tabset-5-2" aria-selected="false" href="">5 grupos ★</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-5-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-5-3" role="tab" aria-controls="tabset-5-3" aria-selected="false" href="">6 grupos</a></li></ul>
 <div class="tab-content">
-<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div id="tabset-5-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-5-1-tab">
 <p><img src="solucion-actual_files/figure-html/soluciones-1.png" class="img-fluid" width="960"></p>
 <p>Cada contorno encierra el <strong>50% central</strong> de los casos de su grupo, y el punto marca el centro. Que dos contornos se solapen no significa que los grupos estén mal definidos: la clasificación usa todas las dimensiones del modelo y acá solo se ven dos.</p>
 <section id="tamaño-de-los-grupos" class="level3">
@@ -3736,7 +3839,7 @@ Cree que será victima de otro tipo de delito
 </div>
 </section>
 </div>
-<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div id="tabset-5-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-2-tab">
 <p>Es la solución que se venía reportando. La marca no significa que sea la mejor: significa que es la que está en los informes previos.</p>
 <p><img src="solucion-actual_files/figure-html/soluciones-2.png" class="img-fluid" width="960"></p>
 <p>Cada contorno encierra el <strong>50% central</strong> de los casos de su grupo, y el punto marca el centro. Que dos contornos se solapen no significa que los grupos estén mal definidos: la clasificación usa todas las dimensiones del modelo y acá solo se ven dos.</p>
@@ -7811,7 +7914,7 @@ Cree que será victima de otro tipo de delito
 </div>
 </section>
 </div>
-<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div id="tabset-5-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-5-3-tab">
 <p><img src="solucion-actual_files/figure-html/soluciones-3.png" class="img-fluid" width="960"></p>
 <p>Cada contorno encierra el <strong>50% central</strong> de los casos de su grupo, y el punto marca el centro. Que dos contornos se solapen no significa que los grupos estén mal definidos: la clasificación usa todas las dimensiones del modelo y acá solo se ven dos.</p>
 <section id="tamaño-de-los-grupos-2" class="level3">

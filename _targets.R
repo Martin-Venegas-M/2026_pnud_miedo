@@ -544,6 +544,25 @@ list(
         )
     ),
     tar_target(v_test_todas, tabla_v_test_todas(hcpc, cfg$N_CLASES)),
+
+    # La misma diferencia en puntos porcentuales que v_test_todas, pero estimada
+    # con el diseño muestral en vez de salir de catdes(). El universo se fija con
+    # una sola solución porque los casos que entran al modelo (49.503) son los
+    # mismos en las tres.
+    tar_target(
+        marginales_modelo,
+        marginales_ponderadas(
+            diseno_muestral,
+            paste0("clusters_", cfg$N_CLASES[1]),
+            cfg$VARS_MODELO,
+            cfg$VARS_SEC
+        )
+    ),
+    tar_target(
+        lift_ponderado,
+        tabla_lift_ponderado(cruces_ancho_todas, marginales_modelo)
+    ),
+
     tar_target(no_respuesta_indices, medir_no_respuesta_indices(datos_finales)),
     tar_target(
         metadata_variables,
@@ -569,6 +588,10 @@ list(
     ),
     tar_target(datos_biplot_mca, datos_biplot(mca)),
     tar_target(mapa_clusters, datos_mapa_clusters(mca, hcpc, cfg$N_CLASES)),
+    tar_target(
+        matriz_perfil,
+        datos_matriz_perfil(v_test_todas, lift_ponderado, datos_biplot_mca)
+    ),
     tar_target(
         tabla_cruces_ancho_xlsx,
         escribir_tabla_descriptiva(

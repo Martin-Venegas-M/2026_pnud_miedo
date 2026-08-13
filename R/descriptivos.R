@@ -523,3 +523,133 @@ tabla_cruces_ancho_todas <- function(svy, n_clases, vars_fuente, vars_sec) {
     }) |>
         purrr::list_rbind()
 }
+
+#' Marginal ponderada de cada categoría, sobre los casos que entran al modelo
+#'
+#' El insumo que faltaba para calcular `lift_pp` sin pasar por `catdes()`.
+#'
+#' @section Por qué hace falta:
+#' La página muestra dos estimaciones de la misma cantidad, una al lado de la
+#' otra, calculadas distinto. [tabla_v_test()] toma `Mod/Cla` y `Global` de
+#' `catdes()`, que corre **sin ponderar** sobre la matriz del modelo;
+#' [tabla_cruces_cluster()] estima **con el diseño muestral**. Para "Sin
+#' inseguridad en el barrio" en C1 de la solución de 5, la primera da 87,59% y
+#' la segunda 87,34%. Para un informe sobre la población la estimación
+#' ponderada es la defendible, así que `Global` tiene que existir en esa base.
+#'
+#' @section El universo, que es donde está la trampa:
+#' `diseno_muestral` se construye sobre `datos_finales`, que son **55.796**
+#' filas. Los clusters existen para **49.503**: hay 6.293 casos sin grupo. Los
+#' porcentajes por cluster de [tabla_cruces_cluster()] ya salen sobre los
+#' 49.503, porque `tab_var_clust()` filtra el diseño por `!is.na(clust_var)`.
+#' Si `Global` se estimara sobre los 55.796, la resta compararía contra un
+#' universo distinto del que forma los grupos, y el sesgo no sería neutro: la
+#' exclusión está documentada como no aleatoria. De ahí el mismo filtro acá.
+#'
+#' Los 49.503 son **los mismos en las tres soluciones**, así que esta tabla se
+#' calcula una vez y sirve para las tres.
+#'
+#' @section Alternativa descartada:
+#' `Global` se puede reconstruir como promedio de las columnas de cluster
+#' ponderado por el tamaño de cada grupo, sin tocar el diseño. Se verificó que
+#' da lo mismo (discrepancia máxima 0,0077 pp, que es el redondeo a dos
+#' decimales de `tab_frq2()`). Se descartó igual: depende de que el denominador
+#' de cada bloque de variable siga siendo el tamaño del cluster, que hoy se
+#' cumple porque la no respuesta entra como categoría propia, pero dejaría de
+#' cumplirse en silencio si alguna variable futura excluyera sus `NA`.
+#'
+#' Las etiquetas se arman con `sjlabelled::to_label()`, igual que
+#' [tab_frq2()], para que la clave `variable | categoria` calce con la de
+#' [tabla_cruces_ancho_todas()]. La verificación del calce vive en
+#' [tabla_lift_ponderado()], que es donde se usa.
+#'
+#' @param svy Diseño muestral (target `diseno_muestral`).
+#' @param clust_var Nombre de una columna de cluster, para definir el universo.
+#' @param vars_fuente,vars_sec Vectores de variables.
+#' @return Un tibble `variable | categoria | global_pct`.
+marginales_ponderadas <- function(svy, clust_var, vars_fuente, vars_sec) {
+    svy_mod <- svy |> dplyr::filter(!is.na(.data[[clust_var]]))
+
+    purrr::map(c(vars_fuente, vars_sec), function(v) {
+        svy_mod |>
+            srvyr::group_by(dplyr::across(dplyr::all_of(v))) |>
+            srvyr::summarise(prop = srvyr::survey_mean()) |>
+            dplyr::mutate(
+                variable = v,
+                categoria = as.character(sjlabelled::to_label(.data[[v]])),
+                global_pct = round(prop * 100, 2)
+            ) |>
+            dplyr::select(variable, categoria, global_pct)
+    }) |>
+        purrr::list_rbind() |>
+        #* Misma convención que tabla_cruces_ancho(): la categoría sin etiqueta
+        #* se nombra en vez de quedar como NA.
+        dplyr::mutate(
+            categoria = dplyr::coalesce(categoria, "Sin dato suficiente")
+        )
+}
+
+#' `lift_pp` ponderado, para todas las soluciones
+#'
+#' La versión con diseño muestral de lo que [tabla_v_test()] devuelve sin
+#' ponderar. `lift_pp` es una resta entre dos porcentajes, así que una vez que
+#' la pertenencia a grupo es una columna del dato no hace falta volver a pasar
+#' por `FactoMineR`.
+#'
+#' @section Dos diferencias con la versión de `catdes()`:
+#' 1. **La grilla queda completa.** `catdes()` devuelve solo las categorías que
+#'    pasan un umbral de significancia: en la solución de 5 son 115 de las 120
+#'    combinaciones posibles. Acá están las 120, porque el corte por
+#'    significancia se saca del cálculo y pasa a ser, si se quiere, una decisión
+#'    de presentación sobre `lift_pp`, que está en la escala que se muestra.
+#' 2. **Incluye las variables secundarias.** `catdes()` describe solo las ocho
+#'    del modelo. Sexo, edad, NSE, macrozona, victimización y medios no tenían
+#'    ninguna medida de contraste contra el total.
+#'
+#' @section Por qué el join se verifica y no se confía:
+#' La clave es `variable | categoria`, o sea texto de etiqueta armado por dos
+#' caminos distintos. Un `left_join()` que no encuentra pareja devuelve `NA` sin
+#' quejarse, y la matriz saldría con huecos que parecerían categorías no
+#' distintivas. Se usa `inner_join()` con una aserción de que ninguna de las dos
+#' tablas perdió filas.
+#'
+#' @param cruces_ancho Target `cruces_ancho_todas`.
+#' @param marginales Target `marginales_modelo`.
+#' @return Un tibble
+#'   `solucion | grupo | grupo_variable | variable | categoria | pct_grupo | global_pct | lift_pp`.
+tabla_lift_ponderado <- function(cruces_ancho, marginales) {
+    largo <- cruces_ancho |>
+        tidyr::pivot_longer(
+            dplyr::matches("^C\\d+$"),
+            names_to = "grupo",
+            values_to = "pct_grupo"
+        ) |>
+        #* La solución de 4 no tiene C5 ni C6: esas columnas existen en el tibble
+        #* ancho y vienen en NA. Se descartan por número de grupo y no por NA,
+        #* que podría enmascarar un dato faltante real.
+        dplyr::filter(
+            as.integer(stringr::str_remove(grupo, "^C")) <= solucion
+        )
+
+    stopifnot(
+        "tabla_lift_ponderado(): quedaron pct_grupo en NA tras el filtro por solución" = !anyNA(
+            largo$pct_grupo
+        )
+    )
+
+    res <- largo |>
+        dplyr::inner_join(marginales, by = c("variable", "categoria")) |>
+        dplyr::mutate(lift_pp = pct_grupo - global_pct) |>
+        dplyr::relocate(solucion, grupo, grupo_variable, variable, categoria)
+
+    #* Si las etiquetas de los dos caminos dejan de calzar, esto tiene que
+    #* fallar acá y no aparecer como una matriz con huecos más adelante.
+    stopifnot(
+        "tabla_lift_ponderado(): el join perdió filas; las etiquetas de categoría no calzan entre cruces_ancho_todas y marginales_modelo" = nrow(
+            res
+        ) ==
+            nrow(largo)
+    )
+
+    res
+}

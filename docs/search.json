@@ -166,5 +166,26 @@
     "title": "Decisiones pendientes",
     "section": "Cómo se llaman",
     "text": "Cómo se llaman\nLos grupos aparecen como C1, C2 y así. Ponerles nombre sustantivo es una decisión del equipo y no puede derivarse del dato: requiere leer los perfiles y decidir qué los caracteriza.\nEl insumo está en Solución actual: para cada solución hay una tabla de qué distingue a cada grupo, ordenada por cuánto se aparta cada respuesta del promedio de la muestra, y el perfil completo con todas las variables.\nLas dos se toman sobre la solución que produjo el corte nuevo, que es la que está en Solución actual. La numeración de los grupos no se corresponde con la de la versión archivada: el modelo los renumera en cada corrida.\n\n\n\n\n\n\nAdvertenciaLo que hace falta\n\n\n\nMirar los perfiles de las tres soluciones, decidir cuántos grupos distinguen algo que valga la pena reportar, y ponerles nombre. Es lo único que queda entre el análisis y el informe."
+  },
+  {
+    "objectID": "solucion-actual.html#las-dos-bases",
+    "href": "solucion-actual.html#las-dos-bases",
+    "title": "Solución actual",
+    "section": "Las dos bases",
+    "text": "Las dos bases\nLa misma diferencia está calculada de dos maneras, y las dos están acá porque cuál se reporta es una decisión abierta.\nMuestral es la que devuelve catdes(), la función de FactoMineR que describe los grupos. Corre sin ponderar sobre la matriz del modelo, así que habla de las 49.503 personas que entraron y no de la población. Es también la que alimenta la tabla de más abajo, así que los dos números coinciden. Sus celdas con un punto son las categorías que catdes() no reportó para ese grupo, porque no pasaron su umbral de significancia.\nPonderada es la misma resta estimada con el diseño muestral de la ENUSC, sobre el mismo universo que forma los grupos. Los porcentajes son estimaciones de la población, que es lo que corresponde citar en un informe. No pasa por FactoMineR: una vez que la pertenencia a grupo es una columna del dato, la diferencia es una resta entre dos porcentajes. No tiene celdas vacías, porque no hay umbral de significancia que deje categorías afuera.\n\n\n\n\n\n\nImportanteLas dos bases no dan lo mismo, y la diferencia no es de redondeo\n\n\n\nLa diferencia entre las dos matrices llega a 6,4 puntos porcentuales. Ponderar mueve las dos partes de la resta, y sobre todo el porcentaje del total: la ponderación de la ENUSC corrige por probabilidad de selección y por no respuesta, y esas correcciones no son parejas entre grupos.\nMientras la decisión esté abierta, las dos están a la vista. La versión ponderada es la que corresponde para hablar de la población; la muestral queda por continuidad con los informes anteriores, que se construyeron sobre catdes().\nPara nombrar los grupos, sin embargo, la elección no bloquea: la categoría que encabeza cada grupo es la misma en las dos bases, en los 15 grupos de las tres soluciones. Cambia cuánto se cita, no qué respuesta caracteriza a cada grupo.\n\n\n\n\n\n\n\n\nNotaUn supuesto mixto que conviene tener escrito\n\n\n\nLos grupos se construyen sin ponderar, porque el MCA y el agrupamiento corren sobre los casos crudos, y se describen ponderando. Es lo habitual y la partición no cambia, pero es un supuesto mixto."
+  },
+  {
+    "objectID": "solucion-actual.html#las-tres-soluciones",
+    "href": "solucion-actual.html#las-tres-soluciones",
+    "title": "Solución actual",
+    "section": "Las tres soluciones",
+    "text": "Las tres soluciones\n\n4 grupos5 grupos ★6 grupos\n\n\n\nMuestralPonderada\n\n\n\nLas 4 celdas con un punto son categorías que catdes() no reportó para ese grupo.\n\n\n\n\n\n\n\n\n\nMuestralPonderada\n\n\n\nLas 5 celdas con un punto son categorías que catdes() no reportó para ese grupo.\n\n\n\n\n\n\n\n\n\nMuestralPonderada\n\n\n\nLas 5 celdas con un punto son categorías que catdes() no reportó para ese grupo."
+  },
+  {
+    "objectID": "solucion-actual.html#cómo-leer-la-matriz",
+    "href": "solucion-actual.html#cómo-leer-la-matriz",
+    "title": "Solución actual",
+    "section": "Cómo leer la matriz",
+    "text": "Cómo leer la matriz\nUna celda es una resta. La más marcada de la solución de 5 grupos es “Sin medidas en la vivienda” en C2: 100,0% de ese grupo responde eso, contra 8,2% en el total de las personas del modelo. La celda muestra la diferencia, 92 puntos porcentuales.\nEl color es esa misma diferencia. Naranja si la respuesta es más frecuente dentro del grupo que en el total, azul si es menos, y más intenso mientras más grande la diferencia. La escala se topa en 50 puntos: las celdas que se pasan van con el color del tope, pero el número que muestran es el verdadero.\nHacia abajo se lee un grupo. Recorrer una columna da el perfil completo de ese grupo, que es el insumo para ponerle nombre.\nDe lado a lado se lee una respuesta. Recorrer una fila muestra qué grupos concentran esa respuesta y cuáles la evitan.\nEl cero también dice algo. Una celda pálida significa que en esa respuesta el grupo se comporta como el promedio, y eso es parte de su perfil. “Inseguridad en la casa, de día o de noche” separa con fuerza a otros grupos, pero C2 queda a 1,5 puntos del total. Un grupo puede definirse tanto por dónde se despega como por dónde no."
   }
 ]
