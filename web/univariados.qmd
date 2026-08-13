@@ -116,9 +116,23 @@ etiquetas_fuente <- c(
 )
 
 grupos <- list(
-    "Índices continuos" = grep("_pct$", names(etiquetas_fuente), value = TRUE),
-    "Índices categorizados" = grep("_tercil$", names(etiquetas_fuente), value = TRUE),
+    #* `_pct$` sin `_cat`: si no, los categorizados caerían en los dos grupos.
+    "Índices continuos" = grep(
+        "_pct$",
+        names(etiquetas_fuente),
+        value = TRUE
+    ),
+    "Índices categorizados" = grep(
+        "_cat$",
+        names(etiquetas_fuente),
+        value = TRUE
+    ),
     "Otras variables fuente" = c("perper_delito", "comper_gasto")
+)
+
+stopifnot(
+    "Ningún índice categorizado: ¿cambió el sufijo de las variables?" =
+        length(grupos[["Índices categorizados"]]) > 0
 )
 
 for (g in names(grupos)) {

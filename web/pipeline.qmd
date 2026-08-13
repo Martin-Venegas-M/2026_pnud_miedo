@@ -652,9 +652,9 @@ Los grupos quedan desiguales, que es lo correcto cuando hay empates.
 
 # Registro de decisiones
 
-Todas las decisiones metodológicas del análisis, en un solo lugar. Las que
-siguen abiertas están desarrolladas, con propuesta, en
-[Decisiones pendientes](decisiones.html).
+Todas las decisiones metodológicas del análisis, en un solo lugar. Las dos que
+siguen abiertas no son metodológicas: son sobre qué solución reportar, y están
+en [Decisiones pendientes](decisiones.html).
 
 ```{r}
 #| label: registro

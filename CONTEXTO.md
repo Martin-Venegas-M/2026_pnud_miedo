@@ -135,8 +135,15 @@ Cuidado con **"dimensión"**: nombra tanto las cuatro dimensiones teóricas
 ### Reglas de la página
 
 **Ningún número nace en un chunk.** Todo sale de un target o de los CSV de log.
-El `.qmd` lee, pivotea y formatea. Hay una excepción marcada como tal en la
-página, y ninguna más debería agregarse sin marcarla igual.
+El `.qmd` lee, pivotea y formatea.
+
+**Al cerrar una decisión, barrer la página entera.** Los rastros quedan en más
+lugares de los que uno recuerda: los sellos `motivo_provisional` de los targets,
+los recuadros que anuncian tipos de aviso que ya no existen, las entradas del
+glosario, y los `grep()` de los `.qmd` que filtran por sufijo de variable. Un
+rename de variables puede vaciar una pestaña entera sin que nada falle: pasó con
+`_rec_tercil` a `_cat`, que dejó la subpestaña de índices categorizados sin
+tablas. Conviene un `stopifnot()` donde un filtro por nombre pueda quedar vacío.
 
 **Las tablas del entregable pasan por `limpiar_tabla_descriptiva()`** (redondeo,
 descarte de filas vacías solo si `frq == 0`). La página lee los targets directo,

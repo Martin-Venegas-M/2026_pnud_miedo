@@ -111,10 +111,15 @@ En un análisis de correspondencias, el % de inercia depende **mecánicamente de
 número de categorías por variable**: más categorías producen más inercia total,
 independientemente de si el modelo es mejor o peor.
 
-Como la decisión abierta sobre categorización cambia justamente el número de
-categorías, **no se puede usar este porcentaje para decidir entre alternativas**.
-Para una comparación válida haría falta la corrección de Benzécri, que no está
+Sirve para describir esta solución, **no para compararla con otra forma de
+recodificar**. Para eso haría falta la corrección de Benzécri, que no está
 implementada.
+
+Hay una excepción útil: la comparación con la
+[versión archivada](archivo/2025-08-terciles/solucion-actual.html) **sí es
+válida**, porque el cambio de criterio de corte mantuvo tres categorías por
+variable. El número de categorías no cambió, así que las inercias se pueden
+poner una al lado de la otra.
 :::
 
 ## Mapa de categorías

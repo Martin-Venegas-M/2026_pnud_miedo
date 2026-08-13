@@ -1,6 +1,6 @@
-aviso_provisional,dimension,autovalor,pct_varianza,pct_acumulado
-"D2 abierta (PLAN.md): el % de inercia depende del número de categorías por variable, que es justamente lo que D2 cambia. Ver la advertencia de comparabilidad en tabla_ajuste_global().",1,0.33,16.61,16.61
-"D2 abierta (PLAN.md): el % de inercia depende del número de categorías por variable, que es justamente lo que D2 cambia. Ver la advertencia de comparabilidad en tabla_ajuste_global().",2,0.18,9.2,25.82
-"D2 abierta (PLAN.md): el % de inercia depende del número de categorías por variable, que es justamente lo que D2 cambia. Ver la advertencia de comparabilidad en tabla_ajuste_global().",3,0.17,8.44,34.26
-"D2 abierta (PLAN.md): el % de inercia depende del número de categorías por variable, que es justamente lo que D2 cambia. Ver la advertencia de comparabilidad en tabla_ajuste_global().",4,0.13,6.58,40.84
-"D2 abierta (PLAN.md): el % de inercia depende del número de categorías por variable, que es justamente lo que D2 cambia. Ver la advertencia de comparabilidad en tabla_ajuste_global().",5,0.13,6.4,47.25
+dimension,autovalor,pct_varianza,pct_acumulado
+1,0.33,16.61,16.61
+2,0.18,9.2,25.82
+3,0.17,8.44,34.26
+4,0.13,6.58,40.84
+5,0.13,6.4,47.25

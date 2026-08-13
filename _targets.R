@@ -444,8 +444,7 @@ list(
         escribir_tabla_descriptiva(
             tabla2_variables_fuente,
             "output/tables/2025/tabla2_variables_fuente",
-            sheet = "variables_fuente",
-            motivo_provisional = "D2 abierta (PLAN.md): la categorización en terciles (ntile) de los índices _pct puede cambiar. Los índices _pct continuos no dependen de D2."
+            sheet = "variables_fuente"
         ),
         format = "file"
     ),
@@ -459,8 +458,7 @@ list(
         escribir_tabla_descriptiva(
             tabla3_variables_secundarias,
             "output/tables/2025/tabla3_variables_secundarias",
-            sheet = "variables_secundarias",
-            motivo_provisional = "D5 abierta (PLAN.md): desordenes_ind_rec e incivilidades_ind_rec pueden cambiar de mecanismo/escala. El resto de VARS_SEC no depende de D5."
+            sheet = "variables_secundarias"
         ),
         format = "file"
     ),
@@ -474,8 +472,7 @@ list(
         escribir_tabla_descriptiva(
             tabla4_clusters,
             "output/tables/2025/tabla4_clusters",
-            sheet = "clusters",
-            motivo_provisional = "D2 abierta (PLAN.md): la solución de cluster depende de la categorización que entra al MCA."
+            sheet = "clusters"
         ),
         format = "file"
     ),
@@ -494,8 +491,7 @@ list(
         escribir_tabla_descriptiva(
             tabla5_cruces_cluster,
             "output/tables/2025/tabla5_cruces_cluster",
-            sheet = "cruces_cluster",
-            motivo_provisional = "D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes."
+            sheet = "cruces_cluster"
         ),
         format = "file"
     ),
@@ -509,8 +505,7 @@ list(
         escribir_tabla_descriptiva(
             tabla6_v_test,
             "output/tables/2025/tabla6_v_test",
-            sheet = "v_test",
-            motivo_provisional = "D2 abierta (PLAN.md): la solución de cluster completa (y por lo tanto qué variables la distinguen) puede cambiar."
+            sheet = "v_test"
         ),
         format = "file"
     ),
@@ -528,8 +523,7 @@ list(
             tabla_ajuste,
             "output/tables/2025/tabla_ajuste_global",
             sheet = "ajuste_global",
-            var_col = "dimension",
-            motivo_provisional = "D2 abierta (PLAN.md): el % de inercia depende del número de categorías por variable, que es justamente lo que D2 cambia. Ver la advertencia de comparabilidad en tabla_ajuste_global()."
+            var_col = "dimension"
         ),
         format = "file"
     ),
@@ -580,8 +574,7 @@ list(
         escribir_tabla_descriptiva(
             tabla_cruces_ancho_clusters,
             "output/tables/2025/tabla_cruces_ancho",
-            sheet = "cruces_ancho",
-            motivo_provisional = "D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes."
+            sheet = "cruces_ancho"
         ),
         format = "file"
     )

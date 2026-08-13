@@ -72,7 +72,7 @@ La reconstrucción tuvo dos objetivos:
 | **Univariados** | Distribuciones de todas las variables: las originales de la encuesta, las que construimos, y las secundarias |
 | **Solución actual** | Los grupos: cómo se ven, qué los distingue y cómo se perfilan |
 
-A lo largo de la página encontrará dos tipos de recuadro:
+A lo largo de la pestaña Pipeline encontrará recuadros como este:
 
 ::: {.callout-note}
 ## Decisión tomada
@@ -81,15 +81,10 @@ Una elección metodológica ya resuelta, con su justificación y su efecto sobre
 análisis.
 :::
 
-::: {.callout-warning}
-## Decisión pendiente
-
-Un punto donde todavía no hay resolución. Los resultados que dependen de ella son
-**provisionales** y están marcados como tales donde aparecen.
-:::
-
-El [registro completo de decisiones](pipeline.qmd#registro-de-decisiones) está al
-final de la pestaña Pipeline.
+Están en el punto del recorrido donde la decisión se toma. El
+[registro completo](pipeline.qmd#registro-de-decisiones) está al final de esa
+pestaña, y lo que queda por resolver está en
+[Decisiones pendientes](decisiones.qmd).
 
 ## Estado actual
 

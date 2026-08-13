@@ -234,6 +234,7 @@ de más de una forma y hubo que elegir. Esta página las marca en recuadros:
 [registro completo](pipeline.html#registro-de-decisiones) está al final de la
 pestaña Pipeline.
 
-**Provisional.** Se marca así todo resultado que depende de una decisión aún no
-resuelta. No significa que esté mal calculado: significa que puede cambiar cuando
-la decisión se tome, así que no conviene citarlo como cifra final.
+**Versión archivada.** Una copia congelada de la página, que se conserva cuando
+una decisión metodológica cambia los resultados. No se actualiza. La que hay hoy
+corresponde a la solución construida con terciles, anterior al cambio en cómo se
+cortan los índices.
