@@ -182,6 +182,22 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Esta pestaña es <strong>una primera pasada sobre los resultados</strong>, para dejar a la vista las claves de lectura antes de entrar a las tablas completas. No son conclusiones: son el punto de partida para revisarlas.</p>
 <p>Todo lo que sigue sale de la matriz de perfiles y de la tabla de perfil que están en <a href="solucion-actual.html">Solución actual</a>. Los porcentajes son ponderados, o sea estimaciones de la población; los conteos de casos no lo son.</p>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Esta lectura la redactó un LLM y falta la revisión humana
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El texto de esta pestaña fue escrito por un modelo de lenguaje a partir de las tablas del pipeline. Conviene ser explícito sobre qué está verificado y qué no.</p>
+<p><strong>Lo que sí está verificado.</strong> Ninguna cifra se escribió a mano: todas salen de un target del DAG y se calculan al renderizar. Las afirmaciones comparativas (“el grupo más joven”, “el de mayor educación terciaria”) llevan una aserción cada una, de modo que si el modelo se recalcula y alguna deja de ser cierta, la página no compila en vez de seguir afirmándola. Al escribirlas ya apareció una que era falsa y se corrigió.</p>
+<p><strong>Lo que no.</strong> Que las cifras sean correctas no hace correcta la interpretación. Qué significa sustantivamente cada grupo, si la agrupación tiene sentido teórico, y sobre todo <strong>cómo se llaman</strong>, son decisiones que requieren criterio experto y conocimiento del campo. Los títulos de cada grupo son descripciones de trabajo derivadas mecánicamente de sus mayores diferencias, no nombres propuestos.</p>
+<p>El valor de esta pestaña es acortar el camino hasta las preguntas que valen la pena, no contestarlas.</p>
+</div>
+</div>
 <section id="los-seis-grupos" class="level1">
 <h1>Los seis grupos</h1>
 <p>Empezamos por la solución de 6 grupos, que es la más fina. Los grupos de las otras dos son uniones de estos, así que recorrerlos acá sirve para las tres. Cada tabla muestra las 4 respuestas del modelo y las 3 variables secundarias que más distinguen al grupo.</p>
@@ -859,7 +875,7 @@ ul.task-list li input[type="checkbox"] {
 <div class="callout-body-container callout-body">
 <p>La decisión no es cuántos grupos toleran los datos, porque las tres soluciones son el mismo árbol. Es <strong>qué se quiere reportar</strong>: una tipología de miedo, o una de miedo y respuesta.</p>
 <p>Tampoco explica el grupo sin medidas. Que concentre la mayor proporción de educación básica o menos es compatible con una restricción de recursos, pero la ENUSC no pregunta por qué no se adoptan medidas, así que la tabla no lo prueba.</p>
-<p>Y los nombres que encabezan cada grupo acá son <strong>descripciones de trabajo</strong>, no nombres propuestos. Ponerles nombre es tarea del equipo.</p>
+<p>Y no propone nombres, por lo dicho al comienzo: eso es tarea del equipo.</p>
 </div>
 </div>
 

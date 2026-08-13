@@ -25,6 +25,30 @@ Todo lo que sigue sale de la matriz de perfiles y de la tabla de perfil que est�
 en [Solución actual](solucion-actual.html). Los porcentajes son ponderados, o sea
 estimaciones de la población; los conteos de casos no lo son.
 
+::: {.callout-warning}
+## Esta lectura la redactó un LLM y falta la revisión humana
+
+El texto de esta pestaña fue escrito por un modelo de lenguaje a partir de las
+tablas del pipeline. Conviene ser explícito sobre qué está verificado y qué no.
+
+**Lo que sí está verificado.** Ninguna cifra se escribió a mano: todas salen de
+un target del DAG y se calculan al renderizar. Las afirmaciones comparativas
+("el grupo más joven", "el de mayor educación terciaria") llevan una aserción
+cada una, de modo que si el modelo se recalcula y alguna deja de ser cierta, la
+página no compila en vez de seguir afirmándola. Al escribirlas ya apareció una
+que era falsa y se corrigió.
+
+**Lo que no.** Que las cifras sean correctas no hace correcta la interpretación.
+Qué significa sustantivamente cada grupo, si la agrupación tiene sentido
+teórico, y sobre todo **cómo se llaman**, son decisiones que requieren criterio
+experto y conocimiento del campo. Los títulos de cada grupo son descripciones
+de trabajo derivadas mecánicamente de sus mayores diferencias, no nombres
+propuestos.
+
+El valor de esta pestaña es acortar el camino hasta las preguntas que valen la
+pena, no contestarlas.
+:::
+
 ```{r}
 #| label: comun
 #* La lectura se apoya en la diferencia en puntos porcentuales contra el total,
@@ -355,6 +379,5 @@ Tampoco explica el grupo sin medidas. Que concentre la mayor proporción de
 educación básica o menos es compatible con una restricción de recursos, pero la
 ENUSC no pregunta por qué no se adoptan medidas, así que la tabla no lo prueba.
 
-Y los nombres que encabezan cada grupo acá son **descripciones de trabajo**, no
-nombres propuestos. Ponerles nombre es tarea del equipo.
+Y no propone nombres, por lo dicho al comienzo: eso es tarea del equipo.
 :::
