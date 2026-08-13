@@ -1,337 +1,350 @@
 aviso_provisional,grupo_variable,variable,clusters_5,val,label,frq,prop
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C1,1,Baja inseguridad en espacio publico,1760658,75.52
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C1,2,Media inseguridad en espacio publico,375427,16.1
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C1,3,Alta inseguridad en espacio publico,195316,8.38
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C2,1,Baja inseguridad en espacio publico,920372,50.41
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C2,2,Media inseguridad en espacio publico,701670,38.43
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C2,3,Alta inseguridad en espacio publico,203735,11.16
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C3,1,Baja inseguridad en espacio publico,328805,13.27
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C3,2,Media inseguridad en espacio publico,1696973,68.5
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C3,3,Alta inseguridad en espacio publico,451649,18.23
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C4,1,Baja inseguridad en espacio publico,148771,5.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C4,2,Media inseguridad en espacio publico,1004702,39.47
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C4,3,Alta inseguridad en espacio publico,1392042,54.69
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C5,1,Baja inseguridad en espacio publico,129375,4.62
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C5,2,Media inseguridad en espacio publico,555249,19.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C5,3,Alta inseguridad en espacio publico,2113640,75.53
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C1,1,Baja inseguridad en el barrio,1623755,69.65
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C1,2,Media inseguridad en el barrio,537052,23.04
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C1,3,Alta inseguridad en el barrio,170595,7.32
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C2,1,Baja inseguridad en el barrio,1024906,56.14
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C2,2,Media inseguridad en el barrio,454811,24.91
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C2,3,Alta inseguridad en el barrio,346060,18.95
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C3,1,Baja inseguridad en el barrio,437659,17.67
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C3,2,Media inseguridad en el barrio,1545758,62.39
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C3,3,Alta inseguridad en el barrio,494010,19.94
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C4,1,Baja inseguridad en el barrio,105282,4.14
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C4,2,Media inseguridad en el barrio,664796,26.12
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C4,3,Alta inseguridad en el barrio,1775436,69.75
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C5,1,Baja inseguridad en el barrio,162834,5.82
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C5,2,Media inseguridad en el barrio,784877,28.05
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C5,3,Alta inseguridad en el barrio,1850553,66.13
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C1,1,Baja inseguridad en la casa,1115383,47.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C1,2,Media inseguridad en la casa,888837,38.12
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C1,3,Alta inseguridad en la casa,327181,14.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C2,1,Baja inseguridad en la casa,642307,35.18
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C2,2,Media inseguridad en la casa,960663,52.62
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C2,3,Alta inseguridad en la casa,222806,12.2
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C3,1,Baja inseguridad en la casa,1196271,48.29
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C3,2,Media inseguridad en la casa,982610,39.66
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C3,3,Alta inseguridad en la casa,298546,12.05
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C4,1,Baja inseguridad en la casa,419047,16.46
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C4,2,Media inseguridad en la casa,520301,20.44
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C4,3,Alta inseguridad en la casa,1606167,63.1
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C5,1,Baja inseguridad en la casa,764830,27.33
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C5,2,Media inseguridad en la casa,691552,24.71
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C5,3,Alta inseguridad en la casa,1341882,47.95
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C1,1,No cree que será victima de delito,1916293,82.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C1,2,Cree que será victima de delito no violento,129655,5.56
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C1,3,Cree que será victima de delito violento,285454,12.24
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C2,1,No cree que será victima de delito,1234638,67.62
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C2,2,Cree que será victima de delito no violento,258591,14.16
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C2,3,Cree que será victima de delito violento,332548,18.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C3,1,No cree que será victima de delito,1119553,45.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C3,2,Cree que será victima de delito no violento,434883,17.55
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C3,3,Cree que será victima de delito violento,922991,37.26
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C4,1,No cree que será victima de delito,637930,25.06
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C4,2,Cree que será victima de delito no violento,673803,26.47
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C4,3,Cree que será victima de delito violento,1233783,48.47
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C5,1,No cree que será victima de delito,459012,16.4
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C5,2,Cree que será victima de delito no violento,1362005,48.67
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C5,3,Cree que será victima de delito violento,961008,34.34
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C5,5,Cree que será victima de otro tipo de delito,16239,0.58
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C1,1,Bajas prácticas de evitación,1810170,77.64
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C1,2,Medias prácticas de evitación,356432,15.29
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C1,3,Altas prácticas de evitación,164799,7.07
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C2,1,Bajas prácticas de evitación,889125,48.7
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C2,2,Medias prácticas de evitación,703170,38.51
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C2,3,Altas prácticas de evitación,233482,12.79
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C3,1,Bajas prácticas de evitación,327539,13.22
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C3,2,Medias prácticas de evitación,1655726,66.83
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C3,3,Altas prácticas de evitación,494162,19.95
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C4,1,Bajas prácticas de evitación,177324,6.97
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C4,2,Medias prácticas de evitación,969733,38.1
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C4,3,Altas prácticas de evitación,1398457,54.94
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C5,1,Bajas prácticas de evitación,160420,5.73
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C5,2,Medias prácticas de evitación,395749,14.14
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C5,3,Altas prácticas de evitación,2242095,80.12
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C1,0,No gasta en medidas de seguridad,1640366,70.36
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C1,1,Gasta en medidas de seguridad,691036,29.64
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C2,0,No gasta en medidas de seguridad,448171,24.55
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C2,1,Gasta en medidas de seguridad,1377606,75.45
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C3,0,No gasta en medidas de seguridad,1716814,69.3
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C3,1,Gasta en medidas de seguridad,760613,30.7
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C4,0,No gasta en medidas de seguridad,1179664,46.34
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C4,1,Gasta en medidas de seguridad,1365851,53.66
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C5,0,No gasta en medidas de seguridad,753241,26.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C5,1,Gasta en medidas de seguridad,2045024,73.08
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C1,1,Baja disposición de medidas vivienda,893208,38.31
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C1,2,Media disposición de medidas vivienda,1219173,52.29
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C1,3,Alta disposición de medidas vivienda,219020,9.39
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C2,1,Baja disposición de medidas vivienda,278972,15.28
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C2,2,Media disposición de medidas vivienda,102081,5.59
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C2,3,Alta disposición de medidas vivienda,1444724,79.13
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C3,1,Baja disposición de medidas vivienda,1291034,52.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C3,2,Media disposición de medidas vivienda,605018,24.42
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C3,3,Alta disposición de medidas vivienda,581375,23.47
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C4,1,Baja disposición de medidas vivienda,194506,7.64
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C4,2,Media disposición de medidas vivienda,1859384,73.05
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C4,3,Alta disposición de medidas vivienda,491625,19.31
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C5,1,Baja disposición de medidas vivienda,694751,24.83
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C5,2,Media disposición de medidas vivienda,157795,5.64
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C5,3,Alta disposición de medidas vivienda,1945718,69.53
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C1,1,Baja adopción de medidas comunitarias,929131,39.85
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C1,2,Media adopción de medidas comunitarias,824290,35.36
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C1,3,Alta adopción de medidas comunitarias,577981,24.79
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C2,1,Baja adopción de medidas comunitarias,217881,11.93
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C2,2,Media adopción de medidas comunitarias,544893,29.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C2,3,Alta adopción de medidas comunitarias,1063003,58.22
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C3,1,Baja adopción de medidas comunitarias,899780,36.32
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C3,2,Media adopción de medidas comunitarias,839611,33.89
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C3,3,Alta adopción de medidas comunitarias,738036,29.79
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C4,1,Baja adopción de medidas comunitarias,677060,26.6
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C4,2,Media adopción de medidas comunitarias,859510,33.77
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C4,3,Alta adopción de medidas comunitarias,1008945,39.64
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C5,1,Baja adopción de medidas comunitarias,463296,16.56
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C5,2,Media adopción de medidas comunitarias,876724,31.33
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C5,3,Alta adopción de medidas comunitarias,1458244,52.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C1,1,Hombre,1421400,60.97
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C1,2,Mujer,910002,39.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C2,1,Hombre,1049483,57.48
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C2,2,Mujer,776294,42.52
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C3,1,Hombre,1216100,49.09
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C3,2,Mujer,1261327,50.91
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C4,1,Hombre,1043077,40.98
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C4,2,Mujer,1502438,59.02
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C5,1,Hombre,1150391,41.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C5,2,Mujer,1647873,58.89
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,1,Educación básica o menos,361741,15.52
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,2,Educación secundaria,1031869,44.26
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,3,Educación terciaria,926790,39.75
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,96,Sin dato,6637,0.28
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,99,Nivel ignorado,4363,0.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,1,Educación básica o menos,141754,7.76
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,2,Educación secundaria,644571,35.3
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,3,Educación terciaria,1034456,56.66
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,96,Sin dato,4003,0.22
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,99,Nivel ignorado,993,0.05
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,1,Educación básica o menos,291453,11.76
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,2,Educación secundaria,1110153,44.81
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,3,Educación terciaria,1064421,42.96
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,96,Sin dato,6577,0.27
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,99,Nivel ignorado,4822,0.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,1,Educación básica o menos,314501,12.36
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,2,Educación secundaria,1104682,43.4
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,3,Educación terciaria,1112990,43.72
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,96,Sin dato,8204,0.32
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,99,Nivel ignorado,5139,0.2
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,1,Educación básica o menos,249690,8.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,2,Educación secundaria,1085632,38.8
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,3,Educación terciaria,1457030,52.07
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,96,Sin dato,3304,0.12
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,99,Nivel ignorado,2608,0.09
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C1,1,0 a 29 años,672110,28.83
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C1,2,30 a 59 años,1082754,46.44
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C1,3,60 años o más,576538,24.73
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C2,1,0 a 29 años,536507,29.39
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C2,2,30 a 59 años,948025,51.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C2,3,60 años o más,341244,18.69
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C3,1,0 a 29 años,743471,30.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C3,2,30 a 59 años,1221660,49.31
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C3,3,60 años o más,512297,20.68
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C4,1,0 a 29 años,569993,22.39
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C4,2,30 a 59 años,1384802,54.4
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C4,3,60 años o más,590720,23.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C5,1,0 a 29 años,460742,16.47
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C5,2,30 a 59 años,1740965,62.22
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C5,3,60 años o más,596558,21.32
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C1,1,Bajo,1097073,47.06
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C1,2,Medio,860774,36.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C1,3,Alto,373554,16.02
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C2,1,Bajo,528191,28.93
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C2,2,Medio,728483,39.9
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C2,3,Alto,569102,31.17
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C3,1,Bajo,1117253,45.1
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C3,2,Medio,958085,38.67
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C3,3,Alto,402089,16.23
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C4,1,Bajo,1143745,44.93
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C4,2,Medio,1038375,40.79
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C4,3,Alto,363395,14.28
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C5,1,Bajo,975404,34.86
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C5,2,Medio,1220358,43.61
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C5,3,Alto,602503,21.53
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,1,Zona norte,339509,14.56
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,2,Zona centro,867578,37.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,3,Zona sur,304463,13.06
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,4,Zona metropolitana,819851,35.17
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,1,Zona norte,174761,9.57
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,2,Zona centro,535836,29.35
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,3,Zona sur,94194,5.16
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,4,Zona metropolitana,1020986,55.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,1,Zona norte,411599,16.61
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,2,Zona centro,741314,29.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,3,Zona sur,171560,6.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,4,Zona metropolitana,1152954,46.54
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,1,Zona norte,325589,12.79
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,2,Zona centro,748204,29.39
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,3,Zona sur,114497,4.5
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,4,Zona metropolitana,1357224,53.32
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,1,Zona norte,307112,10.98
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,2,Zona centro,770906,27.55
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,3,Zona sur,86932,3.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,4,Zona metropolitana,1633314,58.37
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C1,0,No,1965916,84.32
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C1,1,Sí,365485,15.68
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C2,0,No,1387564,76
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C2,1,Sí,438213,24
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C3,0,No,1793017,72.37
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C3,1,Sí,684410,27.63
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C4,0,No,1738199,68.28
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C4,1,Sí,807316,31.72
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C5,0,No,1825004,65.22
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C5,1,Sí,973260,34.78
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C1,0,No,2264243,97.12
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C1,1,Sí,67159,2.88
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C2,0,No,1762176,96.52
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C2,1,Sí,63601,3.48
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C3,0,No,2339862,94.45
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C3,1,Sí,137565,5.55
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C4,0,No,2379196,93.47
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C4,1,Sí,166319,6.53
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C5,0,No,2590707,92.58
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C5,1,Sí,207557,7.42
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C1,1,Baja percepción de desordenes,949219,40.71
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C1,2,Media percepción de desordenes,826471,35.45
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C1,3,Alta percepción de desordenes,555711,23.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C2,1,Baja percepción de desordenes,570166,31.23
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C2,2,Media percepción de desordenes,656490,35.96
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C2,3,Alta percepción de desordenes,599121,32.81
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C3,1,Baja percepción de desordenes,574402,23.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C3,2,Media percepción de desordenes,849545,34.29
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C3,3,Alta percepción de desordenes,1053480,42.52
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C4,1,Baja percepción de desordenes,384333,15.1
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C4,2,Media percepción de desordenes,796234,31.28
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C4,3,Alta percepción de desordenes,1364948,53.62
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C5,1,Baja percepción de desordenes,416465,14.88
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C5,2,Media percepción de desordenes,798207,28.53
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C5,3,Alta percepción de desordenes,1583591,56.59
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C1,1,Baja percepción de incivilidades,1043619,44.76
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C1,2,Media percepción de incivilidades,824751,35.38
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C1,3,Alta percepción de incivilidades,463031,19.86
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C2,1,Baja percepción de incivilidades,574334,31.46
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C2,2,Media percepción de incivilidades,704125,38.57
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C2,3,Alta percepción de incivilidades,547318,29.98
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C3,1,Baja percepción de incivilidades,592644,23.92
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C3,2,Media percepción de incivilidades,897818,36.24
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C3,3,Alta percepción de incivilidades,986965,39.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C4,1,Baja percepción de incivilidades,320449,12.59
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C4,2,Media percepción de incivilidades,807979,31.74
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C4,3,Alta percepción de incivilidades,1417087,55.67
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C5,1,Baja percepción de incivilidades,293092,10.47
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C5,2,Media percepción de incivilidades,825275,29.49
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C5,3,Alta percepción de incivilidades,1679898,60.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,0,No se informa por experiencia personal,1770319,75.93
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,1,Se informa por experiencia personal,555750,23.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,88,No sabe,4993,0.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,99,No responde,339,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C2,0,No se informa por experiencia personal,1439810,78.86
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C2,1,Se informa por experiencia personal,383952,21.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C2,88,No sabe,2014,0.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C3,0,No se informa por experiencia personal,1907487,76.99
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C3,1,Se informa por experiencia personal,568264,22.94
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C3,88,No sabe,1597,0.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C1,1,Sin inseguridad en espacio público,1457071,58.19
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C1,2,Inseguridad en hasta la mitad de los lugares,914419,36.52
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C1,3,Inseguridad en más de la mitad de los lugares,132460,5.29
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C2,1,Sin inseguridad en espacio público,146781,21.9
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C2,2,Inseguridad en hasta la mitad de los lugares,299640,44.71
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C2,3,Inseguridad en más de la mitad de los lugares,223734,33.39
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C3,1,Sin inseguridad en espacio público,220319,5.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C3,2,Inseguridad en hasta la mitad de los lugares,3153352,72.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C3,3,Inseguridad en más de la mitad de los lugares,958271,22.12
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C4,1,Sin inseguridad en espacio público,76312,3.98
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C4,2,Inseguridad en hasta la mitad de los lugares,615481,32.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C4,3,Inseguridad en más de la mitad de los lugares,1226039,63.93
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C5,1,Sin inseguridad en espacio público,46572,1.82
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C5,2,Inseguridad en hasta la mitad de los lugares,373748,14.63
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_ep_pct_cat,C5,3,Inseguridad en más de la mitad de los lugares,2134186,83.55
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C1,1,Sin inseguridad en el barrio,2186949,87.34
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C1,2,"Inseguridad en el barrio, de día o de noche",293735,11.73
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C1,3,"Inseguridad en el barrio, de día y de noche",23265,0.93
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C2,1,Sin inseguridad en el barrio,249820,37.28
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C2,2,"Inseguridad en el barrio, de día o de noche",268126,40.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C2,3,"Inseguridad en el barrio, de día y de noche",152209,22.71
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C3,1,Sin inseguridad en el barrio,1042050,24.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C3,2,"Inseguridad en el barrio, de día o de noche",2777993,64.13
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C3,3,"Inseguridad en el barrio, de día y de noche",511898,11.82
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C4,1,Sin inseguridad en el barrio,144323,7.53
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C4,2,"Inseguridad en el barrio, de día o de noche",1381940,72.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C4,3,"Inseguridad en el barrio, de día y de noche",391570,20.42
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C5,1,Sin inseguridad en el barrio,97530,3.82
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C5,2,"Inseguridad en el barrio, de día o de noche",397248,15.55
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_barrio_pct_cat,C5,3,"Inseguridad en el barrio, de día y de noche",2059727,80.63
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C1,1,Sin inseguridad en la casa,2475735,98.87
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C1,2,"Inseguridad en la casa, de día o de noche",23081,0.92
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C1,3,"Inseguridad en la casa, de día y de noche",5133,0.2
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C2,1,Sin inseguridad en la casa,538401,80.34
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C2,2,"Inseguridad en la casa, de día o de noche",79442,11.85
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C2,3,"Inseguridad en la casa, de día y de noche",52312,7.81
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C3,1,Sin inseguridad en la casa,4090442,94.43
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C3,2,"Inseguridad en la casa, de día o de noche",171264,3.95
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C3,3,"Inseguridad en la casa, de día y de noche",70236,1.62
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C4,1,Sin inseguridad en la casa,715709,37.32
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C4,2,"Inseguridad en la casa, de día o de noche",1190105,62.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C4,3,"Inseguridad en la casa, de día y de noche",12018,0.63
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C5,1,Sin inseguridad en la casa,1459720,57.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C5,2,"Inseguridad en la casa, de día o de noche",140238,5.49
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,emper_casa_pct_cat,C5,3,"Inseguridad en la casa, de día y de noche",954548,37.37
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C1,1,No cree que será victima de delito,2203991,88.02
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C1,2,Cree que será victima de delito no violento,133181,5.32
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C1,3,Cree que será victima de delito violento,166029,6.63
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C1,5,Cree que será victima de otro tipo de delito,748,0.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C2,1,No cree que será victima de delito,347194,51.81
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C2,2,Cree que será victima de delito no violento,127915,19.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C2,3,Cree que será victima de delito violento,195047,29.1
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C3,1,No cree que será victima de delito,1857321,42.88
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C3,2,Cree que será victima de delito no violento,686236,15.84
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C3,3,Cree que será victima de delito violento,1788384,41.28
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C4,1,No cree que será victima de delito,498917,26.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C4,2,Cree que será victima de delito no violento,1051292,54.82
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C4,3,Cree que será victima de delito violento,352133,18.36
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C4,5,Cree que será victima de otro tipo de delito,15491,0.81
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C5,1,No cree que será victima de delito,460001,18.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C5,2,Cree que será victima de delito no violento,860314,33.68
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,perper_delito,C5,3,Cree que será victima de delito violento,1234191,48.31
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C1,1,No modificó prácticas,1186602,47.39
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C1,2,Modificó hasta la mitad de las prácticas,1194065,47.69
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C1,3,Modificó más de la mitad de las prácticas,123283,4.92
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C2,1,No modificó prácticas,136011,20.3
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C2,2,Modificó hasta la mitad de las prácticas,344068,51.34
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C2,3,Modificó más de la mitad de las prácticas,190076,28.36
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C3,1,No modificó prácticas,146213,3.38
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C3,2,Modificó hasta la mitad de las prácticas,3188657,73.61
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C3,3,Modificó más de la mitad de las prácticas,997072,23.02
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C4,1,No modificó prácticas,52457,2.74
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C4,2,Modificó hasta la mitad de las prácticas,586093,30.56
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C4,3,Modificó más de la mitad de las prácticas,1279282,66.7
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C5,1,No modificó prácticas,65991,2.58
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C5,2,Modificó hasta la mitad de las prácticas,501204,19.62
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_pct_cat,C5,3,Modificó más de la mitad de las prácticas,1987310,77.8
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C1,0,No gasta en medidas de seguridad,1380968,55.15
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C1,1,Gasta en medidas de seguridad,1122982,44.85
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C2,0,No gasta en medidas de seguridad,555959,82.96
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C2,1,Gasta en medidas de seguridad,114197,17.04
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C3,0,No gasta en medidas de seguridad,1698685,39.21
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C3,1,Gasta en medidas de seguridad,2633256,60.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C4,0,No gasta en medidas de seguridad,962913,50.21
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C4,1,Gasta en medidas de seguridad,954919,49.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C5,0,No gasta en medidas de seguridad,1139730,44.62
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comper_gasto,C5,1,Gasta en medidas de seguridad,1414776,55.38
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C1,1,Sin medidas en la vivienda,141967,5.67
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C1,2,Una o dos medidas en la vivienda,1524073,60.87
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C1,3,Tres o más medidas en la vivienda,837910,33.46
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C2,1,Sin medidas en la vivienda,670155,100
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C3,1,Sin medidas en la vivienda,71577,1.65
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C3,2,Una o dos medidas en la vivienda,1851898,42.75
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C3,3,Tres o más medidas en la vivienda,2408466,55.6
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C4,1,Sin medidas en la vivienda,34104,1.78
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C4,2,Una o dos medidas en la vivienda,1148759,59.9
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C4,3,Tres o más medidas en la vivienda,734969,38.32
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C5,1,Sin medidas en la vivienda,63694,2.49
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C5,2,Una o dos medidas en la vivienda,1479310,57.91
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_per_pct_cat,C5,3,Tres o más medidas en la vivienda,1011502,39.6
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C1,1,Sin medidas en el barrio,739963,29.55
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C1,2,Una medida en el barrio,779061,31.11
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C1,3,Dos o más medidas en el barrio,984925,39.33
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C2,1,Sin medidas en el barrio,351974,52.52
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C2,3,Dos o más medidas en el barrio,318181,47.48
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C3,1,Sin medidas en el barrio,867646,20.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C3,2,Una medida en el barrio,1049676,24.23
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C3,3,Dos o más medidas en el barrio,2414618,55.74
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C4,1,Sin medidas en el barrio,465684,24.28
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C4,2,Una medida en el barrio,727364,37.93
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C4,3,Dos o más medidas en el barrio,724785,37.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C5,1,Sin medidas en el barrio,600847,23.52
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C5,2,Una medida en el barrio,770260,30.15
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,fuente,comgen_com_pct_cat,C5,3,Dos o más medidas en el barrio,1183399,46.33
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C1,1,Hombre,1572804,62.81
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C1,2,Mujer,931146,37.19
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C2,1,Hombre,326428,48.71
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C2,2,Mujer,343728,51.29
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C3,1,Hombre,2231126,51.5
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C3,2,Mujer,2100815,48.5
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C4,1,Hombre,774871,40.4
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C4,2,Mujer,1142962,59.6
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C5,1,Hombre,975224,38.18
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_sexo,C5,2,Mujer,1579281,61.82
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,1,Educación básica o menos,328389,13.11
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,2,Educación secundaria,1046717,41.8
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,3,Educación terciaria,1118470,44.67
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,96,Sin dato,6684,0.27
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C1,99,Nivel ignorado,3690,0.15
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,1,Educación básica o menos,107284,16.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,2,Educación secundaria,293966,43.87
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,3,Educación terciaria,265195,39.57
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,96,Sin dato,1878,0.28
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C2,99,Nivel ignorado,1832,0.27
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,1,Educación básica o menos,375549,8.67
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,2,Educación secundaria,1708369,39.44
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,3,Educación terciaria,2232762,51.54
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,96,Sin dato,9661,0.22
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C3,99,Nivel ignorado,5600,0.13
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,1,Educación básica o menos,242122,12.62
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,2,Educación secundaria,814250,42.46
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,3,Educación terciaria,854139,44.54
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,96,Sin dato,4609,0.24
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C4,99,Nivel ignorado,2712,0.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,1,Educación básica o menos,305795,11.97
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,2,Educación secundaria,1113605,43.59
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,3,Educación terciaria,1125121,44.04
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,96,Sin dato,5893,0.23
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nivel_rec,C5,99,Nivel ignorado,4091,0.16
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C1,1,0 a 29 años,684107,27.32
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C1,2,30 a 59 años,1203194,48.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C1,3,60 años o más,616649,24.63
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C2,1,0 a 29 años,171587,25.6
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C2,2,30 a 59 años,350755,52.34
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C2,3,60 años o más,147813,22.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C3,1,0 a 29 años,1315309,30.36
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C3,2,30 a 59 años,2247623,51.88
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C3,3,60 años o más,769009,17.75
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C4,1,0 a 29 años,385897,20.12
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C4,2,30 a 59 años,1067480,55.66
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C4,3,60 años o más,464455,24.22
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C5,1,0 a 29 años,425921,16.67
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C5,2,30 a 59 años,1509153,59.08
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_edad_rec,C5,3,60 años o más,619431,24.25
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C1,1,Bajo,1022724,40.84
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C1,2,Medio,946576,37.8
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C1,3,Alto,534649,21.35
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C2,1,Bajo,323836,48.32
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C2,2,Medio,241856,36.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C2,3,Alto,104463,15.59
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C3,1,Bajo,1547811,35.73
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C3,2,Medio,1791442,41.35
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C3,3,Alto,992688,22.92
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C4,1,Bajo,827930,43.17
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C4,2,Medio,772115,40.26
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C4,3,Alto,317788,16.57
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C5,1,Bajo,1139363,44.6
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C5,2,Medio,1054088,41.26
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,rph_nse,C5,3,Alto,361055,14.13
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,1,Zona norte,330607,13.2
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,2,Zona centro,890392,35.56
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,3,Zona sur,277256,11.07
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C1,4,Zona metropolitana,1005695,40.16
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,1,Zona norte,132636,19.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,2,Zona centro,224278,33.47
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,3,Zona sur,79203,11.82
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C2,4,Zona metropolitana,234038,34.92
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,1,Zona norte,508786,11.74
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,2,Zona centro,1259056,29.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,3,Zona sur,218807,5.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C3,4,Zona metropolitana,2345292,54.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,1,Zona norte,277225,14.46
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,2,Zona centro,667504,34.81
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,3,Zona sur,113209,5.9
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C4,4,Zona metropolitana,859895,44.84
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,1,Zona norte,309317,12.11
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,2,Zona centro,622609,24.37
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,3,Zona sur,83171,3.26
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,enc_region_rec,C5,4,Zona metropolitana,1539409,60.26
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C1,0,No,2113005,84.39
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C1,1,Sí,390945,15.61
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C2,0,No,506278,75.55
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C2,1,Sí,163877,24.45
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C3,0,No,3074350,70.97
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C3,1,Sí,1257591,29.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C4,0,No,1309945,68.3
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C4,1,Sí,607887,31.7
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C5,0,No,1706122,66.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dc,C5,1,Sí,848383,33.21
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C1,0,No,2439497,97.43
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C1,1,Sí,64453,2.57
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C2,0,No,629374,93.91
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C2,1,Sí,40782,6.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C3,0,No,4098166,94.6
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C3,1,Sí,233775,5.4
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C4,0,No,1800965,93.91
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C4,1,Sí,116867,6.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C5,0,No,2368182,92.71
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,vp_dv,C5,1,Sí,186324,7.29
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C1,1,Baja percepción de desordenes,1186500,47.39
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C1,2,Media percepción de desordenes,774822,30.94
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C1,3,Alta percepción de desordenes,540688,21.59
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C1,NA,NA,1939,0.08
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C2,1,Baja percepción de desordenes,234120,34.94
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C2,2,Media percepción de desordenes,198783,29.66
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C2,3,Alta percepción de desordenes,236530,35.29
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C2,NA,NA,723,0.11
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C3,1,Baja percepción de desordenes,1138176,26.27
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C3,2,Media percepción de desordenes,1441225,33.27
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C3,3,Alta percepción de desordenes,1751066,40.42
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C3,NA,NA,1474,0.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C4,1,Baja percepción de desordenes,429107,22.37
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C4,2,Media percepción de desordenes,573212,29.89
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C4,3,Alta percepción de desordenes,915216,47.72
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C4,NA,NA,298,0.02
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C5,1,Baja percepción de desordenes,371949,14.56
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C5,2,Media percepción de desordenes,623803,24.42
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C5,3,Alta percepción de desordenes,1558075,60.99
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,desordenes_ind_rec,C5,NA,NA,679,0.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C1,1,Baja percepción de incivilidades,1164220,46.5
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C1,2,Media percepción de incivilidades,926342,37
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C1,3,Alta percepción de incivilidades,410706,16.4
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C1,NA,NA,2682,0.11
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C2,1,Baja percepción de incivilidades,211816,31.61
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C2,2,Media percepción de incivilidades,225454,33.64
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C2,3,Alta percepción de incivilidades,232195,34.65
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C2,NA,NA,690,0.1
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C3,1,Baja percepción de incivilidades,944162,21.8
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C3,2,Media percepción de incivilidades,1760575,40.64
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C3,3,Alta percepción de incivilidades,1623359,37.47
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C3,NA,NA,3845,0.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C4,1,Baja percepción de incivilidades,302569,15.78
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C4,2,Media percepción de incivilidades,696666,36.33
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C4,3,Alta percepción de incivilidades,917202,47.82
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C4,NA,NA,1395,0.07
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C5,1,Baja percepción de incivilidades,224456,8.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C5,2,Media percepción de incivilidades,698051,27.33
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C5,3,Alta percepción de incivilidades,1625894,63.65
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,incivilidades_ind_rec,C5,NA,NA,6104,0.24
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,0,No se informa por experiencia personal,1919750,76.67
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,1,Se informa por experiencia personal,580306,23.18
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,88,No sabe,3570,0.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C1,99,No responde,324,0.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C2,0,No se informa por experiencia personal,513700,76.65
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C2,1,Se informa por experiencia personal,155672,23.23
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C2,88,No sabe,783,0.12
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C3,0,No se informa por experiencia personal,3394170,78.35
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C3,1,Se informa por experiencia personal,934292,21.57
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C3,88,No sabe,3400,0.08
 D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C3,99,No responde,79,0
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C4,0,No se informa por experiencia personal,1951480,76.66
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C4,1,Se informa por experiencia personal,593378,23.31
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C4,88,No sabe,657,0.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C5,0,No se informa por experiencia personal,2125831,75.97
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C5,1,Se informa por experiencia personal,672210,24.02
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C5,88,No sabe,222,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,0,No se informa por otras personas,1001829,42.97
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,1,Se informa por otras personas,1324240,56.8
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,88,No sabe,4993,0.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,99,No responde,339,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C2,0,No se informa por otras personas,827258,45.31
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C2,1,Se informa por otras personas,996504,54.58
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C2,88,No sabe,2014,0.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C3,0,No se informa por otras personas,1036865,41.85
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C3,1,Se informa por otras personas,1438886,58.08
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C3,88,No sabe,1597,0.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C4,0,No se informa por experiencia personal,1470345,76.67
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C4,1,Se informa por experiencia personal,446494,23.28
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C4,88,No sabe,978,0.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C4,99,No responde,15,0
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C5,0,No se informa por experiencia personal,1896963,74.26
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C5,1,Se informa por experiencia personal,656790,25.71
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_exp_personal,C5,88,No sabe,753,0.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,0,No se informa por otras personas,1106125,44.18
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,1,Se informa por otras personas,1393931,55.67
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,88,No sabe,3570,0.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C1,99,No responde,324,0.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C2,0,No se informa por otras personas,297801,44.44
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C2,1,Se informa por otras personas,371571,55.45
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C2,88,No sabe,783,0.12
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C3,0,No se informa por otras personas,1810510,41.79
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C3,1,Se informa por otras personas,2517953,58.13
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C3,88,No sabe,3400,0.08
 D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C3,99,No responde,79,0
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C4,0,No se informa por otras personas,1017057,39.95
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C4,1,Se informa por otras personas,1527801,60.02
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C4,88,No sabe,657,0.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C5,0,No se informa por otras personas,1198762,42.84
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C5,1,Se informa por otras personas,1599280,57.15
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C5,88,No sabe,222,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,0,No se informa por RRSS,983626,42.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,1,Se informa por RRSS,1342444,57.58
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,88,No sabe,4993,0.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,99,No responde,339,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C2,0,No se informa por RRSS,752286,41.2
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C2,1,Se informa por RRSS,1071477,58.69
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C2,88,No sabe,2014,0.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C3,0,No se informa por RRSS,970830,39.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C3,1,Se informa por RRSS,1504921,60.75
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C3,88,No sabe,1597,0.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C4,0,No se informa por otras personas,760636,39.66
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C4,1,Se informa por otras personas,1156203,60.29
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C4,88,No sabe,978,0.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C4,99,No responde,15,0
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C5,0,No se informa por otras personas,1106700,43.32
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C5,1,Se informa por otras personas,1447053,56.65
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_otras_personas,C5,88,No sabe,753,0.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,0,No se informa por RRSS,1073916,42.89
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,1,Se informa por RRSS,1426140,56.96
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,88,No sabe,3570,0.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C1,99,No responde,324,0.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C2,0,No se informa por RRSS,269921,40.28
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C2,1,Se informa por RRSS,399452,59.61
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C2,88,No sabe,783,0.12
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C3,0,No se informa por RRSS,1696166,39.15
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C3,1,Se informa por RRSS,2632296,60.76
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C3,88,No sabe,3400,0.08
 D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C3,99,No responde,79,0
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C4,0,No se informa por RRSS,1083956,42.58
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C4,1,Se informa por RRSS,1460903,57.39
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C4,88,No sabe,657,0.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C5,0,No se informa por RRSS,1202549,42.97
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C5,1,Se informa por RRSS,1595493,57.02
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C5,88,No sabe,222,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,0,No se informa por prensa,977104,41.91
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,1,Se informa por prensa,1348965,57.86
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,88,No sabe,4993,0.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,99,No responde,339,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C2,0,No se informa por prensa,743817,40.74
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C2,1,Se informa por prensa,1079946,59.15
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C2,88,No sabe,2014,0.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C3,0,No se informa por prensa,984622,39.74
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C3,1,Se informa por prensa,1491129,60.19
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C3,88,No sabe,1597,0.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C4,0,No se informa por RRSS,806688,42.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C4,1,Se informa por RRSS,1110151,57.89
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C4,88,No sabe,978,0.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C4,99,No responde,15,0
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C5,0,No se informa por RRSS,1146555,44.88
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C5,1,Se informa por RRSS,1407198,55.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_rrss,C5,88,No sabe,753,0.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,0,No se informa por prensa,1042147,41.62
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,1,Se informa por prensa,1457909,58.22
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,88,No sabe,3570,0.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C1,99,No responde,324,0.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C2,0,No se informa por prensa,268614,40.08
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C2,1,Se informa por prensa,400758,59.8
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C2,88,No sabe,783,0.12
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C3,0,No se informa por prensa,1729012,39.91
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C3,1,Se informa por prensa,2599450,60.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C3,88,No sabe,3400,0.08
 D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C3,99,No responde,79,0
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C4,0,No se informa por prensa,964159,37.88
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C4,1,Se informa por prensa,1580699,62.1
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C4,88,No sabe,657,0.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C5,0,No se informa por prensa,1029653,36.8
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C5,1,Se informa por prensa,1768389,63.2
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C5,88,No sabe,222,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,0,No se informa por noticias,1252547,53.73
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,1,Se informa por noticias,1073522,46.05
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,88,No sabe,4993,0.21
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,99,No responde,339,0.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C2,0,No se informa por noticias,1006932,55.15
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C2,1,Se informa por noticias,816830,44.74
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C2,88,No sabe,2014,0.11
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C3,0,No se informa por noticias,1264191,51.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C3,1,Se informa por noticias,1211560,48.9
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C3,88,No sabe,1597,0.06
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C4,0,No se informa por prensa,700215,36.51
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C4,1,Se informa por prensa,1216625,63.44
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C4,88,No sabe,978,0.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C4,99,No responde,15,0
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C5,0,No se informa por prensa,959368,37.56
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C5,1,Se informa por prensa,1594385,62.41
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_prensa,C5,88,No sabe,753,0.03
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,0,No se informa por noticias,1369885,54.71
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,1,Se informa por noticias,1130171,45.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,88,No sabe,3570,0.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C1,99,No responde,324,0.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C2,0,No se informa por noticias,336013,50.14
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C2,1,Se informa por noticias,333359,49.74
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C2,88,No sabe,783,0.12
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C3,0,No se informa por noticias,2255476,52.07
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C3,1,Se informa por noticias,2072987,47.85
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C3,88,No sabe,3400,0.08
 D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C3,99,No responde,79,0
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C4,0,No se informa por noticias,1222058,48.01
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C4,1,Se informa por noticias,1322800,51.97
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C4,88,No sabe,657,0.03
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C5,0,No se informa por noticias,1347818,48.17
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C5,1,Se informa por noticias,1450223,51.83
-D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C5,88,No sabe,222,0.01
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C4,0,No se informa por noticias,909108,47.4
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C4,1,Se informa por noticias,1007732,52.55
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C4,88,No sabe,978,0.05
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C4,99,No responde,15,0
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C5,0,No se informa por noticias,1223065,47.88
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C5,1,Se informa por noticias,1330688,52.09
+D2 (categorización/clusters) y D5 (índices secundarios) abiertas (PLAN.md): el perfil de cada cluster puede cambiar en ambas partes.,secundaria,info_tv,C5,88,No sabe,753,0.03

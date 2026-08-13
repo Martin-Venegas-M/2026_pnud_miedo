@@ -343,164 +343,115 @@ El MCA -la técnica que agrupa a las personas- trabaja con **variables
 categóricas**, no con porcentajes continuos. Así que cada índice hay que
 convertirlo en categorías.
 
-Hoy se hace con **terciles**: se ordena a toda la muestra por su índice y se corta
-en tres grupos del mismo tamaño (baja, media, alta).
+::: {.callout-note}
+## Decisión tomada · Cómo se cortan los índices
 
-::: {.callout-warning}
-## Decisión pendiente · Cómo se cortan los índices
+El criterio es **cortar por lo que la variable significa, no por la forma de su
+distribución**, con una regla que atraviesa las seis: **el cero es una categoría
+propia**.
 
-El método actual tiene un problema que debemos discutir.
+Eso último continúa la primera decisión de esta página. Si quien respondió
+"ninguna medida" se mezclara en una categoría "baja" junto a quien tiene una o
+dos, el rescate quedaría a medias: los recuperaríamos para el modelo pero
+perderíamos su distinción dentro de él. Y del lado del miedo vale igual: quien no
+se siente inseguro en **ningún** lugar es cualitativamente distinto de quien se
+siente inseguro en pocos.
 
-Los terciles fuerzan tres grupos de igual tamaño. Pero los índices se construyen
-como "X de N situaciones", así que muchas personas comparten exactamente el mismo
-valor, y esos valores no se reparten de forma pareja: hay uno o dos donde se
-concentra buena parte de la muestra.
-
-Cuando un valor reúne más gente de la que cabe en un tercil, el corte **lo parte
-de forma arbitraria**: personas con respuestas idénticas terminan en categorías
-distintas. No es un problema de precisión en el borde, es el corte pasando por
-el medio de un grupo de respuestas iguales.
-
-**Así se ve en el microdato.** Un caso por cada combinación de valor y categoría
-que existe en el índice de medidas de la vivienda:
+Como los seis índices no están construidos igual, hay tres formas de cortar:
 
 ```{r}
-#| label: d2-microdato
+#| label: cortes
+cfg_cortes <- leer("cfg")$CORTES
+
+etiquetas_metodo <- c(
+    valor = "El valor del índice",
+    conteo = "Número de situaciones",
+    porcentaje = "Porcentaje de situaciones"
+)
+etiquetas_indice <- c(
+    emper_ep_pct = "Inseguridad en el espacio público",
+    emper_barrio_pct = "Inseguridad en el barrio",
+    emper_casa_pct = "Inseguridad en la casa",
+    comper_pct = "Modificación de prácticas",
+    comgen_per_pct = "Medidas de la vivienda",
+    comgen_com_pct = "Medidas del barrio"
+)
+
+purrr::imap(cfg_cortes, function(s, v) {
+    tibble::tibble(
+        Índice = etiquetas_indice[[v]],
+        `Se corta por` = etiquetas_metodo[[s$metodo]],
+        `Puntos de corte` = paste(s$cortes, collapse = ", ")
+    )
+}) |>
+    purrr::list_rbind() |>
+    arrange(`Se corta por`) |>
+    tabla(alinear = c("l", "l", "l"))
+```
+
+**Por el valor**, cuando el índice se construye con dos ítems y solo puede valer
+0, 50 o 100. Ya viene con tres categorías, exactamente las que el modelo
+necesita, así que no hay nada que cortar.
+
+**Por número de situaciones**, cuando ningún ítem de la batería admite el código
+"no aplica". El denominador es constante, así que el porcentaje equivale a un
+conteo de medidas, que es bastante más interpretable. Vivienda y barrio llevan
+umbrales distintos a propósito: entre quienes tienen una sola medida comunitaria,
+el 66% es un grupo de WhatsApp, mientras que en la vivienda la medida única más
+común son rejas. El umbral que separa "nada" de "algo organizado" no está en el
+mismo lugar.
+
+**Por porcentaje**, cuando todos los ítems admiten "no aplica". Ahí el
+denominador cambia de persona a persona, así que un conteo no sería comparable
+entre dos personas a las que les aplica distinto número de situaciones.
+:::
+
+## Cómo queda cada índice
+
+```{r}
+#| label: dist-cat
 datos_cat <- leer("datos_categorizado")
 
-pares <- tibble::tibble(
-    rph_id = as.character(datos_cat$rph_id),
-    pct = round(haven::zap_labels(datos_cat$comgen_per_pct), 1),
-    tercil = haven::zap_labels(datos_cat$comgen_per_pct_rec_tercil)
-) |>
-    filter(!is.na(pct), !is.na(tercil)) |>
-    summarise(caso = first(rph_id), .by = c(pct, tercil)) |>
-    arrange(pct, tercil) |>
-    #* Un valor "se parte" si aparece con más de una categoría de destino.
-    mutate(partido = n() > 1, .by = pct)
-
-pares |>
-    transmute(
-        rph_id = caso,
-        comgen_per_pct = pct,
-        comgen_per_pct_rec_tercil = tercil,
-        ` ` = ifelse(partido, "← mismo valor, distinta categoría", "")
-    ) |>
-    tabla(alinear = c("l", "r", "r", "l"))
+purrr::map(names(cfg_cortes), function(v) {
+    x <- haven::zap_labels(datos_cat[[paste0(v, "_cat")]])
+    x <- x[!is.na(x)]
+    tb <- round(100 * prop.table(table(x)), 1)
+    tibble::tibble(
+        Índice = etiquetas_indice[[v]],
+        `Categoría 1` = tb[["1"]],
+        `Categoría 2` = tb[["2"]],
+        `Categoría 3` = tb[["3"]]
+    )
+}) |>
+    purrr::list_rbind() |>
+    tabla(alinear = c("l", "r", "r", "r"))
 ```
 
-```{r}
-#| label: d2-microdato-cifras
-#* Derivado de la tabla, no de posiciones de fila: si cambian los cortes, el
-#* texto sigue nombrando los valores correctos.
-valores_partidos <- unique(pares$pct[pares$partido])
-```
+Los grupos no quedan del mismo tamaño, y eso es correcto: el corte sigue la
+respuesta y no la distribución. Las etiquetas de cada categoría están en
+[Metadata](metadata.html#variables-categorizadas).
 
-Las filas marcadas son el problema: hay personas con
-**`r n_fmt(valores_partidos[1], 1)`%** en dos categorías distintas, y lo mismo
-pasa con **`r n_fmt(valores_partidos[2], 1)`%**.
+::: {.callout-tip}
+## El método anterior, y por qué se cambió
 
-Cuál le toca a cada persona no depende de lo que respondió, sino del lugar que
-ocupa en la base.
+Hasta agosto de 2026 esto se hacía con **terciles**: se ordenaba a toda la
+muestra por su índice y se cortaba en tres grupos del mismo tamaño.
 
-**A cuánta gente le pasa:**
+El problema es que estos índices tienen pocos valores distintos y muchos
+empates. Cuando un valor reúne más gente de la que cabe en un tercil, el corte lo
+parte, y personas con respuestas idénticas terminan en categorías distintas. En
+el índice de inseguridad en la casa, tres cuartos de la muestra responden 0%, así
+que ese único valor ocupaba más de dos terciles: 5.088 personas que declararon
+sentirse seguras quedaban etiquetadas "Alta inseguridad en la casa".
 
-```{r}
-#| label: d2
-t_d2 <- transiciones |>
-    filter(etiqueta == "categorizado", variable_antes == "comgen_per_pct") |>
-    filter(!is.na(origen)) |>
-    arrange(origen, destino) |>
-    mutate(partido = n() > 1, .by = origen) |>
-    head(6)
+Además los terciles impiden comparar entre años: por construcción siempre dan
+tres grupos de un tercio, así que un cambio real en la población no se vería.
 
-t_d2 |>
-    transmute(
-        `Valor del índice` = paste0(n_fmt(origen, 1), "%"),
-        `Cae en la categoría` = paste0("Categoría ", destino),
-        Personas = n,
-        ` ` = ifelse(partido, "← empate partido", "")
-    ) |>
-    tabla()
-```
+El diagnóstico completo, con el microdato y las cifras, está en la
+[versión archivada de esta página](archivo/2025-08-terciles/pipeline.html#categorización).
 
-```{r}
-#| label: d2-cifras
-partidos <- t_d2 |> filter(partido) |> slice_head(n = 2)
-n_grupo_a <- partidos$n[1]
-n_grupo_b <- partidos$n[2]
-valor_partido <- n_fmt(partidos$origen[1], 1)
-```
-
-En **`r valor_partido`%** -tener exactamente una medida de seguridad de nueve
-posibles- hay `r n_fmt(n_grupo_a)` personas en una categoría y
-`r n_fmt(n_grupo_b)` en la otra, habiendo respondido lo mismo.
-
-Esto afecta la validez y también la reproducibilidad: reordenar la base cambiaría
-las categorías, y con ellas los grupos.
-
-### El caso más extremo
-
-Dos de los seis índices se construyen con solo **dos ítems** (la persona responde
-por el día y por la noche), así que solo pueden valer 0, 50 o 100. Vienen con
-tres categorías naturales, exactamente las tres que necesita el modelo.
-
-El corte por terciles no las respeta.
-
-```{r}
-#| label: d2-casa
-casa <- transiciones |>
-    filter(etiqueta == "categorizado", variable_antes == "emper_casa_pct") |>
-    filter(!is.na(destino)) |>
-    arrange(origen, destino)
-
-casa |>
-    transmute(
-        `Valor del índice` = paste0(n_fmt(origen, 0), "%"),
-        `Cae en la categoría` = c(
-            "1 - Baja inseguridad en la casa",
-            "2 - Media inseguridad en la casa",
-            "3 - Alta inseguridad en la casa"
-        )[destino],
-        Personas = n
-    ) |>
-    tabla()
-```
-
-```{r}
-#| label: d2-casa-cifras
-cero <- casa |> filter(origen == 0)
-n_cero_total <- sum(cero$n)
-n_cero_en_alta <- cero$n[cero$destino == 3]
-n_alta_total <- sum(casa$n[casa$destino == 3])
-```
-
-Las **`r n_fmt(n_cero_total)` personas** que respondieron sentirse seguras en su
-casa, de día y de noche, quedan repartidas en las tres categorías. Entre ellas,
-**`r n_fmt(n_cero_en_alta)` aparecen clasificadas como "Alta inseguridad en la
-casa"**.
-
-Visto desde la categoría: de las `r n_fmt(n_alta_total)` personas etiquetadas
-"Alta inseguridad en la casa", el
-**`r n_fmt(100 * n_cero_en_alta / n_alta_total, 0)`%** respondió 0% de
-inseguridad.
-
-Acá no hay ambigüedad de borde que discutir: la respuesta y la etiqueta dicen lo
-contrario. Y pasa porque tres cuartos de la muestra responden 0% en esta
-variable, de modo que ese único valor ocupa más de dos terciles y desborda hasta
-el tercero.
-
-Conviene retener esto para la decisión: **el problema no es que la variable tenga
-poca variación, sino que la distribución sea despareja**. Los índices con más
-valores posibles (el de espacio público tiene 43) están menos afectados, no más.
-
-**Qué falta decidir:** reemplazar los terciles por un corte más sustantivo.
-
-Hay una **propuesta desarrollada** para las seis variables, con los números que
-produciría cada una, en
-[Decisiones pendientes](decisiones.html#cómo-se-cortan-los-índices).
-
-Mientras no se resuelva, **la solución de grupos completa es provisional**.
+Hoy `categorizar_indices()` lleva una aserción que falla si algún corte vuelve a
+repartir un mismo valor entre categorías.
 :::
 
 # 5. Preparación del modelo
@@ -525,13 +476,13 @@ De los **`r n_fmt(n_entran)`** casos de la muestra, entran al modelo
 #| label: perdida-detalle
 etiquetas_vars <- c(
     perper_delito = "Expectativa de ser víctima",
-    comgen_com_pct_rec_tercil = "Medidas del barrio",
+    comgen_com_pct_cat = "Medidas del barrio",
     comper_gasto = "Gasto en seguridad",
-    emper_barrio_pct_rec_tercil = "Inseguridad en el barrio",
-    emper_ep_pct_rec_tercil = "Inseguridad en espacio público",
-    emper_casa_pct_rec_tercil = "Inseguridad en la casa",
-    comgen_per_pct_rec_tercil = "Medidas de la vivienda",
-    comper_pct_rec_tercil = "Modificación de prácticas"
+    emper_barrio_pct_cat = "Inseguridad en el barrio",
+    emper_ep_pct_cat = "Inseguridad en espacio público",
+    emper_casa_pct_cat = "Inseguridad en la casa",
+    comgen_per_pct_cat = "Medidas de la vivienda",
+    comper_pct_cat = "Modificación de prácticas"
 )
 
 perdida_det |>
@@ -641,12 +592,10 @@ Son de cuatro tipos:
 
 ## Los índices de desórdenes e incivilidades
 
-Estos dos son los únicos que involucran un cálculo, y usan un procedimiento
-distinto al de los índices del modelo.
-
-Cada uno parte de una batería donde la persona indica **con qué frecuencia**
-ocurre cada situación en su barrio, en una escala de 1 a 5. El índice es la
-**suma** de esas respuestas: a más alto, más percepción de desorden.
+Estos dos son los únicos que involucran un cálculo. Cada uno parte de una batería
+donde la persona indica **con qué frecuencia** ocurre cada situación en su
+barrio, en una escala de 1 a 5. El índice es la **suma** de esas respuestas: a
+más alto, más percepción de desorden.
 
 ```{r}
 #| label: nr-indices
@@ -663,51 +612,43 @@ nr |>
     tabla()
 ```
 
-Miremos la tercera y la cuarta columna. Con ítems que van de 1 a 5, el valor más
-bajo que puede producir cualquier combinación de respuestas válidas es el número
-de ítems. Y sin embargo el mínimo observado es **0** en los dos índices.
+El mínimo observado coincide con el mínimo posible, que es el número de ítems:
+nadie puede quedar por debajo de responder "nunca" a todo.
 
-::: {.callout-warning}
-## Decisión pendiente · Cómo tratar la no respuesta en estos índices
+::: {.callout-note}
+## Decisión tomada · Cómo se trata la no respuesta en estos índices
 
-El 0 aparece porque los ítems respondidos "no sabe" o "no responde" se descartan
-del sumatorio. Quien no responde ninguno suma 0, un valor que no corresponde a
-ninguna respuesta posible, y queda ubicado por debajo de quien respondió
-"nunca" a todo.
+Quien deja ítems sin responder recibe el **promedio de los que sí respondió**,
+multiplicado por el número de ítems. Se llama prorrateo y es el procedimiento
+estándar para puntajes de escala.
 
-```{r}
-#| label: nr-detalle
-nr |>
-    transmute(
-        Índice = indice,
-        `Casos con alguna no respuesta` = casos_alguna_nr,
-        `%` = pct_alguna_nr,
-        `Casos sin ninguna respuesta` = casos_toda_nr,
-        `Índice que reciben` = valor_si_toda_nr
-    ) |>
-    tabla()
-```
+Se prorratea solo si respondió **al menos la mitad** de la batería. Por debajo de
+eso el índice queda sin valor, porque estimar a partir de dos o tres ítems de
+ocho es forzar demasiado.
 
-El problema no son solo los casos extremos. Cualquiera que haya dejado ítems sin
-responder queda con un índice más bajo del que le correspondería, en proporción a
-cuántos dejó.
+**Qué reemplaza.** Antes los ítems sin responder simplemente se descartaban del
+sumatorio, de modo que quien no respondía ninguno sumaba 0: un valor que ninguna
+combinación de respuestas posibles puede producir, y que lo dejaba por debajo de
+quien respondió "nunca" a todo. Afectaba a 6.563 casos en desórdenes y 1.839 en
+incivilidades, con un sesgo sistemático hacia abajo de unos 3 puntos.
 
-**Por qué queda abierta y no se resolvió junto con las otras.** El resto del
-análisis usa una convención distinta: en los índices del modelo la no respuesta
-**se queda en el denominador** (ver el paso 3), de modo que el índice nunca sale
-de su rango. Acá sale. Son dos criterios diferentes conviviendo en el mismo
-análisis, y corresponde unificarlos.
+**Por qué prorratear y no imputar con un donante.** En siete de cada diez casos
+afectados falta un ítem de ocho, en una batería donde todos miden lo mismo. Las
+otras respuestas de la misma persona predicen ese ítem mejor que las de un
+tercero parecido. Y el argumento habitual a favor de la imputación por donante
+(que promediar encoge la varianza) acá no se cumple: la dispersión sube
+levemente, porque desaparecen los valores fuera de escala.
 
-**Qué falta decidir:** cuál de los dos criterios se adopta acá. Las dos opciones
-están desarrolladas en
-[Decisiones pendientes](decisiones.html#no-respuesta-en-los-índices-secundarios).
-
-Cambia la escala de las dos variables, así que afecta a los cruces donde
-aparecen. No afecta al modelo, porque estas variables no entran.
+La métrica no cambia. El índice sigue siendo la suma, sigue yendo de 8 a 40 y se
+lee igual que antes.
 :::
 
-Los dos índices se cortan después en terciles, con el mismo procedimiento del
-paso 4, así que les aplica también lo señalado ahí.
+Los dos índices se cortan después en tres categorías. A diferencia de los del
+modelo, acá no hay un umbral sustantivo evidente (no existe un número de
+desórdenes que marque un antes y un después), así que los cortes se toman de los
+terciles de la distribución. Pero se asignan **por valor y no por posición**, de
+modo que dos personas con el mismo índice caen siempre en la misma categoría.
+Los grupos quedan desiguales, que es lo correcto cuando hay empates.
 
 # Registro de decisiones
 
@@ -728,8 +669,8 @@ registro <- tibble::tribble(
     "Entra al análisis como 0% de adopción. Es el hallazgo que motivó rehacer los análisis.",
 
     "Cómo se cortan los índices en categorías",
-    "Abierta",
-    "Hoy son terciles, que parten empates de forma arbitraria. Hay propuesta de cortes por criterio sustantivo, pendiente de aprobación.",
+    "Cerrada",
+    "Se corta por lo que la variable significa, con el cero como categoría propia. Tres métodos según cómo esté construido cada índice. Reemplaza a los terciles, que partían empates.",
 
     "\"Otro delito\" separado de \"no sabe qué delito\"",
     "Cerrada",
@@ -740,8 +681,8 @@ registro <- tibble::tribble(
     "Se definió con el equipo: entran todas las situaciones clasificables como espacio público, de circulación y uso general. Quedan fuera las referidas al propio barrio, que es otra dimensión, y los espacios de uso propio o acceso restringido.",
 
     "No respuesta en los índices de desórdenes e incivilidades",
-    "Abierta",
-    "Hoy produce valores fuera de la escala del índice. El criterio ya está fijado por el resto del análisis; falta elegir cómo aplicarlo.",
+    "Cerrada",
+    "Se prorratea: promedio de los ítems respondidos por el número de ítems, con un mínimo de la mitad de la batería. Conserva la métrica de suma y devuelve el índice a su rango.",
 
     "\"No sabe\" cuenta como no adhesión en los índices",
     "Cerrada",

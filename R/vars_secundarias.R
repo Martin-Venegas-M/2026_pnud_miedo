@@ -1,45 +1,77 @@
 #' Índices de desórdenes e incivilidades
 #'
-#' Reemplaza `4_add_vars.R:35-58`. Vive acá D5: `88`/`99` se pasan a `NA` y se
-#' suma con `rowSums(..., na.rm = TRUE)`, así que un ítem no respondido
-#' desaparece del sumatorio en vez de invalidar el caso — "no sabe" se
-#' comporta como "nunca ocurrió". Produce valores fuera del rango teórico de
-#' la escala (mínimo real 8, pero los casos con todos los ítems en `88`/`99`
-#' quedan en 0). No se corrige en esta fase (ver F1.0).
+#' Reemplaza `4_add_vars.R:35-58`. Acá se resolvió D5.
+#'
+#' Cada índice es la **suma** de una batería de ítems en escala de 1 a 5, así
+#' que mide intensidad: distingue a quien responde "nunca" a todo de quien
+#' responde "ocasionalmente" a todo. Se conserva esa métrica.
+#'
+#' @section Qué reemplaza y por qué:
+#' Antes los ítems en `88`/`99` se pasaban a `NA` y se sumaba con
+#' `rowSums(na.rm = TRUE)`, de modo que un ítem no respondido desaparecía del
+#' sumatorio en vez de invalidar el caso: "no sabe" se comportaba como "nunca
+#' ocurrió". El índice caía por debajo de su piso teórico (mínimo 8 con ocho
+#' ítems de 1 a 5) y quien no respondía nada quedaba en 0, por debajo de quien
+#' respondía "nunca" a todo.
+#'
+#' Afectaba a 6.563 casos en desórdenes (11,8%) y 1.839 en incivilidades
+#' (3,3%), con un sesgo sistemático hacia abajo de unos 3 puntos entre los
+#' afectados.
+#'
+#' @section Por qué prorratear y no imputar con hot deck:
+#' En siete de cada diez casos afectados falta **un ítem de ocho**, en una
+#' batería donde todos miden lo mismo. El mejor predictor del ítem faltante son
+#' las otras respuestas de la misma persona, no las de un donante parecido. El
+#' prorrateo (media de los ítems válidos por el número de ítems) es el
+#' procedimiento estándar para puntajes de escala, es determinista y no exige
+#' definir celdas de ajuste.
+#'
+#' El argumento habitual a favor del hot deck —que la imputación por media
+#' encoge la varianza— no aplica acá: la desviación estándar sube levemente
+#' (6,87 a 7,11 en desórdenes), porque desaparecen los valores fuera de escala.
 #'
 #' @param datos Datos con `p_desordenes_*` y `p_incivilidades_*`.
+#' @param min_validos Proporción mínima de ítems respondidos para prorratear.
+#'   Por debajo de eso el índice queda `NA`: prorratear con uno o dos ítems de
+#'   ocho es forzar demasiado.
 #' @return `datos` con `desordenes_ind`, `desordenes_ind_rec`,
 #'   `incivilidades_ind` e `incivilidades_ind_rec` agregadas.
-construir_indices_secundarios <- function(datos) {
-    datos <- datos |>
-        dplyr::mutate(
-            dplyr::across(
-                dplyr::starts_with("p_desordenes_"),
-                ~ dplyr::if_else(. %in% c(88, 99), NA, .),
-                .names = "temp_{.col}"
-            ),
-            desordenes_ind = rowSums(
-                dplyr::across(dplyr::starts_with("temp_")),
-                na.rm = TRUE
-            ),
-            desordenes_ind_rec = dplyr::ntile(desordenes_ind, 3)
-        ) |>
-        dplyr::select(-dplyr::starts_with("temp_"))
+construir_indices_secundarios <- function(datos, min_validos = 0.5) {
+    prorratear <- function(datos, prefijo, nombre) {
+        items <- grep(paste0("^", prefijo), names(datos), value = TRUE)
+        stopifnot("No hay ítems para el índice" = length(items) > 0)
+
+        M <- vapply(datos[items], haven::zap_labels, numeric(nrow(datos)))
+        M[M %in% c(88, 96, 99)] <- NA_real_
+
+        n_validos <- rowSums(!is.na(M))
+        suficientes <- n_validos >= ceiling(min_validos * length(items))
+
+        #* media de lo respondido x número de ítems: conserva la escala de la
+        #* suma y no puede salirse de su rango.
+        indice <- rowMeans(M, na.rm = TRUE) * length(items)
+        indice[!suficientes] <- NA_real_
+
+        #* Los terciles se cortan en los mismos umbrales que daría ntile(),
+        #* pero asignando por VALOR y no por rango. ntile() reparte los empates
+        #* entre categorías para forzar grupos iguales: acá partía a 2.234
+        #* personas con índice 13 entre el tercil 1 y el 2. Es el mismo problema
+        #* que motivó D2, en su versión chica. Los grupos quedan desiguales
+        #* (37/30/33), que es lo correcto cuando la variable tiene empates.
+        cortes <- stats::quantile(indice, c(1 / 3, 2 / 3), na.rm = TRUE)
+
+        datos[[nombre]] <- indice
+        datos[[paste0(nombre, "_rec")]] <- cut(
+            indice,
+            breaks = c(-Inf, cortes, Inf),
+            labels = FALSE
+        )
+        datos
+    }
 
     datos |>
-        dplyr::mutate(
-            dplyr::across(
-                dplyr::starts_with("p_incivilidades_"),
-                ~ dplyr::if_else(. %in% c(88, 99), NA, .),
-                .names = "temp_{.col}"
-            ),
-            incivilidades_ind = rowSums(
-                dplyr::across(dplyr::starts_with("temp_")),
-                na.rm = TRUE
-            ),
-            incivilidades_ind_rec = dplyr::ntile(incivilidades_ind, 3)
-        ) |>
-        dplyr::select(-dplyr::starts_with("temp_"))
+        prorratear("p_desordenes_", "desordenes_ind") |>
+        prorratear("p_incivilidades_", "incivilidades_ind")
 }
 
 #' Variables de fuente de información

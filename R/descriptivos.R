@@ -466,6 +466,12 @@ tabla_cruces_ancho <- function(cruces, clust_var) {
             dplyr::all_of(clust_var),
             prop
         ) |>
+        #* Los índices secundarios prorrateados dejan sin valor a quien respondió
+        #* menos de la mitad de la batería. Esa categoría se nombra en vez de
+        #* aparecer como NA: es no respuesta real y tiene que verse.
+        dplyr::mutate(
+            categoria = dplyr::coalesce(categoria, "Sin dato suficiente")
+        ) |>
         tidyr::pivot_wider(
             names_from = dplyr::all_of(clust_var),
             values_from = prop,

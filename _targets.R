@@ -125,7 +125,7 @@ list(
 
     tar_target(
         datos_categorizado,
-        categorizar_indices(datos_no_respuesta_comgen)
+        categorizar_indices(datos_no_respuesta_comgen, cfg$CORTES)
     ),
     tar_target(
         log_categorizado,
@@ -133,12 +133,12 @@ list(
             antes = datos_no_respuesta_comgen,
             despues = datos_categorizado,
             vars = c(
-                emper_ep_pct = "emper_ep_pct_rec_tercil",
-                emper_barrio_pct = "emper_barrio_pct_rec_tercil",
-                emper_casa_pct = "emper_casa_pct_rec_tercil",
-                comper_pct = "comper_pct_rec_tercil",
-                comgen_per_pct = "comgen_per_pct_rec_tercil",
-                comgen_com_pct = "comgen_com_pct_rec_tercil"
+                emper_ep_pct = "emper_ep_pct_cat",
+                emper_barrio_pct = "emper_barrio_pct_cat",
+                emper_casa_pct = "emper_casa_pct_cat",
+                comper_pct = "comper_pct_cat",
+                comgen_per_pct = "comgen_per_pct_cat",
+                comgen_com_pct = "comgen_com_pct_cat"
             ),
             etiqueta = "categorizado"
         )
@@ -154,12 +154,12 @@ list(
             antes = datos_categorizado,
             despues = datos_codigos_recuperados,
             vars = c(
-                "emper_ep_pct_rec_tercil",
-                "emper_barrio_pct_rec_tercil",
-                "emper_casa_pct_rec_tercil",
-                "comper_pct_rec_tercil",
-                "comgen_per_pct_rec_tercil",
-                "comgen_com_pct_rec_tercil"
+                "emper_ep_pct_cat",
+                "emper_barrio_pct_cat",
+                "emper_casa_pct_cat",
+                "comper_pct_cat",
+                "comgen_per_pct_cat",
+                "comgen_com_pct_cat"
             ),
             etiqueta = "codigos_recuperados"
         )
@@ -174,7 +174,7 @@ list(
         reportar_transformacion(
             antes = datos_codigos_recuperados,
             despues = datos_recodificados,
-            vars = cfg$VARS_REC_TERCIL,
+            vars = cfg$VARS_MODELO,
             etiqueta = "etiquetado_indices"
         )
     ),
@@ -182,18 +182,18 @@ list(
     # -- MCA + HCPC (reemplaza 3_add_clust.R) -------------------------------
     tar_target(
         datos_prep_mca,
-        preparar_datos_mca(datos_recodificados, cfg$VARS_REC_TERCIL)
+        preparar_datos_mca(datos_recodificados, cfg$VARS_MODELO)
     ),
     tar_target(
         datos_filtrados,
-        filtrar_casos_completos(datos_prep_mca, cfg$VARS_REC_TERCIL)
+        filtrar_casos_completos(datos_prep_mca, cfg$VARS_MODELO)
     ),
     tar_target(
         log_perdida_mca,
         reportar_perdida(
             antes = datos_prep_mca,
             despues = datos_filtrados,
-            vars = cfg$VARS_REC_TERCIL,
+            vars = cfg$VARS_MODELO,
             etiqueta = "filtrar_casos_completos_mca",
             max_perdida = NULL
         )
@@ -202,7 +202,7 @@ list(
         log_composicion_mca,
         reportar_composicion(
             datos = datos_recodificados,
-            eliminados = rowSums(is.na(datos_prep_mca[cfg$VARS_REC_TERCIL])) >
+            eliminados = rowSums(is.na(datos_prep_mca[cfg$VARS_MODELO])) >
                 0,
             vars_sec = cfg$VARS_SEC
         )
@@ -436,7 +436,7 @@ list(
         tabla_variables_fuente(
             datos_finales,
             vars_pct_continuas,
-            cfg$VARS_REC_TERCIL
+            cfg$VARS_MODELO
         )
     ),
     tar_target(
@@ -485,7 +485,7 @@ list(
         tabla_cruces_cluster(
             diseno_muestral,
             cfg$CLUSTER_A_SACAR,
-            cfg$VARS_REC_TERCIL,
+            cfg$VARS_MODELO,
             cfg$VARS_SEC
         )
     ),
@@ -545,7 +545,7 @@ list(
         tabla_cruces_ancho_todas(
             diseno_muestral,
             cfg$N_CLASES,
-            cfg$VARS_REC_TERCIL,
+            cfg$VARS_MODELO,
             cfg$VARS_SEC
         )
     ),
@@ -558,7 +558,7 @@ list(
             datos_finales,
             mapeo_nombres,
             spec_indices,
-            cfg$VARS_REC_TERCIL,
+            cfg$VARS_MODELO,
             cfg$VARS_SEC,
             cfg$N_CLASES
         )

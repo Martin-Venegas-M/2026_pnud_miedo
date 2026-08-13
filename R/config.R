@@ -18,15 +18,34 @@ construir_config <- function() {
         SVY_STRATA = "var_strat",
         SVY_WEIGHTS = "fact_pers_reg",
 
-        VARS_REC_TERCIL = c(
-            "emper_ep_pct_rec_tercil",
-            "emper_barrio_pct_rec_tercil",
-            "emper_casa_pct_rec_tercil",
+        #* Cómo se corta cada índice (D2, resuelta el 12-ago-2026). Ver el
+        #* razonamiento completo en categorizar_indices().
+        CORTES = list(
+            # Dos ítems: el índice ya tiene tres valores, se usan como categorías.
+            emper_barrio_pct = list(metodo = "valor", cortes = c(0, 50, 100)),
+            emper_casa_pct = list(metodo = "valor", cortes = c(0, 50, 100)),
+            # Sin código 85 en los ítems: el % equivale a un conteo de medidas.
+            # Vivienda y barrio llevan cortes distintos a propósito: la medida
+            # única del barrio es un grupo de WhatsApp en el 66% de los casos,
+            # mientras que en la vivienda son rejas. El umbral que importa no es
+            # el mismo.
+            comgen_per_pct = list(metodo = "conteo", cortes = c(0, 2), n_items = 9),
+            comgen_com_pct = list(metodo = "conteo", cortes = c(0, 1), n_items = 8),
+            # Todos los ítems admiten 85: el denominador varía por persona y un
+            # conteo no sería comparable.
+            emper_ep_pct = list(metodo = "porcentaje", cortes = c(0, 50)),
+            comper_pct = list(metodo = "porcentaje", cortes = c(0, 50))
+        ),
+
+        VARS_MODELO = c(
+            "emper_ep_pct_cat",
+            "emper_barrio_pct_cat",
+            "emper_casa_pct_cat",
             "perper_delito",
-            "comper_pct_rec_tercil",
+            "comper_pct_cat",
             "comper_gasto",
-            "comgen_per_pct_rec_tercil",
-            "comgen_com_pct_rec_tercil"
+            "comgen_per_pct_cat",
+            "comgen_com_pct_cat"
         ),
 
         # PLAN.md F5.2, Q4: pergen_pais/comuna/barrio salieron de acá — la

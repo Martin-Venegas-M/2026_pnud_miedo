@@ -83,14 +83,16 @@ y qué no entra en el denominador está en el
 [paso 3 del pipeline](pipeline.html#construcción-de-los-índices).
 
 **Categorización.** El paso que convierte un índice continuo en categorías,
-porque el MCA trabaja con variables categóricas y no con porcentajes. Hoy se hace
-por terciles, y es una de las decisiones que siguen abiertas.
+porque el MCA trabaja con variables categóricas y no con porcentajes. El criterio
+es cortar por lo que la variable significa, con el cero siempre como categoría
+propia. El detalle de cada índice está en el
+[paso 4](pipeline.html#categorización).
 
 **Tercil.** Cada uno de los tres grupos que resultan de ordenar a toda la muestra
-por el valor de una variable y cortarla en tres partes **del mismo tamaño**. Que
-sean del mismo tamaño es lo que genera el problema descrito en el
-[paso 4](pipeline.html#categorización): si un mismo valor reúne más gente de la
-que cabe en un tercil, el corte lo parte.
+por el valor de una variable y cortarla en tres partes **del mismo tamaño**. El
+análisis **ya no los usa** para los índices del modelo: forzar grupos iguales
+obliga a repartir entre categorías a personas que respondieron lo mismo. Aparece
+acá porque la versión archivada de esta página sí los usa.
 
 # Cómo viene el dato
 
@@ -180,7 +182,8 @@ exactamente entre corridas.
 
 **Cluster o grupo.** Cada uno de los conjuntos de personas que produce el
 clustering. En esta página aparecen como `C1`, `C2` y así, porque ponerles nombre
-sustantivo es una decisión que sigue pendiente.
+sustantivo es una decisión que sigue pendiente. La numeración no es comparable
+entre corridas: el modelo la reasigna cada vez.
 
 **Solución.** El resultado completo de cortar el árbol en un número dado de
 grupos. Se calcularon tres: de cuatro, cinco y seis grupos.

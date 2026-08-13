@@ -26,7 +26,7 @@ partir de la anterior:
 ```{mermaid}
 flowchart LR
     A[Variables originales<br/>de la ENUSC] --> B[Índices<br/>_pct]
-    B --> C[Categorizadas<br/>_rec_tercil]
+    B --> C[Categorizadas<br/>_cat]
     C --> D[Clusters]
     A --> E[Secundarias]
     E -.describe.-> D
@@ -177,14 +177,6 @@ meta |>
     tabla(ancho = TRUE)
 ```
 
-::: {.callout-warning}
-## Provisional
-
-La forma de estas categorías depende de una decisión abierta sobre cómo se cortan
-los índices (ver el [paso 4](pipeline.html#categorización)). Los nombres de las
-variables y su origen no cambian; sus categorías sí pueden cambiar.
-:::
-
 # 4. Clusters
 
 El resultado del modelo. Una variable por cada solución calculada.
@@ -220,14 +212,6 @@ meta |>
     ) |>
     tabla(ancho = TRUE)
 ```
-
-::: {.callout-warning}
-## Provisional
-
-Los índices de percepción de desórdenes e incivilidades dependen de una decisión
-abierta sobre cómo tratar la no respuesta (ver el
-[paso 7](pipeline.html#variables-secundarias)). Su escala puede cambiar.
-:::
 
 # Tabla completa
 

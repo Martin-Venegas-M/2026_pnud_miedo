@@ -206,23 +206,23 @@ categorizado,emper_ep_pct,emper_ep_pct_cat,9.09090909090909,596,1.07,NA,NA
 categorizado,emper_ep_pct,emper_ep_pct_cat,90,451,0.81,NA,NA
 categorizado,emper_ep_pct,emper_ep_pct_cat,90.9090909090909,458,0.82,NA,NA
 categorizado,emper_ep_pct,emper_ep_pct_cat,NA,171,0.31,171,0.31
-categorizado,emper_ep_pct,emper_ep_pct_cat,1,NA,NA,18542,33.23
-categorizado,emper_ep_pct,emper_ep_pct_cat,2,NA,NA,18542,33.23
-categorizado,emper_ep_pct,emper_ep_pct_cat,3,NA,NA,18541,33.23
+categorizado,emper_ep_pct,emper_ep_pct_cat,1,NA,NA,12387,22.2
+categorizado,emper_ep_pct,emper_ep_pct_cat,2,NA,NA,23667,42.42
+categorizado,emper_ep_pct,emper_ep_pct_cat,3,NA,NA,19571,35.08
 categorizado,emper_barrio_pct,emper_barrio_pct_cat,0,20314,36.41,NA,NA
 categorizado,emper_barrio_pct,emper_barrio_pct_cat,100,11553,20.71,NA,NA
 categorizado,emper_barrio_pct,emper_barrio_pct_cat,50,22914,41.07,NA,NA
 categorizado,emper_barrio_pct,emper_barrio_pct_cat,NA,1015,1.82,1015,1.82
-categorizado,emper_barrio_pct,emper_barrio_pct_cat,1,NA,NA,18261,32.73
-categorizado,emper_barrio_pct,emper_barrio_pct_cat,2,NA,NA,18260,32.73
-categorizado,emper_barrio_pct,emper_barrio_pct_cat,3,NA,NA,18260,32.73
+categorizado,emper_barrio_pct,emper_barrio_pct_cat,1,NA,NA,20314,36.41
+categorizado,emper_barrio_pct,emper_barrio_pct_cat,2,NA,NA,22914,41.07
+categorizado,emper_barrio_pct,emper_barrio_pct_cat,3,NA,NA,11553,20.71
 categorizado,emper_casa_pct,emper_casa_pct_cat,0,42215,75.66,NA,NA
 categorizado,emper_casa_pct,emper_casa_pct_cat,100,4919,8.82,NA,NA
 categorizado,emper_casa_pct,emper_casa_pct_cat,50,8556,15.33,NA,NA
 categorizado,emper_casa_pct,emper_casa_pct_cat,NA,106,0.19,106,0.19
-categorizado,emper_casa_pct,emper_casa_pct_cat,1,NA,NA,18564,33.27
-categorizado,emper_casa_pct,emper_casa_pct_cat,2,NA,NA,18563,33.27
-categorizado,emper_casa_pct,emper_casa_pct_cat,3,NA,NA,18563,33.27
+categorizado,emper_casa_pct,emper_casa_pct_cat,1,NA,NA,42215,75.66
+categorizado,emper_casa_pct,emper_casa_pct_cat,2,NA,NA,8556,15.33
+categorizado,emper_casa_pct,emper_casa_pct_cat,3,NA,NA,4919,8.82
 categorizado,comper_pct,comper_pct_cat,0,9724,17.43,NA,NA
 categorizado,comper_pct,comper_pct_cat,10,1087,1.95,NA,NA
 categorizado,comper_pct,comper_pct_cat,100,1155,2.07,NA,NA
@@ -283,9 +283,9 @@ categorizado,comper_pct,comper_pct_cat,90.9090909090909,375,0.67,NA,NA
 categorizado,comper_pct,comper_pct_cat,91.6666666666667,428,0.77,NA,NA
 categorizado,comper_pct,comper_pct_cat,92.3076923076923,565,1.01,NA,NA
 categorizado,comper_pct,comper_pct_cat,NA,37,0.07,37,0.07
-categorizado,comper_pct,comper_pct_cat,1,NA,NA,18587,33.31
-categorizado,comper_pct,comper_pct_cat,2,NA,NA,18586,33.31
-categorizado,comper_pct,comper_pct_cat,3,NA,NA,18586,33.31
+categorizado,comper_pct,comper_pct_cat,1,NA,NA,9724,17.43
+categorizado,comper_pct,comper_pct_cat,2,NA,NA,27307,48.94
+categorizado,comper_pct,comper_pct_cat,3,NA,NA,18728,33.57
 categorizado,comgen_per_pct,comgen_per_pct_cat,0,6007,10.77,NA,NA
 categorizado,comgen_per_pct,comgen_per_pct_cat,100,8,0.01,NA,NA
 categorizado,comgen_per_pct,comgen_per_pct_cat,11.1111111111111,14930,26.76,NA,NA
@@ -297,9 +297,9 @@ categorizado,comgen_per_pct,comgen_per_pct_cat,66.6666666666667,1090,1.95,NA,NA
 categorizado,comgen_per_pct,comgen_per_pct_cat,77.7777777777778,437,0.78,NA,NA
 categorizado,comgen_per_pct,comgen_per_pct_cat,88.8888888888889,107,0.19,NA,NA
 categorizado,comgen_per_pct,comgen_per_pct_cat,NA,105,0.19,105,0.19
-categorizado,comgen_per_pct,comgen_per_pct_cat,1,NA,NA,18564,33.27
-categorizado,comgen_per_pct,comgen_per_pct_cat,2,NA,NA,18564,33.27
-categorizado,comgen_per_pct,comgen_per_pct_cat,3,NA,NA,18563,33.27
+categorizado,comgen_per_pct,comgen_per_pct_cat,1,NA,NA,6007,10.77
+categorizado,comgen_per_pct,comgen_per_pct_cat,2,NA,NA,29797,53.4
+categorizado,comgen_per_pct,comgen_per_pct_cat,3,NA,NA,19887,35.64
 categorizado,comgen_com_pct,comgen_com_pct_cat,0,17256,30.93,NA,NA
 categorizado,comgen_com_pct,comgen_com_pct_cat,100,11,0.02,NA,NA
 categorizado,comgen_com_pct,comgen_com_pct_cat,12.5,15684,28.11,NA,NA
@@ -310,61 +310,61 @@ categorizado,comgen_com_pct,comgen_com_pct_cat,62.5,1309,2.35,NA,NA
 categorizado,comgen_com_pct,comgen_com_pct_cat,75,454,0.81,NA,NA
 categorizado,comgen_com_pct,comgen_com_pct_cat,87.5,83,0.15,NA,NA
 categorizado,comgen_com_pct,comgen_com_pct_cat,NA,1844,3.3,1844,3.3
-categorizado,comgen_com_pct,comgen_com_pct_cat,1,NA,NA,17984,32.23
-categorizado,comgen_com_pct,comgen_com_pct_cat,2,NA,NA,17984,32.23
-categorizado,comgen_com_pct,comgen_com_pct_cat,3,NA,NA,17984,32.23
-codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,1,18542,33.23,18540,33.23
-codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,2,18542,33.23,18542,33.23
-codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,3,18541,33.23,18541,33.23
+categorizado,comgen_com_pct,comgen_com_pct_cat,1,NA,NA,17256,30.93
+categorizado,comgen_com_pct,comgen_com_pct_cat,2,NA,NA,15684,28.11
+categorizado,comgen_com_pct,comgen_com_pct_cat,3,NA,NA,21012,37.66
+codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,1,12387,22.2,12385,22.2
+codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,2,23667,42.42,23667,42.42
+codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,3,19571,35.08,19571,35.08
 codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,NA,171,0.31,NA,NA
 codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,85,NA,NA,171,0.31
 codigos_recuperados,emper_ep_pct_cat,emper_ep_pct_cat,99,NA,NA,2,0
-codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,1,18261,32.73,18248,32.7
-codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,2,18260,32.73,18256,32.72
-codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,3,18260,32.73,18260,32.73
+codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,1,20314,36.41,20297,36.38
+codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,2,22914,41.07,22914,41.07
+codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,3,11553,20.71,11553,20.71
 codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,NA,1015,1.82,NA,NA
 codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,85,NA,NA,1015,1.82
 codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,88,NA,NA,14,0.03
 codigos_recuperados,emper_barrio_pct_cat,emper_barrio_pct_cat,99,NA,NA,3,0.01
-codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,1,18564,33.27,18561,33.27
-codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,2,18563,33.27,18561,33.27
-codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,3,18563,33.27,18562,33.27
+codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,1,42215,75.66,42209,75.65
+codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,2,8556,15.33,8556,15.33
+codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,3,4919,8.82,4919,8.82
 codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,NA,106,0.19,NA,NA
 codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,85,NA,NA,106,0.19
 codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,88,NA,NA,4,0.01
 codigos_recuperados,emper_casa_pct_cat,emper_casa_pct_cat,99,NA,NA,2,0
-codigos_recuperados,comper_pct_cat,comper_pct_cat,1,18587,33.31,18585,33.31
-codigos_recuperados,comper_pct_cat,comper_pct_cat,2,18586,33.31,18586,33.31
-codigos_recuperados,comper_pct_cat,comper_pct_cat,3,18586,33.31,18586,33.31
+codigos_recuperados,comper_pct_cat,comper_pct_cat,1,9724,17.43,9722,17.42
+codigos_recuperados,comper_pct_cat,comper_pct_cat,2,27307,48.94,27307,48.94
+codigos_recuperados,comper_pct_cat,comper_pct_cat,3,18728,33.57,18728,33.57
 codigos_recuperados,comper_pct_cat,comper_pct_cat,NA,37,0.07,NA,NA
 codigos_recuperados,comper_pct_cat,comper_pct_cat,85,NA,NA,37,0.07
 codigos_recuperados,comper_pct_cat,comper_pct_cat,99,NA,NA,2,0
-codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,1,18564,33.27,18564,33.27
-codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,2,18564,33.27,18564,33.27
-codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,3,18563,33.27,18563,33.27
+codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,1,6007,10.77,6007,10.77
+codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,2,29797,53.4,29797,53.4
+codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,3,19887,35.64,19887,35.64
 codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,NA,105,0.19,NA,NA
 codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,88,NA,NA,36,0.06
 codigos_recuperados,comgen_per_pct_cat,comgen_per_pct_cat,99,NA,NA,69,0.12
-codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,1,17984,32.23,17984,32.23
-codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,2,17984,32.23,17984,32.23
-codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,3,17984,32.23,17984,32.23
+codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,1,17256,30.93,17256,30.93
+codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,2,15684,28.11,15684,28.11
+codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,3,21012,37.66,21012,37.66
 codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,NA,1844,3.3,NA,NA
 codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,88,NA,NA,1793,3.21
 codigos_recuperados,comgen_com_pct_cat,comgen_com_pct_cat,99,NA,NA,51,0.09
-etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,1,18540,33.23,18540,33.23
-etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,2,18542,33.23,18542,33.23
-etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,3,18541,33.23,18541,33.23
+etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,1,12385,22.2,12385,22.2
+etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,2,23667,42.42,23667,42.42
+etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,3,19571,35.08,19571,35.08
 etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,85,171,0.31,171,0.31
 etiquetado_indices,emper_ep_pct_cat,emper_ep_pct_cat,99,2,0,2,0
-etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,1,18248,32.7,18248,32.7
-etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,2,18256,32.72,18256,32.72
-etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,3,18260,32.73,18260,32.73
+etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,1,20297,36.38,20297,36.38
+etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,2,22914,41.07,22914,41.07
+etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,3,11553,20.71,11553,20.71
 etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,85,1015,1.82,1015,1.82
 etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,88,14,0.03,14,0.03
 etiquetado_indices,emper_barrio_pct_cat,emper_barrio_pct_cat,99,3,0.01,3,0.01
-etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,1,18561,33.27,18561,33.27
-etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,2,18561,33.27,18561,33.27
-etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,3,18562,33.27,18562,33.27
+etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,1,42209,75.65,42209,75.65
+etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,2,8556,15.33,8556,15.33
+etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,3,4919,8.82,4919,8.82
 etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,85,106,0.19,106,0.19
 etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,88,4,0.01,4,0.01
 etiquetado_indices,emper_casa_pct_cat,emper_casa_pct_cat,99,2,0,2,0
@@ -374,9 +374,9 @@ etiquetado_indices,perper_delito,perper_delito,3,14705,26.35,14705,26.35
 etiquetado_indices,perper_delito,perper_delito,4,2389,4.28,2389,4.28
 etiquetado_indices,perper_delito,perper_delito,5,78,0.14,78,0.14
 etiquetado_indices,perper_delito,perper_delito,6,72,0.13,72,0.13
-etiquetado_indices,comper_pct_cat,comper_pct_cat,1,18585,33.31,18585,33.31
-etiquetado_indices,comper_pct_cat,comper_pct_cat,2,18586,33.31,18586,33.31
-etiquetado_indices,comper_pct_cat,comper_pct_cat,3,18586,33.31,18586,33.31
+etiquetado_indices,comper_pct_cat,comper_pct_cat,1,9722,17.42,9722,17.42
+etiquetado_indices,comper_pct_cat,comper_pct_cat,2,27307,48.94,27307,48.94
+etiquetado_indices,comper_pct_cat,comper_pct_cat,3,18728,33.57,18728,33.57
 etiquetado_indices,comper_pct_cat,comper_pct_cat,85,37,0.07,37,0.07
 etiquetado_indices,comper_pct_cat,comper_pct_cat,99,2,0,2,0
 etiquetado_indices,comper_gasto,comper_gasto,0,29312,52.53,29312,52.53
@@ -384,117 +384,204 @@ etiquetado_indices,comper_gasto,comper_gasto,1,25072,44.94,25072,44.94
 etiquetado_indices,comper_gasto,comper_gasto,88,1298,2.33,1298,2.33
 etiquetado_indices,comper_gasto,comper_gasto,99,113,0.2,113,0.2
 etiquetado_indices,comper_gasto,comper_gasto,NA,1,0,1,0
-etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,1,18564,33.27,18564,33.27
-etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,2,18564,33.27,18564,33.27
-etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,3,18563,33.27,18563,33.27
+etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,1,6007,10.77,6007,10.77
+etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,2,29797,53.4,29797,53.4
+etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,3,19887,35.64,19887,35.64
 etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,88,36,0.06,36,0.06
 etiquetado_indices,comgen_per_pct_cat,comgen_per_pct_cat,99,69,0.12,69,0.12
-etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,1,17984,32.23,17984,32.23
-etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,2,17984,32.23,17984,32.23
-etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,3,17984,32.23,17984,32.23
+etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,1,17256,30.93,17256,30.93
+etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,2,15684,28.11,15684,28.11
+etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,3,21012,37.66,21012,37.66
 etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,88,1793,3.21,1793,3.21
 etiquetado_indices,comgen_com_pct_cat,comgen_com_pct_cat,99,51,0.09,51,0.09
-pegar_clusters,clusters_6,clusters_6,C1,NA,NA,6559,11.76
-pegar_clusters,clusters_6,clusters_6,C2,NA,NA,6139,11
-pegar_clusters,clusters_6,clusters_6,C3,NA,NA,6788,12.17
-pegar_clusters,clusters_6,clusters_6,C4,NA,NA,10298,18.46
-pegar_clusters,clusters_6,clusters_6,C5,NA,NA,9757,17.49
-pegar_clusters,clusters_6,clusters_6,C6,NA,NA,9962,17.85
+pegar_clusters,clusters_6,clusters_6,C1,NA,NA,12604,22.59
+pegar_clusters,clusters_6,clusters_6,C2,NA,NA,3670,6.58
+pegar_clusters,clusters_6,clusters_6,C3,NA,NA,6344,11.37
+pegar_clusters,clusters_6,clusters_6,C4,NA,NA,9522,17.07
+pegar_clusters,clusters_6,clusters_6,C5,NA,NA,8347,14.96
+pegar_clusters,clusters_6,clusters_6,C6,NA,NA,9016,16.16
 pegar_clusters,clusters_6,clusters_6,NA,NA,NA,6293,11.28
-pegar_clusters,clusters_5,clusters_5,C1,NA,NA,12698,22.76
-pegar_clusters,clusters_5,clusters_5,C2,NA,NA,6788,12.17
-pegar_clusters,clusters_5,clusters_5,C3,NA,NA,10298,18.46
-pegar_clusters,clusters_5,clusters_5,C4,NA,NA,9757,17.49
-pegar_clusters,clusters_5,clusters_5,C5,NA,NA,9962,17.85
+pegar_clusters,clusters_5,clusters_5,C1,NA,NA,12604,22.59
+pegar_clusters,clusters_5,clusters_5,C2,NA,NA,3670,6.58
+pegar_clusters,clusters_5,clusters_5,C3,NA,NA,15866,28.44
+pegar_clusters,clusters_5,clusters_5,C4,NA,NA,8347,14.96
+pegar_clusters,clusters_5,clusters_5,C5,NA,NA,9016,16.16
 pegar_clusters,clusters_5,clusters_5,NA,NA,NA,6293,11.28
-pegar_clusters,clusters_4,clusters_4,C1,NA,NA,12698,22.76
-pegar_clusters,clusters_4,clusters_4,C2,NA,NA,6788,12.17
-pegar_clusters,clusters_4,clusters_4,C3,NA,NA,10298,18.46
-pegar_clusters,clusters_4,clusters_4,C4,NA,NA,19719,35.34
+pegar_clusters,clusters_4,clusters_4,C1,NA,NA,12604,22.59
+pegar_clusters,clusters_4,clusters_4,C2,NA,NA,3670,6.58
+pegar_clusters,clusters_4,clusters_4,C3,NA,NA,24213,43.4
+pegar_clusters,clusters_4,clusters_4,C4,NA,NA,9016,16.16
 pegar_clusters,clusters_4,clusters_4,NA,NA,NA,6293,11.28
-indices_secundarios,desordenes_ind,desordenes_ind,0,NA,NA,17,0.03
-indices_secundarios,desordenes_ind,desordenes_ind,1,NA,NA,8,0.01
-indices_secundarios,desordenes_ind,desordenes_ind,10,NA,NA,3910,7.01
-indices_secundarios,desordenes_ind,desordenes_ind,11,NA,NA,3134,5.62
-indices_secundarios,desordenes_ind,desordenes_ind,12,NA,NA,3930,7.04
-indices_secundarios,desordenes_ind,desordenes_ind,13,NA,NA,3188,5.71
-indices_secundarios,desordenes_ind,desordenes_ind,14,NA,NA,3336,5.98
-indices_secundarios,desordenes_ind,desordenes_ind,15,NA,NA,2908,5.21
-indices_secundarios,desordenes_ind,desordenes_ind,16,NA,NA,3121,5.59
-indices_secundarios,desordenes_ind,desordenes_ind,17,NA,NA,2682,4.81
-indices_secundarios,desordenes_ind,desordenes_ind,18,NA,NA,2642,4.74
-indices_secundarios,desordenes_ind,desordenes_ind,19,NA,NA,2304,4.13
-indices_secundarios,desordenes_ind,desordenes_ind,2,NA,NA,17,0.03
-indices_secundarios,desordenes_ind,desordenes_ind,20,NA,NA,2214,3.97
-indices_secundarios,desordenes_ind,desordenes_ind,21,NA,NA,1868,3.35
-indices_secundarios,desordenes_ind,desordenes_ind,22,NA,NA,1782,3.19
-indices_secundarios,desordenes_ind,desordenes_ind,23,NA,NA,1538,2.76
-indices_secundarios,desordenes_ind,desordenes_ind,24,NA,NA,1568,2.81
-indices_secundarios,desordenes_ind,desordenes_ind,25,NA,NA,1207,2.16
-indices_secundarios,desordenes_ind,desordenes_ind,26,NA,NA,1150,2.06
-indices_secundarios,desordenes_ind,desordenes_ind,27,NA,NA,954,1.71
-indices_secundarios,desordenes_ind,desordenes_ind,28,NA,NA,866,1.55
-indices_secundarios,desordenes_ind,desordenes_ind,29,NA,NA,679,1.22
-indices_secundarios,desordenes_ind,desordenes_ind,3,NA,NA,21,0.04
-indices_secundarios,desordenes_ind,desordenes_ind,30,NA,NA,624,1.12
-indices_secundarios,desordenes_ind,desordenes_ind,31,NA,NA,487,0.87
-indices_secundarios,desordenes_ind,desordenes_ind,32,NA,NA,499,0.89
-indices_secundarios,desordenes_ind,desordenes_ind,33,NA,NA,335,0.6
-indices_secundarios,desordenes_ind,desordenes_ind,34,NA,NA,288,0.52
-indices_secundarios,desordenes_ind,desordenes_ind,35,NA,NA,256,0.46
-indices_secundarios,desordenes_ind,desordenes_ind,36,NA,NA,262,0.47
+indices_secundarios,desordenes_ind,desordenes_ind,10,NA,NA,3661,6.56
+indices_secundarios,desordenes_ind,desordenes_ind,10.2857142857143,NA,NA,230,0.41
+indices_secundarios,desordenes_ind,desordenes_ind,10.6666666666667,NA,NA,58,0.1
+indices_secundarios,desordenes_ind,desordenes_ind,11,NA,NA,2797,5.01
+indices_secundarios,desordenes_ind,desordenes_ind,11.2,NA,NA,20,0.04
+indices_secundarios,desordenes_ind,desordenes_ind,11.4285714285714,NA,NA,164,0.29
+indices_secundarios,desordenes_ind,desordenes_ind,12,NA,NA,3648,6.54
+indices_secundarios,desordenes_ind,desordenes_ind,12.5714285714286,NA,NA,251,0.45
+indices_secundarios,desordenes_ind,desordenes_ind,12.8,NA,NA,12,0.02
+indices_secundarios,desordenes_ind,desordenes_ind,13,NA,NA,2800,5.02
+indices_secundarios,desordenes_ind,desordenes_ind,13.3333333333333,NA,NA,64,0.11
+indices_secundarios,desordenes_ind,desordenes_ind,13.7142857142857,NA,NA,232,0.42
+indices_secundarios,desordenes_ind,desordenes_ind,14,NA,NA,3010,5.39
+indices_secundarios,desordenes_ind,desordenes_ind,14.4,NA,NA,27,0.05
+indices_secundarios,desordenes_ind,desordenes_ind,14.6666666666667,NA,NA,52,0.09
+indices_secundarios,desordenes_ind,desordenes_ind,14.8571428571429,NA,NA,280,0.5
+indices_secundarios,desordenes_ind,desordenes_ind,15,NA,NA,2544,4.56
+indices_secundarios,desordenes_ind,desordenes_ind,16,NA,NA,3087,5.53
+indices_secundarios,desordenes_ind,desordenes_ind,17,NA,NA,2336,4.19
+indices_secundarios,desordenes_ind,desordenes_ind,17.1428571428571,NA,NA,281,0.5
+indices_secundarios,desordenes_ind,desordenes_ind,17.3333333333333,NA,NA,80,0.14
+indices_secundarios,desordenes_ind,desordenes_ind,17.6,NA,NA,26,0.05
+indices_secundarios,desordenes_ind,desordenes_ind,18,NA,NA,2321,4.16
+indices_secundarios,desordenes_ind,desordenes_ind,18.2857142857143,NA,NA,239,0.43
+indices_secundarios,desordenes_ind,desordenes_ind,18.6666666666667,NA,NA,89,0.16
+indices_secundarios,desordenes_ind,desordenes_ind,19,NA,NA,1957,3.51
+indices_secundarios,desordenes_ind,desordenes_ind,19.2,NA,NA,21,0.04
+indices_secundarios,desordenes_ind,desordenes_ind,19.4285714285714,NA,NA,242,0.43
+indices_secundarios,desordenes_ind,desordenes_ind,20,NA,NA,1999,3.58
+indices_secundarios,desordenes_ind,desordenes_ind,20.5714285714286,NA,NA,227,0.41
+indices_secundarios,desordenes_ind,desordenes_ind,20.8,NA,NA,26,0.05
+indices_secundarios,desordenes_ind,desordenes_ind,21,NA,NA,1562,2.8
+indices_secundarios,desordenes_ind,desordenes_ind,21.3333333333333,NA,NA,100,0.18
+indices_secundarios,desordenes_ind,desordenes_ind,21.7142857142857,NA,NA,259,0.46
+indices_secundarios,desordenes_ind,desordenes_ind,22,NA,NA,1519,2.72
+indices_secundarios,desordenes_ind,desordenes_ind,22.4,NA,NA,13,0.02
+indices_secundarios,desordenes_ind,desordenes_ind,22.6666666666667,NA,NA,86,0.15
+indices_secundarios,desordenes_ind,desordenes_ind,22.8571428571429,NA,NA,210,0.38
+indices_secundarios,desordenes_ind,desordenes_ind,23,NA,NA,1313,2.35
+indices_secundarios,desordenes_ind,desordenes_ind,24,NA,NA,1713,3.07
+indices_secundarios,desordenes_ind,desordenes_ind,25,NA,NA,1041,1.87
+indices_secundarios,desordenes_ind,desordenes_ind,25.1428571428571,NA,NA,188,0.34
+indices_secundarios,desordenes_ind,desordenes_ind,25.3333333333333,NA,NA,73,0.13
+indices_secundarios,desordenes_ind,desordenes_ind,25.6,NA,NA,11,0.02
+indices_secundarios,desordenes_ind,desordenes_ind,26,NA,NA,993,1.78
+indices_secundarios,desordenes_ind,desordenes_ind,26.2857142857143,NA,NA,187,0.34
+indices_secundarios,desordenes_ind,desordenes_ind,26.6666666666667,NA,NA,72,0.13
+indices_secundarios,desordenes_ind,desordenes_ind,27,NA,NA,786,1.41
+indices_secundarios,desordenes_ind,desordenes_ind,27.2,NA,NA,18,0.03
+indices_secundarios,desordenes_ind,desordenes_ind,27.4285714285714,NA,NA,138,0.25
+indices_secundarios,desordenes_ind,desordenes_ind,28,NA,NA,841,1.51
+indices_secundarios,desordenes_ind,desordenes_ind,28.5714285714286,NA,NA,124,0.22
+indices_secundarios,desordenes_ind,desordenes_ind,28.8,NA,NA,8,0.01
+indices_secundarios,desordenes_ind,desordenes_ind,29,NA,NA,583,1.04
+indices_secundarios,desordenes_ind,desordenes_ind,29.3333333333333,NA,NA,72,0.13
+indices_secundarios,desordenes_ind,desordenes_ind,29.7142857142857,NA,NA,127,0.23
+indices_secundarios,desordenes_ind,desordenes_ind,30,NA,NA,554,0.99
+indices_secundarios,desordenes_ind,desordenes_ind,30.4,NA,NA,14,0.03
+indices_secundarios,desordenes_ind,desordenes_ind,30.6666666666667,NA,NA,36,0.06
+indices_secundarios,desordenes_ind,desordenes_ind,30.8571428571429,NA,NA,137,0.25
+indices_secundarios,desordenes_ind,desordenes_ind,31,NA,NA,417,0.75
+indices_secundarios,desordenes_ind,desordenes_ind,32,NA,NA,598,1.07
+indices_secundarios,desordenes_ind,desordenes_ind,33,NA,NA,302,0.54
+indices_secundarios,desordenes_ind,desordenes_ind,33.1428571428571,NA,NA,79,0.14
+indices_secundarios,desordenes_ind,desordenes_ind,33.3333333333333,NA,NA,40,0.07
+indices_secundarios,desordenes_ind,desordenes_ind,33.6,NA,NA,9,0.02
+indices_secundarios,desordenes_ind,desordenes_ind,34,NA,NA,276,0.49
+indices_secundarios,desordenes_ind,desordenes_ind,34.2857142857143,NA,NA,55,0.1
+indices_secundarios,desordenes_ind,desordenes_ind,34.6666666666667,NA,NA,32,0.06
+indices_secundarios,desordenes_ind,desordenes_ind,35,NA,NA,231,0.41
+indices_secundarios,desordenes_ind,desordenes_ind,35.2,NA,NA,7,0.01
+indices_secundarios,desordenes_ind,desordenes_ind,35.4285714285714,NA,NA,70,0.13
+indices_secundarios,desordenes_ind,desordenes_ind,36,NA,NA,298,0.53
+indices_secundarios,desordenes_ind,desordenes_ind,36.5714285714286,NA,NA,41,0.07
+indices_secundarios,desordenes_ind,desordenes_ind,36.8,NA,NA,2,0
 indices_secundarios,desordenes_ind,desordenes_ind,37,NA,NA,121,0.22
-indices_secundarios,desordenes_ind,desordenes_ind,38,NA,NA,103,0.18
+indices_secundarios,desordenes_ind,desordenes_ind,37.3333333333333,NA,NA,23,0.04
+indices_secundarios,desordenes_ind,desordenes_ind,37.7142857142857,NA,NA,33,0.06
+indices_secundarios,desordenes_ind,desordenes_ind,38,NA,NA,104,0.19
+indices_secundarios,desordenes_ind,desordenes_ind,38.4,NA,NA,3,0.01
+indices_secundarios,desordenes_ind,desordenes_ind,38.6666666666667,NA,NA,17,0.03
+indices_secundarios,desordenes_ind,desordenes_ind,38.8571428571429,NA,NA,12,0.02
 indices_secundarios,desordenes_ind,desordenes_ind,39,NA,NA,66,0.12
-indices_secundarios,desordenes_ind,desordenes_ind,4,NA,NA,17,0.03
-indices_secundarios,desordenes_ind,desordenes_ind,40,NA,NA,87,0.16
-indices_secundarios,desordenes_ind,desordenes_ind,5,NA,NA,37,0.07
-indices_secundarios,desordenes_ind,desordenes_ind,6,NA,NA,75,0.13
-indices_secundarios,desordenes_ind,desordenes_ind,7,NA,NA,255,0.46
-indices_secundarios,desordenes_ind,desordenes_ind,8,NA,NA,4772,8.55
-indices_secundarios,desordenes_ind,desordenes_ind,9,NA,NA,2468,4.42
-indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,1,NA,NA,18599,33.33
-indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,2,NA,NA,18599,33.33
-indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,3,NA,NA,18598,33.33
-indices_secundarios,incivilidades_ind,incivilidades_ind,0,NA,NA,20,0.04
-indices_secundarios,incivilidades_ind,incivilidades_ind,1,NA,NA,12,0.02
-indices_secundarios,incivilidades_ind,incivilidades_ind,10,NA,NA,3547,6.36
-indices_secundarios,incivilidades_ind,incivilidades_ind,11,NA,NA,4048,7.26
-indices_secundarios,incivilidades_ind,incivilidades_ind,12,NA,NA,2598,4.66
-indices_secundarios,incivilidades_ind,incivilidades_ind,13,NA,NA,2955,5.3
-indices_secundarios,incivilidades_ind,incivilidades_ind,14,NA,NA,2246,4.03
-indices_secundarios,incivilidades_ind,incivilidades_ind,15,NA,NA,2286,4.1
-indices_secundarios,incivilidades_ind,incivilidades_ind,16,NA,NA,1800,3.23
-indices_secundarios,incivilidades_ind,incivilidades_ind,17,NA,NA,1733,3.11
-indices_secundarios,incivilidades_ind,incivilidades_ind,18,NA,NA,1347,2.41
-indices_secundarios,incivilidades_ind,incivilidades_ind,19,NA,NA,1325,2.37
-indices_secundarios,incivilidades_ind,incivilidades_ind,2,NA,NA,15,0.03
-indices_secundarios,incivilidades_ind,incivilidades_ind,20,NA,NA,1073,1.92
-indices_secundarios,incivilidades_ind,incivilidades_ind,21,NA,NA,992,1.78
-indices_secundarios,incivilidades_ind,incivilidades_ind,22,NA,NA,715,1.28
-indices_secundarios,incivilidades_ind,incivilidades_ind,23,NA,NA,671,1.2
-indices_secundarios,incivilidades_ind,incivilidades_ind,24,NA,NA,523,0.94
-indices_secundarios,incivilidades_ind,incivilidades_ind,25,NA,NA,450,0.81
-indices_secundarios,incivilidades_ind,incivilidades_ind,26,NA,NA,307,0.55
-indices_secundarios,incivilidades_ind,incivilidades_ind,27,NA,NA,348,0.62
-indices_secundarios,incivilidades_ind,incivilidades_ind,28,NA,NA,260,0.47
-indices_secundarios,incivilidades_ind,incivilidades_ind,29,NA,NA,223,0.4
-indices_secundarios,incivilidades_ind,incivilidades_ind,3,NA,NA,22,0.04
-indices_secundarios,incivilidades_ind,incivilidades_ind,30,NA,NA,175,0.31
+indices_secundarios,desordenes_ind,desordenes_ind,40,NA,NA,131,0.23
+indices_secundarios,desordenes_ind,desordenes_ind,8,NA,NA,4857,8.7
+indices_secundarios,desordenes_ind,desordenes_ind,9,NA,NA,2153,3.86
+indices_secundarios,desordenes_ind,desordenes_ind,9.14285714285714,NA,NA,106,0.19
+indices_secundarios,desordenes_ind,desordenes_ind,9.33333333333333,NA,NA,26,0.05
+indices_secundarios,desordenes_ind,desordenes_ind,9.6,NA,NA,11,0.02
+indices_secundarios,desordenes_ind,desordenes_ind,NA,NA,NA,117,0.21
+indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,1,NA,NA,20794,37.27
+indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,2,NA,NA,16625,29.8
+indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,3,NA,NA,18260,32.73
+indices_secundarios,desordenes_ind_rec,desordenes_ind_rec,NA,NA,NA,117,0.21
+indices_secundarios,incivilidades_ind,incivilidades_ind,10,NA,NA,3397,6.09
+indices_secundarios,incivilidades_ind,incivilidades_ind,10.5,NA,NA,105,0.19
+indices_secundarios,incivilidades_ind,incivilidades_ind,11,NA,NA,3945,7.07
+indices_secundarios,incivilidades_ind,incivilidades_ind,11.2,NA,NA,14,0.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,11.6666666666667,NA,NA,117,0.21
+indices_secundarios,incivilidades_ind,incivilidades_ind,12,NA,NA,2481,4.45
+indices_secundarios,incivilidades_ind,incivilidades_ind,12.25,NA,NA,9,0.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,12.6,NA,NA,29,0.05
+indices_secundarios,incivilidades_ind,incivilidades_ind,12.8333333333333,NA,NA,71,0.13
+indices_secundarios,incivilidades_ind,incivilidades_ind,13,NA,NA,2876,5.15
+indices_secundarios,incivilidades_ind,incivilidades_ind,14,NA,NA,2301,4.12
+indices_secundarios,incivilidades_ind,incivilidades_ind,15,NA,NA,2210,3.96
+indices_secundarios,incivilidades_ind,incivilidades_ind,15.1666666666667,NA,NA,54,0.1
+indices_secundarios,incivilidades_ind,incivilidades_ind,15.4,NA,NA,19,0.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,15.75,NA,NA,11,0.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,16,NA,NA,1727,3.1
+indices_secundarios,incivilidades_ind,incivilidades_ind,16.3333333333333,NA,NA,52,0.09
+indices_secundarios,incivilidades_ind,incivilidades_ind,16.8,NA,NA,13,0.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,17,NA,NA,1685,3.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,17.5,NA,NA,68,0.12
+indices_secundarios,incivilidades_ind,incivilidades_ind,18,NA,NA,1296,2.32
+indices_secundarios,incivilidades_ind,incivilidades_ind,18.2,NA,NA,17,0.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,18.6666666666667,NA,NA,61,0.11
+indices_secundarios,incivilidades_ind,incivilidades_ind,19,NA,NA,1299,2.33
+indices_secundarios,incivilidades_ind,incivilidades_ind,19.25,NA,NA,10,0.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,19.6,NA,NA,14,0.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,19.8333333333333,NA,NA,41,0.07
+indices_secundarios,incivilidades_ind,incivilidades_ind,20,NA,NA,1046,1.87
+indices_secundarios,incivilidades_ind,incivilidades_ind,21,NA,NA,1039,1.86
+indices_secundarios,incivilidades_ind,incivilidades_ind,22,NA,NA,698,1.25
+indices_secundarios,incivilidades_ind,incivilidades_ind,22.1666666666667,NA,NA,24,0.04
+indices_secundarios,incivilidades_ind,incivilidades_ind,22.4,NA,NA,10,0.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,22.75,NA,NA,7,0.01
+indices_secundarios,incivilidades_ind,incivilidades_ind,23,NA,NA,660,1.18
+indices_secundarios,incivilidades_ind,incivilidades_ind,23.3333333333333,NA,NA,27,0.05
+indices_secundarios,incivilidades_ind,incivilidades_ind,23.8,NA,NA,7,0.01
+indices_secundarios,incivilidades_ind,incivilidades_ind,24,NA,NA,512,0.92
+indices_secundarios,incivilidades_ind,incivilidades_ind,24.5,NA,NA,25,0.04
+indices_secundarios,incivilidades_ind,incivilidades_ind,25,NA,NA,444,0.8
+indices_secundarios,incivilidades_ind,incivilidades_ind,25.2,NA,NA,2,0
+indices_secundarios,incivilidades_ind,incivilidades_ind,25.6666666666667,NA,NA,16,0.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,26,NA,NA,303,0.54
+indices_secundarios,incivilidades_ind,incivilidades_ind,26.25,NA,NA,2,0
+indices_secundarios,incivilidades_ind,incivilidades_ind,26.6,NA,NA,2,0
+indices_secundarios,incivilidades_ind,incivilidades_ind,26.8333333333333,NA,NA,10,0.02
+indices_secundarios,incivilidades_ind,incivilidades_ind,27,NA,NA,346,0.62
+indices_secundarios,incivilidades_ind,incivilidades_ind,28,NA,NA,268,0.48
+indices_secundarios,incivilidades_ind,incivilidades_ind,29,NA,NA,219,0.39
+indices_secundarios,incivilidades_ind,incivilidades_ind,29.1666666666667,NA,NA,6,0.01
+indices_secundarios,incivilidades_ind,incivilidades_ind,29.4,NA,NA,3,0.01
+indices_secundarios,incivilidades_ind,incivilidades_ind,30,NA,NA,169,0.3
+indices_secundarios,incivilidades_ind,incivilidades_ind,30.3333333333333,NA,NA,4,0.01
+indices_secundarios,incivilidades_ind,incivilidades_ind,30.8,NA,NA,1,0
 indices_secundarios,incivilidades_ind,incivilidades_ind,31,NA,NA,222,0.4
+indices_secundarios,incivilidades_ind,incivilidades_ind,31.5,NA,NA,2,0
 indices_secundarios,incivilidades_ind,incivilidades_ind,32,NA,NA,109,0.2
+indices_secundarios,incivilidades_ind,incivilidades_ind,32.2,NA,NA,1,0
+indices_secundarios,incivilidades_ind,incivilidades_ind,32.6666666666667,NA,NA,3,0.01
 indices_secundarios,incivilidades_ind,incivilidades_ind,33,NA,NA,140,0.25
+indices_secundarios,incivilidades_ind,incivilidades_ind,33.6,NA,NA,2,0
+indices_secundarios,incivilidades_ind,incivilidades_ind,33.8333333333333,NA,NA,4,0.01
 indices_secundarios,incivilidades_ind,incivilidades_ind,34,NA,NA,79,0.14
-indices_secundarios,incivilidades_ind,incivilidades_ind,35,NA,NA,221,0.4
-indices_secundarios,incivilidades_ind,incivilidades_ind,4,NA,NA,31,0.06
-indices_secundarios,incivilidades_ind,incivilidades_ind,5,NA,NA,70,0.13
-indices_secundarios,incivilidades_ind,incivilidades_ind,6,NA,NA,299,0.54
-indices_secundarios,incivilidades_ind,incivilidades_ind,7,NA,NA,14043,25.17
-indices_secundarios,incivilidades_ind,incivilidades_ind,8,NA,NA,4538,8.13
-indices_secundarios,incivilidades_ind,incivilidades_ind,9,NA,NA,6353,11.39
-indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,1,NA,NA,18599,33.33
-indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,2,NA,NA,18599,33.33
-indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,3,NA,NA,18598,33.33
+indices_secundarios,incivilidades_ind,incivilidades_ind,35,NA,NA,227,0.41
+indices_secundarios,incivilidades_ind,incivilidades_ind,7,NA,NA,14236,25.51
+indices_secundarios,incivilidades_ind,incivilidades_ind,8,NA,NA,4342,7.78
+indices_secundarios,incivilidades_ind,incivilidades_ind,8.16666666666667,NA,NA,81,0.15
+indices_secundarios,incivilidades_ind,incivilidades_ind,8.4,NA,NA,16,0.03
+indices_secundarios,incivilidades_ind,incivilidades_ind,8.75,NA,NA,4,0.01
+indices_secundarios,incivilidades_ind,incivilidades_ind,9,NA,NA,6216,11.14
+indices_secundarios,incivilidades_ind,incivilidades_ind,9.33333333333333,NA,NA,164,0.29
+indices_secundarios,incivilidades_ind,incivilidades_ind,9.8,NA,NA,28,0.05
+indices_secundarios,incivilidades_ind,incivilidades_ind,NA,NA,NA,148,0.27
+indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,1,NA,NA,18578,33.3
+indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,2,NA,NA,19553,35.04
+indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,3,NA,NA,17517,31.39
+indices_secundarios,incivilidades_ind_rec,incivilidades_ind_rec,NA,NA,NA,148,0.27
 vars_info,info_exp_personal,info_exp_personal,0,NA,NA,44028,78.91
 vars_info,info_exp_personal,info_exp_personal,1,NA,NA,11700,20.97
 vars_info,info_exp_personal,info_exp_personal,88,NA,NA,57,0.1
@@ -527,89 +614,176 @@ sociodemograficas,enc_region_rec,enc_region_rec,1,NA,NA,7376,13.22
 sociodemograficas,enc_region_rec,enc_region_rec,2,NA,NA,25432,45.58
 sociodemograficas,enc_region_rec,enc_region_rec,3,NA,NA,7303,13.09
 sociodemograficas,enc_region_rec,enc_region_rec,4,NA,NA,15685,28.11
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,0,NA,NA,17,0.03
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,1,NA,NA,8,0.01
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,10,NA,NA,3910,7.01
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,11,NA,NA,3134,5.62
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,12,NA,NA,3930,7.04
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,13,NA,NA,3188,5.71
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,14,NA,NA,3336,5.98
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,15,NA,NA,2908,5.21
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,16,NA,NA,3121,5.59
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,17,NA,NA,2682,4.81
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,18,NA,NA,2642,4.74
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,19,NA,NA,2304,4.13
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,2,NA,NA,17,0.03
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,20,NA,NA,2214,3.97
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,21,NA,NA,1868,3.35
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,22,NA,NA,1782,3.19
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,23,NA,NA,1538,2.76
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,24,NA,NA,1568,2.81
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,25,NA,NA,1207,2.16
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,26,NA,NA,1150,2.06
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,27,NA,NA,954,1.71
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,28,NA,NA,866,1.55
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,29,NA,NA,679,1.22
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,3,NA,NA,21,0.04
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,30,NA,NA,624,1.12
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,31,NA,NA,487,0.87
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,32,NA,NA,499,0.89
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,33,NA,NA,335,0.6
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,34,NA,NA,288,0.52
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,35,NA,NA,256,0.46
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,36,NA,NA,262,0.47
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,10,NA,NA,3661,6.56
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,10.2857142857143,NA,NA,230,0.41
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,10.6666666666667,NA,NA,58,0.1
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,11,NA,NA,2797,5.01
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,11.2,NA,NA,20,0.04
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,11.4285714285714,NA,NA,164,0.29
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,12,NA,NA,3648,6.54
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,12.5714285714286,NA,NA,251,0.45
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,12.8,NA,NA,12,0.02
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,13,NA,NA,2800,5.02
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,13.3333333333333,NA,NA,64,0.11
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,13.7142857142857,NA,NA,232,0.42
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,14,NA,NA,3010,5.39
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,14.4,NA,NA,27,0.05
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,14.6666666666667,NA,NA,52,0.09
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,14.8571428571429,NA,NA,280,0.5
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,15,NA,NA,2544,4.56
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,16,NA,NA,3087,5.53
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,17,NA,NA,2336,4.19
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,17.1428571428571,NA,NA,281,0.5
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,17.3333333333333,NA,NA,80,0.14
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,17.6,NA,NA,26,0.05
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,18,NA,NA,2321,4.16
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,18.2857142857143,NA,NA,239,0.43
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,18.6666666666667,NA,NA,89,0.16
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,19,NA,NA,1957,3.51
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,19.2,NA,NA,21,0.04
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,19.4285714285714,NA,NA,242,0.43
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,20,NA,NA,1999,3.58
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,20.5714285714286,NA,NA,227,0.41
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,20.8,NA,NA,26,0.05
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,21,NA,NA,1562,2.8
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,21.3333333333333,NA,NA,100,0.18
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,21.7142857142857,NA,NA,259,0.46
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,22,NA,NA,1519,2.72
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,22.4,NA,NA,13,0.02
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,22.6666666666667,NA,NA,86,0.15
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,22.8571428571429,NA,NA,210,0.38
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,23,NA,NA,1313,2.35
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,24,NA,NA,1713,3.07
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,25,NA,NA,1041,1.87
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,25.1428571428571,NA,NA,188,0.34
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,25.3333333333333,NA,NA,73,0.13
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,25.6,NA,NA,11,0.02
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,26,NA,NA,993,1.78
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,26.2857142857143,NA,NA,187,0.34
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,26.6666666666667,NA,NA,72,0.13
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,27,NA,NA,786,1.41
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,27.2,NA,NA,18,0.03
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,27.4285714285714,NA,NA,138,0.25
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,28,NA,NA,841,1.51
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,28.5714285714286,NA,NA,124,0.22
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,28.8,NA,NA,8,0.01
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,29,NA,NA,583,1.04
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,29.3333333333333,NA,NA,72,0.13
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,29.7142857142857,NA,NA,127,0.23
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,30,NA,NA,554,0.99
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,30.4,NA,NA,14,0.03
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,30.6666666666667,NA,NA,36,0.06
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,30.8571428571429,NA,NA,137,0.25
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,31,NA,NA,417,0.75
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,32,NA,NA,598,1.07
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,33,NA,NA,302,0.54
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,33.1428571428571,NA,NA,79,0.14
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,33.3333333333333,NA,NA,40,0.07
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,33.6,NA,NA,9,0.02
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,34,NA,NA,276,0.49
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,34.2857142857143,NA,NA,55,0.1
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,34.6666666666667,NA,NA,32,0.06
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,35,NA,NA,231,0.41
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,35.2,NA,NA,7,0.01
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,35.4285714285714,NA,NA,70,0.13
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,36,NA,NA,298,0.53
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,36.5714285714286,NA,NA,41,0.07
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,36.8,NA,NA,2,0
 etiquetado_secundarias,Indice de desordenes,desordenes_ind,37,NA,NA,121,0.22
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,38,NA,NA,103,0.18
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,37.3333333333333,NA,NA,23,0.04
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,37.7142857142857,NA,NA,33,0.06
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,38,NA,NA,104,0.19
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,38.4,NA,NA,3,0.01
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,38.6666666666667,NA,NA,17,0.03
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,38.8571428571429,NA,NA,12,0.02
 etiquetado_secundarias,Indice de desordenes,desordenes_ind,39,NA,NA,66,0.12
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,4,NA,NA,17,0.03
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,40,NA,NA,87,0.16
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,5,NA,NA,37,0.07
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,6,NA,NA,75,0.13
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,7,NA,NA,255,0.46
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,8,NA,NA,4772,8.55
-etiquetado_secundarias,Indice de desordenes,desordenes_ind,9,NA,NA,2468,4.42
-etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,1,NA,NA,18599,33.33
-etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,2,NA,NA,18599,33.33
-etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,3,NA,NA,18598,33.33
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,0,NA,NA,20,0.04
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,1,NA,NA,12,0.02
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,10,NA,NA,3547,6.36
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,11,NA,NA,4048,7.26
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,12,NA,NA,2598,4.66
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,13,NA,NA,2955,5.3
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,14,NA,NA,2246,4.03
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,15,NA,NA,2286,4.1
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,16,NA,NA,1800,3.23
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,17,NA,NA,1733,3.11
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,18,NA,NA,1347,2.41
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,19,NA,NA,1325,2.37
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,2,NA,NA,15,0.03
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,20,NA,NA,1073,1.92
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,21,NA,NA,992,1.78
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,22,NA,NA,715,1.28
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,23,NA,NA,671,1.2
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,24,NA,NA,523,0.94
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,25,NA,NA,450,0.81
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,26,NA,NA,307,0.55
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,27,NA,NA,348,0.62
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,28,NA,NA,260,0.47
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,29,NA,NA,223,0.4
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,3,NA,NA,22,0.04
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,30,NA,NA,175,0.31
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,40,NA,NA,131,0.23
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,8,NA,NA,4857,8.7
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,9,NA,NA,2153,3.86
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,9.14285714285714,NA,NA,106,0.19
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,9.33333333333333,NA,NA,26,0.05
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,9.6,NA,NA,11,0.02
+etiquetado_secundarias,Indice de desordenes,desordenes_ind,NA,NA,NA,117,0.21
+etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,1,NA,NA,20794,37.27
+etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,2,NA,NA,16625,29.8
+etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,3,NA,NA,18260,32.73
+etiquetado_secundarias,Indice de desordenes (rec),desordenes_ind_rec,NA,NA,NA,117,0.21
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,10,NA,NA,3397,6.09
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,10.5,NA,NA,105,0.19
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,11,NA,NA,3945,7.07
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,11.2,NA,NA,14,0.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,11.6666666666667,NA,NA,117,0.21
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,12,NA,NA,2481,4.45
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,12.25,NA,NA,9,0.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,12.6,NA,NA,29,0.05
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,12.8333333333333,NA,NA,71,0.13
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,13,NA,NA,2876,5.15
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,14,NA,NA,2301,4.12
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,15,NA,NA,2210,3.96
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,15.1666666666667,NA,NA,54,0.1
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,15.4,NA,NA,19,0.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,15.75,NA,NA,11,0.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,16,NA,NA,1727,3.1
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,16.3333333333333,NA,NA,52,0.09
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,16.8,NA,NA,13,0.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,17,NA,NA,1685,3.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,17.5,NA,NA,68,0.12
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,18,NA,NA,1296,2.32
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,18.2,NA,NA,17,0.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,18.6666666666667,NA,NA,61,0.11
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,19,NA,NA,1299,2.33
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,19.25,NA,NA,10,0.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,19.6,NA,NA,14,0.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,19.8333333333333,NA,NA,41,0.07
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,20,NA,NA,1046,1.87
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,21,NA,NA,1039,1.86
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,22,NA,NA,698,1.25
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,22.1666666666667,NA,NA,24,0.04
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,22.4,NA,NA,10,0.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,22.75,NA,NA,7,0.01
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,23,NA,NA,660,1.18
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,23.3333333333333,NA,NA,27,0.05
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,23.8,NA,NA,7,0.01
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,24,NA,NA,512,0.92
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,24.5,NA,NA,25,0.04
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,25,NA,NA,444,0.8
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,25.2,NA,NA,2,0
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,25.6666666666667,NA,NA,16,0.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,26,NA,NA,303,0.54
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,26.25,NA,NA,2,0
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,26.6,NA,NA,2,0
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,26.8333333333333,NA,NA,10,0.02
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,27,NA,NA,346,0.62
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,28,NA,NA,268,0.48
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,29,NA,NA,219,0.39
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,29.1666666666667,NA,NA,6,0.01
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,29.4,NA,NA,3,0.01
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,30,NA,NA,169,0.3
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,30.3333333333333,NA,NA,4,0.01
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,30.8,NA,NA,1,0
 etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,31,NA,NA,222,0.4
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,31.5,NA,NA,2,0
 etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,32,NA,NA,109,0.2
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,32.2,NA,NA,1,0
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,32.6666666666667,NA,NA,3,0.01
 etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,33,NA,NA,140,0.25
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,33.6,NA,NA,2,0
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,33.8333333333333,NA,NA,4,0.01
 etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,34,NA,NA,79,0.14
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,35,NA,NA,221,0.4
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,4,NA,NA,31,0.06
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,5,NA,NA,70,0.13
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,6,NA,NA,299,0.54
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,7,NA,NA,14043,25.17
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,8,NA,NA,4538,8.13
-etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,9,NA,NA,6353,11.39
-etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,1,NA,NA,18599,33.33
-etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,2,NA,NA,18599,33.33
-etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,3,NA,NA,18598,33.33
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,35,NA,NA,227,0.41
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,7,NA,NA,14236,25.51
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,8,NA,NA,4342,7.78
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,8.16666666666667,NA,NA,81,0.15
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,8.4,NA,NA,16,0.03
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,8.75,NA,NA,4,0.01
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,9,NA,NA,6216,11.14
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,9.33333333333333,NA,NA,164,0.29
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,9.8,NA,NA,28,0.05
+etiquetado_secundarias,Indice de incivilidades,incivilidades_ind,NA,NA,NA,148,0.27
+etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,1,NA,NA,18578,33.3
+etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,2,NA,NA,19553,35.04
+etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,3,NA,NA,17517,31.39
+etiquetado_secundarias,Indice de incivilidades (rec),incivilidades_ind_rec,NA,NA,NA,148,0.27
 etiquetado_secundarias,Se informa por experiencia personal,info_exp_personal,0,NA,NA,44028,78.91
 etiquetado_secundarias,Se informa por experiencia personal,info_exp_personal,1,NA,NA,11700,20.97
 etiquetado_secundarias,Se informa por experiencia personal,info_exp_personal,88,NA,NA,57,0.1

@@ -772,8 +772,30 @@ tuvieran una medida.
 
 ### D2 — `ntile()` parte los empates por orden de fila
 
-**Recomendada. Afecta al MCA. Es la de mayor impacto. Vive en
-`categorizar_indices()`.**
+**CERRADA y aplicada (12 de agosto de 2026). Vive en `categorizar_indices()`.**
+
+**Resolución:** cortar por lo que la variable significa, no por la forma de su
+distribución, con el cero siempre como categoría propia. Tres métodos según cómo
+esté construido cada índice, declarados en `cfg$CORTES`:
+
+| Método | Variables | Corte |
+|---|---|---|
+| `valor` | `emper_barrio_pct`, `emper_casa_pct` | 0 / 50 / 100 |
+| `conteo` | `comgen_per_pct` | 0 / 1–2 / 3+ |
+| `conteo` | `comgen_com_pct` | 0 / 1 / 2+ |
+| `porcentaje` | `emper_ep_pct`, `comper_pct` | 0 / 1–50 / >50 |
+
+Vivienda y barrio llevan cortes distintos a propósito: entre quienes tienen una
+sola medida comunitaria, el 66% es un grupo de WhatsApp; en la vivienda la
+medida única más común son rejas. El umbral sustantivo no está en el mismo lugar.
+
+`categorizar_indices()` lleva ahora una **aserción** que falla si algún corte
+reparte un mismo valor del índice entre categorías. Deja el bug estructuralmente
+imposible de reintroducir.
+
+---
+
+Diagnóstico original, que se conserva porque explica por qué se cambió:
 
 `2_recode.R:169` usa `ntile(., 3)`, que fuerza grupos de igual tamaño. Con 9–11
 valores distintos y empates enormes, **personas con respuestas idénticas caen en
@@ -821,26 +843,14 @@ esta variable, de modo que ese único valor ocupa más de dos terciles.
 Corolario para la decisión: los índices con **más** valores posibles
 (`emper_ep_pct` tiene 43) están **menos** afectados, no más.
 
-**Propuesta formal (12-ago-2026), publicada en la página.** Cortar por lo que la
-variable significa, con el cero siempre como categoría propia. Tres casos según
-cómo esté construido cada índice:
+Dos argumentos que sostuvieron el cambio, además del de los empates:
 
-| Caso | Variables | Corte | Por qué |
-|---|---|---|---|
-| Dos ítems | `emper_barrio_pct`, `emper_casa_pct` | El valor: 0 / 50 / 100 | Ya vienen con tres categorías |
-| Denominador constante | `comgen_per_pct`, `comgen_com_pct` | Conteo: 0 / 1–2 / 3+ | Ningún ítem admite `85`, así que el % equivale a un conteo |
-| Denominador variable | `emper_ep_pct`, `comper_pct` | %: 0 / 1–50 / >50 | Todos los ítems admiten `85`, un conteo no sería comparable |
-
-Dos argumentos que no estaban en este plan y sostienen la propuesta:
-
-1. **Los terciles no permiten comparar olas.** Siempre dan 33/33/33, así que un
-   cambio poblacional real no se vería. Para una consultoría que compara olas,
-   pesa más que el problema de los empates.
-2. **La propuesta se puede evaluar contra la solución actual**, porque mantiene
+1. **Los terciles no permiten comparar entre años.** Siempre dan 33/33/33, así
+   que un cambio poblacional real no se vería. Para una consultoría que compara
+   años, pesa más que el problema de los empates.
+2. **El cambio se puede evaluar contra la solución anterior**, porque mantiene
    tres categorías por variable. La advertencia sobre la inercia (§F4) no aplica
    cuando el número de categorías no cambia.
-
-`[ABIERTO]` — falta aprobación. Ver P4.
 
 ---
 
@@ -937,8 +947,30 @@ lista de exclusiones caso a caso.
 
 ### D5 — `88`/`99` se comportan como "nunca ocurre"
 
-**`[ABIERTO]` — pendiente de P5 (cómo aplicar el criterio, no cuál). NO afecta al
-MCA. Vive en `construir_indices_secundarios()`.**
+**CERRADA y aplicada (12 de agosto de 2026). NO afecta al MCA. Vive en
+`construir_indices_secundarios()`.**
+
+**Resolución:** prorratear. El índice sigue siendo la suma —el usuario prefirió
+conservar la métrica de intensidad, que distingue "nunca" de "ocasionalmente"—
+pero los ítems sin responder se reemplazan por el promedio de los respondidos,
+con un mínimo de la mitad de la batería. El índice vuelve a su rango (8–40 y
+7–35) sin cambiar de escala.
+
+Se evaluó imputar con hot deck, que fue la primera propuesta del usuario. Se
+descartó porque en 7 de cada 10 casos afectados falta **un ítem de ocho**, y las
+otras respuestas de la misma persona predicen mejor que las de un donante. El
+argumento habitual a favor del hot deck (que promediar encoge la varianza) no se
+cumple acá: la desviación estándar sube de 6,87 a 7,11, porque desaparecen los
+valores fuera de escala.
+
+**Hallazgo lateral:** tras prorratear, `ntile()` seguía partiendo empates en
+estos dos índices (2.234 personas con índice 13 repartidas entre dos terciles).
+Se cambió a cortar en los mismos umbrales pero **asignando por valor**, no por
+rango. Los grupos quedan desiguales (37/30/33), que es lo correcto.
+
+---
+
+Diagnóstico original:
 
 `4_add_vars.R:42` y `:55` mandan `88`/`99` a `NA` y suman con
 `rowSums(..., na.rm = TRUE)`. El ítem desaparece del sumatorio en vez de
@@ -1480,7 +1512,7 @@ Rama `refactor/targets`. Fases 0 a 3 ejecutadas; Fase 3 **parcial**. F5.3 constr
 | 0 — Preparación | Hecha (`b4eb745`); `renv` sincronizado (`4b64cb6`) |
 | 1 — Refactor a targets | Hecha (`bcec3a5`); **deuda cerrada** en `406a27b` (5 helpers, `tab_var_clust()`, `spec_patrones`, `VARS_SEC`) |
 | 2 — Inventario | Hecha (`639877a`) |
-| 3 — Decisiones | **Parcial**: D1 y D3 aplicadas y verificadas (`e2144c4`). D6 y D7 cerradas sin cambio de código (D7 en `0184c33`). D4 cerrada y documentada (12-ago-2026), sin cambio de código. **D2 y D5 pendientes** |
+| 3 — Decisiones | **Cerrada**: D1 y D3 aplicadas (`e2144c4`); D4, D6 y D7 cerradas sin cambio de código; **D2 y D5 aplicadas** (12-ago-2026). Las siete resueltas |
 | 4 — Variantes | No iniciada |
 | 5 — Gold, testbed, `analysis/` | **F5.3 construida** (6 tablas + diseño muestral + mapeo de nombres). **F5.4 especificada, insumos del DAG listos, página sin construir.** F5.1 y F5.2 no iniciadas |
 
@@ -1496,19 +1528,23 @@ del parámetro.
 
 ### Próximo paso
 
-**Construir la página (F5.4).** Está especificada y todos sus insumos ya son
-targets. No depende de ninguna decisión abierta: sale con `C1`–`C5` y con las
-tablas marcadas como provisionales.
+**Definir la solución que se reporta**: cuántos grupos y cómo se llaman. Es lo
+único que queda entre el análisis y el informe, y no lo puede resolver el código.
 
-Después: cerrar D2/D4/D5 (bloquea F5.2), y F5.1 (gold/testbed).
+Después: F5.2 (reparar `analysis/`, que ya no está bloqueada) y F5.1
+(gold/testbed).
 
 ### Antes de continuar
 
-1. **No empezar F5.2** (reparar `analysis/`) todavía: depende de D2 y D4, que
-   siguen abiertas. F5.3 sí puede avanzar — ver su propia sección.
+1. **F5.2 (reparar `analysis/`) quedó desbloqueada**: D2 y D4 ya están cerradas,
+   así que sus vectores de variables no van a volver a cambiar. Ojo con el
+   rename: `cfg$VARS_REC_TERCIL` ya no existe, ahora es `cfg$VARS_MODELO` y las
+   variables terminan en `_cat`.
 
-2. **Cerrar las decisiones abiertas.** Quedan dos: **D2** (P4) y **D5** (P5). D2
-   es la más consecuente: mayor impacto del proyecto y además bloquea F5.2.
+2. **La página con terciles quedó archivada** en
+   `docs/archivo/2025-08-terciles/`, con una banda en cada página. Conserva el
+   diagnóstico completo de D2, que se sacó de la página vigente para no arrastrar
+   la historia.
 
 3. **Verificación retroactiva de la Fase 1.** El criterio 8 (inventario de
    traducción) se agregó *después* de ejecutada la Fase 1, y los criterios 2–4
@@ -1569,20 +1605,14 @@ escrito.
 
 **P3 — Confirmar §F0.3**, qué se versiona tras la mudanza al almacén de targets.
 
-**P4 — D2: ¿cortes sustantivos o volver a la dicotómica?** El repo viejo tenía la
-dicotómica como solución principal y los terciles como chequeo de robustez. Si la
-dicotómica ya estaba aprobada, quizás la pregunta no es cómo arreglar los
-terciles sino por qué son la variante principal acá.
+**P4 — RESUELTA (12-ago-2026).** Se adoptaron cortes sustantivos con tres
+categorías, no la dicotómica. El criterio y los cortes están en D2.
 
 ---
 
-**P5 — D5: ¿`create_var_pct()` o mínimo de escala?** D6 ya fijó el criterio del
-proyecto, así que la pregunta no es cuál convención adoptar sino cómo aplicarla.
-La opción 1 (reconstruir el índice con `create_var_pct()`) lo vuelve
-estructuralmente idéntico al resto y hace que la convención se herede sola; la
-opción 2 (asignar el mínimo de escala) conserva el índice como suma. Cambia la
-métrica de `desordenes_ind`/`incivilidades_ind`, así que corresponde decidirlo,
-no asumirlo.
+**P5 — RESUELTA (12-ago-2026).** Ninguna de las dos opciones que este plan había
+planteado: se prorratea, que conserva la métrica de suma y devuelve el índice a
+su rango. Ver D5.
 
 ---
 

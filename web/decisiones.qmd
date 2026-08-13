@@ -13,272 +13,34 @@ nr <- leer("no_respuesta_indices")
 zl <- haven::zap_labels
 ```
 
-Quedan cuatro decisiones metodológicas sin resolver. Esta página las reúne, las
-desarrolla y propone una salida para cada una.
-
-Tienen distinto grado de madurez:
+Quedan dos decisiones sin resolver, y las dos son sobre lo mismo: **qué solución
+se reporta**. Las metodológicas ya están todas cerradas.
 
 | Decisión | Estado |
 |---|---|
-| **Cómo se cortan los índices en categorías** | Hay propuesta completa. Es la que más pesa: cambia la solución de grupos |
-| **No respuesta en los índices de desórdenes e incivilidades** | El criterio ya está fijado, falta elegir cómo aplicarlo |
-| **Cuántos grupos se reportan** | Depende de la primera. Las tres soluciones están en Solución actual |
-| **Nombres de los grupos** | Depende de la primera. Requiere mirar los perfiles |
+| **Cuántos grupos se reportan** | Las tres soluciones están en Solución actual |
+| **Cómo se llaman los grupos** | Requiere leer los perfiles |
 
 El [registro completo de decisiones](pipeline.html#registro-de-decisiones),
-incluyendo las seis que ya están cerradas, está al final de la pestaña Pipeline.
-
-# 1. Cómo se cortan los índices
-
-## El problema, en dos líneas
-
-Los índices continuos se convierten hoy en categorías con terciles, que fuerzan
-tres grupos del mismo tamaño. Cuando un valor reúne más gente de la que cabe en
-un tercil, el corte lo parte: personas con respuestas idénticas terminan en
-categorías distintas. El caso más claro es el índice de inseguridad en la casa,
-donde quienes respondieron sentirse seguros quedan repartidos en las tres
-categorías.
-
-El diagnóstico completo, con el microdato y las cifras, está en el
-[paso 4 del pipeline](pipeline.html#categorización).
-
-## La propuesta
-
-**Cortar por lo que la variable significa, no por la forma de su distribución.**
-Con una regla que atraviesa las seis: **el cero es una categoría propia**.
-
-No hay un único método porque los seis índices no están construidos igual. Hay
-tres situaciones, y cada una admite un corte natural distinto.
+incluyendo las ocho que ya están cerradas, está al final de la pestaña Pipeline.
 
 ::: {.callout-note}
-## Sobre los números de esta sección
+## Las dos decisiones metodológicas que estaban abiertas se resolvieron
 
-No salen del pipeline: son la **proyección** de lo que la propuesta produciría,
-calculada sobre los índices tal como están hoy. Sirven para dimensionar la
-decisión, no son resultados del análisis.
+**Cómo se cortan los índices.** Se reemplazaron los terciles por cortes que
+siguen lo que la variable significa, con el cero como categoría propia. Está
+explicado en el [paso 4 del pipeline](pipeline.html#categorización).
+
+**La no respuesta en los índices de desórdenes e incivilidades.** Se prorratea en
+vez de descartar los ítems sin responder, así que el índice vuelve a su rango sin
+cambiar de métrica. Está en el [paso 7](pipeline.html#variables-secundarias).
+
+La solución construida con terciles, junto con el diagnóstico que llevó a
+cambiarla, quedó en la
+[versión archivada de esta página](archivo/2025-08-terciles/index.html).
 :::
 
-```{r}
-#| label: propuesta
-n_items <- function(v) length(unlist(spec[[v]]))
-
-distribucion <- function(categorias) {
-    tb <- table(categorias)
-    round(100 * prop.table(tb), 1)
-}
-
-fila <- function(v, etiqueta, cats, nombres) {
-    d <- distribucion(cats)
-    tibble::tibble(
-        Índice = etiqueta,
-        Categoría = nombres,
-        `% de la muestra` = as.numeric(d[nombres])
-    )
-}
-```
-
-### Caso 1. Los dos índices de dos ítems
-
-`emper_barrio_pct` y `emper_casa_pct` se construyen preguntando por la misma
-situación de día y de noche, así que solo pueden valer 0, 50 o 100. **Ya vienen
-con tres categorías**, exactamente las que el modelo necesita.
-
-La propuesta es usar el valor como categoría, sin cortar nada.
-
-```{r}
-#| label: caso1
-caso1 <- purrr::map2(
-    c("emper_barrio_pct", "emper_casa_pct"),
-    c("Inseguridad en el barrio", "Inseguridad en la casa"),
-    function(v, et) {
-        x <- zl(datos_cat[[v]])
-        x <- x[!is.na(x)]
-        cats <- factor(
-            x,
-            levels = c(0, 50, 100),
-            labels = c(
-                "En ninguna de las dos",
-                "En una de las dos",
-                "En las dos"
-            )
-        )
-        fila(v, et, cats, levels(cats))
-    }
-) |>
-    purrr::list_rbind()
-
-caso1 |> tabla(alinear = c("l", "l", "r"))
-```
-
-### Caso 2. Los dos índices de medidas de seguridad
-
-`comgen_per_pct` y `comgen_com_pct` tienen una particularidad que conviene
-aprovechar: **ninguno de sus ítems admite el código "no aplica"**. El
-denominador es constante, así que el porcentaje equivale exactamente a un
-**conteo de medidas**, que es bastante más interpretable.
-
-La propuesta es cortar por número de medidas, con el mismo corte para las dos.
-
-```{r}
-#| label: caso2
-caso2 <- purrr::map2(
-    c("comgen_per_pct", "comgen_com_pct"),
-    c("Medidas de la vivienda", "Medidas del barrio"),
-    function(v, et) {
-        x <- zl(datos_cat[[v]])
-        x <- x[!is.na(x)]
-        conteo <- round(x * n_items(v) / 100)
-        cats <- cut(
-            conteo,
-            breaks = c(-1, 0, 2, Inf),
-            labels = c("Ninguna medida", "Una o dos", "Tres o más")
-        )
-        fila(v, et, cats, levels(cats))
-    }
-) |>
-    purrr::list_rbind()
-
-caso2 |> tabla(alinear = c("l", "l", "r"))
-```
-
-### Caso 3. Espacio público y modificación de prácticas
-
-`emper_ep_pct` y `comper_pct` están en la situación opuesta: **todos** sus ítems
-admiten "no aplica", así que el denominador cambia de persona a persona. Un
-conteo no sería comparable entre dos personas a las que les aplica distinto
-número de situaciones, de modo que hay que quedarse con el porcentaje.
-
-La propuesta es cortar en cero y en la mitad.
-
-```{r}
-#| label: caso3
-caso3 <- purrr::map2(
-    c("emper_ep_pct", "comper_pct"),
-    c("Inseguridad en el espacio público", "Modificación de prácticas"),
-    function(v, et) {
-        x <- zl(datos_cat[[v]])
-        x <- x[!is.na(x)]
-        cats <- cut(
-            x,
-            breaks = c(-1, 0, 50, 100),
-            labels = c(
-                "En ninguna situación",
-                "En hasta la mitad",
-                "En más de la mitad"
-            )
-        )
-        fila(v, et, cats, levels(cats))
-    }
-) |>
-    purrr::list_rbind()
-
-caso3 |> tabla(alinear = c("l", "l", "r"))
-```
-
-Se probó también cortar en tercios del rango (0-33 / 34-66 / 67-100) y queda
-peor: la categoría baja mezcla a quien no siente inseguridad en ningún lugar con
-quien la siente en un tercio de ellos, que es justamente la distinción que
-interesa conservar.
-
-## Por qué el cero va solo
-
-No es una preferencia de forma. La primera decisión que se tomó en este rediseño
-fue rescatar a quienes respondieron **"ninguna medida"**, que estaban siendo
-tratados como dato faltante y quedaban fuera del modelo.
-
-Si ahora esas personas se mezclan en una categoría "baja" junto a quienes tienen
-una o dos medidas, el arreglo queda a medias: las recuperamos para el modelo
-pero perdemos su distinción dentro de él.
-
-Del lado del miedo vale lo mismo. Quien no se siente inseguro en **ningún** lugar
-es cualitativamente distinto de quien se siente inseguro en pocos, no es "un poco
-menos".
-
-## Dos argumentos que sostienen la propuesta
-
-**Los terciles no permiten comparar entre años.** Por construcción siempre
-producen tres grupos de un tercio cada uno. Si en la versión siguiente de la
-encuesta la población se vuelve más temerosa, el tercil alto seguirá teniendo un
-tercio de la muestra y la comparación no mostrará nada. Con cortes fijos, la
-proporción en cada categoría puede moverse, que es lo que se quiere medir.
-
-Y como cada versión de la ENUSC se levanta sobre una muestra distinta, comparar
-dos años es comparar dos estimaciones independientes de la población. Un corte
-que se redefine con cada distribución impide justamente eso.
-
-Para una consultoría que va a comparar años, esto pesa más que el problema de los
-empates.
-
-**La propuesta se puede evaluar contra la solución actual.** Mantiene **tres
-categorías por variable**, igual que hoy. Eso importa porque el % de inercia del
-MCA no es comparable entre variantes con distinto número de categorías, pero sí
-lo es cuando el número no cambia. Se puede correr la variante y comparar ajuste,
-cosa que no siempre se puede.
-
-## Qué falta aprobar
-
-La propuesta completa: usar el valor en los dos índices de dos ítems, cortar por
-conteo de medidas en los dos de `comgen`, y cortar en cero y mitad en los dos
-restantes.
-
-Hay dos puntos donde hay margen y conviene decidir explícitamente:
-
-**El número de categorías.** La propuesta mantiene tres. El informe anterior
-reportaba una solución dicotómica, así que hay un argumento de continuidad para
-volver a dos. El reparo es que dicotomizar en cero deja repartos muy desparejos
-(89 contra 11 en medidas de la vivienda) y dicotomizar en la mediana vuelve a
-perder la distinción del cero.
-
-**El corte de las medidas del barrio.** Con "ninguna / una o dos / tres o más"
-queda 32 / 49 / 19. Con "ninguna / una / dos o más" queda 32 / 29 / 39, más
-parejo. Se propuso el primero por consistencia con la variable de vivienda, pero
-tener tres medidas comunitarias es bastante más organizado que tener tres en la
-casa, así que el segundo también se defiende.
-
-# 2. No respuesta en los índices secundarios
-
-## El estado
-
-Esta decisión está más cerrada de lo que parece: **el criterio del proyecto ya
-está fijado** por cómo se tratan los índices del modelo. Lo que falta es elegir
-entre dos formas de aplicarlo.
-
-Los índices de percepción de desórdenes e incivilidades suman respuestas en
-escala de 1 a 5. Hoy los ítems no respondidos se descartan del sumatorio, de modo
-que quien no responde ninguno suma 0, un valor que ninguna combinación de
-respuestas válidas puede producir.
-
-```{r}
-#| label: d5
-nr |>
-    transmute(
-        Índice = indice,
-        `N de ítems` = n_items,
-        `Mínimo posible` = min_teorico,
-        `Mínimo observado` = min_observado,
-        `Casos afectados` = casos_alguna_nr
-    ) |>
-    tabla()
-```
-
-El detalle está en el
-[paso 7 del pipeline](pipeline.html#variables-secundarias).
-
-## Las dos formas de aplicarlo
-
-**Construirlos como porcentaje**, igual que los índices del modelo. La convención
-se hereda sola, quedan estructuralmente idénticos al resto y dejan de ser un caso
-especial que alguien tiene que recordar. Es la opción que se propone.
-
-**Mantener la suma y asignar el mínimo de la escala** a los ítems sin responder,
-de modo que el índice no pueda bajar de su piso. Conserva la métrica actual, que
-puede importar si se quiere comparar con lo ya reportado.
-
-Cualquiera de las dos cambia la escala de estas dos variables, así que afecta a
-los cruces donde aparecen. Ninguna afecta al modelo, porque estas variables no
-entran.
-
-# 3. La solución que se reporta
+# La solución que se reporta
 
 Son dos decisiones distintas que conviene tomar juntas, porque dependen del mismo
 insumo y de la misma decisión previa: **cuántos grupos** se reportan y **cómo se
@@ -306,16 +68,14 @@ una tabla de qué distingue a cada grupo, ordenada por cuánto se aparta cada
 respuesta del promedio de la muestra, y el perfil completo con todas las
 variables.
 
-Conviene tener presente que **las dos dependen de la primera**. Si se adopta la
-propuesta sobre los cortes, la solución de grupos cambia: podría cambiar cuál es
-el número razonable de grupos, y los perfiles sobre los que se elige el nombre.
-Decidir ahora significa hacerlo dos veces.
+Las dos se toman sobre la solución que produjo el corte nuevo, que es la que está
+en Solución actual. La numeración de los grupos no se corresponde con la de la
+versión archivada: el modelo los renumera en cada corrida.
 
 ::: {.callout-warning}
-## El orden sugerido
+## Lo que hace falta
 
-Resolver primero los cortes de los índices, correr la solución que resulte, y
-recién entonces elegir cuántos grupos y nombrarlos sobre esa. La decisión sobre
-los índices secundarios se puede tomar en cualquier momento, porque esas
-variables no entran al modelo.
+Mirar los perfiles de las tres soluciones, decidir cuántos grupos distinguen algo
+que valga la pena reportar, y ponerles nombre. Es lo único que queda entre el
+análisis y el informe.
 :::

@@ -183,7 +183,7 @@ ul.task-list li input[type="checkbox"] {
 <div>
 <pre class="mermaid mermaid-js">flowchart LR
     A[Variables originales&lt;br/&gt;de la ENUSC] --&gt; B[Índices&lt;br/&gt;_pct]
-    B --&gt; C[Categorizadas&lt;br/&gt;_rec_tercil]
+    B --&gt; C[Categorizadas&lt;br/&gt;_cat]
     C --&gt; D[Clusters]
     A --&gt; E[Secundarias]
     E -.describe.-&gt; D
@@ -2645,21 +2645,21 @@ incivilidades_ind
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">emper_ep_pct_rec_tercil</td>
-<td style="text-align: left;">Inseguridad en Espacio público (tercile)</td>
-<td style="text-align: left;">1 = Baja inseguridad en espacio publico; 2 = Media inseguridad en espacio publico; 3 = Alta inseguridad en espacio publico; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">emper_ep_pct_cat</td>
+<td style="text-align: left;">Inseguridad en espacio público (categorizada)</td>
+<td style="text-align: left;">1 = Sin inseguridad en espacio público; 2 = Inseguridad en hasta la mitad de los lugares; 3 = Inseguridad en más de la mitad de los lugares; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">emper_ep_pct</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">emper_barrio_pct_rec_tercil</td>
-<td style="text-align: left;">Inseguridad en Barrio (tercile)</td>
-<td style="text-align: left;">1 = Baja inseguridad en el barrio; 2 = Media inseguridad en el barrio; 3 = Alta inseguridad en el barrio; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">emper_barrio_pct_cat</td>
+<td style="text-align: left;">Inseguridad en el barrio (categorizada)</td>
+<td style="text-align: left;">1 = Sin inseguridad en el barrio; 2 = Inseguridad en el barrio, de día o de noche; 3 = Inseguridad en el barrio, de día y de noche; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">emper_barrio_pct</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">emper_casa_pct_rec_tercil</td>
-<td style="text-align: left;">Inseguridad en Casa (tercile)</td>
-<td style="text-align: left;">1 = Baja inseguridad en la casa; 2 = Media inseguridad en la casa; 3 = Alta inseguridad en la casa; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">emper_casa_pct_cat</td>
+<td style="text-align: left;">Inseguridad en la casa (categorizada)</td>
+<td style="text-align: left;">1 = Sin inseguridad en la casa; 2 = Inseguridad en la casa, de día o de noche; 3 = Inseguridad en la casa, de día y de noche; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">emper_casa_pct</td>
 </tr>
 <tr class="even">
@@ -2669,9 +2669,9 @@ incivilidades_ind
 <td style="text-align: left;">perper_p_expos_delito, perper_p_delito_pronostico_1, perper_p_delito_pronostico_2, perper_p_delito_pronostico_3, perper_p_delito_pronostico_4, perper_p_delito_pronostico_6, perper_p_delito_pronostico_9, perper_p_delito_pronostico_10, perper_p_delito_pronostico_11, perper_p_delito_pronostico_5, perper_p_delito_pronostico_7, perper_p_delito_pronostico_8, perper_p_expos_delito, perper_p_delito_pronostico_77, perper_p_delito_pronostico_88, perper_p_delito_pronostico_99</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">comper_pct_rec_tercil</td>
-<td style="text-align: left;">Modifica comportamiento (tercile)</td>
-<td style="text-align: left;">1 = Bajas prácticas de evitación; 2 = Medias prácticas de evitación; 3 = Altas prácticas de evitación; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">comper_pct_cat</td>
+<td style="text-align: left;">Modificación de prácticas (categorizada)</td>
+<td style="text-align: left;">1 = No modificó prácticas; 2 = Modificó hasta la mitad de las prácticas; 3 = Modificó más de la mitad de las prácticas; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">comper_pct</td>
 </tr>
 <tr class="even">
@@ -2681,33 +2681,20 @@ incivilidades_ind
 <td style="text-align: left;">comper_costos_medidas</td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">comgen_per_pct_rec_tercil</td>
-<td style="text-align: left;">Dispone de medidas de seguridad (personales) (tercile)</td>
-<td style="text-align: left;">1 = Baja disposición de medidas vivienda; 2 = Media disposición de medidas vivienda; 3 = Alta disposición de medidas vivienda; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">comgen_per_pct_cat</td>
+<td style="text-align: left;">Medidas de seguridad de la vivienda (categorizada)</td>
+<td style="text-align: left;">1 = Sin medidas en la vivienda; 2 = Una o dos medidas en la vivienda; 3 = Tres o más medidas en la vivienda; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">comgen_per_pct</td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">comgen_com_pct_rec_tercil</td>
-<td style="text-align: left;">Disponen de medidas de seguridad (comunitarias) (tercile)</td>
-<td style="text-align: left;">1 = Baja adopción de medidas comunitarias; 2 = Media adopción de medidas comunitarias; 3 = Alta adopción de medidas comunitarias; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">comgen_com_pct_cat</td>
+<td style="text-align: left;">Medidas de seguridad del barrio (categorizada)</td>
+<td style="text-align: left;">1 = Sin medidas en el barrio; 2 = Una medida en el barrio; 3 = Dos o más medidas en el barrio; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">comgen_com_pct</td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Advertencia</span>Provisional
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>La forma de estas categorías depende de una decisión abierta sobre cómo se cortan los índices (ver el <a href="pipeline.html#categorización">paso 4</a>). Los nombres de las variables y su origen no cambian; sus categorías sí pueden cambiar.</p>
 </div>
 </div>
 </section>
@@ -2731,19 +2718,19 @@ incivilidades_ind
 <td style="text-align: left;">clusters_4</td>
 <td style="text-align: left;">Solución de 4 grupos</td>
 <td style="text-align: left;">C1; C2; C3; C4</td>
-<td style="text-align: left;">emper_ep_pct_rec_tercil, emper_barrio_pct_rec_tercil, emper_casa_pct_rec_tercil, perper_delito, comper_pct_rec_tercil, comper_gasto, comgen_per_pct_rec_tercil, comgen_com_pct_rec_tercil</td>
+<td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_pct_cat, comgen_com_pct_cat</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">clusters_5</td>
 <td style="text-align: left;">Solución de 5 grupos</td>
 <td style="text-align: left;">C1; C2; C3; C4; C5</td>
-<td style="text-align: left;">emper_ep_pct_rec_tercil, emper_barrio_pct_rec_tercil, emper_casa_pct_rec_tercil, perper_delito, comper_pct_rec_tercil, comper_gasto, comgen_per_pct_rec_tercil, comgen_com_pct_rec_tercil</td>
+<td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_pct_cat, comgen_com_pct_cat</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">clusters_6</td>
 <td style="text-align: left;">Solución de 6 grupos</td>
 <td style="text-align: left;">C1; C2; C3; C4; C5; C6</td>
-<td style="text-align: left;">emper_ep_pct_rec_tercil, emper_barrio_pct_rec_tercil, emper_casa_pct_rec_tercil, perper_delito, comper_pct_rec_tercil, comper_gasto, comgen_per_pct_rec_tercil, comgen_com_pct_rec_tercil</td>
+<td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_pct_cat, comgen_com_pct_cat</td>
 </tr>
 </tbody>
 </table>
@@ -2869,19 +2856,6 @@ incivilidades_ind
 </tbody>
 </table>
 </div>
-</div>
-</div>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Advertencia</span>Provisional
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Los índices de percepción de desórdenes e incivilidades dependen de una decisión abierta sobre cómo tratar la no respuesta (ver el <a href="pipeline.html#variables-secundarias">paso 7</a>). Su escala puede cambiar.</p>
 </div>
 </div>
 </section>
@@ -4112,28 +4086,28 @@ incivilidades_ind
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
-<td style="text-align: left;">emper_ep_pct_rec_tercil</td>
+<td style="text-align: left;">emper_ep_pct_cat</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">Inseguridad en Espacio público (tercile)</td>
-<td style="text-align: left;">1 = Baja inseguridad en espacio publico; 2 = Media inseguridad en espacio publico; 3 = Alta inseguridad en espacio publico; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">Inseguridad en espacio público (categorizada)</td>
+<td style="text-align: left;">1 = Sin inseguridad en espacio público; 2 = Inseguridad en hasta la mitad de los lugares; 3 = Inseguridad en más de la mitad de los lugares; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">emper_ep_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
-<td style="text-align: left;">emper_barrio_pct_rec_tercil</td>
+<td style="text-align: left;">emper_barrio_pct_cat</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">Inseguridad en Barrio (tercile)</td>
-<td style="text-align: left;">1 = Baja inseguridad en el barrio; 2 = Media inseguridad en el barrio; 3 = Alta inseguridad en el barrio; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">Inseguridad en el barrio (categorizada)</td>
+<td style="text-align: left;">1 = Sin inseguridad en el barrio; 2 = Inseguridad en el barrio, de día o de noche; 3 = Inseguridad en el barrio, de día y de noche; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">emper_barrio_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
-<td style="text-align: left;">emper_casa_pct_rec_tercil</td>
+<td style="text-align: left;">emper_casa_pct_cat</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">Inseguridad en Casa (tercile)</td>
-<td style="text-align: left;">1 = Baja inseguridad en la casa; 2 = Media inseguridad en la casa; 3 = Alta inseguridad en la casa; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">Inseguridad en la casa (categorizada)</td>
+<td style="text-align: left;">1 = Sin inseguridad en la casa; 2 = Inseguridad en la casa, de día o de noche; 3 = Inseguridad en la casa, de día y de noche; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">emper_casa_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
@@ -4148,10 +4122,10 @@ incivilidades_ind
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
-<td style="text-align: left;">comper_pct_rec_tercil</td>
+<td style="text-align: left;">comper_pct_cat</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">Modifica comportamiento (tercile)</td>
-<td style="text-align: left;">1 = Bajas prácticas de evitación; 2 = Medias prácticas de evitación; 3 = Altas prácticas de evitación; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">Modificación de prácticas (categorizada)</td>
+<td style="text-align: left;">1 = No modificó prácticas; 2 = Modificó hasta la mitad de las prácticas; 3 = Modificó más de la mitad de las prácticas; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">comper_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
@@ -4166,19 +4140,19 @@ incivilidades_ind
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
-<td style="text-align: left;">comgen_per_pct_rec_tercil</td>
+<td style="text-align: left;">comgen_per_pct_cat</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">Dispone de medidas de seguridad (personales) (tercile)</td>
-<td style="text-align: left;">1 = Baja disposición de medidas vivienda; 2 = Media disposición de medidas vivienda; 3 = Alta disposición de medidas vivienda; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">Medidas de seguridad de la vivienda (categorizada)</td>
+<td style="text-align: left;">1 = Sin medidas en la vivienda; 2 = Una o dos medidas en la vivienda; 3 = Tres o más medidas en la vivienda; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">comgen_per_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
-<td style="text-align: left;">comgen_com_pct_rec_tercil</td>
+<td style="text-align: left;">comgen_com_pct_cat</td>
 <td style="text-align: left;">-</td>
-<td style="text-align: left;">Disponen de medidas de seguridad (comunitarias) (tercile)</td>
-<td style="text-align: left;">1 = Baja adopción de medidas comunitarias; 2 = Media adopción de medidas comunitarias; 3 = Alta adopción de medidas comunitarias; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
+<td style="text-align: left;">Medidas de seguridad del barrio (categorizada)</td>
+<td style="text-align: left;">1 = Sin medidas en el barrio; 2 = Una medida en el barrio; 3 = Dos o más medidas en el barrio; 85 = No aplica; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">comgen_com_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
@@ -4188,7 +4162,7 @@ incivilidades_ind
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Solución de 4 grupos</td>
 <td style="text-align: left;">C1; C2; C3; C4</td>
-<td style="text-align: left;">emper_ep_pct_rec_tercil, emper_barrio_pct_rec_tercil, emper_casa_pct_rec_tercil, perper_delito, comper_pct_rec_tercil, comper_gasto, comgen_per_pct_rec_tercil, comgen_com_pct_rec_tercil</td>
+<td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_pct_cat, comgen_com_pct_cat</td>
 <td style="text-align: left;">Resultado del modelo</td>
 </tr>
 <tr class="even">
@@ -4197,7 +4171,7 @@ incivilidades_ind
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Solución de 5 grupos</td>
 <td style="text-align: left;">C1; C2; C3; C4; C5</td>
-<td style="text-align: left;">emper_ep_pct_rec_tercil, emper_barrio_pct_rec_tercil, emper_casa_pct_rec_tercil, perper_delito, comper_pct_rec_tercil, comper_gasto, comgen_per_pct_rec_tercil, comgen_com_pct_rec_tercil</td>
+<td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_pct_cat, comgen_com_pct_cat</td>
 <td style="text-align: left;">Resultado del modelo</td>
 </tr>
 <tr class="odd">
@@ -4206,7 +4180,7 @@ incivilidades_ind
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Solución de 6 grupos</td>
 <td style="text-align: left;">C1; C2; C3; C4; C5; C6</td>
-<td style="text-align: left;">emper_ep_pct_rec_tercil, emper_barrio_pct_rec_tercil, emper_casa_pct_rec_tercil, perper_delito, comper_pct_rec_tercil, comper_gasto, comgen_per_pct_rec_tercil, comgen_com_pct_rec_tercil</td>
+<td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_pct_cat, comgen_com_pct_cat</td>
 <td style="text-align: left;">Resultado del modelo</td>
 </tr>
 <tr class="even">

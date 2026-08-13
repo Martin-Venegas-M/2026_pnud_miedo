@@ -62,17 +62,17 @@ tema_mapa <- theme_minimal(base_size = 11) +
     )
 ```
 
-::: {.callout-warning}
-## Todo lo de esta página es provisional
+::: {.callout-note}
+## Estas soluciones son las definitivas en cuanto a método
 
-La solución de grupos depende de **cómo se cortan los índices en categorías**,
-que es una decisión todavía abierta (ver
-[Pipeline](pipeline.html#categorización)). Cuando se resuelva, **estas soluciones
-cambian completas**: distinto número de personas por grupo, distinto perfil,
-posiblemente distinta cantidad de grupos razonable.
+Las decisiones metodológicas están cerradas: los números de esta página ya no van
+a cambiar por una revisión de criterio. Lo que falta es **elegir cuál de las tres
+soluciones se reporta y ponerle nombre a los grupos**, que es una decisión sobre
+qué mostrar y no sobre cómo calcular.
 
-Sirven para caracterizar y discutir los grupos. No para citar cifras como
-definitivas.
+La solución anterior, construida con terciles, está en la
+[versión archivada](archivo/2025-08-terciles/solucion-actual.html). Su numeración
+de grupos no se corresponde con la de acá.
 :::
 
 El modelo se construye sobre **`r n_fmt(perdida_res$n_despues)` casos**. Se
@@ -272,14 +272,14 @@ contrastarlo con los informes anteriores.
 #| fig-height: 7
 
 etiquetas_vars <- c(
-    emper_ep_pct_rec_tercil = "Inseguridad en espacio público",
-    emper_barrio_pct_rec_tercil = "Inseguridad en el barrio",
-    emper_casa_pct_rec_tercil = "Inseguridad en la casa",
+    emper_ep_pct_cat = "Inseguridad en espacio público",
+    emper_barrio_pct_cat = "Inseguridad en el barrio",
+    emper_casa_pct_cat = "Inseguridad en la casa",
     perper_delito = "Expectativa de ser víctima",
-    comper_pct_rec_tercil = "Modificación de prácticas",
+    comper_pct_cat = "Modificación de prácticas",
     comper_gasto = "Gasto en seguridad",
-    comgen_per_pct_rec_tercil = "Medidas de la vivienda",
-    comgen_com_pct_rec_tercil = "Medidas del barrio",
+    comgen_per_pct_cat = "Medidas de la vivienda",
+    comgen_com_pct_cat = "Medidas del barrio",
     rph_sexo = "Sexo",
     rph_nivel_rec = "Nivel educacional",
     rph_edad_rec = "Tramo de edad",
@@ -419,10 +419,4 @@ for (k in n_clases) {
 
 :::
 
-::: {.callout-warning}
-## Recordatorio
 
-Las variables *percepción de desórdenes* e *incivilidades* dependen además de una
-segunda decisión abierta, sobre cómo tratar la no respuesta. Su escala puede
-cambiar independientemente de lo que pase con la categorización.
-:::

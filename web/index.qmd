@@ -115,12 +115,9 @@ Los grupos aún **no tienen nombre**: aparecen como `C1` a
 pendientes, y esta página es el insumo para tomarla.
 
 ::: {.callout-warning}
-## Hay decisiones abiertas que afectan estos resultados
+## Qué falta para cerrar
 
-Un adelanto: cuatro decisiones metodológicas siguen en discusión, y una de ellas (cómo se
-convierten los índices continuos en categorías) podría **cambiar la solución de grupos
-completa**.
-
-Todo lo que aparece en la pestaña *Solución actual* debe leerse como análisis preliminar,
-hasta que estas decisiones metodológicas estén zanjadas.
+Las decisiones metodológicas están todas cerradas. Quedan dos por resolver, y las
+dos son sobre qué solución reportar: **cuántos grupos** y **cómo se llaman**.
+Ninguna de las dos cambia los números, solo qué se elige mostrar.
 :::

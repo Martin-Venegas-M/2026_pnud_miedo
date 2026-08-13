@@ -9,41 +9,41 @@ construir_spec_etiquetas_indices <- function() {
     list(
         variables = c(
             "Inseguridad en Espacio público" = "emper_ep_pct",
-            "Inseguridad en Espacio público (tercile)" = "emper_ep_pct_rec_tercil",
+            "Inseguridad en espacio público (categorizada)" = "emper_ep_pct_cat",
             "Inseguridad en Barrio" = "emper_barrio_pct",
-            "Inseguridad en Barrio (tercile)" = "emper_barrio_pct_rec_tercil",
+            "Inseguridad en el barrio (categorizada)" = "emper_barrio_pct_cat",
             "Inseguridad en Casa" = "emper_casa_pct",
-            "Inseguridad en Casa (tercile)" = "emper_casa_pct_rec_tercil",
+            "Inseguridad en la casa (categorizada)" = "emper_casa_pct_cat",
             "Expectativa de ser victima delito" = "perper_delito",
             "Modifica comportamiento" = "comper_pct",
-            "Modifica comportamiento (tercile)" = "comper_pct_rec_tercil",
+            "Modificación de prácticas (categorizada)" = "comper_pct_cat",
             "Gasta en medidas de seguridad" = "comper_gasto",
             "Dispone de medidas de seguridad (personales)" = "comgen_per_pct",
-            "Dispone de medidas de seguridad (personales) (tercile)" = "comgen_per_pct_rec_tercil",
+            "Medidas de seguridad de la vivienda (categorizada)" = "comgen_per_pct_cat",
             "Disponen de medidas de seguridad (comunitarias)" = "comgen_com_pct",
-            "Disponen de medidas de seguridad (comunitarias) (tercile)" = "comgen_com_pct_rec_tercil"
+            "Medidas de seguridad del barrio (categorizada)" = "comgen_com_pct_cat"
         ),
         valores = list(
-            "emper_ep_pct_rec_tercil" = c(
-                "Alta inseguridad en espacio publico" = 3,
-                "Media inseguridad en espacio publico" = 2,
-                "Baja inseguridad en espacio publico" = 1,
+            "emper_ep_pct_cat" = c(
+                "Sin inseguridad en espacio público" = 1,
+                "Inseguridad en hasta la mitad de los lugares" = 2,
+                "Inseguridad en más de la mitad de los lugares" = 3,
                 "No aplica" = 85,
                 "No sabe" = 88,
                 "No responde" = 99
             ),
-            "emper_barrio_pct_rec_tercil" = c(
-                "Alta inseguridad en el barrio" = 3,
-                "Media inseguridad en el barrio" = 2,
-                "Baja inseguridad en el barrio" = 1,
+            "emper_barrio_pct_cat" = c(
+                "Sin inseguridad en el barrio" = 1,
+                "Inseguridad en el barrio, de día o de noche" = 2,
+                "Inseguridad en el barrio, de día y de noche" = 3,
                 "No aplica" = 85,
                 "No sabe" = 88,
                 "No responde" = 99
             ),
-            "emper_casa_pct_rec_tercil" = c(
-                "Alta inseguridad en la casa" = 3,
-                "Media inseguridad en la casa" = 2,
-                "Baja inseguridad en la casa" = 1,
+            "emper_casa_pct_cat" = c(
+                "Sin inseguridad en la casa" = 1,
+                "Inseguridad en la casa, de día o de noche" = 2,
+                "Inseguridad en la casa, de día y de noche" = 3,
                 "No aplica" = 85,
                 "No sabe" = 88,
                 "No responde" = 99
@@ -56,10 +56,10 @@ construir_spec_etiquetas_indices <- function() {
                 "Cree que será victima de otro tipo de delito" = 5,
                 "No sabe/No responde de qué delito será victima" = 6
             ),
-            "comper_pct_rec_tercil" = c(
-                "Altas prácticas de evitación" = 3,
-                "Medias prácticas de evitación" = 2,
-                "Bajas prácticas de evitación" = 1,
+            "comper_pct_cat" = c(
+                "No modificó prácticas" = 1,
+                "Modificó hasta la mitad de las prácticas" = 2,
+                "Modificó más de la mitad de las prácticas" = 3,
                 "No aplica" = 85,
                 "No sabe" = 88,
                 "No responde" = 99
@@ -70,18 +70,18 @@ construir_spec_etiquetas_indices <- function() {
                 "No sabe" = 88,
                 "No responde" = 99
             ),
-            "comgen_per_pct_rec_tercil" = c(
-                "Alta disposición de medidas vivienda" = 3,
-                "Media disposición de medidas vivienda" = 2,
-                "Baja disposición de medidas vivienda" = 1,
+            "comgen_per_pct_cat" = c(
+                "Sin medidas en la vivienda" = 1,
+                "Una o dos medidas en la vivienda" = 2,
+                "Tres o más medidas en la vivienda" = 3,
                 "No aplica" = 85,
                 "No sabe" = 88,
                 "No responde" = 99
             ),
-            "comgen_com_pct_rec_tercil" = c(
-                "Alta adopción de medidas comunitarias" = 3,
-                "Media adopción de medidas comunitarias" = 2,
-                "Baja adopción de medidas comunitarias" = 1,
+            "comgen_com_pct_cat" = c(
+                "Sin medidas en el barrio" = 1,
+                "Una medida en el barrio" = 2,
+                "Dos o más medidas en el barrio" = 3,
                 "No aplica" = 85,
                 "No sabe" = 88,
                 "No responde" = 99
