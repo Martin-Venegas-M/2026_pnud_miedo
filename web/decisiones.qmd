@@ -8,7 +8,7 @@ subtitle: "Lo que falta resolver para cerrar el análisis"
 source("_setup.R")
 
 datos_cat <- leer("datos_categorizado")
-spec <- leer("spec_indices")
+spec <- leer("cfg")$INDICES
 nr <- leer("no_respuesta_indices")
 zl <- haven::zap_labels
 ```

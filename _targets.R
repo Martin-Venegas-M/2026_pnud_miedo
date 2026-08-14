@@ -27,6 +27,15 @@ tar_source("R")
 list(
     # -- Configuración -----------------------------------------------------
     tar_target(cfg, construir_config()),
+
+    #* Cortafuegos. `hcpc` y la preparación del modelo leen estos dos campos
+    #* directo, y targets rastrea dependencias por target y no por campo: sin
+    #* estos intermedios, cambiar cualquier cosa de `cfg` (el año, el diseño
+    #* muestral, una etiqueta) invalida el HCPC aunque el modelo no lo mire.
+    #* Con ellos, el cambio llega hasta acá, el valor sale igual y la cascada
+    #* muere. Verificado en un proyecto targets aislado.
+    tar_target(cfg_n_clases, cfg$N_CLASES),
+    tar_target(cfg_vars_modelo, cfg$VARS_MODELO),
     tar_target(
         archivo_original,
         archivo_enusc_original(cfg$ANIO),
@@ -57,12 +66,10 @@ list(
     ),
 
     # -- Recodificación (reemplaza 2_recode.R) ------------------------------
-    tar_target(spec_indices, construir_spec_indices()),
-    tar_target(spec_etiquetas_indices, construir_spec_etiquetas_indices()),
 
     tar_target(
         datos_indices_pct,
-        construir_indices_pct(datos_seleccionados, spec_indices)
+        construir_indices_pct(datos_seleccionados, cfg$INDICES)
     ),
     tar_target(
         log_indices_pct,
@@ -109,7 +116,7 @@ list(
 
     tar_target(
         datos_categorizado,
-        categorizar_indices(datos_comper_gasto, cfg$CORTES, spec_indices)
+        categorizar_indices(datos_comper_gasto, cfg$CORTES, cfg$INDICES)
     ),
     tar_target(
         log_categorizado,
@@ -131,7 +138,11 @@ list(
 
     tar_target(
         datos_codigos_recuperados,
-        recuperar_codigos_especiales(datos_categorizado, spec_indices)
+        recuperar_codigos_especiales(
+            datos_categorizado,
+            cfg$INDICES,
+            cfg$CODIGOS_COMGEN
+        )
     ),
     tar_target(
         log_codigos_recuperados,
@@ -152,14 +163,14 @@ list(
 
     tar_target(
         datos_recodificados,
-        etiquetar(datos_codigos_recuperados, spec_etiquetas_indices)
+        etiquetar(datos_codigos_recuperados, cfg$ETIQUETAS)
     ),
     tar_target(
         log_etiquetado,
         reportar_transformacion(
             antes = datos_codigos_recuperados,
             despues = datos_recodificados,
-            vars = cfg$VARS_MODELO,
+            vars = cfg_vars_modelo,
             etiqueta = "etiquetado_indices"
         )
     ),
@@ -171,7 +182,7 @@ list(
         medir_aplicabilidad(
             datos_seleccionados,
             datos_recodificados,
-            spec_indices,
+            cfg$INDICES,
             cfg$CORTES
         )
     ),
@@ -179,18 +190,18 @@ list(
     # -- MCA + HCPC (reemplaza 3_add_clust.R) -------------------------------
     tar_target(
         datos_prep_mca,
-        preparar_datos_mca(datos_recodificados, cfg$VARS_MODELO)
+        preparar_datos_mca(datos_recodificados, cfg_vars_modelo)
     ),
     tar_target(
         datos_filtrados,
-        filtrar_casos_completos(datos_prep_mca, cfg$VARS_MODELO)
+        filtrar_casos_completos(datos_prep_mca, cfg_vars_modelo)
     ),
     tar_target(
         log_perdida_mca,
         reportar_perdida(
             antes = datos_prep_mca,
             despues = datos_filtrados,
-            vars = cfg$VARS_MODELO,
+            vars = cfg_vars_modelo,
             etiqueta = "filtrar_casos_completos_mca",
             max_perdida = NULL
         )
@@ -199,15 +210,15 @@ list(
         log_composicion_mca,
         reportar_composicion(
             datos = datos_recodificados,
-            eliminados = rowSums(is.na(datos_prep_mca[cfg$VARS_MODELO])) >
+            eliminados = rowSums(is.na(datos_prep_mca[cfg_vars_modelo])) >
                 0,
             vars_sec = cfg$VARS_SEC
         )
     ),
 
     tar_target(mca, ajustar_mca(datos_filtrados, id_col = "rph_id")),
-    tar_target(hcpc, ajustar_hcpc_todos(mca, cfg$N_CLASES)),
-    tar_target(soluciones, construir_soluciones(datos_filtrados, hcpc, cfg$N_CLASES)),
+    tar_target(hcpc, ajustar_hcpc_todos(mca, cfg_n_clases)),
+    tar_target(soluciones, construir_soluciones(datos_filtrados, hcpc, cfg_n_clases)),
 
     tar_target(datos_clusters, pegar_clusters(datos_recodificados, soluciones)),
     tar_target(
@@ -215,13 +226,12 @@ list(
         reportar_transformacion(
             antes = datos_recodificados,
             despues = datos_clusters,
-            vars = paste0("clusters_", cfg$N_CLASES),
+            vars = paste0("clusters_", cfg_n_clases),
             etiqueta = "pegar_clusters"
         )
     ),
 
     # -- Variables secundarias (reemplaza 4_add_vars.R) ---------------------
-    tar_target(spec_etiquetas_secundarias, construir_spec_etiquetas_secundarias()),
 
     tar_target(
         datos_indices_secundarios,
@@ -278,14 +288,14 @@ list(
 
     tar_target(
         datos_finales,
-        etiquetar(datos_sociodemo, spec_etiquetas_secundarias)
+        etiquetar(datos_sociodemo, cfg$ETIQUETAS_SEC)
     ),
     tar_target(
         log_etiquetado_secundarias,
         reportar_transformacion(
             antes = datos_sociodemo,
             despues = datos_finales,
-            vars = spec_etiquetas_secundarias$variables,
+            vars = cfg$ETIQUETAS_SEC$variables,
             etiqueta = "etiquetado_secundarias"
         )
     ),
@@ -295,7 +305,6 @@ list(
     ),
 
     # -- Especificaciones para analysis/ (PLAN.md F5.2, Q3) ------------------
-    tar_target(spec_patrones, construir_spec_patrones()),
 
     # -- Consolidación de logs -----------------------------------------------
     tar_target(
@@ -400,19 +409,10 @@ list(
         format = "file"
     ),
 
-    tar_target(
-        vars_pct_continuas,
-        c(
-            "emper_ep_pct",
-            "emper_barrio_pct",
-            "emper_casa_pct",
-            "comper_pct"
-        )
-    ),
 
     tar_target(
         tabla1_variables_originales,
-        tabla_variables_originales(datos_seleccionados, spec_patrones)
+        tabla_variables_originales(datos_seleccionados, cfg$PATRONES)
     ),
     tar_target(
         tabla1_variables_originales_xlsx,
@@ -429,8 +429,8 @@ list(
         tabla2_variables_fuente,
         tabla_variables_fuente(
             datos_finales,
-            vars_pct_continuas,
-            cfg$VARS_MODELO
+            cfg$VARS_PCT,
+            cfg_vars_modelo
         )
     ),
     tar_target(
@@ -459,7 +459,7 @@ list(
 
     tar_target(
         tabla4_clusters,
-        tabla_clusters(datos_finales, cfg$N_CLASES)
+        tabla_clusters(datos_finales, cfg_n_clases)
     ),
     tar_target(
         tabla4_clusters_xlsx,
@@ -476,7 +476,7 @@ list(
         tabla_cruces_cluster(
             diseno_muestral,
             cfg$CLUSTER_A_SACAR,
-            cfg$VARS_MODELO,
+            cfg_vars_modelo,
             cfg$VARS_SEC
         )
     ),
@@ -532,12 +532,12 @@ list(
         cruces_ancho_todas,
         tabla_cruces_ancho_todas(
             diseno_muestral,
-            cfg$N_CLASES,
-            cfg$VARS_MODELO,
+            cfg_n_clases,
+            cfg_vars_modelo,
             cfg$VARS_SEC
         )
     ),
-    tar_target(v_test_todas, tabla_v_test_todas(hcpc, cfg$N_CLASES)),
+    tar_target(v_test_todas, tabla_v_test_todas(hcpc, cfg_n_clases)),
 
     # La misma diferencia en puntos porcentuales que v_test_todas, pero estimada
     # con el diseño muestral en vez de salir de catdes(). El universo se fija con
@@ -547,8 +547,8 @@ list(
         marginales_modelo,
         marginales_ponderadas(
             diseno_muestral,
-            paste0("clusters_", cfg$N_CLASES[1]),
-            cfg$VARS_MODELO,
+            paste0("clusters_", cfg_n_clases[1]),
+            cfg_vars_modelo,
             cfg$VARS_SEC
         )
     ),
@@ -559,7 +559,7 @@ list(
 
     # Las tres soluciones son el mismo árbol cortado a tres alturas. Este target
     # identifica los bloques terminales y verifica que el anidamiento sea exacto.
-    tar_target(bloques, bloques_soluciones(datos_finales, cfg$N_CLASES)),
+    tar_target(bloques, bloques_soluciones(datos_finales, cfg_n_clases)),
 
     tar_target(no_respuesta_indices, medir_no_respuesta_indices(datos_finales)),
     tar_target(
@@ -568,10 +568,12 @@ list(
             datos_seleccionados,
             datos_finales,
             mapeo_nombres,
-            spec_indices,
-            cfg$VARS_MODELO,
+            cfg$INDICES,
+            cfg_vars_modelo,
             cfg$VARS_SEC,
-            cfg$N_CLASES
+            cfg_n_clases,
+            cfg$CODIGOS_COMGEN,
+            cfg$SECUNDARIAS
         )
     ),
     tar_target(
@@ -585,7 +587,7 @@ list(
         format = "file"
     ),
     tar_target(datos_biplot_mca, datos_biplot(mca)),
-    tar_target(mapa_clusters, datos_mapa_clusters(mca, hcpc, cfg$N_CLASES)),
+    tar_target(mapa_clusters, datos_mapa_clusters(mca, hcpc, cfg_n_clases)),
     tar_target(
         matriz_perfil,
         datos_matriz_perfil(v_test_todas, lift_ponderado, datos_biplot_mca)

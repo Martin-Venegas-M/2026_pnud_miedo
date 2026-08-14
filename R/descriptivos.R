@@ -83,14 +83,14 @@ construir_mapeo_nombres <- function(datos_muestra, datos_seleccionados) {
 #' Tabla 1 — Univariados de variables originales, por dimensión
 #'
 #' PLAN.md F5.3. Corre sobre `datos_seleccionados` (originales, renombradas,
-#' sin recodificar) con `spec_patrones` para separar pregunta de ítem en la
+#' sin recodificar) con `cfg$PATRONES` para separar pregunta de ítem en la
 #' etiqueta. La dimensión `pergen` no entra: se descartó (§4.0), a diferencia
 #' del reporte del repo viejo que todavía la incluía.
 #'
 #' No depende de D2 — son valores originales, la categorización no los toca.
 #'
 #' @param datos `datos_seleccionados`.
-#' @param spec_patrones `spec_patrones`.
+#' @param cfg$PATRONES `cfg$PATRONES`.
 #' @return Un tibble largo, una fila por categoría de cada variable.
 tabla_variables_originales <- function(datos, spec_patrones) {
     dimensiones <- c("emper", "perper", "comper", "comgen")

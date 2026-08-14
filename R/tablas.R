@@ -1,26 +1,3 @@
-#' Patrones de separación de etiqueta por dimensión
-#'
-#' Target `spec_patrones`. PLAN.md F5.2, Q3: reemplaza `esperado("patrones")`
-#' de `validate.R` del repo viejo (708 líneas, no se porta — es maquinaria de
-#' gold que corresponde a F5.1, no a esto). Se extrae solo el valor que
-#' `descriptivos_iniciales.R` necesita para `tab_frq1(pattern_verbose=,
-#' extraer_verbose=)`: qué patrón separa la pregunta de la categoría en la
-#' etiqueta de cada dimensión.
-#'
-#' Valores para 2025 tomados del repo viejo, no inferidos (PLAN.md F5.2).
-#'
-#' @return Una lista nombrada por dimensión (`emper`, `perper`, `pergen`,
-#'   `comper`, `comgen`), cada una con `sep` (para `pattern_verbose`) o
-#'   `extraer` (para `extraer_verbose`).
-construir_spec_patrones <- function() {
-    list(
-        emper = list(sep = "\\? "),
-        perper = list(sep = "(\\?|en su|en el)\\s*"),
-        pergen = list(sep = "(\\?|en su|en el)\\s*"),
-        comper = list(extraer = '"([^"]+)"'),
-        comgen = list(sep = "(\\?|\\.)\\s*")
-    )
-}
 
 #' Tabla de frecuencias ponderada a partir de `sjmisc::frq()`
 #'

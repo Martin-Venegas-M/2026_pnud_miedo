@@ -55,7 +55,7 @@
 #' @param spec Lista `variable -> list(metodo, cortes)`, normalmente
 #'   `cfg$CORTES`.
 #' @param spec_items Lista `variable -> vector de columnas de la batería`,
-#'   normalmente `spec_indices`. Solo se usa para el método `"conteo"`.
+#'   normalmente `cfg$INDICES`. Solo se usa para el método `"conteo"`.
 #' @return `datos` con una columna `{col}_cat` por cada índice.
 categorizar_indices <- function(datos, spec, spec_items) {
     #* La validación es consciente del método: para "conteo" la clave del spec

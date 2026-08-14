@@ -5,6 +5,29 @@
 #'
 #' @return Una lista con los parámetros de la corrida.
 construir_config <- function() {
+    #* Se declara aparte para poder derivar de él la lista de índices que sí
+    #* existen como columna `_pct`, en vez de escribirla a mano en _targets.R.
+    cortes <- list(
+
+        # Dos ítems: el índice ya tiene tres valores, se usan como categorías.
+        emper_barrio_pct = list(metodo = "valor", cortes = c(0, 50, 100)),
+        emper_casa_pct = list(metodo = "valor", cortes = c(0, 50, 100)),
+        # Sin código 85 en los ítems: el % equivale a un conteo de medidas.
+        # Vivienda y barrio llevan cortes distintos a propósito: la medida
+        # única del barrio es un grupo de WhatsApp en el 66% de los casos,
+        # mientras que en la vivienda son rejas. El umbral que importa no es
+        # el mismo.
+        #* Estos dos se cuentan directo sobre la batería: no hay índice
+        #* `_pct` intermedio. La clave nombra el grupo de ítems en
+        #* `cfg$INDICES`, no una columna de datos.
+        comgen_per = list(metodo = "conteo", cortes = c(0, 2)),
+        comgen_com = list(metodo = "conteo", cortes = c(0, 1)),
+        # Todos los ítems admiten 85: el denominador varía por persona y un
+        # conteo no sería comparable.
+        emper_ep_pct = list(metodo = "porcentaje", cortes = c(0, 50)),
+        comper_pct = list(metodo = "porcentaje", cortes = c(0, 50))
+    )
+
     list(
         ANIO = 2025,
         CLUSTER_A_SACAR = "clusters_5",
@@ -14,25 +37,7 @@ construir_config <- function() {
         SVY_STRATA = "var_strat",
         SVY_WEIGHTS = "fact_pers_reg",
 
-        CORTES = list(
-            # Dos ítems: el índice ya tiene tres valores, se usan como categorías.
-            emper_barrio_pct = list(metodo = "valor", cortes = c(0, 50, 100)),
-            emper_casa_pct = list(metodo = "valor", cortes = c(0, 50, 100)),
-            # Sin código 85 en los ítems: el % equivale a un conteo de medidas.
-            # Vivienda y barrio llevan cortes distintos a propósito: la medida
-            # única del barrio es un grupo de WhatsApp en el 66% de los casos,
-            # mientras que en la vivienda son rejas. El umbral que importa no es
-            # el mismo.
-            #* Estos dos se cuentan directo sobre la batería: no hay índice
-            #* `_pct` intermedio. La clave nombra el grupo de ítems en
-            #* `spec_indices`, no una columna de datos.
-            comgen_per = list(metodo = "conteo", cortes = c(0, 2)),
-            comgen_com = list(metodo = "conteo", cortes = c(0, 1)),
-            # Todos los ítems admiten 85: el denominador varía por persona y un
-            # conteo no sería comparable.
-            emper_ep_pct = list(metodo = "porcentaje", cortes = c(0, 50)),
-            comper_pct = list(metodo = "porcentaje", cortes = c(0, 50))
-        ),
+        CORTES = cortes,
 
         VARS_MODELO = c(
             "emper_ep_pct_cat",
@@ -60,7 +65,25 @@ construir_config <- function() {
             "info_rrss",
             "info_prensa",
             "info_tv"
-        )
+        ),
+
+        #* Los índices que dejan una columna `_pct`: todos menos los de método
+        #* "conteo", que se categorizan contando la batería.
+        VARS_PCT = names(cortes)[
+            vapply(cortes, \(s) s$metodo != "conteo", logical(1))
+        ],
+
+        #* Diccionarios. Las funciones viven junto a sus consumidores; acá se
+        #* consolidan en `cfg` para que el DAG no lleve un target por cada
+        #* declaración. Ver los cortafuegos `cfg_n_clases` y `cfg_vars_modelo`
+        #* en _targets.R: son los que evitan que tocar un diccionario recorra
+        #* el HCPC.
+        INDICES = spec_indices(),
+        ETIQUETAS = spec_etiquetas_indices(),
+        ETIQUETAS_SEC = spec_etiquetas_secundarias(),
+        PATRONES = spec_patrones(),
+        CODIGOS_COMGEN = spec_codigos_comgen(),
+        SECUNDARIAS = spec_secundarias()
     )
 }
 
@@ -84,6 +107,329 @@ validar_vars_sec <- function(datos, vars_sec) {
         )
     }
     invisible(TRUE)
+}
+
+#' Especificación de los ítems fuente de cada índice
+#'
+#' Reemplaza `rec_vars` de `2_recode.R:42-78`. Va dentro de `cfg$INDICES`:
+#' cambiarlo invalida todo lo que se construye a partir de él (D1 y D4 viven
+#' acá).
+#'
+#' **D1 aplicada** (PLAN.md): `comgen_medidas_na` y `comgen_vecinos_medidas_na`
+#' salen de `source.cols`. Antes, marcar "ninguna medida" contaba como un
+#' ítem "éxito" más en `create_var_pct()` (`success.cats = 1`), así que
+#' "ninguna" nunca daba 0% — daba `1/10` o `1/9`. Sacada esa columna, alguien
+#' que solo marcó "ninguna" tiene 0 ítems en 1 de los que quedan en
+#' `source.cols`, así que el 0% sale del cálculo mismo, sin `case_when`
+#' adicional.
+#'
+#' @return Una lista nombrada, un elemento por índice. `perper_delito` es una
+#'   lista anidada, documentación de las seis ramas de su `case_when` (ver
+#'   `construir_perper_delito()`) — no la usa `construir_perper_delito()`
+#'   directamente (esa hardcodea sus propios grupos), es solo para que quede
+#'   trazado en el mismo lugar que el resto de las especificaciones.
+spec_indices <- function() {
+    list(
+        emper_ep_pct = paste0("emper_p_inseg_lugares_", 1:11),
+        emper_barrio_pct = c("emper_p_inseg_oscuro_1", "emper_p_inseg_dia_1"),
+        emper_casa_pct = c("emper_p_inseg_oscuro_2", "emper_p_inseg_dia_2"),
+        perper_delito = list(
+            "perper_p_expos_delito",
+            paste0("perper_p_delito_pronostico_", c(1:4, 6, 9:11)),
+            paste0("perper_p_delito_pronostico_", c(5, 7:8)),
+            "perper_p_expos_delito",
+            paste0("perper_p_delito_pronostico_", 77),
+            paste0("perper_p_delito_pronostico_", c(88, 99))
+        ),
+        comper_pct = paste0("comper_p_mod_actividades_", 1:13),
+        comper_gasto = c("comper_costos_medidas"),
+        comgen_per = c(
+            "comgen_medidas_perro",
+            "comgen_medidas_alarma_privada",
+            "comgen_medidas_camaras_vigilancia",
+            "comgen_medidas_rejas",
+            "comgen_medidas_cerco",
+            "comgen_medidas_proteccion",
+            "comgen_medidas_seguro",
+            "comgen_medidas_foco",
+            "comgen_medidas_otro"
+        ),
+        comgen_com = c(
+            "comgen_vecinos_medidas_whatsapp",
+            "comgen_vecinos_medidas_vigilancia",
+            "comgen_vecinos_medidas_al_comunit",
+            "comgen_vecinos_medidas_coord_pol",
+            "comgen_vecinos_medidas_coord_mun",
+            "comgen_vecinos_medidas_televig",
+            "comgen_vecinos_medidas_privad",
+            "comgen_vecinos_medidas_otro"
+        )
+    )
+}
+
+#' Especificación de etiquetas de los índices recodificados
+#'
+#' Reemplaza `processing/helpers/labels.R`. Va dentro de `cfg$ETIQUETAS`,
+#' aplicado al final de la recodificación (`2_recode.R:238-256`).
+#'
+#' @return Una lista con `variables` (vector nombrado etiqueta = variable) y
+#'   `valores` (lista nombrada variable = vector nombrado etiqueta = código).
+spec_etiquetas_indices <- function() {
+    list(
+        variables = c(
+            "Inseguridad en Espacio público" = "emper_ep_pct",
+            "Inseguridad en espacio público (categorizada)" = "emper_ep_pct_cat",
+            "Inseguridad en Barrio" = "emper_barrio_pct",
+            "Inseguridad en el barrio (categorizada)" = "emper_barrio_pct_cat",
+            "Inseguridad en Casa" = "emper_casa_pct",
+            "Inseguridad en la casa (categorizada)" = "emper_casa_pct_cat",
+            "Expectativa de ser victima delito" = "perper_delito",
+            "Modifica comportamiento" = "comper_pct",
+            "Modificación de prácticas (categorizada)" = "comper_pct_cat",
+            "Gasta en medidas de seguridad" = "comper_gasto",
+            #* Los dos `comgen_*_pct` salieron del pipeline: se categorizan
+            #* directo desde la batería y no hay índice que etiquetar.
+            "Medidas de seguridad de la vivienda (categorizada)" = "comgen_per_cat",
+            "Medidas de seguridad del barrio (categorizada)" = "comgen_com_cat"
+        ),
+        valores = list(
+            "emper_ep_pct_cat" = c(
+                "Sin inseguridad en espacio público" = 1,
+                "Inseguridad en hasta la mitad de los lugares" = 2,
+                "Inseguridad en más de la mitad de los lugares" = 3,
+                "No aplica" = 85,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "emper_barrio_pct_cat" = c(
+                "Sin inseguridad en el barrio" = 1,
+                "Inseguridad en el barrio, de día o de noche" = 2,
+                "Inseguridad en el barrio, de día y de noche" = 3,
+                "No aplica" = 85,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "emper_casa_pct_cat" = c(
+                "Sin inseguridad en la casa" = 1,
+                "Inseguridad en la casa, de día o de noche" = 2,
+                "Inseguridad en la casa, de día y de noche" = 3,
+                "No aplica" = 85,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "perper_delito" = c(
+                "No cree que será victima de delito" = 1,
+                "Cree que será victima de delito no violento" = 2,
+                "Cree que será victima de delito violento" = 3,
+                "No sabe/No responde si cree que será victima de delito" = 4,
+                "Cree que será victima de otro tipo de delito" = 5,
+                "No sabe/No responde de qué delito será victima" = 6
+            ),
+            "comper_pct_cat" = c(
+                "No modificó prácticas" = 1,
+                "Modificó hasta la mitad de las prácticas" = 2,
+                "Modificó más de la mitad de las prácticas" = 3,
+                "No aplica" = 85,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "comper_gasto" = c(
+                "Gasta en medidas de seguridad" = 1,
+                "No gasta en medidas de seguridad" = 0,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "comgen_per_cat" = c(
+                "Sin medidas en la vivienda" = 1,
+                "Una o dos medidas en la vivienda" = 2,
+                "Tres o más medidas en la vivienda" = 3,
+                "No aplica" = 85,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "comgen_com_cat" = c(
+                "Sin medidas en el barrio" = 1,
+                "Una medida en el barrio" = 2,
+                "Dos o más medidas en el barrio" = 3,
+                "No aplica" = 85,
+                "No sabe" = 88,
+                "No responde" = 99
+            )
+        )
+    )
+}
+
+
+#' Especificación de etiquetas de las variables secundarias
+#'
+#' Reemplaza los vectores embebidos en `4_add_vars.R:129-203`. Target
+#' `cfg$ETIQUETAS_SEC`, aplicado al final de `construir_vars_info()`
+#' + `recodificar_sociodemograficas()`.
+#'
+#' @return Igual estructura que [spec_etiquetas_indices()].
+spec_etiquetas_secundarias <- function() {
+    list(
+        variables = c(
+            "Indice de desordenes" = "desordenes_ind",
+            "Indice de desordenes (rec)" = "desordenes_ind_rec",
+            "Indice de incivilidades" = "incivilidades_ind",
+            "Indice de incivilidades (rec)" = "incivilidades_ind_rec",
+            "Se informa por experiencia personal" = "info_exp_personal",
+            "Se informa por otras personas" = "info_otras_personas",
+            "Se informa por RRSS" = "info_rrss",
+            "Se informa por prensa" = "info_prensa",
+            "Se informa por TV" = "info_tv",
+            "Nivel educacional (rec)" = "rph_nivel_rec",
+            "Edad (rec)" = "rph_edad_rec",
+            "Región (rec)" = "enc_region_rec"
+        ),
+        valores = list(
+            "desordenes_ind_rec" = c(
+                "Baja percepción de desordenes" = 1,
+                "Media percepción de desordenes" = 2,
+                "Alta percepción de desordenes" = 3
+            ),
+            "incivilidades_ind_rec" = c(
+                "Baja percepción de incivilidades" = 1,
+                "Media percepción de incivilidades" = 2,
+                "Alta percepción de incivilidades" = 3
+            ),
+            "info_exp_personal" = c(
+                "Se informa por experiencia personal" = 1,
+                "No se informa por experiencia personal" = 0,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "info_otras_personas" = c(
+                "Se informa por otras personas" = 1,
+                "No se informa por otras personas" = 0,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "info_rrss" = c(
+                "Se informa por RRSS" = 1,
+                "No se informa por RRSS" = 0,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "info_prensa" = c(
+                "Se informa por prensa" = 1,
+                "No se informa por prensa" = 0,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "info_tv" = c(
+                "Se informa por noticias" = 1,
+                "No se informa por noticias" = 0,
+                "No sabe" = 88,
+                "No responde" = 99
+            ),
+            "rph_nivel_rec" = c(
+                "Educación básica o menos" = 1,
+                "Educación secundaria" = 2,
+                "Educación terciaria" = 3,
+                "Sin dato" = 96,
+                "Nivel ignorado" = 99
+            ),
+            "rph_edad_rec" = c(
+                "0 a 29 años" = 1,
+                "30 a 59 años" = 2,
+                "60 años o más" = 3
+            ),
+            "enc_region_rec" = c(
+                "Zona norte" = 1,
+                "Zona centro" = 2,
+                "Zona sur" = 3,
+                "Zona metropolitana" = 4
+            )
+        )
+    )
+}
+
+#' Patrones de separación de etiqueta por dimensión
+#'
+#' Va dentro de `cfg$PATRONES`. PLAN.md F5.2, Q3: reemplaza `esperado("patrones")`
+#' de `validate.R` del repo viejo (708 líneas, no se porta — es maquinaria de
+#' gold que corresponde a F5.1, no a esto). Se extrae solo el valor que
+#' `descriptivos_iniciales.R` necesita para `tab_frq1(pattern_verbose=,
+#' extraer_verbose=)`: qué patrón separa la pregunta de la categoría en la
+#' etiqueta de cada dimensión.
+#'
+#' Valores para 2025 tomados del repo viejo, no inferidos (PLAN.md F5.2).
+#'
+#' @return Una lista nombrada por dimensión (`emper`, `perper`, `pergen`,
+#'   `comper`, `comgen`), cada una con `sep` (para `pattern_verbose`) o
+#'   `extraer` (para `extraer_verbose`).
+spec_patrones <- function() {
+    list(
+        emper = list(sep = "\\? "),
+        perper = list(sep = "(\\?|en su|en el)\\s*"),
+        pergen = list(sep = "(\\?|en su|en el)\\s*"),
+        comper = list(extraer = '"([^"]+)"'),
+        comgen = list(sep = "(\\?|\\.)\\s*")
+    )
+}
+
+#' Columnas de código especial de las baterías de `comgen`
+#'
+#' Las preguntas de opción múltiple guardan "ninguna", "no sabe" y "no responde"
+#' como **columnas propias**, estructuralmente idénticas a las de las medidas.
+#' Este spec declara cuál es cuál y a qué variable del modelo corresponde cada
+#' grupo.
+#'
+#' @section Por qué existe como declaración y no dentro del `case_when`:
+#' [recuperar_codigos_especiales()] las usaba escritas a mano, y como no
+#' aparecían en `cfg$INDICES`, [construir_metadata()] las reportaba con uso
+#' "No se usa". Eso era falso para `_ns` y `_nr`, que son lo único que separa a
+#' quien no respondió de quien respondió "ninguna medida", y engañoso para
+#' `_na`, cuyo tratamiento es la decisión que originó este repositorio.
+#'
+#' @section Los tres roles:
+#' - `ns` y `nr` **se leen**: estampan los códigos 88 y 99 sobre la variable
+#'   categorizada, después de categorizar.
+#' - `na` **no se lee, y esa es la decisión (D1)**. Quien marca "ninguna medida"
+#'   tiene todas las columnas de medidas en 0, así que el conteo le da 0 por
+#'   aritmética, sin necesidad de mirar esta columna. Incluirla en la batería
+#'   era el error original: contaba como una medida más y "ninguna" nunca daba
+#'   cero.
+#'
+#' @return Una lista nombrada por variable del modelo, con las columnas `ns`,
+#'   `nr` y `na` de su batería.
+spec_codigos_comgen <- function() {
+    list(
+        comgen_per_cat = c(
+            ns = "comgen_medidas_ns",
+            nr = "comgen_medidas_nr",
+            na = "comgen_medidas_na"
+        ),
+        comgen_com_cat = c(
+            ns = "comgen_vecinos_medidas_ns",
+            nr = "comgen_vecinos_medidas_nr",
+            na = "comgen_vecinos_medidas_na"
+        )
+    )
+}
+
+#' Origen de las variables secundarias
+#'
+#' `cfg$INDICES` cubre la lineage de las variables fuente, pero las secundarias
+#' se construyen en `R/vars_secundarias.R` sin pasar por un spec. Se declara acá
+#' y se verifica contra los datos: si una columna deja de existir, falla.
+#'
+#' @return Lista `variable_creada -> columnas de origen`.
+spec_secundarias <- function() {
+    list(
+        desordenes_ind = "p_desordenes_",
+        incivilidades_ind = "p_incivilidades_",
+        info_exp_personal = "p_fuente_info_",
+        info_otras_personas = "p_fuente_info_",
+        info_rrss = "p_fuente_info_",
+        info_prensa = "p_fuente_info_",
+        info_tv = "p_fuente_info_",
+        rph_nivel_rec = "rph_nivel",
+        rph_edad_rec = "rph_edad",
+        enc_region_rec = "enc_region"
+    )
 }
 
 #' Ruta del archivo original de la ola

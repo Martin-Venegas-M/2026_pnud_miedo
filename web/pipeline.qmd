@@ -314,7 +314,7 @@ público, así que hubo que definir cuáles corresponden a esa dimensión.
 
 ```{r}
 #| label: items-ep
-spec <- leer("spec_indices")
+spec <- leer("cfg")$INDICES
 
 items_bateria <- grep("^emper_p_inseg_lugares_", names(datos_sel), value = TRUE)
 items_bateria <- items_bateria[order(as.integer(sub(".*_", "", items_bateria)))]
@@ -413,8 +413,8 @@ etiquetas_indice <- c(
     comgen_com = "Medidas del barrio"
 )
 
-spec_items <- leer("spec_indices")
-etiq_valores <- leer("spec_etiquetas_indices")$valores
+spec_items <- leer("cfg")$INDICES
+etiq_valores <- leer("cfg")$ETIQUETAS$valores
 vars_modelo <- cfg$VARS_MODELO
 
 #* La clave de cfg$CORTES nombra el índice; la variable del modelo es su `_cat`.

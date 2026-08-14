@@ -5,32 +5,11 @@
 # una a partir de las otras.
 #
 # Es un target y no un chunk de la página porque es un artefacto del pipeline:
-# se deriva de `spec_indices` y de las etiquetas de la base, así que no puede
+# se deriva de `cfg$INDICES` y de las etiquetas de la base, así que no puede
 # desincronizarse de lo que el código hace realmente. Reemplaza al
 # `metadata_recode.xlsx` del repo viejo, que se generaba con un `separate()`
 # frágil y había que mantener a mano (F5.2, Q5).
 
-#' Origen de las variables secundarias
-#'
-#' `spec_indices` cubre la lineage de las variables fuente, pero las secundarias
-#' se construyen en `R/vars_secundarias.R` sin pasar por un spec. Se declara acá
-#' y se verifica contra los datos: si una columna deja de existir, falla.
-#'
-#' @return Lista `variable_creada -> columnas de origen`.
-spec_secundarias <- function() {
-    list(
-        desordenes_ind = "p_desordenes_",
-        incivilidades_ind = "p_incivilidades_",
-        info_exp_personal = "p_fuente_info_",
-        info_otras_personas = "p_fuente_info_",
-        info_rrss = "p_fuente_info_",
-        info_prensa = "p_fuente_info_",
-        info_tv = "p_fuente_info_",
-        rph_nivel_rec = "rph_nivel",
-        rph_edad_rec = "rph_edad",
-        enc_region_rec = "enc_region"
-    )
-}
 
 #' Categorías de una columna, como texto legible
 #'
@@ -63,10 +42,12 @@ categorias_de <- function(col, max_cats = 12) {
 #' @param datos_sel `datos_seleccionados` (originales, ya renombradas).
 #' @param datos_fin `datos_finales` (todo lo construido).
 #' @param mapeo `mapeo_nombres`.
-#' @param spec `spec_indices`.
+#' @param spec `cfg$INDICES`.
 #' @param vars_modelo `cfg$VARS_MODELO`.
 #' @param vars_sec `cfg$VARS_SEC`.
 #' @param n_clases `cfg$N_CLASES`.
+#' @param codigos `cfg$CODIGOS_COMGEN`.
+#' @param secundarias `cfg$SECUNDARIAS`.
 #' @return Un tibble con una fila por variable.
 construir_metadata <- function(
     datos_sel,
@@ -75,11 +56,13 @@ construir_metadata <- function(
     spec,
     vars_modelo,
     vars_sec,
-    n_clases
+    n_clases,
+    codigos,
+    secundarias
 ) {
     original_de <- stats::setNames(mapeo$original, mapeo$nuestro)
 
-    #* De qué índice es insumo cada variable original. Se invierte spec_indices
+    #* De qué índice es insumo cada variable original. Se invierte cfg$INDICES
     #* en vez de escribirlo a mano: si el spec cambia, esto cambia con él.
     insumo_de <- purrr::imap(spec, function(cols, indice) {
         #* La clave de `spec` no siempre es una columna: los grupos de ítems que
@@ -101,11 +84,11 @@ construir_metadata <- function(
             .by = variable
         )
 
-    sec <- spec_secundarias()
+    sec <- secundarias
     origen_sec <- purrr::imap(sec, function(prefijo, creada) {
         cols <- grep(paste0("^", prefijo), names(datos_sel), value = TRUE)
         stopifnot(
-            "spec_secundarias() nombra un origen que no existe en los datos" = length(
+            "cfg$SECUNDARIAS nombra un origen que no existe en los datos" = length(
                 cols
             ) >
                 0
@@ -126,11 +109,11 @@ construir_metadata <- function(
         alimenta = "Se usa directamente como variable secundaria"
     )
 
-    #* Las columnas de código especial de comgen no están en `spec_indices`, así
+    #* Las columnas de código especial de comgen no están en `cfg$INDICES`, así
     #* que caían en "No se usa". Era falso para `_ns` y `_nr`, que sí se leen, y
     #* engañoso para `_na`, cuya exclusión es la decisión que originó el repo.
     marcas_comgen <- purrr::imap(
-        spec_codigos_comgen(),
+        codigos,
         function(marcas, destino) {
             tibble::tibble(
                 variable = unname(marcas[c("ns", "nr")]),
@@ -145,7 +128,7 @@ construir_metadata <- function(
 
     ninguna_comgen <- tibble::tibble(
         variable = vapply(
-            spec_codigos_comgen(),
+            codigos,
             \(m) unname(m[["na"]]),
             character(1)
         ),

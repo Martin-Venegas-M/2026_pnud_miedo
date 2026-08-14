@@ -1,60 +1,3 @@
-#' Especificación de los ítems fuente de cada índice
-#'
-#' Reemplaza `rec_vars` de `2_recode.R:42-78`. Es el target `spec_indices`:
-#' cambiarlo invalida todo lo que se construye a partir de él (D1 y D4 viven
-#' acá).
-#'
-#' **D1 aplicada** (PLAN.md): `comgen_medidas_na` y `comgen_vecinos_medidas_na`
-#' salen de `source.cols`. Antes, marcar "ninguna medida" contaba como un
-#' ítem "éxito" más en `create_var_pct()` (`success.cats = 1`), así que
-#' "ninguna" nunca daba 0% — daba `1/10` o `1/9`. Sacada esa columna, alguien
-#' que solo marcó "ninguna" tiene 0 ítems en 1 de los que quedan en
-#' `source.cols`, así que el 0% sale del cálculo mismo, sin `case_when`
-#' adicional.
-#'
-#' @return Una lista nombrada, un elemento por índice. `perper_delito` es una
-#'   lista anidada, documentación de las seis ramas de su `case_when` (ver
-#'   `construir_perper_delito()`) — no la usa `construir_perper_delito()`
-#'   directamente (esa hardcodea sus propios grupos), es solo para que quede
-#'   trazado en el mismo lugar que el resto de las especificaciones.
-construir_spec_indices <- function() {
-    list(
-        emper_ep_pct = paste0("emper_p_inseg_lugares_", 1:11),
-        emper_barrio_pct = c("emper_p_inseg_oscuro_1", "emper_p_inseg_dia_1"),
-        emper_casa_pct = c("emper_p_inseg_oscuro_2", "emper_p_inseg_dia_2"),
-        perper_delito = list(
-            "perper_p_expos_delito",
-            paste0("perper_p_delito_pronostico_", c(1:4, 6, 9:11)),
-            paste0("perper_p_delito_pronostico_", c(5, 7:8)),
-            "perper_p_expos_delito",
-            paste0("perper_p_delito_pronostico_", 77),
-            paste0("perper_p_delito_pronostico_", c(88, 99))
-        ),
-        comper_pct = paste0("comper_p_mod_actividades_", 1:13),
-        comper_gasto = c("comper_costos_medidas"),
-        comgen_per = c(
-            "comgen_medidas_perro",
-            "comgen_medidas_alarma_privada",
-            "comgen_medidas_camaras_vigilancia",
-            "comgen_medidas_rejas",
-            "comgen_medidas_cerco",
-            "comgen_medidas_proteccion",
-            "comgen_medidas_seguro",
-            "comgen_medidas_foco",
-            "comgen_medidas_otro"
-        ),
-        comgen_com = c(
-            "comgen_vecinos_medidas_whatsapp",
-            "comgen_vecinos_medidas_vigilancia",
-            "comgen_vecinos_medidas_al_comunit",
-            "comgen_vecinos_medidas_coord_pol",
-            "comgen_vecinos_medidas_coord_mun",
-            "comgen_vecinos_medidas_televig",
-            "comgen_vecinos_medidas_privad",
-            "comgen_vecinos_medidas_otro"
-        )
-    )
-}
 
 #' Construir una variable de porcentaje a partir de una batería de ítems
 #'
@@ -132,12 +75,12 @@ create_var_pct <- function(
 #' Reemplaza las seis llamadas a `create_var_pct()` de `2_recode.R:82-130`
 #' (sin contar los `case_when` de `perper_delito` y `comper_gasto`, que son
 #' funciones propias). Vive acá D1: qué columnas entran en `source.cols` de
-#' cada batería — **aplicada** (PLAN.md D1): `spec_indices` ya no incluye las
+#' cada batería — **aplicada** (PLAN.md D1): `cfg$INDICES` ya no incluye las
 #' columnas `_na` de `comgen` como una medida más, así que "ninguna medida"
 #' da 0% en vez de 10%/11,1%.
 #'
 #' @param datos Datos con las columnas fuente.
-#' @param spec `spec_indices`: ítems fuente por batería.
+#' @param spec `cfg$INDICES`: ítems fuente por batería.
 #' @return `datos` con las seis columnas `_pct` agregadas.
 construir_indices_pct <- function(datos, spec) {
     #* Los dos índices de comgen salieron de acá en agosto de 2026: sus baterías
@@ -277,7 +220,7 @@ construir_comper_gasto <- function(datos) {
 #'
 #' @param datos_sel `datos_seleccionados`, con los ítems originales.
 #' @param datos_cat Datos con las columnas `_cat` ya construidas.
-#' @param spec `spec_indices`, para saber qué ítems componen cada índice.
+#' @param spec `cfg$INDICES`, para saber qué ítems componen cada índice.
 #' @param cortes `cfg$CORTES`, para quedarse con los de método `"valor"`.
 #' @return Un tibble `indice | n_aplica | categoria | n`.
 medir_aplicabilidad <- function(datos_sel, datos_cat, spec, cortes) {
