@@ -341,9 +341,9 @@ categorizar_comgen <- function(datos, cortes, items, codigos) {
 #' Las cuatro variables del modelo que no pasan por un índice
 #'
 #' Un solo paso del pipeline para todo lo que se construye directo desde las
-#' columnas originales: `perper_delito` y `comper_gasto`, que ya vienen
-#' categóricas del cuestionario, y las dos de `comgen`, que se cuentan sobre su
-#' batería.
+#' columnas originales: `perper_delito` y `comper_gasto`, que combinan
+#' respuestas del cuestionario sin pasar por un índice, y las dos de `comgen`,
+#' que se cuentan sobre su batería.
 #'
 #' @section Por qué envuelve en vez de fundir:
 #' Las tres lógicas son distintas y cada una carga su propia documentación: D3

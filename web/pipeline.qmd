@@ -380,9 +380,9 @@ siente inseguro en pocos.
 ## El camino de cada variable del modelo
 
 Las ocho variables que entran al modelo no se construyen todas igual. Dos ya
-vienen categóricas del cuestionario y no pasan por ningún corte; las otras seis
-se cortan de tres formas distintas, según cómo esté construida la batería que
-hay detrás.
+se construyen combinando respuestas sin pasar por un índice; las otras seis se
+cortan de tres formas distintas, según cómo esté construida la batería que hay
+detrás.
 
 **Por porcentaje**, cuando los ítems admiten "no aplica". El denominador cambia
 de persona a persona, así que un conteo no sería comparable entre dos a las que
@@ -439,7 +439,7 @@ camino <- purrr::map(vars_modelo, function(v) {
             "No"
         } else if (s$metodo == "conteo") "No" else "Sí",
         `Se corta por` = if (is.null(s)) {
-            "No se corta: ya viene categórica"
+            "Se arma combinando respuestas"
         } else {
             etiquetas_metodo[[s$metodo]]
         }
@@ -612,6 +612,98 @@ El diagnóstico completo, con el microdato y las cifras, está en la
 Hoy las dos funciones que cortan, `categorizar_indices()` y
 `categorizar_comgen()`, llevan una aserción que falla si algún corte vuelve a
 repartir un mismo valor entre categorías.
+:::
+
+## Las dos que se arman combinando respuestas
+
+`perper_delito` y `comper_gasto` no salen de un índice ni de un conteo, pero
+tampoco vienen listas del cuestionario: se construyen cruzando respuestas.
+
+```{r}
+#| label: vars-combinadas
+sel <- leer("datos_seleccionados")
+z <- \(x) as.numeric(haven::zap_labels(x))
+
+#* Los tres grupos de la batería salen del propio código: si mañana se
+#* reclasifica un delito, esta tabla lo refleja sin tocarla.
+grupos_delito <- list(
+    "Se cuenta como no violento" = c(1:4, 6, 9:11),
+    "Se cuenta como violento" = c(5, 7, 8)
+)
+
+etiqueta_item <- function(i) {
+    v <- paste0("perper_p_delito_pronostico_", i)
+    sub("^.*[?][[:space:]]*", "", attr(sel[[v]], "label"))
+}
+
+purrr::imap(grupos_delito, function(idx, grupo) {
+    tibble::tibble(Clasificación = grupo, Delito = vapply(idx, etiqueta_item, character(1)))
+}) |>
+    purrr::list_rbind() |>
+    group_by(Clasificación) |>
+    mutate(Clasificación = ifelse(row_number() == 1, Clasificación, "")) |>
+    ungroup() |>
+    tabla(alinear = c("l", "l"))
+```
+
+**`perper_delito` cruza dos preguntas.** Primero la pregunta filtro, *"¿cree
+usted que será víctima de algún delito en los próximos doce meses?"*. Quien
+responde que no queda en la primera categoría y no se le pregunta más. A quien
+responde que sí se le muestra una batería de tipos de delito, donde puede marcar
+varios, y de ahí sale la distinción entre violento y no violento, siguiendo el
+criterio de la ENUSC sobre qué delitos son de cada tipo.
+
+**`comper_gasto` dicotomiza.** La pregunta registra el gasto del hogar en medidas
+de seguridad en cinco tramos, desde menos de $50.000 hasta más de $1.000.000. El
+análisis no usa el monto, solo si hubo gasto o no, así que los cinco tramos se
+colapsan en uno.
+
+```{r}
+#| label: gasto-85
+n_no_gasto <- sum(z(sel$comper_costos_medidas) == 85, na.rm = TRUE)
+```
+
+::: {.callout-tip}
+## En esta pregunta, el código 85 no significa "no aplica"
+
+En el resto de la encuesta el 85 marca una situación que no le corresponde a esa
+persona. Acá su etiqueta es literalmente **"No ha gastado en medidas de
+seguridad"**: es una respuesta sustantiva, y son `r n_fmt(n_no_gasto)` personas.
+
+Por eso entran al análisis como "no gasta" y no como dato faltante. Es el mismo
+caso que la columna de "ninguna medida" de la sección 2: un código que por su
+forma parece ausencia de respuesta y por su etiqueta es una respuesta.
+:::
+
+```{r}
+#| label: delito-solape
+nv <- paste0("perper_p_delito_pronostico_", grupos_delito[["Se cuenta como no violento"]])
+vi <- paste0("perper_p_delito_pronostico_", grupos_delito[["Se cuenta como violento"]])
+
+marca <- \(cols) rowSums(sapply(sel[cols], z) == 1, na.rm = TRUE) > 0
+ambos <- marca(nv) & marca(vi)
+
+cat_ambos <- table(z(leer("datos_recodificados")$perper_delito)[ambos])
+
+stopifnot("Ya no hay casos que marquen delitos de los dos tipos" = sum(ambos) > 0)
+```
+
+::: {.callout-warning}
+## Anotado y sin resolver · Quien espera los dos tipos de delito queda contado como no violento
+
+La batería admite marcar varios delitos, y **`r n_fmt(sum(ambos))` personas
+marcan al menos uno de cada tipo**. La variable tiene que asignarles una sola
+categoría, y el orden en que se evalúan las condiciones decide cuál: como la
+rama de "no violento" se evalúa primero, esas
+`r n_fmt(as.integer(cat_ambos[["2"]]))` personas quedan en
+"cree que será víctima de delito no violento".
+
+No es un error de código, es una consecuencia de tener que elegir. Pero conviene
+verla: son personas que sí declaran esperar un delito violento y que el análisis
+cuenta en la categoría de al lado. La alternativa sería invertir el orden, de
+modo que la expectativa de delito violento tenga prioridad.
+
+Nadie la ha tomado como decisión explícita, así que queda anotada.
 :::
 
 ## El rescate de la no respuesta

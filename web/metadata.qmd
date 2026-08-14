@@ -190,8 +190,11 @@ medidas de la vivienda y las del barrio. Sus ítems no admiten "no aplica", así
 que el denominador no varía y lo que se corta es el número de medidas. En la
 columna "Se construye desde" aparecen los ítems y no un índice.
 
-**`r n_directas` ya vienen categóricas del cuestionario** (`perper_delito` y
-`comper_gasto`): no hay batería que resumir ni nada que cortar.
+**`r n_directas` se arman combinando respuestas del cuestionario**
+(`perper_delito` y `comper_gasto`). No pasan por un índice, pero sí se
+categorizan: `perper_delito` cruza la pregunta filtro con la batería de tipos de
+delito, y `comper_gasto` dicotomiza los tramos de gasto. El detalle está en
+[Pipeline](pipeline.html#las-dos-que-se-arman-combinando-respuestas).
 
 ```{r}
 #| label: categorizadas

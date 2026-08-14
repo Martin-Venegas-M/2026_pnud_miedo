@@ -86,10 +86,10 @@ list(
         )
     ),
 
-    # Las cuatro variables del modelo que no pasan por un índice: las dos que ya
-    # vienen categóricas del cuestionario y las dos de comgen, que se cuentan
-    # sobre su batería. Un paso en vez de tres; la lógica de cada una sigue en
-    # su propia función.
+    # Las cuatro variables del modelo que no pasan por un índice: las dos que se
+    # arman combinando respuestas del cuestionario y las dos de comgen, que se
+    # cuentan sobre su batería. Un paso en vez de tres; la lógica de cada una
+    # sigue en su propia función.
     tar_target(
         datos_sin_indice,
         construir_vars_sin_indice(
