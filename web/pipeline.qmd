@@ -178,13 +178,13 @@ adopción**, que es lo que efectivamente respondió.
 ```{r}
 #| label: d1
 #* Hasta agosto de 2026 este número salía del log de transiciones del índice
-#* `comgen_per_pct`, que dejó de existir: esas dos variables se categorizan
+#* `comgen_per`, que dejó de existir: esas dos variables se categorizan
 #* contando directo sobre la batería. Se cuenta ahora sobre la categoría, que
 #* es la misma gente y da el mismo número.
 t_d1 <- marginales |>
     filter(
         etiqueta == "codigos_recuperados",
-        variable_despues == "comgen_per_pct_cat",
+        variable_despues == "comgen_per_cat",
         valor == 1
     )
 
@@ -409,8 +409,8 @@ etiquetas_indice <- c(
     emper_barrio_pct = "Inseguridad en el barrio",
     emper_casa_pct = "Inseguridad en la casa",
     comper_pct = "Modificación de prácticas",
-    comgen_per_pct = "Medidas de la vivienda",
-    comgen_com_pct = "Medidas del barrio"
+    comgen_per = "Medidas de la vivienda",
+    comgen_com = "Medidas del barrio"
 )
 
 spec_items <- leer("spec_indices")
@@ -513,8 +513,8 @@ tabla(detalle, alinear = c("l", "l", "l"))
 ## Las dos de comgen, que son las que más consultas generaron
 
 **Medidas de la vivienda** se corta en 0, 1 a 2, y 3 o más, sobre una batería de
-`r n_items_de("comgen_per_pct_cat")` medidas. **Medidas del barrio** se corta en
-0, 1, y 2 o más, sobre `r n_items_de("comgen_com_pct_cat")`.
+`r n_items_de("comgen_per_cat")` medidas. **Medidas del barrio** se corta en
+0, 1, y 2 o más, sobre `r n_items_de("comgen_com_cat")`.
 
 Los umbrales son distintos a propósito, y el motivo está en el contenido: entre
 quienes declaran una sola medida comunitaria, el 66% es un grupo de WhatsApp,
@@ -631,12 +631,12 @@ De los **`r n_fmt(n_entran)`** casos de la muestra, entran al modelo
 #| label: perdida-detalle
 etiquetas_vars <- c(
     perper_delito = "Expectativa de ser víctima",
-    comgen_com_pct_cat = "Medidas del barrio",
+    comgen_com_cat = "Medidas del barrio",
     comper_gasto = "Gasto en seguridad",
     emper_barrio_pct_cat = "Inseguridad en el barrio",
     emper_ep_pct_cat = "Inseguridad en espacio público",
     emper_casa_pct_cat = "Inseguridad en la casa",
-    comgen_per_pct_cat = "Medidas de la vivienda",
+    comgen_per_cat = "Medidas de la vivienda",
     comper_pct_cat = "Modificación de prácticas"
 )
 

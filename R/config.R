@@ -26,8 +26,8 @@ construir_config <- function() {
             #* Estos dos se cuentan directo sobre la batería: no hay índice
             #* `_pct` intermedio. La clave nombra el grupo de ítems en
             #* `spec_indices`, no una columna de datos.
-            comgen_per_pct = list(metodo = "conteo", cortes = c(0, 2)),
-            comgen_com_pct = list(metodo = "conteo", cortes = c(0, 1)),
+            comgen_per = list(metodo = "conteo", cortes = c(0, 2)),
+            comgen_com = list(metodo = "conteo", cortes = c(0, 1)),
             # Todos los ítems admiten 85: el denominador varía por persona y un
             # conteo no sería comparable.
             emper_ep_pct = list(metodo = "porcentaje", cortes = c(0, 50)),
@@ -41,8 +41,8 @@ construir_config <- function() {
             "perper_delito",
             "comper_pct_cat",
             "comper_gasto",
-            "comgen_per_pct_cat",
-            "comgen_com_pct_cat"
+            "comgen_per_cat",
+            "comgen_com_cat"
         ),
 
         VARS_SEC = c(

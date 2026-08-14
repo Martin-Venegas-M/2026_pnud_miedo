@@ -126,7 +126,43 @@ construir_metadata <- function(
         alimenta = "Se usa directamente como variable secundaria"
     )
 
-    uso_original <- dplyr::bind_rows(insumo_de, origen_sec, directas) |>
+    #* Las columnas de código especial de comgen no están en `spec_indices`, así
+    #* que caían en "No se usa". Era falso para `_ns` y `_nr`, que sí se leen, y
+    #* engañoso para `_na`, cuya exclusión es la decisión que originó el repo.
+    marcas_comgen <- purrr::imap(
+        spec_codigos_comgen(),
+        function(marcas, destino) {
+            tibble::tibble(
+                variable = unname(marcas[c("ns", "nr")]),
+                alimenta = paste0(
+                    "Marca de no respuesta: fija 88/99 en ",
+                    destino
+                )
+            )
+        }
+    ) |>
+        purrr::list_rbind()
+
+    ninguna_comgen <- tibble::tibble(
+        variable = vapply(
+            spec_codigos_comgen(),
+            \(m) unname(m[["na"]]),
+            character(1)
+        ),
+        alimenta = paste(
+            "Excluida de la batería a propósito (D1): quien la marca tiene",
+            "todas las medidas en 0, así que el conteo le da 0 sin leer esta",
+            "columna"
+        )
+    )
+
+    uso_original <- dplyr::bind_rows(
+        insumo_de,
+        origen_sec,
+        directas,
+        marcas_comgen,
+        ninguna_comgen
+    ) |>
         dplyr::summarise(
             alimenta = paste(alimenta, collapse = ", "),
             .by = variable
@@ -210,7 +246,7 @@ construir_metadata <- function(
         categorias = vapply(datos_fin[vars_modelo], categorias_de, character(1)),
         #* Una `_cat` se construye desde su índice `_pct` solo si ese índice
         #* existe. Los dos de comgen se cuentan directo sobre la batería, así
-        #* que apuntan a los ítems: decir `comgen_per_pct` mandaría a buscar una
+        #* que apuntan a los ítems: decir `comgen_per` mandaría a buscar una
         #* columna que el pipeline ya no produce.
         construida_desde = vapply(
             vars_modelo,

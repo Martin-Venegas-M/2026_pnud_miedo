@@ -305,14 +305,14 @@ cae en `r quiebre`, que es justamente donde aparece el segundo eje.
 ```{r}
 #| label: proteccion
 orden_medidas <- matriz |>
-    filter(base == "ponderada", solucion == sol_fina, variable == "comgen_per_pct_cat") |>
+    filter(base == "ponderada", solucion == sol_fina, variable == "comgen_per_cat") |>
     arrange(orden) |>
     pull(categoria) |>
     unique()
 
 perfil |>
     filter(
-        variable == "comgen_per_pct_cat" |
+        variable == "comgen_per_cat" |
             (variable == "comper_gasto" & grepl("^Gasta", categoria))
     ) |>
     transmute(grupo, Respuesta = categoria, pct = pct_grupo) |>

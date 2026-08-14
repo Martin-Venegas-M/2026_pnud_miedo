@@ -20,8 +20,8 @@ construir_spec_etiquetas_indices <- function() {
             "Gasta en medidas de seguridad" = "comper_gasto",
             #* Los dos `comgen_*_pct` salieron del pipeline: se categorizan
             #* directo desde la batería y no hay índice que etiquetar.
-            "Medidas de seguridad de la vivienda (categorizada)" = "comgen_per_pct_cat",
-            "Medidas de seguridad del barrio (categorizada)" = "comgen_com_pct_cat"
+            "Medidas de seguridad de la vivienda (categorizada)" = "comgen_per_cat",
+            "Medidas de seguridad del barrio (categorizada)" = "comgen_com_cat"
         ),
         valores = list(
             "emper_ep_pct_cat" = c(
@@ -70,7 +70,7 @@ construir_spec_etiquetas_indices <- function() {
                 "No sabe" = 88,
                 "No responde" = 99
             ),
-            "comgen_per_pct_cat" = c(
+            "comgen_per_cat" = c(
                 "Sin medidas en la vivienda" = 1,
                 "Una o dos medidas en la vivienda" = 2,
                 "Tres o más medidas en la vivienda" = 3,
@@ -78,7 +78,7 @@ construir_spec_etiquetas_indices <- function() {
                 "No sabe" = 88,
                 "No responde" = 99
             ),
-            "comgen_com_pct_cat" = c(
+            "comgen_com_cat" = c(
                 "Sin medidas en el barrio" = 1,
                 "Una medida en el barrio" = 2,
                 "Dos o más medidas en el barrio" = 3,

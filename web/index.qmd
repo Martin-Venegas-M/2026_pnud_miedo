@@ -61,8 +61,7 @@ La reconstrucción tuvo dos objetivos:
 1. **Recodificar con el criterio correcto desde el principio**, en vez de parchar
    sobre una base ya calibrada.
 2. **Dejar registro automático de qué le hace cada paso a los datos**, de modo que
-   un problema de este tipo sea visible sin que nadie tenga que sospecharlo
-   primero.
+   un problema de este tipo sea visible y auditable.
 
 ## Cómo leer esta página
 
@@ -98,15 +97,14 @@ n_sol <- leer("cfg")$CLUSTER_A_SACAR
 ```
 
 El análisis se construye sobre la ENUSC 2025, quedándose con una persona por
-hogar (la seleccionada por el método de Kish): **`r n_fmt(n_muestra)` casos**.
+hogar (informantes Kish): **`r n_fmt(n_muestra)` casos**.
 
 De esos, entran al modelo **`r n_fmt(perdida$n_despues)`**
 (`r pct_fmt(100 - perdida$pct_eliminados)` de la muestra). La pestaña Pipeline
 detalla quiénes quedan fuera y por qué.
 
-La solución que se reporta es la de **`r sub("clusters_", "", n_sol)` grupos**.
-Los grupos aún **no tienen nombre**: aparecen como `C1` a
-`r sub("clusters_", "C", n_sol)`. Ponerles nombre es una de las decisiones
+Se reportan soluciones de 4, 5 y 6 clusters.
+Los grupos aún **no tienen nombre**: aparecen como `C1`, `C2`...  Ponerles nombre es una de las decisiones
 pendientes, y esta página es el insumo para tomarla.
 
 ::: {.callout-warning}

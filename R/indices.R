@@ -32,7 +32,7 @@ construir_spec_indices <- function() {
         ),
         comper_pct = paste0("comper_p_mod_actividades_", 1:13),
         comper_gasto = c("comper_costos_medidas"),
-        comgen_per_pct = c(
+        comgen_per = c(
             "comgen_medidas_perro",
             "comgen_medidas_alarma_privada",
             "comgen_medidas_camaras_vigilancia",
@@ -43,7 +43,7 @@ construir_spec_indices <- function() {
             "comgen_medidas_foco",
             "comgen_medidas_otro"
         ),
-        comgen_com_pct = c(
+        comgen_com = c(
             "comgen_vecinos_medidas_whatsapp",
             "comgen_vecinos_medidas_vigilancia",
             "comgen_vecinos_medidas_al_comunit",

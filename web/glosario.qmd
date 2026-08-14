@@ -63,7 +63,7 @@ entre esos nombres y los que usa el análisis.
 **Variables fuente.** Las que construimos a partir de las originales, y que
 alimentan el modelo. Son los índices de porcentaje y sus versiones
 categorizadas, las que se categorizan contando ítems sin pasar por un índice
-(`comgen_per_pct_cat`, `comgen_com_pct_cat`), y las que ya vienen categóricas
+(`comgen_per_cat`, `comgen_com_cat`), y las que ya vienen categóricas
 del cuestionario (`perper_delito`, `comper_gasto`).
 
 **Variables de clusters.** El resultado del modelo: a qué grupo quedó asignada

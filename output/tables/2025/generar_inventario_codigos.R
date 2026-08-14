@@ -135,7 +135,7 @@ inventario <- tibble::tribble(
     "MEDIDAS", "85 (columna _NA)", 6006,
     "'Ninguna medida' — respuesta sustantiva (0% de adopción), no ausencia de dato",
     "mantener conservada como respuesta",
-    "Es el hallazgo central de PLAN.md §1. El repo viejo la codificaba como 85 genérico y la perdía en el drop_na(); el fix ya aplicado la conserva. Pendiente D1: hoy además se cuenta como si fuera 'una medida más' en el denominador de comgen_per_pct (infla el % a 10% en vez de 0%) — eso se corrige en Fase 3, acá solo se documenta que la columna existe y qué significa. N idéntico al Anexo A.3.",
+    "Es el hallazgo central de PLAN.md §1. El repo viejo la codificaba como 85 genérico y la perdía en el drop_na(); el fix ya aplicado la conserva. Pendiente D1: hoy además se cuenta como si fuera 'una medida más' en el denominador de comgen_per (infla el % a 10% en vez de 0%) — eso se corrige en Fase 3, acá solo se documenta que la columna existe y qué significa. N idéntico al Anexo A.3.",
 
     "MEDIDAS", "88 (columna _NS)", 36, "No sabe", "mantener",
     "Ausencia de respuesta genuina, columna hermana de _NA pero estructuralmente distinta (ver PLAN.md §4.3).",
@@ -146,7 +146,7 @@ inventario <- tibble::tribble(
     "MEDIDAS", "96 (valor suelto en cualquier columna)", 1,
     "Sin dato: la batería completa (las 9 sustantivas + _NA/_NS/_NR) llegó codificada 96 en vez de 0/1",
     "hallazgo nuevo, no evaluado en Fase 3",
-    "Un único caso (rph_id 110962_P3) tiene 96 en las 12 columnas de MEDIDAS y las 11 de VECINOS_MEDIDAS a la vez: es un bloque de pregunta entero sin dato, no un ítem suelto. Con el tratamiento actual (success.cats=1), ese caso queda con comgen_per_pct=0% y comgen_com_pct=0%, indistinguible de alguien que sí respondió 'ninguna medida'. Un solo caso, impacto mínimo, pero conviene decidir si se excluye o se deja así.",
+    "Un único caso (rph_id 110962_P3) tiene 96 en las 12 columnas de MEDIDAS y las 11 de VECINOS_MEDIDAS a la vez: es un bloque de pregunta entero sin dato, no un ítem suelto. Con el tratamiento actual (success.cats=1), ese caso queda con comgen_per=0% y comgen_com=0%, indistinguible de alguien que sí respondió 'ninguna medida'. Un solo caso, impacto mínimo, pero conviene decidir si se excluye o se deja así.",
 
     "VECINOS_MEDIDAS", "85 (columna _NA)", 17255,
     "'Ninguna medida comunitaria' — respuesta sustantiva, no ausencia de dato",

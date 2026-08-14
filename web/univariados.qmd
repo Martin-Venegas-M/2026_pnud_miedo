@@ -112,8 +112,8 @@ etiquetas_fuente <- c(
     emper_barrio_pct_cat = "Inseguridad en el barrio (categorizada)",
     emper_casa_pct_cat = "Inseguridad en la casa (categorizada)",
     comper_pct_cat = "Modificación de prácticas (categorizada)",
-    comgen_per_pct_cat = "Medidas de la vivienda (categorizada)",
-    comgen_com_pct_cat = "Medidas del barrio (categorizada)",
+    comgen_per_cat = "Medidas de la vivienda (categorizada)",
+    comgen_com_cat = "Medidas del barrio (categorizada)",
     perper_delito = "Expectativa de ser víctima de delito",
     comper_gasto = "Gasto en medidas de seguridad"
 )

@@ -164,11 +164,34 @@ meta |>
 
 # 3. Variables categorizadas
 
-El segundo nivel: los índices convertidos en categorías, más dos variables que se
-categorizan directamente sin pasar por un porcentaje (`perper_delito` y
-`comper_gasto`).
+**Estas son las que entran al modelo.** No hay otras, y llegan por tres caminos
+distintos.
 
-**Estas ocho son las que entran al modelo.** No hay otras.
+```{r}
+#| label: caminos-cat
+cfg <- leer("cfg")
+metodos <- vapply(cfg$CORTES, \(s) s$metodo, character(1))
+
+n_indice <- sum(metodos != "conteo")
+n_conteo <- sum(metodos == "conteo")
+n_directas <- length(cfg$VARS_MODELO) - n_indice - n_conteo
+
+stopifnot(
+    "Los tres caminos no suman las variables del modelo" =
+        n_indice + n_conteo + n_directas == length(cfg$VARS_MODELO)
+)
+```
+
+**`r n_indice` salen de un índice**, cortando el porcentaje de la sección
+anterior.
+
+**`r n_conteo` se cuentan directo sobre su batería**, sin índice intermedio: las
+medidas de la vivienda y las del barrio. Sus ítems no admiten "no aplica", así
+que el denominador no varía y lo que se corta es el número de medidas. En la
+columna "Se construye desde" aparecen los ítems y no un índice.
+
+**`r n_directas` ya vienen categóricas del cuestionario** (`perper_delito` y
+`comper_gasto`): no hay batería que resumir ni nada que cortar.
 
 ```{r}
 #| label: categorizadas

@@ -143,8 +143,8 @@ list(
                 "emper_barrio_pct_cat",
                 "emper_casa_pct_cat",
                 "comper_pct_cat",
-                "comgen_per_pct_cat",
-                "comgen_com_pct_cat"
+                "comgen_per_cat",
+                "comgen_com_cat"
             ),
             etiqueta = "codigos_recuperados"
         )
