@@ -1,14 +1,12 @@
-# Diccionario de variables (PLAN.md F5.5)
+# Diccionario de variables
 #
-# Responde tres preguntas que hasta ahora había que contestar leyendo código:
+# Responde tres preguntas que de otro modo habría que contestar leyendo código:
 # qué variables existen, cuáles se usan en el análisis, y cómo se construye cada
 # una a partir de las otras.
 #
-# Es un target y no un chunk de la página porque es un artefacto del pipeline:
-# se deriva de `cfg$INDICES` y de las etiquetas de la base, así que no puede
-# desincronizarse de lo que el código hace realmente. Reemplaza al
-# `metadata_recode.xlsx` del repo viejo, que se generaba con un `separate()`
-# frágil y había que mantener a mano (F5.2, Q5).
+# Es un target y no una tabla mantenida a mano porque se deriva de las
+# declaraciones del pipeline y de las etiquetas de la base: así no puede
+# desincronizarse de lo que el código hace realmente.
 
 
 #' Categorías de una columna, como texto legible
@@ -36,7 +34,7 @@ categorias_de <- function(col, max_cats = 12) {
 
 #' Diccionario completo de variables
 #'
-#' Una fila por variable, con su familia (§4.0), su etiqueta, sus categorías, de
+#' Una fila por variable, con su familia, su etiqueta, sus categorías, de
 #' qué se construye y qué papel cumple en el análisis.
 #'
 #' @param datos_sel `datos_seleccionados` (originales, ya renombradas).
@@ -133,7 +131,7 @@ construir_metadata <- function(
             character(1)
         ),
         alimenta = paste(
-            "Excluida de la batería a propósito (D1): quien la marca tiene",
+            "Excluida de la batería a propósito: quien la marca tiene",
             "todas las medidas en 0, así que el conteo le da 0 sin leer esta",
             "columna"
         )

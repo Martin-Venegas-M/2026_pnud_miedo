@@ -31,8 +31,7 @@ filtrar_muestra <- function(datos) {
 #' `comgen` (`"MEDIDAS|VECINOS"`) coincide también con `comper_COSTOS_MEDIDAS`,
 #' ya renombrada por el paso anterior, y la vuelve a prefijar como
 #' `comgen_comper_costos_medidas`. El `rename()` final corrige ese
-#' solapamiento. Es un comportamiento heredado, no un error de esta función:
-#' ver PLAN.md §F1.4.
+#' solapamiento.
 seleccionar_variables <- function(datos, cfg) {
     emper <- "P_INSEG"
     perper <- "P_EXPOS_DELITO|P_DELITO_PRONOSTICO"

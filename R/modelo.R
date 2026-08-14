@@ -1,16 +1,17 @@
 #' Preparar los datos de entrada al MCA
 #'
-#' Reemplaza `3_add_clust.R:46-75`. Pasa `85`/`88`/`99` a `NA` en toda columna
-#' que matchee `emper|perper|pergen|comper|comgen`, se queda solo con
-#' `rph_id` y `vars`, saca a `NA` las categorías 4 y 6 de `perper_delito`
-#' (no sabe/no responde, en sus dos formas) y convierte todo a factor con las
-#' etiquetas ya aplicadas por `etiquetar()`.
+#' Pasa `85`/`88`/`99` a `NA` en las columnas de las cuatro dimensiones, se queda
+#' solo con `rph_id` y las variables del modelo, y convierte todo a factor con
+#' las etiquetas ya aplicadas.
 #'
-#' **D3 aplicada** (PLAN.md): antes se excluían las categorías `c(4, 5)`, con
-#' la 5 mezclando "otro delito" (sustantivo) y no-respuesta.
-#' `construir_perper_delito()` separó esa mezcla en 5 (otro delito) y 6 (no
-#' sabe/no responde); acá se ajustó el filtro a `c(4, 6)` para conservar la 5
-#' en el modelo.
+#' @details
+#' De `perper_delito` se excluyen las categorías 4 y 6, que son las dos formas
+#' de no respuesta. La categoría 5, "otro delito", **se conserva**: es una
+#' respuesta sustantiva, esa persona sí espera ser víctima, y descartarla sería
+#' tratar como faltante algo que no lo es.
+#'
+#' El MCA exige casos completos, así que todo lo que quede en `NA` acá saca a esa
+#' persona del modelo. Por eso importa qué se convierte en `NA` y qué no.
 #'
 #' @param datos Datos recodificados y etiquetados (`datos_recodificados`).
 #' @param vars Variables que entran al MCA (`cfg$VARS_MODELO`).
@@ -42,9 +43,9 @@ preparar_datos_mca <- function(datos, vars) {
 
 #' Filtrar los casos completos que entran al MCA
 #'
-#' Reemplaza `3_add_clust.R:80`. Solo filtra — no reporta (regla #7: el log
-#' es un target derivado, pareado, no un efecto secundario de esta función;
-#' ver [reportar_perdida()]).
+#' Solo filtra, no reporta: la pérdida se mide en un target aparte y pareado,
+#' [reportar_perdida()], para que quede en el registro y no en un mensaje de
+#' consola.
 #'
 #' @param datos Salida de [preparar_datos_mca()].
 #' @param vars Variables que deben estar completas.
@@ -55,9 +56,8 @@ filtrar_casos_completos <- function(datos, vars) {
 
 #' Ajustar el MCA
 #'
-#' Reemplaza la parte de `mca_hcpc()` (`functions.R:358`) que corre
-#' `FactoMineR::MCA()`. Antes se recalculaba una vez por solución de cluster
-#' (`cfg$N_CLASES = 6:4`) pese a no depender de `n_class`; acá es un target
+#' El MCA no depende de cuántos grupos se vayan a extraer después, así que es un
+#' target
 #' que corre una sola vez.
 #'
 #' @param datos Casos completos, factores (salida de
@@ -73,9 +73,8 @@ ajustar_mca <- function(datos, id_col = "rph_id") {
 
 #' Ajustar el HCPC sobre un MCA ya calculado
 #'
-#' Reemplaza la parte de `mca_hcpc()` que corre `FactoMineR::HCPC()`.
-#' `consol = FALSE` es lo que hace el resultado determinista (no depende de
-#' semilla); verificado contra el gold del repo viejo caso por caso.
+#' `consol = FALSE` es lo que hace el resultado determinista: con consolidación
+#' el corte depende de una semilla y deja de ser reproducible.
 #'
 #' @param mca Objeto MCA de [ajustar_mca()].
 #' @param n_clases Número de clases a extraer del árbol jerárquico.
@@ -105,8 +104,7 @@ ajustar_hcpc_todos <- function(mca, n_clases) {
 
 #' Extraer la asignación de cluster de cada solución
 #'
-#' Target `soluciones`. Reemplaza el `data.clust$clust` que `mca_hcpc()`
-#' guardaba en `results_all[[...]]$data`.
+#' A qué grupo quedó asignada cada persona, en cada solución calculada.
 #'
 #' @param datos Casos completos usados en el MCA (para el `rph_id` de cada
 #'   fila, en el mismo orden que las asignaciones de `hcpc`).
@@ -130,9 +128,7 @@ construir_soluciones <- function(datos, hcpc, n_clases) {
 
 #' Pegar las soluciones de cluster a la base
 #'
-#' Reemplaza `3_add_clust.R:89-113` (`add_clust()` + el `reduce()` que lo
-#' itera). Un `left_join` por solución más el `factor()` con etiquetas
-#' `C1..Cn`.
+#' Un `left_join` por solución, más el `factor()` con etiquetas `C1..Cn`.
 #'
 #' @param datos Base a la que pegar los clusters (`datos_recodificados`, NO
 #'   la de entrada al MCA: se pega sobre todos los casos, y quedan `NA` los

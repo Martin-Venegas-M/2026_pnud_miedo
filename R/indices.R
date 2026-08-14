@@ -1,11 +1,15 @@
 
 #' Construir una variable de porcentaje a partir de una batería de ítems
 #'
-#' Helper sin cambios respecto de `processing/helpers/functions.R`. Para cada
-#' caso calcula qué porcentaje de los ítems válidos de una batería recibió
-#' alguna de las categorías "éxito"; los ítems en `85` ("No aplica") se
-#' excluyen del denominador. `88` y `99` se quedan en el denominador — es la
-#' convención D6, deliberada y no se toca acá (ver PLAN.md D6).
+#' Para cada caso, qué porcentaje de los ítems de una batería recibió alguna de
+#' las categorías que cuentan como "éxito".
+#'
+#' @details
+#' Los ítems en `85` ("no aplica") **salen del denominador**: la situación no le
+#' corresponde a esa persona, así que no puede contar en su contra. Los `88`
+#' ("no sabe") y `99` ("no responde") **se quedan**, y cuentan como no adhesión.
+#' Es una convención conservadora y deliberada: quien no supo responder no se
+#' asume que sí.
 #'
 #' @param data Data frame con la columna identificadora y los ítems fuente.
 #' @param id.col Columna identificadora, sin comillas.
@@ -70,18 +74,22 @@ create_var_pct <- function(
     }
 }
 
-#' Construir los seis índices `_pct`
+#' Construir los cuatro índices `_pct`
 #'
-#' Reemplaza las seis llamadas a `create_var_pct()` de `2_recode.R:82-130`
-#' (sin contar los `case_when` de `perper_delito` y `comper_gasto`, que son
-#' funciones propias). Vive acá D1: qué columnas entran en `source.cols` de
-#' cada batería — **aplicada** (PLAN.md D1): `cfg$INDICES` ya no incluye las
-#' columnas `_na` de `comgen` como una medida más, así que "ninguna medida"
-#' da 0% en vez de 10%/11,1%.
+#' Aplica [create_var_pct()] a las cuatro baterías cuyo denominador varía de
+#' persona a persona, que son las que necesitan expresarse como porcentaje.
+#'
+#' @details
+#' **Qué columnas entran en cada batería es una decisión, no un detalle.** Las
+#' preguntas de opción múltiple traen una columna por alternativa, y entre ellas
+#' una que registra "ninguna". Si esa columna se incluye como una alternativa
+#' más, quien responde "ninguna medida" obtiene un éxito y nunca llega a 0%.
+#' Queda fuera a propósito: así el cero sale del cálculo mismo, sin necesidad de
+#' un caso especial.
 #'
 #' @param datos Datos con las columnas fuente.
 #' @param spec `cfg$INDICES`: ítems fuente por batería.
-#' @return `datos` con las seis columnas `_pct` agregadas.
+#' @return `datos` con las cuatro columnas `_pct` agregadas.
 construir_indices_pct <- function(datos, spec) {
     #* Los dos índices de comgen salieron de acá en agosto de 2026: sus baterías
     #* no admiten el código 85, así que el denominador es constante y el
@@ -117,28 +125,30 @@ construir_indices_pct <- function(datos, spec) {
 
 #' Categoría de expectativa de victimización (`perper_delito`)
 #'
-#' Reemplaza el `case_when` de `2_recode.R:97-106`. Vive acá D3, **aplicada**
-#' (PLAN.md D3): la vieja categoría 5 mezclaba "otro delito" (`77`,
-#' sustantivo) con no-respuesta (`88`/`99`). Queda separada en dos: la
-#' categoría 5 es ahora solo "otro delito" (se conserva en el modelo) y la 6
-#' es "no sabe/no responde" (se sigue excluyendo en
-#' `preparar_datos_mca()`, que pasó de `c(4, 5)` a `c(4, 6)`).
+#' Cruza dos preguntas para dar una sola variable de seis categorías. La
+#' pregunta filtro es si la persona cree que será víctima de algún delito en los
+#' próximos doce meses; a quien responde que sí se le muestra una batería de
+#' tipos de delito, donde puede marcar varios.
 #'
-#' @section Sobre la predicción falsable del plan:
-#' PLAN.md predecía que aplicar D3 sola subiría el N del MCA en 2.182 casos
-#' (el `n_solo` de `perper_delito` del Anexo A.2), para un total de 51.613.
-#' Verificado sobre los datos reales, la vieja categoría 5 tenía solo **150**
-#' casos en total (no 2.182): **78** marcaron *únicamente* "77 = otro delito"
-#' (sin ningún delito específico) — esos son los que rescata D3, de los
-#' cuales 72 entran efectivamente al modelo (6 quedan fuera por otra
-#' variable) — y **72** marcaron *únicamente* no sabe/no responde, que
-#' siguen excluidos. La diferencia con la predicción del plan es que
-#' `P_DELITO_PRONOSTICO` es una pregunta de "marque todas": de las 375
-#' personas que marcaron "77", 297 marcaron además un delito específico y ya
-#' caían en la categoría 2 o 3 (evaluadas antes que la 5 en el `case_when`),
-#' tanto antes como después de este cambio. El grueso del `n_solo = 2.182`
-#' es la categoría 4 (`expos_delito` en 88/99, la pregunta-gate anterior),
-#' que D3 no toca. La predicción del plan estaba mal, no la implementación.
+#' | Categoría | Quién cae ahí |
+#' |---|---|
+#' | 1 | Respondió que no a la pregunta filtro |
+#' | 2 | Marcó algún delito clasificado como no violento |
+#' | 3 | Marcó algún delito clasificado como violento |
+#' | 4 | No respondió la pregunta filtro |
+#' | 5 | Marcó únicamente "otro delito" |
+#' | 6 | No respondió la batería |
+#'
+#' @details
+#' **"Otro delito" y "no sabe qué delito" son categorías distintas.** Las dos
+#' viven en la misma batería y es tentador juntarlas, pero marcar "otro delito"
+#' es una respuesta sustantiva: esa persona sí espera ser víctima. Separarlas
+#' recupera 78 casos para el modelo, que antes se descartaban como no respuesta.
+#'
+#' **El orden de las ramas decide los casos mixtos.** La batería admite marcar
+#' varios delitos, y quien marca uno violento y uno no violento tiene que quedar
+#' en una sola categoría. Como la rama de no violento se evalúa primero, esas
+#' personas caen ahí. Son unas 7.900, así que el orden no es un detalle.
 #'
 #' @param datos Datos con las columnas fuente de `perper_delito`.
 #' @return `datos` con la columna `perper_delito` agregada (6 categorías).
@@ -175,9 +185,17 @@ construir_perper_delito <- function(datos) {
 
 #' Gasto en medidas de seguridad (`comper_gasto`)
 #'
-#' Reemplaza el `case_when` de `2_recode.R:112-120`. El `case_when` no cubre
-#' el código `96` (F2.1): un caso con `96` cae al `TRUE ~ NA` final. No se
-#' corrige en esta fase (ver F1.0).
+#' La pregunta registra el gasto del hogar en medidas de seguridad en cinco
+#' tramos. El análisis no usa el monto, solo si hubo gasto, así que los cinco se
+#' colapsan en uno.
+#'
+#' @details
+#' **El código 85 no significa "no aplica" en esta pregunta.** Su etiqueta es
+#' "No ha gastado en medidas de seguridad": es una respuesta sustantiva, y entra
+#' como 0 y no como dato faltante.
+#'
+#' El código `96` ("sin dato") no está cubierto y cae al `NA` final. Es un caso
+#' entre casi 56.000.
 #'
 #' @param datos Datos con la columna `comper_costos_medidas`.
 #' @return `datos` con la columna `comper_gasto` agregada.
@@ -346,11 +364,12 @@ categorizar_comgen <- function(datos, cortes, items, codigos) {
 #' que se cuentan sobre su batería.
 #'
 #' @section Por qué envuelve en vez de fundir:
-#' Las tres lógicas son distintas y cada una carga su propia documentación: D3
-#' vive entera en [construir_perper_delito()], y el criterio de los umbrales de
-#' `comgen` en [categorizar_comgen()]. Fundirlas dejaría un docstring cubriendo
-#' tres decisiones sin relación. Lo que se unifica es el **paso del pipeline**,
-#' no la lógica: un target y un log en vez de tres.
+#' Las tres lógicas son distintas y cada una carga su propia documentación: cómo
+#' se arman las categorías de expectativa de victimización vive en
+#' [construir_perper_delito()], y el criterio de los umbrales de `comgen` en
+#' [categorizar_comgen()]. Fundirlas dejaría un docstring cubriendo tres
+#' decisiones sin relación. Lo que se unifica es el **paso del pipeline**, no la
+#' lógica: un target y un log en vez de tres.
 #'
 #' @param datos Datos con los índices `_pct` ya construidos.
 #' @param cortes `cfg$CORTES`; se usan solo las entradas de método `"conteo"`.

@@ -6,12 +6,10 @@
 #' categoría. Entrega solo estimaciones ponderadas, sin medidas de calidad;
 #' para eso está [tab_frq2()].
 #'
-#' Portada de `tipologias/processing/helpers/functions.R` del repo viejo
-#' (PLAN.md F5.2, Q1): **sin arreglar**, fiel al original. `data` y `w` eran
-#' `enusc`/`fact_pers_reg` por defecto (leían el entorno global); acá `data`
-#' es obligatorio (§F1.6) y `w` se deja con su default de siempre porque es
-#' tidy-eval sobre `data`, no una lectura de global (mismo patrón que
-#' `id.col = rph_id` en `create_var_pct()`).
+#' `data` es obligatorio a propósito: un default que lea del entorno global
+#' hace que la función parezca andar cuando en realidad está tabulando otra cosa.
+#' `w` sí lleva default porque es tidy-eval sobre `data`, no una lectura de
+#' global.
 #'
 #' @param data Data frame con los datos.
 #' @param var Variable a tabular, sin comillas.
@@ -113,9 +111,7 @@ tab_frq1 <- function(
 #' de confianza) además de la estimación puntual. Permite además cruzar por una
 #' variable de grupo.
 #'
-#' Portada del repo viejo (PLAN.md F5.2, Q1), sin arreglar. `svyobj` era
-#' `enusc_svy` por defecto (leía el entorno global); acá es obligatorio
-#' (§F1.6).
+#' `svyobj` es obligatorio, por lo mismo que en [tab_frq1()].
 #'
 #' @param svyobj Objeto de diseño muestral (`srvyr::as_survey_design()`).
 #' @param grp Si es `TRUE`, convierte `grp_var` a etiquetas y la ubica junto a
@@ -203,8 +199,6 @@ tab_frq2 <- function(
 #' filtros, anchos automáticos y un borde inferior que separa visualmente cada
 #' grupo de filas de `var_col`.
 #'
-#' Portada del repo viejo (PLAN.md F5.2, Q1), sin cambios: no tenía argumentos
-#' por defecto que leyeran globales.
 #'
 #' @param df Data frame a escribir.
 #' @param wb Workbook de `openxlsx` al que agregar la pestaña. Por defecto crea
@@ -295,8 +289,6 @@ format_tab_excel <- function(
 #' coma como separador decimal, y descarta las columnas que no van al
 #' entregable.
 #'
-#' Portada del repo viejo (PLAN.md F5.2, Q1), sin cambios.
-#'
 #' @param x Tabla producida por [tab_frq1()] o [tab_frq2()].
 #' @param type Origen de la tabla: `"tab_frq1"` o `"tab_frq2"`. Determina qué
 #'   columnas se formatean y cuáles se eliminan.
@@ -350,8 +342,6 @@ pre_proc_excel <- function(x, type = "tab_frq1") {
 #' Grafica las categorías en el plano de las dos primeras dimensiones,
 #' coloreadas según su calidad de representación (cos2).
 #'
-#' Portada del repo viejo (PLAN.md F5.2, Q1), sin cambios.
-#'
 #' @param obj Objeto MCA, es decir el elemento devuelto por `ajustar_mca()`.
 #'
 #' @return Un objeto `ggplot`.
@@ -373,11 +363,7 @@ plot_mca <- function(obj) {
 #' variable de cluster, y opcionalmente las exporta todas a un mismo libro de
 #' Excel con una pestaña por variable.
 #'
-#' Portada de `tipologias/analysis/helpers/functions.R` del repo viejo
-#' (PLAN.md F5.2, Q2) — no estaba en este repo, tampoco en
-#' `processing/helpers/functions.R`; el plan la marcaba por error como
-#' ausente en el repo viejo, y no lo estaba. `path` era `cfg$PATH_TABLES` por
-#' defecto (leía el entorno global); acá es obligatorio (§F1.6).
+#' `path` es obligatorio, por lo mismo que en [tab_frq1()].
 #'
 #' @param svy Objeto de diseño muestral. Se filtra internamente para dejar solo
 #'   los casos con cluster asignado.
@@ -405,12 +391,10 @@ plot_mca <- function(obj) {
 #' * `invert = TRUE`: % de cada cluster DENTRO de cada categoría de la
 #'   variable.
 #'
-#' **Tensión con la regla #7** (el log es un target derivado, no un efecto
-#' secundario): con `save = TRUE` esta función escribe un `.xlsx` como efecto
-#' secundario, igual que en el repo viejo. No se corrige acá — Q1/Q2 piden
-#' portar sin arreglar; separar el cálculo (puro) de la escritura (efecto
-#' secundario, en un target `format = "file"` propio) queda para cuando se
-#' repare `analysis/` de verdad, después de cerrar D2 y D4.
+#' **Ojo con `save = TRUE`:** escribe un `.xlsx` como efecto secundario, que va
+#' contra la convención del resto del pipeline, donde la escritura vive en su
+#' propio target `format = "file"`. Queda anotado; el DAG la llama siempre con
+#' `save = FALSE`.
 tab_var_clust <- function(
     svy,
     clust_var,

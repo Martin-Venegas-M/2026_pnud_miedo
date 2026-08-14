@@ -1,7 +1,5 @@
 #' Índices de desórdenes e incivilidades
 #'
-#' Reemplaza `4_add_vars.R:35-58`. Acá se resolvió D5.
-#'
 #' Cada índice es la **suma** de una batería de ítems en escala de 1 a 5, así
 #' que mide intensidad: distingue a quien responde "nunca" a todo de quien
 #' responde "ocasionalmente" a todo. Se conserva esa métrica.
@@ -55,8 +53,8 @@ construir_indices_secundarios <- function(datos, min_validos = 0.5) {
         #* Los terciles se cortan en los mismos umbrales que daría ntile(),
         #* pero asignando por VALOR y no por rango. ntile() reparte los empates
         #* entre categorías para forzar grupos iguales: acá partía a 2.234
-        #* personas con índice 13 entre el tercil 1 y el 2. Es el mismo problema
-        #* que motivó D2, en su versión chica. Los grupos quedan desiguales
+        #* personas con índice 13 entre el tercil 1 y el 2. Los grupos quedan
+        #* desiguales
         #* (37/30/33), que es lo correcto cuando la variable tiene empates.
         cortes <- stats::quantile(indice, c(1 / 3, 2 / 3), na.rm = TRUE)
 
@@ -75,8 +73,6 @@ construir_indices_secundarios <- function(datos, min_validos = 0.5) {
 }
 
 #' Variables de fuente de información
-#'
-#' Reemplaza `4_add_vars.R:60-102`.
 #'
 #' @param datos Datos con `p_fuente_info_barrio_1`, `p_fuente_info_com_1` y
 #'   `p_fuente_info_pais_1`.
@@ -144,8 +140,6 @@ construir_vars_info <- function(datos) {
 
 #' Recodificar variables sociodemográficas
 #'
-#' Reemplaza `4_add_vars.R:104-125`.
-#'
 #' @param datos Datos con `rph_nivel`, `rph_edad` y `enc_region`.
 #' @return `datos` con `rph_nivel_rec`, `rph_edad_rec` y `enc_region_rec`
 #'   agregadas.
@@ -185,8 +179,8 @@ recodificar_sociodemograficas <- function(datos) {
 #' respuestas válidas es el número de ítems. Un índice por debajo de eso no
 #' corresponde a ninguna respuesta posible — es el rastro de la no-respuesta.
 #'
-#' Existe porque la página necesita mostrar la magnitud del problema y ningún
-#' número de la página puede nacer en un chunk (PLAN.md F5.4). Ver D5.
+#' Existe como target porque la página necesita mostrar la magnitud del problema
+#' y ningún número de la página puede nacer en un chunk.
 #'
 #' @param datos `datos_finales`.
 #' @return Un tibble con una fila por índice.

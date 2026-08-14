@@ -1,8 +1,6 @@
 
 #' Aplicar etiquetas de variable y de valor
 #'
-#' Reemplaza `2_recode.R:238-256` y `4_add_vars.R:206-224`.
-#'
 #' @param datos Datos a etiquetar.
 #' @param etiquetas Una especificación (`cfg$ETIQUETAS` o
 #'   `cfg$ETIQUETAS_SEC`): lista con `variables` y `valores`.

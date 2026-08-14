@@ -17,20 +17,13 @@
 #' marginales finales solo se vería el resultado.
 #'
 #' @section Por qué sigue siendo un paso aparte:
-#' Es la misma pregunta que resolvió D1 y merece el mismo tratamiento: la
-#' distinción entre "respondió que no" y "no respondió" tiene que ser visible en
-#' el registro, no solo correcta en el resultado. Fundirlo dentro de
+#' La distinción entre "respondió que no" y "no respondió" tiene que ser visible
+#' en el registro, no solo correcta en el resultado. Fundirlo dentro de
 #' [categorizar_indices()] daría el mismo dato final y borraría la transición.
 #'
 #' Tampoco lleva un argumento para desactivarlo. Con `FALSE` el pipeline
 #' produciría categorías falsas en silencio, así que no hay un caso de uso
 #' legítimo para esa opción.
-#'
-#' @section Lo que ya no hace:
-#' Hasta agosto de 2026 acá también se estampaban los códigos `88`/`99` de
-#' `comgen` desde sus columnas `_ns`/`_nr`. Eso se mudó a [categorizar_comgen()]:
-#' son códigos especiales de esa batería, y quien construye la variable se hace
-#' cargo de ellos.
 #'
 #' @param datos Datos con las columnas `_cat` ya construidas.
 #' @param spec `cfg$INDICES`: ítems fuente por batería.

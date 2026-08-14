@@ -1,14 +1,14 @@
-# Insumos de los gráficos de la página (PLAN.md F5.4)
+# Insumos de los gráficos de la página
 #
 # Estas funciones NO dibujan: preparan los datos que el .qmd grafica. El corte
 # es deliberado. Todo lo que sea cálculo —coordenadas, centroides, la matriz de
 # covarianza de una elipse— vive acá, como target, y queda trazable. El dibujo
 # es presentación y vive en el .qmd, donde se puede ajustar sin invalidar el DAG.
 #
-# Reemplazan a los gráficos por defecto de factoextra, que sirven para explorar
-# pero no para comunicar: no distinguen dimensión teórica, superponen etiquetas
-# y dibujan 49.503 puntos individuales donde solo se necesita leer dónde está el
-# núcleo de cada grupo.
+# Se preparan a mano en vez de usar los gráficos por defecto de factoextra,
+# que sirven para explorar pero no para comunicar: no distinguen dimensión
+# teórica, superponen etiquetas y dibujan un punto por persona donde solo se
+# necesita leer dónde está el núcleo de cada grupo.
 
 #' Coordenadas de las categorías en el plano principal
 #'

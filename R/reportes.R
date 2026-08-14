@@ -1,9 +1,14 @@
 #' Tabla marginal con `NA` como categoría explícita
 #'
-#' Base de `reportar_transformacion()`. Descarta etiquetas (importa el valor
-#' crudo, no la etiqueta) usando `haven::zap_labels()` calificado — nunca
-#' `sjlabelled::zap_labels()`, que convierte a `NA` los valores etiquetados
-#' (ver PLAN.md Anexo B).
+#' Base de [reportar_transformacion()]. Descarta etiquetas porque importa el
+#' valor crudo.
+#'
+#' @details
+#' Usa `haven::zap_labels()` **calificado**, nunca `sjlabelled::zap_labels()`.
+#' Las dos funciones se llaman igual y hacen cosas opuestas: la de haven saca el
+#' atributo y conserva los valores, la de sjlabelled convierte a `NA` los
+#' valores etiquetados. Sin calificar, cuál se aplica depende del orden de los
+#' `library()`, y el síntoma es una columna entera en `NA`.
 #'
 #' @param x Vector a tabular.
 #' @return Un tibble `valor | n | pct`, con una fila `"NA"` si corresponde.
@@ -24,8 +29,9 @@ tabla_marginal <- function(x) {
 
 #' Reporte de una transformación: forma, marginales y transiciones
 #'
-#' El reporte principal del sistema de log (PLAN.md §F1.5). Se ejecuta después
-#' de cada target de datos, pareado con él.
+#' El reporte principal del sistema de log. Se ejecuta después de cada target de
+#' datos, pareado con él, y su salida se versiona: es el registro diffeable de
+#' qué cambió entre corridas.
 #'
 #' @param antes Datos antes de la transformación.
 #' @param despues Datos después de la transformación.
@@ -197,8 +203,9 @@ reportar_perdida <- function(antes, despues, vars, etiqueta, max_perdida = NULL)
 #'
 #' `reportar_perdida()` mide magnitud, no composición. Cruza los casos
 #' eliminados contra variables sociodemográficas y compara su perfil con el
-#' de los que quedan, para poder ver si la pérdida es sesgada (el hallazgo de
-#' PLAN.md §1) y no solo grande.
+#' de los que quedan, para poder ver si la pérdida es **sesgada** y no solo
+#' grande. Un descarte que se lleva sobre todo a un perfil de personas cambia
+#' quién queda representado en el modelo, y eso no se ve mirando el total.
 #'
 #' @param datos Datos con las variables secundarias, antes de filtrar casos.
 #' @param eliminados Vector lógico, mismo largo y orden que `datos`: `TRUE`

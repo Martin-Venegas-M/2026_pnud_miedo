@@ -1,10 +1,13 @@
 #' Construir el objeto de diseño muestral
 #'
-#' PLAN.md F5.3, "Trampa: el objeto de diseño muestral": no existía en el DAG
-#' hasta acá. Es donde vivía el typo `stata = ` del repo viejo — acá se usa
-#' `strata =`, y se verifica antes que las tres columnas existan, para que un
-#' nombre mal escrito falle con un mensaje claro en vez de dejar el diseño sin
-#' estratificar en silencio.
+#' La ENUSC no se levanta por muestreo aleatorio simple: agrupa a las personas en
+#' conglomerados y estratos, y eso hay que declararlo al estimar.
+#'
+#' @details
+#' Las tres columnas se verifican antes de construir el objeto. `srvyr` acepta un
+#' nombre de argumento mal escrito sin protestar y devuelve un diseño sin
+#' estratificar, que produce estimaciones plausibles y mal calculadas. Fallar
+#' acá con el nombre de la columna es preferible.
 #'
 #' @param datos Datos finales (`datos_finales`).
 #' @param ids,strata,weights Nombres de columna, como string (`cfg$SVY_IDS`,
@@ -29,12 +32,13 @@ construir_diseno_muestral <- function(datos, ids, strata, weights) {
 
 #' Mapeo de nombres: variables originales -> nuestro nombre
 #'
-#' PLAN.md §4.0: "el mapeo original -> nuestro nombre... es derivable del
-#' código y no hay que mantenerlo a mano." Reproduce la misma selección que
-#' `seleccionar_variables()` (`R/seleccion.R`) solo para capturar, en el mismo
-#' orden, el nombre original de cada columna antes de sus `rename_with()`. Si
-#' la selección de `seleccionar_variables()` cambia, cambiar acá también — el
-#' `stopifnot` falla si se desincronizan en cantidad de columnas.
+#' El mapeo entre el nombre de la ENUSC y el que usa el análisis es derivable del
+#' código, así que se deriva en vez de mantenerlo a mano. Reproduce la misma
+#' selección que [seleccionar_variables()] para capturar, en el mismo orden, el
+#' nombre original de cada columna antes de renombrarla.
+#'
+#' Si la selección cambia, hay que cambiar acá también: el `stopifnot` falla si
+#' las dos se desincronizan en cantidad de columnas.
 #'
 #' @param datos_muestra Datos post-Kish, pre-selección (`datos_muestra`).
 #' @param datos_seleccionados Datos ya seleccionados y renombrados
@@ -82,12 +86,8 @@ construir_mapeo_nombres <- function(datos_muestra, datos_seleccionados) {
 
 #' Tabla 1 — Univariados de variables originales, por dimensión
 #'
-#' PLAN.md F5.3. Corre sobre `datos_seleccionados` (originales, renombradas,
-#' sin recodificar) con `cfg$PATRONES` para separar pregunta de ítem en la
-#' etiqueta. La dimensión `pergen` no entra: se descartó (§4.0), a diferencia
-#' del reporte del repo viejo que todavía la incluía.
-#'
-#' No depende de D2 — son valores originales, la categorización no los toca.
+#' Corre sobre las variables originales, ya renombradas pero sin recodificar,
+#' usando `cfg$PATRONES` para separar la pregunta del ítem en la etiqueta.
 #'
 #' @param datos `datos_seleccionados`.
 #' @param cfg$PATRONES `cfg$PATRONES`.
@@ -118,12 +118,7 @@ tabla_variables_originales <- function(datos, spec_patrones) {
 
 #' Tabla 2 — Univariados de variables fuente
 #'
-#' PLAN.md F5.3. Los índices `_pct` continuos y sus versiones categorizadas
-#' (`cfg$VARS_MODELO`, que además de las categorizadas incluye
-#' `perper_delito` y `comper_gasto`). Corre sobre `datos_finales`.
-#'
-#' Depende de D1 y D3 (ya aplicadas) y de D2 (abierta) para la parte
-#' categorizada — no para los `_pct` continuos, que D2 no toca.
+#' Los índices `_pct` continuos y las variables que entran al modelo.
 #'
 #' @param datos `datos_finales`.
 #' @param vars_continuas Los seis índices `_pct` sin categorizar.
@@ -138,8 +133,7 @@ tabla_variables_fuente <- function(datos, vars_continuas, vars_categorizadas) {
 
 #' Tabla 3 — Univariados de variables secundarias
 #'
-#' PLAN.md F5.3. `cfg$VARS_SEC` sobre `datos_finales`. No depende de D2;
-#' `desordenes_ind_rec`/`incivilidades_ind_rec` sí dependen de D5 (abierta).
+#' Las variables que describen a los grupos sin participar del modelo.
 #'
 #' @param datos `datos_finales`.
 #' @param vars_sec `cfg$VARS_SEC`.
@@ -153,7 +147,7 @@ tabla_variables_secundarias <- function(datos, vars_sec) {
 
 #' Tabla 4 — Distribución de las soluciones de cluster
 #'
-#' PLAN.md F5.3. Depende de D2 (la categorización que alimenta el MCA).
+#' Cuántas personas quedaron en cada grupo, para cada solución calculada.
 #'
 #' @param datos `datos_finales`.
 #' @param n_clases `cfg$N_CLASES`.
@@ -167,12 +161,8 @@ tabla_clusters <- function(datos, n_clases) {
 
 #' Tabla 5 — Cruces de variables fuente y secundarias por cluster
 #'
-#' PLAN.md F5.3. Usa `tab_var_clust()` (F5.2, Q2) con `invert = FALSE`: % de
-#' cada categoría de la variable dentro de cada cluster — el perfil pedido.
-#' La dirección invertida no se pide.
-#'
-#' Depende de D2 (categorización, MCA, clusters) y de D5 en la porción de
-#' variables secundarias.
+#' El perfil de cada grupo: qué porcentaje de sus miembros cae en cada categoría
+#' de cada variable. Se lee por columna, no por fila.
 #'
 #' @param svy Diseño muestral (`construir_diseno_muestral()`).
 #' @param clust_var `cfg$CLUSTER_A_SACAR`.
@@ -225,19 +215,19 @@ tabla_cruces_cluster <- function(svy, clust_var, vars_fuente, vars_sec) {
 
 #' Tabla 6 — `v-test` de la solución de cluster reportada
 #'
-#' PLAN.md F5.3. `FactoMineR::HCPC()` ya calcula esto (`desc.var$category`
-#' dentro del target `hcpc`); acá solo se aplana a un tibble largo. El propósito
-#' de la tabla es **ordenar** las categorías por cuánto distinguen a cada
-#' cluster, para poder caracterizarlos y nombrarlos.
-#'
-#' Depende de D2: la solución de cluster completa cambia si D2 cambia.
+#' `HCPC()` ya calcula esto; acá solo se aplana a un tibble largo. El propósito
+#' es **ordenar** las categorías por cuánto distinguen a cada grupo, para poder
+#' caracterizarlos y nombrarlos.
 #'
 #' @section Por qué no se ordena por `v.test`:
-#' `FactoMineR` deriva `v.test` invirtiendo el p-value, y con el N de este
-#' proyecto (~49.500) el p subdesborda a 0, de modo que `qnorm(0)` devuelve
-#' `Inf`. En la primera corrida de F5.3, **61 de 118 filas quedaron en `Inf`** y
-#' el orden se perdía justo entre las asociaciones más fuertes, que son las que
-#' sirven para nombrar el cluster.
+#' `FactoMineR` deriva `v.test` invirtiendo el p-value, y con casi 50.000 casos
+#' el p subdesborda a 0, de modo que `qnorm(0)` devuelve `Inf`. Más de la mitad
+#' de las filas quedan así, y el orden se pierde justo entre las asociaciones más
+#' fuertes, que son las que sirven para nombrar el grupo.
+#'
+#' De fondo: a este tamaño de muestra casi todo da significativo, así que la
+#' significancia deja de discriminar y lo que hay que mirar es el tamaño del
+#' efecto.
 #'
 #' Se ordena entonces por `lift_pp = Mod/Cla - Global`: cuántos puntos
 #' porcentuales más (o menos) prevalente es la categoría dentro del cluster que
@@ -276,30 +266,24 @@ tabla_v_test <- function(hcpc, clust_var) {
 
 #' Dejar una tabla descriptiva lista para entregar
 #'
-#' Dos cosas, ambas sobre defectos observados en la primera corrida de F5.3:
+#' Dos cosas, las dos sobre defectos que aparecen si no se hacen:
 #'
 #' 1. **Descarta las filas de categoría vacía.** `sjmisc::frq()` agrega una fila
-#'    `val = NA` por variable aunque no haya ningún caso ahí; en la primera
-#'    corrida eran 104 filas `NA,NA,0,0` repartidas entre las cuatro tablas de
-#'    frecuencias. Se descartan **solo si `frq == 0`**: una fila `NA` con casos
-#'    detrás es no-respuesta real y tiene que sobrevivir, que es justamente la
-#'    lección de §1 del plan.
-#' 2. **Redondea.** Sin esto los CSV salían con ruido de coma flotante
-#'    (`51.449999999999996`) en 177 líneas. Se excluyen `p.value` y `v.test`,
+#'    `val = NA` por variable aunque no haya ningún caso ahí. Se descartan
+#'    **solo si `frq == 0`**: una fila `NA` con casos detrás es no respuesta
+#'    real y tiene que sobrevivir.
+#' 2. **Redondea.** Sin esto los CSV salen con ruido de coma flotante
+#'    (`51.449999999999996`). Se excluyen `p.value` y `v.test`,
 #'    donde redondear a dos decimales destruiría la información.
 #'
 #' Se aplica **antes** de bifurcar en Excel y CSV, de modo que las dos salidas
 #' tengan exactamente las mismas filas y columnas.
 #'
 #' @section Por qué no se usa `pre_proc_excel()`:
-#' F5.3 lo mencionaba, pero esa función convierte los números a **texto** en
-#' formato español. Su propio docstring dice para qué: comparar los Excel contra
-#' un gold como strings exactos. Eso es una necesidad del testbed, no del
-#' entregable — y acá el registro versionado es el CSV, no el Excel. Convertir a
-#' texto dejaría un entregable donde PNUD no puede ordenar ni calcular, y un CSV
-#' con comas decimales que el testbed tendría que volver a parsear. Si en F5.1
-#' el gold llega a necesitar el formato texto, se aplica ahí, sobre el Excel, y
-#' no en el camino del CSV.
+#' Esa función convierte los números a **texto** en formato español, que sirve
+#' para comparar archivos como strings exactos pero no para entregar: dejaría un
+#' Excel donde no se puede ordenar ni calcular, y un CSV con comas decimales que
+#' habría que volver a parsear.
 #'
 #' @param tabla Data frame a limpiar.
 #' @param decimales Decimales a los que redondear las columnas numéricas.
@@ -323,18 +307,17 @@ limpiar_tabla_descriptiva <- function(tabla, decimales = 2) {
 
 #' Escribir una tabla descriptiva a Excel + CSV, con sello de estado
 #'
-#' PLAN.md F5.3, "Formato de salida": targets `format = "file"`, Excel para el
-#' entregable, CSV al lado por `F0.3` (registro versionado diffeable). Si
-#' `motivo_provisional` no es `NULL`, estampa el aviso en las dos salidas — no
-#' solo en el plan — para que nadie cite un número que va a cambiar sin saber
-#' que puede cambiar.
+#' Excel para el entregable y CSV al lado, que es el que se versiona y se puede
+#' diffear entre corridas. Si `motivo_provisional` no es `NULL`, el aviso queda
+#' estampado en las dos salidas, para que nadie cite un número que va a cambiar
+#' sin saber que puede cambiar.
 #'
 #' @param tabla Data frame a escribir.
 #' @param ruta_base Ruta sin extensión (p.ej. `"output/tables/2025/variables_fuente"`).
 #' @param sheet Nombre de la pestaña de datos en el Excel.
 #' @param motivo_provisional `NULL` si la tabla es final, o un string
-#'   describiendo qué decisión abierta puede cambiarla (p.ej. `"D2 abierta:
-#'   la categorización de los índices puede cambiar estos números"`).
+#'   describiendo qué decisión abierta puede cambiarla (p.ej. `"la
+#'   categorización de los índices puede cambiar estos números"`).
 #' @return La ruta del `.xlsx` escrito, invisible.
 escribir_tabla_descriptiva <- function(
     tabla,
@@ -391,9 +374,9 @@ escribir_tabla_descriptiva <- function(
 }
 
 # ---------------------------------------------------------------------------
-# Insumos de la página (PLAN.md F5.4)
+# Insumos de la página
 #
-# Regla de F5.4: el `.qmd` no calcula. Todo número que aparezca en la página
+# Regla: el `.qmd` no calcula. Todo número que aparezca en la página
 # nace acá, como target, para que sea trazable y para que la página se
 # regenere sola cuando cambie una decisión.
 # ---------------------------------------------------------------------------
@@ -406,7 +389,8 @@ escribir_tabla_descriptiva <- function(
 #' @section Advertencia de comparabilidad:
 #' El % de inercia **no es comparable entre variantes de recodificación con
 #' distinto número de categorías por variable**: más categorías producen más
-#' inercia total, mecánicamente. Importa acá porque D2 cambia exactamente eso.
+#' inercia total, mecánicamente. Importa porque cambiar cómo se corta una
+#' variable cambia exactamente eso.
 #' Para comparar variantes hace falta la corrección de Benzécri
 #' (`GDAtools::modif.rate()`), que hoy no está implementada. Mientras tanto,
 #' esta tabla describe la solución actual; no sirve para decir que una variante

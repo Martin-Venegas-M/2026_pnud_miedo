@@ -1,7 +1,15 @@
 #' Configuración del pipeline
 #'
-#' Reemplaza `config.R`. Sobreviven como parámetros los que no son rutas de
-#' artefactos intermedios: esas las absorbe el almacén de `targets`.
+#' Los parámetros de la corrida y todos los diccionarios del análisis en un solo
+#' objeto: los cortes, los vectores de variables, los ítems de cada batería y las
+#' etiquetas.
+#'
+#' @details
+#' `targets` rastrea dependencias por target y no por campo, así que cualquier
+#' cambio acá invalida todo lo que lea `cfg`. Los dos campos que la parte cara
+#' del pipeline necesita, `N_CLASES` y `VARS_MODELO`, se exponen como targets
+#' aparte para que editar un corte o una etiqueta no obligue a recalcular el
+#' modelo.
 #'
 #' @return Una lista con los parámetros de la corrida.
 construir_config <- function() {
@@ -89,11 +97,10 @@ construir_config <- function() {
 
 #' Verificar que las variables secundarias declaradas existan en los datos
 #'
-#' PLAN.md F5.2, Q4: cierra la clase de bug de `pergen_*` — aplica el patrón
-#' declarado-vs-observado de §4.5 a `cfg` en vez de a una batería. Si algún
-#' nombre de `VARS_SEC` deja de existir (o alguno nuevo debería agregarse y no
-#' se hizo), falla nombrando la variable en vez de que `reportar_composicion()`
-#' la salte en silencio.
+#' Si algún nombre de `VARS_SEC` deja de existir en los datos, falla nombrando la
+#' variable. Sin esta comprobación, las funciones que recorren esa lista se
+#' saltan la columna faltante sin avisar, y una tabla aparece incompleta sin que
+#' nada indique por qué.
 #'
 #' @param datos Datos finales (`datos_finales`).
 #' @param vars_sec `cfg$VARS_SEC`.
@@ -111,17 +118,21 @@ validar_vars_sec <- function(datos, vars_sec) {
 
 #' Especificación de los ítems fuente de cada índice
 #'
-#' Reemplaza `rec_vars` de `2_recode.R:42-78`. Va dentro de `cfg$INDICES`:
-#' cambiarlo invalida todo lo que se construye a partir de él (D1 y D4 viven
-#' acá).
+#' Qué columnas originales componen cada batería. Va dentro de `cfg$INDICES` y
+#' es el insumo de la construcción de índices, de la categorización por conteo y
+#' del diccionario de variables.
 #'
-#' **D1 aplicada** (PLAN.md): `comgen_medidas_na` y `comgen_vecinos_medidas_na`
-#' salen de `source.cols`. Antes, marcar "ninguna medida" contaba como un
-#' ítem "éxito" más en `create_var_pct()` (`success.cats = 1`), así que
-#' "ninguna" nunca daba 0% — daba `1/10` o `1/9`. Sacada esa columna, alguien
-#' que solo marcó "ninguna" tiene 0 ítems en 1 de los que quedan en
-#' `source.cols`, así que el 0% sale del cálculo mismo, sin `case_when`
-#' adicional.
+#' @details
+#' **Las columnas `_na` de `comgen` quedan fuera a propósito.** Registran
+#' "ninguna medida de seguridad", que es una respuesta y no una medida más. Si
+#' se incluyen en la batería, quien responde "ninguna" obtiene un ítem en 1 y
+#' nunca llega a 0% de adopción. Dejándolas fuera, esa persona tiene todos los
+#' ítems en 0 y el cero sale del cálculo mismo, sin ningún caso especial.
+#'
+#' **Qué situaciones entran en el índice de espacio público también es una
+#' decisión.** La batería de lugares tiene más ítems de los que el índice usa:
+#' quedan fuera los referidos al propio barrio, que es una dimensión aparte, y
+#' los espacios de uso propio o de acceso restringido.
 #'
 #' @return Una lista nombrada, un elemento por índice. `perper_delito` es una
 #'   lista anidada, documentación de las seis ramas de su `case_when` (ver
@@ -169,8 +180,7 @@ spec_indices <- function() {
 
 #' Especificación de etiquetas de los índices recodificados
 #'
-#' Reemplaza `processing/helpers/labels.R`. Va dentro de `cfg$ETIQUETAS`,
-#' aplicado al final de la recodificación (`2_recode.R:238-256`).
+#' Va dentro de `cfg$ETIQUETAS`, y se aplica al final de la recodificación.
 #'
 #' @return Una lista con `variables` (vector nombrado etiqueta = variable) y
 #'   `valores` (lista nombrada variable = vector nombrado etiqueta = código).
@@ -262,9 +272,8 @@ spec_etiquetas_indices <- function() {
 
 #' Especificación de etiquetas de las variables secundarias
 #'
-#' Reemplaza los vectores embebidos en `4_add_vars.R:129-203`. Target
-#' `cfg$ETIQUETAS_SEC`, aplicado al final de `construir_vars_info()`
-#' + `recodificar_sociodemograficas()`.
+#' Va dentro de `cfg$ETIQUETAS_SEC`, y se aplica una vez construidas las
+#' variables secundarias.
 #'
 #' @return Igual estructura que [spec_etiquetas_indices()].
 spec_etiquetas_secundarias <- function() {
@@ -348,14 +357,10 @@ spec_etiquetas_secundarias <- function() {
 
 #' Patrones de separación de etiqueta por dimensión
 #'
-#' Va dentro de `cfg$PATRONES`. PLAN.md F5.2, Q3: reemplaza `esperado("patrones")`
-#' de `validate.R` del repo viejo (708 líneas, no se porta — es maquinaria de
-#' gold que corresponde a F5.1, no a esto). Se extrae solo el valor que
-#' `descriptivos_iniciales.R` necesita para `tab_frq1(pattern_verbose=,
-#' extraer_verbose=)`: qué patrón separa la pregunta de la categoría en la
-#' etiqueta de cada dimensión.
-#'
-#' Valores para 2025 tomados del repo viejo, no inferidos (PLAN.md F5.2).
+#' Va dentro de `cfg$PATRONES`. Las etiquetas de la ENUSC traen la pregunta y la
+#' alternativa en un solo texto ("¿qué tan seguro se siente...? Caminando solo
+#' por su barrio"), y cada dimensión las separa con un patrón distinto. Esto
+#' declara cuál usar en cada caso.
 #'
 #' @return Una lista nombrada por dimensión (`emper`, `perper`, `pergen`,
 #'   `comper`, `comgen`), cada una con `sep` (para `pattern_verbose`) o
@@ -387,7 +392,7 @@ spec_patrones <- function() {
 #' @section Los tres roles:
 #' - `ns` y `nr` **se leen**: estampan los códigos 88 y 99 sobre la variable
 #'   categorizada, después de categorizar.
-#' - `na` **no se lee, y esa es la decisión (D1)**. Quien marca "ninguna medida"
+#' - `na` **no se lee, y esa es la decisión**. Quien marca "ninguna medida"
 #'   tiene todas las columnas de medidas en 0, así que el conteo le da 0 por
 #'   aritmética, sin necesidad de mirar esta columna. Incluirla en la batería
 #'   era el error original: contaba como una medida más y "ninguna" nunca daba
