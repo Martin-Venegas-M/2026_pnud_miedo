@@ -16,10 +16,10 @@
 construir_diseno_muestral <- function(datos, ids, strata, weights) {
     faltantes <- setdiff(c(ids, strata, weights), names(datos))
     if (length(faltantes) > 0) {
-        stop(
-            "construir_diseno_muestral(): columnas de diseño muestral no encontradas en datos_finales: ",
-            paste(faltantes, collapse = ", ")
-        )
+        rlang::abort(c(
+            "No se encontraron las columnas del diseño muestral.",
+            x = paste("Faltan:", paste(faltantes, collapse = ", "))
+        ))
     }
 
     datos |>
@@ -74,12 +74,16 @@ construir_mapeo_nombres <- function(datos_muestra, datos_seleccionados) {
 
     nuestro <- names(datos_seleccionados)
 
-    stopifnot(
-        "construir_mapeo_nombres() desincronizado de seleccionar_variables(): distinto número de columnas" = length(
-            originales
-        ) ==
-            length(nuestro)
-    )
+    if (length(originales) != length(nuestro)) {
+        rlang::abort(c(
+            "El mapeo de nombres quedó desincronizado de la selección.",
+            x = paste0(
+                "Originales: ", length(originales),
+                "; renombradas: ", length(nuestro), "."
+            ),
+            i = "Si seleccionar_variables() cambió, hay que replicar el cambio acá."
+        ))
+    }
 
     tibble::tibble(original = originales, nuestro = nuestro)
 }
@@ -331,14 +335,12 @@ escribir_tabla_descriptiva <- function(
     #* format_tab_excel() dibuja un borde separador por cada grupo de var_col.
     #* No todas las tablas se agrupan por "variable": la de ajuste global se
     #* agrupa por dimensión. Falla temprano y con nombre en vez de dejar el
-    #* stopifnot() de format_tab_excel() sin contexto.
+    #* error de format_tab_excel() sin contexto.
     if (!var_col %in% names(tabla)) {
-        stop(
-            "escribir_tabla_descriptiva(): la columna de agrupación '",
-            var_col,
-            "' no existe en la tabla. Columnas: ",
-            paste(names(tabla), collapse = ", ")
-        )
+        rlang::abort(c(
+            paste0("La columna de agrupación '", var_col, "' no existe en la tabla."),
+            x = paste("Columnas disponibles:", paste(names(tabla), collapse = ", "))
+        ))
     }
 
     dir.create(dirname(ruta_base), recursive = TRUE, showWarnings = FALSE)
@@ -615,11 +617,9 @@ tabla_lift_ponderado <- function(cruces_ancho, marginales) {
             as.integer(stringr::str_remove(grupo, "^C")) <= solucion
         )
 
-    stopifnot(
-        "tabla_lift_ponderado(): quedaron pct_grupo en NA tras el filtro por solución" = !anyNA(
-            largo$pct_grupo
-        )
-    )
+    if (anyNA(largo$pct_grupo)) {
+        rlang::abort("Quedaron porcentajes en NA tras filtrar por solución.")
+    }
 
     res <- largo |>
         dplyr::inner_join(marginales, by = c("variable", "categoria")) |>
@@ -628,12 +628,13 @@ tabla_lift_ponderado <- function(cruces_ancho, marginales) {
 
     #* Si las etiquetas de los dos caminos dejan de calzar, esto tiene que
     #* fallar acá y no aparecer como una matriz con huecos más adelante.
-    stopifnot(
-        "tabla_lift_ponderado(): el join perdió filas; las etiquetas de categoría no calzan entre cruces_ancho_todas y marginales_modelo" = nrow(
-            res
-        ) ==
-            nrow(largo)
-    )
+    if (nrow(res) != nrow(largo)) {
+        rlang::abort(c(
+            "El join perdió filas: las etiquetas de categoría no calzan.",
+            x = paste0("Entraron ", nrow(largo), " filas y salieron ", nrow(res), "."),
+            i = "Las claves son texto de etiqueta armado por dos caminos distintos."
+        ))
+    }
 
     res
 }
@@ -679,11 +680,12 @@ bloques_soluciones <- function(datos, n_clases) {
         all(colSums(tb > 0) == 1)
     })
 
-    stopifnot(
-        "bloques_soluciones(): las soluciones no están anidadas, la lectura por bloques de la página no aplica" = all(
-            anidadas
-        )
-    )
+    if (!all(anidadas)) {
+        rlang::abort(c(
+            "Las soluciones de cluster no están anidadas.",
+            i = "La lectura por bloques de la página deja de aplicar."
+        ))
+    }
 
     d |>
         dplyr::count(dplyr::across(dplyr::all_of(vars)), name = "casos") |>

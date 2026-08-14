@@ -33,7 +33,7 @@
 #' @return `datos` con los códigos especiales reimputados en las `_cat`.
 rescatar_no_respuesta <- function(datos, spec, cortes) {
     indices <- names(cortes)[
-        vapply(cortes, \(s) s$metodo != "conteo", logical(1))
+        purrr::map_lgl(cortes, \(s) s$metodo != "conteo")
     ]
 
     purrr::reduce(

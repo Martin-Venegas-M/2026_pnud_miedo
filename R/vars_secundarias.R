@@ -37,9 +37,14 @@
 construir_indices_secundarios <- function(datos, min_validos = 0.5) {
     prorratear <- function(datos, prefijo, nombre) {
         items <- grep(paste0("^", prefijo), names(datos), value = TRUE)
-        stopifnot("No hay ítems para el índice" = length(items) > 0)
+        if (length(items) == 0) {
+            rlang::abort(paste0("No hay ítems con el prefijo '", prefijo, "'."))
+        }
 
-        M <- vapply(datos[items], haven::zap_labels, numeric(nrow(datos)))
+        M <- datos[items] |>
+            purrr::map(\(x) as.numeric(haven::zap_labels(x))) |>
+            as.data.frame() |>
+            as.matrix()
         M[M %in% c(88, 96, 99)] <- NA_real_
 
         n_validos <- rowSums(!is.na(M))
@@ -200,7 +205,10 @@ medir_no_respuesta_indices <- function(datos) {
 
     purrr::map(especificacion, function(e) {
         items <- grep(paste0("^", e$prefijo), names(datos), value = TRUE)
-        M <- vapply(datos[items], haven::zap_labels, numeric(nrow(datos)))
+        M <- datos[items] |>
+            purrr::map(\(x) as.numeric(haven::zap_labels(x))) |>
+            as.data.frame() |>
+            as.matrix()
         no_respuesta <- matrix(M %in% c(88, 99), nrow = nrow(M))
         n_nr <- rowSums(no_respuesta)
         valores <- datos[[e$indice]]

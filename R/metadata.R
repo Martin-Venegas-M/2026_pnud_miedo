@@ -85,12 +85,11 @@ construir_metadata <- function(
     sec <- secundarias
     origen_sec <- purrr::imap(sec, function(prefijo, creada) {
         cols <- grep(paste0("^", prefijo), names(datos_sel), value = TRUE)
-        stopifnot(
-            "cfg$SECUNDARIAS nombra un origen que no existe en los datos" = length(
-                cols
-            ) >
-                0
-        )
+        if (length(cols) == 0) {
+            rlang::abort(paste0(
+                "cfg$SECUNDARIAS nombra un origen que no existe: '", prefijo, "'."
+            ))
+        }
         tibble::tibble(variable = cols, alimenta = creada)
     }) |>
         purrr::list_rbind() |>
@@ -125,11 +124,7 @@ construir_metadata <- function(
         purrr::list_rbind()
 
     ninguna_comgen <- tibble::tibble(
-        variable = vapply(
-            codigos,
-            \(m) unname(m[["na"]]),
-            character(1)
-        ),
+        variable = purrr::map_chr(codigos, \(m) unname(m[["na"]])),
         alimenta = paste(
             "Excluida de la batería a propósito: quien la marca tiene",
             "todas las medidas en 0, así que el conteo le da 0 sin leer esta",
@@ -166,12 +161,11 @@ construir_metadata <- function(
         familia = "Original",
         variable = cols_orig,
         original = unname(original_de[cols_orig]),
-        etiqueta = vapply(
+        etiqueta = purrr::map_chr(
             datos_sel[cols_orig],
-            \(c) attr(c, "label") %||% "",
-            character(1)
+            \(c) attr(c, "label") %||% ""
         ),
-        categorias = vapply(datos_sel[cols_orig], categorias_de, character(1))
+        categorias = purrr::map_chr(datos_sel[cols_orig], categorias_de)
     ) |>
         dplyr::left_join(uso_original, by = "variable") |>
         dplyr::mutate(
@@ -190,26 +184,21 @@ construir_metadata <- function(
         names(datos_fin)
     )
 
-    stopifnot(
-        "construir_metadata(): no quedó ningún índice continuo" = length(
-            indices
-        ) >
-            0
-    )
+    if (length(indices) == 0) {
+        rlang::abort("No quedó ningún índice continuo en los datos.")
+    }
     fuente_pct <- tibble::tibble(
         familia = "Fuente: índice",
         variable = indices,
         original = NA_character_,
-        etiqueta = vapply(
+        etiqueta = purrr::map_chr(
             datos_fin[indices],
-            \(c) attr(c, "label") %||% "",
-            character(1)
+            \(c) attr(c, "label") %||% ""
         ),
         categorias = "Continua, 0 a 100",
-        construida_desde = vapply(
+        construida_desde = purrr::map_chr(
             indices,
-            \(i) paste(unlist(spec[[i]]), collapse = ", "),
-            character(1)
+            \(i) paste(unlist(spec[[i]]), collapse = ", ")
         ),
         uso = "Insumo de su versión categorizada"
     )
@@ -219,17 +208,16 @@ construir_metadata <- function(
         familia = "Fuente: categorizada",
         variable = vars_modelo,
         original = NA_character_,
-        etiqueta = vapply(
+        etiqueta = purrr::map_chr(
             datos_fin[vars_modelo],
-            \(c) attr(c, "label") %||% "",
-            character(1)
+            \(c) attr(c, "label") %||% ""
         ),
-        categorias = vapply(datos_fin[vars_modelo], categorias_de, character(1)),
+        categorias = purrr::map_chr(datos_fin[vars_modelo], categorias_de),
         #* Una `_cat` se construye desde su índice `_pct` solo si ese índice
         #* existe. Los dos de comgen se cuentan directo sobre la batería, así
         #* que apuntan a los ítems: decir `comgen_per` mandaría a buscar una
         #* columna que el pipeline ya no produce.
-        construida_desde = vapply(
+        construida_desde = purrr::map_chr(
             vars_modelo,
             function(v) {
                 pct <- sub("_cat$", "", v)
@@ -238,8 +226,7 @@ construir_metadata <- function(
                 } else {
                     paste(unlist(spec[[pct]]), collapse = ", ")
                 }
-            },
-            character(1)
+            }
         ),
         uso = "Entra al modelo (MCA)"
     )
@@ -251,7 +238,7 @@ construir_metadata <- function(
         variable = vars_clust,
         original = NA_character_,
         etiqueta = paste0("Solución de ", sort(n_clases), " grupos"),
-        categorias = vapply(datos_fin[vars_clust], categorias_de, character(1)),
+        categorias = purrr::map_chr(datos_fin[vars_clust], categorias_de),
         construida_desde = paste(vars_modelo, collapse = ", "),
         uso = "Resultado del modelo"
     )
@@ -261,13 +248,12 @@ construir_metadata <- function(
         familia = "Secundaria",
         variable = vars_sec,
         original = unname(original_de[vars_sec]),
-        etiqueta = vapply(
+        etiqueta = purrr::map_chr(
             datos_fin[vars_sec],
-            \(c) attr(c, "label") %||% "",
-            character(1)
+            \(c) attr(c, "label") %||% ""
         ),
-        categorias = vapply(datos_fin[vars_sec], categorias_de, character(1)),
-        construida_desde = vapply(
+        categorias = purrr::map_chr(datos_fin[vars_sec], categorias_de),
+        construida_desde = purrr::map_chr(
             vars_sec,
             \(v) {
                 if (v %in% names(sec)) {
@@ -282,8 +268,7 @@ construir_metadata <- function(
                 } else {
                     "Directa de la ENUSC, sin transformar"
                 }
-            },
-            character(1)
+            }
         ),
         uso = "Describe los grupos, no entra al modelo"
     )

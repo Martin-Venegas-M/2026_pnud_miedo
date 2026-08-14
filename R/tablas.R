@@ -222,7 +222,9 @@ format_tab_excel <- function(
     save = FALSE,
     path
 ) {
-    stopifnot(var_col %in% names(df))
+    if (!var_col %in% names(df)) {
+        rlang::abort(paste0("La columna de agrupación '", var_col, "' no existe."))
+    }
 
     # Añadir pestaña y escribr datos
     openxlsx::addWorksheet(wb, sheet)

@@ -190,9 +190,10 @@ reportar_perdida <- function(antes, despues, vars, etiqueta, max_perdida = NULL)
     )
 
     if (!is.null(max_perdida) && pct_eliminados > max_perdida) {
-        stop(glue::glue(
-            "reportar_perdida('{etiqueta}'): pérdida de {round(pct_eliminados * 100, 2)}% ",
-            "supera el máximo aceptado ({round(max_perdida * 100, 2)}%)"
+        rlang::abort(c(
+            paste0("La pérdida de casos supera el máximo aceptado en '", etiqueta, "'."),
+            x = glue::glue("Se pierde {round(pct_eliminados * 100, 2)}%."),
+            i = glue::glue("El máximo declarado es {round(max_perdida * 100, 2)}%.")
         ))
     }
 

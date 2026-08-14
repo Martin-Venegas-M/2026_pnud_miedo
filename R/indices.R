@@ -242,26 +242,18 @@ construir_comper_gasto <- function(datos) {
 #' @param cortes `cfg$CORTES`, para quedarse con los de método `"valor"`.
 #' @return Un tibble `indice | n_aplica | categoria | n`.
 medir_aplicabilidad <- function(datos_sel, datos_cat, spec, cortes) {
-    vars <- names(cortes)[
-        vapply(cortes, \(s) s$metodo == "valor", logical(1))
-    ]
+    vars <- names(cortes)[purrr::map_lgl(cortes, \(s) s$metodo == "valor")]
 
-    stopifnot(
-        "medir_aplicabilidad(): ningún índice usa el método 'valor'" = length(
-            vars
-        ) >
-            0
-    )
+    if (length(vars) == 0) {
+        rlang::abort("Ningún índice usa el método 'valor'; no hay nada que medir.")
+    }
 
     purrr::map(vars, function(v) {
-        m <- vapply(
-            datos_sel[spec[[v]]],
-            \(x) as.numeric(haven::zap_labels(x)),
-            numeric(nrow(datos_sel))
-        )
         #* `n_valid` en create_var_pct() descuenta solo el 85: los otros códigos
         #* especiales cuentan en el denominador como no adhesión.
-        n_aplica <- rowSums(m != 85)
+        n_aplica <- datos_sel[spec[[v]]] |>
+            purrr::map(\(x) as.numeric(haven::zap_labels(x)) != 85) |>
+            purrr::reduce(`+`)
         categoria <- as.numeric(haven::zap_labels(
             datos_cat[[paste0(v, "_cat")]]
         ))
@@ -311,49 +303,57 @@ medir_aplicabilidad <- function(datos_sel, datos_cat, spec, cortes) {
 categorizar_comgen <- function(datos, cortes, items, codigos) {
     faltan <- setdiff(unlist(items[names(cortes)]), names(datos))
     if (length(faltan) > 0) {
-        stop(
-            "categorizar_comgen(): faltan columnas de la batería: ",
-            paste(faltan, collapse = ", ")
-        )
+        rlang::abort(c(
+            "Faltan columnas de la batería de comgen.",
+            x = paste("No están en los datos:", paste(faltan, collapse = ", "))
+        ))
     }
 
-    for (v in names(cortes)) {
-        m <- as.matrix(as.data.frame(lapply(
-            datos[items[[v]]],
-            \(col) as.numeric(haven::zap_labels(col))
-        )))
-        conteo <- rowSums(m == 1)
-        cats <- cut(
-            conteo,
-            breaks = c(-1, cortes[[v]]$cortes, Inf),
-            labels = FALSE
-        )
+    datos <- purrr::reduce(
+        names(cortes),
+        function(data, v) {
+            conteo <- data[items[[v]]] |>
+                purrr::map(\(col) as.numeric(haven::zap_labels(col)) == 1) |>
+                purrr::reduce(`+`)
 
-        reparto <- tapply(cats, conteo, \(g) length(unique(g[!is.na(g)])))
-        if (any(reparto > 1, na.rm = TRUE)) {
-            stop(
-                "categorizar_comgen(): en '",
-                v,
-                "' el corte parte conteos idénticos entre categorías"
+            cats <- cut(
+                conteo,
+                breaks = c(-1, cortes[[v]]$cortes, Inf),
+                labels = FALSE
             )
-        }
 
-        datos[[paste0(v, "_cat")]] <- cats
-    }
+            reparto <- purrr::map_int(
+                split(cats, conteo),
+                \(g) length(unique(g[!is.na(g)]))
+            )
+            if (any(reparto > 1)) {
+                rlang::abort(paste0(
+                    "En '", v, "' el corte parte conteos idénticos entre categorías."
+                ))
+            }
+
+            data[[paste0(v, "_cat")]] <- cats
+            data
+        },
+        .init = datos
+    )
 
     #* El 88/99 se estampa después de cortar y pisa lo que haya: quien marcó
     #* "no sabe" para toda la batería tiene conteo 0 y habría quedado en la
     #* categoría de "sin medidas".
-    for (destino in names(codigos)) {
-        marcas <- codigos[[destino]]
-        datos[[destino]] <- dplyr::case_when(
-            datos[[marcas[["ns"]]]] == 1 ~ 88,
-            datos[[marcas[["nr"]]]] == 1 ~ 99,
-            TRUE ~ datos[[destino]]
-        )
-    }
-
-    datos
+    purrr::reduce(
+        names(codigos),
+        function(data, destino) {
+            marcas <- codigos[[destino]]
+            data[[destino]] <- dplyr::case_when(
+                data[[marcas[["ns"]]]] == 1 ~ 88,
+                data[[marcas[["nr"]]]] == 1 ~ 99,
+                TRUE ~ data[[destino]]
+            )
+            data
+        },
+        .init = datos
+    )
 }
 
 #' Las cuatro variables del modelo que no pasan por un índice
@@ -377,14 +377,11 @@ categorizar_comgen <- function(datos, cortes, items, codigos) {
 #' @param codigos `cfg$CODIGOS_COMGEN`.
 #' @return `datos` con las cuatro variables agregadas.
 construir_vars_sin_indice <- function(datos, cortes, items, codigos) {
-    conteo <- cortes[vapply(cortes, \(s) s$metodo == "conteo", logical(1))]
+    conteo <- cortes[purrr::map_lgl(cortes, \(s) s$metodo == "conteo")]
 
-    stopifnot(
-        "construir_vars_sin_indice(): ninguna variable usa el método 'conteo'" = length(
-            conteo
-        ) >
-            0
-    )
+    if (length(conteo) == 0) {
+        rlang::abort("Ninguna variable usa el método 'conteo'.")
+    }
 
     datos |>
         construir_perper_delito() |>

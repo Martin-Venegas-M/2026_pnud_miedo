@@ -216,11 +216,12 @@ datos_matriz_perfil <- function(v_test, lift_pond, biplot) {
         dplyr::count(base, solucion, name = "n_celdas") |>
         tidyr::pivot_wider(names_from = base, values_from = n_celdas)
 
-    stopifnot(
-        "datos_matriz_perfil(): las dos bases no cubren las mismas celdas" = isTRUE(
-            all.equal(celdas$muestral, celdas$ponderada)
-        )
-    )
+    if (!isTRUE(all.equal(celdas$muestral, celdas$ponderada))) {
+        rlang::abort(c(
+            "Las dos bases no cubren las mismas celdas.",
+            i = "El tabset compararía dos matrices de distinto alto."
+        ))
+    }
 
     res
 }

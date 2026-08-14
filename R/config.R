@@ -78,7 +78,7 @@ construir_config <- function() {
         #* Los índices que dejan una columna `_pct`: todos menos los de método
         #* "conteo", que se categorizan contando la batería.
         VARS_PCT = names(cortes)[
-            vapply(cortes, \(s) s$metodo != "conteo", logical(1))
+            purrr::map_lgl(cortes, \(s) s$metodo != "conteo")
         ],
 
         #* Diccionarios. Las funciones viven junto a sus consumidores; acá se
@@ -108,10 +108,10 @@ construir_config <- function() {
 validar_vars_sec <- function(datos, vars_sec) {
     faltantes <- setdiff(vars_sec, names(datos))
     if (length(faltantes) > 0) {
-        stop(
-            "validar_vars_sec(): cfg$VARS_SEC declara columnas que no existen en datos_finales: ",
-            paste(faltantes, collapse = ", ")
-        )
+        rlang::abort(c(
+            "cfg$VARS_SEC declara columnas que no existen en los datos.",
+            x = paste("Faltan:", paste(faltantes, collapse = ", "))
+        ))
     }
     invisible(TRUE)
 }

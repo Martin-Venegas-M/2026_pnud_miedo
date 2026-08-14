@@ -86,11 +86,15 @@ seleccionar_variables <- function(datos, cfg) {
     # solapamiento entre regex de dimensión es conocido y se corrige arriba;
     # esta aserción falla si aparece uno nuevo en vez de dejar pasar un
     # nombre raro en silencio.
-    stopifnot(
-        "comper_costos_medidas" %in% names(datos),
-        !any(grepl("^comgen_comper_", names(datos))),
-        !any(grepl("^comper_comgen_", names(datos)))
-    )
+    if (!"comper_costos_medidas" %in% names(datos)) {
+        rlang::abort("Falta `comper_costos_medidas` tras el renombrado.")
+    }
+    if (any(grepl("^comgen_comper_|^comper_comgen_", names(datos)))) {
+        rlang::abort(c(
+            "Quedó un prefijo de dimensión duplicado tras el renombrado.",
+            i = "Apareció un solapamiento nuevo entre los regex de dimensión."
+        ))
+    }
 
     datos
 }

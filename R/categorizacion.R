@@ -33,46 +33,53 @@
 #'   `cfg$CORTES`.
 #' @return `datos` con una columna `{col}_cat` por cada índice.
 categorizar_indices <- function(datos, spec) {
-    spec <- spec[vapply(spec, \(s) s$metodo != "conteo", logical(1))]
+    spec <- spec[purrr::map_lgl(spec, \(s) s$metodo != "conteo")]
 
     faltan <- setdiff(names(spec), names(datos))
     if (length(faltan) > 0) {
-        stop(
-            "categorizar_indices(): el spec nombra índices que no existen: ",
-            paste(faltan, collapse = ", ")
-        )
+        rlang::abort(c(
+            "El spec nombra índices que no existen en los datos.",
+            x = paste("Faltan:", paste(faltan, collapse = ", "))
+        ))
     }
 
-    for (v in names(spec)) {
-        s <- spec[[v]]
-        x <- as.numeric(haven::zap_labels(datos[[v]]))
+    purrr::reduce(
+        names(spec),
+        function(data, v) {
+            s <- spec[[v]]
+            x <- as.numeric(haven::zap_labels(data[[v]]))
 
-        cats <- switch(
-            s$metodo,
-            valor = as.integer(factor(x, levels = s$cortes)),
-            porcentaje = cut(
-                x,
-                breaks = c(-1, s$cortes, 100),
-                labels = FALSE
-            ),
-            stop("categorizar_indices(): método desconocido '", s$metodo, "'")
-        )
-
-        #* Un valor del índice no puede quedar repartido entre categorías. Si
-        #* esto falla, el corte volvió a depender de la distribución.
-        reparto <- tapply(cats, x, \(g) length(unique(g[!is.na(g)])))
-        if (any(reparto > 1, na.rm = TRUE)) {
-            malos <- names(reparto)[which(reparto > 1)]
-            stop(
-                "categorizar_indices(): en '",
-                v,
-                "' el corte parte valores idénticos entre categorías: ",
-                paste(malos, collapse = ", ")
+            cats <- switch(
+                s$metodo,
+                valor = as.integer(factor(x, levels = s$cortes)),
+                porcentaje = cut(
+                    x,
+                    breaks = c(-1, s$cortes, 100),
+                    labels = FALSE
+                ),
+                rlang::abort(paste0("Método de corte desconocido: '", s$metodo, "'"))
             )
-        }
 
-        datos[[paste0(v, "_cat")]] <- cats
-    }
+            #* Un valor del índice no puede quedar repartido entre categorías. Si
+            #* esto falla, el corte volvió a depender de la distribución.
+            reparto <- purrr::map_int(
+                split(cats, x),
+                \(g) length(unique(g[!is.na(g)]))
+            )
+            if (any(reparto > 1)) {
+                rlang::abort(c(
+                    paste0("En '", v, "' el corte parte valores idénticos entre categorías."),
+                    x = paste(
+                        "Valores repartidos:",
+                        paste(names(reparto)[reparto > 1], collapse = ", ")
+                    ),
+                    i = "El corte volvió a depender de la distribución y no del significado."
+                ))
+            }
 
-    datos
+            data[[paste0(v, "_cat")]] <- cats
+            data
+        },
+        .init = datos
+    )
 }
