@@ -82,7 +82,18 @@ construir_metadata <- function(
     #* De qué índice es insumo cada variable original. Se invierte spec_indices
     #* en vez de escribirlo a mano: si el spec cambia, esto cambia con él.
     insumo_de <- purrr::imap(spec, function(cols, indice) {
-        tibble::tibble(variable = unlist(cols), alimenta = indice)
+        #* La clave de `spec` no siempre es una columna: los grupos de ítems que
+        #* no dejan un `_pct` en los datos alimentan directo a su variable
+        #* categorizada. Sin esto, la tabla de originales mandaría a buscar una
+        #* columna que el pipeline ya no produce.
+        destino <- if (indice %in% names(datos_fin)) {
+            indice
+        } else if (paste0(indice, "_cat") %in% names(datos_fin)) {
+            paste0(indice, "_cat")
+        } else {
+            indice
+        }
+        tibble::tibble(variable = unlist(cols), alimenta = destino)
     }) |>
         purrr::list_rbind() |>
         dplyr::summarise(
@@ -153,7 +164,21 @@ construir_metadata <- function(
         )
 
     # --- Índices continuos ---------------------------------------------------
-    indices <- names(spec)[grepl("_pct$", names(spec))]
+    #* `spec` nombra grupos de ítems, no necesariamente columnas: los dos de
+    #* comgen se categorizan contando directo sobre la batería y no dejan un
+    #* `_pct` en los datos. Se cruza con las columnas que existen para que la
+    #* lista se corrija sola si otro índice sigue el mismo camino.
+    indices <- intersect(
+        names(spec)[grepl("_pct$", names(spec))],
+        names(datos_fin)
+    )
+
+    stopifnot(
+        "construir_metadata(): no quedó ningún índice continuo" = length(
+            indices
+        ) >
+            0
+    )
     fuente_pct <- tibble::tibble(
         familia = "Fuente: índice",
         variable = indices,
@@ -183,13 +208,21 @@ construir_metadata <- function(
             character(1)
         ),
         categorias = vapply(datos_fin[vars_modelo], categorias_de, character(1)),
-        construida_desde = dplyr::case_when(
-            grepl("_cat$", vars_modelo) ~ sub("_cat$", "", vars_modelo),
-            TRUE ~ vapply(
-                vars_modelo,
-                \(v) paste(unlist(spec[[v]]), collapse = ", "),
-                character(1)
-            )
+        #* Una `_cat` se construye desde su índice `_pct` solo si ese índice
+        #* existe. Los dos de comgen se cuentan directo sobre la batería, así
+        #* que apuntan a los ítems: decir `comgen_per_pct` mandaría a buscar una
+        #* columna que el pipeline ya no produce.
+        construida_desde = vapply(
+            vars_modelo,
+            function(v) {
+                pct <- sub("_cat$", "", v)
+                if (pct != v && pct %in% names(datos_fin)) {
+                    pct
+                } else {
+                    paste(unlist(spec[[pct]]), collapse = ", ")
+                }
+            },
+            character(1)
         ),
         uso = "Entra al modelo (MCA)"
     )

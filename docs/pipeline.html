@@ -180,6 +180,10 @@ window.Quarto = {
   </ul></li>
   <li><a href="#categorización" id="toc-categorización" class="nav-link" data-scroll-target="#categorización">4. Categorización</a>
   <ul class="collapse">
+  <li><a href="#el-camino-de-cada-variable-del-modelo" id="toc-el-camino-de-cada-variable-del-modelo" class="nav-link" data-scroll-target="#el-camino-de-cada-variable-del-modelo">El camino de cada variable del modelo</a>
+  <ul class="collapse">
+  <li><a href="#dónde-queda-cada-corte" id="toc-dónde-queda-cada-corte" class="nav-link" data-scroll-target="#dónde-queda-cada-corte">Dónde queda cada corte</a></li>
+  </ul></li>
   <li><a href="#cómo-queda-cada-índice" id="toc-cómo-queda-cada-índice" class="nav-link" data-scroll-target="#cómo-queda-cada-índice">Cómo queda cada índice</a></li>
   </ul></li>
   <li><a href="#preparación-del-modelo" id="toc-preparación-del-modelo" class="nav-link" data-scroll-target="#preparación-del-modelo">5. Preparación del modelo</a>
@@ -488,7 +492,7 @@ window.Quarto = {
 </div>
 <div class="callout-body-container callout-body">
 <p>Quien marca “no tengo ninguna medida de seguridad” <strong>entra al análisis con 0% de adopción</strong>, que es lo que efectivamente respondió.</p>
-<p>En la dimensión de medidas de la vivienda quedan <strong>6.007 personas con 0% de adopción</strong>: casi todas personas del conjunto con “ninguna medida”. Ahora entran al modelo.</p>
+<p>En la dimensión de medidas de la vivienda quedan <strong>6.007 personas sin ninguna medida</strong>: casi todas del conjunto que respondió “ninguna medida”. Ahora entran al modelo.</p>
 </div>
 </div>
 </section>
@@ -593,7 +597,8 @@ window.Quarto = {
 <p>La convención es <strong>conservadora</strong>: ante la duda, no atribuye miedo. Y mantiene el índice dentro de su rango: un porcentaje sigue estando entre 0 y 100 pase lo que pase con la no respuesta.</p>
 </div>
 </div>
-<p>Con el mismo procedimiento se construyen los seis índices del análisis: tres de sensación de inseguridad (espacio público, barrio, casa), uno de modificación de prácticas, y dos de medidas de seguridad (de la vivienda y del barrio).</p>
+<p>Con el mismo procedimiento se construyen <strong>cuatro</strong> de los índices del análisis: tres de sensación de inseguridad (espacio público, barrio, casa) y uno de modificación de prácticas.</p>
+<p>Las dos dimensiones de medidas de seguridad, la de la vivienda y la del barrio, <strong>no llevan índice</strong>. Sus baterías no admiten “no aplica”, así que el denominador es siempre el mismo y el porcentaje no diría nada que el número de medidas no diga ya. Se categorizan contando directo sobre los ítems, y el detalle está en el paso siguiente.</p>
 </section>
 <section id="qué-situaciones-entran-en-cada-índice" class="level2">
 <h2 class="anchored" data-anchor-id="qué-situaciones-entran-en-cada-índice">Qué situaciones entran en cada índice</h2>
@@ -708,7 +713,7 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>El criterio es <strong>cortar por lo que la variable significa, no por la forma de su distribución</strong>, con una regla que atraviesa las seis: <strong>el cero es una categoría propia</strong>.</p>
 <p>Eso último continúa la primera decisión de esta página. Si quien respondió “ninguna medida” se mezclara en una categoría “baja” junto a quien tiene una o dos, el rescate quedaría a medias: los recuperaríamos para el modelo pero perderíamos su distinción dentro de él. Y del lado del miedo vale igual: quien no se siente inseguro en <strong>ningún</strong> lugar es cualitativamente distinto de quien se siente inseguro en pocos.</p>
-<p>Como los seis índices no están construidos igual, hay tres formas de cortar:</p>
+<p>Las seis variables que se cortan no están construidas igual, así que hay tres formas de hacerlo. Dos de ellas operan sobre el índice de porcentaje; la tercera cuenta ítems, y es la que usan las dos de comgen, que no tienen índice:</p>
 <div class="cell">
 <div class="cell-output-display">
 <table class="table table-striped table-hover table-condensed caption-top table-sm small">
@@ -755,10 +760,219 @@ window.Quarto = {
 </div>
 </div>
 <p><strong>Por el valor</strong>, cuando el índice se construye con dos ítems y solo puede valer 0, 50 o 100. Ya viene con tres categorías, exactamente las que el modelo necesita, así que no hay nada que cortar.</p>
-<p><strong>Por número de situaciones</strong>, cuando ningún ítem de la batería admite el código “no aplica”. El denominador es constante, así que el porcentaje equivale a un conteo de medidas, que es bastante más interpretable. Vivienda y barrio llevan umbrales distintos a propósito: entre quienes tienen una sola medida comunitaria, el 66% es un grupo de WhatsApp, mientras que en la vivienda la medida única más común son rejas. El umbral que separa “nada” de “algo organizado” no está en el mismo lugar.</p>
+<p><strong>Por número de situaciones</strong>, cuando ningún ítem de la batería admite el código “no aplica”. El denominador es constante, así que lo interpretable es cuántas medidas tiene la persona, y se cuenta directo sobre la batería sin pasar por un índice. Vivienda y barrio llevan umbrales distintos a propósito: entre quienes tienen una sola medida comunitaria, el 66% es un grupo de WhatsApp, mientras que en la vivienda la medida única más común son rejas. El umbral que separa “nada” de “algo organizado” no está en el mismo lugar.</p>
 <p><strong>Por porcentaje</strong>, cuando todos los ítems admiten “no aplica”. Ahí el denominador cambia de persona a persona, así que un conteo no sería comparable entre dos personas a las que les aplica distinto número de situaciones.</p>
 </div>
 </div>
+<section id="el-camino-de-cada-variable-del-modelo" class="level2">
+<h2 class="anchored" data-anchor-id="el-camino-de-cada-variable-del-modelo">El camino de cada variable del modelo</h2>
+<p>Las ocho variables que entran al modelo no se construyen todas igual. Dos ya vienen categóricas del cuestionario y no pasan por ningún corte; de las seis restantes, cuatro se cortan sobre un índice de porcentaje y <strong>dos se cuentan directo sobre la batería, sin índice intermedio</strong>.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Variable</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Se construye desde</th>
+<th data-quarto-table-cell-role="th" style="text-align: center; position: sticky; top: 0; background-color: #FFFFFF;">¿Pasa por un índice de %?</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Se corta por</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en espacio público</td>
+<td style="text-align: left;">Batería de 11 ítems</td>
+<td style="text-align: center;">Sí</td>
+<td style="text-align: left;">Porcentaje de situaciones</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: left;">Batería de 2 ítems</td>
+<td style="text-align: center;">Sí</td>
+<td style="text-align: left;">El valor del índice</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: left;">Batería de 2 ítems</td>
+<td style="text-align: center;">Sí</td>
+<td style="text-align: left;">El valor del índice</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Expectativa de ser víctima</td>
+<td style="text-align: left;">Pregunta del cuestionario</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: left;">No se corta: ya viene categórica</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Modificación de prácticas</td>
+<td style="text-align: left;">Batería de 13 ítems</td>
+<td style="text-align: center;">Sí</td>
+<td style="text-align: left;">Porcentaje de situaciones</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Gasto en seguridad</td>
+<td style="text-align: left;">Pregunta del cuestionario</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: left;">No se corta: ya viene categórica</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Medidas de la vivienda</td>
+<td style="text-align: left;">Batería de 9 ítems</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: left;">Número de situaciones</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medidas del barrio</td>
+<td style="text-align: left;">Batería de 8 ítems</td>
+<td style="text-align: center;">No</td>
+<td style="text-align: left;">Número de situaciones</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<section id="dónde-queda-cada-corte" class="level3">
+<h3 class="anchored" data-anchor-id="dónde-queda-cada-corte">Dónde queda cada corte</h3>
+<p>Esta tabla dice, para cada variable cortada, <strong>qué respuesta produce cada categoría</strong>. Es la traducción de <code>cfg$CORTES</code> a las unidades en que se hizo la pregunta.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Variable</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Categoría</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Respuesta que la produce</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: left;">Sin inseguridad en el barrio</td>
+<td style="text-align: left;">0% (0 de 2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Inseguridad en el barrio, de día o de noche</td>
+<td style="text-align: left;">50% (1 de 2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Inseguridad en el barrio, de día y de noche</td>
+<td style="text-align: left;">100% (2 de 2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: left;">Sin inseguridad en la casa</td>
+<td style="text-align: left;">0% (0 de 2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Inseguridad en la casa, de día o de noche</td>
+<td style="text-align: left;">50% (1 de 2)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Inseguridad en la casa, de día y de noche</td>
+<td style="text-align: left;">100% (2 de 2)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Medidas de la vivienda</td>
+<td style="text-align: left;">Sin medidas en la vivienda</td>
+<td style="text-align: left;">0 de 9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Una o dos medidas en la vivienda</td>
+<td style="text-align: left;">1 a 2 de 9</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Tres o más medidas en la vivienda</td>
+<td style="text-align: left;">3 a 9 de 9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Medidas del barrio</td>
+<td style="text-align: left;">Sin medidas en el barrio</td>
+<td style="text-align: left;">0 de 8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Una medida en el barrio</td>
+<td style="text-align: left;">1 de 8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Dos o más medidas en el barrio</td>
+<td style="text-align: left;">2 a 8 de 8</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en espacio público</td>
+<td style="text-align: left;">Sin inseguridad en espacio público</td>
+<td style="text-align: left;">0%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Inseguridad en hasta la mitad de los lugares</td>
+<td style="text-align: left;">más de 0% hasta 50%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Inseguridad en más de la mitad de los lugares</td>
+<td style="text-align: left;">más de 50% hasta 100%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modificación de prácticas</td>
+<td style="text-align: left;">No modificó prácticas</td>
+<td style="text-align: left;">0%</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Modificó hasta la mitad de las prácticas</td>
+<td style="text-align: left;">más de 0% hasta 50%</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"></td>
+<td style="text-align: left;">Modificó más de la mitad de las prácticas</td>
+<td style="text-align: left;">más de 50% hasta 100%</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Tip</span>Las dos de comgen, que son las que más consultas generaron
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Medidas de la vivienda</strong> se corta en 0, 1 a 2, y 3 o más, sobre una batería de 9 medidas. <strong>Medidas del barrio</strong> se corta en 0, 1, y 2 o más, sobre 8.</p>
+<p>Los umbrales son distintos a propósito, y el motivo está en el contenido: entre quienes declaran una sola medida comunitaria, el 66% es un grupo de WhatsApp, mientras que en la vivienda la medida única más común son rejas. El punto que separa “nada” de “algo organizado” no cae en el mismo lugar.</p>
+<p>Ninguna de las dos pasa por un índice de porcentaje. Sus baterías no admiten “no aplica”, así que el denominador es siempre el mismo y el número de medidas es directamente lo que se corta.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-warning callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Advertencia</span>Anotado y sin resolver · La categoría “de día y de noche” incluye gente con un solo momento aplicable
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los dos índices de dos ítems preguntan por el mismo lugar en dos momentos, “de día” y “cuando ya está oscuro”, y cada uno admite “no aplica”. Cuando a una persona le aplica un solo momento, el índice normaliza sobre ese, que es la misma convención que se usa en los otros índices. El efecto es que <strong>quien declara inseguridad en su único momento aplicable llega a 100% igual que quien la declara en los dos</strong>, y cae en la misma categoría.</p>
+<p>En inseguridad en el barrio son <strong>982 personas</strong>, el 8,5% de esa categoría.</p>
+<p>El cálculo es consistente con el criterio del proyecto. Lo que no calza es la etiqueta: “de día y de noche” afirma dos momentos, y para esas personas hay uno solo observado.</p>
+<p>Casi todas son personas a las que no les aplica caminar solas de noche por su barrio. Cruzando con la pregunta de modificación de prácticas, el 45% declara haber dejado de salir de noche por temor, así que en esos casos la no aplicabilidad es consecuencia del miedo. Pero un 40% responde “no aplica” también a esa pregunta, o sea que no sale de noche por razones que la encuesta no captura. <strong>El código mezcla evitación por miedo con no exposición por otros motivos</strong>, y el instrumento no permite separarlas.</p>
+<p>Se deja anotado y sin cambiar. Excluir a estas personas repetiría el error que motivó el rediseño, porque no son un grupo aleatorio: tienen más inseguridad que el promedio en las demás variables. Las salidas posibles son renombrar la categoría para que no afirme los dos momentos, o darle categoría propia al caso de un solo momento aplicable, que cambiaría el número de categorías del modelo.</p>
+</div>
+</div>
+</section>
+</section>
 <section id="cómo-queda-cada-índice" class="level2">
 <h2 class="anchored" data-anchor-id="cómo-queda-cada-índice">Cómo queda cada índice</h2>
 <div class="cell">
@@ -787,15 +1001,15 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Medidas de la vivienda</td>
-<td style="text-align: right;">10,8</td>
-<td style="text-align: right;">53,5</td>
-<td style="text-align: right;">35,7</td>
+<td style="text-align: right;">11,0</td>
+<td style="text-align: right;">53,4</td>
+<td style="text-align: right;">35,6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Medidas del barrio</td>
-<td style="text-align: right;">32,0</td>
-<td style="text-align: right;">29,1</td>
-<td style="text-align: right;">38,9</td>
+<td style="text-align: right;">34,2</td>
+<td style="text-align: right;">28,1</td>
+<td style="text-align: right;">37,7</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Inseguridad en el espacio público</td>

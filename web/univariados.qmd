@@ -88,9 +88,14 @@ for (d in names(nombres_dim)) {
 
 # Variables fuente
 
-Los índices que construimos. De cada uno hay dos versiones: el **porcentaje
+Los índices que construimos. De la mayoría hay dos versiones: el **porcentaje
 continuo**, que es el cálculo directo, y la **versión categorizada**, que es la
 que entra al modelo.
+
+Las dos de `comgen` (medidas de la vivienda y del barrio) tienen solo la versión
+categorizada. Sus baterías no admiten "no aplica", así que el denominador es
+constante y el porcentaje no agregaba nada sobre el número de medidas: se
+categorizan contando directo sobre los ítems.
 
 ::: {.panel-tabset}
 
@@ -103,8 +108,6 @@ etiquetas_fuente <- c(
     emper_barrio_pct = "Inseguridad en el barrio",
     emper_casa_pct = "Inseguridad en la casa",
     comper_pct = "Modificación de prácticas",
-    comgen_per_pct = "Medidas de seguridad de la vivienda",
-    comgen_com_pct = "Medidas de seguridad del barrio",
     emper_ep_pct_cat = "Inseguridad en el espacio público (categorizada)",
     emper_barrio_pct_cat = "Inseguridad en el barrio (categorizada)",
     emper_casa_pct_cat = "Inseguridad en la casa (categorizada)",
@@ -130,9 +133,16 @@ grupos <- list(
     "Otras variables fuente" = c("perper_delito", "comper_gasto")
 )
 
+#* El `next` de más abajo saltaba en silencio cualquier variable ausente de la
+#* tabla, que es como un rename puede vaciar una pestaña sin que nada falle.
+#* Acá se exige que toda variable declarada tenga filas.
+sin_datos <- setdiff(names(etiquetas_fuente), unique(t_fuente$variable))
+
 stopifnot(
     "Ningún índice categorizado: ¿cambió el sufijo de las variables?" =
-        length(grupos[["Índices categorizados"]]) > 0
+        length(grupos[["Índices categorizados"]]) > 0,
+    "Hay variables fuente declaradas que no están en el target" =
+        length(sin_datos) == 0
 )
 
 for (g in names(grupos)) {

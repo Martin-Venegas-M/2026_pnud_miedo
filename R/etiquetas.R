@@ -18,9 +18,9 @@ construir_spec_etiquetas_indices <- function() {
             "Modifica comportamiento" = "comper_pct",
             "Modificación de prácticas (categorizada)" = "comper_pct_cat",
             "Gasta en medidas de seguridad" = "comper_gasto",
-            "Dispone de medidas de seguridad (personales)" = "comgen_per_pct",
+            #* Los dos `comgen_*_pct` salieron del pipeline: se categorizan
+            #* directo desde la batería y no hay índice que etiquetar.
             "Medidas de seguridad de la vivienda (categorizada)" = "comgen_per_pct_cat",
-            "Disponen de medidas de seguridad (comunitarias)" = "comgen_com_pct",
             "Medidas de seguridad del barrio (categorizada)" = "comgen_com_pct_cat"
         ),
         valores = list(

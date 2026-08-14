@@ -11,15 +11,9 @@ construir_config <- function() {
         N_CLASES = 6:4,
 
         SVY_IDS = "conglomerado",
-        # "var_strat", no "varstrat": clean_names() en seleccionar_variables()
-        # convierte "VarStrat" a snake_case. El valor original nunca se había
-        # ejercido porque el objeto de diseño muestral no existía en el DAG
-        # hasta F5.3 (PLAN.md) — se corrige acá, al construirlo.
         SVY_STRATA = "var_strat",
         SVY_WEIGHTS = "fact_pers_reg",
 
-        #* Cómo se corta cada índice (D2, resuelta el 12-ago-2026). Ver el
-        #* razonamiento completo en categorizar_indices().
         CORTES = list(
             # Dos ítems: el índice ya tiene tres valores, se usan como categorías.
             emper_barrio_pct = list(metodo = "valor", cortes = c(0, 50, 100)),
@@ -29,8 +23,11 @@ construir_config <- function() {
             # única del barrio es un grupo de WhatsApp en el 66% de los casos,
             # mientras que en la vivienda son rejas. El umbral que importa no es
             # el mismo.
-            comgen_per_pct = list(metodo = "conteo", cortes = c(0, 2), n_items = 9),
-            comgen_com_pct = list(metodo = "conteo", cortes = c(0, 1), n_items = 8),
+            #* Estos dos se cuentan directo sobre la batería: no hay índice
+            #* `_pct` intermedio. La clave nombra el grupo de ítems en
+            #* `spec_indices`, no una columna de datos.
+            comgen_per_pct = list(metodo = "conteo", cortes = c(0, 2)),
+            comgen_com_pct = list(metodo = "conteo", cortes = c(0, 1)),
             # Todos los ítems admiten 85: el denominador varía por persona y un
             # conteo no sería comparable.
             emper_ep_pct = list(metodo = "porcentaje", cortes = c(0, 50)),
@@ -48,11 +45,6 @@ construir_config <- function() {
             "comgen_com_pct_cat"
         ),
 
-        # PLAN.md F5.2, Q4: pergen_pais/comuna/barrio salieron de acá — la
-        # dimensión "pergen" (ex P_AUMENTO) se descartó a propósito en
-        # 1_select.R y esas tres columnas no existen en ningún punto del
-        # pipeline. Bug heredado del config.R original; no cambiaba ningún
-        # número porque reportar_composicion() ya las saltaba en silencio.
         VARS_SEC = c(
             "rph_sexo",
             "rph_nivel_rec",

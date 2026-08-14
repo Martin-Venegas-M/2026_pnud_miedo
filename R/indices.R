@@ -140,6 +140,11 @@ create_var_pct <- function(
 #' @param spec `spec_indices`: ítems fuente por batería.
 #' @return `datos` con las seis columnas `_pct` agregadas.
 construir_indices_pct <- function(datos, spec) {
+    #* Los dos índices de comgen salieron de acá en agosto de 2026: sus baterías
+    #* no admiten el código 85, así que el denominador es constante y el
+    #* porcentaje no aportaba nada sobre el conteo. Se categorizan directo desde
+    #* los ítems en categorizar_indices(). Los cuatro que quedan sí tienen
+    #* denominador variable y el porcentaje normaliza sobre lo aplicable.
     datos <- create_var_pct(
         datos,
         success.cats = c(1, 2),
@@ -163,18 +168,6 @@ construir_indices_pct <- function(datos, spec) {
         success.cats = 1,
         source.cols = spec[["comper_pct"]],
         name.var.pct = "comper_pct"
-    )
-    datos <- create_var_pct(
-        datos,
-        success.cats = 1,
-        source.cols = spec[["comgen_per_pct"]],
-        name.var.pct = "comgen_per_pct"
-    )
-    datos <- create_var_pct(
-        datos,
-        success.cats = 1,
-        source.cols = spec[["comgen_com_pct"]],
-        name.var.pct = "comgen_com_pct"
     )
     datos
 }
@@ -258,33 +251,63 @@ construir_comper_gasto <- function(datos) {
         )
 }
 
-#' Pasar a `NA` los índices `comgen_*_pct` cuando la persona marcó NS/NR
+
+#' Cuántas situaciones le aplican a cada persona en los índices de dos ítems
 #'
-#' Reemplaza `2_recode.R:154-167`. El original usa `if_else()`; acá se usa
-#' `replace(x, which(cond), NA)` por consistencia con la regla #1 — inocuo
-#' porque `comgen_per_pct`/`comgen_com_pct` ya son numéricas puras en este
-#' punto, sin atributo `labels` que perder.
+#' Diagnóstico de un supuesto que el método `"valor"` deja implícito.
 #'
-#' @param datos Datos con `comgen_per_pct`, `comgen_com_pct` y las columnas
-#'   `_ns`/`_nr` de marca todas.
-#' @return `datos` con esas dos columnas pasadas a `NA` donde corresponde.
-marcar_no_respuesta_comgen <- function(datos) {
-    vec_comgen_per <- c("comgen_medidas_ns", "comgen_medidas_nr")
-    vec_comgen_com <- c("comgen_vecinos_medidas_ns", "comgen_vecinos_medidas_nr")
+#' @section Qué problema mide:
+#' `emper_barrio_pct` y `emper_casa_pct` se construyen con dos ítems, "de día" y
+#' "cuando ya está oscuro", y se categorizan por el valor del índice (0, 50 o
+#' 100). Eso da por sentado que a todo el mundo le aplican los dos momentos,
+#' pero los ítems admiten el código 85 y a mucha gente le aplica uno solo:
+#' `create_var_pct()` normaliza sobre lo aplicable, así que quien declara
+#' inseguridad en su único momento aplicable llega a 100 y cae en la misma
+#' categoría que quien la declara en los dos.
+#'
+#' El cálculo es consistente con la convención del proyecto (normalizar sobre lo
+#' aplicable, igual que en espacio público y en prácticas). Lo que no calza es la
+#' etiqueta de la categoría 3, que afirma "de día y de noche" para gente con un
+#' solo momento observado.
+#'
+#' @section Por qué es un target y no un chunk:
+#' Para que la página pueda citar las cifras sin calcularlas, y para que el
+#' diagnóstico se rehaga solo cuando cambie la versión de la encuesta. La
+#' proporción de casos con un ítem no aplicable puede moverse entre años.
+#'
+#' @param datos_sel `datos_seleccionados`, con los ítems originales.
+#' @param datos_cat Datos con las columnas `_cat` ya construidas.
+#' @param spec `spec_indices`, para saber qué ítems componen cada índice.
+#' @param cortes `cfg$CORTES`, para quedarse con los de método `"valor"`.
+#' @return Un tibble `indice | n_aplica | categoria | n`.
+medir_aplicabilidad <- function(datos_sel, datos_cat, spec, cortes) {
+    vars <- names(cortes)[
+        vapply(cortes, \(s) s$metodo == "valor", logical(1))
+    ]
 
-    marca_per <- Reduce(`|`, lapply(vec_comgen_per, \(v) datos[[v]] == 1))
-    marca_com <- Reduce(`|`, lapply(vec_comgen_com, \(v) datos[[v]] == 1))
-
-    datos$comgen_per_pct <- replace(
-        datos$comgen_per_pct,
-        which(marca_per),
-        NA
+    stopifnot(
+        "medir_aplicabilidad(): ningún índice usa el método 'valor'" = length(
+            vars
+        ) >
+            0
     )
-    datos$comgen_com_pct <- replace(
-        datos$comgen_com_pct,
-        which(marca_com),
-        NA
-    )
 
-    datos
+    purrr::map(vars, function(v) {
+        m <- vapply(
+            datos_sel[spec[[v]]],
+            \(x) as.numeric(haven::zap_labels(x)),
+            numeric(nrow(datos_sel))
+        )
+        #* `n_valid` en create_var_pct() descuenta solo el 85: los otros códigos
+        #* especiales cuentan en el denominador como no adhesión.
+        n_aplica <- rowSums(m != 85)
+        categoria <- as.numeric(haven::zap_labels(
+            datos_cat[[paste0(v, "_cat")]]
+        ))
+
+        tibble::tibble(indice = v, n_aplica = n_aplica, categoria = categoria) |>
+            dplyr::filter(categoria %in% 1:3) |>
+            dplyr::count(indice, n_aplica, categoria)
+    }) |>
+        purrr::list_rbind()
 }

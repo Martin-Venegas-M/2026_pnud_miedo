@@ -107,25 +107,6 @@ comper_pct,90.91,<none>,95380,0.72,0.72,95.6
 comper_pct,91.67,<none>,119820,0.9,0.9,96.5
 comper_pct,92.31,<none>,172469,1.3,1.3,97.8
 comper_pct,100,<none>,292921,2.2,2.2,100
-comgen_per_pct,0,<none>,1088781,8.2,8.2,8.2
-comgen_per_pct,11.11,<none>,3103365,23.38,23.38,31.59
-comgen_per_pct,22.22,<none>,3556934,26.8,26.8,58.38
-comgen_per_pct,33.33,<none>,2631062,19.82,19.82,78.21
-comgen_per_pct,44.44,<none>,1528379,11.52,11.52,89.72
-comgen_per_pct,55.56,<none>,782192,5.89,5.89,95.62
-comgen_per_pct,66.67,<none>,381157,2.87,2.87,98.49
-comgen_per_pct,77.78,<none>,162624,1.23,1.23,99.71
-comgen_per_pct,88.89,<none>,36088,0.27,0.27,99.99
-comgen_per_pct,100,<none>,1931,0.01,0.01,100
-comgen_com_pct,0,<none>,3267358,25.31,25.31,25.31
-comgen_com_pct,12.5,<none>,3603876,27.91,27.91,53.22
-comgen_com_pct,25,<none>,2923576,22.64,22.64,75.86
-comgen_com_pct,37.5,<none>,1706426,13.22,13.22,89.08
-comgen_com_pct,50,<none>,805341,6.24,6.24,95.32
-comgen_com_pct,62.5,<none>,418863,3.24,3.24,98.56
-comgen_com_pct,75,<none>,152816,1.18,1.18,99.74
-comgen_com_pct,87.5,<none>,29418,0.23,0.23,99.97
-comgen_com_pct,100,<none>,3517,0.03,0.03,100
 emper_ep_pct_cat,1,Sin inseguridad en espacio público,2252060,16.94,16.94,16.94
 emper_ep_pct_cat,2,Inseguridad en hasta la mitad de los lugares,5900237,44.38,44.38,61.31
 emper_ep_pct_cat,3,Inseguridad en más de la mitad de los lugares,5118761,38.5,38.5,99.81

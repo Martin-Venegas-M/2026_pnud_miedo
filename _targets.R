@@ -73,9 +73,7 @@ list(
                 "emper_ep_pct",
                 "emper_barrio_pct",
                 "emper_casa_pct",
-                "comper_pct",
-                "comgen_per_pct",
-                "comgen_com_pct"
+                "comper_pct"
             ),
             etiqueta = "indices_pct"
         )
@@ -110,35 +108,22 @@ list(
     ),
 
     tar_target(
-        datos_no_respuesta_comgen,
-        marcar_no_respuesta_comgen(datos_comper_gasto)
-    ),
-    tar_target(
-        log_no_respuesta_comgen,
-        reportar_transformacion(
-            antes = datos_comper_gasto,
-            despues = datos_no_respuesta_comgen,
-            vars = c("comgen_per_pct", "comgen_com_pct"),
-            etiqueta = "no_respuesta_comgen"
-        )
-    ),
-
-    tar_target(
         datos_categorizado,
-        categorizar_indices(datos_no_respuesta_comgen, cfg$CORTES)
+        categorizar_indices(datos_comper_gasto, cfg$CORTES, spec_indices)
     ),
     tar_target(
         log_categorizado,
         reportar_transformacion(
-            antes = datos_no_respuesta_comgen,
+            antes = datos_comper_gasto,
             despues = datos_categorizado,
+            #* Los dos de comgen no aparecen acá porque ya no tienen un `_pct`
+            #* del que provenir: se cuentan directo sobre la batería. Su
+            #* distribución queda registrada en log_codigos_recuperados.
             vars = c(
                 emper_ep_pct = "emper_ep_pct_cat",
                 emper_barrio_pct = "emper_barrio_pct_cat",
                 emper_casa_pct = "emper_casa_pct_cat",
-                comper_pct = "comper_pct_cat",
-                comgen_per_pct = "comgen_per_pct_cat",
-                comgen_com_pct = "comgen_com_pct_cat"
+                comper_pct = "comper_pct_cat"
             ),
             etiqueta = "categorizado"
         )
@@ -176,6 +161,18 @@ list(
             despues = datos_recodificados,
             vars = cfg$VARS_MODELO,
             etiqueta = "etiquetado_indices"
+        )
+    ),
+
+    # Diagnóstico del método "valor": a cuánta gente le aplica un solo momento
+    # del día. La página lo cita; ver el docstring para qué supuesto mide.
+    tar_target(
+        diagnostico_aplicabilidad,
+        medir_aplicabilidad(
+            datos_seleccionados,
+            datos_recodificados,
+            spec_indices,
+            cfg$CORTES
         )
     ),
 
@@ -309,7 +306,6 @@ list(
             indices_pct = log_indices_pct,
             perper_delito = log_perper_delito,
             comper_gasto = log_comper_gasto,
-            no_respuesta_comgen = log_no_respuesta_comgen,
             categorizado = log_categorizado,
             codigos_recuperados = log_codigos_recuperados,
             etiquetado = log_etiquetado,
@@ -410,9 +406,7 @@ list(
             "emper_ep_pct",
             "emper_barrio_pct",
             "emper_casa_pct",
-            "comper_pct",
-            "comgen_per_pct",
-            "comgen_com_pct"
+            "comper_pct"
         )
     ),
 

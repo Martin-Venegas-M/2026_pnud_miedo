@@ -50,7 +50,7 @@ Detalle con cifras en el repo viejo: `CONTEXTO.md §4.9` y
 | Casos que entran al modelo | 49.503 (88,8%) |
 | Soluciones calculadas | 4, 5 y 6 grupos |
 | Solución que se venía reportando | 5 grupos |
-| Targets en el DAG | 82 |
+| Targets en el DAG | 81 |
 
 **Las ocho decisiones metodológicas están cerradas.** Quedan dos, y las dos son
 sobre qué reportar, no sobre cómo calcular:
@@ -78,7 +78,7 @@ que sus vectores de variables no van a volver a cambiar. Ojo con el rename (§5)
 ## 4. Cómo está armado
 
 ```
-_targets.R        el DAG (82 targets)
+_targets.R        el DAG (81 targets)
 R/                las funciones, cargadas con tar_source()
 web/              las 7 páginas .qmd
 docs/             el sitio renderizado, es lo que sirve GitHub Pages
@@ -106,7 +106,7 @@ Cuatro familias, y la distinción importa:
 | Familia | Qué es |
 |---|---|
 | **Originales** | Las de la ENUSC sin transformar |
-| **Fuente** | Las que construimos: los índices `_pct` y sus versiones `_cat`, más `perper_delito` y `comper_gasto` |
+| **Fuente** | Las que construimos. Cuatro índices `_pct` con su `_cat`; dos `_cat` de `comgen` que se cuentan directo sobre la batería y no tienen `_pct`; más `perper_delito` y `comper_gasto` |
 | **De clusters** | `clusters_4`, `clusters_5`, `clusters_6` |
 | **Secundarias** | `cfg$VARS_SEC`. No entran al modelo; describen los grupos |
 
@@ -233,6 +233,17 @@ El costo base tampoco es trivial: 49.503 personas son 1.225 millones de
 distancias, ~9,1 GB. Medido, la escala se degrada 2-3× respecto de lo cuadrático
 por presión de memoria.
 
+**Cambiar cualquier campo de `cfg` cuesta la corrida completa.** `cfg` es un
+solo target, así que tocar `CORTES` (que usa un solo target) invalida también a
+`hcpc`, que lee `cfg$N_CLASES`. Son 22 minutos por un cambio de configuración
+que no toca el modelo. La salida sería partir `cfg` en targets por campo; se
+evaluó y se dejó como está.
+
+**Refactorizar funciones no cuesta nada.** Verificado en un proyecto `targets`
+aislado: comentarios, docstrings, formato y mover una función de archivo **no
+invalidan**; renombrar una variable local sí, pero la cascada se corta enseguida
+porque el valor de retorno no cambia. Agregar aserciones es barato.
+
 **`catdes()` falla al autoimprimirse** con estos datos, por `v.test` infinitos.
 
 **El `v-test` no sirve para ordenar a este tamaño de muestra.** En más de la mitad
@@ -260,8 +271,10 @@ El detalle está en `PLAN.md` y en el registro de la página.
 6. **Quienes no responden la pregunta filtro de victimización se mantienen
    fuera.** Es no respuesta genuina, sin respuesta sustantiva escondida.
 7. **Cómo se cortan los índices:** por lo que la variable significa, con el cero
-   siempre como categoría propia. Tres métodos según cómo esté construido cada
-   índice, declarados en `cfg$CORTES`. Reemplazó a los terciles.
+   siempre como categoría propia. Tres métodos declarados en `cfg$CORTES`. Los
+   dos de `comgen` no pasan por un índice: se cuentan directo sobre la batería,
+   porque sus ítems no admiten 85 y el denominador no varía. Reemplazó a los
+   terciles.
 8. **No respuesta en los índices secundarios:** se prorratea, con un mínimo de la
    mitad de la batería. Conserva la métrica de suma.
 

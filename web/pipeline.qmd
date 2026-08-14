@@ -9,6 +9,7 @@ source("_setup.R")
 
 forma <- leer_log("forma")
 transiciones <- leer_log("transiciones")
+marginales <- leer_log("marginales")
 perdida_res <- leer_log("perdida_resumen")
 perdida_det <- leer_log("perdida_detalle")
 composicion <- leer_log("composicion_mca")
@@ -176,21 +177,28 @@ adopción**, que es lo que efectivamente respondió.
 
 ```{r}
 #| label: d1
-t_d1 <- transiciones |>
+#* Hasta agosto de 2026 este número salía del log de transiciones del índice
+#* `comgen_per_pct`, que dejó de existir: esas dos variables se categorizan
+#* contando directo sobre la batería. Se cuenta ahora sobre la categoría, que
+#* es la misma gente y da el mismo número.
+t_d1 <- marginales |>
     filter(
-        etiqueta == "no_respuesta_comgen",
-        variable_antes == "comgen_per_pct",
-        destino == 0
+        etiqueta == "codigos_recuperados",
+        variable_despues == "comgen_per_pct_cat",
+        valor == 1
     )
 
 # Si el log cambia de forma, esto tiene que fallar en vez de mostrar un NA.
-stopifnot("El log de transiciones ya no tiene una fila única para el 0%" = nrow(t_d1) == 1)
-n_cero <- t_d1$n
+stopifnot(
+    "El log de marginales ya no tiene una fila única para la categoría sin medidas" =
+        nrow(t_d1) == 1
+)
+n_cero <- t_d1$n_despues
 ```
 
-En la dimensión de medidas de la vivienda quedan **`r n_fmt(n_cero)` personas con
-0% de adopción**: casi todas personas del conjunto con "ninguna medida".
-Ahora entran al modelo.
+En la dimensión de medidas de la vivienda quedan **`r n_fmt(n_cero)` personas sin
+ninguna medida**: casi todas del conjunto que respondió "ninguna medida". Ahora
+entran al modelo.
 :::
 
 # 3. Construcción de los índices
@@ -289,9 +297,15 @@ La convención es **conservadora**: ante la duda, no atribuye miedo. Y mantiene 
 pase con la no respuesta.
 :::
 
-Con el mismo procedimiento se construyen los seis índices del análisis: tres de
-sensación de inseguridad (espacio público, barrio, casa), uno de modificación de
-prácticas, y dos de medidas de seguridad (de la vivienda y del barrio).
+Con el mismo procedimiento se construyen **cuatro** de los índices del análisis:
+tres de sensación de inseguridad (espacio público, barrio, casa) y uno de
+modificación de prácticas.
+
+Las dos dimensiones de medidas de seguridad, la de la vivienda y la del barrio,
+**no llevan índice**. Sus baterías no admiten "no aplica", así que el
+denominador es siempre el mismo y el porcentaje no diría nada que el número de
+medidas no diga ya. Se categorizan contando directo sobre los ítems, y el
+detalle está en el paso siguiente.
 
 ## Qué situaciones entran en cada índice
 
@@ -357,7 +371,9 @@ perderíamos su distinción dentro de él. Y del lado del miedo vale igual: quie
 se siente inseguro en **ningún** lugar es cualitativamente distinto de quien se
 siente inseguro en pocos.
 
-Como los seis índices no están construidos igual, hay tres formas de cortar:
+Las seis variables que se cortan no están construidas igual, así que hay tres
+formas de hacerlo. Dos de ellas operan sobre el índice de porcentaje; la tercera
+cuenta ítems, y es la que usan las dos de comgen, que no tienen índice:
 
 ```{r}
 #| label: cortes
@@ -394,16 +410,187 @@ purrr::imap(cfg_cortes, function(s, v) {
 necesita, así que no hay nada que cortar.
 
 **Por número de situaciones**, cuando ningún ítem de la batería admite el código
-"no aplica". El denominador es constante, así que el porcentaje equivale a un
-conteo de medidas, que es bastante más interpretable. Vivienda y barrio llevan
-umbrales distintos a propósito: entre quienes tienen una sola medida comunitaria,
-el 66% es un grupo de WhatsApp, mientras que en la vivienda la medida única más
-común son rejas. El umbral que separa "nada" de "algo organizado" no está en el
-mismo lugar.
+"no aplica". El denominador es constante, así que lo interpretable es cuántas
+medidas tiene la persona, y se cuenta directo sobre la batería sin pasar por un
+índice. Vivienda y barrio llevan umbrales distintos a propósito: entre quienes
+tienen una sola medida comunitaria, el 66% es un grupo de WhatsApp, mientras que
+en la vivienda la medida única más común son rejas. El umbral que separa "nada"
+de "algo organizado" no está en el mismo lugar.
 
 **Por porcentaje**, cuando todos los ítems admiten "no aplica". Ahí el
 denominador cambia de persona a persona, así que un conteo no sería comparable
 entre dos personas a las que les aplica distinto número de situaciones.
+:::
+
+## El camino de cada variable del modelo
+
+Las ocho variables que entran al modelo no se construyen todas igual. Dos ya
+vienen categóricas del cuestionario y no pasan por ningún corte; de las seis
+restantes, cuatro se cortan sobre un índice de porcentaje y **dos se cuentan
+directo sobre la batería, sin índice intermedio**.
+
+```{r}
+#| label: camino
+spec_items <- leer("spec_indices")
+etiq_valores <- leer("spec_etiquetas_indices")$valores
+vars_modelo <- cfg$VARS_MODELO
+
+#* La clave de cfg$CORTES nombra el índice; la variable del modelo es su `_cat`.
+cortes_por_var <- setNames(cfg_cortes, paste0(names(cfg_cortes), "_cat"))
+
+n_items_de <- function(v) length(unlist(spec_items[[sub("_cat$", "", v)]]))
+
+camino <- purrr::map(vars_modelo, function(v) {
+    s <- cortes_por_var[[v]]
+    tibble::tibble(
+        Variable = ETIQUETAS_VARS[[v]],
+        `Se construye desde` = if (is.null(s)) {
+            "Pregunta del cuestionario"
+        } else {
+            paste("Batería de", n_items_de(v), "ítems")
+        },
+        `¿Pasa por un índice de %?` = if (is.null(s)) {
+            "No"
+        } else if (s$metodo == "conteo") "No" else "Sí",
+        `Se corta por` = if (is.null(s)) {
+            "No se corta: ya viene categórica"
+        } else {
+            etiquetas_metodo[[s$metodo]]
+        }
+    )
+}) |>
+    purrr::list_rbind()
+
+stopifnot(
+    "Falta alguna variable del modelo en la tabla de caminos" =
+        nrow(camino) == length(vars_modelo)
+)
+
+tabla(camino, alinear = c("l", "l", "c", "l"))
+```
+
+### Dónde queda cada corte
+
+Esta tabla dice, para cada variable cortada, **qué respuesta produce cada
+categoría**. Es la traducción de `cfg$CORTES` a las unidades en que se hizo la
+pregunta.
+
+```{r}
+#| label: cortes-detalle
+#* Las reglas se derivan de cfg$CORTES, no se escriben a mano: si un corte
+#* cambia, esta tabla cambia con él.
+regla_de <- function(s, n_items) {
+    switch(
+        s$metodo,
+        #* Intervalos cerrados por la derecha sobre el conteo de ítems.
+        conteo = {
+            desde <- c(0, s$cortes + 1)
+            hasta <- c(s$cortes, n_items)
+            ifelse(
+                desde == hasta,
+                paste(desde, "de", n_items),
+                paste0(desde, " a ", hasta, " de ", n_items)
+            )
+        },
+        #* Idem sobre el porcentaje: el punto de corte cae en la categoría de
+        #* abajo, por eso "hasta 50%" incluye el 50 exacto.
+        porcentaje = c(
+            "0%",
+            paste0("más de 0% hasta ", s$cortes[2], "%"),
+            paste0("más de ", s$cortes[2], "% hasta 100%")
+        ),
+        #* Acá el índice solo toma esos valores, así que la categoría es el valor.
+        valor = paste0(
+            s$cortes,
+            "% (",
+            round(s$cortes * n_items / 100),
+            " de ", n_items, ")"
+        )
+    )
+}
+
+detalle <- purrr::imap(cortes_por_var, function(s, v) {
+    n <- n_items_de(v)
+    lab <- etiq_valores[[v]]
+    lab <- lab[lab %in% 1:3]
+    tibble::tibble(
+        Variable = ETIQUETAS_VARS[[v]],
+        Categoría = names(lab)[order(lab)],
+        `Respuesta que la produce` = regla_de(s, n)
+    )
+}) |>
+    purrr::list_rbind() |>
+    group_by(Variable) |>
+    mutate(Variable = ifelse(row_number() == 1, Variable, "")) |>
+    ungroup()
+
+tabla(detalle, alinear = c("l", "l", "l"))
+```
+
+::: {.callout-tip}
+## Las dos de comgen, que son las que más consultas generaron
+
+**Medidas de la vivienda** se corta en 0, 1 a 2, y 3 o más, sobre una batería de
+`r n_items_de("comgen_per_pct_cat")` medidas. **Medidas del barrio** se corta en
+0, 1, y 2 o más, sobre `r n_items_de("comgen_com_pct_cat")`.
+
+Los umbrales son distintos a propósito, y el motivo está en el contenido: entre
+quienes declaran una sola medida comunitaria, el 66% es un grupo de WhatsApp,
+mientras que en la vivienda la medida única más común son rejas. El punto que
+separa "nada" de "algo organizado" no cae en el mismo lugar.
+
+Ninguna de las dos pasa por un índice de porcentaje. Sus baterías no admiten
+"no aplica", así que el denominador es siempre el mismo y el número de medidas
+es directamente lo que se corta.
+:::
+
+```{r}
+#| label: aplicabilidad
+diag <- leer("diagnostico_aplicabilidad")
+
+#* La categoría 3 es la de inseguridad en los dos momentos. Interesa cuánta de
+#* esa gente tenía un solo momento aplicable.
+alta <- diag |> filter(categoria == 3)
+una_sola <- alta |> filter(n_aplica == 1)
+
+barrio <- una_sola |> filter(indice == "emper_barrio_pct")
+total_barrio <- alta |> filter(indice == "emper_barrio_pct") |> summarise(n = sum(n))
+
+stopifnot(
+    "El diagnóstico de aplicabilidad no trae la fila esperada" = nrow(barrio) == 1
+)
+```
+
+::: {.callout-warning}
+## Anotado y sin resolver · La categoría "de día y de noche" incluye gente con un solo momento aplicable
+
+Los dos índices de dos ítems preguntan por el mismo lugar en dos momentos, "de
+día" y "cuando ya está oscuro", y cada uno admite "no aplica". Cuando a una
+persona le aplica un solo momento, el índice normaliza sobre ese, que es la misma
+convención que se usa en los otros índices. El efecto es que **quien declara
+inseguridad en su único momento aplicable llega a 100% igual que quien la declara
+en los dos**, y cae en la misma categoría.
+
+En inseguridad en el barrio son **`r n_fmt(barrio$n)` personas**, el
+`r n_fmt(100 * barrio$n / total_barrio$n, 1)`% de esa categoría.
+
+El cálculo es consistente con el criterio del proyecto. Lo que no calza es la
+etiqueta: "de día y de noche" afirma dos momentos, y para esas personas hay uno
+solo observado.
+
+Casi todas son personas a las que no les aplica caminar solas de noche por su
+barrio. Cruzando con la pregunta de modificación de prácticas, el 45% declara
+haber dejado de salir de noche por temor, así que en esos casos la no
+aplicabilidad es consecuencia del miedo. Pero un 40% responde "no aplica"
+también a esa pregunta, o sea que no sale de noche por razones que la encuesta no
+captura. **El código mezcla evitación por miedo con no exposición por otros
+motivos**, y el instrumento no permite separarlas.
+
+Se deja anotado y sin cambiar. Excluir a estas personas repetiría el error que
+motivó el rediseño, porque no son un grupo aleatorio: tienen más inseguridad que
+el promedio en las demás variables. Las salidas posibles son renombrar la
+categoría para que no afirme los dos momentos, o darle categoría propia al caso
+de un solo momento aplicable, que cambiaría el número de categorías del modelo.
 :::
 
 ## Cómo queda cada índice

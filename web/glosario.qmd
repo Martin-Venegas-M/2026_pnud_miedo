@@ -62,8 +62,9 @@ entre esos nombres y los que usa el análisis.
 
 **Variables fuente.** Las que construimos a partir de las originales, y que
 alimentan el modelo. Son los índices de porcentaje y sus versiones
-categorizadas, más las que se categorizan de otra forma
-(`perper_delito`, `comper_gasto`).
+categorizadas, las que se categorizan contando ítems sin pasar por un índice
+(`comgen_per_pct_cat`, `comgen_com_pct_cat`), y las que ya vienen categóricas
+del cuestionario (`perper_delito`, `comper_gasto`).
 
 **Variables de clusters.** El resultado del modelo: a qué grupo quedó asignada
 cada persona. Hay una por cada solución calculada (`clusters_4`, `clusters_5`,
@@ -76,17 +77,20 @@ participaran, los grupos se formarían en parte por sexo o por edad, y lo que se
 quiere ver es cómo se distribuyen esas características entre grupos formados por
 otra cosa.
 
-**Índice de porcentaje.** La forma en que se resume cada dimensión: qué
-proporción de las situaciones **que le aplican a esa persona** recibieron la
-respuesta que interesa. Se escribe con el sufijo `_pct`. El detalle de qué entra
-y qué no entra en el denominador está en el
+**Índice de porcentaje.** La forma en que se resumen **cuatro** de las
+dimensiones: qué proporción de las situaciones **que le aplican a esa persona**
+recibieron la respuesta que interesa. Se escribe con el sufijo `_pct`. Existe
+porque el denominador cambia de persona a persona; donde no cambia, como en las
+dos dimensiones de medidas de seguridad, no hay índice y se cuenta directo. El
+detalle de qué entra y qué no entra en el denominador está en el
 [paso 3 del pipeline](pipeline.html#construcción-de-los-índices).
 
-**Categorización.** El paso que convierte un índice continuo en categorías,
-porque el MCA trabaja con variables categóricas y no con porcentajes. El criterio
+**Categorización.** El paso que produce las variables que entran al modelo,
+porque el MCA trabaja con variables categóricas y no con porcentajes. Según la
+dimensión, corta un índice continuo o cuenta los ítems de la batería. El criterio
 es cortar por lo que la variable significa, con el cero siempre como categoría
-propia. El detalle de cada índice está en el
-[paso 4](pipeline.html#categorización).
+propia. El camino de cada variable, y qué respuesta produce cada categoría, está
+en el [paso 4](pipeline.html#categorización).
 
 **Tercil.** Cada uno de los tres grupos que resultan de ordenar a toda la muestra
 por el valor de una variable y cortarla en tres partes **del mismo tamaño**. El

@@ -140,8 +140,14 @@ cat(as.character(tabla(otras, alto = "520px", ancho = TRUE)), "\n\n")
 # 2. Índices
 
 El primer nivel de construcción. Cada índice resume una batería de variables
-originales en un porcentaje. Son continuos, así que todavía no pueden entrar al
-modelo.
+originales en un porcentaje: qué proporción de las situaciones **que le aplican a
+esa persona** recibieron la respuesta que interesa. Son continuos, así que
+todavía no pueden entrar al modelo.
+
+No todas las dimensiones tienen índice. Las dos de medidas de seguridad se
+categorizan contando directo sobre su batería, porque ningún ítem admite "no
+aplica" y el denominador no varía. Aparecen en la sección siguiente, con los
+ítems en la columna "Se construye desde".
 
 ```{r}
 #| label: indices
