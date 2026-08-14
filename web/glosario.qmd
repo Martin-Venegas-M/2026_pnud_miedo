@@ -226,6 +226,26 @@ modelo, y el gráfico muestra dos.
 grupos. Cada paso toma el resultado del anterior y produce el siguiente. Está
 descrito en la pestaña [Pipeline](pipeline.html).
 
+**`targets`.** El sistema que ejecuta el pipeline. Cada paso se declara por
+separado, junto con los pasos de los que depende, y su resultado queda guardado.
+Cuando algo cambia, `targets` vuelve a calcular solo lo afectado y deja el resto
+intacto: por eso cambiar cómo se corta un índice no obliga a repetir el modelo
+entero, y cambiar la base sí. Cada uno de esos pasos guardados se llama un
+**target**.
+
+Lo que aporta no es velocidad sino garantía. Ningún resultado puede quedar
+calculado sobre una versión vieja de su insumo sin que el sistema lo marque como
+pendiente, así que la página nunca muestra una cifra que corresponda a un estado
+anterior del dato.
+
+**DAG.** El mapa de esas dependencias. La sigla viene de *directed acyclic
+graph*, grafo dirigido acíclico: **dirigido** porque cada paso alimenta a los
+siguientes en un solo sentido, y **acíclico** porque ningún paso puede depender
+de su propio resultado, ni directamente ni dando la vuelta. Esas dos condiciones
+son las que permiten deducir en qué orden ejecutar y qué recalcular cuando algo
+cambia. El diagrama del comienzo de la pestaña [Pipeline](pipeline.html) es una
+versión simplificada del DAG de este análisis.
+
 **Log de transiciones.** El registro automático de qué le pasó a cada variable en
 cada paso: cuántas personas pasaron de un valor a otro. Es lo que permite
 detectar que una recodificación hizo algo distinto de lo previsto, cosa que una
