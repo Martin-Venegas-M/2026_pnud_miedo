@@ -1,4 +1,10 @@
 variable,val,label,frq,raw.prc,valid.prc,cum.prc
+emper_barrio_pct,0,<none>,4140827,31.59,31.59,31.59
+emper_barrio_pct,50,<none>,5574634,42.52,42.52,74.11
+emper_barrio_pct,100,<none>,3394070,25.89,25.89,100
+emper_casa_pct,0,<none>,10297783,77.59,77.59,77.59
+emper_casa_pct,50,<none>,1763276,13.29,13.29,90.88
+emper_casa_pct,100,<none>,1211052,9.12,9.12,100
 emper_ep_pct,0,<none>,2252229,16.97,16.97,16.97
 emper_ep_pct,9.09,<none>,189986,1.43,1.43,18.4
 emper_ep_pct,10,<none>,240524,1.81,1.81,20.21
@@ -42,12 +48,6 @@ emper_ep_pct,88.89,<none>,123268,0.93,0.93,91.01
 emper_ep_pct,90,<none>,135809,1.02,1.02,92.04
 emper_ep_pct,90.91,<none>,138125,1.04,1.04,93.08
 emper_ep_pct,100,<none>,918924,6.92,6.92,100
-emper_barrio_pct,0,<none>,4140827,31.59,31.59,31.59
-emper_barrio_pct,50,<none>,5574634,42.52,42.52,74.11
-emper_barrio_pct,100,<none>,3394070,25.89,25.89,100
-emper_casa_pct,0,<none>,10297783,77.59,77.59,77.59
-emper_casa_pct,50,<none>,1763276,13.29,13.29,90.88
-emper_casa_pct,100,<none>,1211052,9.12,9.12,100
 comper_pct,0,<none>,1824758,13.73,13.73,13.73
 comper_pct,7.69,<none>,267128,2.01,2.01,15.74
 comper_pct,8.33,<none>,301494,2.27,2.27,18.01
@@ -141,15 +141,15 @@ comper_gasto,0,No gasta en medidas de seguridad,6295807,47.35,47.35,47.35
 comper_gasto,1,Gasta en medidas de seguridad,6627002,49.84,49.84,97.2
 comper_gasto,88,No sabe,349411,2.63,2.63,99.83
 comper_gasto,99,No responde,23033,0.17,0.17,100
-comgen_per_pct_cat,1,Sin medidas en la vivienda,1088781,8.19,8.19,8.19
-comgen_per_pct_cat,2,Una o dos medidas en la vivienda,6660299,50.09,50.09,58.28
-comgen_per_pct_cat,3,Tres o más medidas en la vivienda,5523433,41.54,41.54,99.82
-comgen_per_pct_cat,85,No aplica,0,0,0,99.82
-comgen_per_pct_cat,88,No sabe,9270,0.07,0.07,99.89
-comgen_per_pct_cat,99,No responde,14275,0.11,0.11,100
-comgen_com_pct_cat,1,Sin medidas en el barrio,3267358,24.57,24.57,24.57
-comgen_com_pct_cat,2,Una medida en el barrio,3603876,27.1,27.1,51.68
-comgen_com_pct_cat,3,Dos o más medidas en el barrio,6039957,45.43,45.43,97.11
-comgen_com_pct_cat,85,No aplica,0,0,0,97.11
-comgen_com_pct_cat,88,No sabe,371956,2.8,2.8,99.9
-comgen_com_pct_cat,99,No responde,12911,0.1,0.1,100
+comgen_per_cat,1,Sin medidas en la vivienda,1088781,8.19,8.19,8.19
+comgen_per_cat,2,Una o dos medidas en la vivienda,6660299,50.09,50.09,58.28
+comgen_per_cat,3,Tres o más medidas en la vivienda,5523433,41.54,41.54,99.82
+comgen_per_cat,85,No aplica,0,0,0,99.82
+comgen_per_cat,88,No sabe,9270,0.07,0.07,99.89
+comgen_per_cat,99,No responde,14275,0.11,0.11,100
+comgen_com_cat,1,Sin medidas en el barrio,3267358,24.57,24.57,24.57
+comgen_com_cat,2,Una medida en el barrio,3603876,27.1,27.1,51.68
+comgen_com_cat,3,Dos o más medidas en el barrio,6039957,45.43,45.43,97.11
+comgen_com_cat,85,No aplica,0,0,0,97.11
+comgen_com_cat,88,No sabe,371956,2.8,2.8,99.9
+comgen_com_cat,99,No responde,12911,0.1,0.1,100

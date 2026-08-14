@@ -86,46 +86,45 @@ list(
         )
     ),
 
+    # Las cuatro variables del modelo que no pasan por un índice: las dos que ya
+    # vienen categóricas del cuestionario y las dos de comgen, que se cuentan
+    # sobre su batería. Un paso en vez de tres; la lógica de cada una sigue en
+    # su propia función.
     tar_target(
-        datos_perper_delito,
-        construir_perper_delito(datos_indices_pct)
-    ),
-    tar_target(
-        log_perper_delito,
-        reportar_transformacion(
-            antes = datos_indices_pct,
-            despues = datos_perper_delito,
-            vars = "perper_delito",
-            etiqueta = "perper_delito"
+        datos_sin_indice,
+        construir_vars_sin_indice(
+            datos_indices_pct,
+            cfg$CORTES,
+            cfg$INDICES,
+            cfg$CODIGOS_COMGEN
         )
     ),
-
     tar_target(
-        datos_comper_gasto,
-        construir_comper_gasto(datos_perper_delito)
-    ),
-    tar_target(
-        log_comper_gasto,
+        log_sin_indice,
         reportar_transformacion(
-            antes = datos_perper_delito,
-            despues = datos_comper_gasto,
-            vars = "comper_gasto",
-            etiqueta = "comper_gasto"
+            antes = datos_indices_pct,
+            despues = datos_sin_indice,
+            vars = c(
+                "perper_delito",
+                "comper_gasto",
+                "comgen_per_cat",
+                "comgen_com_cat"
+            ),
+            etiqueta = "vars_sin_indice"
         )
     ),
 
     tar_target(
         datos_categorizado,
-        categorizar_indices(datos_comper_gasto, cfg$CORTES, cfg$INDICES)
+        categorizar_indices(datos_sin_indice, cfg$CORTES)
     ),
     tar_target(
         log_categorizado,
         reportar_transformacion(
-            antes = datos_comper_gasto,
+            antes = datos_sin_indice,
             despues = datos_categorizado,
-            #* Los dos de comgen no aparecen acá porque ya no tienen un `_pct`
-            #* del que provenir: se cuentan directo sobre la batería. Su
-            #* distribución queda registrada en log_codigos_recuperados.
+            #* Solo los cuatro índices: comgen se construye en el paso
+            #* anterior y se registra en log_sin_indice.
             vars = c(
                 emper_ep_pct = "emper_ep_pct_cat",
                 emper_barrio_pct = "emper_barrio_pct_cat",
@@ -137,38 +136,34 @@ list(
     ),
 
     tar_target(
-        datos_codigos_recuperados,
-        recuperar_codigos_especiales(
-            datos_categorizado,
-            cfg$INDICES,
-            cfg$CODIGOS_COMGEN
-        )
+        datos_no_respuesta_rescatada,
+        rescatar_no_respuesta(datos_categorizado, cfg$INDICES, cfg$CORTES)
     ),
     tar_target(
-        log_codigos_recuperados,
+        log_rescate_no_respuesta,
         reportar_transformacion(
             antes = datos_categorizado,
-            despues = datos_codigos_recuperados,
+            despues = datos_no_respuesta_rescatada,
+            #* Solo las cuatro de índice: las de comgen ya traen sus códigos
+            #* desde categorizar_comgen() y se registran en log_sin_indice.
             vars = c(
                 "emper_ep_pct_cat",
                 "emper_barrio_pct_cat",
                 "emper_casa_pct_cat",
-                "comper_pct_cat",
-                "comgen_per_cat",
-                "comgen_com_cat"
+                "comper_pct_cat"
             ),
-            etiqueta = "codigos_recuperados"
+            etiqueta = "rescate_no_respuesta"
         )
     ),
 
     tar_target(
         datos_recodificados,
-        etiquetar(datos_codigos_recuperados, cfg$ETIQUETAS)
+        etiquetar(datos_no_respuesta_rescatada, cfg$ETIQUETAS)
     ),
     tar_target(
         log_etiquetado,
         reportar_transformacion(
-            antes = datos_codigos_recuperados,
+            antes = datos_no_respuesta_rescatada,
             despues = datos_recodificados,
             vars = cfg_vars_modelo,
             etiqueta = "etiquetado_indices"
@@ -313,10 +308,9 @@ list(
             muestra = log_muestra,
             seleccionados = log_seleccionados,
             indices_pct = log_indices_pct,
-            perper_delito = log_perper_delito,
-            comper_gasto = log_comper_gasto,
+            vars_sin_indice = log_sin_indice,
             categorizado = log_categorizado,
-            codigos_recuperados = log_codigos_recuperados,
+            rescate_no_respuesta = log_rescate_no_respuesta,
             etiquetado = log_etiquetado,
             clusters = log_clusters,
             indices_secundarios = log_indices_secundarios,

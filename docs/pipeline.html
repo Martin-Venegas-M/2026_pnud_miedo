@@ -185,6 +185,7 @@ window.Quarto = {
   <li><a href="#dónde-queda-cada-corte" id="toc-dónde-queda-cada-corte" class="nav-link" data-scroll-target="#dónde-queda-cada-corte">Dónde queda cada corte</a></li>
   </ul></li>
   <li><a href="#cómo-queda-cada-índice" id="toc-cómo-queda-cada-índice" class="nav-link" data-scroll-target="#cómo-queda-cada-índice">Cómo queda cada índice</a></li>
+  <li><a href="#el-rescate-de-la-no-respuesta" id="toc-el-rescate-de-la-no-respuesta" class="nav-link" data-scroll-target="#el-rescate-de-la-no-respuesta">El rescate de la no respuesta</a></li>
   </ul></li>
   <li><a href="#preparación-del-modelo" id="toc-preparación-del-modelo" class="nav-link" data-scroll-target="#preparación-del-modelo">5. Preparación del modelo</a>
   <ul class="collapse">
@@ -233,8 +234,11 @@ window.Quarto = {
 <pre class="mermaid mermaid-js">flowchart TD
     A[Base ENUSC 2025] --&gt; B[Selección de la muestra]
     B --&gt; C[Construcción de índices]
+    B --&gt; J[Variables sin índice]
     C --&gt; D[Categorización]
-    D --&gt; E[Preparación del modelo]
+    D --&gt; K[Rescate de la no respuesta]
+    J --&gt; E[Preparación del modelo]
+    K --&gt; E
     E --&gt; F[MCA]
     F --&gt; G[Clustering jerárquico]
     G --&gt; H[Grupos]
@@ -242,11 +246,13 @@ window.Quarto = {
 
     style C fill:#1c1c1c,color:#fff
     style D fill:#1c1c1c,color:#fff
+    style J fill:#1c1c1c,color:#fff
+    style K fill:#1c1c1c,color:#fff
     style E fill:#1c1c1c,color:#fff
     style I fill:#1c1c1c,color:#fff
 </pre>
 </div>
-<p></p><figcaption> El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica. Las variables secundarias no alimentan el modelo: se usan para describir los grupos una vez formados.</figcaption> </figure><p></p>
+<p></p><figcaption> El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica. Cuatro de las ocho variables del modelo no pasan por un índice: se construyen directo desde las columnas originales. Las variables secundarias no alimentan el modelo: se usan para describir los grupos una vez formados.</figcaption> </figure><p></p>
 </div>
 </div>
 </div>
@@ -953,13 +959,13 @@ window.Quarto = {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Medidas de la vivienda</td>
-<td style="text-align: right;">11,0</td>
+<td style="text-align: right;">10,8</td>
 <td style="text-align: right;">53,4</td>
 <td style="text-align: right;">35,6</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Medidas del barrio</td>
-<td style="text-align: right;">34,2</td>
+<td style="text-align: right;">30,9</td>
 <td style="text-align: right;">28,1</td>
 <td style="text-align: right;">37,7</td>
 </tr>
@@ -994,9 +1000,69 @@ window.Quarto = {
 <p>El problema es que estos índices tienen pocos valores distintos y muchos empates. Cuando un valor reúne más gente de la que cabe en un tercil, el corte lo parte, y personas con respuestas idénticas terminan en categorías distintas. En el índice de inseguridad en la casa, tres cuartos de la muestra responden 0%, así que ese único valor ocupaba más de dos terciles: 5.088 personas que declararon sentirse seguras quedaban etiquetadas “Alta inseguridad en la casa”.</p>
 <p>Además los terciles impiden comparar entre años: por construcción siempre dan tres grupos de un tercio, así que un cambio real en la población no se vería.</p>
 <p>El diagnóstico completo, con el microdato y las cifras, está en la <a href="archivo/2025-08-terciles/pipeline.html#categorización">versión archivada de esta página</a>.</p>
-<p>Hoy <code>categorizar_indices()</code> lleva una aserción que falla si algún corte vuelve a repartir un mismo valor entre categorías.</p>
+<p>Hoy las dos funciones que cortan, <code>categorizar_indices()</code> y <code>categorizar_comgen()</code>, llevan una aserción que falla si algún corte vuelve a repartir un mismo valor entre categorías.</p>
 </div>
 </div>
+</section>
+<section id="el-rescate-de-la-no-respuesta" class="level2">
+<h2 class="anchored" data-anchor-id="el-rescate-de-la-no-respuesta">El rescate de la no respuesta</h2>
+<p>Falta un paso después de cortar, y responde a la misma trampa de la sección 2.</p>
+<p>Si alguien responde “no sabe” a <strong>todos</strong> los ítems de una batería, el índice le da 0%: el denominador cuenta esos ítems y ninguno es un éxito. Y 0% cae en la primera categoría, que en estas variables significa “sin inseguridad” o “no modificó prácticas”. Es una respuesta sustantiva que esa persona nunca dio.</p>
+<p><code>rescatar_no_respuesta()</code> lo revierte: si todos los ítems fuente comparten el mismo código especial, ese código vuelve a la variable categorizada. En esta corrida mueve <strong>1.356 casos</strong>, de los cuales <strong>27 salían de una categoría sustantiva</strong> hacia un código de no respuesta. El resto llegaba desde un valor faltante.</p>
+<div class="cell">
+<div class="cell-output-display">
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Variable</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Desde</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; position: sticky; top: 0; background-color: #FFFFFF;">Hacia</th>
+<th data-quarto-table-cell-role="th" style="text-align: right; position: sticky; top: 0; background-color: #FFFFFF;">Casos</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en espacio público</td>
+<td style="text-align: left;">Primera categoría</td>
+<td style="text-align: left;">No responde</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: left;">Primera categoría</td>
+<td style="text-align: left;">No sabe</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en el barrio</td>
+<td style="text-align: left;">Primera categoría</td>
+<td style="text-align: left;">No responde</td>
+<td style="text-align: right;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: left;">Primera categoría</td>
+<td style="text-align: left;">No sabe</td>
+<td style="text-align: right;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Inseguridad en la casa</td>
+<td style="text-align: left;">Primera categoría</td>
+<td style="text-align: left;">No responde</td>
+<td style="text-align: right;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Modificación de prácticas</td>
+<td style="text-align: left;">Primera categoría</td>
+<td style="text-align: left;">No responde</td>
+<td style="text-align: right;">2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Son pocos casos, y esa es justamente la razón por la que conviene que el paso tenga su propio registro: sin él, esas 27 personas quedarían contadas como si hubieran declarado sentirse seguras, y nada en las marginales finales lo delataría.</p>
+<p>Por eso tampoco lleva una opción para desactivarlo. No hay un caso de uso donde convenga saltárselo.</p>
 </section>
 </section>
 <section id="preparación-del-modelo" class="level1">
@@ -1258,7 +1324,7 @@ window.Quarto = {
 <tr class="odd">
 <td style="text-align: left;">Cómo se cortan los índices en categorías</td>
 <td style="text-align: left;"><span class="estado-cerrada">Cerrada</span></td>
-<td style="text-align: left;">Se corta por lo que la variable significa, con el cero como categoría propia. Tres métodos según cómo esté construido cada índice. Reemplaza a los terciles, que partían empates.</td>
+<td style="text-align: left;">Se corta por lo que la variable significa, con el cero como categoría propia. Tres métodos, según cómo esté construida la batería que hay detrás: dos cortan sobre el índice de porcentaje y el tercero cuenta ítems. Reemplaza a los terciles, que partían empates.</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">"Otro delito" separado de "no sabe qué delito"</td>

@@ -24,12 +24,15 @@ afecta el resultado**, pese a que el pipeline es más grande.
 En cada uno se explicita qué se decidió y qué efecto tuvo.
 
 ```{mermaid}
-%%| fig-cap: "El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica. Las variables secundarias no alimentan el modelo: se usan para describir los grupos una vez formados."
+%%| fig-cap: "El recorrido. En gris, pasos mecánicos; en negro, los que involucran una decisión metodológica. Cuatro de las ocho variables del modelo no pasan por un índice: se construyen directo desde las columnas originales. Las variables secundarias no alimentan el modelo: se usan para describir los grupos una vez formados."
 flowchart TD
     A[Base ENUSC 2025] --> B[Selección de la muestra]
     B --> C[Construcción de índices]
+    B --> J[Variables sin índice]
     C --> D[Categorización]
-    D --> E[Preparación del modelo]
+    D --> K[Rescate de la no respuesta]
+    J --> E[Preparación del modelo]
+    K --> E
     E --> F[MCA]
     F --> G[Clustering jerárquico]
     G --> H[Grupos]
@@ -37,6 +40,8 @@ flowchart TD
 
     style C fill:#1c1c1c,color:#fff
     style D fill:#1c1c1c,color:#fff
+    style J fill:#1c1c1c,color:#fff
+    style K fill:#1c1c1c,color:#fff
     style E fill:#1c1c1c,color:#fff
     style I fill:#1c1c1c,color:#fff
 ```
@@ -177,13 +182,12 @@ adopción**, que es lo que efectivamente respondió.
 
 ```{r}
 #| label: d1
-#* Hasta agosto de 2026 este número salía del log de transiciones del índice
-#* `comgen_per`, que dejó de existir: esas dos variables se categorizan
-#* contando directo sobre la batería. Se cuenta ahora sobre la categoría, que
-#* es la misma gente y da el mismo número.
+#* Este número se mudó dos veces al reorganizar el pipeline. Vive donde la
+#* variable nace: `comgen_per_cat` se construye contando la batería en el paso
+#* de variables sin índice, y ahí ya trae sus códigos de no respuesta.
 t_d1 <- marginales |>
     filter(
-        etiqueta == "codigos_recuperados",
+        etiqueta == "vars_sin_indice",
         variable_despues == "comgen_per_cat",
         valor == 1
     )
@@ -605,9 +609,67 @@ tres grupos de un tercio, así que un cambio real en la población no se vería.
 El diagnóstico completo, con el microdato y las cifras, está en la
 [versión archivada de esta página](archivo/2025-08-terciles/pipeline.html#categorización).
 
-Hoy `categorizar_indices()` lleva una aserción que falla si algún corte vuelve a
+Hoy las dos funciones que cortan, `categorizar_indices()` y
+`categorizar_comgen()`, llevan una aserción que falla si algún corte vuelve a
 repartir un mismo valor entre categorías.
 :::
+
+## El rescate de la no respuesta
+
+Falta un paso después de cortar, y responde a la misma trampa de la sección 2.
+
+Si alguien responde "no sabe" a **todos** los ítems de una batería, el índice le
+da 0%: el denominador cuenta esos ítems y ninguno es un éxito. Y 0% cae en la
+primera categoría, que en estas variables significa "sin inseguridad" o "no
+modificó prácticas". Es una respuesta sustantiva que esa persona nunca dio.
+
+```{r}
+#| label: rescate
+#* `origen` y `destino` son numéricos y el faltante viene como NA de verdad, así
+#* que `origen != destino` descartaría en silencio las filas que llegan desde un
+#* hueco. Se comparan como texto para que NA sea un valor más.
+resc <- transiciones |>
+    filter(etiqueta == "rescate_no_respuesta") |>
+    mutate(
+        o = ifelse(is.na(origen), "NA", as.character(origen)),
+        d = ifelse(is.na(destino), "NA", as.character(destino))
+    ) |>
+    filter(o != d)
+
+#* Las que salen de una categoría sustantiva son el caso grave: las demás
+#* llegan desde un faltante, que es un hueco y no una afirmación falsa.
+desde_cat <- resc |> filter(o != "NA")
+
+stopifnot(
+    "El log del rescate ya no trae transiciones" = nrow(resc) > 0
+)
+```
+
+`rescatar_no_respuesta()` lo revierte: si todos los ítems fuente comparten el
+mismo código especial, ese código vuelve a la variable categorizada. En esta
+corrida mueve **`r n_fmt(sum(resc$n))` casos**, de los cuales
+**`r n_fmt(sum(desde_cat$n))` salían de una categoría sustantiva** hacia un
+código de no respuesta. El resto llegaba desde un valor faltante.
+
+```{r}
+#| label: rescate-tabla
+desde_cat |>
+    transmute(
+        Variable = dplyr::coalesce(ETIQUETAS_VARS[variable_antes], variable_antes),
+        Desde = "Primera categoría",
+        Hacia = ifelse(d == "88", "No sabe", "No responde"),
+        Casos = n
+    ) |>
+    tabla(alinear = c("l", "l", "l", "r"))
+```
+
+Son pocos casos, y esa es justamente la razón por la que conviene que el paso
+tenga su propio registro: sin él, esas `r n_fmt(sum(desde_cat$n))` personas
+quedarían contadas como si hubieran declarado sentirse seguras, y nada en las
+marginales finales lo delataría.
+
+Por eso tampoco lleva una opción para desactivarlo. No hay un caso de uso donde
+convenga saltárselo.
 
 # 5. Preparación del modelo
 
@@ -825,7 +887,7 @@ registro <- tibble::tribble(
 
     "Cómo se cortan los índices en categorías",
     "Cerrada",
-    "Se corta por lo que la variable significa, con el cero como categoría propia. Tres métodos según cómo esté construido cada índice. Reemplaza a los terciles, que partían empates.",
+    "Se corta por lo que la variable significa, con el cero como categoría propia. Tres métodos, según cómo esté construida la batería que hay detrás: dos cortan sobre el índice de porcentaje y el tercero cuenta ítems. Reemplaza a los terciles, que partían empates.",
 
     "\"Otro delito\" separado de \"no sabe qué delito\"",
     "Cerrada",

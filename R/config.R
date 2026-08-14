@@ -378,7 +378,7 @@ spec_patrones <- function() {
 #' grupo.
 #'
 #' @section Por qué existe como declaración y no dentro del `case_when`:
-#' [recuperar_codigos_especiales()] las usaba escritas a mano, y como no
+#' [rescatar_no_respuesta()] las usaba escritas a mano, y como no
 #' aparecían en `cfg$INDICES`, [construir_metadata()] las reportaba con uso
 #' "No se usa". Eso era falso para `_ns` y `_nr`, que son lo único que separa a
 #' quien no respondió de quien respondió "ninguna medida", y engañoso para

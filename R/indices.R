@@ -254,3 +254,121 @@ medir_aplicabilidad <- function(datos_sel, datos_cat, spec, cortes) {
     }) |>
         purrr::list_rbind()
 }
+
+#' Categorías de `comgen` a partir del conteo de medidas
+#'
+#' Sale de [categorizar_indices()], que hasta agosto de 2026 tenía una rama
+#' `"conteo"` para estas dos variables. Esa rama no tocaba ningún índice: leía la
+#' batería de ítems, no la columna `_pct`, y por eso obligaba a la función a
+#' recibir un `spec_items` y a validar de forma distinta según el método. La
+#' función que categoriza índices vuelve a hacer solo eso.
+#'
+#' @section Por qué se cuenta y no se saca un porcentaje:
+#' Ningún ítem de estas dos baterías admite el código 85, así que el denominador
+#' es constante y lo interpretable es cuántas medidas declara la persona. Los
+#' umbrales son distintos entre vivienda y barrio a propósito: entre quienes
+#' declaran una sola medida comunitaria, el 66% es un grupo de WhatsApp,
+#' mientras que en la vivienda la medida única más común son rejas.
+#'
+#' @section La aserción:
+#' La misma que en [categorizar_indices()]: ningún valor del conteo puede caer
+#' en más de una categoría. Acá es casi trivial porque se corta sobre enteros,
+#' pero se mantiene para que el invariante valga en las seis variables y no en
+#' cuatro.
+#'
+#' @section Los códigos de no respuesta se estampan acá:
+#' Quien responde "no sabe" a la batería completa tiene las columnas de medidas
+#' todas en 0, así que el conteo le da 0 y caería en "sin medidas", que es una
+#' respuesta sustantiva que no dio. Lo único que lo distingue son las columnas
+#' `_ns`/`_nr`, declaradas en `cfg$CODIGOS_COMGEN`. Se aplican en esta misma
+#' función y no en un paso posterior porque son códigos especiales **de esta
+#' batería**: quien construye la variable se hace cargo de ellos.
+#'
+#' @param datos Datos con las baterías de ítems.
+#' @param cortes Las entradas de método `"conteo"` de `cfg$CORTES`.
+#' @param items `cfg$INDICES`, para saber qué columnas componen cada batería.
+#' @param codigos `cfg$CODIGOS_COMGEN`: las columnas `_ns`/`_nr` de cada
+#'   batería.
+#' @return `datos` con una columna `{nombre}_cat` por cada batería.
+categorizar_comgen <- function(datos, cortes, items, codigos) {
+    faltan <- setdiff(unlist(items[names(cortes)]), names(datos))
+    if (length(faltan) > 0) {
+        stop(
+            "categorizar_comgen(): faltan columnas de la batería: ",
+            paste(faltan, collapse = ", ")
+        )
+    }
+
+    for (v in names(cortes)) {
+        m <- as.matrix(as.data.frame(lapply(
+            datos[items[[v]]],
+            \(col) as.numeric(haven::zap_labels(col))
+        )))
+        conteo <- rowSums(m == 1)
+        cats <- cut(
+            conteo,
+            breaks = c(-1, cortes[[v]]$cortes, Inf),
+            labels = FALSE
+        )
+
+        reparto <- tapply(cats, conteo, \(g) length(unique(g[!is.na(g)])))
+        if (any(reparto > 1, na.rm = TRUE)) {
+            stop(
+                "categorizar_comgen(): en '",
+                v,
+                "' el corte parte conteos idénticos entre categorías"
+            )
+        }
+
+        datos[[paste0(v, "_cat")]] <- cats
+    }
+
+    #* El 88/99 se estampa después de cortar y pisa lo que haya: quien marcó
+    #* "no sabe" para toda la batería tiene conteo 0 y habría quedado en la
+    #* categoría de "sin medidas".
+    for (destino in names(codigos)) {
+        marcas <- codigos[[destino]]
+        datos[[destino]] <- dplyr::case_when(
+            datos[[marcas[["ns"]]]] == 1 ~ 88,
+            datos[[marcas[["nr"]]]] == 1 ~ 99,
+            TRUE ~ datos[[destino]]
+        )
+    }
+
+    datos
+}
+
+#' Las cuatro variables del modelo que no pasan por un índice
+#'
+#' Un solo paso del pipeline para todo lo que se construye directo desde las
+#' columnas originales: `perper_delito` y `comper_gasto`, que ya vienen
+#' categóricas del cuestionario, y las dos de `comgen`, que se cuentan sobre su
+#' batería.
+#'
+#' @section Por qué envuelve en vez de fundir:
+#' Las tres lógicas son distintas y cada una carga su propia documentación: D3
+#' vive entera en [construir_perper_delito()], y el criterio de los umbrales de
+#' `comgen` en [categorizar_comgen()]. Fundirlas dejaría un docstring cubriendo
+#' tres decisiones sin relación. Lo que se unifica es el **paso del pipeline**,
+#' no la lógica: un target y un log en vez de tres.
+#'
+#' @param datos Datos con los índices `_pct` ya construidos.
+#' @param cortes `cfg$CORTES`; se usan solo las entradas de método `"conteo"`.
+#' @param items `cfg$INDICES`.
+#' @param codigos `cfg$CODIGOS_COMGEN`.
+#' @return `datos` con las cuatro variables agregadas.
+construir_vars_sin_indice <- function(datos, cortes, items, codigos) {
+    conteo <- cortes[vapply(cortes, \(s) s$metodo == "conteo", logical(1))]
+
+    stopifnot(
+        "construir_vars_sin_indice(): ninguna variable usa el método 'conteo'" = length(
+            conteo
+        ) >
+            0
+    )
+
+    datos |>
+        construir_perper_delito() |>
+        construir_comper_gasto() |>
+        categorizar_comgen(conteo, items, codigos)
+}

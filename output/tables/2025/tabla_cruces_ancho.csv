@@ -48,12 +48,12 @@ secundaria,vp_dc,No,84.39,75.55,70.97,68.3,66.79
 secundaria,vp_dc,Sí,15.61,24.45,29.03,31.7,33.21
 secundaria,vp_dv,No,97.43,93.91,94.6,93.91,92.71
 secundaria,vp_dv,Sí,2.57,6.09,5.4,6.09,7.29
-fuente,comgen_com_pct_cat,Sin medidas en el barrio,29.55,52.52,20.03,24.28,23.52
-fuente,comgen_com_pct_cat,Una medida en el barrio,31.11,0,24.23,37.93,30.15
-fuente,comgen_com_pct_cat,Dos o más medidas en el barrio,39.33,47.48,55.74,37.79,46.33
-fuente,comgen_per_pct_cat,Sin medidas en la vivienda,5.67,100,1.65,1.78,2.49
-fuente,comgen_per_pct_cat,Una o dos medidas en la vivienda,60.87,0,42.75,59.9,57.91
-fuente,comgen_per_pct_cat,Tres o más medidas en la vivienda,33.46,0,55.6,38.32,39.6
+fuente,comgen_com_cat,Sin medidas en el barrio,29.55,52.52,20.03,24.28,23.52
+fuente,comgen_com_cat,Una medida en el barrio,31.11,0,24.23,37.93,30.15
+fuente,comgen_com_cat,Dos o más medidas en el barrio,39.33,47.48,55.74,37.79,46.33
+fuente,comgen_per_cat,Sin medidas en la vivienda,5.67,100,1.65,1.78,2.49
+fuente,comgen_per_cat,Una o dos medidas en la vivienda,60.87,0,42.75,59.9,57.91
+fuente,comgen_per_cat,Tres o más medidas en la vivienda,33.46,0,55.6,38.32,39.6
 fuente,comper_gasto,No gasta en medidas de seguridad,55.15,82.96,39.21,50.21,44.62
 fuente,comper_gasto,Gasta en medidas de seguridad,44.85,17.04,60.79,49.79,55.38
 fuente,comper_pct_cat,No modificó prácticas,47.39,20.3,3.38,2.74,2.58

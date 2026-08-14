@@ -86,33 +86,33 @@ fuente,comper_gasto,C4,0,No gasta en medidas de seguridad,962913,50.21
 fuente,comper_gasto,C4,1,Gasta en medidas de seguridad,954919,49.79
 fuente,comper_gasto,C5,0,No gasta en medidas de seguridad,1139730,44.62
 fuente,comper_gasto,C5,1,Gasta en medidas de seguridad,1414776,55.38
-fuente,comgen_per_pct_cat,C1,1,Sin medidas en la vivienda,141967,5.67
-fuente,comgen_per_pct_cat,C1,2,Una o dos medidas en la vivienda,1524073,60.87
-fuente,comgen_per_pct_cat,C1,3,Tres o más medidas en la vivienda,837910,33.46
-fuente,comgen_per_pct_cat,C2,1,Sin medidas en la vivienda,670155,100
-fuente,comgen_per_pct_cat,C3,1,Sin medidas en la vivienda,71577,1.65
-fuente,comgen_per_pct_cat,C3,2,Una o dos medidas en la vivienda,1851898,42.75
-fuente,comgen_per_pct_cat,C3,3,Tres o más medidas en la vivienda,2408466,55.6
-fuente,comgen_per_pct_cat,C4,1,Sin medidas en la vivienda,34104,1.78
-fuente,comgen_per_pct_cat,C4,2,Una o dos medidas en la vivienda,1148759,59.9
-fuente,comgen_per_pct_cat,C4,3,Tres o más medidas en la vivienda,734969,38.32
-fuente,comgen_per_pct_cat,C5,1,Sin medidas en la vivienda,63694,2.49
-fuente,comgen_per_pct_cat,C5,2,Una o dos medidas en la vivienda,1479310,57.91
-fuente,comgen_per_pct_cat,C5,3,Tres o más medidas en la vivienda,1011502,39.6
-fuente,comgen_com_pct_cat,C1,1,Sin medidas en el barrio,739963,29.55
-fuente,comgen_com_pct_cat,C1,2,Una medida en el barrio,779061,31.11
-fuente,comgen_com_pct_cat,C1,3,Dos o más medidas en el barrio,984925,39.33
-fuente,comgen_com_pct_cat,C2,1,Sin medidas en el barrio,351974,52.52
-fuente,comgen_com_pct_cat,C2,3,Dos o más medidas en el barrio,318181,47.48
-fuente,comgen_com_pct_cat,C3,1,Sin medidas en el barrio,867646,20.03
-fuente,comgen_com_pct_cat,C3,2,Una medida en el barrio,1049676,24.23
-fuente,comgen_com_pct_cat,C3,3,Dos o más medidas en el barrio,2414618,55.74
-fuente,comgen_com_pct_cat,C4,1,Sin medidas en el barrio,465684,24.28
-fuente,comgen_com_pct_cat,C4,2,Una medida en el barrio,727364,37.93
-fuente,comgen_com_pct_cat,C4,3,Dos o más medidas en el barrio,724785,37.79
-fuente,comgen_com_pct_cat,C5,1,Sin medidas en el barrio,600847,23.52
-fuente,comgen_com_pct_cat,C5,2,Una medida en el barrio,770260,30.15
-fuente,comgen_com_pct_cat,C5,3,Dos o más medidas en el barrio,1183399,46.33
+fuente,comgen_per_cat,C1,1,Sin medidas en la vivienda,141967,5.67
+fuente,comgen_per_cat,C1,2,Una o dos medidas en la vivienda,1524073,60.87
+fuente,comgen_per_cat,C1,3,Tres o más medidas en la vivienda,837910,33.46
+fuente,comgen_per_cat,C2,1,Sin medidas en la vivienda,670155,100
+fuente,comgen_per_cat,C3,1,Sin medidas en la vivienda,71577,1.65
+fuente,comgen_per_cat,C3,2,Una o dos medidas en la vivienda,1851898,42.75
+fuente,comgen_per_cat,C3,3,Tres o más medidas en la vivienda,2408466,55.6
+fuente,comgen_per_cat,C4,1,Sin medidas en la vivienda,34104,1.78
+fuente,comgen_per_cat,C4,2,Una o dos medidas en la vivienda,1148759,59.9
+fuente,comgen_per_cat,C4,3,Tres o más medidas en la vivienda,734969,38.32
+fuente,comgen_per_cat,C5,1,Sin medidas en la vivienda,63694,2.49
+fuente,comgen_per_cat,C5,2,Una o dos medidas en la vivienda,1479310,57.91
+fuente,comgen_per_cat,C5,3,Tres o más medidas en la vivienda,1011502,39.6
+fuente,comgen_com_cat,C1,1,Sin medidas en el barrio,739963,29.55
+fuente,comgen_com_cat,C1,2,Una medida en el barrio,779061,31.11
+fuente,comgen_com_cat,C1,3,Dos o más medidas en el barrio,984925,39.33
+fuente,comgen_com_cat,C2,1,Sin medidas en el barrio,351974,52.52
+fuente,comgen_com_cat,C2,3,Dos o más medidas en el barrio,318181,47.48
+fuente,comgen_com_cat,C3,1,Sin medidas en el barrio,867646,20.03
+fuente,comgen_com_cat,C3,2,Una medida en el barrio,1049676,24.23
+fuente,comgen_com_cat,C3,3,Dos o más medidas en el barrio,2414618,55.74
+fuente,comgen_com_cat,C4,1,Sin medidas en el barrio,465684,24.28
+fuente,comgen_com_cat,C4,2,Una medida en el barrio,727364,37.93
+fuente,comgen_com_cat,C4,3,Dos o más medidas en el barrio,724785,37.79
+fuente,comgen_com_cat,C5,1,Sin medidas en el barrio,600847,23.52
+fuente,comgen_com_cat,C5,2,Una medida en el barrio,770260,30.15
+fuente,comgen_com_cat,C5,3,Dos o más medidas en el barrio,1183399,46.33
 secundaria,rph_sexo,C1,1,Hombre,1572804,62.81
 secundaria,rph_sexo,C1,2,Mujer,931146,37.19
 secundaria,rph_sexo,C2,1,Hombre,326428,48.71

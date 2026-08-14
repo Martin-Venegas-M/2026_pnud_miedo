@@ -4,16 +4,16 @@ cluster,variable,categoria,lift_pp,Cla/Mod,Mod/Cla,Global,p.value,v.test
 1,perper_delito,No cree que será victima de delito,38.1,44.81,88.22,50.12,0,Inf
 1,comper_pct_cat,No modificó prácticas,33.12,75.52,49.96,16.84,0,Inf
 1,emper_casa_pct_cat,Sin inseguridad en la casa,22.89,33.16,98.57,75.68,0,Inf
-1,comgen_per_pct_cat,Una o dos medidas en la vivienda,12.54,31.46,65.76,53.21,4.4702674259389504e-238,32.94832781770007
+1,comgen_per_cat,Una o dos medidas en la vivienda,12.54,31.46,65.76,53.21,4.4702674259389504e-238,32.94832781770007
 1,comper_gasto,No gasta en medidas de seguridad,5.93,28.31,58.89,52.96,3.682766494259447e-54,15.496156009470297
-1,comgen_com_pct_cat,Sin medidas en el barrio,5.1,29.55,36.88,31.78,2.5208910960737362e-45,14.12888924560388
-1,comgen_com_pct_cat,Una medida en el barrio,2.83,27.95,31.8,28.97,7.083787331051693e-16,8.069066162383136
+1,comgen_com_cat,Sin medidas en el barrio,5.1,29.55,36.88,31.78,2.5208910960737362e-45,14.12888924560388
+1,comgen_com_cat,Una medida en el barrio,2.83,27.95,31.8,28.97,7.083787331051693e-16,8.069066162383136
 1,perper_delito,Cree que será victima de otro tipo de delito,-0.1,8.33,0.05,0.15,2.6456153333072346e-4,-3.64773574302505
 1,comper_pct_cat,Modificó hasta la mitad de las prácticas,-3.52,23.63,45.46,48.98,5.2196434616648625e-20,-9.159379792864819
-1,comgen_per_pct_cat,Sin medidas en la vivienda,-4.43,14.96,6.31,10.73,4.7945364315956243e-85,-19.542327406472864
+1,comgen_per_cat,Sin medidas en la vivienda,-4.43,14.96,6.31,10.73,4.7945364315956243e-85,-19.542327406472864
 1,comper_gasto,Gasta en medidas de seguridad,-5.93,22.25,41.11,47.04,3.6827664942594444e-54,-15.496156009470297
-1,comgen_com_pct_cat,Dos o más medidas en el barrio,-7.93,20.32,31.32,39.26,5.461199578241102e-101,-21.334251129027894
-1,comgen_per_pct_cat,Tres o más medidas en la vivienda,-8.12,19.73,27.94,36.05,5.648993293892525e-110,-22.280994286515885
+1,comgen_com_cat,Dos o más medidas en el barrio,-7.93,20.32,31.32,39.26,5.461199578241102e-101,-21.334251129027894
+1,comgen_per_cat,Tres o más medidas en la vivienda,-8.12,19.73,27.94,36.05,5.648993293892525e-110,-22.280994286515885
 1,emper_casa_pct_cat,"Inseguridad en la casa, de día y de noche",-8.56,0.98,0.34,8.9,0,-Inf
 1,emper_ep_pct_cat,Inseguridad en hasta la mitad de los lugares,-9.55,19.8,33.43,42.98,3.037179938378051e-141,-25.301989578416574
 1,emper_casa_pct_cat,"Inseguridad en la casa, de día o de noche",-14.33,1.8,1.09,15.41,0,-Inf
@@ -23,9 +23,9 @@ cluster,variable,categoria,lift_pp,Cla/Mod,Mod/Cla,Global,p.value,v.test
 1,comper_pct_cat,Modificó más de la mitad de las prácticas,-29.6,3.41,4.58,34.18,0,-Inf
 1,emper_barrio_pct_cat,"Inseguridad en el barrio, de día o de noche",-30.57,7.01,11.62,42.18,0,-Inf
 1,emper_ep_pct_cat,Inseguridad en más de la mitad de los lugares,-30.83,3.49,4.9,35.73,0,-Inf
-2,comgen_per_pct_cat,Sin medidas en la vivienda,89.27,69.08,100,10.73,0,Inf
+2,comgen_per_cat,Sin medidas en la vivienda,89.27,69.08,100,10.73,0,Inf
 2,comper_gasto,No gasta en medidas de seguridad,37.18,12.62,90.14,52.96,0,Inf
-2,comgen_com_pct_cat,Sin medidas en el barrio,33.62,15.26,65.4,31.78,0,Inf
+2,comgen_com_cat,Sin medidas en el barrio,33.62,15.26,65.4,31.78,0,Inf
 2,perper_delito,No cree que será victima de delito,8.44,8.66,58.56,50.12,1.8355041302362226e-26,10.645219877952874
 2,comper_pct_cat,No modificó prácticas,8.39,11.11,25.23,16.84,5.17430012116881e-41,13.411554156186712
 2,emper_ep_pct_cat,Sin inseguridad en espacio público,7.97,10.19,29.26,21.29,2.7616306180465206e-32,11.829076592308006
@@ -37,30 +37,30 @@ cluster,variable,categoria,lift_pp,Cla/Mod,Mod/Cla,Global,p.value,v.test
 2,perper_delito,Cree que será victima de delito violento,-3.08,6.6,24.82,27.9,1.266532263665573e-5,-4.365808810916486
 2,emper_barrio_pct_cat,"Inseguridad en el barrio, de día o de noche",-3.57,6.79,38.61,42.18,4.90230712336264e-6,-4.56892561704316
 2,emper_barrio_pct_cat,"Inseguridad en el barrio, de día y de noche",-3.77,6.11,17.6,21.37,3.535054586959203e-9,-5.904599037314532
-2,comgen_com_pct_cat,Dos o más medidas en el barrio,-4.65,6.54,34.6,39.26,1.5562838556880156e-9,-6.038422246709245
+2,comgen_com_cat,Dos o más medidas en el barrio,-4.65,6.54,34.6,39.26,1.5562838556880156e-9,-6.038422246709245
 2,perper_delito,Cree que será victima de delito no violento,-5.21,5.64,16.62,21.83,2.941183413202145e-16,-8.175714230914455
 2,emper_ep_pct_cat,Inseguridad en más de la mitad de los lugares,-5.65,6.24,30.08,35.73,5.77536678724439e-14,-7.513076697930766
 2,comper_pct_cat,Modificó más de la mitad de las prácticas,-9.19,5.42,24.99,34.18,8.307306637186301e-36,-12.491499432982227
-2,comgen_com_pct_cat,Una medida en el barrio,-28.97,0,0,28.97,0,-Inf
-2,comgen_per_pct_cat,Tres o más medidas en la vivienda,-36.05,0,0,36.05,0,-Inf
+2,comgen_com_cat,Una medida en el barrio,-28.97,0,0,28.97,0,-Inf
+2,comgen_per_cat,Tres o más medidas en la vivienda,-36.05,0,0,36.05,0,-Inf
 2,comper_gasto,Gasta en medidas de seguridad,-37.18,1.55,9.86,47.04,0,-Inf
-2,comgen_per_pct_cat,Una o dos medidas en la vivienda,-53.21,0,0,53.21,0,-Inf
+2,comgen_per_cat,Una o dos medidas en la vivienda,-53.21,0,0,53.21,0,-Inf
 3,emper_ep_pct_cat,Inseguridad en hasta la mitad de los lugares,28.98,53.66,71.95,42.98,0,Inf
 3,comper_pct_cat,Modificó hasta la mitad de las prácticas,25.76,48.91,74.74,48.98,0,Inf
 3,emper_barrio_pct_cat,"Inseguridad en el barrio, de día o de noche",22.43,49.09,64.61,42.18,0,Inf
 3,emper_casa_pct_cat,Sin inseguridad en la casa,17.98,39.66,93.66,75.68,0,Inf
-3,comgen_per_pct_cat,Tres o más medidas en la vivienda,15.33,45.68,51.39,36.05,0,Inf
+3,comgen_per_cat,Tres o más medidas en la vivienda,15.33,45.68,51.39,36.05,0,Inf
 3,perper_delito,Cree que será victima de delito violento,11.75,45.55,39.65,27.9,0,Inf
 3,comper_gasto,Gasta en medidas de seguridad,10.45,39.17,57.49,47.04,9.723679446565613e-225,32.00357695106964
-3,comgen_com_pct_cat,Dos o más medidas en el barrio,10.34,40.49,49.6,39.26,2.353659624553028e-227,32.19106713577436
+3,comgen_com_cat,Dos o más medidas en el barrio,10.34,40.49,49.6,39.26,2.353659624553028e-227,32.19106713577436
 3,perper_delito,Cree que será victima de otro tipo de delito,-0.15,0,0,0.15,8.068324749145425e-13,-7.159989488296901
-3,comgen_com_pct_cat,Una medida en el barrio,-2.18,29.64,26.79,28.97,1.616623811654291e-13,-7.377192340804749
+3,comgen_com_cat,Una medida en el barrio,-2.18,29.64,26.79,28.97,1.616623811654291e-13,-7.377192340804749
 3,perper_delito,No cree que será victima de delito,-5,28.85,45.12,50.12,7.221464584822801e-53,-15.303714586232275
 3,perper_delito,Cree que será victima de delito no violento,-6.6,22.36,15.23,21.83,5.974963052361302e-138,-25.00091468810363
-3,comgen_per_pct_cat,Una o dos medidas en la vivienda,-6.68,28.03,46.53,53.21,6.436630646134917e-93,-20.446634000550507
+3,comgen_per_cat,Una o dos medidas en la vivienda,-6.68,28.03,46.53,53.21,6.436630646134917e-93,-20.446634000550507
 3,emper_casa_pct_cat,"Inseguridad en la casa, de día y de noche",-6.93,7.12,1.98,8.9,0,-Inf
-3,comgen_com_pct_cat,Sin medidas en el barrio,-8.16,23.82,23.62,31.78,8.335081752633025e-163,-27.190839535949266
-3,comgen_per_pct_cat,Sin medidas en la vivienda,-8.65,6.21,2.08,10.73,0,-Inf
+3,comgen_com_cat,Sin medidas en el barrio,-8.16,23.82,23.62,31.78,8.335081752633025e-163,-27.190839535949266
+3,comgen_per_cat,Sin medidas en la vivienda,-8.65,6.21,2.08,10.73,0,-Inf
 3,comper_gasto,No gasta en medidas de seguridad,-10.45,25.73,42.51,52.96,9.723679446565623e-225,-32.00357695106964
 3,emper_barrio_pct_cat,Sin inseguridad en el barrio,-10.49,22.83,25.96,36.45,1.649067051057336e-250,-33.80528898804789
 3,emper_casa_pct_cat,"Inseguridad en la casa, de día o de noche",-11.05,9.07,4.36,15.41,0,-Inf
@@ -74,14 +74,14 @@ cluster,variable,categoria,lift_pp,Cla/Mod,Mod/Cla,Global,p.value,v.test
 4,perper_delito,Cree que será victima de delito no violento,27.84,38.36,49.67,21.83,0,Inf
 4,comper_pct_cat,Modificó más de la mitad de las prácticas,27.08,30.22,61.26,34.18,0,Inf
 4,emper_ep_pct_cat,Inseguridad en más de la mitad de los lugares,25.1,28.71,60.84,35.73,0,Inf
-4,comgen_com_pct_cat,Una medida en el barrio,9.73,22.52,38.7,28.97,3.82116988144763e-98,21.02565093286661
-4,comgen_per_pct_cat,Una o dos medidas en la vivienda,9.32,19.82,62.54,53.21,4.191863110795741e-79,18.83119595192085
+4,comgen_com_cat,Una medida en el barrio,9.73,22.52,38.7,28.97,3.82116988144763e-98,21.02565093286661
+4,comgen_per_cat,Una o dos medidas en la vivienda,9.32,19.82,62.54,53.21,4.191863110795741e-79,18.83119595192085
 4,perper_delito,Cree que será victima de otro tipo de delito,0.65,91.67,0.79,0.15,4.110632147941924e-44,13.930913647009858
-4,comgen_per_pct_cat,Tres o más medidas en la vivienda,-1.19,16.3,34.86,36.05,0.01275816859215824,-2.4904493308660682
-4,comgen_com_pct_cat,Sin medidas en el barrio,-2.36,15.61,29.41,31.78,3.147825134885345e-7,-5.1143743662052215
+4,comgen_per_cat,Tres o más medidas en la vivienda,-1.19,16.3,34.86,36.05,0.01275816859215824,-2.4904493308660682
+4,comgen_com_cat,Sin medidas en el barrio,-2.36,15.61,29.41,31.78,3.147825134885345e-7,-5.1143743662052215
 4,emper_barrio_pct_cat,"Inseguridad en el barrio, de día y de noche",-3.76,13.9,17.61,21.37,8.456249888985108e-21,-9.353789429578873
-4,comgen_com_pct_cat,Dos o más medidas en el barrio,-7.36,13.7,31.89,39.26,1.1585674645788595e-52,-15.272925422970589
-4,comgen_per_pct_cat,Sin medidas en la vivienda,-8.13,4.08,2.6,10.73,1.1481143320655097e-200,-30.223943494948035
+4,comgen_com_cat,Dos o más medidas en el barrio,-7.36,13.7,31.89,39.26,1.1585674645788595e-52,-15.272925422970589
+4,comgen_per_cat,Sin medidas en la vivienda,-8.13,4.08,2.6,10.73,1.1481143320655097e-200,-30.223943494948035
 4,emper_casa_pct_cat,"Inseguridad en la casa, de día y de noche",-8.21,1.32,0.69,8.9,2.656566249226948e-277,-35.58203523785742
 4,perper_delito,Cree que será victima de delito violento,-9.1,11.36,18.8,27.9,5.678968970432735e-98,-21.006840625599907
 4,emper_ep_pct_cat,Inseguridad en hasta la mitad de los lugares,-9.86,12.99,33.11,42.98,1.7303401518053524e-90,-20.171852574683236
@@ -97,14 +97,14 @@ cluster,variable,categoria,lift_pp,Cla/Mod,Mod/Cla,Global,p.value,v.test
 5,emper_casa_pct_cat,"Inseguridad en la casa, de día y de noche",32.43,84.55,41.34,8.9,0,Inf
 5,perper_delito,Cree que será victima de delito violento,19.03,30.63,46.93,27.9,0,Inf
 5,perper_delito,Cree que será victima de delito no violento,11.06,27.44,32.9,21.83,1.7027140939094346e-161,27.079809366270577
-5,comgen_per_pct_cat,Una o dos medidas en la vivienda,7.25,20.69,60.46,53.21,6.917012892860777e-53,15.306517060538196
+5,comgen_per_cat,Una o dos medidas en la vivienda,7.25,20.69,60.46,53.21,6.917012892860777e-53,15.306517060538196
 5,comper_gasto,Gasta en medidas de seguridad,4.91,20.12,51.95,47.04,5.460319461902748e-25,10.32449885114904
-5,comgen_com_pct_cat,Una medida en el barrio,2.66,19.89,31.63,28.97,8.937212153865969e-10,6.127319097053896
-5,comgen_com_pct_cat,Dos o más medidas en el barrio,1.6,18.96,40.86,39.26,5.73337195478328e-4,3.4439238323809693
+5,comgen_com_cat,Una medida en el barrio,2.66,19.89,31.63,28.97,8.937212153865969e-10,6.127319097053896
+5,comgen_com_cat,Dos o más medidas en el barrio,1.6,18.96,40.86,39.26,5.73337195478328e-4,3.4439238323809693
 5,perper_delito,Cree que será victima de otro tipo de delito,-0.15,0,0,0.15,5.108045225767926e-7,-5.022209384585812
-5,comgen_com_pct_cat,Sin medidas en el barrio,-4.27,15.77,27.51,31.78,2.384446213267722e-22,-9.723910332857
+5,comgen_com_cat,Sin medidas en el barrio,-4.27,15.77,27.51,31.78,2.384446213267722e-22,-9.723910332857
 5,comper_gasto,No gasta en medidas de seguridad,-4.91,16.52,48.05,52.96,5.460319461902753e-25,-10.32449885114904
-5,comgen_per_pct_cat,Sin medidas en la vivienda,-7.39,5.67,3.34,10.73,1.6456943680922238e-174,-28.163329875662754
+5,comgen_per_cat,Sin medidas en la vivienda,-7.39,5.67,3.34,10.73,1.6456943680922238e-174,-28.163329875662754
 5,emper_casa_pct_cat,"Inseguridad en la casa, de día o de noche",-9.38,7.13,6.03,15.41,6.302149176555355e-196,-29.861089114385504
 5,comper_pct_cat,No modificó prácticas,-13.99,3.08,2.85,16.84,0,-Inf
 5,emper_ep_pct_cat,Sin inseguridad en espacio público,-18.7,2.22,2.6,21.29,0,-Inf
