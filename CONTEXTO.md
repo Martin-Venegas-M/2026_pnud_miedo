@@ -50,7 +50,7 @@ Detalle con cifras en el repo viejo: `CONTEXTO.md §4.9` y
 | Casos que entran al modelo | 49.503 (88,8%) |
 | Soluciones calculadas | 4, 5 y 6 grupos |
 | Solución que se venía reportando | 5 grupos |
-| Targets en el DAG | 81 |
+| Targets en el DAG | 82 |
 
 **Las ocho decisiones metodológicas originales están cerradas, y la de la base
 también.** Lo que queda abierto es sobre qué reportar, no sobre cómo calcular, y
@@ -90,7 +90,7 @@ que sus vectores de variables no van a volver a cambiar. Ojo con el rename (§5)
 ## 4. Cómo está armado
 
 ```
-_targets.R        el DAG (81 targets)
+_targets.R        el DAG (82 targets)
 R/                las funciones, cargadas con tar_source()
 web/              las 8 páginas .qmd
 docs/             el sitio renderizado, es lo que sirve GitHub Pages
@@ -306,6 +306,18 @@ preguntar antes de lanzar, no para predecir cuánto va a tardar.
 **Lo que sí revela el costo real** es correr y después mirar `tar_progress()`:
 qué quedó en `skipped`. El corte por hash está verificado sobre este DAG.
 
+**El modelo sobrevive incluso a un cambio en la selección.** Agregar tres
+columnas a `seleccionar_variables()` cambia `datos_seleccionados`,
+`datos_recodificados` y `datos_finales`, y sin embargo `mca` y `hcpc` salieron
+`skipped`: `preparar_datos_mca()` se queda con `rph_id` más `cfg_vars_modelo`,
+así que las columnas nuevas se caen antes de que el valor del target quede
+fijado. Medido: 61 recalculados y 21 saltados en 8 min 32 s.
+
+**Al tocar la selección hay que tocar dos lugares.** `construir_mapeo_nombres()`
+reproduce la misma lista de `dplyr::select()` para aparear el nombre original
+con el nuestro **por posición**, y su aserción compara largos. Si se agrega una
+columna en un solo lado, el pipeline falla recién cuando llega ahí.
+
 **Los cortafuegos aguantan, medido dos veces.** Al agregar un diccionario a
 `cfg` (`BATERIAS`), `tar_outdated()` volvió a listar los 81 targets, `mca` y
 `hcpc` incluidos. En la corrida real los dos salieron `skipped`: 30 recalculados
@@ -346,7 +358,12 @@ reasigna cada vez.
 El detalle está en `PLAN.md` y en el registro de la página.
 
 1. **Se descarta la dimensión perceptual general** (`pergen`), tras las
-   discusiones sobre las soluciones de 2024.
+   discusiones sobre las soluciones de 2024. Sus tres preguntas
+   (`p_aumento_pais`, `p_aumento_com`, `p_aumento_barrio`) volvieron en agosto
+   de 2026 **como secundarias**, sin recodificar: describen a los grupos y no
+   los construyen, que es una cosa distinta de la que se decidió. La de comuna
+   ordena los seis grupos de forma monótona (46,6% dice "aumentó" en C1 contra
+   88,1% en C6) sin haber entrado al modelo.
 2. **"Ninguna medida" es respuesta, no dato faltante.** Entra con 0% de adopción.
    Es el hallazgo que motivó el rediseño.
 3. **"Otro delito" separado de "no sabe qué delito".** Recupera 78 casos; es

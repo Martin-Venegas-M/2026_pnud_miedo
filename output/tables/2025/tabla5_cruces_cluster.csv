@@ -258,6 +258,80 @@ secundaria,incivilidades_ind_rec,C5,1,Baja percepción de incivilidades,224456,8
 secundaria,incivilidades_ind_rec,C5,2,Media percepción de incivilidades,698051,27.33
 secundaria,incivilidades_ind_rec,C5,3,Alta percepción de incivilidades,1625894,63.65
 secundaria,incivilidades_ind_rec,C5,NA,NA,6104,0.24
+secundaria,p_aumento_pais,C1,1,Aumentó,1632610,65.2
+secundaria,p_aumento_pais,C1,2,Se mantuvo,682382,27.25
+secundaria,p_aumento_pais,C1,3,Disminuyó,157176,6.28
+secundaria,p_aumento_pais,C1,88,No sabe,30542,1.22
+secundaria,p_aumento_pais,C1,99,No responde,1239,0.05
+secundaria,p_aumento_pais,C2,1,Aumentó,556703,83.07
+secundaria,p_aumento_pais,C2,2,Se mantuvo,94675,14.13
+secundaria,p_aumento_pais,C2,3,Disminuyó,13669,2.04
+secundaria,p_aumento_pais,C2,88,No sabe,5107,0.76
+secundaria,p_aumento_pais,C3,1,Aumentó,3520693,81.27
+secundaria,p_aumento_pais,C3,2,Se mantuvo,721769,16.66
+secundaria,p_aumento_pais,C3,3,Disminuyó,73110,1.69
+secundaria,p_aumento_pais,C3,88,No sabe,16305,0.38
+secundaria,p_aumento_pais,C3,99,No responde,63,0
+secundaria,p_aumento_pais,C4,1,Aumentó,1782326,92.93
+secundaria,p_aumento_pais,C4,2,Se mantuvo,123221,6.43
+secundaria,p_aumento_pais,C4,3,Disminuyó,8031,0.42
+secundaria,p_aumento_pais,C4,88,No sabe,3923,0.2
+secundaria,p_aumento_pais,C4,99,No responde,332,0.02
+secundaria,p_aumento_pais,C5,1,Aumentó,2422711,94.84
+secundaria,p_aumento_pais,C5,2,Se mantuvo,119503,4.68
+secundaria,p_aumento_pais,C5,3,Disminuyó,9524,0.37
+secundaria,p_aumento_pais,C5,88,No sabe,2077,0.08
+secundaria,p_aumento_pais,C5,99,No responde,691,0.03
+secundaria,p_aumento_com,C1,1,Aumentó,1166484,46.59
+secundaria,p_aumento_com,C1,2,Se mantuvo,1060647,42.36
+secundaria,p_aumento_com,C1,3,Disminuyó,215173,8.59
+secundaria,p_aumento_com,C1,88,No sabe,60006,2.4
+secundaria,p_aumento_com,C1,99,No responde,1641,0.07
+secundaria,p_aumento_com,C2,1,Aumentó,458129,68.36
+secundaria,p_aumento_com,C2,2,Se mantuvo,177458,26.48
+secundaria,p_aumento_com,C2,3,Disminuyó,22259,3.32
+secundaria,p_aumento_com,C2,88,No sabe,12267,1.83
+secundaria,p_aumento_com,C2,99,No responde,41,0.01
+secundaria,p_aumento_com,C3,1,Aumentó,2982670,68.85
+secundaria,p_aumento_com,C3,2,Se mantuvo,1140901,26.34
+secundaria,p_aumento_com,C3,3,Disminuyó,149677,3.46
+secundaria,p_aumento_com,C3,88,No sabe,57471,1.33
+secundaria,p_aumento_com,C3,99,No responde,1222,0.03
+secundaria,p_aumento_com,C4,1,Aumentó,1629041,84.94
+secundaria,p_aumento_com,C4,2,Se mantuvo,253443,13.22
+secundaria,p_aumento_com,C4,3,Disminuyó,23440,1.22
+secundaria,p_aumento_com,C4,88,No sabe,11827,0.62
+secundaria,p_aumento_com,C4,99,No responde,82,0
+secundaria,p_aumento_com,C5,1,Aumentó,2250229,88.09
+secundaria,p_aumento_com,C5,2,Se mantuvo,265149,10.38
+secundaria,p_aumento_com,C5,3,Disminuyó,19025,0.74
+secundaria,p_aumento_com,C5,88,No sabe,18378,0.72
+secundaria,p_aumento_com,C5,99,No responde,1725,0.07
+secundaria,p_aumento_barrio,C1,1,Aumentó,507545,20.27
+secundaria,p_aumento_barrio,C1,2,Se mantuvo,1566121,62.55
+secundaria,p_aumento_barrio,C1,3,Disminuyó,381283,15.23
+secundaria,p_aumento_barrio,C1,88,No sabe,46495,1.86
+secundaria,p_aumento_barrio,C1,99,No responde,2506,0.1
+secundaria,p_aumento_barrio,C2,1,Aumentó,267873,39.97
+secundaria,p_aumento_barrio,C2,2,Se mantuvo,345878,51.61
+secundaria,p_aumento_barrio,C2,3,Disminuyó,48094,7.18
+secundaria,p_aumento_barrio,C2,88,No sabe,8107,1.21
+secundaria,p_aumento_barrio,C2,99,No responde,203,0.03
+secundaria,p_aumento_barrio,C3,1,Aumentó,1903588,43.94
+secundaria,p_aumento_barrio,C3,2,Se mantuvo,2024911,46.74
+secundaria,p_aumento_barrio,C3,3,Disminuyó,337690,7.8
+secundaria,p_aumento_barrio,C3,88,No sabe,62684,1.45
+secundaria,p_aumento_barrio,C3,99,No responde,3068,0.07
+secundaria,p_aumento_barrio,C4,1,Aumentó,1180745,61.57
+secundaria,p_aumento_barrio,C4,2,Se mantuvo,653913,34.1
+secundaria,p_aumento_barrio,C4,3,Disminuyó,65568,3.42
+secundaria,p_aumento_barrio,C4,88,No sabe,16356,0.85
+secundaria,p_aumento_barrio,C4,99,No responde,1250,0.07
+secundaria,p_aumento_barrio,C5,1,Aumentó,1841528,72.09
+secundaria,p_aumento_barrio,C5,2,Se mantuvo,638029,24.98
+secundaria,p_aumento_barrio,C5,3,Disminuyó,54578,2.14
+secundaria,p_aumento_barrio,C5,88,No sabe,19815,0.78
+secundaria,p_aumento_barrio,C5,99,No responde,556,0.02
 secundaria,info_exp_personal,C1,0,No se informa por experiencia personal,1919750,76.67
 secundaria,info_exp_personal,C1,1,Se informa por experiencia personal,580306,23.18
 secundaria,info_exp_personal,C1,88,No sabe,3570,0.14

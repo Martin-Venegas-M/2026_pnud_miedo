@@ -64,7 +64,8 @@ seleccionar_variables <- function(datos, cfg) {
             VP_DV,
             dplyr::starts_with("P_FUENTE_INFO_"),
             dplyr::starts_with("P_DESORDENES_"),
-            dplyr::starts_with("P_INCIVILIDADES_")
+            dplyr::starts_with("P_INCIVILIDADES_"),
+            dplyr::starts_with("P_AUMENTO_")
         ) |>
         dplyr::rename_with(~ glue::glue("emper_{.x}"), dplyr::matches(emper)) |>
         dplyr::rename_with(

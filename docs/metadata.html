@@ -216,7 +216,7 @@ ul.task-list li input[type="checkbox"] {
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Originales de la ENUSC</td>
-<td style="text-align: right;">128</td>
+<td style="text-align: right;">131</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Índices (_pct)</td>
@@ -232,7 +232,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 <tr class="odd">
 <td style="text-align: left;">Secundarias</td>
-<td style="text-align: right;">14</td>
+<td style="text-align: right;">17</td>
 </tr>
 </tbody>
 </table>
@@ -242,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="variables-originales" class="level1">
 <h1>1. Variables originales</h1>
 <p>Las que vienen de la ENUSC, sin transformar. La columna <strong>uso</strong> dice qué se hace con cada una: si alimenta algún índice, si se usa directamente como variable secundaria, o si no se usa.</p>
-<p>De las <strong>128 variables</strong> que se traen de la encuesta, <strong>92 se usan</strong> en el análisis y 36 no.</p>
+<p>De las <strong>131 variables</strong> que se traen de la encuesta, <strong>95 se usan</strong> en el análisis y 36 no.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -2566,6 +2566,57 @@ Durante los últimos doce meses ¿con qué frecuencia diría usted que suceden l
 incivilidades_ind
 </td>
 </tr>
+<tr>
+<td style="text-align:left;">
+P_AUMENTO_PAIS
+</td>
+<td style="text-align:left;">
+p_aumento_pais
+</td>
+<td style="text-align:left;">
+Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en el PAÍS…
+</td>
+<td style="text-align:left;">
+1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde
+</td>
+<td style="text-align:left;">
+Se usa directamente como variable secundaria
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P_AUMENTO_COM
+</td>
+<td style="text-align:left;">
+p_aumento_com
+</td>
+<td style="text-align:left;">
+Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su COMUNA…
+</td>
+<td style="text-align:left;">
+1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde
+</td>
+<td style="text-align:left;">
+Se usa directamente como variable secundaria
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+P_AUMENTO_BARRIO
+</td>
+<td style="text-align:left;">
+p_aumento_barrio
+</td>
+<td style="text-align:left;">
+Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su BARRIO…
+</td>
+<td style="text-align:left;">
+1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde
+</td>
+<td style="text-align:left;">
+Se usa directamente como variable secundaria
+</td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -2814,34 +2865,55 @@ incivilidades_ind
 <td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
 </tr>
 <tr class="even">
+<td style="text-align: left;">p_aumento_pais</td>
+<td style="text-align: left;">P_AUMENTO_PAIS</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en el PAÍS...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">p_aumento_com</td>
+<td style="text-align: left;">P_AUMENTO_COM</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su COMUNA...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">p_aumento_barrio</td>
+<td style="text-align: left;">P_AUMENTO_BARRIO</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su BARRIO...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
+</tr>
+<tr class="odd">
 <td style="text-align: left;">info_exp_personal</td>
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Se informa por experiencia personal</td>
 <td style="text-align: left;">0 = No se informa por experiencia personal; 1 = Se informa por experiencia personal; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">p_fuente_info_pais_1, p_fuente_info_com_1, p_fuente_info_barrio_1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">info_otras_personas</td>
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Se informa por otras personas</td>
 <td style="text-align: left;">0 = No se informa por otras personas; 1 = Se informa por otras personas; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">p_fuente_info_pais_1, p_fuente_info_com_1, p_fuente_info_barrio_1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">info_rrss</td>
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Se informa por RRSS</td>
 <td style="text-align: left;">0 = No se informa por RRSS; 1 = Se informa por RRSS; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">p_fuente_info_pais_1, p_fuente_info_com_1, p_fuente_info_barrio_1</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">info_prensa</td>
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Se informa por prensa</td>
 <td style="text-align: left;">0 = No se informa por prensa; 1 = Se informa por prensa; 88 = No sabe; 99 = No responde</td>
 <td style="text-align: left;">p_fuente_info_pais_1, p_fuente_info_com_1, p_fuente_info_barrio_1</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">info_tv</td>
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Se informa por TV</td>
@@ -4026,6 +4098,33 @@ incivilidades_ind
 <td style="text-align: left;">incivilidades_ind</td>
 </tr>
 <tr class="odd">
+<td style="text-align: left;">Originales de la ENUSC</td>
+<td style="text-align: left;">p_aumento_pais</td>
+<td style="text-align: left;">P_AUMENTO_PAIS</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en el PAÍS...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Se usa directamente como variable secundaria</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Originales de la ENUSC</td>
+<td style="text-align: left;">p_aumento_com</td>
+<td style="text-align: left;">P_AUMENTO_COM</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su COMUNA...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Se usa directamente como variable secundaria</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Originales de la ENUSC</td>
+<td style="text-align: left;">p_aumento_barrio</td>
+<td style="text-align: left;">P_AUMENTO_BARRIO</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su BARRIO...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">Se usa directamente como variable secundaria</td>
+</tr>
+<tr class="even">
 <td style="text-align: left;">Índices (_pct)</td>
 <td style="text-align: left;">emper_ep_pct</td>
 <td style="text-align: left;">-</td>
@@ -4034,7 +4133,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_p_inseg_lugares_1, emper_p_inseg_lugares_2, emper_p_inseg_lugares_3, emper_p_inseg_lugares_4, emper_p_inseg_lugares_5, emper_p_inseg_lugares_6, emper_p_inseg_lugares_7, emper_p_inseg_lugares_8, emper_p_inseg_lugares_9, emper_p_inseg_lugares_10, emper_p_inseg_lugares_11</td>
 <td style="text-align: left;">Insumo de su versión categorizada</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Índices (_pct)</td>
 <td style="text-align: left;">emper_barrio_pct</td>
 <td style="text-align: left;">-</td>
@@ -4043,7 +4142,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_p_inseg_oscuro_1, emper_p_inseg_dia_1</td>
 <td style="text-align: left;">Insumo de su versión categorizada</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Índices (_pct)</td>
 <td style="text-align: left;">emper_casa_pct</td>
 <td style="text-align: left;">-</td>
@@ -4052,7 +4151,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_p_inseg_oscuro_2, emper_p_inseg_dia_2</td>
 <td style="text-align: left;">Insumo de su versión categorizada</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Índices (_pct)</td>
 <td style="text-align: left;">comper_pct</td>
 <td style="text-align: left;">-</td>
@@ -4061,7 +4160,7 @@ incivilidades_ind
 <td style="text-align: left;">comper_p_mod_actividades_1, comper_p_mod_actividades_2, comper_p_mod_actividades_3, comper_p_mod_actividades_4, comper_p_mod_actividades_5, comper_p_mod_actividades_6, comper_p_mod_actividades_7, comper_p_mod_actividades_8, comper_p_mod_actividades_9, comper_p_mod_actividades_10, comper_p_mod_actividades_11, comper_p_mod_actividades_12, comper_p_mod_actividades_13</td>
 <td style="text-align: left;">Insumo de su versión categorizada</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">emper_ep_pct_cat</td>
 <td style="text-align: left;">-</td>
@@ -4070,7 +4169,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_ep_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">emper_barrio_pct_cat</td>
 <td style="text-align: left;">-</td>
@@ -4079,7 +4178,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_barrio_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">emper_casa_pct_cat</td>
 <td style="text-align: left;">-</td>
@@ -4088,7 +4187,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_casa_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">perper_delito</td>
 <td style="text-align: left;">-</td>
@@ -4097,7 +4196,7 @@ incivilidades_ind
 <td style="text-align: left;">perper_p_expos_delito, perper_p_delito_pronostico_1, perper_p_delito_pronostico_2, perper_p_delito_pronostico_3, perper_p_delito_pronostico_4, perper_p_delito_pronostico_6, perper_p_delito_pronostico_9, perper_p_delito_pronostico_10, perper_p_delito_pronostico_11, perper_p_delito_pronostico_5, perper_p_delito_pronostico_7, perper_p_delito_pronostico_8, perper_p_expos_delito, perper_p_delito_pronostico_77, perper_p_delito_pronostico_88, perper_p_delito_pronostico_99</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">comper_pct_cat</td>
 <td style="text-align: left;">-</td>
@@ -4106,7 +4205,7 @@ incivilidades_ind
 <td style="text-align: left;">comper_pct</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">comper_gasto</td>
 <td style="text-align: left;">-</td>
@@ -4115,7 +4214,7 @@ incivilidades_ind
 <td style="text-align: left;">comper_costos_medidas</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">comgen_per_cat</td>
 <td style="text-align: left;">-</td>
@@ -4124,7 +4223,7 @@ incivilidades_ind
 <td style="text-align: left;">comgen_medidas_perro, comgen_medidas_alarma_privada, comgen_medidas_camaras_vigilancia, comgen_medidas_rejas, comgen_medidas_cerco, comgen_medidas_proteccion, comgen_medidas_seguro, comgen_medidas_foco, comgen_medidas_otro</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Categorizadas (entran al modelo)</td>
 <td style="text-align: left;">comgen_com_cat</td>
 <td style="text-align: left;">-</td>
@@ -4133,7 +4232,7 @@ incivilidades_ind
 <td style="text-align: left;">comgen_vecinos_medidas_whatsapp, comgen_vecinos_medidas_vigilancia, comgen_vecinos_medidas_al_comunit, comgen_vecinos_medidas_coord_pol, comgen_vecinos_medidas_coord_mun, comgen_vecinos_medidas_televig, comgen_vecinos_medidas_privad, comgen_vecinos_medidas_otro</td>
 <td style="text-align: left;">Entra al modelo (MCA)</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Clusters</td>
 <td style="text-align: left;">clusters_4</td>
 <td style="text-align: left;">-</td>
@@ -4142,7 +4241,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_cat, comgen_com_cat</td>
 <td style="text-align: left;">Resultado del modelo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Clusters</td>
 <td style="text-align: left;">clusters_5</td>
 <td style="text-align: left;">-</td>
@@ -4151,7 +4250,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_cat, comgen_com_cat</td>
 <td style="text-align: left;">Resultado del modelo</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Clusters</td>
 <td style="text-align: left;">clusters_6</td>
 <td style="text-align: left;">-</td>
@@ -4160,7 +4259,7 @@ incivilidades_ind
 <td style="text-align: left;">emper_ep_pct_cat, emper_barrio_pct_cat, emper_casa_pct_cat, perper_delito, comper_pct_cat, comper_gasto, comgen_per_cat, comgen_com_cat</td>
 <td style="text-align: left;">Resultado del modelo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">rph_sexo</td>
 <td style="text-align: left;">rph_sexo</td>
@@ -4169,7 +4268,7 @@ incivilidades_ind
 <td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">rph_nivel_rec</td>
 <td style="text-align: left;">-</td>
@@ -4178,7 +4277,7 @@ incivilidades_ind
 <td style="text-align: left;">rph_nivel</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">rph_edad_rec</td>
 <td style="text-align: left;">-</td>
@@ -4187,7 +4286,7 @@ incivilidades_ind
 <td style="text-align: left;">rph_edad</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">rph_nse</td>
 <td style="text-align: left;">rph_nse</td>
@@ -4196,7 +4295,7 @@ incivilidades_ind
 <td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">enc_region_rec</td>
 <td style="text-align: left;">-</td>
@@ -4205,7 +4304,7 @@ incivilidades_ind
 <td style="text-align: left;">enc_region</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">vp_dc</td>
 <td style="text-align: left;">VP_DC</td>
@@ -4214,7 +4313,7 @@ incivilidades_ind
 <td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">vp_dv</td>
 <td style="text-align: left;">VP_DV</td>
@@ -4223,7 +4322,7 @@ incivilidades_ind
 <td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">desordenes_ind_rec</td>
 <td style="text-align: left;">-</td>
@@ -4232,12 +4331,39 @@ incivilidades_ind
 <td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Secundarias</td>
 <td style="text-align: left;">incivilidades_ind_rec</td>
 <td style="text-align: left;">-</td>
 <td style="text-align: left;">Indice de incivilidades (rec)</td>
 <td style="text-align: left;">1 = Baja percepción de incivilidades; 2 = Media percepción de incivilidades; 3 = Alta percepción de incivilidades</td>
+<td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
+<td style="text-align: left;">Describe los grupos, no entra al modelo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Secundarias</td>
+<td style="text-align: left;">p_aumento_pais</td>
+<td style="text-align: left;">P_AUMENTO_PAIS</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en el PAÍS...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
+<td style="text-align: left;">Describe los grupos, no entra al modelo</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Secundarias</td>
+<td style="text-align: left;">p_aumento_com</td>
+<td style="text-align: left;">P_AUMENTO_COM</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su COMUNA...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
+<td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
+<td style="text-align: left;">Describe los grupos, no entra al modelo</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Secundarias</td>
+<td style="text-align: left;">p_aumento_barrio</td>
+<td style="text-align: left;">P_AUMENTO_BARRIO</td>
+<td style="text-align: left;">Pensando en la delincuencia, usted diría que durante los últimos doce meses, la delincuencia en su BARRIO...</td>
+<td style="text-align: left;">1 = Aumentó; 2 = Se mantuvo; 3 = Disminuyó; 88 = No sabe; 96 = Sin dato; 99 = No responde</td>
 <td style="text-align: left;">Directa de la ENUSC, sin transformar</td>
 <td style="text-align: left;">Describe los grupos, no entra al modelo</td>
 </tr>

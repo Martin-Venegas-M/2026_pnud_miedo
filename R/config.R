@@ -68,6 +68,13 @@ construir_config <- function() {
             "vp_dv",
             "desordenes_ind_rec",
             "incivilidades_ind_rec",
+            #* Las tres de percepción de aumento del delito. Entran como
+            #* secundarias, sin recodificar: describen a los grupos y no los
+            #* construyen. La dimensión perceptual general sigue fuera del
+            #* modelo, que es una decisión distinta de esta.
+            "p_aumento_pais",
+            "p_aumento_com",
+            "p_aumento_barrio",
             "info_exp_personal",
             "info_otras_personas",
             "info_rrss",

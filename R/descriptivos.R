@@ -68,7 +68,8 @@ construir_mapeo_nombres <- function(datos_muestra, datos_seleccionados) {
             VP_DV,
             dplyr::starts_with("P_FUENTE_INFO_"),
             dplyr::starts_with("P_DESORDENES_"),
-            dplyr::starts_with("P_INCIVILIDADES_")
+            dplyr::starts_with("P_INCIVILIDADES_"),
+            dplyr::starts_with("P_AUMENTO_")
         ) |>
         names()
 

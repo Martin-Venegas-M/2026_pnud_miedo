@@ -31,6 +31,21 @@ secundaria,info_tv,No se informa por noticias,54.71,50.14,52.07,47.4,47.88
 secundaria,info_tv,Se informa por noticias,45.14,49.74,47.85,52.55,52.09
 secundaria,info_tv,No sabe,0.14,0.12,0.08,0.05,0.03
 secundaria,info_tv,No responde,0.01,0,0,0,0
+secundaria,p_aumento_barrio,Aumentó,20.27,39.97,43.94,61.57,72.09
+secundaria,p_aumento_barrio,Se mantuvo,62.55,51.61,46.74,34.1,24.98
+secundaria,p_aumento_barrio,Disminuyó,15.23,7.18,7.8,3.42,2.14
+secundaria,p_aumento_barrio,No sabe,1.86,1.21,1.45,0.85,0.78
+secundaria,p_aumento_barrio,No responde,0.1,0.03,0.07,0.07,0.02
+secundaria,p_aumento_com,Aumentó,46.59,68.36,68.85,84.94,88.09
+secundaria,p_aumento_com,Se mantuvo,42.36,26.48,26.34,13.22,10.38
+secundaria,p_aumento_com,Disminuyó,8.59,3.32,3.46,1.22,0.74
+secundaria,p_aumento_com,No sabe,2.4,1.83,1.33,0.62,0.72
+secundaria,p_aumento_com,No responde,0.07,0.01,0.03,0,0.07
+secundaria,p_aumento_pais,Aumentó,65.2,83.07,81.27,92.93,94.84
+secundaria,p_aumento_pais,Se mantuvo,27.25,14.13,16.66,6.43,4.68
+secundaria,p_aumento_pais,Disminuyó,6.28,2.04,1.69,0.42,0.37
+secundaria,p_aumento_pais,No sabe,1.22,0.76,0.38,0.2,0.08
+secundaria,p_aumento_pais,No responde,0.05,0,0,0.02,0.03
 secundaria,rph_edad_rec,0 a 29 años,27.32,25.6,30.36,20.12,16.67
 secundaria,rph_edad_rec,30 a 59 años,48.05,52.34,51.88,55.66,59.08
 secundaria,rph_edad_rec,60 años o más,24.63,22.06,17.75,24.22,24.25
