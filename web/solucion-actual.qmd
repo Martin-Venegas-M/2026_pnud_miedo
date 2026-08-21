@@ -525,48 +525,14 @@ corren sobre los casos crudos, y se **describen** ponderando. Es lo habitual y
 la partición no cambia, pero es un supuesto mixto.
 :::
 
-## Las tres soluciones
-
-```{r}
-#| label: matriz-soluciones
-#| results: asis
-#| fig-width: 10
-#| fig-height: 10
-#* Las tres matrices tienen el mismo alto (24 categorías, que no dependen de
-#* cuántos grupos haya), así que un solo chunk sirve para las tres y no hace
-#* falta dimensionar cada figura por separado.
-
-ETIQ_BASE <- c(muestral = "Muestral", ponderada = "Ponderada")
-
-cat("::: {.panel-tabset}\n\n")
-
-for (k in n_clases) {
-    marca <- if (k == sol_reportada) " ★" else ""
-    cat("\n### ", k, " grupos", marca, "\n\n", sep = "")
-
-    cat("::: {.panel-tabset}\n\n")
-    for (b in names(ETIQ_BASE)) {
-        cat("\n#### ", ETIQ_BASE[[b]], "\n\n", sep = "")
-        print(matriz_perfil_plot(b, k))
-        cat("\n\n")
-
-        vacias <- sum(is.na(
-            matriz$lift_pp[matriz$base == b & matriz$solucion == k]
-        ))
-        if (vacias > 0) {
-            cat(
-                "Las", vacias, "celdas con un punto son categorías que",
-                "`catdes()` no reportó para ese grupo.\n\n"
-            )
-        }
-    }
-    cat(":::\n\n")
-}
-
-cat(":::\n\n")
-```
+Cada matriz vive en la pestaña de su solución, más abajo, junto al resto de las
+salidas de esa solución.
 
 # Las soluciones
+
+Una pestaña por solución, y adentro todo lo que hay de ella: el mapa de los
+grupos, sus tamaños, la matriz de perfiles, el perfil contra el total y la
+comparación entre grupos.
 
 ```{r}
 #| label: perfil-familias
@@ -606,6 +572,37 @@ FAMILIAS <- list(
 #* son 67 y se derivan de la etiqueta que trae la ENUSC, así que escribirlas a
 #* mano acá las dejaría desincronizadas del instrumento.
 ETIQ_ORIG <- setNames(etiq_orig$etiqueta, etiq_orig$variable)
+
+#' Imprimir un gráfico con su propio alto dentro de un chunk `asis`
+#'
+#' Un chunk fija un solo `fig-height` para todo lo que imprima, y en la pestaña
+#' de cada solución conviven el mapa de los grupos, que es ancho y bajo, y la
+#' matriz de perfiles, que tiene 24 filas y necesita el doble de alto.
+#' `knit_child()` genera un chunk por gráfico, cada uno con el suyo.
+#'
+#' El bucle tiene que quedar en un solo chunk, porque es lo que produce un solo
+#' tabset con las salidas de cada solución contiguas. Lo que se reparte en
+#' varios chunks es el dibujo, no la estructura.
+#* `etiqueta` no es decorativa: sin ella knitr nombra los archivos
+#* `unnamed-chunk-13-1.png`, y esa numeración se corre entera al agregar un
+#* chunk en cualquier parte del documento. Los PNG viven versionados en
+#* `docs/`, así que un renombre masivo ensucia el diff sin que nada cambie.
+fig <- function(p, alto, etiqueta) {
+    cat(knitr::knit_child(
+        text = c(
+            paste0(
+                "```{r ", etiqueta,
+                ", echo=FALSE, fig.width=10, fig.height=", alto, "}"
+            ),
+            "p",
+            "```"
+        ),
+        envir = environment(),
+        quiet = TRUE
+    ))
+}
+
+ETIQ_BASE <- c(muestral = "Muestral", ponderada = "Ponderada")
 
 #' Claves de orden de una familia: por variable y por categoría
 #'
@@ -724,8 +721,9 @@ comparacion_familia <- function(fam, k) {
 ```{r}
 #| label: soluciones
 #| results: asis
-#| fig-width: 10
-#| fig-height: 7
+#* Sin fig-height: cada gráfico fija el suyo con fig(). El bucle entero va en
+#* un chunk porque es lo que mantiene un solo tabset, con las salidas de cada
+#* solución contiguas dentro de su pestaña.
 
 for (k in n_clases) {
     marca <- if (k == sol_reportada) " ★" else ""
@@ -775,7 +773,8 @@ for (k in n_clases) {
         labs(x = eje_x, y = eje_y) +
         tema_mapa
 
-    print(p)
+    cat("### Mapa de los grupos\n\n")
+    fig(p, 7, paste0("fig-mapa-", k))
     cat("\n\n")
 
     cat(
@@ -793,6 +792,32 @@ for (k in n_clases) {
         filter(variable == paste0("clusters_", k), !is.na(val)) |>
         transmute(Grupo = as.character(val), Casos = frq, `%` = valid.prc)
     cat(as.character(tabla(tam)), "\n\n")
+
+    # --- Matriz de perfiles -----------------------------------------------
+    cat("### La matriz de perfiles\n\n")
+    cat(
+        "Una fila por categoría de respuesta, una columna por grupo, y en la",
+        "celda la diferencia en puntos porcentuales contra el total. Azul es",
+        "diferencia positiva y naranja negativa.\n\n"
+    )
+
+    cat("::: {.panel-tabset}\n\n")
+    for (b in names(ETIQ_BASE)) {
+        cat("\n#### ", ETIQ_BASE[[b]], "\n\n", sep = "")
+        fig(matriz_perfil_plot(b, k), 10, paste0("fig-matriz-", b, "-", k))
+        cat("\n\n")
+
+        vacias <- sum(is.na(
+            matriz$lift_pp[matriz$base == b & matriz$solucion == k]
+        ))
+        if (vacias > 0) {
+            cat(
+                "Las", vacias, "celdas con un punto son categorías que",
+                "`catdes()` no reportó para ese grupo.\n\n"
+            )
+        }
+    }
+    cat(":::\n\n")
 
     # --- Perfil -----------------------------------------------------------
     cat("### Perfil de los grupos\n\n")

@@ -253,6 +253,18 @@ valores de los datos, no de la posición.
 **Un subdirectorio dentro de `docs/` sobrevive al render**, así que el archivado
 funciona. Verificado.
 
+**Quarto no limpia `docs/*_files/`**, y avisa por qué: "Refusing to remove
+directory ... since it is not a subdirectory of the main project directory",
+porque el render corre desde `web/`. Los PNG de un layout viejo se quedan
+versionados para siempre. Hay que barrerlos a mano.
+
+**Para saber cuál sobra no sirve buscar el nombre del archivo en el HTML.** La
+página viva y la archivada escriben la *misma* ruta relativa
+(`solucion-actual_files/figure-html/soluciones-1.png`), cada una resuelta contra
+su propio directorio, y el archivo congelado tiene su copia. Buscando por texto,
+los PNG viejos de la página viva aparecen usados y uno no los borra. Hay que
+resolver cada `src` contra el directorio de su HTML.
+
 ### Del instrumento
 
 **Los índices se construyen con rangos posicionales y eso trunca baterías en
