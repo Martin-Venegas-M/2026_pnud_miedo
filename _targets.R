@@ -566,6 +566,10 @@ list(
         etiquetas_originales(datos_finales, cfg_vars_originales, cfg$BATERIAS)
     ),
     tar_target(
+        orden_categorias_orig,
+        orden_categorias_originales(datos_finales, cfg_vars_originales)
+    ),
+    tar_target(
         cruces_originales_todas,
         tabla_cruces_originales_todas(
             diseno_muestral,

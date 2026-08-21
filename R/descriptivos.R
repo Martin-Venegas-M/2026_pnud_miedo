@@ -768,6 +768,47 @@ etiquetas_originales <- function(datos, vars_orig, baterias) {
         dplyr::select(variable, bateria, item, etiqueta)
 }
 
+#' Orden de las categorías de cada columna original
+#'
+#' El orden en que el instrumento declara las alternativas, para poder mostrar
+#' una batería como se lee en el cuestionario y no alfabéticamente.
+#'
+#' @section Por qué no se ordena por la etiqueta:
+#' Las categorías viajan como texto, y alfabéticamente "Inseguro/a" va antes que
+#' "Muy inseguro/a", que es el extremo opuesto de la escala. Cualquier orden que
+#' no venga de los valores rompe la lectura de las cuatro escalas de seguridad.
+#'
+#' @section Alternativa descartada:
+#' El orden ya está implícito en las filas de [tabla_cruces_originales_todas()],
+#' porque `srvyr` agrupa por el valor y el pivote lo conserva. Se descartó
+#' apoyarse en eso: es orden posicional, no sobrevive a un `arrange()` intermedio
+#' y no hay nada que falle si cambia.
+#'
+#' @param datos `datos_finales`.
+#' @param vars_orig Las columnas originales (target `cfg_vars_originales`).
+#' @return Un tibble `variable | categoria | orden`. Incluye las alternativas
+#'   declaradas que no aparecen en los datos: sobran en el join y no molestan.
+orden_categorias_originales <- function(datos, vars_orig) {
+    purrr::map(vars_orig, function(v) {
+        etiquetas <- attr(datos[[v]], "labels")
+
+        if (is.null(etiquetas)) {
+            rlang::abort(c(
+                "Una columna original no trae etiquetas de valor.",
+                x = paste("Sin atributo labels:", v),
+                i = "Sin ellas no hay orden de categorías que declarar."
+            ))
+        }
+
+        tibble::tibble(
+            variable = v,
+            categoria = names(etiquetas),
+            orden = seq_along(etiquetas)
+        )
+    }) |>
+        purrr::list_rbind()
+}
+
 #' Cruces de las variables originales por cluster, para todas las soluciones
 #'
 #' La versión para las columnas originales de [tabla_cruces_ancho_todas()]. Vive

@@ -421,7 +421,12 @@ solución.
 El perfil son tres tablas por solución, una por familia de variables:
 originales, fuente y secundarias. Todas ponderadas, con las mismas seis
 columnas (grupo, variable, respuesta, diferencia en pp, % en el grupo, % en el
-total) y ordenadas por grupo y por diferencia. Las **67 columnas originales**
+total). Las de fuente y secundarias van ordenadas por diferencia; la de
+originales va en el orden del cuestionario, batería por batería y con las
+alternativas de cada ítem en el orden en que las declara el instrumento, que
+viene del target `orden_categorias_orig`. Ordenar 67 columnas por diferencia
+dejaba los ítems de una misma batería desperdigados. Las **67 columnas
+originales**
 salen de `cfg$INDICES` más `cfg$CODIGOS_COMGEN`, y se rotulan con
 `etiquetas_originales()`, que aísla el ítem descartando el prefijo y el sufijo
 común de cada batería. **No usa `cfg$PATRONES`**: el separador de `perper`

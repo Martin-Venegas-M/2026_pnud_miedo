@@ -21,6 +21,7 @@ v_test <- leer("v_test_todas")
 lift_pond <- leer("lift_ponderado")
 lift_orig <- leer("lift_ponderado_originales")
 etiq_orig <- leer("etiquetas_orig")
+orden_orig <- leer("orden_categorias_orig")
 perdida_res <- leer_log("perdida_resumen")
 ```
 
@@ -576,21 +577,25 @@ FAMILIAS <- list(
         bajada = paste(
             "Las columnas del cuestionario que construyen las ocho variables",
             "del modelo, tal como vienen en la base. El rótulo nombra primero",
-            "la batería y después el ítem."
+            "la batería y después el ítem. Las filas van en el orden del",
+            "cuestionario, y dentro de cada ítem en el orden de sus",
+            "alternativas: son 67 columnas, y ordenarlas por diferencia",
+            "dejaría los ítems de una misma batería desperdigados."
         )
     ),
     fuente = list(
         titulo = "Variables fuente",
         bajada = paste(
             "Las ocho variables construidas, que son las que forman los",
-            "grupos."
+            "grupos. Ordenadas por diferencia: arriba queda lo que más",
+            "distingue al grupo."
         )
     ),
     secundaria = list(
         titulo = "Variables secundarias",
         bajada = paste(
             "Las que describen a los grupos sin participar de su",
-            "construcción."
+            "construcción. Ordenadas por diferencia."
         )
     )
 )
@@ -610,6 +615,19 @@ perfil_familia <- function(fam, k) {
         etiq <- ETIQUETAS_VARS
     }
 
+    #* Las originales se ordenan como el cuestionario y las otras dos por
+    #* diferencia. El orden de las alternativas no se puede derivar de la
+    #* etiqueta: alfabéticamente "Inseguro/a" va antes que "Muy inseguro/a".
+    if (fam == "original") {
+        d <- d |>
+            left_join(orden_orig, by = c("variable", "categoria")) |>
+            #* La categoría sin dato no es una alternativa declarada y queda
+            #* sin orden. Va al final de su ítem.
+            mutate(orden = coalesce(orden, Inf))
+    } else {
+        d <- d |> mutate(orden = NA_real_)
+    }
+
     out <- d |>
         filter(solucion == k) |>
         transmute(
@@ -618,9 +636,20 @@ perfil_familia <- function(fam, k) {
             Respuesta = categoria,
             `Diferencia (pp)` = round(lift_pp, 1),
             `% en el grupo` = round(pct_grupo, 1),
-            `% en el total` = round(global_pct, 1)
-        ) |>
-        arrange(Grupo, desc(`Diferencia (pp)`))
+            `% en el total` = round(global_pct, 1),
+            #* El orden de las variables es el de su declaración, que agrupa
+            #* cada batería. Alfabético las mezclaría.
+            orden_variable = match(variable, names(etiq)),
+            orden_categoria = orden
+        )
+
+    out <- if (fam == "original") {
+        arrange(out, Grupo, orden_variable, orden_categoria)
+    } else {
+        arrange(out, Grupo, desc(`Diferencia (pp)`))
+    }
+
+    out <- select(out, -orden_variable, -orden_categoria)
 
     #* El filtro es por el valor de una columna, así que un cambio de
     #* nomenclatura lo deja vacío sin que nada falle y la subpestaña sale sin
@@ -713,9 +742,9 @@ for (k in n_clases) {
     cat("### Perfil de los grupos\n\n")
     cat(
         "**Diferencia** es cuántos puntos porcentuales más (o menos) frecuente",
-        "es esa respuesta dentro del grupo que en el total. Las filas van",
-        "ordenadas por grupo y, dentro de cada grupo, por diferencia: arriba",
-        "queda lo que más lo distingue.\n\n"
+        "es esa respuesta dentro del grupo que en el total. Las tres tablas van",
+        "por grupo; lo que cambia entre ellas es cómo se ordenan las filas",
+        "dentro de cada uno.\n\n"
     )
 
     for (fam in names(FAMILIAS)) {
