@@ -416,7 +416,15 @@ decisiones que los producen**. Por eso la pestaña central es Pipeline y no la
 solución.
 
 **Solución actual** tiene, además del biplot y los mapas de cluster, el
-**perfil de los grupos** y la **matriz de perfiles**.
+**perfil de los grupos**, la **comparación entre grupos** y la **matriz de
+perfiles**.
+
+Perfil y comparación son el mismo dato leído en dos direcciones. El perfil
+compara cada respuesta contra el total; la comparación las pone lado a lado
+entre grupos, con la celda en porcentaje dentro del grupo, de modo que cada
+columna suma 100% dentro de cada bloque de variable. Las dos se parten en las
+mismas tres familias y comparten el orden de las filas, que resuelve
+`ordenar_familia()` en el `.qmd`.
 
 El perfil son tres tablas por solución, una por familia de variables:
 originales, fuente y secundarias. Todas ponderadas, con las mismas seis

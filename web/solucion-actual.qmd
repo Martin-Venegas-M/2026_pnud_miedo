@@ -22,6 +22,8 @@ lift_pond <- leer("lift_ponderado")
 lift_orig <- leer("lift_ponderado_originales")
 etiq_orig <- leer("etiquetas_orig")
 orden_orig <- leer("orden_categorias_orig")
+cruces_fs <- leer("cruces_ancho_todas")
+cruces_orig <- leer("cruces_originales_todas")
 perdida_res <- leer_log("perdida_resumen")
 ```
 
@@ -605,6 +607,32 @@ FAMILIAS <- list(
 #* mano acá las dejaría desincronizadas del instrumento.
 ETIQ_ORIG <- setNames(etiq_orig$etiqueta, etiq_orig$variable)
 
+#' Claves de orden de una familia: por variable y por categoría
+#'
+#' El orden de las variables es el de su declaración, que agrupa cada batería y
+#' cada dimensión. Alfabético las mezclaría.
+ordenar_familia <- function(d, fam, etiq) {
+    d <- if (fam == "original") {
+        #* El orden de las alternativas no se puede derivar de la etiqueta:
+        #* alfabéticamente "Inseguro/a" va antes que "Muy inseguro/a", que es el
+        #* extremo opuesto de la escala.
+        d |>
+            left_join(orden_orig, by = c("variable", "categoria")) |>
+            #* La categoría sin dato no es una alternativa declarada y queda sin
+            #* orden. Va al final de su ítem.
+            mutate(orden_categoria = coalesce(orden, Inf)) |>
+            select(-orden)
+    } else {
+        #* Las fuente y secundarias no tienen target de orden: sus categorías
+        #* llegan en el orden de sus valores, porque srvyr agrupa por el valor y
+        #* el pivote lo conserva. Se fija como columna para no depender de que
+        #* un arrange() posterior sea estable.
+        d |> mutate(orden_categoria = row_number(), .by = variable)
+    }
+
+    d |> mutate(orden_variable = match(variable, names(etiq)))
+}
+
 #' Una tabla de perfil, para una familia de variables y una solución
 perfil_familia <- function(fam, k) {
     if (fam == "original") {
@@ -615,21 +643,9 @@ perfil_familia <- function(fam, k) {
         etiq <- ETIQUETAS_VARS
     }
 
-    #* Las originales se ordenan como el cuestionario y las otras dos por
-    #* diferencia. El orden de las alternativas no se puede derivar de la
-    #* etiqueta: alfabéticamente "Inseguro/a" va antes que "Muy inseguro/a".
-    if (fam == "original") {
-        d <- d |>
-            left_join(orden_orig, by = c("variable", "categoria")) |>
-            #* La categoría sin dato no es una alternativa declarada y queda
-            #* sin orden. Va al final de su ítem.
-            mutate(orden = coalesce(orden, Inf))
-    } else {
-        d <- d |> mutate(orden = NA_real_)
-    }
-
     out <- d |>
         filter(solucion == k) |>
+        ordenar_familia(fam, etiq) |>
         transmute(
             Grupo = grupo,
             Variable = dplyr::coalesce(etiq[variable], variable),
@@ -637,10 +653,8 @@ perfil_familia <- function(fam, k) {
             `Diferencia (pp)` = round(lift_pp, 1),
             `% en el grupo` = round(pct_grupo, 1),
             `% en el total` = round(global_pct, 1),
-            #* El orden de las variables es el de su declaración, que agrupa
-            #* cada batería. Alfabético las mezclaría.
-            orden_variable = match(variable, names(etiq)),
-            orden_categoria = orden
+            orden_variable,
+            orden_categoria
         )
 
     out <- if (fam == "original") {
@@ -660,6 +674,48 @@ perfil_familia <- function(fam, k) {
     )
 
     out
+}
+
+#' Una tabla de comparación entre grupos, para una familia y una solución
+#'
+#' El mismo dato que el perfil, leído al revés: en vez de cuánto se aparta cada
+#' respuesta del total, cuánto pesa dentro de cada grupo, con los grupos lado a
+#' lado.
+comparacion_familia <- function(fam, k) {
+    if (fam == "original") {
+        d <- cruces_orig
+        etiq <- ETIQ_ORIG
+    } else {
+        d <- cruces_fs |> filter(grupo_variable == fam)
+        etiq <- ETIQUETAS_VARS
+    }
+
+    cols_k <- paste0("C", seq_len(k))
+
+    out <- d |>
+        filter(solucion == k) |>
+        ordenar_familia(fam, etiq) |>
+        transmute(
+            Variable = dplyr::coalesce(etiq[variable], variable),
+            Respuesta = categoria,
+            across(all_of(cols_k), \(x) round(x, 1)),
+            orden_variable,
+            orden_categoria
+        ) |>
+        arrange(orden_variable, orden_categoria) |>
+        select(-orden_variable, -orden_categoria)
+
+    stopifnot(
+        "Una familia de la comparación quedó sin filas" = nrow(out) > 0,
+        "Hay variables de la comparación sin rótulo" = !anyNA(out$Variable)
+    )
+
+    #* El nombre de la variable se escribe una vez por bloque. Los bloques son
+    #* contiguos porque ya se ordenó por variable.
+    out |>
+        group_by(Variable) |>
+        mutate(Variable = ifelse(row_number() == 1, Variable, "")) |>
+        ungroup()
 }
 ```
 
@@ -751,6 +807,28 @@ for (k in n_clases) {
         cat("#### ", FAMILIAS[[fam]]$titulo, "\n\n", sep = "")
         cat(FAMILIAS[[fam]]$bajada, "\n\n")
         cat(as.character(tabla(perfil_familia(fam, k), alto = "460px")), "\n\n")
+    }
+
+    # --- Comparación ------------------------------------------------------
+    cat("### Comparación entre grupos\n\n")
+    cat(
+        "Las tablas de arriba comparan cada respuesta contra el total. Estas la",
+        "comparan **entre grupos**: la celda es el porcentaje que esa respuesta",
+        "tiene dentro de ese grupo, así que cada columna suma 100% dentro de",
+        "cada bloque de variable. Se leen por filas, recorriendo una fila entre",
+        "columnas para ver qué grupos concentran esa respuesta.\n\n"
+    )
+
+    for (fam in names(FAMILIAS)) {
+        cat("#### ", FAMILIAS[[fam]]$titulo, "\n\n", sep = "")
+        cat(
+            as.character(tabla(
+                comparacion_familia(fam, k),
+                alto = "600px",
+                alinear = c("l", "l", rep("r", k))
+            )),
+            "\n\n"
+        )
     }
 }
 ```
