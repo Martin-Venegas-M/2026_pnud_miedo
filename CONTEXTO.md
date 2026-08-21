@@ -4,7 +4,7 @@ Documento de orientación. Léelo antes de tocar nada; es el punto de entrada.
 `PLAN.md` es el plan de ejecución por fases y tiene el detalle de cada decisión;
 este archivo dice **dónde estamos, cómo está armado y qué trampas ya pisamos**.
 
-Última actualización: 13 de agosto de 2026.
+Última actualización: 14 de agosto de 2026.
 
 ---
 
@@ -50,17 +50,28 @@ Detalle con cifras en el repo viejo: `CONTEXTO.md §4.9` y
 | Casos que entran al modelo | 49.503 (88,8%) |
 | Soluciones calculadas | 4, 5 y 6 grupos |
 | Solución que se venía reportando | 5 grupos |
-| Targets en el DAG | 81 |
+| Targets en el DAG | 76 |
 
-**Las ocho decisiones metodológicas están cerradas.** Quedan dos, y las dos son
-sobre qué reportar, no sobre cómo calcular:
+**Las ocho decisiones metodológicas originales están cerradas.** Lo que queda
+abierto es sobre qué reportar, no sobre cómo calcular, y necesita al equipo:
 
-1. **Cuántos grupos se reportan.** Las tres soluciones están en la página. No hay
-   criterio estadístico que decida: el % de inercia no sirve porque las tres se
-   construyen sobre el mismo MCA.
-2. **Cómo se llaman los grupos.** Hoy son `C1` a `C5`. Requiere leer los perfiles.
-
-Ambas necesitan al equipo, no al código.
+1. **Cuántos grupos se reportan.** No hay criterio estadístico que decida: el %
+   de inercia no sirve porque las tres soluciones se construyen sobre el mismo
+   MCA. Lo que sí hay es la lectura sustantiva de la pestaña Primeras lecturas:
+   las tres son el mismo árbol cortado a tres alturas, con **seis bloques
+   terminales**, y la de 6 no agrega un nivel de miedo sino un **eje de
+   protección** transversal.
+2. **Cómo se llaman los grupos.** Hoy son `C1` a `C6`.
+3. **Qué base se reporta, muestral o ponderada.** Apareció al construir la matriz
+   de perfiles: la página mostraba dos estimaciones de la misma cifra calculadas
+   distinto. La diferencia llega a 6,4 pp. La ponderada corresponde para hablar
+   de población; la muestral queda por continuidad con los informes anteriores.
+   **Vive solo en un callout de la página, no entró al registro de decisiones.**
+4. **Dos casos anotados y sin resolver**, los dos en recuadros de Pipeline: las
+   **982 personas** en la categoría "de día y de noche" que solo tenían un
+   momento aplicable, y las **7.880** que esperan un delito violento y uno no
+   violento y quedan contadas como no violento, porque esa rama del `case_when`
+   se evalúa primero.
 
 ### Fases del plan
 
@@ -78,9 +89,9 @@ que sus vectores de variables no van a volver a cambiar. Ojo con el rename (§5)
 ## 4. Cómo está armado
 
 ```
-_targets.R        el DAG (81 targets)
+_targets.R        el DAG (76 targets)
 R/                las funciones, cargadas con tar_source()
-web/              las 7 páginas .qmd
+web/              las 8 páginas .qmd
 docs/             el sitio renderizado, es lo que sirve GitHub Pages
 docs/archivo/     versiones congeladas de la página
 output/logs/      los CSV de log del pipeline, versionados
@@ -89,8 +100,15 @@ input/data/       la base original y los intermedios
 PLAN.md           plan de ejecución por fases, con el detalle de cada decisión
 ```
 
-El pipeline va: seleccionar → construir índices → categorizar → preparar el
-modelo → MCA → HCPC → pegar clusters → variables secundarias.
+El pipeline va: seleccionar → construir índices → construir las variables sin
+índice → categorizar → rescatar la no respuesta → etiquetar → preparar el modelo
+→ MCA → HCPC → pegar clusters → variables secundarias.
+
+**Cuatro de las ocho variables del modelo no pasan por un índice.** Las dos de
+`comgen` se cuentan directo sobre su batería, porque sus ítems no admiten el
+código 85 y el denominador no varía; `perper_delito` y `comper_gasto` se arman
+cruzando respuestas del cuestionario. Las cuatro se construyen en un solo paso,
+`datos_sin_indice`.
 
 Cada target de datos tiene un **target de log pareado** que compara entrada y
 salida. Los logs viven en `output/logs/` y se versionan: son el registro
@@ -110,9 +128,17 @@ Cuatro familias, y la distinción importa:
 | **De clusters** | `clusters_4`, `clusters_5`, `clusters_6` |
 | **Secundarias** | `cfg$VARS_SEC`. No entran al modelo; describen los grupos |
 
-Las ocho que entran al modelo están en **`cfg$VARS_MODELO`**. Antes se llamaba
-`VARS_REC_TERCIL` y las variables terminaban en `_rec_tercil`; el rename es de
-agosto de 2026 y cualquier código viejo que uses hay que actualizarlo.
+Las ocho que entran al modelo están en **`cfg$VARS_MODELO`**. Hubo dos renames
+en agosto de 2026, y cualquier código o análisis viejo que uses hay que
+actualizar:
+
+| Antes | Ahora |
+|---|---|
+| `VARS_REC_TERCIL`, variables en `_rec_tercil` | `VARS_MODELO`, variables en `_cat` |
+| `comgen_per_pct_cat`, `comgen_com_pct_cat` | `comgen_per_cat`, `comgen_com_cat` |
+
+El segundo se hizo cuando esas dos dejaron de pasar por un índice: el `_pct` del
+nombre prometía un porcentaje que ya no existe.
 
 Cuidado con **"dimensión"**: nombra tanto las cuatro dimensiones teóricas
 (`emper`, `perper`, `comper`, `comgen`) como los ejes del MCA.
@@ -122,8 +148,18 @@ Cuidado con **"dimensión"**: nombra tanto las cuatro dimensiones teóricas
 1. **`replace(x, which(cond), valor)`, nunca `if_else()` sobre vectores
    etiquetados.** `if_else()` corre sobre `vctrs` y descarta el atributo `labels`
    en silencio; el error aparece mucho después y no apunta a la causa.
-2. **Un solo `cfg`**, como target. Ahí viven los parámetros, los vectores de
-   variables y `CORTES`.
+2. **Un solo `cfg`**, como target, y `R/config.R` contiene exactamente lo que lo
+   construye. Ahí viven los parámetros, los vectores de variables, `CORTES` y
+   los seis diccionarios (`INDICES`, `ETIQUETAS`, `ETIQUETAS_SEC`, `PATRONES`,
+   `CODIGOS_COMGEN`, `SECUNDARIAS`).
+
+   **Los dos cortafuegos.** `targets` rastrea dependencias por target y no por
+   campo, así que cualquier cambio a `cfg` invalidaría todo lo que lo lea,
+   incluido el HCPC. Por eso `cfg_n_clases` y `cfg_vars_modelo` existen como
+   targets de una línea: son los dos únicos campos que la zona cara del DAG lee
+   directo. Al cambiar `cfg` se recalculan, devuelven lo mismo y la cascada
+   muere ahí. Si agregás un campo que el modelo lea directo, necesita el mismo
+   tratamiento.
 3. **Las aserciones no se comentan** para que el pipeline avance. Si algo falla al
    calibrar, revisar la diferencia *es* el trabajo.
 4. **El log es un target derivado, no un efecto secundario.** Nada de `message()`
@@ -131,6 +167,10 @@ Cuidado con **"dimensión"**: nombra tanto las cuatro dimensiones teóricas
 5. **Reportar la pérdida muestral** en cada paso que descarte casos.
 6. **Verificar el supuesto antes de construir sobre él.** Antes de tratar un
    código especial de una forma nueva, confirmar con datos qué significa.
+7. **Bucles a `purrr`, aserciones a `rlang::abort()`.** Los `for` que acumulan
+   columnas sobre un data frame se escriben como `purrr::reduce(..., .init =)`.
+   Los mensajes usan viñetas (`x =` qué pasó, `i =` por qué importa) y no llevan
+   el nombre de la función, que `abort()` ya reporta.
 
 ### Reglas de la página
 
@@ -149,6 +189,18 @@ tablas. Conviene un `stopifnot()` donde un filtro por nombre pueda quedar vacío
 descarte de filas vacías solo si `frq == 0`). La página lee los targets directo,
 así que **no** recibe esa limpieza: hay que redondear y filtrar en el `.qmd`. Ya
 pasó una vez que salieran 170 filas `NA 0 NA`.
+
+### Estilo de los docstrings
+
+**Sin referencias históricas.** Nada de `PLAN.md`, ni nombres de scripts del repo
+anterior, ni fases (`F5.3`), ni secciones (`§4.0`), ni decisiones por código
+(`D1`, `D2`). Quien abre una función hoy no tiene ese contexto y no debería
+necesitarlo. Se limpiaron 64 referencias en agosto de 2026; no reintroducirlas.
+
+**Prioridad a qué hace la función hoy.** Si además encarna una decisión de fondo,
+va en `@details`, contada **por su sustancia y no por su etiqueta**: en vez de
+"D1 aplicada", explicar que las columnas `_na` quedan fuera porque registran
+"ninguna medida", que es una respuesta y no una medida más.
 
 ### Estilo de prosa
 
@@ -233,16 +285,34 @@ El costo base tampoco es trivial: 49.503 personas son 1.225 millones de
 distancias, ~9,1 GB. Medido, la escala se degrada 2-3× respecto de lo cuadrático
 por presión de memoria.
 
-**Cambiar cualquier campo de `cfg` cuesta la corrida completa.** `cfg` es un
-solo target, así que tocar `CORTES` (que usa un solo target) invalida también a
-`hcpc`, que lee `cfg$N_CLASES`. Son 22 minutos por un cambio de configuración
-que no toca el modelo. La salida sería partir `cfg` en targets por campo; se
-evaluó y se dejó como está.
+**`tar_outdated()` sobreestima siempre, y no sirve para estimar el costo.** Es
+un análisis estático: propaga la invalidación por el grafo sin ejecutar nada, así
+que **no puede saber si un target va a devolver el mismo valor**. Cualquier
+cambio a `cfg` lo muestra invalidando el DAG entero, `hcpc` incluido. Medido: en
+un refactor de estilo listó los 76 targets y al correr `mca` y `hcpc` se
+saltaron, con la corrida completa en 2 minutos. Sirve para decidir cuándo
+preguntar antes de lanzar, no para predecir cuánto va a tardar.
+
+**Lo que sí revela el costo real** es correr y después mirar `tar_progress()`:
+qué quedó en `skipped`. El corte por hash está verificado sobre este DAG.
 
 **Refactorizar funciones no cuesta nada.** Verificado en un proyecto `targets`
 aislado: comentarios, docstrings, formato y mover una función de archivo **no
 invalidan**; renombrar una variable local sí, pero la cascada se corta enseguida
 porque el valor de retorno no cambia. Agregar aserciones es barato.
+
+**Antes de correr, verificar función por función contra el almacén.** Recalcular
+una función reescrita y compararla con su target guardado cuesta segundos y da
+más información que `tar_outdated()`. En el refactor a `purrr` atrapó tres
+errores que no habrían llegado a la corrida: un paréntesis de cierre huérfano al
+reemplazar un `stopifnot`, un `list_c(ptype=)` que falla con columnas
+`haven_labelled`, y un `character(1)` que sobrevivió a la conversión y que
+`map_chr` pasaba como argumento extra a la función.
+
+**Al borrar un target, buscar quién lo nombra.** Pasó dos veces: `logs_transformacion`
+consolida trece targets de log por nombre, y al borrar uno el error aparece recién
+cuando el pipeline llega ahí, que puede ser veinte minutos después. Un `grep` del
+nombre borrado sobre `_targets.R`, `R/` y `web/` cuesta nada.
 
 **`catdes()` falla al autoimprimirse** con estos datos, por `v.test` infinitos.
 
@@ -280,7 +350,14 @@ El detalle está en `PLAN.md` y en el registro de la página.
 
 ## 8. Lo que queda pendiente
 
-**Sustantivo, para el equipo:** cuántos grupos se reportan y cómo se llaman.
+**Sustantivo, para el equipo:** las cuatro de §3. Cuántos grupos se reportan,
+cómo se llaman, qué base se reporta, y qué hacer con los dos casos anotados.
+
+De esas, la de la **base** es la más urgente, porque afecta las cifras que se
+citan y hoy la página resuelve distinto en distintos lugares: la matriz de
+perfiles muestra las dos en tabset, la tabla "Qué distingue a cada grupo" es
+muestral y la de "Perfil de los grupos" es ponderada. Ninguna de las dos tablas
+dice cuál usa.
 
 **Técnico, en orden de utilidad:**
 
@@ -294,7 +371,15 @@ El detalle está en `PLAN.md` y en el registro de la página.
 
 - El ítem 14 de `P_MOD_ACTIVIDADES` ("Hacer otra actividad") sigue excluido del
   índice sin criterio escrito. Bajo impacto, mismo estándar pendiente.
-- `spec_patrones` declara `pergen`, que ya no existe en el pipeline. Inofensivo.
+- `spec_patrones()` declara `pergen`, que ya no existe en el pipeline. La
+  función sí se usa (`tabla_variables_originales()` la consume); lo vestigial es
+  esa entrada.
+- `tabla1_variables_originales` emite un warning de `separate()`
+  (`Expected 2 pieces. Additional pieces discarded in 4 rows`). Es preexistente y
+  su salida no cambia, pero nadie lo atendió.
+- Los `.xlsx` figuran modificados en cada corrida aunque su contenido no cambie:
+  `openxlsx` escribe un timestamp dentro del zip. El registro versionado real es
+  el `.csv` hermano, que sí es diffeable. Al revisar un diff, mirar los CSV.
 - `renv` quedó con `snapshot.type: "all"` (286 paquetes) porque el escáner de
   dependencias no ve los paquetes declarados en `tar_option_set(packages =)`. El
   arreglo liviano es un `_dependencies.R` que los liste.
@@ -312,6 +397,20 @@ Primeras lecturas · Decisiones pendientes · Glosario**
 El propósito la distingue de la anterior: comunica **los resultados y las
 decisiones que los producen**. Por eso la pestaña central es Pipeline y no la
 solución.
+
+**Solución actual** tiene, además del biplot y los mapas de cluster, la **matriz
+de perfiles**: las 24 categorías del modelo en filas, los grupos en columnas, y
+en la celda la diferencia en puntos porcentuales contra el total. Se presenta en
+tabsets anidados, solución afuera y base adentro. Azul es diferencia positiva y
+naranja negativa, que es la convención de los corrplot; va al revés de `PAL_DIM`,
+donde el azul nombra la dimensión emocional, y está anotado en el código.
+
+**Primeras lecturas** es una pestaña aparte, escrita por un LLM y **declarada
+como tal en un callout al comienzo**. Recorre los seis grupos de la solución más
+fina y después mira la estructura entre soluciones. Las afirmaciones
+comparativas ("el grupo más joven") llevan una aserción cada una, de modo que si
+el modelo se recalcula y alguna deja de ser cierta, la página no compila en vez
+de seguir afirmándola. Al escribirlas ya apareció una que era falsa.
 
 Diseño idéntico al de la página anterior (`cosmo`), con el azul cambiado a negro
 para distinguirlas de un vistazo. Tablas con `kableExtra`; **nada de tablas
