@@ -36,6 +36,14 @@ list(
     #* muere. Verificado en un proyecto targets aislado.
     tar_target(cfg_n_clases, cfg$N_CLASES),
     tar_target(cfg_vars_modelo, cfg$VARS_MODELO),
+
+    #* No es un cortafuegos: nada caro lo lee. Existe como target para que la
+    #* lista de columnas originales se derive de los diccionarios una sola vez
+    #* y los tres targets que la usan lean el mismo vector.
+    tar_target(
+        cfg_vars_originales,
+        vars_originales(cfg$INDICES, cfg$CODIGOS_COMGEN)
+    ),
     tar_target(
         archivo_original,
         archivo_enusc_original(cfg$ANIO),
@@ -542,13 +550,40 @@ list(
         marginales_ponderadas(
             diseno_muestral,
             paste0("clusters_", cfg_n_clases[1]),
-            cfg_vars_modelo,
-            cfg$VARS_SEC
+            c(cfg_vars_modelo, cfg$VARS_SEC)
         )
     ),
     tar_target(
         lift_ponderado,
         tabla_lift_ponderado(cruces_ancho_todas, marginales_modelo)
+    ),
+
+    # Lo mismo para las columnas originales que construyen las ocho variables
+    # del modelo, que la página muestra como su propia tabla de perfil. Es el
+    # paso más caro de esta zona: 67 columnas por tres soluciones, ~9 minutos.
+    tar_target(
+        etiquetas_orig,
+        etiquetas_originales(datos_finales, cfg_vars_originales, cfg$BATERIAS)
+    ),
+    tar_target(
+        cruces_originales_todas,
+        tabla_cruces_originales_todas(
+            diseno_muestral,
+            cfg_n_clases,
+            cfg_vars_originales
+        )
+    ),
+    tar_target(
+        marginales_originales,
+        marginales_ponderadas(
+            diseno_muestral,
+            paste0("clusters_", cfg_n_clases[1]),
+            cfg_vars_originales
+        )
+    ),
+    tar_target(
+        lift_ponderado_originales,
+        tabla_lift_ponderado(cruces_originales_todas, marginales_originales)
     ),
 
     # Las tres soluciones son el mismo árbol cortado a tres alturas. Este target

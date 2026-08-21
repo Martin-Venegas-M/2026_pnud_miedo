@@ -4,7 +4,7 @@ Documento de orientación. Léelo antes de tocar nada; es el punto de entrada.
 `PLAN.md` es el plan de ejecución por fases y tiene el detalle de cada decisión;
 este archivo dice **dónde estamos, cómo está armado y qué trampas ya pisamos**.
 
-Última actualización: 14 de agosto de 2026.
+Última actualización: 21 de agosto de 2026.
 
 ---
 
@@ -50,10 +50,11 @@ Detalle con cifras en el repo viejo: `CONTEXTO.md §4.9` y
 | Casos que entran al modelo | 49.503 (88,8%) |
 | Soluciones calculadas | 4, 5 y 6 grupos |
 | Solución que se venía reportando | 5 grupos |
-| Targets en el DAG | 76 |
+| Targets en el DAG | 81 |
 
-**Las ocho decisiones metodológicas originales están cerradas.** Lo que queda
-abierto es sobre qué reportar, no sobre cómo calcular, y necesita al equipo:
+**Las ocho decisiones metodológicas originales están cerradas, y la de la base
+también.** Lo que queda abierto es sobre qué reportar, no sobre cómo calcular, y
+necesita al equipo:
 
 1. **Cuántos grupos se reportan.** No hay criterio estadístico que decida: el %
    de inercia no sirve porque las tres soluciones se construyen sobre el mismo
@@ -62,16 +63,16 @@ abierto es sobre qué reportar, no sobre cómo calcular, y necesita al equipo:
    terminales**, y la de 6 no agrega un nivel de miedo sino un **eje de
    protección** transversal.
 2. **Cómo se llaman los grupos.** Hoy son `C1` a `C6`.
-3. **Qué base se reporta, muestral o ponderada.** Apareció al construir la matriz
-   de perfiles: la página mostraba dos estimaciones de la misma cifra calculadas
-   distinto. La diferencia llega a 6,4 pp. La ponderada corresponde para hablar
-   de población; la muestral queda por continuidad con los informes anteriores.
-   **Vive solo en un callout de la página, no entró al registro de decisiones.**
-4. **Dos casos anotados y sin resolver**, los dos en recuadros de Pipeline: las
+3. **Dos casos anotados y sin resolver**, los dos en recuadros de Pipeline: las
    **982 personas** en la categoría "de día y de noche" que solo tenían un
    momento aplicable, y las **7.880** que esperan un delito violento y uno no
    violento y quedan contadas como no violento, porque esa rama del `case_when`
    se evalúa primero.
+
+**La base se cerró el 21 de agosto de 2026: se reporta la ponderada.** Todas las
+tablas de la página estiman población con el diseño muestral. La muestral, que
+es la que devuelve `catdes()`, sobrevive solo en la matriz de perfiles, para
+poder contrastar con los informes anteriores. La decisión entró al registro.
 
 ### Fases del plan
 
@@ -89,7 +90,7 @@ que sus vectores de variables no van a volver a cambiar. Ojo con el rename (§5)
 ## 4. Cómo está armado
 
 ```
-_targets.R        el DAG (76 targets)
+_targets.R        el DAG (81 targets)
 R/                las funciones, cargadas con tar_source()
 web/              las 8 páginas .qmd
 docs/             el sitio renderizado, es lo que sirve GitHub Pages
@@ -150,8 +151,8 @@ Cuidado con **"dimensión"**: nombra tanto las cuatro dimensiones teóricas
    en silencio; el error aparece mucho después y no apunta a la causa.
 2. **Un solo `cfg`**, como target, y `R/config.R` contiene exactamente lo que lo
    construye. Ahí viven los parámetros, los vectores de variables, `CORTES` y
-   los seis diccionarios (`INDICES`, `ETIQUETAS`, `ETIQUETAS_SEC`, `PATRONES`,
-   `CODIGOS_COMGEN`, `SECUNDARIAS`).
+   los siete diccionarios (`INDICES`, `BATERIAS`, `ETIQUETAS`, `ETIQUETAS_SEC`,
+   `PATRONES`, `CODIGOS_COMGEN`, `SECUNDARIAS`).
 
    **Los dos cortafuegos.** `targets` rastrea dependencias por target y no por
    campo, así que cualquier cambio a `cfg` invalidaría todo lo que lo lea,
@@ -268,6 +269,15 @@ las distinguen.
 **El `96` ("Sin dato") está declarado en casi todas las variables y aparece muy
 rara vez.** Todo `case_when` sobre códigos especiales debe contemplarlo.
 
+**Las baterías bajo filtro reexpresan la pregunta filtro.** Los catorce ítems de
+`perper_p_delito_pronostico_*` se preguntan solo a quien contestó "sí" a
+`perper_p_expos_delito`. Al describirlos por cluster, la categoría sin dato de
+los catorce da exactamente la misma cifra que el "No" de la pregunta filtro
+(88,0% en C1 contra 44,8% del total, o sea +43,2 pp), así que una tabla ordenada
+por diferencia abre con once filas idénticas. No es un error de cálculo: es el
+salto del cuestionario contado catorce veces. Cualquier tabla que recorra
+columnas originales tiene que decidir qué hace con eso.
+
 ### Del modelo
 
 **`HCPC()` cuesta ~22 minutos y dos tercios son desperdicio.** Se llama una vez
@@ -295,6 +305,13 @@ preguntar antes de lanzar, no para predecir cuánto va a tardar.
 
 **Lo que sí revela el costo real** es correr y después mirar `tar_progress()`:
 qué quedó en `skipped`. El corte por hash está verificado sobre este DAG.
+
+**Los cortafuegos aguantan, medido dos veces.** Al agregar un diccionario a
+`cfg` (`BATERIAS`), `tar_outdated()` volvió a listar los 81 targets, `mca` y
+`hcpc` incluidos. En la corrida real los dos salieron `skipped`: 30 recalculados
+y 51 saltados en 8 min 27 s. Vale la pena mirar el archivo de progreso mientras
+corre (`_targets/meta/progress`, una línea por target con su estado) en vez de
+esperar al final: ahí se ve si el corte funcionó a los pocos segundos.
 
 **Refactorizar funciones no cuesta nada.** Verificado en un proyecto `targets`
 aislado: comentarios, docstrings, formato y mover una función de archivo **no
@@ -398,10 +415,24 @@ El propósito la distingue de la anterior: comunica **los resultados y las
 decisiones que los producen**. Por eso la pestaña central es Pipeline y no la
 solución.
 
-**Solución actual** tiene, además del biplot y los mapas de cluster, la **matriz
-de perfiles**: las 24 categorías del modelo en filas, los grupos en columnas, y
-en la celda la diferencia en puntos porcentuales contra el total. Se presenta en
-tabsets anidados, solución afuera y base adentro. Azul es diferencia positiva y
+**Solución actual** tiene, además del biplot y los mapas de cluster, el
+**perfil de los grupos** y la **matriz de perfiles**.
+
+El perfil son tres tablas por solución, una por familia de variables:
+originales, fuente y secundarias. Todas ponderadas, con las mismas seis
+columnas (grupo, variable, respuesta, diferencia en pp, % en el grupo, % en el
+total) y ordenadas por grupo y por diferencia. Las **67 columnas originales**
+salen de `cfg$INDICES` más `cfg$CODIGOS_COMGEN`, y se rotulan con
+`etiquetas_originales()`, que aísla el ítem descartando el prefijo y el sufijo
+común de cada batería. **No usa `cfg$PATRONES`**: el separador de `perper`
+incluye "en su" y trunca "Robo en su vivienda" a "Robo". El cruce ponderado de
+esas 67 por las tres soluciones es el paso más caro fuera del modelo, 5 min.
+
+La matriz de perfiles pone las 24 categorías del modelo en filas, los grupos en
+columnas, y en la celda la diferencia en puntos porcentuales contra el total. Se
+presenta en tabsets anidados, solución afuera y base adentro. **Es el único
+lugar de la página donde conviven las dos bases**, muestral y ponderada: el
+resto es todo ponderado. Azul es diferencia positiva y
 naranja negativa, que es la convención de los corrplot; va al revés de `PAL_DIM`,
 donde el azul nombra la dimensión emocional, y está anotado en el código.
 

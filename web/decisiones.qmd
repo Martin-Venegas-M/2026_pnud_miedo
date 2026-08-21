@@ -25,7 +25,13 @@ El [registro completo de decisiones](pipeline.html#registro-de-decisiones),
 incluyendo las ocho que ya están cerradas, está al final de la pestaña Pipeline.
 
 ::: {.callout-note}
-## Las dos decisiones metodológicas que estaban abiertas se resolvieron
+## Tres decisiones que estaban abiertas se resolvieron
+
+**Qué base se reporta.** La ponderada. Todas las tablas de la página estiman
+población con el diseño muestral de la ENUSC. La versión sin ponderar, que es la
+que devuelve `catdes()`, se conserva en la
+[matriz de perfiles](solucion-actual.html#las-dos-bases) para poder contrastar
+con los informes anteriores.
 
 **Cómo se cortan los índices.** Se reemplazaron los terciles por cortes que
 siguen lo que la variable significa, con el cero como categoría propia. Está
@@ -63,10 +69,10 @@ Los grupos aparecen como `C1`, `C2` y así. Ponerles nombre sustantivo es una
 decisión del equipo y no puede derivarse del dato: requiere leer los perfiles y
 decidir qué los caracteriza.
 
-El insumo está en [Solución actual](solucion-actual.html): para cada solución hay
-una tabla de qué distingue a cada grupo, ordenada por cuánto se aparta cada
-respuesta del promedio de la muestra, y el perfil completo con todas las
-variables.
+El insumo está en [Solución actual](solucion-actual.html): para cada solución
+está el perfil de los grupos, en tres tablas (variables originales, fuente y
+secundarias), con las respuestas ordenadas por cuánto se apartan del total de la
+población.
 
 Las dos se toman sobre la solución que produjo el corte nuevo, que es la que está
 en Solución actual. La numeración de los grupos no se corresponde con la de la

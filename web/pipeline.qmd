@@ -997,17 +997,21 @@ registro <- tibble::tribble(
     "Cerrada",
     "Se queda en el denominador. Convención conservadora: ante la duda, no se atribuye miedo.",
 
-    "Quienes no responden la pregunta filtro de victimización",
+ "Quienes no responden la pregunta filtro de victimización",
     "Cerrada",
     "Se mantienen fuera del modelo. Es no respuesta genuina, sin respuesta sustantiva escondida.",
 
+    "Qué base se reporta, muestral o ponderada",
+    "Cerrada",
+    "Se reporta la ponderada, que es la que estima población. Todas las tablas de la página salen de esa base. La muestral, que es la que devuelve catdes(), se conserva solo en la matriz de perfiles, para poder contrastar con los informes anteriores.",
+
     "Cuántos grupos se reportan",
     "Abierta",
-    "Se calcularon las soluciones de 4, 5 y 6. La de 5 es la que se venía reportando. Depende de cómo se resuelvan los cortes.",
+    "Se calcularon las soluciones de 4, 5 y 6. La de 5 es la que se venía reportando. Las tres son el mismo árbol cortado a tres alturas, así que no hay criterio estadístico que decida: la elección es sustantiva.",
 
     "Nombres de los grupos",
     "Abierta",
-    "Los grupos aparecen como C1 a C5. Ponerles nombre es tarea del equipo, y esta página es el insumo."
+    "Los grupos aparecen como C1 a C6. Ponerles nombre es tarea del equipo, y esta página es el insumo."
 )
 
 registro |>

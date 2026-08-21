@@ -551,12 +551,15 @@ tabla_cruces_ancho_todas <- function(svy, n_clases, vars_fuente, vars_sec) {
 #'
 #' @param svy Diseño muestral (target `diseno_muestral`).
 #' @param clust_var Nombre de una columna de cluster, para definir el universo.
-#' @param vars_fuente,vars_sec Vectores de variables.
+#' @param vars Vector de variables a marginalizar. Recibe un solo vector y no
+#'   uno por familia porque el cálculo es el mismo para todas: las del modelo y
+#'   las secundarias van juntas para la matriz de perfiles, y las originales van
+#'   solas para su propia tabla.
 #' @return Un tibble `variable | categoria | global_pct`.
-marginales_ponderadas <- function(svy, clust_var, vars_fuente, vars_sec) {
+marginales_ponderadas <- function(svy, clust_var, vars) {
     svy_mod <- svy |> dplyr::filter(!is.na(.data[[clust_var]]))
 
-    purrr::map(c(vars_fuente, vars_sec), function(v) {
+    purrr::map(vars, function(v) {
         svy_mod |>
             srvyr::group_by(dplyr::across(dplyr::all_of(v))) |>
             srvyr::summarise(prop = srvyr::survey_mean()) |>
@@ -637,6 +640,175 @@ tabla_lift_ponderado <- function(cruces_ancho, marginales) {
     }
 
     res
+}
+
+#' Rótulo legible de cada columna original
+#'
+#' Las etiquetas de la ENUSC repiten la pregunta entera en cada ítem de una
+#' batería, así que puestas en una tabla ocupan una pantalla y no dejan ver qué
+#' distingue a un ítem del siguiente. Esta función se queda con el ítem y le
+#' antepone el nombre de la batería.
+#'
+#' @section Cómo se aísla el ítem:
+#' Por el texto que las etiquetas de una batería **no** comparten: se descarta
+#' el prefijo común y el sufijo común de las etiquetas del grupo, y lo que
+#' queda es el ítem. Sirve para los tres formatos que trae el instrumento sin
+#' un caso especial por dimensión: el ítem después de un signo de pregunta
+#' ("...¿qué tan seguro/a se siente...? Trasladándose en su vehículo"), el ítem
+#' después de un punto ("Indique el o los elementos... Perro u otro animal") y
+#' el ítem entre comillas dentro de la pregunta ("...¿ha dejado de \"Caminar
+#' solo/a\"?"), donde el sufijo común es justamente la comilla de cierre y el
+#' signo final.
+#'
+#' @section Alternativa descartada:
+#' `cfg$PATRONES` ya declara un separador por dimensión y lo usa la tabla de
+#' univariados. No sirve acá: el separador de `perper` incluye "en su", de modo
+#' que "Robo en su vivienda" se corta en el segundo separador y el ítem queda
+#' como "Robo". Sobre cuatro de los catorce delitos del pronóstico el rótulo
+#' saldría truncado, y son ítems que se leen uno contra otro.
+#'
+#' @section Por qué el rótulo lleva el nombre de la batería adelante:
+#' Seis ítems tienen etiqueta repetida entre baterías: "No sabe", "No responde"
+#' y "No tenemos ninguna medida de seguridad" existen en las dos baterías de
+#' opción múltiple, y "Otro elemento de seguridad" también. En una tabla
+#' ordenada por tamaño de la diferencia, donde las filas de distintas baterías
+#' quedan intercaladas, un rótulo repetido no se puede atribuir.
+#'
+#' @param datos `datos_finales`.
+#' @param vars_orig Las columnas originales (target `cfg_vars_originales`).
+#' @param baterias `cfg$BATERIAS`.
+#' @return Un tibble `variable | bateria | item | etiqueta`.
+etiquetas_originales <- function(datos, vars_orig, baterias) {
+    #* El prefijo común se calcula carácter a carácter y no con una expresión
+    #* regular: las etiquetas traen signos de pregunta, comillas y paréntesis,
+    #* que habría que escapar para construir el patrón.
+    prefijo_comun <- function(x) {
+        if (length(x) < 2) return("")
+        ch <- strsplit(x, "")
+        n <- min(lengths(ch))
+        k <- 0L
+        while (
+            k < n &&
+                length(unique(vapply(ch, \(z) z[k + 1L], character(1)))) == 1L
+        ) {
+            k <- k + 1L
+        }
+        substr(x[[1]], 1, k)
+    }
+
+    invertir <- function(s) {
+        vapply(strsplit(s, ""), \(z) paste(rev(z), collapse = ""), character(1))
+    }
+    sufijo_comun <- function(x) invertir(prefijo_comun(invertir(x)))
+
+    faltantes <- setdiff(vars_orig, names(datos))
+    if (length(faltantes) > 0) {
+        rlang::abort(c(
+            "Hay columnas originales declaradas que no existen en los datos.",
+            x = paste("Faltan:", paste(faltantes, collapse = ", "))
+        ))
+    }
+
+    #* Una columna que matchea dos patrones, o ninguno, deja el rótulo sin
+    #* batería y la tabla sale con filas que no se pueden atribuir. Tiene que
+    #* fallar acá.
+    match_bateria <- purrr::map(vars_orig, function(v) {
+        names(baterias)[stringr::str_detect(v, baterias)]
+    })
+    names(match_bateria) <- vars_orig
+    ambiguas <- match_bateria[lengths(match_bateria) != 1]
+
+    if (length(ambiguas) > 0) {
+        rlang::abort(c(
+            "Cada columna original tiene que pertenecer a exactamente una batería.",
+            x = paste(
+                "Sin batería única:",
+                paste(names(ambiguas), collapse = ", ")
+            ),
+            i = "Revisar los patrones de cfg$BATERIAS."
+        ))
+    }
+
+    tibble::tibble(
+        variable = vars_orig,
+        bateria = unlist(match_bateria, use.names = FALSE),
+        label = vapply(
+            vars_orig,
+            \(v) sjlabelled::get_label(datos[[v]]) %||% NA_character_,
+            character(1),
+            USE.NAMES = FALSE
+        )
+    ) |>
+        dplyr::mutate(
+            item = {
+                p <- nchar(prefijo_comun(label))
+                s <- nchar(sufijo_comun(label))
+                stringr::str_squish(substr(label, p + 1L, nchar(label) - s))
+            },
+            .by = bateria
+        ) |>
+        dplyr::mutate(
+            #* Lo que sobra del recorte en la batería donde el ítem va entre
+            #* comillas dentro de la pregunta.
+            item = stringr::str_squish(
+                stringr::str_remove_all(item, '^["“]|["”]?\\??$')
+            ),
+            #* Las preguntas sueltas no tienen ítem que separar: el prefijo
+            #* común de un solo elemento es vacío y el recorte devuelve la
+            #* etiqueta entera. Se rotulan con el nombre de la batería. Es un
+            #* `if` y no un `if_else()` porque la condición es del grupo entero,
+            #* no de cada fila.
+            etiqueta = if (dplyr::n() == 1) {
+                bateria
+            } else {
+                paste0(bateria, ": ", item)
+            },
+            .by = bateria
+        ) |>
+        dplyr::select(variable, bateria, item, etiqueta)
+}
+
+#' Cruces de las variables originales por cluster, para todas las soluciones
+#'
+#' La versión para las columnas originales de [tabla_cruces_ancho_todas()]. Vive
+#' en su propio target porque es el paso más caro de esta zona del pipeline:
+#' son 67 columnas por tres soluciones, medido en unos 9 minutos, contra las 22
+#' columnas de la tabla de variables del modelo y secundarias.
+#'
+#' @section Por qué no se agrega como una familia más de la tabla existente:
+#' [tabla_cruces_cluster()] alimenta también la planilla del entregable, con su
+#' formato ya acordado. Sumarle una tercera familia cambiaría esa salida y
+#' obligaría a recalcular las 22 columnas cada vez que se toque el rótulo de una
+#' original. Separadas, cada una se invalida sola.
+#'
+#' @param svy Diseño muestral.
+#' @param n_clases `cfg$N_CLASES`.
+#' @param vars_orig Las columnas originales (target `cfg_vars_originales`).
+#' @return Un tibble ancho con columna `solucion` y una por cluster, igual
+#'   estructura que [tabla_cruces_ancho_todas()] pero con `grupo_variable` en
+#'   `"original"`.
+tabla_cruces_originales_todas <- function(svy, n_clases, vars_orig) {
+    purrr::map(n_clases, function(k) {
+        clust_var <- paste0("clusters_", k)
+
+        tab_var_clust(
+            svy = svy,
+            clust_var = clust_var,
+            vector_vars = vars_orig,
+            type_var_str = "original",
+            invert = FALSE,
+            save = FALSE
+        ) |>
+            #* Las originales mezclan dominios de valor (0/1, 1 a 4, 1 a 5), y
+            #* list_rbind() aborta si la misma columna llega con tipos
+            #* distintos. Misma conversión que hace tabla_cruces_cluster().
+            purrr::map(\(x) dplyr::mutate(x, val = as.character(val))) |>
+            purrr::list_rbind() |>
+            dplyr::mutate(grupo_variable = "original") |>
+            tabla_cruces_ancho(clust_var) |>
+            dplyr::mutate(solucion = k, .before = 1)
+    }) |>
+        purrr::list_rbind()
 }
 
 #' Bloques terminales de las tres soluciones de cluster

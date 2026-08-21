@@ -87,6 +87,7 @@ construir_config <- function() {
         #* en _targets.R: son los que evitan que tocar un diccionario recorra
         #* el HCPC.
         INDICES = spec_indices(),
+        BATERIAS = spec_baterias_originales(),
         ETIQUETAS = spec_etiquetas_indices(),
         ETIQUETAS_SEC = spec_etiquetas_secundarias(),
         PATRONES = spec_patrones(),
@@ -176,6 +177,85 @@ spec_indices <- function() {
             "comgen_vecinos_medidas_otro"
         )
     )
+}
+
+#' Baterías de las variables originales, para rotularlas
+#'
+#' Las columnas originales llegan con la etiqueta completa de la ENUSC, que
+#' repite la pregunta entera en cada ítem: los once lugares del índice de
+#' espacio público empiezan los once con "Durante los últimos doce meses, según
+#' su experiencia, ¿qué tan seguro/a se siente...?". Para mostrarlas en una
+#' tabla hay que quedarse con el ítem, y para eso hace falta saber qué columnas
+#' comparten pregunta.
+#'
+#' @section Por qué se declara por patrón de nombre y no por lista de columnas:
+#' La pertenencia a batería ya está implícita en `cfg$INDICES`, pero no calza:
+#' `perper_delito` mezcla en un mismo elemento la pregunta filtro
+#' (`perper_p_expos_delito`) con los catorce ítems del pronóstico, que son otra
+#' pregunta; y las columnas de código especial de `comgen` no viven ahí sino en
+#' `cfg$CODIGOS_COMGEN`. Un patrón sobre el nombre de la columna agrupa las ocho
+#' baterías reales sin duplicar los vectores de variables.
+#'
+#' @section Alternativa descartada:
+#' Agrupar por los primeros caracteres de la etiqueta funciona sobre estos datos
+#' (da las mismas ocho baterías, verificado), pero depende de que dos preguntas
+#' distintas nunca empiecen igual, que es una propiedad del texto del
+#' cuestionario y no algo que el análisis controle. El patrón sobre el nombre de
+#' la columna sí lo controla el pipeline.
+#'
+#' @section Las dos baterías de un solo ítem:
+#' `perper_p_expos_delito` y `comper_costos_medidas` son preguntas sueltas, no
+#' baterías. No tienen ítem que separar, así que se rotulan con el nombre de la
+#' batería a secas. Están declaradas igual para que toda columna original
+#' pertenezca a exactamente una batería y la aserción pueda ser total.
+#'
+#' @return Un vector nombrado: nombre legible de la batería = patrón que matchea
+#'   sus columnas.
+spec_baterias_originales <- function() {
+    c(
+        "Inseguridad en lugares" = "^emper_p_inseg_lugares_",
+        "Inseguridad en el barrio y la casa" = "^emper_p_inseg_(oscuro|dia)_",
+        "Expectativa de victimización" = "^perper_p_expos_delito$",
+        "Delito que espera" = "^perper_p_delito_pronostico_",
+        "Prácticas que dejó de hacer" = "^comper_p_mod_actividades_",
+        "Gasto en medidas de seguridad" = "^comper_costos_medidas$",
+        "Medidas de la vivienda" = "^comgen_medidas_",
+        "Medidas del barrio" = "^comgen_vecinos_medidas_"
+    )
+}
+
+#' Las columnas originales que construyen las variables del modelo
+#'
+#' Se deriva de los dos diccionarios que ya declaran esa lineage en vez de
+#' escribirse a mano, para que agregar un ítem a una batería lo traiga a las
+#' tablas sin tocar dos lugares.
+#'
+#' @section Qué queda fuera:
+#' Los cinco ítems de la batería de lugares que el índice de espacio público no
+#' usa. La batería tiene dieciséis y el índice once: quedan fuera los referidos
+#' al propio barrio, que es otra dimensión, y los espacios de uso propio o de
+#' acceso restringido. Como no participan de ninguna variable del modelo,
+#' tampoco participan de su descripción.
+#'
+#' @section Por qué entran las columnas de código especial de `comgen`:
+#' Las seis columnas `_ns`, `_nr` y `_na` de las dos baterías de opción múltiple
+#' son estructuralmente idénticas a las de las medidas: una columna dummy por
+#' alternativa. Dos de ellas se leen (estampan "no sabe" y "no responde" sobre
+#' la variable categorizada) y la tercera registra "ninguna medida de
+#' seguridad", que es una respuesta sustantiva. Dejarlas fuera de la
+#' descripción escondería justamente la alternativa cuyo tratamiento decide el
+#' análisis.
+#'
+#' @param indices `cfg$INDICES`.
+#' @param codigos_comgen `cfg$CODIGOS_COMGEN`.
+#' @return Un vector de nombres de columna, sin repetidos, en el orden en que
+#'   los declaran los diccionarios. `perper_p_expos_delito` aparece dos veces en
+#'   `cfg$INDICES`, una por cada rama del `case_when` que la usa.
+vars_originales <- function(indices, codigos_comgen) {
+    unique(c(
+        unlist(indices, use.names = FALSE),
+        unname(unlist(codigos_comgen))
+    ))
 }
 
 #' Especificación de etiquetas de los índices recodificados

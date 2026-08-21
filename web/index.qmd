@@ -69,7 +69,7 @@ La reconstrucción tuvo dos objetivos:
 |---|---|
 | **Pipeline** | El recorrido de los datos, paso a paso, con las decisiones metodológicas explicitadas donde se toman. Es la pestaña central |
 | **Univariados** | Distribuciones de todas las variables: las originales de la encuesta, las que construimos, y las secundarias |
-| **Solución actual** | Los grupos: cómo se ven, qué los distingue y cómo se perfilan |
+| **Solución actual** | Los grupos: cómo se ven y cómo se perfilan |
 
 A lo largo de la pestaña Pipeline encontrará recuadros como este:
 
